@@ -43,9 +43,4 @@ public class Calculate {
     Double result() {
         return map.get(operation).apply(firstNumber, secondNumber);
     }
-
-    public static void main(String[] args) {
-        Calculate calculate = new Calculate(6, '^', 0);
-        System.out.println(calculate.result());
-    }
 }
