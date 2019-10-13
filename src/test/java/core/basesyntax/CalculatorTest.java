@@ -13,6 +13,13 @@ public class CalculatorTest {
         calculator.calculate(3, 4, '2');
     }
 
+    @Test(expected = NullPointerException.class)
+    public void nullArgumentTest() {
+        Double nullArgument = null;
+        Double argument = 9.;
+        calculator.calculate(nullArgument, argument, '+');
+    }
+
     @Test
     public void addingOk() {
         double result = calculator.calculate(5, 10, '+');
@@ -27,6 +34,7 @@ public class CalculatorTest {
         Assert.assertEquals("Incorrect result with zero first adding", 10, result, 0);
         result = calculator.calculate(5, 0, '+');
         Assert.assertEquals("Incorrect result with zero second adding", 5, result, 0);
+        Assert.assertNotEquals(6, result);
     }
 
     @Test
@@ -43,12 +51,14 @@ public class CalculatorTest {
         Assert.assertEquals("Incorrect result with zero first subtraction", -10, result, 0);
         result = calculator.calculate(5, 0, '-');
         Assert.assertEquals("Incorrect result with zero second subtraction", 5, result, 0);
+        Assert.assertNotEquals(6, result);
     }
 
     @Test
     public void multiplicationOk() {
         double result = calculator.calculate(10, 5, '*');
         Assert.assertEquals("Incorrect result while positive numbers multiplication", 50, result, 0);
+        Assert.assertNotEquals(60, result);
         result = calculator.calculate(-5, -10, '*');
         Assert.assertEquals("Incorrect result while negative numbers multiplication", 50, result, 0);
         result = calculator.calculate(-5, 10, '*');
@@ -67,6 +77,7 @@ public class CalculatorTest {
     public void divisionOk() {
         double result = calculator.calculate(10, 5, '/');
         Assert.assertEquals("Incorrect result while positive numbers division", 2, result, 0);
+        Assert.assertNotEquals(1, result);
         result = calculator.calculate(-5, -10, '/');
         Assert.assertEquals("Incorrect result while negative numbers division", 0.5, result, 0);
         result = calculator.calculate(-5, 10, '/');
@@ -87,6 +98,7 @@ public class CalculatorTest {
     public void exponentiationOk() {
         double result = calculator.calculate(3, 5, '^');
         Assert.assertEquals("Incorrect result while positive numbers exponentiation", 243, result, 0);
+        Assert.assertNotEquals(242, result);
         result = calculator.calculate(-3, -1, '^');
         Assert.assertEquals("Incorrect result while negative numbers exponentiation", -0.3333333333333333, result, 0);
         result = calculator.calculate(-3, 5, '^');
