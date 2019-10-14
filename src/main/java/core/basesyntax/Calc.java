@@ -56,9 +56,4 @@ public class Calc {
         }
         return 0;
     }
-
-    public static void main(String[] args) {
-        Calc calc = new Calc(1, '/', -1.5);
-        System.out.println(calc.calculate());
-    }
 }
