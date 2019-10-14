@@ -3,8 +3,6 @@ package core.basesyntax;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class CalculatorTest {
     private static Long firstOperand = null;
     private static Long secondOperand = null;
