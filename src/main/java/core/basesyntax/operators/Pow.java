@@ -8,14 +8,14 @@ public class Pow extends Operators {
     private static final Logger logger = Logger.getLogger(Pow.class);
 
     @Override
-    public String compute(Integer a, Integer b) {
+    public int compute(int a, int b) {
         BigInteger bigIntegerA = BigInteger.valueOf(a);
         try {
             BigInteger result = bigIntegerA.pow(b);
-            return result.toString();
+            return result.intValueExact();
         } catch (ArithmeticException e) {
-            logger.error("Error in Pow.class", e);
-            return "This calculator can't work with negative pow or with very big range!";
+            logger.error("Error in Pow class ", e);
+            throw new ArithmeticException("ArithmeticException while exponentiation " + e);
         }
     }
 }

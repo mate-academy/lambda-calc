@@ -2,5 +2,5 @@ package core.basesyntax;
 
 @FunctionalInterface
 public interface Computation {
-    String calculate(Integer a, Character character, Integer b);
+    int calculate(int a, Character character, int b);
 }

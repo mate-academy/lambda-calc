@@ -8,15 +8,15 @@ public class Divide extends Operators {
     private static final Logger logger = Logger.getLogger(Divide.class);
 
     @Override
-    public String compute(Integer a, Integer b) {
+    public int compute(int a, int b) {
         BigInteger bigIntegerA = BigInteger.valueOf(a);
         BigInteger bigIntegerB = BigInteger.valueOf(b);
         try {
             BigInteger result = bigIntegerA.divide(bigIntegerB);
-            return result.toString();
+            return result.intValueExact();
         } catch (ArithmeticException e) {
-            logger.error("Try divide by zero ", e);
-            return "You can't divide by zero!";
+            logger.error("ArithmeticException in Divide class ", e);
+            throw new ArithmeticException("ArithmeticException while dividing " + e);
         }
     }
 }
