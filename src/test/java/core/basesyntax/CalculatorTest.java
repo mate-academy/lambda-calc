@@ -24,7 +24,7 @@ public class CalculatorTest {
         int a = 15;
         int b = 20;
         int expectedResult = 35;
-        long result = calculator.add(a, b);
+        int result = calculator.add(a, b);
         Assert.assertEquals(expectedResult, result);
     }
 
@@ -33,7 +33,7 @@ public class CalculatorTest {
         int a = 15;
         int b = 0;
         int expectedResult = 15;
-        long result = calculator.add(a, b);
+        int result = calculator.add(a, b);
         Assert.assertEquals(expectedResult, result);
     }
 
@@ -42,7 +42,7 @@ public class CalculatorTest {
         int a = -15;
         int b = 15;
         int expectedResult = 0;
-        long result = calculator.add(a, b);
+        int result = calculator.add(a, b);
         Assert.assertEquals(expectedResult, result);
     }
 
