@@ -21,12 +21,8 @@ public class Calculator {
         map.put(('^'), new Pow());
     }
 
-    public static int lambdaImpl(int a, Character o, int b) {
+    public static int calculate(int a, Character o, int b) {
         Operators operators = map.get(o);
         return operators.compute(a, b);
-    }
-
-    public static int calculating(Computation computation, int a, Character o, int b) {
-        return computation.calculate(a, o, b);
     }
 }
