@@ -108,8 +108,6 @@ public class CalculatorTest {
     @Test(expected = java.lang.AssertionError.class)
     public void testCalculateMethodExpressionShouldReturnAssertionErrorWhenDivisionByZero() {
         calculator.calculate(4.3, 0, '/');
-
-        calculator.calculate(0, 0.0, '/');
     }
 
     @Test
@@ -138,9 +136,5 @@ public class CalculatorTest {
     @Test(expected = IllegalArgumentException.class)
     public void testCalculateMethodExpressionShouldReturnIllegalArgumentException() {
         calculator.calculate(3, 4, '@');
-
-        calculator.calculate(3, 4, '=');
-
-        calculator.calculate(3, 4, 'z');
     }
 }
