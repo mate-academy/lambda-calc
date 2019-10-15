@@ -7,29 +7,42 @@ public class CalculatorTest {
     private static final String MESSAGE_NPE = "NPE was expected!";
     private static final String MESSAGE_ARITHMETIC_EXCTPITON = "Expected ArithmeticException";
 
+    private static int expected;
+    private static int actutal;
+
     @Test
     public void correctSum() {
-        Assert.assertEquals(3, Calculator.calculate( -2, '+', 5));
+        expected = 3;
+        actutal = Calculator.calculate( -2, '+', 5);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
     public void correctSubtraction() {
-        Assert.assertEquals(-1, Calculator.calculate( 5, '-', 6));
+        expected = -1;
+        actutal = Calculator.calculate( 5, '-', 6);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
     public void correctMultiply() {
-        Assert.assertEquals(-6, Calculator.calculate( -3, '*', 2));
+        expected = -6;
+        actutal = Calculator.calculate( -3, '*', 2);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
     public void correctDivide() {
-        Assert.assertEquals(-3, Calculator.calculate( 9, '/', -3));
+        expected = -3;
+        actutal = Calculator.calculate( 9, '/', -3);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
     public void correctPow() {
-        Assert.assertEquals(8, Calculator.calculate( 2, '^', 3));
+        expected = 8;
+        actutal = Calculator.calculate( 2, '^', 3);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
@@ -53,12 +66,16 @@ public class CalculatorTest {
     }
     @Test
     public void numberInDegreeZero() {
-        Assert.assertEquals(1, Calculator.calculate( 2, '^', 0));
+        expected = 1;
+        actutal = Calculator.calculate( 2, '^', 0);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
     public void numberInDegree1() {
-        Assert.assertEquals(7, Calculator.calculate( 7, '^', 1));
+        expected = 7;
+        actutal = Calculator.calculate( 7, '^', 1);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
@@ -73,12 +90,16 @@ public class CalculatorTest {
 
     @Test
     public void multiplyByZero() {
-        Assert.assertEquals(0, Calculator.calculate( 3, '*', 0));
+        expected = 0;
+        actutal = Calculator.calculate( 3, '*', 0);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
     public void multiplyZeroByNumber() {
-        Assert.assertEquals(0, Calculator.calculate( 0, '*', -6));
+        expected = 0;
+        actutal = Calculator.calculate( 0, '*', -6);
+        Assert.assertEquals(expected, actutal);
     }
 
     @Test
