@@ -1,20 +1,30 @@
 package core.basesyntax;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private static Long firstOperand = null;
-    private static Long secondOperand = null;
-    private static Character operation = null;
-    private static Long expected = null;
-    private static Long actual = null;
+    private static Long firstOperand;
+    private static Long secondOperand;
+    private static Character operation;
+    private static Long expected;
+    private static Long actual;
 
+    @Before
+    public void init() {
+        firstOperand = null;
+        secondOperand = null;
+        operation = null;
+        expected = null;
+        actual = null;
+    }
 
     @Test
     public void sum() {
         operation = Character.valueOf('+');
-        for(int i = -10; i < 10; i+=2){
+        for (int i = -10; i < 10; i += 2) {
             firstOperand = Long.valueOf(i);
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
@@ -24,9 +34,9 @@ public class CalculatorTest {
     }
 
     @Test
-    public void commutativeSum(){
+    public void commutativeSum() {
         operation = Character.valueOf('+');
-        for(int i = -10; i < 10; i+=2){
+        for (int i = -10; i < 10; i += 2) {
             firstOperand = Long.valueOf(i);
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
@@ -34,7 +44,6 @@ public class CalculatorTest {
             Assert.assertEquals("Sum should have commutative property ", actual, expected);
         }
     }
-
 
     @Test
     public void commutativeMultiplication() {
@@ -51,7 +60,7 @@ public class CalculatorTest {
     @Test
     public void subtraction() {
         operation = Character.valueOf('-');
-        for(int i = -10; i < 10; i+=2){
+        for (int i = -10; i < 10; i += 2) {
             firstOperand = Long.valueOf(i);
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
@@ -63,7 +72,7 @@ public class CalculatorTest {
     @Test
     public void multiplication() {
         operation = Character.valueOf('*');
-        for(int i = -10; i < 10; i+=2){
+        for (int i = -10; i < 10; i += 2) {
             firstOperand = Long.valueOf(i);
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
@@ -75,7 +84,7 @@ public class CalculatorTest {
     @Test
     public void division() {
         operation = Character.valueOf('/');
-        for(int i = 100; i < 1000; i+=100){
+        for (int i = 100; i < 1000; i += 100) {
             firstOperand = Long.valueOf(i * i);
             secondOperand = Long.valueOf(i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
@@ -87,11 +96,11 @@ public class CalculatorTest {
     @Test
     public void exponent() {
         operation = Character.valueOf('^');
-        for(int i = -10; i < 10; i+=2){
+        for (int i = -10; i < 10; i += 2) {
             firstOperand = Long.valueOf(i);
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
-            expected = (long)Math.pow(firstOperand, secondOperand);
+            expected = (long) Math.pow(firstOperand, secondOperand);
             Assert.assertEquals("Incorrect result", actual, expected);
         }
     }
