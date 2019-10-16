@@ -38,9 +38,11 @@ public class CalculatorTest {
         for (int i = -10; i < 10; i += 2) {
             firstOperand = Long.valueOf(i);
             secondOperand = Long.valueOf(10 - i);
-            actual = Calculator.apply(firstOperand, operation, secondOperand);
-            Assert.assertEquals("Sum should have commutative property "
-                    , Calculator.apply(secondOperand, operation, firstOperand), actual);
+            expected = Long.sum(firstOperand, secondOperand);
+            Long firstActual = Calculator.apply(firstOperand, operation, secondOperand);
+            Long secondActual = Calculator.apply(secondOperand, operation, firstOperand);
+            Assert.assertEquals("Sum should have commutative property ", expected, firstActual);
+            Assert.assertEquals("Sum should have commutative property ", expected, secondActual);
         }
     }
 
@@ -50,9 +52,11 @@ public class CalculatorTest {
         for (int i = 0; i < 10; i++) {
             firstOperand = Long.valueOf(i);
             secondOperand = Long.valueOf(10 - i);
-            actual = Calculator.apply(firstOperand, operation, secondOperand);
-            Assert.assertEquals("Multiplication should have commutative property "
-                    , Calculator.apply(secondOperand, operation, firstOperand), actual);
+            expected = firstOperand * secondOperand;
+            Long firstActual = Calculator.apply(firstOperand, operation, secondOperand);
+            Long secondActual = Calculator.apply(secondOperand, operation, firstOperand);
+            Assert.assertEquals("Sum should have commutative property ", expected, firstActual);
+            Assert.assertEquals("Sum should have commutative property ", expected, secondActual);
         }
     }
 
