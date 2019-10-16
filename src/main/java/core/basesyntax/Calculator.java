@@ -15,8 +15,8 @@ public class Calculator {
         hashMap.put(Character.valueOf('^'), (a, b) -> (long) Math.pow(a, b));
     }
 
-    public static Long apply(Long a, Character op, Long b)
+    public static Long apply(Long a, Character operation, Long b)
             throws IllegalArgumentException, NullPointerException {
-        return hashMap.get(op).apply(a, b);
+        return hashMap.get(operation).apply(a, b);
     }
 }

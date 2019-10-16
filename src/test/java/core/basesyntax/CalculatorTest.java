@@ -1,6 +1,5 @@
 package core.basesyntax;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class CalculatorTest {
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
             expected = Long.sum(firstOperand, secondOperand);
-            Assert.assertEquals("Incorrect result", actual, expected);
+            Assert.assertEquals("Incorrect result", expected, actual);
         }
     }
 
@@ -41,7 +40,7 @@ public class CalculatorTest {
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
             expected = Calculator.apply(secondOperand, operation, firstOperand);
-            Assert.assertEquals("Sum should have commutative property ", actual, expected);
+            Assert.assertEquals("Sum should have commutative property ", expected, actual);
         }
     }
 
@@ -53,7 +52,7 @@ public class CalculatorTest {
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
             expected = Calculator.apply(secondOperand, operation, firstOperand);
-            Assert.assertEquals("Multiplication should have commutative property ", actual, expected);
+            Assert.assertEquals("Multiplication should have commutative property ", expected, actual);
         }
     }
 
@@ -65,7 +64,7 @@ public class CalculatorTest {
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
             expected = firstOperand - secondOperand;
-            Assert.assertEquals("Incorrect result", actual, expected);
+            Assert.assertEquals("Incorrect result", expected, actual);
         }
     }
 
@@ -77,7 +76,7 @@ public class CalculatorTest {
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
             expected = firstOperand * secondOperand;
-            Assert.assertEquals("Incorrect result", actual, expected);
+            Assert.assertEquals("Incorrect result", expected, actual);
         }
     }
 
@@ -89,7 +88,7 @@ public class CalculatorTest {
             secondOperand = Long.valueOf(i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
             expected = firstOperand / secondOperand;
-            Assert.assertEquals("Incorrect result", actual, expected);
+            Assert.assertEquals("Incorrect result", expected, actual);
         }
     }
 
@@ -101,7 +100,7 @@ public class CalculatorTest {
             secondOperand = Long.valueOf(10 - i);
             actual = Calculator.apply(firstOperand, operation, secondOperand);
             expected = (long) Math.pow(firstOperand, secondOperand);
-            Assert.assertEquals("Incorrect result", actual, expected);
+            Assert.assertEquals("Incorrect result", expected, actual);
         }
     }
 
