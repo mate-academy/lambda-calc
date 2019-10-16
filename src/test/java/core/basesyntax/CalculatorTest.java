@@ -41,7 +41,7 @@ public class CalculatorTest {
 
     @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
-        Calculator calculator = new Calculator('/', 124.4, -0);
+        Calculator calculator = new Calculator('/', 124.4, 0);
         calculator.result();
     }
 
@@ -61,8 +61,8 @@ public class CalculatorTest {
 
     @Test
     public void powByNegativeNumberIsValid() {
-        double expected = 1;
-        Calculator calculator = new Calculator('^', 56.4, 0);
+        double expected = 0.015625;
+        Calculator calculator = new Calculator('^', 8, -2);
         Assert.assertEquals(expected, calculator.result(), 0);
     }
 }
