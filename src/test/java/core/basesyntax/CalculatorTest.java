@@ -33,6 +33,30 @@ public class CalculatorTest {
     }
 
     @Test
+    public void commutativeSum() {
+        operation = Character.valueOf('+');
+        for (int i = -10; i < 10; i += 2) {
+            firstOperand = Long.valueOf(i);
+            secondOperand = Long.valueOf(10 - i);
+            actual = Calculator.apply(firstOperand, operation, secondOperand);
+            Assert.assertEquals("Sum should have commutative property "
+                    , Calculator.apply(secondOperand, operation, firstOperand), actual);
+        }
+    }
+
+    @Test
+    public void commutativeMultiplication() {
+        operation = Character.valueOf('*');
+        for (int i = 0; i < 10; i++) {
+            firstOperand = Long.valueOf(i);
+            secondOperand = Long.valueOf(10 - i);
+            actual = Calculator.apply(firstOperand, operation, secondOperand);
+            Assert.assertEquals("Multiplication should have commutative property "
+                    , Calculator.apply(secondOperand, operation, firstOperand), actual);
+        }
+    }
+
+    @Test
     public void subtraction() {
         operation = Character.valueOf('-');
         for (int i = -10; i < 10; i += 2) {
