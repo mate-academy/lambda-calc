@@ -6,6 +6,7 @@ import org.junit.Test;
 public class CalculatorTest {
     private double expected;
     private double actual;
+    private final double delta = 0.001;
 
     @Test
     public void testSum() {
@@ -13,7 +14,7 @@ public class CalculatorTest {
         double b = 28;
         expected = 64;
         actual = Calculator.calculate(a, '+', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -22,7 +23,7 @@ public class CalculatorTest {
         double b = -7;
         expected = -16;
         actual = Calculator.calculate(a, '+', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class CalculatorTest {
         double b = 7;
         expected = 2;
         actual = Calculator.calculate(a, '-', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -40,7 +41,7 @@ public class CalculatorTest {
         double b = -7;
         expected = 16;
         actual = Calculator.calculate(a, '-', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -49,7 +50,7 @@ public class CalculatorTest {
         double b = 6;
         expected = 48;
         actual = Calculator.calculate(a, '*', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -58,7 +59,7 @@ public class CalculatorTest {
         double b = 0;
         expected = 0;
         actual = Calculator.calculate(a, '*', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -67,7 +68,7 @@ public class CalculatorTest {
         double b = 5;
         expected = -20;
         actual = Calculator.calculate(a, '*', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -76,7 +77,7 @@ public class CalculatorTest {
         double b = 4;
         expected = 16;
         actual = Calculator.calculate(a, '/', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -85,7 +86,7 @@ public class CalculatorTest {
         double b = 7;
         expected = 3.142;
         actual = Calculator.calculate(a, '/', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test(expected = java.lang.ArithmeticException.class)
@@ -101,7 +102,7 @@ public class CalculatorTest {
         double b = 5;
         expected = 32;
         actual = Calculator.calculate(a, '^', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -110,7 +111,7 @@ public class CalculatorTest {
         double b = -3;
         expected = 0.008;
         actual = Calculator.calculate(a, '^', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -119,7 +120,7 @@ public class CalculatorTest {
         double b = 0;
         expected = 1;
         actual = Calculator.calculate(a, '^', b);
-        Assert.assertEquals(expected, actual, 0.001);
+        Assert.assertEquals(expected, actual, delta);
     }
 
     @Test(expected = java.util.NoSuchElementException.class)

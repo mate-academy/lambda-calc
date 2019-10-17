@@ -8,7 +8,6 @@ public class Calculator {
 
     static {
         map = new HashMap<>();
-        //we could also just write here our lambda-execute and remove all unnecessary methods
         map.put('+', Calculator::sum);
         map.put('-', Calculator::difference);
         map.put('*', Calculator::multiply);
