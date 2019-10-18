@@ -57,7 +57,12 @@ public class CalculatorTest {
         Assert.assertEquals(4, actual, 0);
         actual = calculator.calculate(4, -1, '^');
         Assert.assertEquals(0.25, actual, 0);
-        actual = calculator.calculate(4, 0, '^');
+    }
+
+    @Test
+    public void validPowByZero() {
+        double actual = calculator.calculate(4, 0, '^');
         Assert.assertEquals(1, actual, 0);
     }
+
 }
