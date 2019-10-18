@@ -71,4 +71,10 @@ public class TestUnit {
         Calculator calculator = new Calculator('^', 8, -2);
         Assert.assertEquals(expected, calculator.result(), 0);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notValidOperations() {
+        Calculator calculator = new Calculator('#', 8.0, 7.2);
+        Assert.assertEquals(2, calculator.result(), 0);
+    }
 }

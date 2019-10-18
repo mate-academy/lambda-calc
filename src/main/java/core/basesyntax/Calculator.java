@@ -27,7 +27,7 @@ public class Calculator {
             case ('^'):
                 return Math.pow(firstNumber, secondNumber);
             default:
-                return Double.parseDouble(null);
+                throw new IllegalArgumentException();
         }
     }
 }
