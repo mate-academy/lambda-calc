@@ -16,7 +16,7 @@ public class CalculatorTest {
         Assert.assertEquals(4, calculator.calculate(6, 2, '-'), DELTA);
         Assert.assertEquals(0.5, calculator.calculate(1, 2, '/'), DELTA);
         Assert.assertEquals(10, calculator.calculate(5, 2, '*'), DELTA);
-        Assert.assertEquals(9, calculator.calculate(10, 2, '^'), DELTA);
+        Assert.assertEquals(100, calculator.calculate(10, 2, '^'), DELTA);
     }
 
     @Test
