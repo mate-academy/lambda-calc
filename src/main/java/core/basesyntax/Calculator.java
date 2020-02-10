@@ -15,9 +15,4 @@ public class Calculator {
         map.put('^', Math::pow);
         return map.get(operator).applyAsDouble(num1, num2);
     }
-
-    public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        System.out.println(calculator.calculate(2, 2, '^'));
-    }
 }
