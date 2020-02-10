@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BinaryOperator;
 import java.util.function.DoubleBinaryOperator;
 
 public class Calculator {
