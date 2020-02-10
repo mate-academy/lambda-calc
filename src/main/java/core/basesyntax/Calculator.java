@@ -5,8 +5,8 @@ public class Calculator {
         if (a == 0 && operator == '/') {
             throw new ArithmeticException();
         }
-            return operator == '+' ? a + b : operator == '-' ? a - b :
-                    operator == '*' ? a * b : operator == '/' ? a / b :
-                            operator == '^' ? Math.pow(a, b) : null;
+        return operator == '+' ? a + b : operator == '-' ? a - b :
+                operator == '*' ? a * b : operator == '/' ? a / b :
+                        operator == '^' ? Math.pow(a, b) : null;
     }
 }
