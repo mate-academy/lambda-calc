@@ -3,7 +3,7 @@ package core.basesyntax;
 import java.util.function.DoubleBinaryOperator;
 
 public class Calculator {
-    public static Double calculate(double num1, double num2, char signifier) {
+    public Double calculate(double num1, double num2, char signifier) {
         if (num2 == 0 && signifier == '/') {
             throw new ArithmeticException();
         }
