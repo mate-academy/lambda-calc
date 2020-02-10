@@ -8,7 +8,7 @@ public class CalculatorTest {
     private Calculator calculator = new Calculator();
     private double a = 2.00;
     private double b = 3.00;
-    private static double result = 0.00;
+    private double result = 0.00;
     private static final double DELTA = 0.001;
     private static final double INFINITY = 1.00 / 0;
 

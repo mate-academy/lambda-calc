@@ -8,10 +8,10 @@ public class Calculator {
 
     public double calculate(double a, double b, char f) {
         DoubleBinaryOperator result = (f == '+') ? (x, y) -> x + y
-                : (f == '-') ? (x, y) -> a - b
-                : (f == '*') ? (x, y) -> a * b
-                : (f == '/') ? (x, y) -> a / b
-                : (f == 'p') ? (x, y) -> Math.pow(a, b)
+                : (f == '-') ? (x, y) -> x - y
+                : (f == '*') ? (x, y) -> x * y
+                : (f == '/') ? (x, y) -> x / y
+                : (f == 'p') ? (x, y) -> Math.pow(x, y)
                 : (x, y) -> {
                     throw new UndefinedOperationException("Use + for addition, - for substraction,"
                     + " * for multiplication, / for divisiion and p for powering");
