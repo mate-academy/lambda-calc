@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private static final double DELTA = 0.00001;
+    private final double DELTA = 0.00001;
 
     @Test
     public void operationsWitPositiveNumbers() {
