@@ -1,7 +1,6 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -23,15 +22,17 @@ public class CalcTest {
 
     @Test
     public void addingTestWrong() {
-            Double result = Calc.calculate(a, b, '+');
-            Assert.assertNotEquals(a * b, result);
+        Double result = Calc.calculate(a, b, '+');
+        Assert.assertNotEquals(a * b, result);
 
     }
+
     @Test
     public void subtractionTestCorrect() {
         Double result = Calc.calculate(a, b, '-');
         Assert.assertEquals(java.util.Optional.of(a - b).get(), result);
     }
+
     @Test
     public void subtractionTestWrong() {
         Double result = Calc.calculate(a, b, '-');
@@ -74,4 +75,53 @@ public class CalcTest {
         Assert.assertNotEquals(Math.pow(a, b), result);
     }
 
+    @Test
+    public void powerTestNull() {
+        try {
+            Double result = Calc.calculate(nullDouble, b, 'p');
+        } catch(NullPointerException e) {
+            return;
+        }
+        Assert.fail("NullPointerException expected");
+    }
+
+    @Test
+    public void subtractionTestNull() {
+        try {
+            Double result = Calc.calculate(nullDouble, b, '-');
+        } catch(NullPointerException e) {
+            return;
+        }
+        Assert.fail("NullPointerException expected");
+    }
+
+    @Test
+    public void substitutionTestNull() {
+        try {
+            Double result = Calc.calculate(nullDouble, b, '+');
+        } catch(NullPointerException e) {
+            return;
+        }
+        Assert.fail("NullPointerException expected");
+    }
+
+    @Test
+    public void divisionTestNull() {
+        try {
+            Double result = Calc.calculate(nullDouble, b, '/');
+        } catch(NullPointerException e) {
+            return;
+        }
+        Assert.fail("NullPointerException expected");
+    }
+
+    @Test
+    public void multiplyingTestNull() {
+        try {
+            Double result = Calc.calculate(nullDouble, b, '*');
+        } catch(NullPointerException e) {
+            return;
+        }
+        Assert.fail("NullPointerException expected");
+    }
 }
