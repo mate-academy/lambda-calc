@@ -7,7 +7,7 @@ import java.util.function.BinaryOperator;
 public class Calc {
     private static Map<Character, BinaryOperator<Double>> operations;
 
-    public static void main() {
+    public static void main(String[] args) {
         operations = new HashMap<>();
         operations.put('+', Double::sum);
         operations.put('-', (x, y) -> x - y);
@@ -16,7 +16,7 @@ public class Calc {
         operations.put('p', Math::pow);
     }
 
-    public static double calculate(Double x, Double y, Character operator) {
+    public double calculate(Double x, Double y, Character operator) {
         return operations.get(operator).apply(x, y);
     }
 }
