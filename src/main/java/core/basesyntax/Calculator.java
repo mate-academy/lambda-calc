@@ -1,8 +1,8 @@
 package core.basesyntax;
 
-import java.util.function.DoubleBinaryOperator;
-
 import core.basesyntax.exceptions.UndefinedOperationException;
+
+import java.util.function.DoubleBinaryOperator;
 
 public class Calculator {
 
@@ -13,9 +13,9 @@ public class Calculator {
                 : (f == '/') ? (x, y) -> a / b
                 : (f == 'p') ? (x, y) -> Math.pow(a, b)
                 : (x, y) -> {
-            throw new UndefinedOperationException("Use + for addition, - for substraction, " +
-                    "* for multiplication, / for divisiion and p for powering");
-        };
+                    throw new UndefinedOperationException("Use + for addition, - for substraction,"
+                    + " * for multiplication, / for divisiion and p for powering");
+                };
         return result.applyAsDouble(a, b);
     }
 }
