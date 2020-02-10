@@ -31,6 +31,11 @@ public class CalculatorTest {
         Assert.assertEquals(2.05, result, DELTA);
     }
 
+    @Test(expected = ArithmeticException.class)
+    public void divByZero() {
+        calculator.calculete(5, 0, '/');
+    }
+
     @Test
     public void multiplyingTest() {
         double result = calculator.calculete(225.37, 234.38, '*');
@@ -55,39 +60,24 @@ public class CalculatorTest {
         Assert.assertEquals(0.25, resutlt, DELTA);
     }
 
-    @Test
+    @Test(expected = NumberFormatException.class)
     public void wrongParametersTest() {
-        try {
             double result = calculator
                     .calculete(Double.parseDouble("one"),
                             Double.parseDouble("two"), '+');
-        } catch (NumberFormatException e) {
-            return;
-        }
-        Assert.fail("NumberFormatException was expected");
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void wrongOperationTest() {
-        try {
             double result = calculator
                     .calculete(20, 10, 'a');
-        } catch (NullPointerException e) {
-            return;
-        }
-        Assert.fail("NullPointerException was expected");
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void nullNumbersTest() {
-        try {
             Calculator calculator = new Calculator();
             Double a = null;
             Double b = null;
             calculator.calculete(a, b, '+');
-        } catch (NullPointerException e) {
-            return;
-        }
-        Assert.fail("NullPointerException was expected");
     }
 }
