@@ -5,75 +5,78 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
+    private static final Double DELTA = 0.0001;
+
     @Test
-    public void additionNegativeOk() {
+    public void addNegativeNumberOk() {
         double calculated = Calculator.calculate(10.0, -5.0, '+');
-        Assert.assertEquals(5.0, calculated, 0.0001);
+        Assert.assertEquals(5.0, calculated, DELTA);
     }
 
     @Test
 
-    public void multiplicationNegativeOk() {
+    public void multiNegativeNumberOk() {
         double calculated = Calculator.calculate(10.0, -5.0, '*');
-        Assert.assertEquals(-50.0, calculated, 0.0001);
+        Assert.assertEquals(-50.0, calculated, DELTA);
     }
 
     @Test
-    public void subtractionNegativeOk() {
+    public void subNegativeNumberOk() {
         double calculated = Calculator.calculate(10.0, -5.0, '-');
-        Assert.assertEquals(15, calculated, 0.0001);
+        Assert.assertEquals(15, calculated, DELTA);
     }
 
     @Test
-    public void divisionNegativeOk() {
+    public void divNegativeNumberOk() {
         double calculated = Calculator.calculate(15.0, -5.0, '/');
-        Assert.assertEquals(-3.0, calculated, 0.0001);
+        Assert.assertEquals(-3.0, calculated, DELTA);
     }
 
     @Test
-    public void powerNegativeOk() {
+    public void powNegativeNumberOk() {
         double calculated = Calculator.calculate(10.0, -3.0, '^');
-        Assert.assertEquals(0.001, calculated, 0.0001);
+        Assert.assertEquals(0.001, calculated, DELTA);
     }
 
     @Test
-    public void additionOk() {
+    public void addPositiveNumberOk() {
         double calculated = Calculator.calculate(10.0, 5.0, '+');
-        Assert.assertEquals(15.0, calculated, 0.0001);
+        Assert.assertEquals(15.0, calculated, DELTA);
     }
 
     @Test
-
-    public void multiplicationOk() {
+    public void multPositiveNumberOk() {
         double calculated = Calculator.calculate(10.0, 5.0, '*');
-        Assert.assertEquals(50.0, calculated, 0.0001);
+        Assert.assertEquals(50.0, calculated, DELTA);
     }
 
     @Test
-    public void subtractionOk() {
+    public void subPositiveNumberOk() {
         double calculated = Calculator.calculate(10.0, 5.0, '-');
-        Assert.assertEquals(5.0, calculated, 0.0001);
+        Assert.assertEquals(5.0, calculated, DELTA);
     }
 
     @Test
-    public void divisionOk() {
+    public void divPositiveNumberOk() {
         double calculated = Calculator.calculate(15.0, 5.0, '/');
-        Assert.assertEquals(3.0, calculated, 0.0001);
+        Assert.assertEquals(3.0, calculated, DELTA);
     }
 
     @Test
-    public void powerOk() {
+    public void powPositiveNumberOk() {
         double calculated = Calculator.calculate(5.0, 2.0, '^');
-        Assert.assertEquals(25.0, calculated, 0.0001);
+        Assert.assertEquals(25.0, calculated, DELTA);
     }
 
     @Test
+    public void powByZeroOk() {
+        double calculated = Calculator.calculate(5.0, 0.0, '^');
+        Assert.assertEquals(1.0, calculated, DELTA);
+    }
+
+    @Test(expected = java.lang.ArithmeticException.class)
     public void divisionByZero() {
-        try {
-            Calculator.calculate(15.0, 0.0, '/');
-        } catch (ArithmeticException e) {
-            Assert.fail();
-        }
+        Calculator.calculate(15.0, 0.0, '/');
     }
 
     @Test
@@ -86,39 +89,20 @@ public class CalculatorTest {
         Assert.fail();
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void calculateWithNullParameters() {
-        try {
-            Calculator.calculate(null, null, '+');
-        } catch (NullPointerException e) {
-            return;
-        }
-        Assert.fail();
+        Calculator.calculate(null, null, '+');
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void calculateWithNullOperator() {
-        try {
-            Calculator.calculate(5.0, 5.0, null);
-        } catch (NullPointerException e) {
-            return;
-        }
-        Assert.fail();
-    }
-
-    @Test
-    public void calculateAboveNumberLimitResult() {
-        double maxDoubleValue = 1.7976931348623157E308;
-        Assert.assertTrue(maxDoubleValue > Calculator
-                .calculate(99999999999.9, 666666666666666.6, '*'));
+        Calculator.calculate(5.0, 5.0, null);
     }
 
     @Test
     public void calculateWithValidParameter() {
         double calculate = Calculator
                 .calculate(9.8, 66.5, '*');
-        double minDoubleValue = -1.7976931348623157E30;
-        double maxDoubleValue = 1.7976931348623157E308;
-        Assert.assertTrue(maxDoubleValue > calculate && minDoubleValue < calculate);
+        Assert.assertTrue(Double.MIN_VALUE < calculate && Double.MAX_VALUE > calculate);
     }
 }

@@ -21,6 +21,9 @@ public class Calculator {
     }
 
     private double division(Double first, Double second) {
+        if (second == 0) {
+            throw new ArithmeticException();
+        }
         CalculateAble division = (number1, number2) -> number1 / number2;
         return operate(first, second, division);
     }
@@ -37,6 +40,6 @@ public class Calculator {
                         operator == '/' ? calculator.division(first, second) :
                                 operator == '*' ? calculator.multiplication(first, second) :
                                         operator == '^' ? calculator.power(first, second) :
-                                                null;
+                                                Util.throwException("Error");
     }
 }
