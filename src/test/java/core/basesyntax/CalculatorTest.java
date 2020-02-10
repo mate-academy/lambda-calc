@@ -97,7 +97,7 @@ public class CalculatorTest {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void exceptionFailTest() {
+    public void divByZero() {
         Calculator.calculate(5, 0, '/');
     }
 
