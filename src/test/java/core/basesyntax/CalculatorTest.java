@@ -14,19 +14,31 @@ public class CalculatorTest {
     }
 
     @Test
-    public void sumValidTest() {
+    public void sumWholeValidTest() {
         double result = calculator.calculate(10d, 20d, '+');
+        Assert.assertEquals(30d, result, DELTA);
+        result = calculator.calculate(20d, 10d, '+');
         Assert.assertEquals(30d, result, DELTA);
         result = calculator.calculate(10d, 0d, '+');
         Assert.assertEquals(10d, result, DELTA);
-        result = calculator.calculate(10.501, 20.302, '+');
-        Assert.assertEquals(30.803, result, DELTA);
+        result = calculator.calculate(0d, 20d, '+');
+        Assert.assertEquals(20d, result, DELTA);
+    }
+
+    @Test
+    public void sumDecimalValidTest() {
+        double result = calculator.calculate(10.54, 20.36, '+');
+        Assert.assertEquals(30.9, result, DELTA);
+        result = calculator.calculate(16.37, 7.54, '+');
+        Assert.assertEquals(23.91, result, DELTA);
     }
 
     @Test
     public void sumInValidTest() {
         double result = calculator.calculate(10d, 20d, '+');
-        Assert.assertNotEquals(35d, result);
+        Assert.assertNotEquals(-10d, result, DELTA);
+        result = calculator.calculate(10.999, 1.111, '+');
+        Assert.assertNotEquals(12d, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -36,19 +48,31 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subValidTest() {
-        double result = calculator.calculate(50D, 20D, '-');
+    public void subWholeValidTest() {
+        double result = calculator.calculate(50d, 20d, '-');
         Assert.assertEquals(30d, result, DELTA);
-        result = calculator.calculate(10D, 0D, '-');
+        result = calculator.calculate(10d, 20d, '-');
+        Assert.assertEquals(-10d, result, DELTA);
+        result = calculator.calculate(10d, 0d, '-');
         Assert.assertEquals(10d, result, DELTA);
-        result = calculator.calculate(50.505, 20.302, '-');
-        Assert.assertEquals(30.203, result, DELTA);
+        result = calculator.calculate(0d, 25d, '-');
+        Assert.assertEquals(-25d, result, DELTA);
+    }
+
+    @Test
+    public void subDecimalValidTest() {
+        double result = calculator.calculate(32.756, 17.342, '-');
+        Assert.assertEquals(15.414, result, DELTA);
+        result = calculator.calculate(13.582, 24.732, '-');
+        Assert.assertEquals(-11.15, result, DELTA);
     }
 
     @Test
     public void subInValidTest() {
-        double result = calculator.calculate(10d, 20d, '-');
-        Assert.assertNotEquals(35d, result, DELTA);
+        double result = calculator.calculate(12d, 20d, '-');
+        Assert.assertNotEquals(-12d, result, DELTA);
+        result = calculator.calculate(30.111, 5d, '-');
+        Assert.assertNotEquals(35.111d, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -58,11 +82,23 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multValidTest() {
+    public void multWholeValidTest() {
         double result = calculator.calculate(10d, 20d, '*');
         Assert.assertEquals(200d, result, DELTA);
+        result = calculator.calculate(33d, 1d, '*');
+        Assert.assertEquals(33d, result, DELTA);
         result = calculator.calculate(10d, 0d, '*');
         Assert.assertEquals(0d, result, DELTA);
+        result = calculator.calculate(0d, 5d, '*');
+        Assert.assertEquals(0d, result, DELTA);
+    }
+
+    @Test
+    public void multDecimalValidTest() {
+        double result = calculator.calculate(12.5, 12.5, '*');
+        Assert.assertEquals(156.25, result, DELTA);
+        result = calculator.calculate(11.55, 7.32, '*');
+        Assert.assertEquals(84.546, result, DELTA);
         result = calculator.calculate(10.5, 20.3, '*');
         Assert.assertEquals(213.15, result, DELTA);
     }
@@ -70,7 +106,7 @@ public class CalculatorTest {
     @Test
     public void multInValidTest() {
         double result = calculator.calculate(10d, 20d, '*');
-        Assert.assertNotEquals(35d, result);
+        Assert.assertNotEquals(30d, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -80,11 +116,21 @@ public class CalculatorTest {
     }
 
     @Test
-    public void divValidTest() {
+    public void divWholeValidTest() {
         double result = calculator.calculate(40d, 20d, '/');
         Assert.assertEquals(2d, result, DELTA);
+        result = calculator.calculate(36d, 72d, '/');
+        Assert.assertEquals(0.5, result, DELTA);
         result = calculator.calculate(0d, 10d, '/');
         Assert.assertEquals(0d, result, DELTA);
+    }
+
+    @Test
+    public void divDecimalValidTest() {
+        double result = calculator.calculate(32.6, 5.3, '/');
+        Assert.assertEquals(6.151, result, DELTA);
+        result = calculator.calculate(5.74, 15.32, '/');
+        Assert.assertEquals(0.375, result, DELTA);
         result = calculator.calculate(10.2, 20.4, '/');
         Assert.assertEquals(0.5, result, DELTA);
     }
@@ -92,7 +138,7 @@ public class CalculatorTest {
     @Test
     public void divInValidTest() {
         double result = calculator.calculate(10d, 20d, '/');
-        Assert.assertNotEquals(35d, result);
+        Assert.assertNotEquals(200d, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -114,12 +160,14 @@ public class CalculatorTest {
         Assert.assertEquals(16d, result, DELTA);
         result = calculator.calculate(16, 0.5, '^');
         Assert.assertEquals(4, result, DELTA);
+        result = calculator.calculate(16, -2, '^');
+        Assert.assertEquals(0.004, result, DELTA);
     }
 
     @Test
     public void powInValidTest() {
         double result = calculator.calculate(10d, 2d, '^');
-        Assert.assertNotEquals(10d, result);
+        Assert.assertNotEquals(10d, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
