@@ -15,7 +15,7 @@ public class Calculator {
                 : signifier == '^' ? (a, b) -> Math.pow(a, b)
                 : null;
 
-        if(result == null){
+        if (result == null) {
             throw new InvalidParameterException();
         }
         return result.applyAsDouble(num1, num2);

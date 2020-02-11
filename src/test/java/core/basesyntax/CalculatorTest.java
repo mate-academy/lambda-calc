@@ -13,7 +13,7 @@ public class CalculatorTest {
     private Calculator calculator = null;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         calculator = new Calculator();
     }
 
