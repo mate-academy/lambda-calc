@@ -1,5 +1,6 @@
 package core.basesyntax;
 
+import java.security.InvalidParameterException;
 import java.util.function.DoubleBinaryOperator;
 
 public class Calculator {
@@ -13,6 +14,10 @@ public class Calculator {
                 : signifier == '/' ? (a, b) -> a / b
                 : signifier == '^' ? (a, b) -> Math.pow(a, b)
                 : null;
+
+        if(result == null){
+            throw new InvalidParameterException();
+        }
         return result.applyAsDouble(num1, num2);
     }
 }

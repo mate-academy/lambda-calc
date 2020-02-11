@@ -2,6 +2,8 @@ package core.basesyntax;
 
 import static org.junit.Assert.assertEquals;
 
+import java.security.InvalidParameterException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -108,7 +110,7 @@ public class CalculatorTest {
         calculator.calculate(5, 0, '/');
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = InvalidParameterException.class)
     public void wrongInputParameter() {
         calculator.calculate(1, 5, 'p');
     }
