@@ -24,6 +24,6 @@ public class Calculator {
         System.out.println(Calculator.calculate(3.0, 2.0, '-'));
         System.out.println(Calculator.calculate(3.0, 2.0, '*'));
         System.out.println(Calculator.calculate(3.0, 2.0, '/'));
-        System.out.println(Calculator.calculate(3.0, 2.0, '^'));
+        System.out.println(Calculator.calculate(0, 0.5, '^'));
     }
 }
