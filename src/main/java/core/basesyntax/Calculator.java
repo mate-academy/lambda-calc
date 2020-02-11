@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.BinaryOperator;
 
 public class Calculator {
-    public static double calculate(double value1, char operator, double value2) {
+    public double calculate(double value1, char operator, double value2) {
         if (value2 == 0 && operator == '/') {
             throw new ArithmeticException("Can't divide by zero");
         }
@@ -21,9 +21,5 @@ public class Calculator {
             throw new IllegalArgumentException("Illegal arithmetical operator: " + operator);
         }
         return funcInterfaces.get(operator).apply(value1, value2);
-    }
-
-    public static void main(String[] args) {
-        calculate(1, '+', 8776.966574);
     }
 }

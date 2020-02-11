@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="0" name="core.basesyntax.CalculatorTest" time="0.082" errors="0" skipped="0">
+<testsuite tests="12" failures="0" name="core.basesyntax.CalculatorTest" time="0.187" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.5+10-post-Ubuntu-0ubuntu1.118.04"/>
@@ -61,16 +61,16 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="core.basesyntax.CalculatorTest" name="involutionTest" time="0.014"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="divisionTest" time="0.001"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="involutionTest" time="0.013"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="divisionTest" time="0"/>
   <testcase classname="core.basesyntax.CalculatorTest" name="multiplicationAdvancedTest" time="0.001"/>
   <testcase classname="core.basesyntax.CalculatorTest" name="divisionAdvancedTest" time="0.001"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="additionTest" time="0"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="multiplicationTest" time="0.001"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="subtractionAdvancedTest" time="0"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="subtractionTest" time="0.007"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="additionAdvancedTest" time="0.001"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="wrongOperator" time="0.056"/>
-  <testcase classname="core.basesyntax.CalculatorTest" name="divideByZero" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="additionTest" time="0.001"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="multiplicationTest" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="subtractionAdvancedTest" time="0.013"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="subtractionTest" time="0.001"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="additionAdvancedTest" time="0.006"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="wrongOperator" time="0.146"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="divideByZero" time="0.005"/>
   <testcase classname="core.basesyntax.CalculatorTest" name="involutionAdvancedTest" time="0"/>
 </testsuite>
