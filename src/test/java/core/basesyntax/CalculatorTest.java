@@ -7,6 +7,7 @@ import org.junit.Test;
 public class CalculatorTest {
     private Double a = 2d;
     private Double b = 1d;
+    private static final Double DELTA = 0.0001;
     private Double nullNumber = null;
     private Calculator calculator;
 
@@ -18,67 +19,67 @@ public class CalculatorTest {
     @Test
     public void substitutionTestCorrect() {
         Double result = calculator.calculate(a, b, '+');
-        Assert.assertEquals(java.util.Optional.of(a + b).get(), result);
+        Assert.assertEquals(a + b, result, DELTA);
     }
 
     @Test
     public void substitutionNegativeNumberTestCorrect() {
         Double result = calculator.calculate(-a, b, '+');
-        Assert.assertEquals(java.util.Optional.of(-a + b).get(), result);
+        Assert.assertEquals(-a + b, result, DELTA);
     }
 
     @Test
     public void subtractionTestCorrect() {
         Double result = calculator.calculate(a, b, '-');
-        Assert.assertEquals(java.util.Optional.of(a - b).get(), result);
+        Assert.assertEquals(a - b, result, DELTA);
     }
 
     @Test
     public void subtractionNegativeNumberTestCorrect() {
         Double result = calculator.calculate(-a, b, '-');
-        Assert.assertEquals(java.util.Optional.of(-a - b).get(), result);
+        Assert.assertEquals(-a - b, result, DELTA);
     }
 
     @Test
     public void multiplyTestCorrect() {
         Double result = calculator.calculate(a, b, '*');
-        Assert.assertEquals(java.util.Optional.of(a * b).get(), result);
+        Assert.assertEquals(a * b, result, DELTA);
     }
 
     @Test
     public void multiplyTestNegativeNumberCorrect() {
         Double result = calculator.calculate(-a, b, '*');
-        Assert.assertEquals(java.util.Optional.of(-a * b).get(), result);
+        Assert.assertEquals(-a * b, result, DELTA);
     }
 
     @Test
     public void divisionTestCorrect() {
         Double result = calculator.calculate(a, b, '/');
-        Assert.assertEquals(java.util.Optional.of(a / b).get(), result);
+        Assert.assertEquals(a / b, result, DELTA);
     }
 
     @Test
     public void divisionTestNegativeNumberCorrect() {
-        Double result = calculator.calculate(-a, b, '*');
-        Assert.assertEquals(java.util.Optional.of(-a / b).get(), result);
+        Double result = calculator.calculate(-a, b, '/');
+        Assert.assertEquals(-a / b, result, DELTA);
     }
 
     @Test
     public void powerTestCorrect() {
         Double result = calculator.calculate(a, b, 'p');
-        Assert.assertEquals(java.util.Optional.of(Math.pow(a, b)).get(), result);
+        Assert.assertEquals(Math.pow(a, b), result, DELTA);
     }
 
     @Test
     public void powerTestZero() {
         Double result = calculator.calculate(a, 0d, 'p');
-        Assert.assertEquals(java.util.Optional.of(Math.pow(a, 0)).get(), result);
+        Assert.assertEquals(Math.pow(a, 0), result, DELTA);
     }
 
     @Test
     public void powerTestNegativeValueCorrect() {
         Double result = calculator.calculate(-a, b, 'p');
-        Assert.assertEquals(java.util.Optional.of(Math.pow(-a, b)).get(), result);
+        Assert.assertEquals(Math.pow(-a, b), result, DELTA);
     }
 
     @Test
