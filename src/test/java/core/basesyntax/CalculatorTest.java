@@ -5,8 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CalculatorTest {
-    public static final double DELTA = 0.01;
-    Calculator calculator = null;
+    private static final double DELTA = 0.01;
+    private Calculator calculator = null;
 
     @Before
     public void setUp() throws Exception {
@@ -15,86 +15,74 @@ public class CalculatorTest {
 
     @Test
     public void additionPositiveOk() {
-        double product = calculator.calculation("+", 3.0, 2.0);
-        Assert.assertEquals(5, product, DELTA);
+        double result = calculator.calculation("+", 3.0, 2.0);
+        Assert.assertEquals(5, result, DELTA);
     }
 
     @Test
     public void additionNegativeOk() {
-        double product = calculator.calculation("+", -3.0, -22.0);
-        Assert.assertEquals(-25, product, DELTA);
-    }
-
-    @Test
-    public void additionPositiveFail() {
-        double product = calculator.calculation("+", 1.0, 22.0);
-        Assert.assertNotEquals(25, product, DELTA);
+        double result = calculator.calculation("+", -3.0, -22.0);
+        Assert.assertEquals(-25, result, DELTA);
     }
 
     @Test
     public void subtractionPositiveOk() {
-        double product = calculator.calculation("-", 1.0, 22.0);
-        Assert.assertEquals(-21, product, DELTA);
+        double result = calculator.calculation("-", 1.0, 22.0);
+        Assert.assertEquals(-21, result, DELTA);
     }
 
     @Test
     public void subtractionNegativePositiveOk() {
-        double product = calculator.calculation("-", -11.0, 22.0);
-        Assert.assertEquals(-33, product, DELTA);
-    }
-
-    @Test
-    public void subtractionNegativeFail() {
-        double product = calculator.calculation("-", -1.0, -22.0);
-        Assert.assertEquals(21, product, DELTA);
+        double result = calculator.calculation("-", -11.0, 22.0);
+        Assert.assertEquals(-33, result, DELTA);
     }
 
     @Test
     public void multiplicationPositiveOk() {
-        double product = calculator.calculation("*", 8.0, 2.0);
-        Assert.assertEquals(16, product, DELTA);
+        double result = calculator.calculation("*", 8.0, 2.0);
+        Assert.assertEquals(16, result, DELTA);
     }
 
     @Test
     public void multiplicationNegativeOk() {
-        double product = calculator.calculation("*", -8.0, -3.0);
-        Assert.assertEquals(24, product, DELTA);
+        double result = calculator.calculation("*", -8.0, -3.0);
+        Assert.assertEquals(24, result, DELTA);
     }
 
     @Test
     public void divisionNegativeOk() {
-        double product = calculator.calculation("/", -8.0, -3.0);
-        Assert.assertNotEquals(2, product, DELTA);
+        double result = calculator.calculation("/", -8.0, -3.0);
+        Assert.assertNotEquals(2, result, DELTA);
     }
 
     @Test
     public void divisionPositiveOk() {
-        double product = calculator.calculation("/", 2.0, 3.0);
-        Assert.assertEquals(0.66, product, DELTA);
+        double result = calculator.calculation("/", 2.0, 3.0);
+        Assert.assertEquals(0.66, result, DELTA);
     }
 
     @Test
     public void divisionNegativePositiveFail() {
-        double product = calculator.calculation("/", -9.0, 3.0);
-        Assert.assertNotEquals(2, product, DELTA);
+        double result = calculator.calculation("/", -9.0, 3.0);
+        Assert.assertNotEquals(2, result, DELTA);
     }
 
     @Test
     public void toDegreePositiveOk() {
-        double product = calculator.calculation("^", 2.0, 3.0);
-        Assert.assertEquals(8, product, DELTA);
+        double result = calculator.calculation("^", 2.0, 3.0);
+        Assert.assertEquals(8, result, DELTA);
     }
 
     @Test
     public void toDegreeNegativeOk() {
-        double product = calculator.calculation("^", -5.0, 3.0);
-        Assert.assertEquals(-125, product, DELTA);
+        double result = calculator.calculation("^", 5.0, -3.0);
+        Assert.assertEquals(0.008, result, DELTA);
     }
 
     @Test
-    public void toDegreePositiveFail() {
-        double product = calculator.calculation("^", 5.0, 1.0);
-        Assert.assertNotEquals(-125, product, DELTA);
+    public void toDegreeZeroOK() {
+        double result = calculator.calculation("^", 5.0, 0.0);
+        Assert.assertEquals(1, result, DELTA);
     }
 
     @Test
@@ -115,5 +103,11 @@ public class CalculatorTest {
             return;
         }
         Assert.fail("NullPointerException was expected");
+    }
+
+    @Test
+    public void divisionByZero() {
+        double result = calculator.calculation("/", 5.0, 0.0);
+        Assert.assertEquals(Double.POSITIVE_INFINITY, result, DELTA);
     }
 }
