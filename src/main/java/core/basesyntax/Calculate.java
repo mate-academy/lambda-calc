@@ -4,7 +4,7 @@ import java.util.function.BinaryOperator;
 
 public class Calculate {
 
-    public static double getResult(double x, double y, char operation) {
+    public double getResult(double x, double y, char operation) {
         if (y == 0 && operation == '/') {
             throw new ArithmeticException("Can't division by zero!");
         }
@@ -16,27 +16,28 @@ public class Calculate {
                 : null;
     }
 
-    private static double sum(double x, double y) {
+
+    private double sum(double x, double y) {
         BinaryOperator<Double> op1 = (a, b) -> a + b;
         return op1.apply(x, y);
     }
 
-    private static double sub(double x, double y) {
+    private double sub(double x, double y) {
         BinaryOperator<Double> op1 = (a, b) -> a - b;
         return op1.apply(x, y);
     }
 
-    private static Double div(double x, double y) {
+    private double div(double x, double y) {
         BinaryOperator<Double> op1 = (a, b) -> a / b;
         return op1.apply(x, y);
     }
 
-    private static double mult(double x, double y) {
+    private double mult(double x, double y) {
         BinaryOperator<Double> op1 = (a, b) -> a * b;
         return op1.apply(x, y);
     }
 
-    private static double expon(double x, double y) {
+    private double expon(double x, double y) {
         BinaryOperator<Double> op1 = (a, b) -> Math.pow(a, b);
         return op1.apply(x, y);
     }
