@@ -7,9 +7,6 @@ public class Calculator {
         if (second == 0 && operation == '/') {
             throw new ArithmeticException("We can't divide on 0");
         }
-        if (second < 0 && operation == '^') {
-            throw new ArithmeticException("We can't get power from negative index");
-        }
         DoubleBinaryOperator operator =
                 operation == '+' ? (a, b) -> a + b :
                         operation == '-' ? (a, b) -> a - b :

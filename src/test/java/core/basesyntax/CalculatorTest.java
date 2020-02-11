@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class CalculatorTest {
     private static final double DELTA = 1e-15;
-    private static Calculator calculator;
+    private Calculator calculator;
 
     @Before
     public void setUp() {
@@ -54,8 +54,8 @@ public class CalculatorTest {
         assertEquals(8.0, calculator.calculate(2.0, 3.0, '^'), DELTA);
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void powerNegative() {
-        assertEquals(1.0, calculator.calculate(2.0, -2.0, '^'), DELTA);
+        assertEquals(0.25, calculator.calculate(2.0, -2.0, '^'), DELTA);
     }
 }
