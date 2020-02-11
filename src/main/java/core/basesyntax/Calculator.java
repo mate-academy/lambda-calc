@@ -21,9 +21,6 @@ public class Calculator {
     }
 
     private double division(Double first, Double second) {
-        if (second == 0) {
-            throw new ArithmeticException();
-        }
         CalculateAble division = (number1, number2) -> number1 / number2;
         return operate(first, second, division);
     }
@@ -33,7 +30,7 @@ public class Calculator {
         return operate(first, second, power);
     }
 
-    public static double calculate(Double first, Double second, Character operator) {
+    public double calculate(Double first, Double second, Character operator) {
         Calculator calculator = new Calculator();
         return operator == '-' ? calculator.subtraction(first, second) :
                 operator == '+' ? calculator.addition(first, second) :
