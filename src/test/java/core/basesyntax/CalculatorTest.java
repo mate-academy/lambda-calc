@@ -1,15 +1,15 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CalculatorTest {
     private static final double DELTA = 0.001;
-    private static Calculator calculator;
+    private Calculator calculator;
 
-    @BeforeClass
-    public static void before() {
+    @Before
+    public void before() {
         calculator = new Calculator();
     }
 
@@ -37,6 +37,10 @@ public class CalculatorTest {
     public void sumInValidTest() {
         double result = calculator.calculate(10d, 20d, '+');
         Assert.assertNotEquals(-10d, result, DELTA);
+        result = calculator.calculate(10d, 20d, '+');
+        Assert.assertNotEquals(200d, result, DELTA);
+        result = calculator.calculate(10d, 20d, '+');
+        Assert.assertNotEquals(0.5, result, DELTA);
         result = calculator.calculate(10.999, 1.111, '+');
         Assert.assertNotEquals(12d, result, DELTA);
     }
@@ -69,8 +73,10 @@ public class CalculatorTest {
 
     @Test
     public void subInValidTest() {
-        double result = calculator.calculate(12d, 20d, '-');
-        Assert.assertNotEquals(-12d, result, DELTA);
+        double result = calculator.calculate(12d, 2d, '-');
+        Assert.assertNotEquals(24d, result, DELTA);
+        result = calculator.calculate(12d, 2d, '-');
+        Assert.assertNotEquals(6d, result, DELTA);
         result = calculator.calculate(30.111, 5d, '-');
         Assert.assertNotEquals(35.111d, result, DELTA);
     }
@@ -107,6 +113,10 @@ public class CalculatorTest {
     public void multInValidTest() {
         double result = calculator.calculate(10d, 20d, '*');
         Assert.assertNotEquals(30d, result, DELTA);
+        result = calculator.calculate(10d, 20d, '*');
+        Assert.assertNotEquals(0.5, result, DELTA);
+        result = calculator.calculate(10d, 20d, '*');
+        Assert.assertNotEquals(-10d, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -139,6 +149,10 @@ public class CalculatorTest {
     public void divInValidTest() {
         double result = calculator.calculate(10d, 20d, '/');
         Assert.assertNotEquals(200d, result, DELTA);
+        result = calculator.calculate(10d, 20d, '/');
+        Assert.assertNotEquals(30d, result, DELTA);
+        result = calculator.calculate(10d, 20d, '/');
+        Assert.assertNotEquals(-10d, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -162,6 +176,10 @@ public class CalculatorTest {
         Assert.assertEquals(4, result, DELTA);
         result = calculator.calculate(16, -2, '^');
         Assert.assertEquals(0.004, result, DELTA);
+        result = calculator.calculate(17.543, 0d, '^');
+        Assert.assertEquals(1d, result, DELTA);
+        result = calculator.calculate(-34.275, 0d, '^');
+        Assert.assertEquals(1d, result, DELTA);
     }
 
     @Test
