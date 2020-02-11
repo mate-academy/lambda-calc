@@ -2,7 +2,7 @@ package core.basesyntax;
 
 import java.util.function.DoubleBinaryOperator;
 
-public class Calc {
+public class Calculator {
     public double calculate(double first, double second, double operation) {
         DoubleBinaryOperator doubleBinaryOperator = operation == '+' ? (f, s) -> f + s
                 : operation == '-' ? (f, s) -> f - s

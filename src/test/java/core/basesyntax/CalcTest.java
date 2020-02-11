@@ -1,6 +1,5 @@
 package core.basesyntax;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,80 +7,96 @@ import org.junit.Test;
 public class CalcTest {
 
     private static final double DELTA = 0.0001;
-    private Calc calc;
+    private Calculator calculator;
 
     @Before
     public void setUp() throws Exception {
-        calc = new Calc();
-    }
-
-    @After
-    public void tearDown() throws Exception {
+        calculator = new Calculator();
     }
 
     @Test
     public void addPositive() {
-        Assert.assertEquals(2, calc.calculate(1, 1, '+'), DELTA);
+        Assert.assertEquals(2, calculator.calculate(1, 1, '+'), DELTA);
     }
 
     @Test
     public void addNegative() {
-        Assert.assertEquals(-10, calc.calculate(-5, -5, '+'), DELTA);
+        Assert.assertEquals(-10, calculator.calculate(-5, -5, '+'), DELTA);
     }
 
     @Test
     public void subPositive() {
-        Assert.assertEquals(5, calc.calculate(10, 5, '-'), DELTA);
+        Assert.assertEquals(5, calculator.calculate(10, 5, '-'), DELTA);
     }
 
     @Test
     public void subNegative() {
-        Assert.assertEquals(-5, calc.calculate(-10, -5, '-'), DELTA);
+        Assert.assertEquals(-5, calculator.calculate(-10, -5, '-'), DELTA);
     }
 
     @Test
     public void mulPositive() {
-        Assert.assertEquals(25, calc.calculate(5, 5, '*'), DELTA);
+        Assert.assertEquals(25, calculator.calculate(5, 5, '*'), DELTA);
     }
 
     @Test
     public void mulByZero() {
-        Assert.assertEquals(0, calc.calculate(5, 0, '*'), DELTA);
+        Assert.assertEquals(0, calculator.calculate(5, 0, '*'), DELTA);
+    }
+
+    @Test
+    public void mulByNegative() {
+        Assert.assertEquals(25, calculator.calculate(-5, -5, '*'), DELTA);
+    }
+
+    @Test
+    public void mulByOneNegative() {
+        Assert.assertEquals(-25, calculator.calculate(-5, 5, '*'), DELTA);
     }
 
     @Test
     public void divPositive() {
-        Assert.assertEquals(5, calc.calculate(25, 5, '/'), DELTA);
+        Assert.assertEquals(5, calculator.calculate(25, 5, '/'), DELTA);
+    }
+
+    @Test
+    public void divByOneNegative() {
+        Assert.assertEquals(-5, calculator.calculate(25, -5, '/'), DELTA);
+    }
+
+    @Test
+    public void divNegative() {
+        Assert.assertEquals(5, calculator.calculate(-25, -5, '/'), DELTA);
     }
 
     @Test
     public void powerPositive() {
-        Assert.assertEquals(125, calc.calculate(5, 3, '^'), DELTA);
+        Assert.assertEquals(125, calculator.calculate(5, 3, '^'), DELTA);
     }
 
     @Test
     public void powerWithNegativeNum() {
-        Assert.assertEquals(0.04, calc.calculate(5, -2, '^'), DELTA);
+        Assert.assertEquals(0.04, calculator.calculate(5, -2, '^'), DELTA);
     }
 
     @Test
-    public void powBy0() {
-        Assert.assertEquals(1, calc.calculate(9999, 0, '^'), DELTA);
+    public void powerByZero() {
+        Assert.assertEquals(1, calculator.calculate(9999, 0, '^'), DELTA);
     }
 
     @Test
     public void divByZero() {
-        calc.calculate(5, 0, '/');
+        Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(5, 0, '/'), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void wrongOperationMark() {
-        calc.calculate(5, 5, '@');
+        calculator.calculate(5, 5, '@');
     }
 
     @Test(expected = NullPointerException.class)
     public void wrongNullOperator() {
         Double a = null;
-        calc.calculate(a, a, '^');
+        calculator.calculate(a, a, '^');
     }
 }
