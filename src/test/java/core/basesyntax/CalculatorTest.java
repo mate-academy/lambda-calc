@@ -69,7 +69,7 @@ public class CalculatorTest {
 
     @Test
     public void divideByZero() {
-        Assert.assertEquals(Double.NaN,calculator.calculate('/', 0, 0),0.001);
+        Assert.assertEquals(Double.NaN, calculator.calculate('/', 0, 0),0.001);
     }
 
     @Test(expected = IllegalArgumentException.class)
