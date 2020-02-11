@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BinaryOperator;
 
-public class Calc {
+public class Calculator {
     private static Map<Character, BinaryOperator<Double>> operations;
 
-    public static void main(String[] args) {
+    static{
         operations = new HashMap<>();
         operations.put('+', Double::sum);
         operations.put('-', (x, y) -> x - y);
