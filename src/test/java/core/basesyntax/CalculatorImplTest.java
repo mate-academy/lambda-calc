@@ -5,16 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CalculatorImplTest {
-    private static final String[] ARGUMENTS_FOR_ADDITIONAL = {"5", "+", "5"};
-    private static final String[] ARGUMENTS_FOR_SUBTRACTION = {"10", "-", "5"};
-    private static final String[] ARGUMENTS_FOR_MULT = {"5", "*", "5"};
-    private static final String[] ARGUMENTS_FOR_DIVISION = {"25", "/", "5"};
-    private static final String[] ARGUMENTS_WITH_ZERO_MULT = {"10", "*", "0"};
-    private static final String[] ARGUMENTS_WITH_ZERO_DIV = {"10", "/", "0"};
-    private static final String[] ARGUMENTS_WITH_LETTERS = {"w", "+", "q"};
-    private static final String[] NOT_ENOUGH_ARGUMENTS = {"2", "+"};
-    private static final String[] ARGUMENTS_WITH_INVALID_MATH_SYMBOL = {"2", "&", "2"};
-    private static final String[] ARGUMENTS_WITH_NULL = {null, "-", null};
+    private static final Double DELTA = 0.001;
     private CalculatorImpl calculator;
 
     @Before
@@ -23,61 +14,61 @@ public class CalculatorImplTest {
     }
 
     @Test
-    public void checkAddition() {
-        double result = calculator.executor(ARGUMENTS_FOR_ADDITIONAL);
-        Assert.assertEquals(10, result, 0);
+    public void positiveCheckAddition() {
+        double result = calculator.executor(5d, '+', 5d);
+        Assert.assertEquals(10, result, DELTA);
+        result = calculator.executor(25d, '+', 10d);
+        Assert.assertEquals(35d, result, DELTA);
+        result = calculator.executor(15d, '+', 0d);
+        Assert.assertEquals(15d, result, DELTA);
     }
 
     @Test
-    public void checkSubtraction() {
-        double result = calculator.executor(ARGUMENTS_FOR_SUBTRACTION);
-        Assert.assertEquals(5, result, 0);
+    public void positiveCheckSubtraction() {
+        double result = calculator.executor(10d, '-', 5d);
+        Assert.assertEquals(5, result, DELTA);
+        result = calculator.executor(100d, '-', 50d);
+        Assert.assertEquals(50, result, DELTA);
+        result = calculator.executor(100d, '-', 0d);
+        Assert.assertEquals(100, result, DELTA);
     }
 
     @Test
-    public void checkMult() {
-        double result = calculator.executor(ARGUMENTS_FOR_MULT);
-        Assert.assertEquals(25, result, 0);
+    public void positiveCheckMult() {
+        double result = calculator.executor(5d, '*', 5d);
+        Assert.assertEquals(25, result, DELTA);
+        result = calculator.executor(3d, '*', 3d);
+        Assert.assertEquals(9, result, DELTA);
+        result = calculator.executor(10d, '*', 10d);
+        Assert.assertEquals(100, result, DELTA);
     }
 
     @Test
-    public void checkDivision() {
-        double result = calculator.executor(ARGUMENTS_FOR_DIVISION);
-        Assert.assertEquals(5, result, 0);
+    public void positiveCheckDivision() {
+        double result = calculator.executor(25d, '/', 5d);
+        Assert.assertEquals(5, result, DELTA);
+        result = calculator.executor(100d, '/', 10d);
+        Assert.assertEquals(10, result, DELTA);
+        result = calculator.executor(25d, '/', 4d);
+        Assert.assertEquals(6.25, result, DELTA);
     }
 
     @Test
-    public void multiplicationWithZero() {
-        double result = calculator.executor(ARGUMENTS_WITH_ZERO_MULT);
-        Assert.assertEquals(0, result, 0);
-    }
-
-    @Test
-    public void divisionWithZero() {
-        double result = calculator.executor(ARGUMENTS_WITH_ZERO_DIV);
-        Assert.assertEquals(0, result, 0);
-    }
-
-    @Test(expected = NumberFormatException.class)
-    public void argumentsWithLetters() {
-        calculator.executor(ARGUMENTS_WITH_LETTERS);
-    }
-
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void notEnoughArguments(){
-        Assert.assertEquals(2, NOT_ENOUGH_ARGUMENTS.length);
-        calculator.executor(NOT_ENOUGH_ARGUMENTS);
+    public void positiveCheckPow() {
+        double result = calculator.executor(3d, '^', 2d);
+        Assert.assertEquals(9, result, DELTA);
+        result = calculator.executor(5d, '^', 2d);
+        Assert.assertEquals(25, result, DELTA);
+        result = calculator.executor(34d, '^', 2d);
+        Assert.assertEquals(1156, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
-    public void argumentsWithInvalidArithmeticSymbol() {
-        calculator.executor(ARGUMENTS_WITH_INVALID_MATH_SYMBOL);
+    public void executeWithNull() {
+        Double b = null;
+        double resultMult = calculator.executor(12d, '*', b);
+        double resultDiv = calculator.executor(13d, '/', b);
+        double resultAdd = calculator.executor(14d, '+', b);
+        double resultSub = calculator.executor(15d, '-', b);
     }
-
-    @Test(expected = NullPointerException.class)
-    public void argumentsWithNull() {
-        calculator.executor(ARGUMENTS_WITH_NULL);
-    }
-
-
 }
