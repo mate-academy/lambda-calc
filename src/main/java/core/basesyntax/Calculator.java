@@ -20,12 +20,10 @@ public class Calculator {
         if (!funcInterfaces.containsKey(operator)) {
             throw new IllegalArgumentException("Illegal arithmetical operator: " + operator);
         }
-        double result = funcInterfaces.get(operator).apply(value1, value2);
-        System.out.printf("%8.3f %c %8.3f = %8.3f", value1, operator, value2, result);
-        return result;
+        return funcInterfaces.get(operator).apply(value1, value2);
     }
 
     public static void main(String[] args) {
-        calculate(1, '+' , 2);
+        calculate(1, '+', 8776.966574);
     }
 }
