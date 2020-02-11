@@ -16,7 +16,6 @@ public class Calculate {
                 : null;
     }
 
-
     private double sum(double x, double y) {
         BinaryOperator<Double> op1 = (a, b) -> a + b;
         return op1.apply(x, y);
