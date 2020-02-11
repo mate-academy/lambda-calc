@@ -6,7 +6,7 @@ import org.junit.Test;
 import static java.lang.Double.NaN;
 
 public class CalculatorTest {
-    public static final double DELTA = 0.0001;
+    private static final double DELTA = 0.0001;
 
     @Test
     public void sumValidTest() {
@@ -14,12 +14,6 @@ public class CalculatorTest {
         Assert.assertEquals(5, result, DELTA);
         result = Calculator.calculate(-5.0, 4, '+');
         Assert.assertEquals(-1, result, DELTA);
-    }
-
-    @Test
-    public void sumInValidTest() {
-        double result = Calculator.calculate(0, -5, '+');
-        Assert.assertNotEquals(5, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -34,12 +28,6 @@ public class CalculatorTest {
         Assert.assertEquals(1, result, DELTA);
         result = Calculator.calculate(-5.0, 4, '-');
         Assert.assertEquals(-9, result, DELTA);
-    }
-
-    @Test
-    public void diffInValidTest() {
-        double result = Calculator.calculate(0, -5, '-');
-        Assert.assertNotEquals(-5, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
