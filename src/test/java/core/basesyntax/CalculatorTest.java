@@ -59,7 +59,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void negativeDegreeTest() {
+    public void degreeLessThanZeroTest() {
         double result = calculator.calculate(10, '^', -2);
         Assert.assertEquals(0.01, result, DELTA);
     }
@@ -76,7 +76,7 @@ public class CalculatorTest {
         Assert.assertEquals(1, result, DELTA);
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void wrongOperatorTest() {
         calculator.calculate(6, 'a', 4);
     }
