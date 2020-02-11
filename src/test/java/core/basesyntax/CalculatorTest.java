@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private static Calculator calculator = new Calculator();
+    private Calculator calculator = new Calculator();
     private static final Double DELTA = 0.0001;
     
     @Test
