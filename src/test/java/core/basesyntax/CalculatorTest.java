@@ -155,7 +155,7 @@ public class CalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void wrongOperator() {
-        calculator.calculate(13, '%', 14);
+        calculator.calculate(13, '$', 14);
     }
 
     @Test(expected = ArithmeticException.class)
