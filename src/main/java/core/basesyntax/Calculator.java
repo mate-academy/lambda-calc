@@ -13,11 +13,10 @@ public class Calculator {
                 : signifier == '*' ? (a, b) -> a * b
                 : signifier == '/' ? (a, b) -> a / b
                 : signifier == '^' ? (a, b) -> Math.pow(a, b)
-                : null;
+                : (a, b) -> {
+                    throw new InvalidParameterException();
+                };
 
-        if (result == null) {
-            throw new InvalidParameterException();
-        }
         return result.applyAsDouble(num1, num2);
     }
 }
