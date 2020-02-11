@@ -41,6 +41,12 @@ public class CalculatorImplTest {
         Assert.assertEquals(9, result, DELTA);
         result = calculator.executor(10d, '*', 10d);
         Assert.assertEquals(100, result, DELTA);
+        result = calculator.executor(10d, '*', 0d);
+        Assert.assertEquals(0, result, DELTA);
+        result = calculator.executor(-54.65d, '*', 34.7d);
+        Assert.assertEquals(-1896.355, result, DELTA);
+        result = calculator.executor(-65.47d, '*', -12.4d);
+        Assert.assertEquals(811.828, result, DELTA);
     }
 
     @Test
@@ -51,6 +57,10 @@ public class CalculatorImplTest {
         Assert.assertEquals(10, result, DELTA);
         result = calculator.executor(25d, '/', 4d);
         Assert.assertEquals(6.25, result, DELTA);
+        result = calculator.executor(-13d, '/', 4d);
+        Assert.assertEquals(-3.25, result, DELTA);
+        result = calculator.executor(-23d, '/', -5d);
+        Assert.assertEquals(4.6, result, DELTA);
     }
 
     @Test
@@ -61,6 +71,10 @@ public class CalculatorImplTest {
         Assert.assertEquals(25, result, DELTA);
         result = calculator.executor(34d, '^', 2d);
         Assert.assertEquals(1156, result, DELTA);
+        result = calculator.executor(13d, '^', 0d);
+        Assert.assertEquals(1, result, DELTA);
+        result = calculator.executor(-34d, '^', 2d);
+        Assert.assertEquals(1156, result, DELTA);
     }
 
     @Test(expected = NullPointerException.class)
@@ -70,5 +84,10 @@ public class CalculatorImplTest {
         double resultDiv = calculator.executor(13d, '/', b);
         double resultAdd = calculator.executor(14d, '+', b);
         double resultSub = calculator.executor(15d, '-', b);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void checkDivisionWithZero() {
+        calculator.executor(23d, '/', 0d);
     }
 }
