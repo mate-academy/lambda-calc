@@ -10,7 +10,9 @@ public class Calculator {
     private static final BinaryOperator<Integer> subtraction = (x,y) -> x - y;
     private static final BinaryOperator<Integer> multiplication = (x,y) -> x * y;
     private static final BinaryOperator<Integer> division = (x,y) -> x / y;
-    private static final BinaryOperator<Integer> power = (x,y) -> Math.toIntExact(Math.round(Math.pow(x, y)));
+    private static final BinaryOperator<Integer> power = (x,y) ->
+            Math.toIntExact(Math.round(Math.pow(x, y)));
+
     static {
         calculator.put('+', addition);
         calculator.put('-', subtraction);
@@ -18,8 +20,9 @@ public class Calculator {
         calculator.put('/', division);
         calculator.put('^', power);
     }
+
     public static int calculate(Character operation, int first, int second) {
-        try{
+        try {
             return (int) calculator.get(operation).apply(first,second);
         } catch (IllegalArgumentException e) {
             throw new NullPointerException("Incorrect input operation symbol");
