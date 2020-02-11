@@ -50,6 +50,7 @@ public class CalculatorTest {
         Double result = calculator.calculate(-a, b, '*');
         Assert.assertEquals(java.util.Optional.of(-a * b).get(), result);
     }
+
     @Test
     public void divisionTestCorrect() {
         Double result = calculator.calculate(a, b, '/');
@@ -84,7 +85,7 @@ public class CalculatorTest {
     public void powerTestNull() {
         try {
             Double result = calculator.calculate(nullNumber, b, 'p');
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             return;
         }
         Assert.fail("NullPointerException expected");
@@ -94,7 +95,7 @@ public class CalculatorTest {
     public void subtractionTestNull() {
         try {
             Double result = calculator.calculate(nullNumber, b, '-');
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             return;
         }
         Assert.fail("NullPointerException expected");
@@ -104,7 +105,7 @@ public class CalculatorTest {
     public void substitutionTestNull() {
         try {
             Double result = calculator.calculate(nullNumber, b, '+');
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             return;
         }
         Assert.fail("NullPointerException expected");
@@ -114,7 +115,7 @@ public class CalculatorTest {
     public void divisionTestNull() {
         try {
             Double result = calculator.calculate(nullNumber, b, '/');
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             return;
         }
         Assert.fail("NullPointerException expected");
@@ -124,7 +125,7 @@ public class CalculatorTest {
     public void multiplyingTestNull() {
         try {
             Double result = calculator.calculate(nullNumber, b, '*');
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             return;
         }
         Assert.fail("NullPointerException expected");

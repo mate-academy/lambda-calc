@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="core.basesyntax.CalcTest" time="0.008" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="core.basesyntax.CalculatorTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.5+10-b520.17"/>
@@ -63,20 +63,20 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="core.basesyntax.CalcTest" name="divisionTestNegativeNumberCorrect" time="0.003"/>
-  <testcase classname="core.basesyntax.CalcTest" name="substitutionNegativeNumberTestCorrect" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="subtractionNegativeNumberTestCorrect" time="0.004"/>
-  <testcase classname="core.basesyntax.CalcTest" name="powerTestCorrect" time="0.001"/>
-  <testcase classname="core.basesyntax.CalcTest" name="substitutionTestCorrect" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="divisionTestNull" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="substitutionTestNull" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="powerTestNegativeValueCorrect" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="multiplyTestNegativeNumberCorrect" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="divisionTestCorrect" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="subtractionTestCorrect" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="multiplyingTestNull" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="powerTestNull" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="powerTestZero" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="subtractionTestNull" time="0"/>
-  <testcase classname="core.basesyntax.CalcTest" name="multiplyTestCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="divisionTestNegativeNumberCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="substitutionNegativeNumberTestCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="subtractionNegativeNumberTestCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="powerTestCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="substitutionTestCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="divisionTestNull" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="substitutionTestNull" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="powerTestNegativeValueCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="multiplyTestNegativeNumberCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="divisionTestCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="subtractionTestCorrect" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="multiplyingTestNull" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="powerTestNull" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="powerTestZero" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="subtractionTestNull" time="0"/>
+  <testcase classname="core.basesyntax.CalculatorTest" name="multiplyTestCorrect" time="0"/>
 </testsuite>
