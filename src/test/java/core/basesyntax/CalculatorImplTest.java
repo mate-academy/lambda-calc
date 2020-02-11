@@ -90,4 +90,9 @@ public class CalculatorImplTest {
     public void checkDivisionWithZero() {
         calculator.executor(23d, '/', 0d);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void checkOperationPowWithZeroAndNegativePow() {
+        calculator.executor(0d, '^', -2d);
+    }
 }

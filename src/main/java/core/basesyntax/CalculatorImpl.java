@@ -17,10 +17,9 @@ public class CalculatorImpl {
     }
 
     public double executor(Double a, Character operation, Double b) {
-        if (operation == '/' && b == 0) {
-            throw new IllegalArgumentException("Mustn't execute operation with 0");
+        if ((operation == '/' && b == 0) || (operation == '^' && a == 0 && b < 0)) {
+            throw new IllegalArgumentException("Wrong operation!");
         }
         return calculator.get(operation).applyAsDouble(a, b);
     }
-
 }
