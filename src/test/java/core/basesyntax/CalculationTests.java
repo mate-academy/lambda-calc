@@ -1,15 +1,15 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CalculationTests {
     private static final Double DELTA = 0.0000001;
-    private static Calculator calculator;
+    private Calculator calculator;
 
-    @BeforeClass
-    public static void stetUp() {
+    @Before
+    public void stetUp() {
         calculator = new Calculator();
     }
 
@@ -62,74 +62,74 @@ public class CalculationTests {
     }
 
     @Test
-    public void isProductIntOk() {
+    public void isMultiplyIntOk() {
         Assert.assertEquals(6d,
                 calculator.calculate(2d, 3d, '*'), DELTA);
     }
 
     @Test
-    public void isProductFloatOk() {
+    public void isMultiplyFloatOk() {
         Assert.assertEquals(8.4,
                 calculator.calculate(3.5,2.4, '*'), DELTA);
     }
 
     @Test
-    public void isProductZeroOk() {
+    public void isMultiplyZeroOk() {
         Assert.assertEquals(0d,
                 calculator.calculate(10d, 0d, '*'), DELTA);
     }
 
     @Test
-    public void isProductZeroesOk() {
+    public void isMultiplyZeroesOk() {
         Assert.assertEquals(0d,
                 calculator.calculate(0d,0d, '*'), DELTA);
     }
 
     @Test
-    public void isProductNegativeOk() {
+    public void isMultiplyNegativeOk() {
         Assert.assertEquals(-30d,
                 calculator.calculate(-3d,10d, '*'), DELTA);
     }
 
     @Test
-    public void isProductNegativesOk() {
+    public void isMultiplyNegativesOk() {
         Assert.assertEquals(30d,
                 calculator.calculate(-3d, -10d, '*'), DELTA);
     }
 
     @Test
-    public void isQuotientIntOk() {
+    public void isDivisionIntOk() {
         Assert.assertEquals(5d,
                 calculator.calculate(10d, 2d, '/'), DELTA);
     }
 
     @Test
-    public void isQuotientFloatOk() {
+    public void isDivisionFloatOk() {
         Assert.assertEquals(4d,
                 calculator.calculate(8.8,2.2, '/'), DELTA);
     }
 
     @Test
-    public void isQuotientZeroDividendOk() {
+    public void isDivisionZeroDividendOk() {
         Assert.assertEquals(0d,
                 calculator.calculate(0d, 5d, '/'), DELTA);
     }
 
     @Test
-    public void isQuotientZeroDivisorOk() {
+    public void isDivisionZeroDivisorOk() {
         Assert.assertEquals(Double.POSITIVE_INFINITY,
                 calculator.calculate(10d, 0d, '/'), DELTA);
 
     }
 
     @Test
-    public void isQuotientNegativeOk() {
+    public void isDivisionNegativeOk() {
         Assert.assertEquals(-4d,
                 calculator.calculate(-8d, 2d, '/'), DELTA);
     }
 
     @Test
-    public void isQuotientNegativesOk() {
+    public void isDivisionNegativesOk() {
         Assert.assertEquals(4d,
                 calculator.calculate(-8d,-2d, '/'), DELTA);
     }
@@ -169,6 +169,4 @@ public class CalculationTests {
         Assert.assertEquals(0.04,
                 calculator.calculate(5d,-2d, '^'), DELTA);
     }
-
-
 }
