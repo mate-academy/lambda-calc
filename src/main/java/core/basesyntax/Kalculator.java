@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.function.BiFunction;
 
 public class Kalculator {
-    private static final HashMap<Character, BiFunction<Integer, Integer, Integer>> map =
+    private static final HashMap<Character, BiFunction<Double, Double, Double>> map =
             new HashMap<>() {
-            final BiFunction<Integer, Integer, Integer> sum = Integer::sum;
-            final BiFunction<Integer, Integer, Integer> div = Math::floorDiv;
-            final BiFunction<Integer, Integer, Integer> multi = Math::multiplyExact;
-            final BiFunction<Integer, Integer, Integer> minus = Math::subtractExact;
-            final BiFunction<Integer, Integer, Integer> power = (a, b) -> (int) Math.pow(a, b);
+            final BiFunction<Double, Double, Double> sum = Double::sum;
+            final BiFunction<Double, Double, Double> div = (a, b) -> a / b;
+            final BiFunction<Double, Double, Double> multi = (a, b) -> a * b;
+            final BiFunction<Double, Double, Double> minus = (a, b) -> a - b;
+            final BiFunction<Double, Double, Double> power = Math::pow;
 
             {
                 put('^', power);
@@ -21,18 +21,7 @@ public class Kalculator {
             }
     };
 
-    public static void main(String[] args) {
-        Long long1 = 100L;
-
-        System.out.println(evaluate(10, 5, '+'));
-        System.out.println(evaluate(14, 5, '/'));
-        System.out.println(evaluate(14, 0, '/'));
-        System.out.println(evaluate(14, 5, '-'));
-        System.out.println(evaluate(14, 5, '*'));
-        System.out.println(evaluate(14, 0, '*'));
-    }
-
-    public static int evaluate(int a, int b, char c) {
+    public static double evaluate(double a, double b, char c) {
         return map.get(c).apply(a, b);
     }
 }
