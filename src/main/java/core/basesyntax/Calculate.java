@@ -16,9 +16,9 @@ public class Calculate {
                 operation == '*' ? (a, b) -> a * b :
                 operation == '+' ? (a, b) -> a + b :
                 operation == '-' ? (a, b) -> a - b :
-                (a, b) -> {
-                    throw new NullPointerException();
-                };
+                        (a, b) -> {
+                            throw new NullPointerException();
+                        };
         return operator.applyAsDouble(first, second);
     }
 }
