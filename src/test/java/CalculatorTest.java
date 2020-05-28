@@ -103,5 +103,4 @@ public class CalculatorTest {
     public void testDivideWillThrowExceptionWhenDivideOnZero() {
         double result = calculator.calculate(2, 0, '/');
     }
-
 }
