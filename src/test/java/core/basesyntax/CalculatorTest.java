@@ -36,7 +36,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void checkMultiOperation() {
+    public void checkMultiplyOperation() {
         for (double i = 1; i <= 10 ; i++) {
             for (double j = 1; j <= 10 ; j++) {
                 Double actualResult = calculator.calculate(i, j, '*');
@@ -47,7 +47,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void checkMultiByZero() {
+    public void multiplyByZero() {
         Double actualResult = calculator.calculate(4.0, 0.0, '*');
         Assert.assertEquals(0.0, actualResult, DELTA);
     }
@@ -64,13 +64,13 @@ public class CalculatorTest {
     }
 
     @Test
-    public void checkZeroPow() {
+    public void getNumberInZeroPow() {
         Double actualResult = calculator.calculate(5.0, 0.0, '^');
         Assert.assertEquals(1.0, actualResult, DELTA);
     }
 
     @Test
-    public void checkNotIntPow() {
+    public void getNumberInNotIntPow() {
         Double actualResult = calculator.calculate(-4.0, -4.4, '^');
         Assert.assertEquals(actualResult, Double.NaN, DELTA);
     }
@@ -87,19 +87,19 @@ public class CalculatorTest {
     }
 
     @Test
-    public void checkDivideByZero() {
+    public void divideByZero() {
         Double actualResult = calculator.calculate(1.0, 0.0, '/');
         Assert.assertEquals(Double.POSITIVE_INFINITY, actualResult, DELTA);
     }
 
     @Test
-    public void checkNegativeNumberDivideByZero() {
+    public void divideNegativeNumberByZero() {
         Double actualResult = calculator.calculate(-1.0, 0.0, '/');
         Assert.assertEquals(Double.NEGATIVE_INFINITY, actualResult, DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void checkWrongOperation() {
+    public void getWrongOperation() {
         calculator.calculate(1.0, 2.0, '%');
     }
 
