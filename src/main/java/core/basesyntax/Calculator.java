@@ -1,6 +1,7 @@
 package core.basesyntax;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.function.BinaryOperator;
 
 public class Calculator {
@@ -9,7 +10,7 @@ public class Calculator {
                 = operation == '+' ? BigDecimal::add
                 : operation == '-' ? BigDecimal::subtract
                 : operation == '*' ? BigDecimal::multiply
-                : operation == '/' ? BigDecimal::divide
+                : operation == '/' ? (num1, num2) -> num1.divide(num2, 2, RoundingMode.HALF_UP)
                 : operation == '^' ? (num1, num2) -> num1.pow(num2.intValue())
                 : null;
         if (operator == null) {
