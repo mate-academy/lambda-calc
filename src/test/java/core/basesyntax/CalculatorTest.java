@@ -15,8 +15,8 @@ public class CalculatorTest {
 
     @Test
     public void checkPlusOperation() {
-        for (double i = 0; i <= 10 ; i++) {
-            for (double j = 1; j <= 10 ; j++) {
+        for (double i = -10; i <= 10 ; i++) {
+            for (double j = 5; j <= 10 ; j++) {
                 Double actualResult = calculator.calculate(i, j, '+');
                 Double expectedResult = i + j;
                 Assert.assertEquals(actualResult, expectedResult);
@@ -25,26 +25,14 @@ public class CalculatorTest {
     }
 
     @Test
-    public void checkSumOfNegativeNumbers() {
-        Double actualResult = calculator.calculate(-4.0, -2.0, '+');
-        Assert.assertEquals(actualResult, -6.0, DELTA);
-    }
-
-    @Test
     public void checkMinusOperation() {
-        for (double i = 10; i >= 1  ; i--) {
-            for (double j = 1; j <= i ; j++) {
+        for (double i = -10; i <= 10  ; i++) {
+            for (double j = 1; j <= 10 ; j++) {
                 Double actualResult = calculator.calculate(i, j, '-');
                 Double expectedResult = i - j;
                 Assert.assertEquals(actualResult, expectedResult);
             }
         }
-    }
-
-    @Test
-    public void checkSubtractionOfNegativeNumbers() {
-        Double actualResult = calculator.calculate(-4.0, -2.0, '-');
-        Assert.assertEquals(actualResult, -2.0, DELTA);
     }
 
     @Test
@@ -105,7 +93,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void checkMinusNumberDivideByZero() {
+    public void checkNegativeNumberDivideByZero() {
         Double actualResult = calculator.calculate(-1.0, 0.0, '/');
         Assert.assertEquals(Double.NEGATIVE_INFINITY, actualResult, DELTA);
     }
