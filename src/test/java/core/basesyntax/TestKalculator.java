@@ -71,16 +71,10 @@ public class TestKalculator {
     @Test(expected = NullPointerException.class)
     public void incorrectChar() {
         Kalculator.evaluate(A, B, '(');
-        Kalculator.evaluate(A, B, '?');
-        Kalculator.evaluate(A, B, '$');
-        Kalculator.evaluate(A, B, '|');
     }
 
     @Test(expected = NullPointerException.class)
     public void incorrectArgm() {
-        Kalculator.evaluate(Double.parseDouble(null), B, '(');
-        Kalculator.evaluate(Double.parseDouble(null), B, '?');
-        Kalculator.evaluate(A, Double.parseDouble(null), '$');
-        Kalculator.evaluate(A, Double.parseDouble(null), '|');
+        Kalculator.evaluate(Double.parseDouble(null), B, '/');
     }
 }
