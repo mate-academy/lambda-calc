@@ -5,7 +5,7 @@ package core.basesyntax;
  */
 public class Calculator {
     public static void main(String[] args) {
-        System.out.println(new Calculator().calculate(1, 2, '^'));
+        System.out.println(new Calculator().calculate(1, 0, '/'));
     }
 
     public int calculate(int a, int b, char operation) {
@@ -13,7 +13,6 @@ public class Calculator {
                 (operation == '-') ? a - b :
                         (operation == '*') ? a * b :
                                 (operation == '/') ? a / b :
-                                        (operation == '^') ? (int) Math.pow(a, b) :
-                                                0;
+                                        (operation == '^') ? (int) Math.pow(a, b) : 0;
     }
 }

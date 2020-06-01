@@ -20,36 +20,60 @@ public class CalculatorTest {
 
     @Test
     public void addingTest() {
-        int a = rn.nextInt(), b = rn.nextInt();
+        int a = 5, b = 3;
         Assert.assertEquals( (a + b) + " was expected" ,
                 a + b, calculator.calculate(a , b, '+'));
     }
 
     @Test
     public void subtractionTest() {
-        int a = rn.nextInt(), b = rn.nextInt();
+        int a = 2, b = 5;
         Assert.assertEquals( (a - b) + " was expected" ,
                 a - b, calculator.calculate(a , b, '-'));
     }
 
     @Test
     public void multiplicationTest() {
-        int a = rn.nextInt(), b = rn.nextInt();
+        int a = 10, b = 30;
         Assert.assertEquals( (a * b) + " was expected" ,
                 a * b, calculator.calculate(a , b, '*'));
     }
 
     @Test
     public void divisionTest() {
-        int a = rn.nextInt(), b = rn.nextInt();
+        int a = -4, b = 2;
         Assert.assertEquals( (a / b) + " was expected" ,
                 a / b, calculator.calculate(a , b, '/'));
     }
 
     @Test
+    public void nullDivisionTest() {
+        int a = 32, b = 0;
+        try {
+            a = a / b;
+        } catch (ArithmeticException e) {
+            return;
+        }
+        Assert.fail("ArithmeticException expexted");
+    }
+
+    @Test
     public void exponentiationTest() {
-        int a = rn.nextInt(), b = rn.nextInt();
-        Assert.assertEquals( (a + b) + " was expected" ,
-                a + b, calculator.calculate(a , b, '+'));
+        int a = 3, b = 2;
+        Assert.assertEquals( Math.pow(a, b) + " was expected" ,
+                (int) Math.pow(a, b), calculator.calculate(a , b, '^'));
+    }
+
+    @Test
+    public void negativeExponentiationTest() {
+        int a = 3, b = -2;
+        Assert.assertEquals( Math.pow(a, b) + " was expected" ,
+                (int) Math.pow(a, b), calculator.calculate(a , b, '^'));
+    }
+
+    public void notMathCharTest() {
+        int a = 3, b = -2;
+        Assert.assertEquals( 0 + " was expected" ,
+                0, calculator.calculate(a , b, 'x'));
     }
 }
