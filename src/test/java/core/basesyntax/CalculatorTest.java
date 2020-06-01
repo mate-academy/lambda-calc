@@ -41,7 +41,7 @@ public class CalculatorTest {
 
     @Test(expected = CalculateException.class)
     public void divideByZero() {
-        Assert.assertEquals(Integer.valueOf(1), Calculator.calculate(2, 0, '/'));
+        Calculator.calculate(2, 0, '/');
     }
 
     @Test(expected = CalculateException.class)
