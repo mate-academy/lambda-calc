@@ -18,7 +18,7 @@ public class CalculatorTest {
         for (int i = -5; i < 5; i++) {
             for (int j = -5; j < 5; j++) {
                 Assert.assertEquals("Incorrect value for arguments: " + i + ", " + j,
-                        8.0, calculator.calculate(5, 3, '+'), ACCEPTABLE_DELTA);
+                        i + j, calculator.calculate(i, j, '+'), ACCEPTABLE_DELTA);
             }
         }
     }
@@ -28,7 +28,7 @@ public class CalculatorTest {
         for (int i = -5; i < 5; i++) {
             for (int j = -5; j < 5; j++) {
                 Assert.assertEquals("Incorrect value for arguments: " + i + ", " + j,
-                        2.0, calculator.calculate(5, 3, '-'), ACCEPTABLE_DELTA);
+                        i - j, calculator.calculate(i, j, '-'), ACCEPTABLE_DELTA);
             }
         }
     }
@@ -38,7 +38,7 @@ public class CalculatorTest {
         for (int i = -5; i < 5; i++) {
             for (int j = -5; j < 5; j++) {
                 Assert.assertEquals("Incorrect value for arguments: " + i + ", " + j,
-                        15.0, calculator.calculate(5, 3, '*'), ACCEPTABLE_DELTA);
+                        i * j, calculator.calculate(i, j, '*'), ACCEPTABLE_DELTA);
             }
         }
     }
@@ -48,7 +48,7 @@ public class CalculatorTest {
         for (int i = -5; i < 5; i += 2) {
             for (int j = -5; j < 5; j += 2) {
                 Assert.assertEquals("Incorrect value for arguments: " + i + ", " + j,
-                        0.6, calculator.calculate(3, 5, '/'), ACCEPTABLE_DELTA);
+                        (double) i / j, calculator.calculate(i, j, '/'), ACCEPTABLE_DELTA);
             }
         }
     }
@@ -75,15 +75,10 @@ public class CalculatorTest {
 
     @Test
     public void zeroPowOk() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = -5; i < 5; i++) {
             Assert.assertEquals("Incorrect value for argument: " + i,
-                    1, calculator.calculate(1, 0, '^'), ACCEPTABLE_DELTA);
+                    1, calculator.calculate(i, 0, '^'), ACCEPTABLE_DELTA);
         }
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void zeroPowNegativeValue() {
-        calculator.calculate(-2, 0, '^');
     }
 
     @Test
@@ -96,7 +91,7 @@ public class CalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void sqrtNegativeValue() {
-        Assert.assertEquals(-2, calculator.calculate(-4, 0.5, '^'), ACCEPTABLE_DELTA);
+        calculator.calculate(-4, 0.5, '^');
     }
 
     @Test(expected = IllegalArgumentException.class)
