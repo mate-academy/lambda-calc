@@ -9,7 +9,7 @@ public class CalculatorTest {
     private static final double DELTA = 1e-15;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         calculator = new Calculator();
     }
 
