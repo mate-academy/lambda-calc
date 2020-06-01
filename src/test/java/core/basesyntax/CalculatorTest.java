@@ -73,6 +73,14 @@ public class CalculatorTest {
                 (int) Math.pow(a, b), calculator.calculate(a, b, '^'));
     }
 
+    @Test
+    public void nullExponentiationTest() {
+        int a = 3;
+        int b = 0;
+        Assert.assertEquals(Math.pow(a, b) + " was expected",
+                (int) Math.pow(a, b), calculator.calculate(a, b, '^'));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void notMathCharTest() {
             calculator.calculate(1, 2, 'x');
