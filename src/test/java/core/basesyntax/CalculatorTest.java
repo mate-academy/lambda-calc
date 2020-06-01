@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class HelloWorldTest {
+public class CalculatorTest {
     private static final double DELTA = 0;
     private static Calculator calculator;
 
@@ -85,11 +85,13 @@ public class HelloWorldTest {
         Assert.assertEquals(12, result, DELTA);
     }
 
+    @Test
     public void isMultiplyNotValid() {
         double result = calculator.calculate(3, '*', 3);
         Assert.assertNotEquals(10, result);
     }
 
+    @Test
     public void isMultiplyNegativeValues() {
         double result = calculator.calculate(-3, '*', -4);
         Assert.assertEquals(12, result, DELTA);
