@@ -12,10 +12,9 @@ public class Calculator {
                 : operation == '*' ? BigDecimal::multiply
                 : operation == '/' ? (num1, num2) -> num1.divide(num2, 2, RoundingMode.HALF_UP)
                 : operation == '^' ? (num1, num2) -> num1.pow(num2.intValue())
-                : null;
-        if (operator == null) {
-            throw new IllegalArgumentException("Operation is not supported!");
-        }
+                : (num1, num2) -> {
+                    throw new IllegalArgumentException("Operation is not supported!");
+                };
         return operator.apply(a, b);
     }
 }
