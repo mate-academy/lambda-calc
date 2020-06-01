@@ -12,6 +12,9 @@ public class Calculator {
             return firstNumber * secondNumber;
         } else if (sign == '/' && secondNumber != 0) {
             return firstNumber / secondNumber;
+        } else if (sign == '^') {
+            return (int) Math.pow(firstNumber, secondNumber);
+
         } else {
             throw new DataProcessingException("Sorry, something is wrong!");
         }

@@ -39,6 +39,11 @@ public class CalculatorTest {
         Assert.assertEquals(Integer.valueOf(1), Calculator.calculate(7, 7, '/'));
     }
 
+    @Test
+    public void levelOfNumber() {
+        Assert.assertEquals(Integer.valueOf(8), Calculator.calculate(2, 3, '^'));
+    }
+
     @Test(expected = DataProcessingException.class)
     public void divideByZero() {
         Calculator.calculate(5, 0, '/');
