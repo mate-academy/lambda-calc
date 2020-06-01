@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CalculateTest {
-    private static final int DELTA = 1;
+    private static final double DELTA = 0.01;
 
     private Calculate calculate;
 
@@ -49,19 +49,19 @@ public class CalculateTest {
 
     @Test
     public void testPowNumbers() {
-        Assert.assertEquals(3125.0, calculate.calculate(5, 5, 'p'), DELTA);
-        Assert.assertEquals(2.7309006505965362E14, calculate.calculate(517.12, 5.32, 'p'), DELTA);
-        Assert.assertEquals(0.0625, calculate.calculate(0.5, 4, 'p'), DELTA);
-        Assert.assertEquals(1594946.9462399993, calculate.calculate(17.4, 5, 'p'), DELTA);
-        Assert.assertEquals(1.223676363476881E12, calculate.calculate(43, 7.4, 'p'), DELTA);
+        Assert.assertEquals(3125.0, calculate.calculate(5, 5, '^'), DELTA);
+        Assert.assertEquals(2.7309006505965362E14, calculate.calculate(517.12, 5.32, '^'), DELTA);
+        Assert.assertEquals(0.0625, calculate.calculate(0.5, 4, '^'), DELTA);
+        Assert.assertEquals(1594946.9462399993, calculate.calculate(17.4, 5, '^'), DELTA);
+        Assert.assertEquals(1.223676363476881E12, calculate.calculate(43, 7.4, '^'), DELTA);
     }
 
     @Test
     public void testPowNumbersWithOppositeNumber() {
-        Assert.assertEquals(3.2E-4, calculate.calculate(5, -5, 'p'), DELTA);
-        Assert.assertEquals(16.0, calculate.calculate(0.5, -4, 'p'), DELTA);
-        Assert.assertEquals(6.26980102603065E-7, calculate.calculate(17.4, -5, 'p'), DELTA);
-        Assert.assertEquals(8.172095415479462E-13, calculate.calculate(43, -7.4, 'p'), DELTA);
+        Assert.assertEquals(3.2E-4, calculate.calculate(5, -5, '^'), DELTA);
+        Assert.assertEquals(16.0, calculate.calculate(0.5, -4, '^'), DELTA);
+        Assert.assertEquals(6.26980102603065E-7, calculate.calculate(17.4, -5, '^'), DELTA);
+        Assert.assertEquals(8.172095415479462E-13, calculate.calculate(43, -7.4, '^'), DELTA);
     }
 
     @Test

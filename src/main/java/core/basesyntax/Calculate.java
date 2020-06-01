@@ -16,7 +16,7 @@ public class Calculate {
                 operation == '*' ? (a, b) -> a * b :
                 operation == '+' ? (a, b) -> a + b :
                 operation == '-' ? (a, b) -> a - b :
-                operation == 'p' ? (a,b) -> Math.pow(a, b) :
+                operation == '^' ? (a,b) -> Math.pow(a, b) :
                         (a, b) -> {
                             throw new NullPointerException();
                         };
