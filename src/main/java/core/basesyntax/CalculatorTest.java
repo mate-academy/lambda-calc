@@ -1,10 +1,10 @@
 package core.basesyntax;
 
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
+
 public class CalculatorTest {
-    private final Calculator calculator = new Calculator();
     private static final double DELTA = 1e-15;
     private static final double A = 10;
     private static final double B = 5;
@@ -12,6 +12,7 @@ public class CalculatorTest {
     private static final double E = 30;
     private static final double F = 2;
     private static final double G = 4;
+    private final Calculator calculator = new Calculator();
 
     @Test
     public void sumWithPositiveNumbers() {
