@@ -40,7 +40,7 @@ public class CalculatorTest {
     public void multiplyWithNegativeValues() {
         Assert.assertEquals(22L, calculator.calculate(-2L, -11L, '*'));
         Assert.assertEquals(-22L, calculator.calculate(-2L, 11L, '*'));
-        Assert.assertEquals(-22L, calculator.calculate(-2L, 11L, '*'));
+        Assert.assertEquals(-6L, calculator.calculate(2L, -3L, '*'));
     }
 
     @Test
@@ -57,13 +57,9 @@ public class CalculatorTest {
         Assert.assertEquals(-33L, calculator.calculate(33L, -1L, '/'));
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void divideByZero() {
-        try {
-            calculator.calculate(2L, 0L, '/');
-        } catch (ArithmeticException e) {
-            return;
-        }
+        calculator.calculate(2L, 0L, '/');
         Assert.fail("ArithmeticException should be thrown when divide by zero");
     }
 
@@ -83,13 +79,9 @@ public class CalculatorTest {
         Assert.assertEquals(0L, calculator.calculate(0L, 56L, '^'));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void nonexistentOperation(){
-        try {
-            calculator.calculate(90L, 78L, '@');
-        } catch (IllegalArgumentException e) {
-            return;
-        }
+        calculator.calculate(90L, 78L, '@');
         Assert.fail("IllegalArgumentException should be thrown if operation not exist");
     }
 }
