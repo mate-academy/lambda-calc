@@ -111,9 +111,10 @@ public class HelloWorldTest {
     @Test
     public void powZeroTest() {
         double a = new Random().nextDouble();
+        double b = 0;
         if (a != 0) {
-            double expect = Math.pow(a, 0);
-            double act = calculator.calculate(a, 0, '^');
+            double expect = Math.pow(a, b);
+            double act = calculator.calculate(a, b, '^');
             Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
         }
     }
