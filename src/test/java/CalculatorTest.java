@@ -86,7 +86,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void checkMinusNumberDivideByZero() {
+    public void checkNegativeNumberDivideByZero() {
         double result = calculator.calculate(-1.0, 0.0, '/');
         Assert.assertEquals(Double.NEGATIVE_INFINITY, result, DELTA);
     }
