@@ -67,7 +67,7 @@ public class CalculatorTest {
         Assert.assertEquals(8, firstRes, DELTA);
         double secondRes = calculator.calculate(3, 3, '^');
         Assert.assertEquals(27, secondRes, DELTA);
-        double thirdRes = calculator.calculate(5,2, '^');
+        double thirdRes = calculator.calculate(5, 2, '^');
         Assert.assertEquals(25, thirdRes, DELTA);
     }
 
@@ -79,5 +79,18 @@ public class CalculatorTest {
         Assert.assertEquals(0.04, secondRes, DELTA);
         double thirdRes = calculator.calculate(4,-1, '^');
         Assert.assertEquals(0.25, thirdRes, DELTA);
+    }
+
+    @Test
+    public void checkZeroPower() {
+        double firstRes = calculator.calculate(10, 0 , '^');
+        Assert.assertEquals(1, firstRes, DELTA);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkOperator() {
+        calculator.calculate(10, 0 , '{');
+        calculator.calculate(10, 0 , '&');
+        calculator.calculate(10, 0 , '!');
     }
 }
