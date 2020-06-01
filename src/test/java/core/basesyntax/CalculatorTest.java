@@ -60,13 +60,18 @@ public class CalculatorTest {
     @Test(expected = ArithmeticException.class)
     public void divideByZero() {
         calculator.calculate(2L, 0L, '/');
-        Assert.fail("ArithmeticException should be thrown when divide by zero");
     }
 
     @Test
     public void powerWithPositiveValues() {
         Assert.assertEquals(4L, calculator.calculate(2L, 2L, '^'));
         Assert.assertEquals(27L, calculator.calculate(3L, 3L, '^'));
+    }
+
+    @Test
+    public void powerWithNegativeValues() {
+        Assert.assertEquals(0L, calculator.calculate(2L, -2L, '^'));
+        Assert.assertEquals(0L, calculator.calculate(3L, -3L, '^'));
     }
 
     @Test
@@ -82,6 +87,5 @@ public class CalculatorTest {
     @Test(expected = IllegalArgumentException.class)
     public void nonexistentOperation(){
         calculator.calculate(90L, 78L, '@');
-        Assert.fail("IllegalArgumentException should be thrown if operation not exist");
     }
 }
