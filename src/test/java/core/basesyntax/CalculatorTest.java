@@ -20,6 +20,11 @@ public class CalculatorTest {
     }
 
     @Test
+    public void subtractNegativeNumbers() {
+        Assert.assertEquals(Integer.valueOf(-2), Calculator.calculate(-4, -2, '-'));
+    }
+
+    @Test
     public void multiplySimpleNumbers() {
         Assert.assertEquals(Integer.valueOf(4), Calculator.calculate(2, 2, '*'));
     }
@@ -34,23 +39,13 @@ public class CalculatorTest {
         Assert.assertEquals(Integer.valueOf(1), Calculator.calculate(2, 2, '/'));
     }
 
-    @Test
+    @Test(expected = CalculateException.class)
     public void divideByZero() {
-        try {
-            Assert.assertEquals(Integer.valueOf(1), Calculator.calculate(2, 0, '/'));
-        } catch (CalculateException e) {
-            return;
-        }
-        Assert.fail("Expected calculation exception!");
+        Assert.assertEquals(Integer.valueOf(1), Calculator.calculate(2, 0, '/'));
     }
 
-    @Test
+    @Test(expected = CalculateException.class)
     public void setNotValidSign() {
-        try {
-            Calculator.calculate(2, 2, 's');
-        } catch (CalculateException e) {
-            return;
-        }
-        Assert.fail("Expected calculation exception!");
+        Calculator.calculate(2, 2, 's');
     }
 }
