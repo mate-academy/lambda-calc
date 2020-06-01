@@ -26,7 +26,7 @@ public class CalculatorImpl {
         return calculate(operand1, operand2, calc);
     }
 
-    private double calculate (Double operand1, Double operand2, Calculator calculator) {
+    private double calculate(Double operand1, Double operand2, Calculator calculator) {
         return calculator.calculate(operand1, operand2);
     }
 }

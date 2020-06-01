@@ -11,7 +11,7 @@ public class App {
         Double num1 = scan.nextDouble();
         Double num2 = scan.nextDouble();
         System.out.println("Please enter the method you would like to use "
-                + "(+ , - , * , / , ^ " );
+                + "(+ , - , * , / , ^ ");
         String method = scan.next();
         char mathSign = method.charAt(0);
         Serializable result = mathSign == '+' ? calculator.addition(num1, num2)
