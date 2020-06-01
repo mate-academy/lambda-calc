@@ -9,13 +9,11 @@ import org.junit.Test;
  * Feel free to remove this class and create your own.
  */
 public class CalculatorTest {
-    private static Random rn;
     private static Calculator calculator;
 
     @BeforeClass
     public static void before() {
         calculator = new Calculator();
-        rn = new Random();
     }
 
     @Test
@@ -48,9 +46,8 @@ public class CalculatorTest {
 
     @Test
     public void nullDivisionTest() {
-        int a = 32, b = 0;
         try {
-            a = a / b;
+            calculator.calculate(1 , 0 , '/');
         } catch (ArithmeticException e) {
             return;
         }
@@ -72,8 +69,11 @@ public class CalculatorTest {
     }
 
     public void notMathCharTest() {
-        int a = 3, b = -2;
-        Assert.assertEquals( 0 + " was expected" ,
-                0, calculator.calculate(a , b, 'x'));
+        try {
+            calculator.calculate(1 , 2 , 'x');
+        } catch (ArithmeticException e) {
+            return;
+        }
+        Assert.fail("ArithmeticException expexted");
     }
 }

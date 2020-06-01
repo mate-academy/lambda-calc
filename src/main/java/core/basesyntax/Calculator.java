@@ -9,6 +9,10 @@ public class Calculator {
     }
 
     public int calculate(int a, int b, char operation) {
+        if(operation != '+' && (operation != '-') && (operation != '*')
+                && (operation != '/') && (operation != '^')) {
+            throw new IllegalArgumentException();
+        }
         return (operation == '+') ? a + b :
                 (operation == '-') ? a - b :
                         (operation == '*') ? a * b :
