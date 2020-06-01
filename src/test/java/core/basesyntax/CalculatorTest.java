@@ -1,6 +1,5 @@
 package core.basesyntax;
 
-import java.util.Random;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -18,36 +17,40 @@ public class CalculatorTest {
 
     @Test
     public void addingTest() {
-        int a = 5, b = 3;
-        Assert.assertEquals( (a + b) + " was expected" ,
-                a + b, calculator.calculate(a , b, '+'));
+        int a = 5;
+        int b = 3;
+        Assert.assertEquals((a + b) + " was expected",
+                a + b, calculator.calculate(a, b, '+'));
     }
 
     @Test
     public void subtractionTest() {
-        int a = 2, b = 5;
-        Assert.assertEquals( (a - b) + " was expected" ,
-                a - b, calculator.calculate(a , b, '-'));
+        int a = 2;
+        int b = 5;
+        Assert.assertEquals((a - b) + " was expected",
+                a - b, calculator.calculate(a, b, '-'));
     }
 
     @Test
     public void multiplicationTest() {
-        int a = 10, b = 30;
-        Assert.assertEquals( (a * b) + " was expected" ,
-                a * b, calculator.calculate(a , b, '*'));
+        int a = 10;
+        int b = 30;
+        Assert.assertEquals((a * b) + " was expected",
+                a * b, calculator.calculate(a, b, '*'));
     }
 
     @Test
     public void divisionTest() {
-        int a = -4, b = 2;
-        Assert.assertEquals( (a / b) + " was expected" ,
-                a / b, calculator.calculate(a , b, '/'));
+        int a = -4;
+        int b = 2;
+        Assert.assertEquals((a / b) + " was expected",
+                a / b, calculator.calculate(a, b, '/'));
     }
 
     @Test
     public void nullDivisionTest() {
         try {
-            calculator.calculate(1 , 0 , '/');
+            calculator.calculate(1, 0, '/');
         } catch (ArithmeticException e) {
             return;
         }
@@ -56,24 +59,22 @@ public class CalculatorTest {
 
     @Test
     public void exponentiationTest() {
-        int a = 3, b = 2;
-        Assert.assertEquals( Math.pow(a, b) + " was expected" ,
-                (int) Math.pow(a, b), calculator.calculate(a , b, '^'));
+        int a = 3;
+        int b = 2;
+        Assert.assertEquals(Math.pow(a, b) + " was expected",
+                (int) Math.pow(a, b), calculator.calculate(a, b, '^'));
     }
 
     @Test
     public void negativeExponentiationTest() {
-        int a = 3, b = -2;
-        Assert.assertEquals( Math.pow(a, b) + " was expected" ,
-                (int) Math.pow(a, b), calculator.calculate(a , b, '^'));
+        int a = 3;
+        int b = -2;
+        Assert.assertEquals(Math.pow(a, b) + " was expected",
+                (int) Math.pow(a, b), calculator.calculate(a, b, '^'));
     }
 
+    @Test(expected = IllegalArgumentException.class)
     public void notMathCharTest() {
-        try {
-            calculator.calculate(1 , 2 , 'x');
-        } catch (ArithmeticException e) {
-            return;
-        }
-        Assert.fail("ArithmeticException expexted");
+            calculator.calculate(1, 2, 'x');
     }
 }
