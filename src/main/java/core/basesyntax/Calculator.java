@@ -1,17 +1,18 @@
 package core.basesyntax;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import java.util.function.BinaryOperator;
 
 public class Calculator {
-    private static final ScriptEngine JS_ENGINE = new ScriptEngineManager().getEngineByName("js");
-
-    static double evaluate(String expression) {
-        try {
-            return Double.parseDouble(JS_ENGINE.eval(expression).toString());
-        } catch (ScriptException e) {
-            throw new RuntimeException("Evaluate error");
-        }
+    public static double evaluate(double var1, double var2, char c) {
+        BinaryOperator<Double> calculator =
+                c == '+' ? (a, b) -> a + b
+                        : c == '-' ? (a, b) -> a - b
+                        : c == '*' ? (a, b) -> a * b
+                        : c == '/' ? (a, b) -> a / b
+                        : c == '^' ? Math::pow
+                        : (a, b) -> {
+                            throw new RuntimeException("Error");
+                        };
+        return calculator.apply(var1, var2);
     }
 }
