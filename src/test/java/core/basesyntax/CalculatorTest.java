@@ -50,31 +50,31 @@ public class CalculatorTest {
     }
 
     @Test
-    public void isShareOk() {
+    public void isDivisionOk() {
         double result = calculator.calculate(6, '/', 2);
         Assert.assertEquals(3, result, DELTA);
     }
 
     @Test
-    public void isShareNotValid() {
+    public void isDivisionNotValid() {
         double result = calculator.calculate(-6, '/', 2);
         Assert.assertNotEquals(-3, result);
     }
 
     @Test
-    public void isShareNegativeValues() {
+    public void isDivisionNegativeValues() {
         double result = calculator.calculate(-6, '/', -2);
         Assert.assertEquals(3, result, DELTA);
     }
 
     @Test
-    public void isShareZeroPositiveValue() {
+    public void isDivisionZeroPositiveValue() {
         double result = calculator.calculate(6, '/', 0);
         Assert.assertEquals(Double.POSITIVE_INFINITY, result, DELTA);
     }
 
     @Test
-    public void isShareZeroNegativeValue() {
+    public void isDivisionZeroNegativeValue() {
         double result = calculator.calculate(-6, '/', 0);
         Assert.assertEquals(Double.NEGATIVE_INFINITY, result, DELTA);
     }
@@ -116,13 +116,9 @@ public class CalculatorTest {
         Assert.assertEquals(1, result, DELTA);
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void isOperatorNotValid() {
-        try {
-            double result = calculator.calculate(100, 'a', 500);
-        } catch (NullPointerException e) {
-            return;
-        }
+        double result = calculator.calculate(100, 'a', 500);
         Assert.fail("Illegal operator");
     }
 }
