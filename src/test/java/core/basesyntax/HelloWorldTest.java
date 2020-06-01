@@ -47,9 +47,9 @@ public class HelloWorldTest {
     public void sumTest() {
         for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE - 2000; i += 1000) {
             int j = i - 1000;
-            long expect = (long) i + j;
-            long act = (long) calculator.calculate(i, j, '+');
-            Assert.assertEquals("Expected: " + expect + "; Actual: " + act, expect, act);
+            double expect = Double.sum(i, j);
+            double act = calculator.calculate(i, j, '+');
+            Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
         }
     }
 
@@ -57,9 +57,9 @@ public class HelloWorldTest {
     public void differenceTest() {
         for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE - 2000; i += 1000) {
             int j = i - 1000;
-            long expect = (long) i - j;
-            long act = (long) calculator.calculate(i, j, '-');
-            Assert.assertEquals("Expected: " + expect + "; Actual: " + act, expect, act);
+            double expect = (double) i - (double) j;
+            double act = calculator.calculate(i, j, '-');
+            Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
         }
     }
 
@@ -67,9 +67,9 @@ public class HelloWorldTest {
     public void multiplyTest() {
         for (int i = -5000; i < 5000; i += 10) {
             int j = i - 1000;
-            long expect = (long) i * j;
-            long act = (long) calculator.calculate(i, j, '*');
-            Assert.assertEquals("Expected: " + expect + "; Actual: " + act, expect, act);
+            double expect = (double) i * (double) j;
+            double act = calculator.calculate(i, j, '*');
+            Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
         }
     }
 
@@ -78,9 +78,9 @@ public class HelloWorldTest {
         for (int i = -5000; i < 5000; i += 10) {
             int j = i - 1000;
             if (j != 0) {
-                long expect = (long) i / j;
-                long act = (long) calculator.calculate(i, j, '/');
-                Assert.assertEquals("Expected: " + expect + "; Actual: " + act, expect, act);
+                double expect = (double) i / (double) j;
+                double act = calculator.calculate(i, j, '/');
+                Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
             }
         }
     }
@@ -90,9 +90,33 @@ public class HelloWorldTest {
         for (int i = -100; i < 100; i += 10) {
             int j = i - 1000;
             if (i != 0) {
-                long expect = (long) Math.pow(i, j);
-                long act = (long) calculator.calculate(i, j, '^');
-                Assert.assertEquals("Expected: " + expect + "; Actual: " + act, expect, act);
+                double expect = Math.pow(i, j);
+                double act = calculator.calculate(i, j, '^');
+                Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
+            }
+        }
+    }
+
+    @Test
+    public void powNegativeNumberTest() {
+        for (int i = -100; i < 0; i += 10) {
+            int j = i - 1000;
+            if (i != 0) {
+                double expect = Math.pow(i, j);
+                double act = calculator.calculate(i, j, '^');
+                Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
+            }
+        }
+    }
+
+    @Test
+    public void powZeroTest() {
+        for (int i = -100; i < 100; i += 10) {
+            int j = 0;
+            if (i != 0) {
+                double expect = Math.pow(i, j);
+                double act = calculator.calculate(i, j, '^');
+                Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
             }
         }
     }
