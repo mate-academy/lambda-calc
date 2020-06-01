@@ -13,7 +13,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtractWithNormalValues() {
+    public void subtractWithPositiveValues() {
         Assert.assertEquals(2L, calculator.calculate(4L, 2L, '-'));
     }
 
@@ -79,7 +79,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void powerZeroToNormalValue() {
+    public void powerZeroToPositiveValue() {
         Assert.assertEquals(0L, calculator.calculate(0L, 56L, '^'));
     }
 
