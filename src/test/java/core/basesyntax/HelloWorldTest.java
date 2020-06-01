@@ -3,42 +3,41 @@ package core.basesyntax;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.Random;
 
 public class HelloWorldTest {
     private Calculator calculator;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         calculator = new Calculator();
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void arithmeticException() {
         try {
             calculator.calculate(5, 0, '/');
         } catch (ArithmeticException e) {
-            return;
+            throw new ArithmeticException();
         }
         Assert.fail("Arithmetic Exception vas expected");
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void unexpectedOperation() {
         try {
             for (int i = 0; i < 128; i++) {
                 char operation = (char) i;
-                if (operation == '+'
+                if (!(operation == '+'
                         || operation == '-'
                         || operation == '*'
                         || operation == '/'
-                        || operation == '^') {
-                    return;
-                } else {
+                        || operation == '^')) {
                     calculator.calculate(5, 1, operation);
                 }
             }
         } catch (RuntimeException e) {
-            return;
+            throw new IndexOutOfBoundsException();
         }
         Assert.fail("Index Out Of Bounds Exception vas expected");
     }
@@ -111,13 +110,11 @@ public class HelloWorldTest {
 
     @Test
     public void powZeroTest() {
-        for (int i = -100; i < 100; i += 10) {
-            int j = 0;
-            if (i != 0) {
-                double expect = Math.pow(i, j);
-                double act = calculator.calculate(i, j, '^');
-                Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
-            }
+        double a = new Random().nextDouble();
+        if (a != 0) {
+            double expect = Math.pow(a, 0);
+            double act = calculator.calculate(a, 0, '^');
+            Assert.assertEquals("Incorrect result; ", expect, act, 1e-15);
         }
     }
 }
