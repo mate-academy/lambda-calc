@@ -16,9 +16,6 @@ public class Calculator {
     }
 
     public double calculate(double a, double b, char operator) {
-        if (operator == '/' && b == 0) {
-            throw new ArithmeticException("Can't division by zero!");
-        }
         return OPERATIONS.get(operator).applyAsDouble(a, b);
     }
 }

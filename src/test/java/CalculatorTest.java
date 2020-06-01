@@ -2,9 +2,11 @@ import core.basesyntax.Calculator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import static java.lang.Double.valueOf;
 
 public class CalculatorTest {
     private Calculator calculator;
+    private static final double DELTA = 1e-15;
 
     @Before
     public void setUp() throws Exception {
@@ -13,94 +15,79 @@ public class CalculatorTest {
 
     @Test
     public void testSum() {
-        double result = calculator.calculate(2, 2, '+');
-        if (result != 4) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, 2, '+');
+        Assert.assertEquals(valueOf(4), result);
     }
 
     @Test
     public void testSumNegative() {
-        double result = calculator.calculate(2, -2, '+');
-        if (result != 0) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, -2, '+');
+        Assert.assertEquals(valueOf(0), result);
     }
 
     @Test
     public void testMinus() {
-        double result = calculator.calculate(2, 2, '-');
-        if (result != 0) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, 2, '-');
+        Assert.assertEquals(valueOf(0), result);
     }
 
     @Test
     public void testMinusNegative() {
-        double result = calculator.calculate(2, -2, '-');
-        if (result != 4) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, -2, '-');
+        Assert.assertEquals(valueOf(4), result);
     }
 
     @Test
     public void multiple() {
-        double result = calculator.calculate(2, 2, '*');
-        if (result != 4) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, 2, '*');
+        Assert.assertEquals(valueOf(4), result);
     }
 
     @Test
     public void multipleByZero() {
-        double result = calculator.calculate(0, 2, '*');
-        if (result != 0) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(0, 2, '*');
+        Assert.assertEquals(valueOf(0), result);
     }
 
     @Test
     public void testToExponent() {
-        double result = calculator.calculate(2, 3, '^');
-        if (result != 8) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, 3, '^');
+        Assert.assertEquals(valueOf(8), result);
     }
 
     @Test
     public void testToNegativeExponent() {
-        double result = calculator.calculate(2, -3, '^');
-        if (result != 0.125) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, -3, '^');
+        Assert.assertEquals(valueOf(0.125), result);
     }
 
     @Test
     public void testNegativeToExponent() {
-        double result = calculator.calculate(-2, 3, '^');
-        if (result != -8) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(-2, 3, '^');
+        Assert.assertEquals(valueOf(-8), result);
     }
 
     @Test
-    public void tesToZeroExponent() {
-        double result = calculator.calculate(-2, 0, '^');
-        if (result != 1) {
-            Assert.fail();
-        }
+    public void testToZeroExponent() {
+        Double result = calculator.calculate(-2, 0, '^');
+        Assert.assertEquals(valueOf(1), result);
     }
 
     @Test
     public void testDivide() {
-        double result = calculator.calculate(2, 2, '/');
-        if (result != 1) {
-            Assert.fail();
-        }
+        Double result = calculator.calculate(2, 2, '/');
+        Assert.assertEquals(valueOf(1), result);
     }
 
-    @Test(expected = ArithmeticException.class)
-    public void testDivideWillThrowExceptionWhenDivideOnZero() {
-        double result = calculator.calculate(2, 0, '/');
+    @Test
+    public void checkDivideByZero() {
+        double result = calculator.calculate(1.0, 0.0, '/');
+        Assert.assertEquals(Double.POSITIVE_INFINITY, result, DELTA);
+    }
+
+    @Test
+    public void checkMinusNumberDivideByZero() {
+        double result = calculator.calculate(-1.0, 0.0, '/');
+        Assert.assertEquals(Double.NEGATIVE_INFINITY, result, DELTA);
     }
 }
