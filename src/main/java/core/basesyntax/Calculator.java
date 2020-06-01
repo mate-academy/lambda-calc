@@ -11,8 +11,8 @@ public class Calculator {
                         : operation == '+' ? Long::sum
                         : operation == '^' ? (a, b) -> (long) Math.pow(a, b)
                         : (a, b) -> {
-            throw new IllegalArgumentException("Wrong operation!");
-        };
+                            throw new IllegalArgumentException("Wrong operation!");
+                        };
         return calculator.apply(first, second);
     }
 }
