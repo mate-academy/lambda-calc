@@ -4,29 +4,30 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CalculatorTest {
+    private static final double DELTA = 1e-6;
 
     @Test
     public void addNumbers() {
-        Assert.assertEquals(Double.valueOf(5.0), Calculator.calculate(2.0, 3.0, '+'));
-        Assert.assertEquals(Double.valueOf(1.0), Calculator.calculate(-2.0, 3.0, '+'));
-        Assert.assertEquals(Double.valueOf(-1.0), Calculator.calculate(2.0, -3.0, '+'));
-        Assert.assertEquals(Double.valueOf(-5.0), Calculator.calculate(-2.0, -3.0, '+'));
+        Assert.assertEquals(5.0, Calculator.calculate(2.0, 3.0, '+'), DELTA);
+        Assert.assertEquals(1.0, Calculator.calculate(-2.0, 3.0, '+'), DELTA);
+        Assert.assertEquals(-1.0, Calculator.calculate(2.0, -3.0, '+'), DELTA);
+        Assert.assertEquals(-5.0, Calculator.calculate(-2.0, -3.0, '+'), DELTA);
     }
 
     @Test
     public void multiplyNumbers() {
-        Assert.assertEquals(Double.valueOf(6.0), Calculator.calculate(2.0, 3.0, '*'));
-        Assert.assertEquals(Double.valueOf(-6.0), Calculator.calculate(-2.0, 3.0, '*'));
-        Assert.assertEquals(Double.valueOf(-6.0), Calculator.calculate(2.0, -3.0, '*'));
-        Assert.assertEquals(Double.valueOf(6.0), Calculator.calculate(-2.0, -3.0, '*'));
+        Assert.assertEquals(6.0, Calculator.calculate(2.0, 3.0, '*'), DELTA);
+        Assert.assertEquals(-6.0, Calculator.calculate(-2.0, 3.0, '*'), DELTA);
+        Assert.assertEquals(-6.0, Calculator.calculate(2.0, -3.0, '*'), DELTA);
+        Assert.assertEquals(6.0, Calculator.calculate(-2.0, -3.0, '*'), DELTA);
     }
 
     @Test
     public void divideNumbers() {
-        Assert.assertEquals(Double.valueOf(0.6666666666666666), Calculator.calculate(2.0, 3.0, '/'));
-        Assert.assertEquals(Double.valueOf(-0.6666666666666666), Calculator.calculate(-2.0, 3.0, '/'));
-        Assert.assertEquals(Double.valueOf(-0.6666666666666666), Calculator.calculate(2.0, -3.0, '/'));
-        Assert.assertEquals(Double.valueOf(0.6666666666666666), Calculator.calculate(-2.0, -3.0, '/'));
+        Assert.assertEquals(0.6666666666666666, Calculator.calculate(2.0, 3.0, '/'), DELTA);
+        Assert.assertEquals(-0.6666666666666666, Calculator.calculate(-2.0, 3.0, '/'), DELTA);
+        Assert.assertEquals(-0.6666666666666666, Calculator.calculate(2.0, -3.0, '/'), DELTA);
+        Assert.assertEquals(0.6666666666666666, Calculator.calculate(-2.0, -3.0, '/'), DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -36,18 +37,18 @@ public class CalculatorTest {
 
     @Test
     public void subtractNumbers() {
-        Assert.assertEquals(Double.valueOf(-1.0), Calculator.calculate(2.0, 3.0, '-'));
-        Assert.assertEquals(Double.valueOf(-5.0), Calculator.calculate(-2.0, 3.0, '-'));
-        Assert.assertEquals(Double.valueOf(5.0), Calculator.calculate(2.0, -3.0, '-'));
-        Assert.assertEquals(Double.valueOf(1.0), Calculator.calculate(-2.0, -3.0, '-'));
+        Assert.assertEquals(-1.0, Calculator.calculate(2.0, 3.0, '-'), DELTA);
+        Assert.assertEquals(-5.0, Calculator.calculate(-2.0, 3.0, '-'), DELTA);
+        Assert.assertEquals(5.0, Calculator.calculate(2.0, -3.0, '-'), DELTA);
+        Assert.assertEquals(1.0, Calculator.calculate(-2.0, -3.0, '-'), DELTA);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void incorrectOperation() {
         Calculator.calculate(2,3,  's');
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void unavailableOperation() {
         Calculator.calculate(2,3,  '%');
     }

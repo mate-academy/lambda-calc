@@ -2,16 +2,31 @@ package core.basesyntax;
 
 public class Calculator {
 
-    public static Double calculate(double firstVariable, double secondVariable, char sign) {
+    public static double calculate(double firstVariable, double secondVariable, char sign) {
         if (secondVariable == 0 && sign == '/') {
             throw new ArithmeticException("Division by zero");
         }
 
-        return (sign == '+') ? firstVariable + secondVariable :
-                (sign == '*') ? firstVariable * secondVariable :
-                        (sign == '/') ? firstVariable / secondVariable :
-                                (sign == '-') ? firstVariable - secondVariable :
-                                        (sign == '^') ? Math.pow(firstVariable, secondVariable)
-                                                : null;
+        if (sign == '+') {
+            return firstVariable + secondVariable;
+        }
+
+        if (sign == '*') {
+            return firstVariable * secondVariable;
+        }
+
+        if (sign == '/') {
+            return firstVariable / secondVariable;
+        }
+
+        if (sign == '-') {
+            return firstVariable - secondVariable;
+        }
+
+        if (sign == '^') {
+            return Math.pow(firstVariable, secondVariable);
+        }
+
+        throw new IllegalArgumentException(sign + " isn't exit operation.");
     }
 }
