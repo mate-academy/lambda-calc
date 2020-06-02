@@ -1,27 +1,20 @@
 package core.basesyntax;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Calculator {
     public double calculate(double x, double y, char o) {
-        MathOperation addition = Double::sum;
-        MathOperation subtraction = (x1, y1) -> x1 - y1;
-        MathOperation multiplication = (x1, y1) -> x1 * y1;
-        MathOperation division = (x1, y1) -> x1 / y1;
-        MathOperation exponentiation = Math::pow;
-        if (o == '+') {
-            return addition.calculate(x, y);
+        Map<Character, MathOperation> mathOperationMap = new HashMap<>();
+        mathOperationMap.put('+', Double::sum);
+        mathOperationMap.put('-', (x1, y1) -> x1 - y1);
+        mathOperationMap.put('*', (x1, y1) -> x1 * y1);
+        mathOperationMap.put('/', (x1, y1) -> x1 / y1);
+        mathOperationMap.put('^', Math::pow);
+        MathOperation mathOperation = mathOperationMap.get(o);
+        if (mathOperation == null) {
+            throw new IllegalArgumentException();
         }
-        if (o == '-') {
-            return subtraction.calculate(x, y);
-        }
-        if (o == '*') {
-            return multiplication.calculate(x, y);
-        }
-        if (o == '/') {
-            return division.calculate(x, y);
-        }
-        if (o == '^') {
-            return exponentiation.calculate(x, y);
-        }
-        throw new IllegalArgumentException();
+        return mathOperation.calculate(x, y);
     }
 }
