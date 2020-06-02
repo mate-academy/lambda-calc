@@ -1,15 +1,15 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private Calculator calculator;
+    private static Calculator calculator;
     private static final double DELTA = 0;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         calculator = new Calculator();
     }
 
