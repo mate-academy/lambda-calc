@@ -12,7 +12,7 @@ public class Calculator {
         operations.put('+', Double::sum);
         operations.put('-', (a, b) -> a - b);
         operations.put('*', (a, b) -> a * b);
-        operations.put('/', (a , b) -> a / b);
+        operations.put('/', (a, b) -> a / b);
         operations.put('^', Math::pow);
     }
 
