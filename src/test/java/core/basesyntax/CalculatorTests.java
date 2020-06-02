@@ -32,10 +32,6 @@ public class CalculatorTests {
         return dataSet.getValueX() + " + " + dataSet.getValueY() + " = " + dataSet.getExpectedResult();
     }
 
-
-
-
-
     @TestFactory
     Stream<DynamicTest> subtraction() {
         return DataSet.parseRuleFile("substraction-rules.txt")
@@ -87,4 +83,16 @@ public class CalculatorTests {
         assertEquals(Double.NaN, result);
     }
 
+    @TestFactory
+    Stream<DynamicTest> powering() {
+        return DataSet.parseRuleFile("power-rules.txt")
+                .map(dataSet -> dynamicTest(getPowerDisplayName(dataSet), () -> {
+                    double result = cut.calculation(dataSet.getValueX(), dataSet.getValueY(), POW);
+                    assertThat(result).isEqualTo(dataSet.getExpectedResult());
+                }));
+    }
+
+    String getPowerDisplayName(DataSet dataSet) {
+        return dataSet.getValueX() + " ^ " + dataSet.getValueY() + " = " + dataSet.getExpectedResult();
+    }
 }
