@@ -16,12 +16,12 @@ public class Calculator {
                 if (b != 0) {
                     return a / b;
                 } else {
-                    throw new IllegalArgumentException("Error!");
+                    throw new IllegalArgumentException("Can't divide by zero!");
                 }
             case ('^'):
                 return (int) Math.pow(a, b);
             default:
-                throw new IllegalArgumentException("Error!");
+                throw new IllegalArgumentException("Error! Wrong operator!");
         }
     }
 }

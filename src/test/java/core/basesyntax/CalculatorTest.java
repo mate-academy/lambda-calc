@@ -12,7 +12,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void addNegativeNumbers() throws IllegalArgumentException {
+    public void addNegativeNumbers(){
         Assert.assertEquals(Integer.valueOf(-10), Calculator.startCalc(-3, -7, '+'));
     }
 
@@ -38,6 +38,11 @@ public class CalculatorTest {
     @Test
     public void levelOfNumber() {
         Assert.assertEquals(Integer.valueOf(4), Calculator.startCalc(2, 2, '^'));
+    }
+
+    @Test
+    public void levelOfNegativeNumber() {
+        Assert.assertEquals(Integer.valueOf(0), Calculator.startCalc(2, -2, '^'));
     }
 
     @Test(expected = IllegalArgumentException.class)
