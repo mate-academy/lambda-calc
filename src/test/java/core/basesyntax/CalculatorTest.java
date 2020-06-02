@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
-    private static final int DELTA = 2;
+    private static final double DELTA = 0.01;
 
     @Test
     public void addPositiveNumbers() {
