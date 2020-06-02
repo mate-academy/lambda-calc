@@ -13,7 +13,7 @@ public class CalculatorTest {
 
     @Test(expected = ArithmeticException.class)
     public void checkDoubleMaxValueOverflow() {
-            Calculator.calculate(Double.MAX_VALUE, 1, '+');
+        Calculator.calculate(Double.MAX_VALUE, 1, '+');
     }
 
     @Test(expected = ArithmeticException.class)
@@ -30,7 +30,7 @@ public class CalculatorTest {
     @Test
     public void checkMultiplication() {
         Assert.assertEquals(4, Calculator.calculate(-2, -2, '*'), DELTA);
-        Assert.assertEquals(Double.MAX_VALUE, Calculator.calculate(Double.MAX_VALUE, 1,'*'), DELTA);
+        Assert.assertEquals(Double.MAX_VALUE, Calculator.calculate(Double.MAX_VALUE, 1, '*'), DELTA);
 
     }
 
