@@ -48,7 +48,7 @@ public class CalculatorTest {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void DivisionForNullTest() {
+    public void divisionForNullTest() {
         calculator.calculate(1, 0, '/');
     }
 
