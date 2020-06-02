@@ -9,12 +9,12 @@ public class CalculatorTest {
 
     @Test
     public void additionPositiveNumbers() {
-        Assert.assertEquals(5.0, calculator.calculate(2.0, 3.0, '+'), 0.1);
+        Assert.assertEquals(5.0, calculator.calculate(2.0, 3.0, '+'), DELTA);
     }
 
     @Test
     public void additionNegativeNumbers() {
-        Assert.assertEquals(-5.0, calculator.calculate(-2.0, -3.0, '+'), 0.1);
+        Assert.assertEquals(-5.0, calculator.calculate(-2.0, -3.0, '+'), DELTA);
     }
 
     @Test
