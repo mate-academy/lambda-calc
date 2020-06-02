@@ -12,17 +12,15 @@ public class App {
         Double num2 = scan.nextDouble();
         System.out.println("Please enter the method you would like to use "
                 + "(+ , - , * , / , ^ ");
-        String method = scan.next();
-        char mathSign = method.charAt(0);
-        Serializable result = mathSign == '+' ? calculator.addition(num1, num2)
-                : mathSign == '-' ? calculator.removal(num1, num2)
-                : mathSign == '/' ? calculator.division(num1, num2)
-                : mathSign == '*' ? calculator.multiplication(num1, num2)
-                : mathSign == '^' ? calculator.pow(num1, num2)
+
+        char method = scan.next().charAt(0);
+        Serializable result = method == '+' ? calculator.addition(num1, num2)
+                : method == '-' ? calculator.removal(num1, num2)
+                : method == '/' ? calculator.division(num1, num2)
+                : method == '*' ? calculator.multiplication(num1, num2)
+                : method == '^' ? calculator.pow(num1, num2)
                 : false;
 
         System.out.println(result);
-        Double rem = calculator.removal(-6.0, 2.0);
-        System.out.println(rem);
     }
 }
