@@ -19,7 +19,7 @@ public class CalculatorTest {
             for (double j = 5; j <= 10 ; j++) {
                 Double actualResult = calculator.calculate(i, j, '+');
                 Double expectedResult = i + j;
-                Assert.assertEquals(actualResult, expectedResult);
+                Assert.assertEquals(expectedResult, actualResult);
             }
         }
     }
@@ -30,7 +30,7 @@ public class CalculatorTest {
             for (double j = 1; j <= 10 ; j++) {
                 Double actualResult = calculator.calculate(i, j, '-');
                 Double expectedResult = i - j;
-                Assert.assertEquals(actualResult, expectedResult);
+                Assert.assertEquals(expectedResult, actualResult);
             }
         }
     }
@@ -41,7 +41,7 @@ public class CalculatorTest {
             for (double j = 1; j <= 10 ; j++) {
                 Double actualResult = calculator.calculate(i, j, '*');
                 Double expectedResult = i * j;
-                Assert.assertEquals(actualResult, expectedResult);
+                Assert.assertEquals(expectedResult, actualResult);
             }
         }
     }
@@ -58,7 +58,7 @@ public class CalculatorTest {
             for (double j = 2; j <= 10 ; j++) {
                 Double actualResult = calculator.calculate(i, j, '^');
                 Double expectedResult = Math.pow(i, j);
-                Assert.assertEquals(actualResult, expectedResult);
+                Assert.assertEquals(expectedResult, actualResult);
             }
         }
     }
@@ -72,7 +72,7 @@ public class CalculatorTest {
     @Test
     public void getNumberInNotIntPow() {
         Double actualResult = calculator.calculate(-4.0, -4.4, '^');
-        Assert.assertEquals(actualResult, Double.NaN, DELTA);
+        Assert.assertEquals(Double.NaN, actualResult, DELTA);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CalculatorTest {
             for (double j = 2; j <= i ; j++) {
                 Double actualResult = calculator.calculate(i, j, '/');
                 Double expectedResult = i / j;
-                Assert.assertEquals(actualResult, expectedResult);
+                Assert.assertEquals(expectedResult, actualResult);
             }
         }
     }

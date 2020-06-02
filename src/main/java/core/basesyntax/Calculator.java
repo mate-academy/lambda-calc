@@ -15,8 +15,8 @@ public class Calculator {
         operations.put('^', Math::pow);
     }
 
-    public double calculate(Double a, Double b, Character ch) {
-        DoubleBinaryOperator operator = operations.get(ch);
+    public double calculate(Double a, Double b, Character character) {
+        DoubleBinaryOperator operator = operations.get(character);
         if (operator == null) {
             throw new IllegalArgumentException();
         }
