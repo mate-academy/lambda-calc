@@ -43,6 +43,14 @@ public class CalculatorTest {
         Assert.assertEquals(1.0, Calculator.calculate(-2.0, -3.0, '-'), DELTA);
     }
 
+    @Test
+    public void exponentialNumber() {
+        Assert.assertEquals(25.0, Calculator.calculate(5.0,2.0, '^'), DELTA);
+        Assert.assertEquals(2, Calculator.calculate(4.0,0.5, '^'), DELTA);
+        Assert.assertEquals(-0.015625, Calculator.calculate(-4.0,-3.0, '^'), DELTA);
+        Assert.assertEquals(0.015625, Calculator.calculate(4.0,-3.0, '^'), DELTA);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void incorrectOperation() {
         Calculator.calculate(2,3,  's');
