@@ -42,6 +42,11 @@ public class CalculateTest {
                 calculate.calculate(BigDecimal.valueOf(50), BigDecimal.valueOf(2), '/'));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void DivideByZeroCheck() {
+        calculate.calculate(BigDecimal.valueOf(50), BigDecimal.valueOf(0), '/');
+    }
+
     @Test
     public void MultiplicationCheck() {
         Assert.assertEquals(BigDecimal.valueOf(100),
@@ -61,6 +66,5 @@ public class CalculateTest {
     @Test(expected = IllegalArgumentException.class)
     public void OperationCheck() {
         calculate.calculate(BigDecimal.valueOf(50), BigDecimal.valueOf(2), '=');
-        calculate.calculate(BigDecimal.valueOf(50), BigDecimal.valueOf(0), '/');
     }
 }
