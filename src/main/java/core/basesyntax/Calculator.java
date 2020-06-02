@@ -2,25 +2,26 @@ package core.basesyntax;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.DoubleBinaryOperator;
 
 public class Calculator {
-    public static Map<Character, BinaryOperator> operations;
+    public static Map<Character, DoubleBinaryOperator> operations;
 
     public Calculator() {
         operations = new HashMap<>();
-        operations.put('+', new Sum());
-        operations.put('-', new Dif());
-        operations.put('*', new Mult());
-        operations.put('/', new Div());
-        operations.put('^', new Pow());
+        operations.put('+', Double::sum);
+        operations.put('-', (a, b) -> a - b);
+        operations.put('*', (a, b) -> a * b);
+        operations.put('/', (a , b) -> a / b);
+        operations.put('^', Math::pow);
     }
 
-    public Double calculation(double a, double b, char operation) {
-        BinaryOperator operator = operations.get(operation);
+    public Double calculate(double a, double b, char operation) {
+        DoubleBinaryOperator operator = operations.get(operation);
         if (operator == null) {
             throw new ArithmeticException(
                     "Wrong operator provided, can't execute current operation");
         }
-        return operator.result(a, b);
+        return (Double) operator.applyAsDouble(a, b);
     }
 }
