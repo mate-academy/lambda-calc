@@ -16,11 +16,7 @@ public class Calculator {
     }
 
     public Double calculate(Double a, Double b, Character operation) {
-        try {
             DoubleBinaryOperator doubleBinaryOperator = operations.get(operation);
             return doubleBinaryOperator.applyAsDouble(a, b);
-        } catch (NullPointerException e) {
-            throw new NullPointerException("NPE");
-        }
     }
 }
