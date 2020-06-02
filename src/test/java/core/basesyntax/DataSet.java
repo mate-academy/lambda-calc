@@ -51,5 +51,4 @@ public class DataSet {
         Double expectedResult = Double.valueOf(equationSplit[1].trim());
         return new DataSet(valueX, valueY, expectedResult);
     }
-
 }

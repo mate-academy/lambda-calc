@@ -7,7 +7,6 @@ public class Calculator {
     private static final HashMap<Character, DoubleBinaryOperator> operations;
 
     public double calculation(double x, double y, char procedure) {
-
         return operations.get(procedure).applyAsDouble(x, y);
     }
 
@@ -18,9 +17,5 @@ public class Calculator {
         operations.put('/', (x, y) -> x / y);
         operations.put('*', (x, y) -> x * y);
         operations.put('^', Math::pow);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(Math.pow(2, 0.5));
     }
 }

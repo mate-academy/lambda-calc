@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: core.basesyntax.CalculatorTests
+Test set: core.basesyntax.CalculatorTest
 -------------------------------------------------------------------------------
-Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.25 s - in core.basesyntax.CalculatorTests
+Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.457 s - in core.basesyntax.CalculatorTest
