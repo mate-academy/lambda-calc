@@ -6,12 +6,12 @@ import org.junit.Test;
 public class CalculatorTest {
     private static final int DELTA = 1;
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void checkWrongOperationCharacter() {
         Calculator.calculate(3, 5, 'a');
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void checkDoubleMaxValueOverflow() {
         try {
             Calculator.calculate(Double.MAX_VALUE, 1, '+');
