@@ -16,7 +16,7 @@ public class Calculator {
     }
 
     public Double calculate(Double a, Double b, Character operation) {
-            DoubleBinaryOperator doubleBinaryOperator = operations.get(operation);
-            return doubleBinaryOperator.applyAsDouble(a, b);
+        DoubleBinaryOperator doubleBinaryOperator = operations.get(operation);
+        return doubleBinaryOperator.applyAsDouble(a, b);
     }
 }
