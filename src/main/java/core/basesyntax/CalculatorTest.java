@@ -6,7 +6,7 @@ import org.junit.Test;
 public class CalculatorTest {
     private static final int DELTA = 1;
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void checkWrongOperationCharacter() {
         Calculator.calculate(3, 5, 'a');
     }
