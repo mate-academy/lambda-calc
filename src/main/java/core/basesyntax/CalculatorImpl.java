@@ -6,7 +6,7 @@ public class CalculatorImpl {
         return calculate(operand1, operand2, calc);
     }
 
-    public Double removal(Double operand1, Double operand2) {
+    public Double subtract(Double operand1, Double operand2) {
         Calculator calc = (op1, op2) -> operand1 - operand2;
         return calculate(operand1, operand2, calc);
     }

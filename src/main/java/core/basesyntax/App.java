@@ -15,7 +15,7 @@ public class App {
 
         char method = scan.next().charAt(0);
         Serializable result = method == '+' ? calculator.addition(num1, num2)
-                : method == '-' ? calculator.removal(num1, num2)
+                : method == '-' ? calculator.subtract(num1, num2)
                 : method == '/' ? calculator.division(num1, num2)
                 : method == '*' ? calculator.multiplication(num1, num2)
                 : method == '^' ? calculator.pow(num1, num2)

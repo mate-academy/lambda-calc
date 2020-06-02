@@ -18,22 +18,18 @@ public class AppTest {
     }
 
     @Test
-    public void removalTest() {
-        Double resRem = calculator.removal(6.0, 3.0);
-        Assert.assertEquals(3.0, resRem, DELTA);
-        Assert.assertNotEquals("Wrong additional result", 7.0, resRem, DELTA);
+    public void subtractTest() {
+        Assert.assertEquals(3.0, calculator.subtract(6.0, 3.0), DELTA);
     }
 
     @Test
-    public void removalNegativeTest() {
-        Assert.assertEquals(9.0, calculator.removal(6.0, -3.0), DELTA);
+    public void subtractNegativeTest() {
+        Assert.assertEquals(9.0, calculator.subtract(6.0, -3.0), DELTA);
     }
 
     @Test
     public void divisionTest() {
-        Double resDiv = calculator.division(6.0, 3.0);
-        Assert.assertEquals(2.0, resDiv, DELTA);
-        Assert.assertNotEquals("Wrong additional result", 7.0, resDiv, DELTA);
+        Assert.assertEquals(2.0, calculator.division(6.0, 3.0), DELTA);
     }
 
     @Test
@@ -44,9 +40,7 @@ public class AppTest {
 
     @Test
     public void multiplicationTest() {
-        Double resMult = calculator.multiplication(6.0, 3.0);
-        Assert.assertEquals(18.0, resMult, DELTA);
-        Assert.assertNotEquals("Wrong additional result", 7.0, resMult, DELTA);
+        Assert.assertEquals(18.0, calculator.multiplication(6.0, 3.0), DELTA);
     }
 
     @Test
@@ -63,7 +57,7 @@ public class AppTest {
 
     @Test(expected = NullPointerException.class)
     public void checkNullSecondArgument() {
-        calculator.removal(Double.valueOf(1), null);
+        calculator.subtract(Double.valueOf(1), null);
         Assert.fail("NullPointerException was expected");
     }
 }
