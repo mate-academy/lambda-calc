@@ -47,14 +47,9 @@ public class CalculatorTest {
                 a / b, calculator.calculate(a, b, '/'));
     }
 
-    @Test
-    public void nullDivisionTest() {
-        try {
-            calculator.calculate(1, 0, '/');
-        } catch (ArithmeticException e) {
-            return;
-        }
-        Assert.fail("ArithmeticException expexted");
+    @Test(expected = ArithmeticException.class)
+    public void DivisionForNullTest() {
+        calculator.calculate(1, 0, '/');
     }
 
     @Test
@@ -83,6 +78,6 @@ public class CalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void notMathCharTest() {
-            calculator.calculate(1, 2, 'x');
+        calculator.calculate(1, 2, 'x');
     }
 }
