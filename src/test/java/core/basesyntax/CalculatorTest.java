@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
+    private static final int DELTA = 1;
     private static Calculator calculator;
 
     @BeforeClass
@@ -34,28 +35,35 @@ public class CalculatorTest {
 
     @Test
     public void checkDivision() {
-        Assert.assertEquals(calculator.calculate(0, 9, '/'), 0, 1);
-        Assert.assertEquals(calculator.calculate(-2, 1, '/'), -2, 1);
+        Assert.assertEquals(0, calculator.calculate(0, 9, '/'), DELTA);
+        Assert.assertEquals(-2, calculator.calculate(-2, 1, '/'), DELTA);
     }
 
     @Test
     public void checkMultiplication() {
-        Assert.assertEquals(calculator.calculate(-2, -2, '*'), 4, 1);
-        Assert.assertEquals(calculator.calculate(Double.MAX_VALUE, 1, '*'), Double.MAX_VALUE, 1);
+        Assert.assertEquals(4, calculator.calculate(-2, -2, '*'), DELTA);
+        Assert.assertEquals(Double.MAX_VALUE, calculator.calculate(Double.MAX_VALUE, 1,'*'),  DELTA);
 
     }
 
     @Test
     public void checkAddition() {
-        Assert.assertEquals(calculator.calculate(-2, 2, '+'), 0, 1);
-        Assert.assertEquals(calculator.calculate(0, -7, '+'), -7, 1);
-        Assert.assertEquals(calculator.calculate(0, Double.MAX_VALUE, '+'), Double.MAX_VALUE, 1);
+        Assert.assertEquals(0, calculator.calculate(-2, 2, '+'), DELTA);
+        Assert.assertEquals(-7, calculator.calculate(0, -7, '+'), DELTA);
+        Assert.assertEquals(Double.MAX_VALUE, calculator.calculate(0, Double.MAX_VALUE, '+'), DELTA);
 
     }
 
     @Test
     public void checkSubtraction() {
-        Assert.assertEquals(calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'), 0, 1);
-        Assert.assertEquals(calculator.calculate(Double.MAX_VALUE, 0, '-'), Double.MAX_VALUE, 1);
+        Assert.assertEquals(0, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'), DELTA);
+        Assert.assertEquals( Double.MAX_VALUE, calculator.calculate(Double.MAX_VALUE, 0, '-'), DELTA);
+    }
+
+    @Test
+    public void checkExponentiation() {
+        Assert.assertEquals(1, calculator.calculate(3, 0, '^'), DELTA);
+        Assert.assertEquals(Double.MAX_VALUE, calculator.calculate(Double.MAX_VALUE, 1, '^'), DELTA);
+        Assert.assertEquals(74.088, calculator.calculate(4.2, 3, '^'), DELTA);
     }
 }
