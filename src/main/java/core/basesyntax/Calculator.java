@@ -7,7 +7,7 @@ public class Calculator {
                 && operand != '^') {
             throw new IllegalArgumentException("Wrong operand");
         }
-        if (operand == '/' && (firstNumber == 0 || secondNumber == 0)) {
+        if (operand == '/' && secondNumber == 0) {
             throw new IllegalArgumentException("Division by zero");
         }
         return operand == '+' ? firstNumber + secondNumber : operand == '-'

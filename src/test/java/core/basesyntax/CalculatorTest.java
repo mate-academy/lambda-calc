@@ -16,46 +16,79 @@ public class CalculatorTest {
 
     @Test
     public void shouldReturnSumOfTwoNumbersIfOperandIsPlus() {
-        Assert.assertEquals(FIRST_NUMBER + SECOND_NUMBER, calculator.calculate(FIRST_NUMBER, '+', SECOND_NUMBER));
+        Assert.assertEquals(FIRST_NUMBER + SECOND_NUMBER, calculator
+                .calculate(FIRST_NUMBER, '+', SECOND_NUMBER));
+    }
+
+    @Test
+    public void shouldReturnDifferenceOfTwoNumbersIfOperandIsPlusAndFirstNumberIsNegative() {
+        Assert.assertEquals(-FIRST_NUMBER + SECOND_NUMBER, calculator
+                .calculate(-FIRST_NUMBER, '+', SECOND_NUMBER));
     }
 
     @Test
     public void shouldReturnDifferenceOfTwoNumbersIfOperandIsMinus() {
-        Assert.assertEquals(FIRST_NUMBER - SECOND_NUMBER, calculator.calculate(FIRST_NUMBER, '-', SECOND_NUMBER));
+        Assert.assertEquals(FIRST_NUMBER - SECOND_NUMBER, calculator
+                .calculate(FIRST_NUMBER, '-', SECOND_NUMBER));
+    }
+
+    @Test
+    public void shouldReturnSumOfTwoNumbersIfBothOfThemAreNegativeAndOperandIsMinus() {
+        Assert.assertEquals(-FIRST_NUMBER - (-SECOND_NUMBER), calculator
+                .calculate(-FIRST_NUMBER, '-', -SECOND_NUMBER));
     }
 
     @Test
     public void shouldReturnProductOfTwoNumbersIfOperandIsMultiply() {
-        Assert.assertEquals(FIRST_NUMBER * SECOND_NUMBER, calculator.calculate(FIRST_NUMBER, '*', SECOND_NUMBER));
+        Assert.assertEquals(FIRST_NUMBER * SECOND_NUMBER, calculator
+                .calculate(FIRST_NUMBER, '*', SECOND_NUMBER));
+    }
+
+    @Test
+    public void shouldReturnProductOfTwoNumbersWithNegativeNumberInResultIfOneOfTwoNumbersIsNegative() {
+        Assert.assertEquals(-FIRST_NUMBER * SECOND_NUMBER, calculator
+                .calculate(FIRST_NUMBER, '*', -SECOND_NUMBER));
     }
 
     @Test
     public void shouldReturnDivisionResultOfTwoNumbersIfOperandIsDivide() {
-        Assert.assertEquals(FIRST_NUMBER / SECOND_NUMBER, calculator.calculate(FIRST_NUMBER, '/', SECOND_NUMBER));
+        Assert.assertEquals(FIRST_NUMBER / SECOND_NUMBER, calculator
+                .calculate(FIRST_NUMBER, '/', SECOND_NUMBER));
+    }
+
+    @Test
+    public void shouldReturnNegativeNumberInResultOfDivisionIfOneOfTwoNumbersIsNegative() {
+        Assert.assertEquals(-FIRST_NUMBER / SECOND_NUMBER, calculator
+                .calculate(FIRST_NUMBER, '/', -SECOND_NUMBER));
     }
 
     @Test
     public void shouldReturnFirstNumberInExponentiationOfSecondNumber() {
-        Assert.assertEquals((int) Math.pow(FIRST_NUMBER, SECOND_NUMBER), calculator.calculate(FIRST_NUMBER, '^', SECOND_NUMBER));
+        Assert.assertEquals((int) Math.pow(FIRST_NUMBER, SECOND_NUMBER), calculator
+                .calculate(FIRST_NUMBER, '^', SECOND_NUMBER));
     }
 
     @Test
     public void shouldReturnResultOfFirstNumberToExponentiationOfZero() {
-        Assert.assertEquals((int) Math.pow(FIRST_NUMBER, 0), calculator.calculate(FIRST_NUMBER, '^', 0));
+        Assert.assertEquals((int) Math.pow(FIRST_NUMBER, 0), calculator
+                .calculate(FIRST_NUMBER, '^', 0));
     }
 
     @Test
     public void shouldReturnResultOfFirstNumberToNegativeExponentiation() {
-        Assert.assertEquals((int) Math.pow(FIRST_NUMBER, -SECOND_NUMBER), calculator.calculate(FIRST_NUMBER, '^', -SECOND_NUMBER));
+        Assert.assertEquals((int) Math.pow(FIRST_NUMBER, -SECOND_NUMBER), calculator
+                .calculate(FIRST_NUMBER, '^', -SECOND_NUMBER));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldReturnIllegalArgumentExceptionWhenOperandIsWrong() {
-        calculator.calculate(2, '!', 3);
+        calculator
+                .calculate(2, '!', 3);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldReturnIllegalArgumentExceptionWhenOneOfTwoNumbersIsZero() {
-        calculator.calculate(0, '/', 2);
+        calculator
+                .calculate(2, '/', 0);
     }
 }
