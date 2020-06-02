@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CalculatorTest {
+
+    private static final int DELTA = 2;
+
     @Test
     public void addPositiveNumbers() {
         Assert.assertEquals(Double.valueOf(6), Calculator.calculate(2.56, 3.44, '+'));
@@ -12,7 +15,7 @@ public class CalculatorTest {
 
     @Test
     public void addPositiveAndNegativeNumbers() {
-        Assert.assertEquals(Double.valueOf(-0.88), Calculator.calculate(2.56, -3.44, '+'), 2);
+        Assert.assertEquals(Double.valueOf(-0.88), Calculator.calculate(2.56, -3.44, '+'), DELTA);
     }
 
     @Test
@@ -22,7 +25,7 @@ public class CalculatorTest {
 
     @Test
     public void subtractPositiveNumbers() {
-        Assert.assertEquals(Double.valueOf(-0.88), Calculator.calculate(2.56, 3.44, '-'),2);
+        Assert.assertEquals(Double.valueOf(-0.88), Calculator.calculate(2.56, 3.44, '-'),DELTA);
     }
 
     @Test
@@ -32,7 +35,7 @@ public class CalculatorTest {
 
     @Test
     public void subtractNegativeNumbers() {
-        Assert.assertEquals(Double.valueOf(0.88), Calculator.calculate(-2.56, -3.44, '-'),2);
+        Assert.assertEquals(Double.valueOf(0.88), Calculator.calculate(-2.56, -3.44, '-'),DELTA);
     }
 
     @Test
@@ -56,7 +59,7 @@ public class CalculatorTest {
 
     @Test
     public void powerPositiveAndNegativeNumbers() {
-        Assert.assertEquals(Double.valueOf(0.111), Calculator.calculate(9.0, -1.0, '^'),3);
+        Assert.assertEquals(Double.valueOf(0.11), Calculator.calculate(9.0, -1.0, '^'),DELTA);
     }
 
     @Test
@@ -66,7 +69,7 @@ public class CalculatorTest {
 
     @Test
     public void powerNegativeNumbers() {
-        Assert.assertEquals(Double.valueOf(-0.1666), Calculator.calculate(-6.0, -1.0, '^'),2);
+        Assert.assertEquals(Double.valueOf(-0.1666), Calculator.calculate(-6.0, -1.0, '^'),DELTA);
     }
 
     @Test
