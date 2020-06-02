@@ -2,9 +2,11 @@ package core.basesyntax;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 
@@ -30,6 +32,10 @@ public class CalculatorTests {
         return dataSet.getValueX() + " + " + dataSet.getValueY() + " = " + dataSet.getExpectedResult();
     }
 
+
+
+
+
     @TestFactory
     Stream<DynamicTest> subtraction() {
         return DataSet.parseRuleFile("substraction-rules.txt")
@@ -53,8 +59,32 @@ public class CalculatorTests {
     }
 
     String getMultiplyDisplayName(DataSet dataSet) {
-        return dataSet.getValueX() + " - " + dataSet.getValueY() + " = " + dataSet.getExpectedResult();
+        return dataSet.getValueX() + " * " + dataSet.getValueY() + " = " + dataSet.getExpectedResult();
     }
 
+    @TestFactory
+    Stream<DynamicTest> divide() {
+        return DataSet.parseRuleFile("divide-rules.txt")
+                .map(dataSet -> dynamicTest(getDivideDisplayName(dataSet), () -> {
+                    double result = cut.calculation(dataSet.getValueX(), dataSet.getValueY(), DIV);
+                    assertThat(result).isEqualTo(dataSet.getExpectedResult());
+                }));
+    }
+
+    String getDivideDisplayName(DataSet dataSet) {
+        return dataSet.getValueX() + " / " + dataSet.getValueY() + " = " + dataSet.getExpectedResult();
+    }
+
+    @Test
+    public void checkDivideByZero() {
+        double result = cut.calculation(1.0, 0.0, '/');
+        assertEquals(Double.POSITIVE_INFINITY, result);
+    }
+
+    @Test
+    public void checkDivideZeroByZero() {
+        double result = cut.calculation(0.0, 0.0, '/');
+        assertEquals(Double.NaN, result);
+    }
 
 }

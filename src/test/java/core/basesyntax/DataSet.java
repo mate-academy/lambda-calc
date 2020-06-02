@@ -12,25 +12,25 @@ import org.apache.commons.lang3.StringUtils;
 
 public class DataSet {
 
-    private final int valueX;
-    private final int valueY;
-    private final int expectedResult;
+    private final double valueX;
+    private final double valueY;
+    private final double expectedResult;
 
-    public DataSet(int valueX, int valueY, int expectedResult) {
+    public DataSet(Double valueX, Double valueY, Double expectedResult) {
         this.valueX = valueX;
         this.valueY = valueY;
         this.expectedResult = expectedResult;
     }
 
-    public int getValueX() {
+    public double getValueX() {
         return valueX;
     }
 
-    public int getValueY() {
+    public double getValueY() {
         return valueY;
     }
 
-    public int getExpectedResult() {
+    public double getExpectedResult() {
         return expectedResult;
     }
 
@@ -46,9 +46,9 @@ public class DataSet {
     private static DataSet parseRule(String rule) {
         String[] equationSplit = StringUtils.split(rule, '|');
         String[] operandSplit = StringUtils.split(equationSplit[0], ',');
-        Integer valueX = Integer.valueOf(operandSplit[0].trim());
-        Integer valueY = Integer.valueOf(operandSplit[1].trim());
-        Integer expectedResult = Integer.valueOf(equationSplit[1].trim());
+        Double valueX = Double.valueOf(operandSplit[0].trim());
+        Double valueY = Double.valueOf(operandSplit[1].trim());
+        Double expectedResult = Double.valueOf(equationSplit[1].trim());
         return new DataSet(valueX, valueY, expectedResult);
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="core.basesyntax.CalculatorTests" time="0.187" tests="14" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="core.basesyntax.CalculatorTests" time="0.253" tests="24" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Users\User\.jdks\openjdk-14.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire14819583276630008174\surefirebooter15994964685756875556.jar C:\Users\User\AppData\Local\Temp\surefire14819583276630008174 2020-06-02T14-06-13_301-jvmRun1 surefire13921969098071976475tmp surefire_04031928971105311588tmp"/>
+    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire3843098014786307364\surefirebooter17334823771490468036.jar C:\Users\User\AppData\Local\Temp\surefire3843098014786307364 2020-06-02T16-11-37_734-jvmRun1 surefire12689396684523667112tmp surefire_06841030990827480842tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\kt\mate\jv-lambda-calc\target\test-classes;C:\kt\mate\jv-lambda-calc\target\classes;C:\Users\User\.m2\repository\org\assertj\assertj-core\3.8.0\assertj-core-3.8.0.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.2\junit-jupiter-api-5.6.2.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.6.2\junit-platform-commons-1.6.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.2\junit-jupiter-engine-5.6.2.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.6.2\junit-platform-engine-1.6.2.jar;C:\Users\User\.m2\repository\org\sonatype\sisu\sisu-inject-bean\1.4.2\sisu-inject-bean-1.4.2.jar;C:\Users\User\.m2\repository\org\sonatype\sisu\sisu-guice\2.1.7\sisu-guice-2.1.7-noaop.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-lang3\3.1\commons-lang3-3.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire14819583276630008174\surefirebooter15994964685756875556.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire3843098014786307364\surefirebooter17334823771490468036.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.1+7"/>
@@ -55,18 +55,28 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="subtraction[1]" classname="core.basesyntax.CalculatorTests" time="0.078"/>
-  <testcase name="subtraction[2]" classname="core.basesyntax.CalculatorTests" time="0.001"/>
+  <testcase name="subtraction[1]" classname="core.basesyntax.CalculatorTests" time="0.081"/>
+  <testcase name="subtraction[2]" classname="core.basesyntax.CalculatorTests" time="0"/>
   <testcase name="subtraction[3]" classname="core.basesyntax.CalculatorTests" time="0"/>
   <testcase name="subtraction[4]" classname="core.basesyntax.CalculatorTests" time="0"/>
-  <testcase name="subtraction[5]" classname="core.basesyntax.CalculatorTests" time="0"/>
-  <testcase name="subtraction[6]" classname="core.basesyntax.CalculatorTests" time="0"/>
-  <testcase name="subtraction[7]" classname="core.basesyntax.CalculatorTests" time="0"/>
+  <testcase name="subtraction[5]" classname="core.basesyntax.CalculatorTests" time="0.001"/>
+  <testcase name="subtraction[6]" classname="core.basesyntax.CalculatorTests" time="0.001"/>
+  <testcase name="subtraction[7]" classname="core.basesyntax.CalculatorTests" time="0.001"/>
+  <testcase name="divide[1]" classname="core.basesyntax.CalculatorTests" time="0"/>
+  <testcase name="divide[2]" classname="core.basesyntax.CalculatorTests" time="0"/>
+  <testcase name="divide[3]" classname="core.basesyntax.CalculatorTests" time="0"/>
+  <testcase name="divide[4]" classname="core.basesyntax.CalculatorTests" time="0"/>
   <testcase name="addition[1]" classname="core.basesyntax.CalculatorTests" time="0"/>
   <testcase name="addition[2]" classname="core.basesyntax.CalculatorTests" time="0"/>
   <testcase name="addition[3]" classname="core.basesyntax.CalculatorTests" time="0"/>
-  <testcase name="addition[4]" classname="core.basesyntax.CalculatorTests" time="0.001"/>
+  <testcase name="addition[4]" classname="core.basesyntax.CalculatorTests" time="0"/>
   <testcase name="addition[5]" classname="core.basesyntax.CalculatorTests" time="0"/>
-  <testcase name="addition[6]" classname="core.basesyntax.CalculatorTests" time="0"/>
-  <testcase name="addition[7]" classname="core.basesyntax.CalculatorTests" time="0.001"/>
+  <testcase name="addition[6]" classname="core.basesyntax.CalculatorTests" time="0.003"/>
+  <testcase name="addition[7]" classname="core.basesyntax.CalculatorTests" time="0"/>
+  <testcase name="checkDivideByZero" classname="core.basesyntax.CalculatorTests" time="0.01"/>
+  <testcase name="multiply[1]" classname="core.basesyntax.CalculatorTests" time="0.003"/>
+  <testcase name="multiply[2]" classname="core.basesyntax.CalculatorTests" time="0"/>
+  <testcase name="multiply[3]" classname="core.basesyntax.CalculatorTests" time="0"/>
+  <testcase name="multiply[4]" classname="core.basesyntax.CalculatorTests" time="0.001"/>
+  <testcase name="multiply[5]" classname="core.basesyntax.CalculatorTests" time="0.003"/>
 </testsuite>
