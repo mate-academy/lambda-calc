@@ -20,7 +20,6 @@ public class CalculatorTest {
                 calculator.calculate(1, 1, (char) i);
             }
         }
-        Assert.fail("IllegalArgumentException expected");
     }
 
     @Test
@@ -62,12 +61,12 @@ public class CalculatorTest {
 
 
     @Test
-    public void PositiveNumDivideByZero() {
+    public void positiveNumDivideByZero() {
         Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(5, 0, '/'), DELTA);
     }
 
     @Test
-    public void NegativeNumDivideByZero() {
+    public void negativeNumDivideByZero() {
         Assert.assertEquals(Double.NEGATIVE_INFINITY, calculator.calculate(-5, 0, '/'), DELTA);
     }
 
