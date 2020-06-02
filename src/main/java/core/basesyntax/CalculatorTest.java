@@ -13,11 +13,7 @@ public class CalculatorTest {
 
     @Test(expected = ArithmeticException.class)
     public void checkDoubleMaxValueOverflow() {
-        try {
             Calculator.calculate(Double.MAX_VALUE, 1, '+');
-        } catch (ArithmeticException exception) {
-            return;
-        }
     }
 
     @Test(expected = ArithmeticException.class)
