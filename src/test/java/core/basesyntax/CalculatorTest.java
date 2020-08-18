@@ -132,4 +132,10 @@ public class CalculatorTest {
         calculator.calculate(POSITIVE_THREE, ZERO, DIVISION);
         calculator.calculate(NEGATIVE_THREE, ZERO, DIVISION);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void invalidOperationSign() {
+        calculator.calculate(POSITIVE_THREE, ZERO, '=');
+        calculator.calculate(NEGATIVE_THREE, ZERO, '%');
+    }
 }
