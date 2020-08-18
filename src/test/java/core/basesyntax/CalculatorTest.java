@@ -1,7 +1,8 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
+
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -9,10 +10,10 @@ import org.junit.Test;
  */
 public class CalculatorTest {
     private static final double DELTA = 1e-10;
-    private Calculator calculator;
+    private static Calculator calculator;
 
-    @Before
-    public void setCalculator() {
+    @BeforeClass
+    public static void setCalculator() {
         calculator = new Calculator();
     }
 
