@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
@@ -17,12 +17,17 @@ public class CalculatorTest {
     private static final char MULTIPLY = '*';
     private static final char DIVIDE = '/';
     private static final char POWER = '^';
-    private Calculator calculator;
+    private static Calculator calculator;
     private double result;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         calculator = new Calculator();
+    }
+
+    @BeforeClass
+    public static void beforeClass() {
+
     }
 
     @Test(expected = RuntimeException.class)
