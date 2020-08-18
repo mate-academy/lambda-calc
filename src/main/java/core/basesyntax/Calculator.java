@@ -1,11 +1,11 @@
 package core.basesyntax;
 
 public class Calculator {
-    private final char ADDITION = '+';
-    private final char SUBTRACTION = '-';
-    private final char DIVISION = '/';
-    private final char MULTIPLICATION = '*';
-    private final char RAISING_TO_POWER = '^';
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char DIVISION = '/';
+    private static final char MULTIPLICATION = '*';
+    private static final char RAISING_TO_POWER = '^';
 
     public double calculate(double a, double b, char operation) {
         switch (operation) {
@@ -14,7 +14,8 @@ public class Calculator {
             case DIVISION: return divide(a, b);
             case MULTIPLICATION: return multiply(a, b);
             case RAISING_TO_POWER: return raiseToPower(a, b);
-            default: throw new UnsupportedOperationException("Operation " + operation + " is not supported.");
+            default: throw new UnsupportedOperationException("Operation " + operation
+                    + " is not supported.");
         }
     }
 

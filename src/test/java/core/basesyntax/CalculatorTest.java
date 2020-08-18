@@ -7,12 +7,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private final char ADDITION = '+';
-    private final char SUBTRACTION = '-';
-    private final char DIVISION = '/';
-    private final char MULTIPLICATION = '*';
-    private final char RAISING_TO_POWER = '^';
-    private final double DELTA = 0.0000001;
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char DIVISION = '/';
+    private static final char MULTIPLICATION = '*';
+    private static final char RAISING_TO_POWER = '^';
+    private static final double DELTA = 0.0000001;
     private static Calculator calculator;
 
     @BeforeClass
