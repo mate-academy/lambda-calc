@@ -11,7 +11,7 @@ public class Calculator {
         if (operation != ADDITION && operation != SUBTRACTION
                 && operation != DIVISION && operation != MULTIPLICATION
                 && operation != RAISING_TO_POWER) {
-            throw new IllegalArgumentException("Only +, -, /, *, or ^ can be used to indicate operation.");
+            throw new IllegalArgumentException("Only +, -, /, *, or ^ should be used.");
         }
         if (b == 0 && operation == DIVISION) {
             throw new ArithmeticException("Division by zero is not allowed.");
