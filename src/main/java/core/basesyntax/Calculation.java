@@ -21,7 +21,8 @@ public class Calculation {
         } else if (!COMPUTATION.containsKey(operation)) {
             throw new IllegalArgumentException("Provided operation is not supported");
         } else if (COMPUTATION.get(operation).applyAsDouble(x, y) >= Double.MAX_VALUE) {
-            throw new ArithmeticException("Provided inputs produce the result that exceeds calculus possibilities");
+            throw new ArithmeticException("Provided inputs produce the result that exceeds "
+                    + "calculus possibilities");
         }
         return COMPUTATION.get(operation).applyAsDouble(x, y);
 
