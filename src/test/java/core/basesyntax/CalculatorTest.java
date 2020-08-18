@@ -50,24 +50,14 @@ public class CalculatorTest {
         Assert.assertEquals(4, calculator.calculate(NUM_TWO, NUM_TWO, OPERATOR_POW));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void divisionByZero() {
-        try {
-            calculator.calculate(NUM_TWO, ZERO, "/");
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        Assert.fail("IllegalArgumentException was expected");
+        calculator.calculate(NUM_TWO, ZERO, "/");
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void invalidOperator() {
-        try {
-            calculator.calculate(NUM_TWO, NUM_TWO, FAKE_OPERATOR);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        Assert.fail("IllegalArgumentException was expected");
+        calculator.calculate(NUM_TWO, NUM_TWO, FAKE_OPERATOR);
     }
 
     @Test
@@ -115,7 +105,7 @@ public class CalculatorTest {
         }
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void invalidOperators() {
         int countException = 0;
         for (int i = 0; i < FAKE_OPERATORS.length(); i++) {
