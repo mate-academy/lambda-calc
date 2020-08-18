@@ -75,9 +75,9 @@ public class CalculatorTest {
     }
 
     @Test
-    public void divisionNotOK() {
+    public void divisionByZeroCheck() {
         try {
-            calculator.calculate(5, 0, '/');
+            calculator.calculate(FIRST_POSITIVE, 0, '/');
         } catch (ArithmeticException e) {
             return;
         }
