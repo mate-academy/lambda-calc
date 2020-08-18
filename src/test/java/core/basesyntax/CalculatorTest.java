@@ -68,8 +68,4 @@ public class CalculatorTest {
     public void notValidComa() {
         Calculator.calculate(TWO, Double.parseDouble("39,6"), '*');
     }
-
 }
-
-
-
