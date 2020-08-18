@@ -156,7 +156,7 @@ public class CalculatorTest {
         Assert.assertEquals(0.015625, result, DELTA);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
         calculator.calculate(8, 0, DIVISION);
         calculator.calculate(-8, 0, DIVISION);
