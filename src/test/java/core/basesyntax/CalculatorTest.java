@@ -21,8 +21,8 @@ public class CalculatorTest {
 
     @Test
     public void divisionIsValid() {
-        double expected = -0.6666;
-        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, 9.0, '/'), DELTA);
+        double expected = -1.1457;
+        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, IRRACIONAL_FIVE, '/'), DELTA);
     }
 
     @Test
