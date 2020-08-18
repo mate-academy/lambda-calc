@@ -1,14 +1,22 @@
 package core.basesyntax;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CalculatorTest {
-    public static final double DELTA = 0.1;
+    private static final double DELTA = 0.1;
+    private Calculator calculator;
     private static double ZERO = 0.0;
     private static double TWO = 2.0;
     private static double NEGATIVE_TWO = -2.0;
     private static double NEGATIVE_SIX = -6.0;
+
+    @Before
+    public void init() {
+       calculator = new Calculator();
+    }
 
     @Test
     public void divisionIsValid() {
@@ -68,5 +76,10 @@ public class CalculatorTest {
     @Test(expected = NumberFormatException.class)
     public void notValidComa() {
         Calculator.calculate(TWO, Double.parseDouble("39,6"), '*');
+    }
+
+    @After
+    public void afterTest(){
+        calculator = null;
     }
 }
