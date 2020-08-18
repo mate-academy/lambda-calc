@@ -5,12 +5,11 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class CalculatorTest {
-    private static final Double DELTA = 0.01;
-    private static final Double ZERO_VALUE = 0.;
-    private static final Double FIRST_VALUE = 4.;
-    private static final Double SECOND_VALUE = 12.;
-    private static final Double NEGATIVE_VALUE = -8.;
-    private static final Double NULL_VALUE = null;
+    private static final double DELTA = 0.01;
+    private static final double ZERO_VALUE = 0.;
+    private static final double FIRST_VALUE = 4.;
+    private static final double SECOND_VALUE = 12.;
+    private static final double NEGATIVE_VALUE = -8.;
     private static final char ADDITION_SIGN = '+';
     private static final char SUBTRACTION_SIGN = '-';
     private static final char DIVISION_SIGN = '/';
@@ -41,11 +40,6 @@ public class CalculatorTest {
         Assert.assertEquals(expectedFirstPlusNegative, actualFirstPlusNegative, DELTA);
     }
 
-    @Test(expected = NullPointerException.class)
-    public void getAddingResultInNullCase() {
-        calculator.calculate(FIRST_VALUE, ADDITION_SIGN, NULL_VALUE);
-    }
-
     @Test
     public void getSubtractingResultInDifferentCases() {
         double actualFirstMinusSecond = calculator.calculate(FIRST_VALUE, SUBTRACTION_SIGN, SECOND_VALUE);
@@ -56,11 +50,6 @@ public class CalculatorTest {
 
         Assert.assertEquals(expectedFirstMinusSecond, actualFirstMinusSecond, DELTA);
         Assert.assertEquals(expectedFirstMinusNegative, actualFirstMinusNegative, DELTA);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void getSubtractingResultInNullCase() {
-        calculator.calculate(FIRST_VALUE, SUBTRACTION_SIGN, NULL_VALUE);
     }
 
     @Test
@@ -78,14 +67,9 @@ public class CalculatorTest {
         Assert.assertEquals(expectedZeroDivideFirst, actualZeroDivideFirst, DELTA);
     }
 
-    @Test(expected = NullPointerException.class)
-    public void getDivisionResultInNullCase() {
-        calculator.calculate(FIRST_VALUE, DIVISION_SIGN, NULL_VALUE);
-    }
-
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void getDivisionResultInDivideByZeroCase() {
-        Assert.assertTrue(Double.isInfinite(calculator.calculate(FIRST_VALUE, DIVISION_SIGN, ZERO_VALUE)));
+        calculator.calculate(FIRST_VALUE, DIVISION_SIGN, ZERO_VALUE);
     }
 
     @Test
@@ -101,11 +85,6 @@ public class CalculatorTest {
         Assert.assertEquals(expectedFirstMultiplySecond, actualFirstMultiplySecond, DELTA);
         Assert.assertEquals(expectedFirstMultiplyNegative, actualFirstMultiplyNegative, DELTA);
         Assert.assertEquals(expectedZeroMultiplyFirst, actualZeroMultiplyFirst, DELTA);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void getMultiplicationResultInNullCase() {
-        calculator.calculate(FIRST_VALUE, MULTIPLICATION_SIGN, NULL_VALUE);
     }
 
     @Test
@@ -127,16 +106,6 @@ public class CalculatorTest {
         Assert.assertEquals(expectedNegativeRaisingFirst, actualNegativeRaisingFirst, DELTA);
         Assert.assertEquals(expectedZeroRaisingFirst, actualZeroRaisingFirst, DELTA);
         Assert.assertEquals(expectedFirstRaisingZero, actualFirstRaisingZero, DELTA);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void getRaisingToThePowerResultInNullValueCase() {
-        calculator.calculate(NULL_VALUE, RAISING_TO_THE_POWER_SIGN, FIRST_VALUE);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void getRaisingToThePowerResultInNullRaiseCase() {
-        calculator.calculate(FIRST_VALUE, RAISING_TO_THE_POWER_SIGN, NULL_VALUE);
     }
 
     @Test(expected = UnsupportedOperationException.class)

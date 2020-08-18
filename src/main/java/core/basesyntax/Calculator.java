@@ -10,7 +10,7 @@ public class Calculator {
     private static final char MULTIPLICATION_SIGN = '*';
     private static final char RAISING_TO_THE_POWER_SIGN = '^';
 
-    public double calculate(Double firstValue, char operation, Double secondValue) {
+    public double calculate(double firstValue, char operation, double secondValue) {
         switch (operation) {
             case ADDITION_SIGN:
                 return firstValue + secondValue;
@@ -19,6 +19,9 @@ public class Calculator {
             case MULTIPLICATION_SIGN:
                 return firstValue * secondValue;
             case DIVISION_SIGN:
+                if (secondValue == 0) {
+                    throw new ArithmeticException("Can't divide by zero");
+                }
                 return firstValue / secondValue;
             case RAISING_TO_THE_POWER_SIGN:
                 return Math.pow(firstValue, secondValue);
