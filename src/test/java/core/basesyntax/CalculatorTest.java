@@ -31,59 +31,59 @@ public class CalculatorTest {
 
     @Test
     public void additionTest() {
-        double result = calculator.calculate(POSITIVE_X, POSITIVE_Y, '+');
-        Assert.assertEquals(5, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, NEGATIVE_X, '+');
-        Assert.assertEquals(ZERO, result, DELTA);
-        result = calculator.calculate(NEGATIVE_X, NEGATIVE_Y, '+');
-        Assert.assertEquals(-5, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, ZERO, '+');
-        Assert.assertEquals(POSITIVE_X, result, DELTA);
+        double resultOne = calculator.calculate(POSITIVE_X, POSITIVE_Y, '+');
+        double resultTwo = calculator.calculate(POSITIVE_X, NEGATIVE_X, '+');
+        double resultThree = calculator.calculate(NEGATIVE_X, NEGATIVE_Y, '+');
+        double resultFour = calculator.calculate(POSITIVE_X, ZERO, '+');
+        Assert.assertEquals(5, resultOne, DELTA);
+        Assert.assertEquals(ZERO, resultTwo, DELTA);
+        Assert.assertEquals(-5, resultThree, DELTA);
+        Assert.assertEquals(POSITIVE_X, resultFour, DELTA);
     }
 
     @Test
     public void subtractionTest() {
-        double result = calculator.calculate(POSITIVE_X, POSITIVE_Y, '-');
-        Assert.assertEquals(-1, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, NEGATIVE_X, '-');
-        Assert.assertEquals(4, result, DELTA);
-        result = calculator.calculate(NEGATIVE_X, NEGATIVE_Y, '-');
-        Assert.assertEquals(1, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, ZERO, '-');
-        Assert.assertEquals(POSITIVE_X, result, DELTA);
+        double resultOne = calculator.calculate(POSITIVE_X, POSITIVE_Y, '-');
+        double resultTwo = calculator.calculate(POSITIVE_X, NEGATIVE_X, '-');
+        double resultThree = calculator.calculate(NEGATIVE_X, NEGATIVE_Y, '-');
+        double resultFour = calculator.calculate(POSITIVE_X, ZERO, '-');
+        Assert.assertEquals(-1, resultOne, DELTA);
+        Assert.assertEquals(4, resultTwo, DELTA);
+        Assert.assertEquals(1, resultThree, DELTA);
+        Assert.assertEquals(POSITIVE_X, resultFour, DELTA);
     }
 
     @Test
     public void multiplicationTest() {
-        double result = calculator.calculate(POSITIVE_X, POSITIVE_Y, '*');
-        Assert.assertEquals(6, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, NEGATIVE_X, '*');
-        Assert.assertEquals(-4, result, DELTA);
-        result = calculator.calculate(NEGATIVE_X, NEGATIVE_Y, '*');
-        Assert.assertEquals(6, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, ZERO, '*');
-        Assert.assertEquals(ZERO, result, DELTA);
+        double resultOne = calculator.calculate(POSITIVE_X, POSITIVE_Y, '*');
+        double resultTwo = calculator.calculate(POSITIVE_X, NEGATIVE_X, '*');
+        double resultThree = calculator.calculate(NEGATIVE_X, NEGATIVE_Y, '*');
+        double resultFour = calculator.calculate(POSITIVE_X, ZERO, '*');
+        Assert.assertEquals(6, resultOne, DELTA);
+        Assert.assertEquals(-4, resultTwo, DELTA);
+        Assert.assertEquals(6, resultThree, DELTA);
+        Assert.assertEquals(ZERO, resultFour, DELTA);
     }
 
     @Test
     public void divisionTest() {
-        double result = calculator.calculate(POSITIVE_Y, POSITIVE_Y, '^');
-        Assert.assertEquals(27, result, DELTA);
-        result = calculator.calculate(ZERO, POSITIVE_X, '^');
-        Assert.assertEquals(ZERO, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, ZERO, '^');
-        Assert.assertEquals(1, result, DELTA);
+        double resultOne = calculator.calculate(POSITIVE_Y, POSITIVE_Y, '^');
+        double resultTwo = calculator.calculate(ZERO, POSITIVE_X, '^');
+        double resultThree = calculator.calculate(POSITIVE_X, ZERO, '^');
+        Assert.assertEquals(27, resultOne, DELTA);
+        Assert.assertEquals(ZERO, resultTwo, DELTA);
+        Assert.assertEquals(1, resultThree, DELTA);
     }
 
     @Test
     public void powerTest() {
-        double result = calculator.calculate(POSITIVE_Y, POSITIVE_X, '/');
-        Assert.assertEquals(1.5, result, DELTA);
-        result = calculator.calculate(POSITIVE_X, NEGATIVE_X, '/');
-        Assert.assertEquals(-1, result, DELTA);
-        result = calculator.calculate(NEGATIVE_Y, NEGATIVE_X, '/');
-        Assert.assertEquals(1.5, result, DELTA);
-        result = calculator.calculate(ZERO, POSITIVE_X, '/');
-        Assert.assertEquals(ZERO, result, DELTA);
+        double resultOne = calculator.calculate(POSITIVE_Y, POSITIVE_X, '/');
+        double resultTwo = calculator.calculate(POSITIVE_X, NEGATIVE_X, '/');
+        double resultThree = calculator.calculate(NEGATIVE_Y, NEGATIVE_X, '/');
+        double resultFour = calculator.calculate(ZERO, POSITIVE_X, '/');
+        Assert.assertEquals(1.5, resultOne, DELTA);
+        Assert.assertEquals(-1, resultTwo, DELTA);
+        Assert.assertEquals(1.5, resultThree, DELTA);
+        Assert.assertEquals(ZERO, resultFour, DELTA);
     }
 }
