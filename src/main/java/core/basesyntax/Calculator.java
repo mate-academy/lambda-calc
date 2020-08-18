@@ -30,7 +30,7 @@ public class Calculator {
 
     private double division(double a, double b) {
         if (b == 0) {
-            throw new IllegalArgumentException("We can't divide by zero");
+            throw new ArithmeticException("We can't divide by zero");
         }
         return a / b;
     }
