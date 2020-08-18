@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class AdditionTest {
-    private static final double DELTA = 0D;
+    private static final double DELTA = 0.01D;
     private Calculator calculator;
     private double result;
 
