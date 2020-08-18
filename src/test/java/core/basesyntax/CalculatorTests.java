@@ -1,17 +1,18 @@
 package core.basesyntax;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTests {
 
     private static final double DELTA = 0.01D;
-    private Calculator calculator;
+    private static Calculator calculator;
 
-    @Before
-    public void Before() {
-        this.calculator = new Calculator();
+    @BeforeClass
+    public static void beforeClass() {
+        calculator = new Calculator();
     }
 
     @Test
