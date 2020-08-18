@@ -11,7 +11,7 @@ public class HelloWorldTest {
     private static final double DELTA = 0.01D;
 
     @Test
-    public void additionWithNehativeAndPositive() {
+    public void additionWithNegativeAndPositive() {
         helloWorld = new HelloWorld();
         Assert.assertEquals(5, helloWorld.calculate(2.00, 3.00, '+'), DELTA);
         Assert.assertEquals(-5, helloWorld.calculate(-15, 10, '+'), DELTA);
@@ -19,7 +19,7 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void subtractionWithNehativeAndPositive() {
+    public void subtractionWithNegativeAndPositive() {
         helloWorld = new HelloWorld();
         Assert.assertEquals(1, helloWorld.calculate(3, 2, '-'), DELTA);
         Assert.assertEquals(-25, helloWorld.calculate(-15, 10, '-'), DELTA);
@@ -27,7 +27,7 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void divisionWithNehativeAndPositive() {
+    public void divisionWithNegativeAndPositive() {
         helloWorld = new HelloWorld();
         Assert.assertEquals(1.5, helloWorld.calculate(3, 2, '/'), DELTA);
         Assert.assertEquals(-1.5, helloWorld.calculate(-15, 10, '/'), DELTA);
@@ -41,7 +41,7 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void multiplicationWithNehativeAndPositive() {
+    public void multiplicationWithNegativeAndPositive() {
         helloWorld = new HelloWorld();
         Assert.assertEquals(6, helloWorld.calculate(3, 2, '*'), DELTA);
         Assert.assertEquals(-150, helloWorld.calculate(-15, 10, '*'), DELTA);
@@ -49,7 +49,7 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void raisingToPowerWithNehativeAndPositive() {
+    public void raisingToPowerWithNegativeAndPositive() {
         helloWorld = new HelloWorld();
         Assert.assertEquals(81, helloWorld.calculate(9, 2, '^'), DELTA);
         Assert.assertEquals(-3125, helloWorld.calculate(-5, 5, '^'), DELTA);
@@ -57,7 +57,7 @@ public class HelloWorldTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void illegalArgumenUse(){
+    public void illegalArgumentUse(){
         helloWorld = new HelloWorld();
         helloWorld.calculate(3, 0, '$');
     }

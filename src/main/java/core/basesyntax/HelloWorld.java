@@ -17,7 +17,7 @@ public class HelloWorld {
             case ('^'):
                 return raisingToPower(firstDigit, secondDigit);
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("This type of operation is not available. Try: +, -, /, *, ^.");
         }
     }
 
@@ -31,7 +31,7 @@ public class HelloWorld {
 
     private double division(double firstDigit, double secondDigit) {
         if (secondDigit == 0) {
-            throw new ArithmeticException();
+            throw new ArithmeticException("Cannot be divided by zero");
         }
         return firstDigit / secondDigit;
     }
