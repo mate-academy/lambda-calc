@@ -32,7 +32,7 @@ public class Calculator {
 
     private double divide(double firstOperand, double secondOperand) {
         if (secondOperand == 0) {
-            throw new RuntimeException("Cannot divide by 0");
+            throw new ArithmeticException("Cannot divide by 0");
         }
         return firstOperand / secondOperand;
     }
