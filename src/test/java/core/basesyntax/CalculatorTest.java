@@ -49,7 +49,6 @@ public class CalculatorTest {
         Assert.assertEquals(5.5, Calculator.calculate(firstOperand, 0, operator), DELTA);
         Assert.assertEquals(-7.6, Calculator.calculate(0, -secondOperand, operator), DELTA);
         Assert.assertEquals(0, Calculator.calculate(0, 0, operator), DELTA);
-
     }
 
     @Test
