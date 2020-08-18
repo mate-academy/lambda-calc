@@ -1,8 +1,8 @@
 package core.basesyntax;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.Assert;
 
 public class CalculatorTest {
     private static final double DELTA = 1e-10;
