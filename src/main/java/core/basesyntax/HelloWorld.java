@@ -41,10 +41,6 @@ public class HelloWorld {
     }
 
     private double raisingToPower(double firstDigit, double n) {
-        double result = 1;
-        for (double i = 1; i <= n; i++) {
-            result = result * firstDigit;
-        }
-        return result;
+        return Math.pow(firstDigit,n);
     }
 }
