@@ -105,7 +105,6 @@ public class CalculatorTest {
         }
     }
 
-    @Test(expected = IllegalArgumentException.class)
     public void invalidOperators() {
         int countException = 0;
         for (int i = 0; i < FAKE_OPERATORS.length(); i++) {
