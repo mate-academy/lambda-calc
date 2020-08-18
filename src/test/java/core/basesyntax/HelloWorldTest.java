@@ -34,15 +34,10 @@ public class HelloWorldTest {
         Assert.assertEquals(999, helloWorld.calculate(-999, -1, '/'), DELTA);
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
         helloWorld = new HelloWorld();
-        try {
-            helloWorld.calculate(3, 0, '/');
-        } catch (ArithmeticException e) {
-            return;
-        }
-        Assert.fail("ArithmeticException expected");
+        helloWorld.calculate(3, 0, '/');
     }
 
     @Test
@@ -58,17 +53,12 @@ public class HelloWorldTest {
         helloWorld = new HelloWorld();
         Assert.assertEquals(81, helloWorld.calculate(9, 2, '^'), DELTA);
         Assert.assertEquals(-3125, helloWorld.calculate(-5, 5, '^'), DELTA);
-        Assert.assertEquals(1, helloWorld.calculate(-2, -1, '^'), DELTA);
+        Assert.assertEquals(-0.5, helloWorld.calculate(-2, -1, '^'), DELTA);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void illegalArgumenUse(){
         helloWorld = new HelloWorld();
-        try {
-            helloWorld.calculate(3, 0, '$');
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        Assert.fail("IllegalArgumentException expected");
+        helloWorld.calculate(3, 0, '$');
     }
 }
