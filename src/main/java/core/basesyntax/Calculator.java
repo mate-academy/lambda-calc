@@ -39,7 +39,7 @@ public class Calculator {
 
     private double division(double a, double b) {
         if (Math.abs(b) < DELTA) {
-            throw new IllegalArgumentException("Can't div by zero");
+            throw new ArithmeticException("Can't div by zero");
         }
         return a / b;
     }
