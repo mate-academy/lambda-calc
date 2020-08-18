@@ -70,7 +70,7 @@ public class CalculatorTest {
 
     @Test
     public void powerOK() {
-        assertEquals("Result should be 0.0", 4,
+        assertEquals("Result should be 4", 4,
                 calculator.calculate(2, 2, '^'), DELTA);
     }
 
@@ -82,13 +82,13 @@ public class CalculatorTest {
 
     @Test
     public void toPowerZero() {
-        assertEquals("Result should be 0.0", 1.0,
+        assertEquals("Result should be 1.0", 1.0,
                 calculator.calculate(10, 0, '^'), DELTA);
     }
 
     @Test
     public void toPowerNegative() {
-        assertEquals("Result should be 0.0", 0.01,
+        assertEquals("Result should be 0.01", 0.01,
                 calculator.calculate(10, -2, '^'), DELTA);
     }
 }
