@@ -27,7 +27,7 @@ public class Calculator {
 
     private static double division(double firstOperand, double secondOperand) {
         if (secondOperand == 0) {
-            throw new RuntimeException("Division by zero");
+            throw new ArithmeticException("Division by zero");
         }
         return firstOperand / secondOperand;
     }
@@ -38,7 +38,7 @@ public class Calculator {
 
     private static double raiseToPower(double firstOperand, double secondOperand) {
         if (firstOperand == 0 && secondOperand < 0) {
-            throw new RuntimeException("Сan't raise zero to a negative power");
+            throw new ArithmeticException("Сan't raise zero to a negative power");
         }
         return Math.pow(firstOperand, secondOperand);
     }

@@ -124,7 +124,7 @@ public class CalculatorTest {
     }
 
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = ArithmeticException.class)
     public void divisionZeroNumbers() {
         operator = '/';
         Assert.assertEquals(
@@ -202,7 +202,7 @@ public class CalculatorTest {
                 1, Calculator.calculate(firstOperand, 0, operator), 0.00000001);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = ArithmeticException.class)
     public void raisingNullToTheNegativePowerOk() {
         operator = '^';
        Calculator.calculate(0, -secondOperand, operator);
