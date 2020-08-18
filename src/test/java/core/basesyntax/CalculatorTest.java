@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CalculatorTest {
+    public static final double DELTA = 0.1;
     private static double ZERO = 0.0;
     private static double TWO = 2.0;
     private static double NEGATIVE_TWO = -2.0;
@@ -12,31 +13,31 @@ public class CalculatorTest {
     @Test
     public void divisionIsValid() {
         double expected = 3.0;
-        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, NEGATIVE_TWO, '/'), 0);
+        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, NEGATIVE_TWO, '/'), DELTA);
     }
 
     @Test
     public void multiplicationIsValid() {
         double expected = -4.0;
-        Assert.assertEquals(expected, Calculator.calculate(TWO, NEGATIVE_TWO, '*'), 0);
+        Assert.assertEquals(expected, Calculator.calculate(TWO, NEGATIVE_TWO, '*'), DELTA);
     }
 
     @Test
     public void summationIsValid() {
         double expected = -6.0;
-        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, ZERO, '+'), 0);
+        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, ZERO, '+'), DELTA);
     }
 
     @Test
     public void subtractionIsValid() {
         double expected = -4.0;
-        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, NEGATIVE_TWO, '-'), 0);
+        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, NEGATIVE_TWO, '-'), DELTA);
     }
 
     @Test
     public void exaltationInDegreeIsValid() {
         double expected = 0.25;
-        Assert.assertEquals(expected, Calculator.calculate(TWO, NEGATIVE_TWO, '^'), 0);
+        Assert.assertEquals(expected, Calculator.calculate(TWO, NEGATIVE_TWO, '^'), DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
