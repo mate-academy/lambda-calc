@@ -45,7 +45,6 @@ public class HelloWorldTest {
         Assert.fail("ArithmeticException expected");
     }
 
-
     @Test
     public void multiplicationWithNehativeAndPositive() {
         helloWorld = new HelloWorld();
@@ -72,6 +71,4 @@ public class HelloWorldTest {
         }
         Assert.fail("IllegalArgumentException expected");
     }
-
-
 }
