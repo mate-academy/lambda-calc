@@ -8,11 +8,11 @@ public class Calculator {
     private static final char RAISING_TO_POWER = '^';
 
     public double calculate(double a, double b, char operation) {
-        if ( b == 0 && operation == DIVISION) {
+        if (b == 0 && operation == DIVISION) {
             throw new ArithmeticException("Division by zero is not allowed.");
         }
         switch (operation) {
-            case ADDITION: return a + b ;
+            case ADDITION: return a + b;
             case SUBTRACTION: return a - b;
             case DIVISION: return a / b;
             case MULTIPLICATION: return a * b;
