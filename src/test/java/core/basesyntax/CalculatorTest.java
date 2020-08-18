@@ -6,10 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private static final double DELTA = 0.1;
+    private static final double DELTA = 0.0001;
     private Calculator calculator;
     private static double ZERO = 0.0;
     private static double TWO = 2.0;
+    private static double IRRACIONAL_FIVE = 5.2367;
     private static double NEGATIVE_TWO = -2.0;
     private static double NEGATIVE_SIX = -6.0;
 
@@ -20,8 +21,8 @@ public class CalculatorTest {
 
     @Test
     public void divisionIsValid() {
-        double expected = 3.0;
-        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, NEGATIVE_TWO, '/'), DELTA);
+        double expected = -0.6666;
+        Assert.assertEquals(expected, Calculator.calculate(NEGATIVE_SIX, 9.0, '/'), DELTA);
     }
 
     @Test
@@ -46,6 +47,12 @@ public class CalculatorTest {
     public void exaltationInDegreeIsValid() {
         double expected = 0.25;
         Assert.assertEquals(expected, Calculator.calculate(TWO, NEGATIVE_TWO, '^'), DELTA);
+    }
+
+    @Test
+    public void irracionalNumbersIsValid() {
+        double expected = 37.7054;
+        Assert.assertEquals(expected, Calculator.calculate(TWO, IRRACIONAL_FIVE, '^'), DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
