@@ -25,7 +25,7 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testUnacceptableOperation() {
         calculator.calculate(VALUE1_POSITIVE, VALUE2_POSITIVE, RANDOM_OPERATION);
     }

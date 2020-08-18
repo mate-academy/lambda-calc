@@ -23,7 +23,7 @@ public class Calculator {
             case POWER:
                 return Math.pow(value1, value2);
             default:
-                throw new RuntimeException("No operation with '" + operation + "'.");
+                throw new IllegalArgumentException("No operation with '" + operation + "'.");
         }
     }
 }
