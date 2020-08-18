@@ -17,19 +17,15 @@ public class CalculatorTest {
     private static final double ODD_NEGATIVE = -3;
     private static final double FRACTION = 0.5;
     private Calculator calculator;
+
     @Before
     public void setUp() {
         calculator = new Calculator();
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void nonexistentOperation() {
-        try {
-            calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '?');
-        } catch (RuntimeException e) {
-            return;
-        }
-        Assert.fail("Operation not supported was expected");
+        calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '?');
     }
 
     @Test
@@ -74,21 +70,10 @@ public class CalculatorTest {
         assertEquals(0, calculator.calculate(0, SECOND_POSITIVE, '/'), DELTA);
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void divisionByZeroCheck() {
-        try {
-            calculator.calculate(FIRST_POSITIVE, 0, '/');
-        } catch (ArithmeticException e) {
-            return;
-        }
-        Assert.fail("Cannot divide by 0 was expected");
-
-        try {
-            calculator.calculate(0, 0, '/');
-        } catch (ArithmeticException e) {
-            return;
-        }
-        Assert.fail("Cannot divide by 0 was expected");
+        calculator.calculate(FIRST_POSITIVE, 0, '/');
+        calculator.calculate(0, 0, '/');
     }
 
     @Test
