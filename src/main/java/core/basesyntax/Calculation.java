@@ -23,8 +23,7 @@ public class Calculation {
             throw new IllegalArgumentException("Provided operation is not supported");
         }
         if (COMPUTATION.get(operation).applyAsDouble(x, y) >= Double.MAX_VALUE) {
-            throw new ArithmeticException("Provided inputs produce the result that exceeds "
-                    + "calculus possibilities");
+            throw new ArithmeticException("Produced result exceeds calculus possibilities");
         }
         return COMPUTATION.get(operation).applyAsDouble(x, y);
     }
