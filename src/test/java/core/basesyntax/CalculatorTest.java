@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
@@ -18,10 +18,10 @@ public class CalculatorTest {
     private static final String FAKE_OPERATORS = "1234567890.,!?(){}[]@#$%&_№:;`\\|/" +
             "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
-    private Calculator calculator;
+    private static Calculator calculator;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void beforeClass() {
         calculator = new Calculator();
     }
 
@@ -50,7 +50,7 @@ public class CalculatorTest {
         Assert.assertEquals(4, calculator.calculate(NUM_TWO, NUM_TWO, OPERATOR_POW));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
         calculator.calculate(NUM_TWO, ZERO, "/");
     }
@@ -105,6 +105,7 @@ public class CalculatorTest {
         }
     }
 
+    @Test
     public void invalidOperators() {
         int countException = 0;
         for (int i = 0; i < FAKE_OPERATORS.length(); i++) {

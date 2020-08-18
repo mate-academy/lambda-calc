@@ -22,7 +22,7 @@ public class Calculator {
 
     private int div(int a, int b) {
         if (b == 0) {
-            throw new IllegalArgumentException();
+            throw new ArithmeticException();
         }
         return a / b;
     }
