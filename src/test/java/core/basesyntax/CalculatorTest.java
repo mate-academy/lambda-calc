@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private static final double DELTA = 0.01;
+    private static final double DELTA = 1e-10;
     private static final char RANDOM_OPERATION = 'g';
     private static final double VALUE1_NEGATIVE = -3;
     private static final double VALUE1_POSITIVE = 3;
@@ -101,7 +101,7 @@ public class CalculatorTest {
         result = calculator.calculate(VALUE1_POSITIVE, VALUE2_POSITIVE, POWER);
         Assert.assertEquals(243, result, DELTA);
         result = calculator.calculate(VALUE1_POSITIVE, VALUE2_NEGATIVE, POWER);
-        Assert.assertEquals(0.004115, result, DELTA);
+        Assert.assertEquals(0.00411522633744856, result, DELTA);
         result = calculator.calculate(VALUE1_NEGATIVE, VALUE2_POSITIVE, POWER);
         Assert.assertEquals(-243, result, DELTA);
         result = calculator.calculate(ZERO, VALUE2_POSITIVE, POWER);
