@@ -1,5 +1,5 @@
 package core.basesyntax;
 
 public interface Calculable {
-    double calculate(double first, double second);
+    double calculate(double firstArgument, double secondArgument);
 }

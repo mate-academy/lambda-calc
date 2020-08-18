@@ -5,13 +5,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
-    public static final double DELTA = 0.000_000_001;
     public static final char ADD = '+';
     public static final char SUBSTRACT = '-';
     public static final char MULTIPLY = '*';
     public static final char RAISE = '^';
     public static final char DIVIDE = '/';
     public static final char SOME_CHAR = '#';
+    public static final double DELTA = 0.000_000_001;
     public static final int ZERO = 0;
     public static final int POSITIVE_INT = 3;
     public static final int NEGATIVE_INT = -5;

@@ -6,7 +6,7 @@ public class Raise implements Calculable {
     public static final Character OPERATION = '^';
 
     @Override
-    public double calculate(double first, double second) {
-        return Math.pow(first,second);
+    public double calculate(double firstArgument, double secondArgument) {
+        return Math.pow(firstArgument, secondArgument);
     }
 }
