@@ -3,7 +3,6 @@ package core.basesyntax;
 public class Calculator {
 
     public double calculate(double value1, double value2, char operation){
-        double result = 0.0;
         switch (operation) {
             case '-':
                 return value1 - value2;
@@ -17,8 +16,9 @@ public class Calculator {
                 }
                 return value1 / value2;
             case '^':
-                break;
+                return Math.pow(value1, value2);
+            default:
+                throw new RuntimeException("No operation with '" + operation + "'.");
         }
-        return result;
     }
 }
