@@ -25,6 +25,5 @@ public class Calculation {
                     + "calculus possibilities");
         }
         return COMPUTATION.get(operation).applyAsDouble(x, y);
-
     }
 }
