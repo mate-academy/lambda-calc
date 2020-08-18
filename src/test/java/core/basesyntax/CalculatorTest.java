@@ -4,9 +4,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class CalculatorTest {
     private static final double DELTA = 1e-10;
     private static Calculator calculator;

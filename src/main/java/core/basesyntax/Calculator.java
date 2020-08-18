@@ -2,13 +2,10 @@ package core.basesyntax;
 
 import java.util.function.DoubleBinaryOperator;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class Calculator {
     public double calculate(Double first, Double second, char operation) {
         if (second == 0 && operation == '/') {
-            throw new ArithmeticException("");
+            throw new ArithmeticException("Cannot be divided by zero!");
         }
         DoubleBinaryOperator operator
                 = operation == '+' ? Double::sum
