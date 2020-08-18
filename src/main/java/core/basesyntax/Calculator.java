@@ -28,21 +28,20 @@ public class Calculator {
         if (str == null || str.isEmpty()) {
             throw new IllegalArgumentException("String is empty!");
         }
-        arithmeticOperation = operationsFactory(str);
+        operationsFactory(str);
         double[] numbers = parserStringArrayToDoubleArray(str);
         return arithmeticOperation.action(numbers[0], numbers[1]);
     }
 
-    private double[] parserStringArrayToDoubleArray(String s) {
-        String[] split = s.split("[\\s\\W]+");
-        return new double[]{Double.valueOf(split[0]), Double.valueOf(split[1])};
+    private double[] parserStringArrayToDoubleArray(String str) {
+        String[] numbers = str.split("[\\s\\W]+");
+        return new double[]{Double.valueOf(numbers[0]), Double.valueOf(numbers[1])};
     }
 
-    private ArithmeticOperation operationsFactory(String s) {
-        arithmeticOperation = operations.get(s.replaceAll("[\\w\\s]+", ""));
+    private void operationsFactory(String str) {
+        arithmeticOperation = operations.get(str.replaceAll("[\\w\\s]+", ""));
         if (arithmeticOperation == null) {
             throw new IllegalArgumentException("The required parameter is missing!");
         }
-        return arithmeticOperation;
     }
 }

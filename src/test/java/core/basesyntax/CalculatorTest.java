@@ -1,5 +1,6 @@
 package core.basesyntax;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -18,9 +19,13 @@ public class CalculatorTest {
     private static final String DIVISION_BY_ZERO = "25 / 0";
     private static final String STRING_WITHOUT_ARITHMETIC_CHARS = "25_.0";
     private static final String STRING_WITH_MORE_THAN_TWO_NUMBERS = "25 + 30 + 45";
-    private static final double DELTA = 0.000_01;
-    private Calculator calculator = new Calculator();
+    private static final double DELTA = 0.000_001d;
+    private Calculator calculator;
 
+    @Before
+    public void init(){
+        calculator = new Calculator();
+    }
     @Test
     public void isWeCallTheRightClass() {
         assertNull(calculator.getArithmeticOperation());
@@ -36,54 +41,29 @@ public class CalculatorTest {
         assertSame(calculator.getArithmeticOperation().getClass(), PowOperation.class);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void checkPassedArgumentWithWrongParameters() {
-        try {
             calculator.calculate(STRING_WITHOUT_ARITHMETIC_CHARS);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        fail("IllegalArgumentException was expected!!!");
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void passEmptyStringToCalculateMethod() {
-        try {
             calculator.calculate("");
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        fail("IllegalArgumentException was expected!!!");
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void passNullValueToCalculateMethod() {
-        try {
             calculator.calculate(null);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        fail("IllegalArgumentException was expected!!!");
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void checkDivisionByZero() {
-        try {
             calculator.calculate(DIVISION_BY_ZERO);
-        } catch (ArithmeticException e) {
-            return;
-        }
-        fail("ArithmeticException was expected!!!");
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void checkPassedArgumentWithMoreThanTwoNumbers() {
-        try {
             calculator.calculate(STRING_WITH_MORE_THAN_TWO_NUMBERS);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        fail("IllegalArgumentException was expected!!!");
     }
 
     @Test
