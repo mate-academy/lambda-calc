@@ -29,7 +29,7 @@ public class SimpleCalculator {
         if (sign.equals('^')) {
             return Math.pow(a, b);
         }
-        throw new IOException("\" " + sign + "\" is unknown operator");
+        throw new ArithmeticException("\'" + sign + "\' is unknown operator");
     }
 
 }

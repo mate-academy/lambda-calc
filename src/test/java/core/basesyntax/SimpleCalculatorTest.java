@@ -88,10 +88,12 @@ public class SimpleCalculatorTest {
         for (char operator : badOperators) {
             try {
                 SimpleCalculator.calculate(1, operator, 1);
+            } catch (ArithmeticException e) {
+                return;
             } catch (IOException e) {
-                Assert.fail(" \"" + operator + "\" is unknown operator");
+                Assert.fail("\'" + operator + "\' is unknown operator");
             }
         }
-        Assert.fail();
+        Assert.fail("There is unknown operator");
     }
 }
