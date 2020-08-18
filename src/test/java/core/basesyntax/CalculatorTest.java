@@ -27,15 +27,9 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void testUnacceptableOperation() {
-        Calculator calculator = new Calculator();
-        try {
-            calculator.calculate(6, 1, RANDOM_OPERATION);
-        } catch (RuntimeException e) {
-            return;
-        }
-        Assert.fail("Unexpected character exception expected");
+        calculator.calculate(6, 1, RANDOM_OPERATION);
     }
 
     @Test
