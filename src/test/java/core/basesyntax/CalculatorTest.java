@@ -145,7 +145,6 @@ public class CalculatorTest {
         Assert.assertEquals(Math.pow(POSITIVE_SECOND, ZERO), result, DELTA);
     }
 
-    //
     @Test
     public void divisionTestPositivePositive() {
         result = calculator.calculate(POSITIVE_FIRST, '/', POSITIVE_SECOND);
