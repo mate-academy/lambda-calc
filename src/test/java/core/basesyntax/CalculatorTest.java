@@ -24,16 +24,23 @@ public class CalculatorTest {
     }
 
     @Test
-    public void addsCorrectly() {
+    public void addsOk() {
         assertEquals(15,
                 calculator.calculate(10, 5, '+'),
                 DELTA);
     }
 
     @Test
-    public void subtractsCorrectly() {
+    public void subtractsOk() {
         assertEquals(20,
                 calculator.calculate(21, 1, '-'),
+                DELTA);
+    }
+
+    @Test
+    public void multiplyOK() {
+        assertEquals(35,
+                calculator.calculate(5, 7, '*'),
                 DELTA);
     }
 
@@ -45,20 +52,26 @@ public class CalculatorTest {
     }
 
     @Test
-    public void dividesCorrectly() {
+    public void divisionOK() {
         assertEquals(5,
                 calculator.calculate(10, 2, '/'),
                 DELTA);
     }
 
     @Test
-    public void divideByZero() {
+    public void divisionByZero() {
         try {
             calculator.calculate(5, 0, '/');
         } catch (RuntimeException e) {
             return;
         }
         Assert.fail("Cannot divide by 0 was expected");
+    }
+
+    @Test
+    public void powerOK() {
+        assertEquals("Result should be 0.0", 4,
+                calculator.calculate(2, 2, '^'), DELTA);
     }
 
     @Test
