@@ -17,7 +17,7 @@ public class HelloWorld {
             case ('^'):
                 return raisingToPower(firstDigit, secondDigit);
             default:
-                throw new IllegalArgumentException("This type of operation is not available. Try: +, -, /, *, ^.");
+                throw new IllegalArgumentException("This type of operation is not available.");
         }
     }
 
