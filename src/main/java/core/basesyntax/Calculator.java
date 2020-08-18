@@ -2,7 +2,7 @@ package core.basesyntax;
 
 public class Calculator {
 
-    public double calcuate(float firstValue, float secondValue, char operation) {
+    public double calculate(double firstValue, double secondValue, char operation) {
         double result;
         switch (operation) {
             case '+':
