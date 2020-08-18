@@ -1,9 +1,8 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class CalculatorTest {
     private static final double DELTA = 1E-10;
@@ -16,10 +15,10 @@ public class CalculatorTest {
     private static final double EVEN_NEGATIVE = -2;
     private static final double ODD_NEGATIVE = -3;
     private static final double FRACTION = 0.5;
-    private Calculator calculator;
+    private static Calculator calculator;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         calculator = new Calculator();
     }
 
@@ -29,45 +28,45 @@ public class CalculatorTest {
     }
 
     @Test
-    public void addsOk() {
-        assertEquals(18, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '+'), DELTA);
-        assertEquals(3, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '+'), DELTA);
-        assertEquals(8, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '+'), DELTA);
-        assertEquals(-7, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '+'), DELTA);
-        assertEquals(6, calculator.calculate(0, SECOND_POSITIVE, '+'), DELTA);
-        assertEquals(12, calculator.calculate(FIRST_POSITIVE, 0, '+'), DELTA);
-        assertEquals(0, calculator.calculate(0, 0, '+'), DELTA);
+    public void addIsOk() {
+        Assert.assertEquals(18, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '+'), DELTA);
+        Assert.assertEquals(3, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '+'), DELTA);
+        Assert.assertEquals(8, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '+'), DELTA);
+        Assert.assertEquals(-7, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '+'), DELTA);
+        Assert.assertEquals(6, calculator.calculate(0, SECOND_POSITIVE, '+'), DELTA);
+        Assert.assertEquals(12, calculator.calculate(FIRST_POSITIVE, 0, '+'), DELTA);
+        Assert.assertEquals(0, calculator.calculate(0, 0, '+'), DELTA);
     }
 
     @Test
-    public void subtractOK() {
-        assertEquals(6, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '-'), DELTA);
-        assertEquals(-9, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '-'), DELTA);
-        assertEquals(16, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '-'), DELTA);
-        assertEquals(1, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '-'), DELTA);
-        assertEquals(-6, calculator.calculate(0, SECOND_POSITIVE, '-'), DELTA);
-        assertEquals(12, calculator.calculate(FIRST_POSITIVE, 0, '-'), DELTA);
-        assertEquals(0, calculator.calculate(0, 0, '-'), DELTA);
+    public void subtractIsOK() {
+        Assert.assertEquals(6, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '-'), DELTA);
+        Assert.assertEquals(-9, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '-'), DELTA);
+        Assert.assertEquals(16, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '-'), DELTA);
+        Assert.assertEquals(1, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '-'), DELTA);
+        Assert.assertEquals(-6, calculator.calculate(0, SECOND_POSITIVE, '-'), DELTA);
+        Assert.assertEquals(12, calculator.calculate(FIRST_POSITIVE, 0, '-'), DELTA);
+        Assert.assertEquals(0, calculator.calculate(0, 0, '-'), DELTA);
     }
 
     @Test
-    public void multiplyOK() {
-        assertEquals(72, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '*'), DELTA);
-        assertEquals(-18, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '*'), DELTA);
-        assertEquals(-48, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '*'), DELTA);
-        assertEquals(12, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '*'), DELTA);
-        assertEquals(0, calculator.calculate(0, SECOND_POSITIVE, '*'), DELTA);
-        assertEquals(0, calculator.calculate(FIRST_POSITIVE, 0, '*'), DELTA);
-        assertEquals(0, calculator.calculate(0, 0, '*'), DELTA);
+    public void multiplyIsOK() {
+        Assert.assertEquals(72, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '*'), DELTA);
+        Assert.assertEquals(-18, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '*'), DELTA);
+        Assert.assertEquals(-48, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '*'), DELTA);
+        Assert.assertEquals(12, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '*'), DELTA);
+        Assert.assertEquals(0, calculator.calculate(0, SECOND_POSITIVE, '*'), DELTA);
+        Assert.assertEquals(0, calculator.calculate(FIRST_POSITIVE, 0, '*'), DELTA);
+        Assert.assertEquals(0, calculator.calculate(0, 0, '*'), DELTA);
     }
 
     @Test
-    public void divisionOK() {
-        assertEquals(2, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '/'), DELTA);
-        assertEquals(-0.5, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '/'), DELTA);
-        assertEquals(-3, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '/'), DELTA);
-        assertEquals(0.75, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '/'), DELTA);
-        assertEquals(0, calculator.calculate(0, SECOND_POSITIVE, '/'), DELTA);
+    public void divisionIsOK() {
+        Assert.assertEquals(2, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '/'), DELTA);
+        Assert.assertEquals(-0.5, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '/'), DELTA);
+        Assert.assertEquals(-3, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '/'), DELTA);
+        Assert.assertEquals(0.75, calculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, '/'), DELTA);
+        Assert.assertEquals(0, calculator.calculate(0, SECOND_POSITIVE, '/'), DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -77,33 +76,33 @@ public class CalculatorTest {
     }
 
     @Test
-    public void powerOK() {
-        assertEquals(2985984, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '^'), DELTA);
+    public void powerIsOK() {
+        Assert.assertEquals(2985984, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '^'), DELTA);
     }
 
     @Test
     public void powerEvenAndOddPositivePower() {
-        assertEquals(144, calculator.calculate(FIRST_POSITIVE, EVEN_POSITIVE, '^'), DELTA);
-        assertEquals(-27, calculator.calculate(FIRST_NEGATIVE, ODD_POSITIVE, '^'), DELTA);
+        Assert.assertEquals(144, calculator.calculate(FIRST_POSITIVE, EVEN_POSITIVE, '^'), DELTA);
+        Assert.assertEquals(-27, calculator.calculate(FIRST_NEGATIVE, ODD_POSITIVE, '^'), DELTA);
     }
 
     @Test
     public void powerEvenAndOddNegativePower() {
-        assertEquals(0.006944444444444444,
+        Assert.assertEquals(0.006944444444444444,
                 calculator.calculate(FIRST_POSITIVE, EVEN_NEGATIVE, '^'), DELTA);
-        assertEquals(-0.037037037037037035,
+        Assert.assertEquals(-0.037037037037037035,
                 calculator.calculate(FIRST_NEGATIVE, ODD_NEGATIVE, '^'), DELTA);
     }
 
     @Test
     public void powerWithZero() {
-        assertEquals(0.0, calculator.calculate(0, SECOND_POSITIVE, '^'), DELTA);
-        assertEquals(1.0, calculator.calculate(FIRST_POSITIVE, 0, '^'), DELTA);
-        assertEquals(1.0, calculator.calculate(0, 0, '^'), DELTA);
+        Assert.assertEquals(0.0, calculator.calculate(0, SECOND_POSITIVE, '^'), DELTA);
+        Assert.assertEquals(1.0, calculator.calculate(FIRST_POSITIVE, 0, '^'), DELTA);
+        Assert.assertEquals(1.0, calculator.calculate(0, 0, '^'), DELTA);
     }
 
     @Test
     public void powerWithFraction() {
-        assertEquals(3.4641016151377544, calculator.calculate(FIRST_POSITIVE, FRACTION, '^'), DELTA);
+        Assert.assertEquals(3.4641016151377544, calculator.calculate(FIRST_POSITIVE, FRACTION, '^'), DELTA);
     }
 }

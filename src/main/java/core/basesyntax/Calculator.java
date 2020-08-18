@@ -14,7 +14,7 @@ public class Calculator {
             case '^':
                 return power(firstOperand, secondOperand);
             default:
-                throw new RuntimeException("Operation not supported");
+                throw new IllegalArgumentException("Operation not supported");
         }
     }
 
