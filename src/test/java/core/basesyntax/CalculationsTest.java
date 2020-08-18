@@ -15,7 +15,7 @@ public class CalculationsTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void wrongOperationCharacterTest() {
+    public void operationCharacterNegativeTest() {
         calc.calculate(13, 5, 'o');
     }
 

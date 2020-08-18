@@ -18,9 +18,11 @@ public class Calculation {
     public double calculate(double x, double y, char operation) {
         if (y == 0.0 && operation == '/') {
             throw new ArithmeticException("Division by zero results in infinity");
-        } else if (!COMPUTATION.containsKey(operation)) {
+        }
+        if (!COMPUTATION.containsKey(operation)) {
             throw new IllegalArgumentException("Provided operation is not supported");
-        } else if (COMPUTATION.get(operation).applyAsDouble(x, y) >= Double.MAX_VALUE) {
+        }
+        if (COMPUTATION.get(operation).applyAsDouble(x, y) >= Double.MAX_VALUE) {
             throw new ArithmeticException("Provided inputs produce the result that exceeds "
                     + "calculus possibilities");
         }
