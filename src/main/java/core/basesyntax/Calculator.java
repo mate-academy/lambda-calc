@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 public class Calculator {
-    public static double calculate(double firstOperand, double secondOperand, char operator) {
+    public double calculate(double firstOperand, double secondOperand, char operator) {
         switch (operator) {
             case '+':
                 return addition(firstOperand, secondOperand);
@@ -17,26 +17,26 @@ public class Calculator {
         }
     }
 
-    private static double addition(double firstOperand, double secondOperand) {
+    private double addition(double firstOperand, double secondOperand) {
         return firstOperand + secondOperand;
     }
 
-    private static double subtraction(double firstOperand, double secondOperand) {
+    private double subtraction(double firstOperand, double secondOperand) {
         return firstOperand - secondOperand;
     }
 
-    private static double division(double firstOperand, double secondOperand) {
+    private double division(double firstOperand, double secondOperand) {
         if (secondOperand == 0) {
             throw new ArithmeticException("Division by zero");
         }
         return firstOperand / secondOperand;
     }
 
-    private static double multiplication(double firstOperand, double secondOperand) {
+    private double multiplication(double firstOperand, double secondOperand) {
         return firstOperand * secondOperand;
     }
 
-    private static double raiseToPower(double firstOperand, double secondOperand) {
+    private double raiseToPower(double firstOperand, double secondOperand) {
         if (firstOperand == 0 && secondOperand < 0) {
             throw new ArithmeticException("Сan't raise zero to a negative power");
         }
