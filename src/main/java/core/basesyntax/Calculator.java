@@ -13,7 +13,7 @@ public class Calculator {
                 return multiplication(firstOperand, secondOperand);
             case '^':
                 return raiseToPower(firstOperand, secondOperand);
-            default: throw new RuntimeException("There is no such operation");
+            default: throw new IllegalArgumentException("There is no such operation");
         }
     }
 

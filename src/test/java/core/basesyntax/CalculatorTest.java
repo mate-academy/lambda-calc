@@ -18,7 +18,7 @@ public class CalculatorTest {
         secondOperand = 7.6;
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void notValidOperator() {
         operator = '&';
         Calculator.calculate(firstOperand, secondOperand, operator);
@@ -195,16 +195,16 @@ public class CalculatorTest {
                 0, Calculator.calculate(0, secondOperand, operator), 0.00000001);
     }
 
-    @Test(expected = RuntimeException.class)
-    public void raisingNullToTheNegativePowerOk() {
-        operator = '^';
-       Calculator.calculate(0, -secondOperand, operator);
-    }
-
     @Test
     public void raisingToTheZeroPowerOk() {
         operator = '^';
         Assert.assertEquals(
                 1, Calculator.calculate(firstOperand, 0, operator), 0.00000001);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void raisingNullToTheNegativePowerOk() {
+        operator = '^';
+       Calculator.calculate(0, -secondOperand, operator);
     }
 }
