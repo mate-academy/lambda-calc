@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTests {
@@ -58,6 +57,21 @@ public class CalculatorTests {
     @Test
     public void raisingToThePowerWithNegative() {
         assertEquals(0.25, calculator.calculate(2, -2, '^'), DELTA);
+    }
+
+    @Test
+    public void raisingToThePowerWithZero() {
+        assertEquals(1, calculator.calculate(2, 0, '^'), DELTA);
+    }
+
+    @Test
+    public void raisingToThePowerZero() {
+        assertEquals(0, calculator.calculate(0, 2, '^'), DELTA);
+    }
+
+    @Test
+    public void raisingToThePowerNegativeNumber() {
+        assertEquals(4, calculator.calculate(-2, 2, '^'), DELTA);
     }
 
     @Test
