@@ -19,7 +19,7 @@ public class SimpleCalculator {
             return (a * b);
         }
 
-        if (sign.equals('/')) {
+        if (sign.equals('/') || sign.equals(':')) {
             if (b == 0) {
                 throw new ArithmeticException("Division by zero exception");
             }
