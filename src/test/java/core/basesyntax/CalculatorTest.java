@@ -1,13 +1,10 @@
 package core.basesyntax;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class CalculatorTest {
     private static final double DELTA = 0.0001;
-    private Calculator calculator;
+    private static Calculator calculator;
     private static double ZERO = 0.0;
     private static double TWO = 2.0;
     private static double IRRACIONAL_FIVE = 5.2367;
@@ -16,7 +13,7 @@ public class CalculatorTest {
 
     @Before
     public void init() {
-       calculator = new Calculator();
+        calculator = new Calculator();
     }
 
     @Test
