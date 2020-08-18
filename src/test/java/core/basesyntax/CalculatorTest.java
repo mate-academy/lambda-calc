@@ -85,4 +85,10 @@ public class CalculatorTest {
         assertEquals("Result should be 0.0", 1.0,
                 calculator.calculate(10, 0, '^'), DELTA);
     }
+
+    @Test
+    public void toPowerNegative() {
+        assertEquals("Result should be 0.0", 0.01,
+                calculator.calculate(10, -2, '^'), DELTA);
+    }
 }
