@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.plaf.multi.MultiButtonUI;
-
 public class CalculatorTest {
     private static final double DELTA = 0.01;
     private static final char RANDOM_OPERATION = 'g';
