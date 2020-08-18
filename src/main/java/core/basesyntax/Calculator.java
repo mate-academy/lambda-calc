@@ -3,30 +3,23 @@ package core.basesyntax;
 public class Calculator {
 
     public double calculate(double firstValue, double secondValue, char operation) {
-        double result;
         switch (operation) {
             case '+':
-                result = firstValue + secondValue;
-                break;
+                return firstValue + secondValue;
             case '-':
-                result = firstValue - secondValue;
-                break;
+                return  firstValue - secondValue;
             case '/':
                 if (secondValue == 0) {
                     throw new ArithmeticException("Division by zero!");
                 }
-                result = firstValue / secondValue;
-                break;
+                return firstValue / secondValue;
             case '*':
-                result = firstValue * secondValue;
-                break;
+                return firstValue * secondValue;
             case '^':
-                result = Math.pow(firstValue, secondValue);
-                break;
+                return Math.pow(firstValue, secondValue);
             default:
                 throw new RuntimeException("No valid operation!");
         }
-        return result;
     }
 }
 
