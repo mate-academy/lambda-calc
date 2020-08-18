@@ -7,7 +7,7 @@ public class Calculator {
     private static final char MULTIPLICATION = '*';
     private static final char POWER = '^';
 
-    public static double calculator(double value1, double value2, char operation) {
+    public double calculator(double value1, double value2, char operation) {
         switch (operation) {
             case ADDITION:
                 return addition(value1, value2);
