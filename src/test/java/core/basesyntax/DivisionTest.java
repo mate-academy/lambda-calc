@@ -20,5 +20,47 @@ public class DivisionTest {
         Assert.assertEquals(3.75, result, DELTA);
     }
 
+    @Test
+    public void firstNegativeDivision() {
+        result = calculator.calculate(-7.5, 2, '/');
+        Assert.assertEquals(-3.75, result, DELTA);
+    }
 
+    @Test
+    public void secondNegativeDivision() {
+        result = calculator.calculate(7.5, -2, '/');
+        Assert.assertEquals(-3.75, result, DELTA);
+    }
+
+    @Test
+    public void bothNegativeDivision() {
+        result = calculator.calculate(-7.5, -2, '/');
+        Assert.assertEquals(3.75, result, DELTA);
+    }
+
+    @Test
+    public void firstZeroDivision() {
+        result = calculator.calculate(0, 2, '/');
+        Assert.assertEquals(0, result, DELTA);
+    }
+
+    @Test
+    public void secondZeroDivision() {
+        try {
+            result = calculator.calculate(7.5, 0, '/');
+        } catch (ArithmeticException e) {
+            return;
+        }
+        Assert.fail("Division by Zero Exception expected");
+    }
+
+    @Test
+    public void bothZeroDivision() {
+        try {
+            result = calculator.calculate(0, 0, '/');
+        } catch (ArithmeticException e) {
+            return;
+        }
+        Assert.fail("Division by Zero Exception expected");
+    }
 }

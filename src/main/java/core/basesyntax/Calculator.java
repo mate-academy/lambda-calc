@@ -11,6 +11,13 @@ public class Calculator {
                 return value1 + value2;
             case '*':
                 return value1 * value2;
+            case '/':
+                if (value2 == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return value1 / value2;
+            case '^':
+                break;
         }
         return result;
     }
