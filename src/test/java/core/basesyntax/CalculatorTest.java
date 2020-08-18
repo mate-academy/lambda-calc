@@ -1,11 +1,17 @@
 package core.basesyntax;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
-    public static final double DELTA = 1E-10;
-    Calculator calculator = new Calculator();
+    private static final double DELTA = 1E-10;
+    private static Calculator calculator;
+
+    @BeforeClass
+    public static void setCalculator() {
+        calculator = new Calculator();
+    }
 
     @Test
     public void getSumOk() {
@@ -65,7 +71,7 @@ public class CalculatorTest {
         Assert.assertEquals(1, expectedPowerToZero, DELTA);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void unsupportedOperation() {
         calculator.calculate(2,2,'&');
 
@@ -75,6 +81,4 @@ public class CalculatorTest {
     public void testDivisionByZero() {
         calculator.calculate(2, 0, '/');
     }
-
-
 }
