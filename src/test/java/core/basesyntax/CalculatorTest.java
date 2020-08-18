@@ -10,7 +10,6 @@ public class CalculatorTest {
     public static final double DELTA = 0.001;
     public static final double FIRST_OPERAND = 5.5;
     public static final double SECOND_OPERAND = 7.6;
-    private char operator;
     private static Calculator calculator;
 
     @BeforeClass
@@ -25,185 +24,163 @@ public class CalculatorTest {
 
     @Test
     public void additionPositiveNumbersOk() {
-        operator = '+';
         Assert.assertEquals(
-                13.1, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                13.1, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, '+'), DELTA);
     }
 
     @Test
     public void additionNegativeNumbersOk() {
-        operator = '+';
         Assert.assertEquals(
-                -13.1, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                -13.1, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, '+'), DELTA);
     }
 
     @Test
     public void additionPositiveAndNegativeNumbersOk() {
-        operator = '+';
         Assert.assertEquals(
-                2.1, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                2.1, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, '+'), DELTA);
         Assert.assertEquals(
-                -2.1, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                -2.1, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, '+'), DELTA);
     }
 
     @Test
     public void additionZeroValuesOk() {
-        operator = '+';
         Assert.assertEquals(
-                5.5, calculator.calculate(FIRST_OPERAND, 0, operator), DELTA);
+                5.5, calculator.calculate(FIRST_OPERAND, 0, '+'), DELTA);
         Assert.assertEquals(
-                -7.6, calculator.calculate(0, -SECOND_OPERAND, operator), DELTA);
+                -7.6, calculator.calculate(0, -SECOND_OPERAND, '+'), DELTA);
         Assert.assertEquals(
-                0, calculator.calculate(0, 0, operator), DELTA);
+                0, calculator.calculate(0, 0, '+'), DELTA);
     }
 
     @Test
     public void subtractionPositiveNumbersOk() {
-        operator = '-';
         Assert.assertEquals(
-                -2.1, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                -2.1, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, '-'), DELTA);
         Assert.assertEquals(
-                2.1, calculator.calculate(SECOND_OPERAND, FIRST_OPERAND, operator), DELTA);
+                2.1, calculator.calculate(SECOND_OPERAND, FIRST_OPERAND, '-'), DELTA);
     }
 
     @Test
     public void subtractionNegativeNumbersOk() {
-        operator = '-';
         Assert.assertEquals(
-                2.1, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                2.1, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, '-'), DELTA);
         Assert.assertEquals(
-                -2.1, calculator.calculate(-SECOND_OPERAND, -FIRST_OPERAND, operator), DELTA);
+                -2.1, calculator.calculate(-SECOND_OPERAND, -FIRST_OPERAND, '-'), DELTA);
     }
 
     @Test
     public void subtractionPositiveAndNegativeNumbersOk() {
-        operator = '-';
         Assert.assertEquals(
-                -13.1, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                -13.1, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, '-'), DELTA);
         Assert.assertEquals(
-                13.1, calculator.calculate(SECOND_OPERAND, -FIRST_OPERAND, operator), DELTA);
+                13.1, calculator.calculate(SECOND_OPERAND, -FIRST_OPERAND, '-'), DELTA);
     }
 
     @Test
     public void subtractionZeroValuesOk() {
-        operator = '-';
         Assert.assertEquals(
-                7.6, calculator.calculate(0, -SECOND_OPERAND, operator), DELTA);
+                7.6, calculator.calculate(0, -SECOND_OPERAND, '-'), DELTA);
         Assert.assertEquals(
-                5.5, calculator.calculate(FIRST_OPERAND, 0, operator), DELTA);
+                5.5, calculator.calculate(FIRST_OPERAND, 0, '-'), DELTA);
         Assert.assertEquals(
-                0, calculator.calculate(0, 0, operator), DELTA);
+                0, calculator.calculate(0, 0, '-'), DELTA);
     }
 
     @Test
     public void divisionPositiveNumbersOk() {
-        operator = '/';
         Assert.assertEquals(
-                0.723, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                0.723, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, '/'), DELTA);
     }
 
     @Test
     public void divisionNegativeNumbersOk() {
-        operator = '/';
         Assert.assertEquals(
-                0.723, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                0.723, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, '/'), DELTA);
         Assert.assertEquals(
-                -0.723, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                -0.723, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, '/'), DELTA);
         Assert.assertEquals(
-                -0.723, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                -0.723, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, '/'), DELTA);
     }
 
     @Test
     public void divisionPositiveAndNegativeNumbersOk() {
-        operator = '/';
         Assert.assertEquals(
-                -0.723, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                -0.723, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, '/'), DELTA);
         Assert.assertEquals(
-                -0.723, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                -0.723, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, '/'), DELTA);
     }
 
 
     @Test(expected = ArithmeticException.class)
     public void divisionZeroNumbers() {
-        operator = '/';
         Assert.assertEquals(
-                0, calculator.calculate(0, SECOND_OPERAND, operator), DELTA);
-        calculator.calculate(FIRST_OPERAND, 0, operator);
+                0, calculator.calculate(0, SECOND_OPERAND, '/'), DELTA);
+        calculator.calculate(FIRST_OPERAND, 0, '/');
     }
 
     @Test
     public void multiplicationPositiveNumbersOk() {
-        operator = '*';
         Assert.assertEquals(
-                41.8, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                41.8, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, '*'), DELTA);
     }
 
     @Test
     public void multiplicationNegativeNumbersOk() {
-        operator = '*';
         Assert.assertEquals(
-                41.8, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                41.8, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, '*'), DELTA);
     }
 
     @Test
     public void multiplicationPositiveAndNegativeNumbersOk() {
-        operator = '*';
         Assert.assertEquals(
-                -41.8, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                -41.8, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, '*'), DELTA);
         Assert.assertEquals(
-                -41.8, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                -41.8, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, '*'), DELTA);
     }
 
     @Test
     public void multiplicationZeroNumbersOk() {
-        operator = '*';
         Assert.assertEquals(
-                0, calculator.calculate(0, SECOND_OPERAND, operator), DELTA);
+                0, calculator.calculate(0, SECOND_OPERAND, '*'), DELTA);
         Assert.assertEquals(
-                0, calculator.calculate(-FIRST_OPERAND, 0, operator), DELTA);
+                0, calculator.calculate(-FIRST_OPERAND, 0, '*'), DELTA);
     }
 
     @Test
     public void raisingToThePowerPositiveNumbersOk() {
-        operator = '^';
         Assert.assertEquals(
-                423405.446, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                423405.446, calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, '^'), DELTA);
     }
 
     @Test
     public void raisingToThePowerNegativeNumbersOk() {
-        operator = '^';
         Assert.assertEquals(
-                NaN, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, operator), DELTA);
+                NaN, calculator.calculate(-FIRST_OPERAND, SECOND_OPERAND, '^'), DELTA);
         Assert.assertEquals(
-                NaN, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, operator), DELTA);
+                NaN, calculator.calculate(-FIRST_OPERAND, -SECOND_OPERAND, '^'), DELTA);
     }
 
     @Test
     public void raisingToTheNegativePowerOk() {
-        operator = '^';
         Assert.assertEquals(
-                0.00000236, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, operator),
+                0.00000236, calculator.calculate(FIRST_OPERAND, -SECOND_OPERAND, '^'),
                 0.00000001);
     }
 
     @Test
     public void raisingNullToThePositivePowerOk() {
-        operator = '^';
         Assert.assertEquals(
-                0, calculator.calculate(0, SECOND_OPERAND, operator), 0.00000001);
+                0, calculator.calculate(0, SECOND_OPERAND, '^'), 0.00000001);
     }
 
     @Test
     public void raisingToTheZeroPowerOk() {
-        operator = '^';
         Assert.assertEquals(
-                1, calculator.calculate(FIRST_OPERAND, 0, operator), 0.00000001);
+                1, calculator.calculate(FIRST_OPERAND, 0, '^'), 0.00000001);
     }
 
     @Test(expected = ArithmeticException.class)
     public void raisingNullToTheNegativePowerOk() {
-        operator = '^';
-        calculator.calculate(0, -SECOND_OPERAND, operator);
+        calculator.calculate(0, -SECOND_OPERAND, '^');
     }
 }
