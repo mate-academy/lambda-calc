@@ -17,7 +17,7 @@ public class Calculator {
                 : operation == '*' ? (x, y) -> x * y
                 : operation == '^' ? Math::pow
                 : (x, y) -> {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("Operation is not supported!");
                 };
         return operator.applyAsDouble(first, second);
     }
