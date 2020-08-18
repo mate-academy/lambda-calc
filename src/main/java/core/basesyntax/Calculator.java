@@ -2,7 +2,7 @@ package core.basesyntax;
 
 public class Calculator {
 
-    public Integer result(Character method, int a, int b) {
+    public int result(Character method, int a, int b) {
         switch (method) {
             case '+': return getSum(a, b);
             case '-': return getSubtraction(a,b);
@@ -14,7 +14,7 @@ public class Calculator {
         }
     }
 
-    public Integer getSum(int a, int b) {
+    public int getSum(int a, int b) {
         return a + b;
     }
 
