@@ -27,7 +27,7 @@ public class CalculatorTest {
 
     @Test(expected = RuntimeException.class)
     public void testUnacceptableOperation() {
-        calculator.calculate(6, 1, RANDOM_OPERATION);
+        calculator.calculate(VALUE1_POSITIVE, VALUE2_POSITIVE, RANDOM_OPERATION);
     }
 
     @Test
