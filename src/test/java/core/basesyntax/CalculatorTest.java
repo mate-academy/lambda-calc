@@ -25,11 +25,6 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @BeforeClass
-    public static void beforeClass() {
-
-    }
-
     @Test(expected = RuntimeException.class)
     public void testUnacceptableOperation() {
         calculator.calculate(6, 1, RANDOM_OPERATION);
