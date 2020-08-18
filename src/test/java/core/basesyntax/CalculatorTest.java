@@ -27,16 +27,16 @@ public class CalculatorTest {
 
     @Test
     public void addWithMixedParameters() {
-        Assert.assertEquals((NEGATIVE_DOUBLE + POSITIVE_INT),
-                calculator.calculate(NEGATIVE_DOUBLE,
-                        POSITIVE_INT, ADD), DELTA);
+        double expected = NEGATIVE_DOUBLE + POSITIVE_INT;
+        double actual = calculator.calculate(NEGATIVE_DOUBLE,
+                POSITIVE_INT, ADD);
+        Assert.assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void addIntWithZero() {
-        Assert.assertEquals((POSITIVE_INT),
-                calculator.calculate(POSITIVE_INT,
-                        ZERO, ADD), DELTA);
+        double actual = calculator.calculate(POSITIVE_INT, ZERO, ADD);
+        Assert.assertEquals(POSITIVE_INT, actual, DELTA);
     }
 
     @Test
@@ -51,12 +51,13 @@ public class CalculatorTest {
     public void substractNegativeDoubleAndZero() {
         double actual = calculator.calculate(NEGATIVE_DOUBLE,
                 ZERO, SUBSTRACT);
-        Assert.assertEquals((NEGATIVE_DOUBLE), actual, DELTA);
+        Assert.assertEquals(NEGATIVE_DOUBLE, actual, DELTA);
     }
 
     @Test
     public void divide() {
-        double actual = calculator.calculate(NEGATIVE_DOUBLE, POSITIVE_INT, DIVIDE);
+        double actual = calculator.calculate(NEGATIVE_DOUBLE,
+                POSITIVE_INT, DIVIDE);
         double expected = NEGATIVE_DOUBLE / POSITIVE_INT;
         Assert.assertEquals(expected, actual, DELTA);
     }
@@ -74,21 +75,24 @@ public class CalculatorTest {
     @Test
     public void raisePositiveInNegative() {
         double expected = Math.pow(POSITIVE_DOUBLE, NEGATIVE_INT);
-        double actual = calculator.calculate(POSITIVE_DOUBLE, NEGATIVE_INT, RAISE);
+        double actual = calculator.calculate(POSITIVE_DOUBLE,
+                NEGATIVE_INT, RAISE);
         Assert.assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void raiseNegativeInPositive() {
         double expected = Math.pow(NEGATIVE_DOUBLE, POSITIVE_INT);
-        double actual = calculator.calculate(NEGATIVE_DOUBLE, POSITIVE_INT, RAISE);
+        double actual = calculator.calculate(NEGATIVE_DOUBLE,
+                POSITIVE_INT, RAISE);
         Assert.assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void multiply() {
         double expected = NEGATIVE_DOUBLE * POSITIVE_INT;
-        double actual = calculator.calculate(NEGATIVE_DOUBLE, POSITIVE_INT, MULTIPLY);
+        double actual = calculator.calculate(NEGATIVE_DOUBLE,
+                POSITIVE_INT, MULTIPLY);
         Assert.assertEquals(expected, actual, DELTA);
     }
 }
