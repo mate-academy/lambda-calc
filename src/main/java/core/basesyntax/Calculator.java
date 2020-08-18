@@ -11,20 +11,40 @@ public class Calculator {
     public double calculate(double a, double b, char sign) {
         switch (sign) {
             case PLUS:
-                return a + b;
+                return addition(a, b);
             case MINUS:
-                return a - b;
+                return subtraction(a, b);
             case MULTIPLE:
-                return a * b;
+                return multiplication(a, b);
             case DIVISION:
-                if (Math.abs(b) < DELTA) {
-                    throw new IllegalArgumentException("Can't div by zero");
-                }
-                return a / b;
+                return division(a, b);
             case POWER:
-                return Math.pow(a, b);
+                return power(a, b);
             default:
                 throw new IllegalArgumentException("Wrong sign");
         }
+    }
+
+    private double addition(double a, double b) {
+        return a + b;
+    }
+
+    private double subtraction(double a, double b) {
+        return a - b;
+    }
+
+    private double multiplication(double a, double b) {
+        return a * b;
+    }
+
+    private double division(double a, double b) {
+        if (Math.abs(b) < DELTA) {
+            throw new IllegalArgumentException("Can't div by zero");
+        }
+        return a / b;
+    }
+
+    private double power(double a, double b) {
+        return Math.pow(a, b);
     }
 }
