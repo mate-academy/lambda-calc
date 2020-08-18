@@ -10,15 +10,15 @@ public class Calculator {
         if (second == 0 && operation == '/') {
             throw new ArithmeticException("");
         }
-        DoubleBinaryOperator operator =
-                operation == '+' ? Double::sum :
-                operation == '-' ? (x, y) -> x - y :
-                operation == '/' ? (x, y) -> (x / y) :
-                operation == '*' ? (x, y) -> (x * y) :
-                operation == '^' ? Math::pow :
-                        (x, y) -> {
-            throw new IllegalArgumentException("Operation is not supported!");
-        };
+        DoubleBinaryOperator operator
+                = operation == '+' ? Double::sum
+                : operation == '-' ? (x, y) -> x - y
+                : operation == '/' ? (x, y) -> x / y
+                : operation == '*' ? (x, y) -> x * y
+                : operation == '^' ? Math::pow
+                : (x, y) -> {
+                    throw new IllegalArgumentException();
+                };
         return operator.applyAsDouble(first, second);
     }
 }

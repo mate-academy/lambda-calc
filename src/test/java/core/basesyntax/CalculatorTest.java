@@ -96,6 +96,7 @@ public class CalculatorTest {
     @Test(expected = IllegalArgumentException.class)
     public void wrongOperationTest() {
         calculator.calculate(5.0, 6.0, '>');
+
     }
 
     @Test(expected = NumberFormatException.class)
