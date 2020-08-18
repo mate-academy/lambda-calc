@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CalculatorTest {
-    public static final double DELTA = 0.01;
+    public static final double DELTA = 1E-10;
     Calculator calculator = new Calculator();
 
     @Test
@@ -51,10 +51,10 @@ public class CalculatorTest {
     public void getPowerNegative() {
         double expectedNegativePower = calculator.calculate(-2, 3, '^');
         double expectedPowerToNegative = calculator.calculate(3,-3, '^');
-        double expectedBothNegative = calculator.calculate(-2,-3,'^');
+        double expectedNegativeFraction = calculator.calculate(2,-2.5,'^');
         Assert.assertEquals(-8, expectedNegativePower , DELTA);
-        Assert.assertEquals(0.037, expectedPowerToNegative, DELTA);
-        Assert.assertEquals(-0.125, expectedBothNegative, DELTA);
+        Assert.assertEquals(0.037037037037037035, expectedPowerToNegative, DELTA);
+        Assert.assertEquals(0.1767766952966369, expectedNegativeFraction, DELTA);
     }
 
     @Test
@@ -65,24 +65,15 @@ public class CalculatorTest {
         Assert.assertEquals(1, expectedPowerToZero, DELTA);
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void unsupportedOperation() {
-        try {
-            calculator.calculate(2,2,'&');
-        } catch (RuntimeException e ) {
-            return;
-        }
-        Assert.fail("No valid operation!");
+        calculator.calculate(2,2,'&');
+
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void testDivisionByZero() {
-        try {
-            calculator.calculate(2, 0, '/');
-        } catch (ArithmeticException e) {
-            return;
-        }
-        Assert.fail("division by zero");
+        calculator.calculate(2, 0, '/');
     }
 
 
