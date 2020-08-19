@@ -1,12 +1,9 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class CalculatorTest {
 
     private static final char ADDITION = '+';
@@ -24,8 +21,8 @@ public class CalculatorTest {
     private static final double DOUBLE_MAX_NEGATIVE_VALUE = Math.pow(-2, 63);
     private static final double DELTA = 0.01;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         Calculator calculator = new Calculator();
     }
 
