@@ -11,7 +11,7 @@ public class CalculatorTest {
     private static final char MULTIPLICATION_SIGN = '*';
     private static final char RAISING_TO_THE_POWER_SIGN = '^';
     private static final char AMPERSAND_SIGN = '&';
-    private static final double DELTA = 0.001;
+    private static final double DELTA = 1e-10;
     private double resultReturn;
     private Calculator calculator;
 
@@ -61,12 +61,12 @@ public class CalculatorTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void divisionTestIsNotOkFirst() {
+    public void divisionZeroByZeroTest() {
         resultReturn = calculator.calculate(0, 0, DIVISION_SIGN);
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void divisionTestIsNotOkSecond() {
+    public void divisionNotZeroByZeroTest() {
         resultReturn = calculator.calculate(5, 0, DIVISION_SIGN);
     }
 
@@ -95,7 +95,7 @@ public class CalculatorTest {
         resultReturn = calculator.calculate(-18.7, 1, RAISING_TO_THE_POWER_SIGN);
         Assert.assertEquals(-18.7, resultReturn, DELTA);
         resultReturn = calculator.calculate(18.7, -1, RAISING_TO_THE_POWER_SIGN);
-        Assert.assertEquals(0.053, resultReturn, DELTA);
+        Assert.assertEquals(0.0534759358288, resultReturn, DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
