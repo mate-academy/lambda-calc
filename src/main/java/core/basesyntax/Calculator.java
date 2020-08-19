@@ -46,7 +46,7 @@ public class Calculator {
 
     private double division(double value1, double value2) {
         if (value2 == 0) {
-            throw new ArithmeticException("/ by zero");
+            throw new ArithmeticException("division by zero");
         }
         return value1 / value2;
     }
