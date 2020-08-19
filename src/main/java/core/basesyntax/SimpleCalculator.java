@@ -1,35 +1,30 @@
 package core.basesyntax;
 
-import java.io.IOException;
-
-/**
- * Feel free to remove this class and create your own.
- */
 public class SimpleCalculator {
-    public static double calculate(double a, Character sign, double b) throws IOException {
-        if (sign.equals('+')) {
+
+    public double calculate(double a, Character sign, double b) {
+        if (sign == '+') {
             return (a + b);
         }
 
-        if (sign.equals('-')) {
+        if (sign == '-') {
             return (a - b);
         }
 
-        if (sign.equals('*') || sign.equals('•')) {
+        if (sign == '*' || sign == '•') {
             return (a * b);
         }
 
-        if (sign.equals('/') || sign.equals(':')) {
+        if (sign == '/' || sign == ':') {
             if (b == 0) {
                 throw new ArithmeticException("Division by zero exception");
             }
-            return (double) a / (double) b;
+            return a / b;
         }
 
-        if (sign.equals('^')) {
+        if (sign == '^') {
             return Math.pow(a, b);
         }
-        throw new ArithmeticException("\'" + sign + "\' is unknown operator");
+        throw new IllegalArgumentException("\'" + sign + "\' is unknown operator");
     }
-
 }
