@@ -7,7 +7,7 @@ public class Calculator {
     private static final char DIVISION = '/';
     private static final char POWER = '^';
 
-    public static double calculate(double number1, double number2, char action) {
+    public double calculate(double number1, double number2, char action) {
         switch (action) {
             case ADDITION:
                 return number1 + number2;
@@ -24,7 +24,7 @@ public class Calculator {
         }
     }
 
-    private static double division(double number1, double number2) {
+    private double division(double number1, double number2) {
         if (number2 == 0) {
             throw new ArithmeticException("Division by 0");
         }
