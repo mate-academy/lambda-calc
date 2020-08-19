@@ -19,26 +19,26 @@ public class Calculator {
         }
     }
 
-    private static double addition(double a, double b) {
+    private double addition(double a, double b) {
         return a + b;
     }
 
-    private static double subtraction(double a, double b) {
+    private double subtraction(double a, double b) {
         return a - b;
     }
 
-    private static double multiplication(double a, double b) {
+    private double multiplication(double a, double b) {
         return a * b;
     }
 
-    private static double division(double a, double b) {
+    private double division(double a, double b) {
         if (b == 0) {
             throw new ArithmeticException("/ by zero");
         }
         return a / b;
     }
 
-    private static double power(double num, double power) {
+    private double power(double num, double power) {
         return Math.pow(num, power);
     }
 }
