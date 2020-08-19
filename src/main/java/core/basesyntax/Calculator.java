@@ -34,16 +34,13 @@ public class Calculator {
     }
 
     public static double division(double a, double b) {
-        if (a == ZERO_VALUE || b == ZERO_VALUE) {
-            throw new ArithmeticException("Error! The value can't be zero!");
+        if (b == ZERO_VALUE) {
+            throw new ArithmeticException("Error! 'b' can't be zero! 'B' value: " + b);
         }
         return a / b;
     }
 
     public static double multiplication(double a, double b) {
-        if (a == ZERO_VALUE || b == ZERO_VALUE) {
-            throw new ArithmeticException("Error! The value can't be zero!");
-        }
         return a * b;
     }
 

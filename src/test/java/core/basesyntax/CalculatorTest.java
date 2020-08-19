@@ -81,9 +81,10 @@ public class CalculatorTest {
         Assert.assertEquals(20, res, DELTA);
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test()
     public void multiplicationZero() {
         double res = Calculator.calculate(ZERO_VALUE, NEGATIVE_B, MULTIPLY);
+        Assert.assertEquals(ZERO_VALUE,res,DELTA);
     }
 
     @Test
