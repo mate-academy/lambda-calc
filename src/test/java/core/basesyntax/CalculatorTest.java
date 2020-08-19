@@ -4,9 +4,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class CalculatorTest {
     private static final char ADD = '+';
     private static final char SUB = '-';
@@ -97,25 +94,13 @@ public class CalculatorTest {
         Assert.assertEquals(expected, actual, DELTA);
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
-        String expectedMessage = "Cannot divide by 0";
-        try {
             calculator.calculate(FIRST_OPERAND, DIV, ZERO);
-            Assert.fail("Expected ArithmeticException");
-        } catch (ArithmeticException e) {
-            Assert.assertEquals(e.getMessage(), expectedMessage);
-        }
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void illegalOperatorTest() {
-        String expectedMessage = "Unsupported operator";
-        try {
             calculator.calculate(FIRST_OPERAND, ILLEGAL_OPERATOR, SECOND_OPERAND);
-            Assert.fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            Assert.assertEquals(e.getMessage(), expectedMessage);
-        }
     }
 }
