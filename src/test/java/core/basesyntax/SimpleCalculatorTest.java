@@ -1,18 +1,19 @@
 package core.basesyntax;
 
+import static java.lang.Float.NaN;
+
 import org.junit.Assert;
 import org.junit.Test;
-import static java.lang.Float.NaN;
 
 public class SimpleCalculatorTest {
     private static final double DELTA = 1e-6;
     private static final char[] BAD_OPERATORS = {'0', '1', '~', ',',
             ' ', '\b', '\r', '\r', '\t', '\f', '\b', '\n', '\\', '◘',
             '☺', '%', '$', '#', '@', '!', '&', '(', ')', '“'};
+    private SimpleCalculator calculator = new SimpleCalculator();
 
     @Test
     public void addOk() {
-        SimpleCalculator calculator = new SimpleCalculator();
         Assert.assertEquals(2, calculator.calculate(1, '+', 1), DELTA);
         Assert.assertEquals(54, calculator.calculate(-5, '+', 59), DELTA);
         Assert.assertEquals(0, calculator.calculate(15, '+', -15), DELTA);
@@ -25,7 +26,6 @@ public class SimpleCalculatorTest {
 
     @Test
     public void substractOK() {
-        SimpleCalculator calculator = new SimpleCalculator();
         Assert.assertEquals(0, calculator.calculate(1, '-', 1), DELTA);
         Assert.assertEquals(7, calculator.calculate(2147483647, '-', 2147483640), DELTA);
         Assert.assertEquals(-1, calculator.calculate(0, '-', 1), DELTA);
@@ -38,7 +38,7 @@ public class SimpleCalculatorTest {
 
     @Test
     public void multiplyOk() {
-        SimpleCalculator calculator = new SimpleCalculator();
+
         Assert.assertEquals(25, calculator.calculate(5, '*', 5), DELTA);
         Assert.assertEquals(25, calculator.calculate(5, '•', 5), DELTA);
         Assert.assertEquals(-25, calculator.calculate(5, '*', -5), DELTA);
@@ -51,7 +51,6 @@ public class SimpleCalculatorTest {
 
     @Test
     public void divisionOK() {
-        SimpleCalculator calculator = new SimpleCalculator();
         Assert.assertEquals(1, calculator.calculate(5, '/', 5), DELTA);
         Assert.assertEquals(1, calculator.calculate(5, ':', 5), DELTA);
         Assert.assertEquals(-1, calculator.calculate(5, '/', -5), DELTA);
@@ -61,13 +60,11 @@ public class SimpleCalculatorTest {
 
     @Test(expected = ArithmeticException.class)
     public void divisionByZeroTest() {
-        SimpleCalculator calculator = new SimpleCalculator();
         calculator.calculate(5, '/', 0);
     }
 
     @Test
     public void powOK() {
-        SimpleCalculator calculator = new SimpleCalculator();
         Assert.assertEquals(25, calculator.calculate(5, '^', 2), DELTA);
         Assert.assertEquals(5, calculator.calculate(25, '^', 0.5), DELTA);
         Assert.assertEquals(8, calculator.calculate(4, '^', 1.5), DELTA);
@@ -76,14 +73,22 @@ public class SimpleCalculatorTest {
         Assert.assertEquals(NaN, calculator.calculate(-5, '^', 0.5), DELTA);
         Assert.assertEquals(2.23606798, calculator.calculate(5, '^', 0.5), DELTA);
         Assert.assertEquals(0.25, calculator.calculate(0.5, '^', 2), DELTA);
+        Assert.assertEquals(1, calculator.calculate(1545, '^', 0), DELTA);
+        Assert.assertEquals(512, calculator.calculate(0.125, '^', -3), DELTA);
+        Assert.assertEquals(0.0625, calculator.calculate(2, '^', -4), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void badOperatorError() {
-        SimpleCalculator calculator = new SimpleCalculator();
+        int exceptionsCounter = 0;
         for (char operator : BAD_OPERATORS) {
-            calculator.calculate(1, operator, 1);
-            Assert.fail("\'" + operator + "\' is unknown operator");
+            try {
+                calculator.calculate(1, operator, 1);
+            }
+            catch (IllegalAccessError e) {
+                exceptionsCounter++;
+            }
+        Assert.assertEquals(BAD_OPERATORS.length, exceptionsCounter);
         }
     }
 }

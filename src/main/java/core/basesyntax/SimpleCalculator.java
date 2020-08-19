@@ -2,7 +2,7 @@ package core.basesyntax;
 
 public class SimpleCalculator {
 
-    public double calculate(double a, Character sign, double b) {
+    public double calculate(double a, char sign, double b) {
         if (sign == '+') {
             return (a + b);
         }
