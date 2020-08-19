@@ -1,15 +1,11 @@
 package core.basesyntax;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
-/**
- * Feel free to remove this class and create your own.
- */
-public class HelloWorldTest {
+public class CalculatorTest {
     private static Calculator calculator;
     private static final double DELTA = 0.0001;
 
@@ -70,15 +66,9 @@ public class HelloWorldTest {
         }
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void divideByZero() {
-        try {
-            calculator.calculate(13.0, 0.0, '/');
-        } catch (ArithmeticException e) {
-            assertEquals(e.getMessage(), "We cannot divide by zero");
-            return;
-        }
-        Assert.fail("Zero should not be accepted as divider.");
+        calculator.calculate(13.0, 0.0, '/');
     }
 
     @Test
@@ -98,15 +88,9 @@ public class HelloWorldTest {
         assertEquals(1.0, actualResult, DELTA);
     }
 
-    @Test
-    public void getZeroInPow() {
-        try {
-            calculator.calculate(0.0, 13.0, '^');
-        } catch (ArithmeticException e) {
-            assertEquals(e.getMessage(), "Just don't. https://en.wikipedia.org/wiki/Zero_to_the_power_of_zero");
-            return;
-        }
-        Assert.fail("Please, make sure that 0 is not used for POW method");
+    @Test(expected = ArithmeticException.class)
+    public void getZeroToThePowerOfZero() {
+        calculator.calculate(0.0, 0.0, '^');
     }
 
     @Test

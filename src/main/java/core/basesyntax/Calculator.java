@@ -1,8 +1,5 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class Calculator {
     public double calculate(double first, double second, char operand) {
         switch (operand) {
@@ -41,7 +38,7 @@ public class Calculator {
     }
 
     private double raisingToPower(double first, double n) {
-        if (first == 0) {
+        if (first == 0 && n == 0) {
             throw new ArithmeticException("Just don't. https://en.wikipedia.org/wiki/Zero_to_the_power_of_zero");
         }
         return Math.pow(first, n);
