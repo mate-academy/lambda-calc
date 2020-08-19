@@ -1,8 +1,7 @@
 package core.basesyntax;
 
 public class Calculator {
-    public double calculate(double value1, double value2, char operation)
-            throws BadOperandException {
+    public double calculate(double value1, double value2, char operation) {
 
         switch (operation) {
             case ('*'):
