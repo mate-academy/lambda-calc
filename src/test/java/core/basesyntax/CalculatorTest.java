@@ -14,8 +14,7 @@ public class CalculatorTest {
     private static final char DIVIDE = '/';
     private static final char WRONG_SIGNAL = '?';
     private static final char RAISING_TO_THE_POWER = '^';
-    private static final double DELTA = 1
-            ;
+    private static final double DELTA = 1;
     private static final double POSITIVE_A = 5;
     private static final double POSITIVE_B = 5;
     private static final double NEGATIVE_A = -10;
