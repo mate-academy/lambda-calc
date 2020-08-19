@@ -4,11 +4,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static java.lang.Double.MAX_VALUE;
-
-/**
- * Feel free to remove this class and create your own.
- */
 public class BasicCalculatorTest {
     private static final double ZERO = 0;
     private static final double ONE = 1;
@@ -51,8 +46,8 @@ public class BasicCalculatorTest {
 
     @Test
     public void multiplicationMaxValue() throws CalcException {
-        double infiniteResult = calculator.calculus(MAX_VALUE, POSITIVE_BIG, MULTI);
-        Assert.assertTrue(infiniteResult > MAX_VALUE);
+        double infiniteResult = calculator.calculus(Double.MAX_VALUE, POSITIVE_BIG, MULTI);
+        Assert.assertTrue(infiniteResult > Double.MAX_VALUE);
     }
 
     @Test
@@ -83,13 +78,10 @@ public class BasicCalculatorTest {
         Assert.assertEquals(POSITIVE_BIG - POSITIVE, positiveSubtract, DIFF);
     }
 
-    @Test
-    public void divisionByZero() {
-        try {
-            int zeroDivision = (int) (calculator.calculus(POSITIVE, ZERO, DIV));
-        } catch (CalcException e) {
-            Assert.assertEquals("Can't divide by zero", e.getMessage());
-        }
+    @Test(expected = ArithmeticException.class)
+    public void divisionByZero() throws CalcException {
+        int zeroDivision = (int) (calculator.calculus(POSITIVE, ZERO, DIV));
+//            Assert.assertEquals("Can't divide by zero", ArithmeticException.getMessage());
     }
 
     @Test
@@ -150,12 +142,8 @@ public class BasicCalculatorTest {
         Assert.assertEquals(1 / NEGATIVE, powerOfNegative, DIFF);
     }
 
-    @Test
-    public void wrongOperand() {
-        try {
-            double noCalc = calculator.calculus(POSITIVE, NEGATIVE, NOT_MATH);
-        } catch (CalcException e) {
-            Assert.assertEquals("Incorrect operand " + NOT_MATH, e.getMessage());
-        }
+    @Test(expected = CalcException.class)
+    public void wrongOperand() throws CalcException {
+        double noCalc = calculator.calculus(POSITIVE, NEGATIVE, NOT_MATH);
     }
 }

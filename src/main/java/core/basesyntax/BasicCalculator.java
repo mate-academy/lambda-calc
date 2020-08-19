@@ -16,7 +16,7 @@ public class BasicCalculator {
             }
             case '/': {
                 if (arg2 == 0) {
-                    throw new CalcException("Can't divide by zero");
+                    throw new ArithmeticException("Can't divide by zero");
                 }
                 return arg1 / arg2;
             }
