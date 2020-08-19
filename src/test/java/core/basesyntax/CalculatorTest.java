@@ -10,7 +10,7 @@ public class CalculatorTest {
     private static final double NEGATIVE_FIRST = -15.0;
     private static final double NEGATIVE_SECOND = -3.0;
     private static final double ZERO = 0;
-    private static final double DELTA = 0.000_001;
+    private static final double DELTA = 1e-10;
     private static final char PLUS = '+';
     private static final char MINUS = '-';
     private static final char MULTIPLY = '*';
@@ -18,7 +18,6 @@ public class CalculatorTest {
     private static final char POWER = '^';
     private static final char INCORRECT_OPERATOR = '%';
     private static Calculator calculator;
-    public double actual;
 
     @BeforeClass
     public static void setUp() {
@@ -27,79 +26,79 @@ public class CalculatorTest {
 
     @Test
     public void additionPositiveTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, PLUS);
+        double actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, PLUS);
         Assert.assertEquals(18.0, actual, DELTA);
     }
 
     @Test
     public void additionNegativeTest() {
-        actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, PLUS);
+        double actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, PLUS);
         Assert.assertEquals(-18.0, actual, DELTA);
     }
 
     @Test
     public void additionPositiveNegativeTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, PLUS);
+        double actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, PLUS);
         Assert.assertEquals(ZERO, actual, DELTA);
     }
 
     @Test
     public void subtractPositiveTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, MINUS);
+        double actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, MINUS);
         Assert.assertEquals(12.0, actual, DELTA);
     }
 
     @Test
     public void subtractNegativeTest() {
-        actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MINUS);
+        double actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MINUS);
         Assert.assertEquals(-12.0, actual, DELTA);
     }
 
     @Test
     public void subtractPositiveNegativeTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, MINUS);
+        double actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, MINUS);
         Assert.assertEquals(30.0, actual, DELTA);
     }
 
     @Test
     public void multiplyTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, MULTIPLY);
+        double actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, MULTIPLY);
         Assert.assertEquals(45.0, actual, DELTA);
     }
 
     @Test
     public void multiplyNegativeTest() {
-        actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MULTIPLY);
+        double actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MULTIPLY);
         Assert.assertEquals(45.0, actual, DELTA);
     }
 
     @Test
     public void multiplyPositiveNegativeTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, MULTIPLY);
+        double actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, MULTIPLY);
         Assert.assertEquals(-225.0, actual, DELTA);
     }
 
     @Test
     public void multiplyByZeroTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, ZERO, MULTIPLY);
+        double actual = calculator.calculate(POSITIVE_FIRST, ZERO, MULTIPLY);
         Assert.assertEquals(ZERO, actual, DELTA);
     }
 
     @Test
     public void divisionPositiveTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, DIVISION);
+        double actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, DIVISION);
         Assert.assertEquals(5.0, actual, DELTA);
     }
 
     @Test
     public void divisionNegativeTest() {
-        actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, DIVISION);
+        double actual = calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, DIVISION);
         Assert.assertEquals(5.0, actual, DELTA);
     }
 
     @Test
     public void divisionPositiveNegativeTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, DIVISION);
+        double actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, DIVISION);
         Assert.assertEquals(-1.0, actual, DELTA);
     }
 
@@ -110,7 +109,7 @@ public class CalculatorTest {
 
     @Test
     public void positiveToPowerTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, POWER);
+        double actual = calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, POWER);
         Assert.assertEquals(3375.0, actual, DELTA);
         actual = calculator.calculate(POSITIVE_FIRST, 1, POWER);
         Assert.assertEquals(POSITIVE_FIRST, actual, DELTA);
@@ -118,19 +117,19 @@ public class CalculatorTest {
 
     @Test
     public void negativeToPowerTest() {
-        actual = calculator.calculate(NEGATIVE_FIRST, POSITIVE_SECOND, POWER);
+        double actual = calculator.calculate(NEGATIVE_FIRST, POSITIVE_SECOND, POWER);
         Assert.assertEquals(-3375.0, actual, DELTA);
     }
 
     @Test
     public void toNegativePowerTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, POWER);
+        double actual = calculator.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, POWER);
         Assert.assertEquals(Math.pow(15.0, -3.0), actual, DELTA);
     }
 
     @Test
     public void toZeroPowerTest() {
-        actual = calculator.calculate(POSITIVE_FIRST, ZERO, POWER);
+        double actual = calculator.calculate(POSITIVE_FIRST, ZERO, POWER);
         Assert.assertEquals(1.0, actual, DELTA);
     }
 
