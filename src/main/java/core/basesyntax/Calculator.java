@@ -19,6 +19,9 @@ public class Calculator {
             case MULTIPLICATION_SIGN:
                 return firstValue * secondValue;
             case DIVISION_SIGN:
+                if (secondValue == 0) {
+                    throw new ArithmeticException("Can't divide by zero");
+                }
                 return firstValue / secondValue;
             case RAISING_TO_THE_POWER_SIGN:
                 return Math.pow(firstValue, secondValue);

@@ -72,9 +72,9 @@ public class CalculatorTest {
         Assert.assertEquals(expectedZeroDivideFirst, actualZeroDivideFirst, DELTA);
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void getDivisionResultInDivideByZeroCase() {
-        Assert.assertTrue(Double.isInfinite(calculator.calculate(FIRST_VALUE, DIVISION_SIGN, ZERO_VALUE)));
+        calculator.calculate(FIRST_VALUE, DIVISION_SIGN, ZERO_VALUE);
     }
 
     @Test
