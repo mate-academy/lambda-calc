@@ -8,30 +8,20 @@ public class Calculator {
     private static final char RAISING_TO_POWER = '^';
 
     public double calculate(double firstNumber, double secondNumber, char operation) {
-        double result;
-
         switch (operation) {
             case ADDITION:
-                result = add(firstNumber, secondNumber);
-                break;
+                return add(firstNumber, secondNumber);
             case SUBSTRACTION:
-                result = substract(firstNumber, secondNumber);
-                break;
+                return substract(firstNumber, secondNumber);
             case DIVISION:
-                result = divide(firstNumber, secondNumber);
-                break;
+                return divide(firstNumber, secondNumber);
             case MULTIPLICATION:
-                result = miltiplicate(firstNumber, secondNumber);
-                break;
+                return miltiplicate(firstNumber, secondNumber);
             case RAISING_TO_POWER:
-                result = raiseToPower(firstNumber, secondNumber);
-                break;
+                return raiseToPower(firstNumber, secondNumber);
             default:
                 throw new IllegalArgumentException("Unknown operation");
         }
-
-        checkResultForOverflow(result);
-        return result;
     }
 
     private void checkResultForOverflow(double result) {
@@ -44,25 +34,35 @@ public class Calculator {
     }
 
     private double add(double firstNumber, double secondNumber) {
-        return firstNumber + secondNumber;
+        double result = firstNumber + secondNumber;
+        checkResultForOverflow(result);
+        return result;
     }
 
     private double substract(double firstNumber, double secondNumber) {
-        return firstNumber - secondNumber;
+        double result = firstNumber - secondNumber;
+        checkResultForOverflow(result);
+        return result;
     }
 
     private double divide(double firstNumber, double secondNumber) {
         if (secondNumber == 0) {
             throw new ArithmeticException("You can't divide by zero");
         }
-        return firstNumber / secondNumber;
+        double result = firstNumber / secondNumber;
+        checkResultForOverflow(result);
+        return result;
     }
 
     private double miltiplicate(double firstNumber, double secondNumber) {
-        return firstNumber * secondNumber;
+        double result = firstNumber * secondNumber;
+        checkResultForOverflow(result);
+        return result;
     }
 
     private double raiseToPower(double firstNumber, double secondNumber) {
-        return Math.pow(firstNumber, secondNumber);
+        double result = Math.pow(firstNumber, secondNumber);
+        checkResultForOverflow(result);
+        return result;
     }
 }
