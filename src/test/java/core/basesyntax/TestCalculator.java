@@ -59,10 +59,18 @@ public class TestCalculator {
     }
 
     @Test
+    public void additionTestMaxValues() {
+        result = calculator.calculate(ZERO, Double.MAX_VALUE, PLUS);
+        Assert.assertEquals(Double.MAX_VALUE, result, DELTA);
+        result = calculator.calculate(ZERO, Double.MIN_VALUE, PLUS);
+        Assert.assertEquals(Double.MIN_VALUE, result, DELTA);
+    }
+
+    /*@Test
     public void subtractionTestPositiveOperands() {
         result = calculator.calculate(POSITIVE_OPERAND, POSITIVE_OPERAND, MINUS);
         Assert.assertEquals(ZERO, result, DELTA);
-    }
+    }*/
 
     @Test
     public void subtractionTestNegativeOperands() {
@@ -88,6 +96,13 @@ public class TestCalculator {
         Assert.assertEquals(ZERO, result, DELTA);
     }
 
+    @Test
+    public void subtractionTestMaxValues() {
+        result = calculator.calculate(Double.MAX_VALUE, ZERO, MINUS);
+        Assert.assertEquals(Double.MAX_VALUE, result, DELTA);
+        result = calculator.calculate(Double.MIN_VALUE, ZERO, MINUS);
+        Assert.assertEquals(Double.MIN_VALUE, result, DELTA);
+    }
 
     @Test
     public void multiplicationTestPositiveOperands() {
@@ -116,6 +131,14 @@ public class TestCalculator {
         result = calculator.calculate(POSITIVE_OPERAND, ZERO, MULTIPLICATION);
         Assert.assertEquals(ZERO, result, DELTA);
         result = calculator.calculate(ZERO, ZERO, MULTIPLICATION);
+        Assert.assertEquals(ZERO, result, DELTA);
+    }
+
+    @Test
+    public void multiplicationTestMaxValues() {
+        result = calculator.calculate(Double.MAX_VALUE, ZERO, MULTIPLICATION);
+        Assert.assertEquals(ZERO, result, DELTA);
+        result = calculator.calculate(Double.MIN_VALUE, ZERO, MULTIPLICATION);
         Assert.assertEquals(ZERO, result, DELTA);
     }
 
@@ -150,6 +173,14 @@ public class TestCalculator {
     @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
         calculator.calculate(POSITIVE_OPERAND, ZERO, DIVISION);
+    }
+
+    @Test
+    public void divisionTestMaxValues() {
+        result = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, DIVISION);
+        Assert.assertEquals(1, result, DELTA);
+        result = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, DIVISION);
+        Assert.assertEquals(1, result, DELTA);
     }
 
     @Test
@@ -188,5 +219,13 @@ public class TestCalculator {
     public void raisingZeroToPowerTest() {
         result = calculator.calculate(ZERO, POSITIVE_OPERAND, POWER);
         Assert.assertEquals(ZERO, result, DELTA);
+    }
+
+   @Test
+    public void raisingToPowerTestMaxValues() {
+       result = calculator.calculate(Double.MAX_VALUE, ZERO, POWER);
+       Assert.assertEquals(1, result, DELTA);
+       result = calculator.calculate(Double.MIN_VALUE, ZERO, POWER);
+       Assert.assertEquals(1, result, DELTA);
     }
 }
