@@ -2,12 +2,11 @@ package core.basesyntax;
 
 import org.junit.*;
 
-
 public class HelloWorldTest {
     private HelloWorld helloWorld;
     private final static double SUM_OF_TWO_POSITIVE_NUMBERS = 46.0;
     private final static double SUM_OF_TWO_POSITIVE_AND_NEGATIVE_NUMBERS = 0;
-    private final static double ResultOfDividingByNotNull = 45/7.0;
+    private final static double ResultOfDividingByNotNull = 45 / 7.0;
     private final static double ResultBySubtractionOfTwoNegativeNumbers = 5;
     private final static double ResultWithMultiplicationWithNull = 0;
     private final static double ResultWithNullBasisAndNullDegree = 1;
@@ -23,7 +22,7 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void getSumOfTwoPositiveNumbers () throws BadOperandException {
+    public void getSumOfTwoPositiveNumbers() throws BadOperandException {
         double actualResult = helloWorld.calculate(12.5, 33.5, '+');
         double expectedResult = SUM_OF_TWO_POSITIVE_NUMBERS;
         Assert.assertEquals(expectedResult, actualResult, 0);

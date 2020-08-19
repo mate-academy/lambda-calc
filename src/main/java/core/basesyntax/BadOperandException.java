@@ -1,7 +1,6 @@
 package core.basesyntax;
 
-public class BadOperandException extends Exception{
-     private String description;
+public class BadOperandException extends Exception {
 
     public BadOperandException(String description) {
         super(description);

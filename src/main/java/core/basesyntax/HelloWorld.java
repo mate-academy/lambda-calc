@@ -1,10 +1,8 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class HelloWorld {
-    public double calculate(double value1, double value2, char operation) throws BadOperandException {
+    public double calculate(double value1, double value2, char operation)
+            throws BadOperandException {
 
         double result;
 
@@ -19,13 +17,13 @@ public class HelloWorld {
                 result = value1 - value2;
                 break;
             case ('/'):
-                if(value2 == 0){
+                if (value2 == 0) {
                     throw new ArithmeticException("You can't divide by zero");
                 }
                 result = value1 / value2;
                 break;
             case ('^'):
-                if(value1 == 0 && value2 < 0){
+                if (value1 == 0 && value2 < 0) {
                     throw new ArithmeticException("You can't divide by zero");
                 }
                 result = Math.pow(value1, value2);
