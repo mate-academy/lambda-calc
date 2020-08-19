@@ -22,7 +22,7 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void nonexistentOperation() {
         calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '?');
     }
@@ -39,7 +39,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtractIsOK() {
+    public void subtractIsOk() {
         Assert.assertEquals(6, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '-'), DELTA);
         Assert.assertEquals(-9, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '-'), DELTA);
         Assert.assertEquals(16, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '-'), DELTA);
@@ -50,7 +50,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multiplyIsOK() {
+    public void multiplyIsOk() {
         Assert.assertEquals(72, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '*'), DELTA);
         Assert.assertEquals(-18, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '*'), DELTA);
         Assert.assertEquals(-48, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '*'), DELTA);
@@ -61,7 +61,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void divisionIsOK() {
+    public void divisionIsOk() {
         Assert.assertEquals(2, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '/'), DELTA);
         Assert.assertEquals(-0.5, calculator.calculate(FIRST_NEGATIVE, SECOND_POSITIVE, '/'), DELTA);
         Assert.assertEquals(-3, calculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, '/'), DELTA);
@@ -76,7 +76,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void powerIsOK() {
+    public void powerIsOk() {
         Assert.assertEquals(2985984, calculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, '^'), DELTA);
     }
 
