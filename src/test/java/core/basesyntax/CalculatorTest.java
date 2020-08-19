@@ -1,77 +1,96 @@
 package core.basesyntax;
 
-import org.junit.Before;
+import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class CalculatorTest {
-    private static final String ADD = "25 + 30";
-    private static final double ADD_RESULT = 55.0;
-    private static final String DIV = "60 / 30";
-    private static final double DIV_RESULT = 2.0;
-    private static final String MULT = "25 * 30";
-    private static final double MULT_RESULT = 750.0;
-    private static final String POW = "2 ^ 7";
-    private static final double POW_RESULT = 128.0;
-    private static final String SUBTR = "33 - 8";
-    private static final double SUBTR_RESULT = 25.0;
-    private static final String DIVISION_BY_ZERO = "25 / 0";
-    private static final String STRING_WITHOUT_ARITHMETIC_CHARS = "25_.0";
-    private static final String STRING_WITH_MORE_THAN_TWO_NUMBERS = "25 + 30 + 45";
-    private static final double DELTA = 0.000_001d;
-    private Calculator calculator;
+    private static final String ADD_STRING = "25 + 30";
+    private static final String ADD_NEGATIVE_STRING = "-41 + 30";
+    private static final String DIV_STRING = "60 / 30";
+    private static final String DIV_NEGATIVE_STRING = "-125 / 25";
+    private static final String MULT_STRING = "25 * 30";
+    private static final String MULT_NEGATIVE_STRING = "25 * -30";
+    private static final String MULT_NULL_STRING = "0 * -30";
+    private static final String POW_STRING = "2 ^ 7";
+    private static final String SUBTR_STRING = "33 - 8";
+    private static final String POW_STRING_NEGATIVE = "-2 ^ 7";
+    private static final String NULL_POW = "-2 ^ 0";
+    private static final double DELTA = 1e-9;
+    private static Calculator calculator;
 
-    @Before
-    public void init(){
+    @BeforeClass
+    public static void init() {
         calculator = new Calculator();
     }
+
     @Test
     public void isWeCallTheRightClass() {
-        assertNull(calculator.getArithmeticOperation());
-        calculator.calculate(ADD);
-        assertSame(calculator.getArithmeticOperation().getClass(), AddOperation.class);
-        calculator.calculate(DIV);
-        assertSame(calculator.getArithmeticOperation().getClass(), DivOperation.class);
-        calculator.calculate(MULT);
-        assertSame(calculator.getArithmeticOperation().getClass(), MultOperation.class);
-        calculator.calculate(SUBTR);
-        assertSame(calculator.getArithmeticOperation().getClass(), SubtrOperation.class);
-        calculator.calculate(POW);
-        assertSame(calculator.getArithmeticOperation().getClass(), PowOperation.class);
+        Assert.assertNull(calculator.getLastOperation());
+        calculator.calculate(ADD_STRING);
+        Assert.assertSame(calculator.getLastOperation().getClass(), AddOperation.class);
+        calculator.calculate(DIV_STRING);
+        Assert.assertSame(calculator.getLastOperation().getClass(), DivOperation.class);
+        calculator.calculate(MULT_STRING);
+        Assert.assertSame(calculator.getLastOperation().getClass(), MultOperation.class);
+        calculator.calculate(SUBTR_STRING);
+        Assert.assertSame(calculator.getLastOperation().getClass(), SubtrOperation.class);
+        calculator.calculate(POW_STRING);
+        Assert.assertSame(calculator.getLastOperation().getClass(), PowOperation.class);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void checkPassedArgumentWithWrongParameters() {
-            calculator.calculate(STRING_WITHOUT_ARITHMETIC_CHARS);
+        String stringWithoutArithmeticChars = "25_.0";
+        calculator.calculate(stringWithoutArithmeticChars);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void passEmptyStringToCalculateMethod() {
-            calculator.calculate("");
+        String emptyString = "";
+        calculator.calculate(emptyString);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void passNullValueToCalculateMethod() {
-            calculator.calculate(null);
+        calculator.calculate(null);
     }
 
     @Test(expected = ArithmeticException.class)
     public void checkDivisionByZero() {
-            calculator.calculate(DIVISION_BY_ZERO);
+        String divisionByZero = "25 / 0";
+        calculator.calculate(divisionByZero);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void checkPassedArgumentWithMoreThanTwoNumbers() {
-            calculator.calculate(STRING_WITH_MORE_THAN_TWO_NUMBERS);
+        String stringWithMoreThanTwoNumbers = "25 + 30 + 45";
+        calculator.calculate(stringWithMoreThanTwoNumbers);
     }
 
     @Test
     public void isCorrectArithmeticOperations() {
-        assertEquals(ADD_RESULT, calculator.calculate(ADD), DELTA);
-        assertEquals(DIV_RESULT, calculator.calculate(DIV), DELTA);
-        assertEquals(MULT_RESULT, calculator.calculate(MULT), DELTA);
-        assertEquals(SUBTR_RESULT, calculator.calculate(SUBTR), DELTA);
-        assertEquals(POW_RESULT, calculator.calculate(POW), DELTA);
+        double addResult = 55.0;
+        Assert.assertEquals(addResult, calculator.calculate(ADD_STRING), DELTA);
+        double addNegativeNumResult = -11.0;
+        Assert.assertEquals(addNegativeNumResult, calculator.calculate(ADD_NEGATIVE_STRING), DELTA);
+        double divResult = 2.0;
+        Assert.assertEquals(divResult, calculator.calculate(DIV_STRING), DELTA);
+        double divNegativeNumResult = -5.0;
+        Assert.assertEquals(divNegativeNumResult, calculator.calculate(DIV_NEGATIVE_STRING), DELTA);
+        double multResult = 750.0;
+        Assert.assertEquals(multResult, calculator.calculate(MULT_STRING), DELTA);
+        double multNegativeNumResult = -750.0;
+        Assert.assertEquals(multNegativeNumResult, calculator.calculate(MULT_NEGATIVE_STRING), DELTA);
+        double multNullResult = 0.0;
+        Assert.assertEquals(multNullResult, calculator.calculate(MULT_NULL_STRING), DELTA);
+        double subtrResult = 25.0;
+        Assert.assertEquals(subtrResult, calculator.calculate(SUBTR_STRING), DELTA);
+        double powResult = 128.0;
+        Assert.assertEquals(powResult, calculator.calculate(POW_STRING), DELTA);
+        double powNegativeNumResult = -128.0;
+        Assert.assertEquals(powNegativeNumResult, calculator.calculate(POW_STRING_NEGATIVE), DELTA);
+        double powNullResult = 1.0;
+        Assert.assertEquals(powNullResult, calculator.calculate(NULL_POW), DELTA);
     }
 }

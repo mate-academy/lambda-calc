@@ -3,12 +3,11 @@ package core.basesyntax;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class Calculator {
 
-    private ArithmeticOperation arithmeticOperation;
+    private static final String REGEX_NUMBERS = " \\S ";
+    private static final String REGEX_OPERANDS = "(.\\d|\\d|\\s)";
+    private ArithmeticOperation lastOperation;
     private Map<String, ArithmeticOperation> operations;
 
     public Calculator() {
@@ -20,28 +19,29 @@ public class Calculator {
         operations.put("*", new MultOperation());
     }
 
-    public ArithmeticOperation getArithmeticOperation() {
-        return arithmeticOperation;
+    public ArithmeticOperation getLastOperation() {
+        return lastOperation;
     }
 
     public double calculate(String str) {
         if (str == null || str.isEmpty()) {
             throw new IllegalArgumentException("String is empty!");
         }
-        operationsFactory(str);
-        double[] numbers = parserStringArrayToDoubleArray(str);
-        return arithmeticOperation.action(numbers[0], numbers[1]);
+        lastOperation = getOperation(str);
+        double[] numbers = getNumbers(str);
+        return lastOperation.action(numbers[0], numbers[1]);
     }
 
-    private double[] parserStringArrayToDoubleArray(String str) {
-        String[] numbers = str.split("[\\s\\W]+");
+    private double[] getNumbers(String str) {
+        String[] numbers = str.split(REGEX_NUMBERS);
         return new double[]{Double.valueOf(numbers[0]), Double.valueOf(numbers[1])};
     }
 
-    private void operationsFactory(String str) {
-        arithmeticOperation = operations.get(str.replaceAll("[\\w\\s]+", ""));
-        if (arithmeticOperation == null) {
+    private ArithmeticOperation getOperation(String str) {
+        ArithmeticOperation operation = operations.get(str.replaceAll(REGEX_OPERANDS, ""));
+        if (operation == null) {
             throw new IllegalArgumentException("The required parameter is missing!");
         }
+        return operation;
     }
 }
