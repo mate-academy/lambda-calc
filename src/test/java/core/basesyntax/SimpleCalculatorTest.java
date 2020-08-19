@@ -3,6 +3,7 @@ package core.basesyntax;
 import static java.lang.Float.NaN;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SimpleCalculatorTest {
@@ -10,7 +11,12 @@ public class SimpleCalculatorTest {
     private static final char[] BAD_OPERATORS = {'0', '1', '~', ',',
             ' ', '\b', '\r', '\r', '\t', '\f', '\b', '\n', '\\', '◘',
             '☺', '%', '$', '#', '@', '!', '&', '(', ')', '“'};
-    private SimpleCalculator calculator = new SimpleCalculator();
+    private static SimpleCalculator calculator;
+
+    @BeforeClass
+    public static void setUp() throws Exception {
+        calculator = new SimpleCalculator();
+    }
 
     @Test
     public void addOk() {
