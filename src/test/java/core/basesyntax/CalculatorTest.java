@@ -1,24 +1,21 @@
 package core.basesyntax;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class CalculatorTest {
     private static final double A_VALUE = 10;
     private static final double B_VALUE = 5;
     private static final double NEGATIVE_A_VALUE = -10;
     private static final double NEGATIVE_B_VALUE = -5;
     private static final double ZERO_VALUE = 0;
-    private static final double DELTA = 0.1;
-    private Calculator calculator;
+    private static final double DELTA = 0.01;
+    private static Calculator calculator;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         calculator = new Calculator();
     }
 
