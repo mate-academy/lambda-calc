@@ -1,7 +1,6 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -25,94 +24,94 @@ public class CalculatorTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-         calculator = new Calculator();
+        calculator = new Calculator();
     }
 
     @Test
     public void additionalNegativeAndPositive() {
-        double res = Calculator.calculate(POSITIVE_A, NEGATIVE_B, PLUS);
+        double res = calculator.calculate(POSITIVE_A, NEGATIVE_B, PLUS);
         Assert.assertEquals(3, res, DELTA);
     }
 
     @Test
     public void additionalPositive() {
-        double res = Calculator.calculate(POSITIVE_A, POSITIVE_B, PLUS);
+        double res = calculator.calculate(POSITIVE_A, POSITIVE_B, PLUS);
         Assert.assertEquals(10, res, DELTA);
     }
 
     @Test
     public void SubtractionPositive() {
-        double res = Calculator.calculate(POSITIVE_A, POSITIVE_B, SUBTRACT);
+        double res = calculator.calculate(POSITIVE_A, POSITIVE_B, SUBTRACT);
         Assert.assertEquals(0, res, DELTA);
     }
 
     @Test
     public void SubtractionNegative() {
-        double res = Calculator.calculate(NEGATIVE_A, NEGATIVE_B, SUBTRACT);
+        double res = calculator.calculate(NEGATIVE_A, NEGATIVE_B, SUBTRACT);
         Assert.assertEquals(-8, res, DELTA);
     }
 
     @Test
     public void divisionPositive() {
-        double res = Calculator.calculate(POSITIVE_A, POSITIVE_A, DIVIDE);
+        double res = calculator.calculate(POSITIVE_A, POSITIVE_A, DIVIDE);
         Assert.assertEquals(1, res, DELTA);
     }
 
     @Test
     public void divisionNegative() {
-        double res = Calculator.calculate(NEGATIVE_A, NEGATIVE_B, DIVIDE);
+        double res = calculator.calculate(NEGATIVE_A, NEGATIVE_B, DIVIDE);
         Assert.assertEquals(5, res, DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
-        double res = Calculator.calculate(POSITIVE_A, ZERO_VALUE, DIVIDE);
+        double res = calculator.calculate(POSITIVE_A, ZERO_VALUE, DIVIDE);
     }
 
     @Test
     public void multiplicationPositive() {
-        double res = Calculator.calculate(POSITIVE_A, POSITIVE_B, MULTIPLY);
+        double res = calculator.calculate(POSITIVE_A, POSITIVE_B, MULTIPLY);
         Assert.assertEquals(25, res, DELTA);
     }
 
     @Test
     public void multiplicationNegative() {
-        double res = Calculator.calculate(NEGATIVE_A, NEGATIVE_B, MULTIPLY);
+        double res = calculator.calculate(NEGATIVE_A, NEGATIVE_B, MULTIPLY);
         Assert.assertEquals(20, res, DELTA);
     }
 
     @Test()
     public void multiplicationZero() {
-        double res = Calculator.calculate(ZERO_VALUE, NEGATIVE_B, MULTIPLY);
-        Assert.assertEquals(ZERO_VALUE,res,DELTA);
+        double res = calculator.calculate(ZERO_VALUE, NEGATIVE_B, MULTIPLY);
+        Assert.assertEquals(ZERO_VALUE, res, DELTA);
     }
 
     @Test
     public void raisingToBePowerPositive() {
-        double res = Calculator.calculate(POSITIVE_A, POSITIVE_B, RAISING_TO_THE_POWER);
+        double res = calculator.calculate(POSITIVE_A, POSITIVE_B, RAISING_TO_THE_POWER);
         Assert.assertEquals(3125, res, DELTA);
     }
 
     @Test
     public void raisingToBePowerNegative() {
-        double res = Calculator.calculate(NEGATIVE_A, POSITIVE_B, RAISING_TO_THE_POWER);
+        double res = calculator.calculate(NEGATIVE_A, POSITIVE_B, RAISING_TO_THE_POWER);
         Assert.assertEquals(-100000.0, res, DELTA);
     }
 
     @Test
     public void raisingToBePowerZero() {
-        double res = Calculator.calculate(ZERO_VALUE, POSITIVE_B, RAISING_TO_THE_POWER);
+        double res = calculator.calculate(ZERO_VALUE, POSITIVE_B, RAISING_TO_THE_POWER);
         Assert.assertEquals(ZERO_VALUE, res, DELTA);
     }
 
     @Test
     public void raisingToBePowerZeroSecond() {
-        double res = Calculator.calculate(POSITIVE_A, ZERO_VALUE, RAISING_TO_THE_POWER);
+        double res = calculator.calculate(POSITIVE_A, ZERO_VALUE, RAISING_TO_THE_POWER);
         Assert.assertEquals(1, res, DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void wrongSignal() {
-        double res = Calculator.calculate(POSITIVE_A, POSITIVE_B, WRONG_SIGNAL);
+        double res = calculator.calculate(POSITIVE_A, POSITIVE_B, WRONG_SIGNAL);
     }
 }

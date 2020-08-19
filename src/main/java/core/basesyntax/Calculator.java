@@ -6,9 +6,8 @@ public class Calculator {
     private static final char SUBTRACT = '-';
     private static final char DIVIDE = '/';
     private static final char RAISING_TO_THE_POWER = '^';
-    private static final double ZERO_VALUE = 0.0;
 
-    public static double calculate(double a, double b, char signal) {
+    public double calculate(double a, double b, char signal) {
         switch (signal) {
             case PLUS:
                 return additional(a, b);
@@ -25,26 +24,26 @@ public class Calculator {
         }
     }
 
-    public static double additional(double a, double b) {
+    private double additional(double a, double b) {
         return a + b;
     }
 
-    public static double subtraction(double a, double b) {
+    private double subtraction(double a, double b) {
         return a - b;
     }
 
-    public static double division(double a, double b) {
-        if (b == ZERO_VALUE) {
+    private double division(double a, double b) {
+        if (b == 0.0) {
             throw new ArithmeticException("Error! 'b' can't be zero! 'B' value: " + b);
         }
         return a / b;
     }
 
-    public static double multiplication(double a, double b) {
+    private double multiplication(double a, double b) {
         return a * b;
     }
 
-    public static double raisingToBePower(double a, double b) {
+    private double raisingToBePower(double a, double b) {
         return Math.pow(a, b);
     }
 }
