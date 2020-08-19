@@ -24,26 +24,26 @@ public class Calculator {
         }
     }
 
-    private static double sum(double num1, double num2) {
+    private double sum(double num1, double num2) {
         return num1 + num2;
     }
 
-    private static double substract(double num1, double num2) {
+    private double substract(double num1, double num2) {
         return num1 - num2;
     }
 
-    private static double multiple(double num1, double num2) {
+    private double multiple(double num1, double num2) {
         return num1 * num2;
     }
 
-    private static double divide(double num1, double num2) {
+    private double divide(double num1, double num2) {
         if (num2 == 0) {
             throw new ArithmeticException("You cant divide by zero!");
         }
         return num1 / num2;
     }
 
-    private static double power(double num1, double num2) {
+    private double power(double num1, double num2) {
         return Math.pow(num1, num2);
     }
 }
