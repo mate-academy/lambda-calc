@@ -32,7 +32,7 @@ public class Calculator {
     }
 
     private double division(double x, double y) {
-        if (Math.abs(y) == 0) {
+        if (y == 0) {
             throw new ArithmeticException("Can't div by zero");
         }
         return x / y;
