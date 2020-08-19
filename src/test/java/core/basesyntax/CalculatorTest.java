@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -60,14 +59,11 @@ public class CalculatorTest {
         assertEquals(2, div, DELTA);
         div = calculator.calculate(NEGATIVE_A_VALUE, A_VALUE, '/');
         assertEquals(-1, div, DELTA);
-        try {
-            calculator.calculate(A_VALUE, ZERO_VALUE, '/');
-        } catch (ArithmeticException e) {
-            String errMsg = "Can't divide on zero!";
-            assertEquals(errMsg ,e.getMessage());
-            return;
-        }
-        Assert.fail("Test shouldn't pass zero as a divider");
+    }
+
+    @Test (expected = ArithmeticException.class)
+    public void divOnZeroTest() {
+        calculator.calculate(A_VALUE, ZERO_VALUE, '/');
     }
 
     @Test
@@ -80,15 +76,8 @@ public class CalculatorTest {
         assertEquals(1, pow, DELTA);
         pow = calculator.calculate(A_VALUE, ZERO_VALUE, '^');
         assertEquals(1, pow, DELTA);
-        try {
-            pow = calculator.calculate(ZERO_VALUE, B_VALUE, '^');
-            assertEquals(1, pow, DELTA);
-        } catch (ArithmeticException e) {
-            String errMsg = "Can't power zero!";
-            assertEquals(errMsg, e.getMessage());
-            return;
-        }
-        Assert.fail("A value can't be 0 for 'pow' method");
+        pow = calculator.calculate(ZERO_VALUE, ZERO_VALUE, '^');
+        assertEquals(1, pow, DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -100,15 +89,14 @@ public class CalculatorTest {
     public void modTest() {
         double mod = calculator.calculate(A_VALUE, B_VALUE, '%');
         assertEquals(A_VALUE % B_VALUE, mod, DELTA);
-        try {
-            mod = calculator.calculate(A_VALUE, ZERO_VALUE, '%');
-            assertEquals(A_VALUE % ZERO_VALUE, mod, DELTA);
-        } catch (ArithmeticException e) {
-            String errMsg = "Can't divide on zero!";
-            assertEquals(errMsg ,e.getMessage());
-            return;
-        }
-        Assert.fail("You shouldn't pass zero as B argument");
+        mod = calculator.calculate(A_VALUE, NEGATIVE_B_VALUE, '%');
+        assertEquals(A_VALUE % NEGATIVE_B_VALUE, mod, DELTA);
+        mod = calculator.calculate(NEGATIVE_A_VALUE, B_VALUE, '%');
+        assertEquals(NEGATIVE_A_VALUE % B_VALUE, mod, DELTA);
     }
 
+    @Test (expected = ArithmeticException.class)
+    public void modOnZeroTest() {
+        calculator.calculate(A_VALUE, ZERO_VALUE, '%');
+    }
 }
