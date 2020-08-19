@@ -14,23 +14,23 @@ public class Calculator {
         }
     }
 
-    public int getSum(int a, int b) {
+    private int getSum(int a, int b) {
         return a + b;
     }
 
-    public int getSubtraction(int a, int b) {
+    private int getSubtraction(int a, int b) {
         return a - b;
     }
 
-    public int getMultiplication(int a, int b) {
+    private int getMultiplication(int a, int b) {
         return a * b;
     }
 
-    public int getPower(int a, int b) {
+    private int getPower(int a, int b) {
         return (int) Math.pow(a, b);
     }
 
-    public int getDifference(int a, int b) {
+    private int getDifference(int a, int b) {
         return a / b;
     }
 }

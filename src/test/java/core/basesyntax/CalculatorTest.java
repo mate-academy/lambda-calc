@@ -15,41 +15,41 @@ public class CalculatorTest {
 
     @Test
     public void sumTest() {
-        Assert.assertEquals(7,calculator.calculate('+', 2, 5), DELTA);
-        Assert.assertEquals(3,calculator.calculate('+', -2, 5), DELTA);
-        Assert.assertEquals(2,calculator.calculate('+', 2, 0), DELTA);
-        Assert.assertEquals(0,calculator.calculate('+', 0, 0), DELTA);
+        Assert.assertEquals(7, calculator.calculate('+', 2, 5), DELTA);
+        Assert.assertEquals(3, calculator.calculate('+', -2, 5), DELTA);
+        Assert.assertEquals(2, calculator.calculate('+', 2, 0), DELTA);
+        Assert.assertEquals(0, calculator.calculate('+', 0, 0), DELTA);
     }
 
     @Test
     public void subtractTest() {
-        Assert.assertEquals(-3,calculator.calculate('-', 2, 5), DELTA);
-        Assert.assertEquals(-7,calculator.calculate('-', -2, 5), DELTA);
-        Assert.assertEquals(3,calculator.calculate('-', -2, -5), DELTA);
-        Assert.assertEquals(-3,calculator.calculate('-', 0, 3), DELTA);
+        Assert.assertEquals(-3, calculator.calculate('-', 2, 5), DELTA);
+        Assert.assertEquals(-7, calculator.calculate('-', -2, 5), DELTA);
+        Assert.assertEquals(3, calculator.calculate('-', -2, -5), DELTA);
+        Assert.assertEquals(-3, calculator.calculate('-', 0, 3), DELTA);
     }
 
     @Test
     public void multiplyTest() {
-        Assert.assertEquals(10,calculator.calculate('*', 2, 5), DELTA);
-        Assert.assertEquals(10,calculator.calculate('*', -2, -5), DELTA);
-        Assert.assertEquals(0,calculator.calculate('*', 2, 0), DELTA);
-        Assert.assertEquals(-10,calculator.calculate('*', -2, 5), DELTA);
+        Assert.assertEquals(10, calculator.calculate('*', 2, 5), DELTA);
+        Assert.assertEquals(10, calculator.calculate('*', -2, -5), DELTA);
+        Assert.assertEquals(0, calculator.calculate('*', 2, 0), DELTA);
+        Assert.assertEquals(-10, calculator.calculate('*', -2, 5), DELTA);
     }
 
     @Test
     public void toPowerTest() {
-        Assert.assertEquals(32,calculator.calculate('^', 2, 5), DELTA);
-        Assert.assertEquals(1,calculator.calculate('^', 2, 0), DELTA);
-        Assert.assertEquals(0,calculator.calculate('^', 5, -10), DELTA);
+        Assert.assertEquals(32, calculator.calculate('^', 2, 5), DELTA);
+        Assert.assertEquals(1, calculator.calculate('^', 2, 0), DELTA);
+        Assert.assertEquals(0, calculator.calculate('^', 5, -10), DELTA);
     }
 
     @Test
-    public void differeceTest() {
-        Assert.assertEquals(0,calculator.calculate('/', 2, 5), DELTA);
-        Assert.assertEquals(-2,calculator.calculate('/', 4, -2), DELTA);
-        Assert.assertEquals(2,calculator.calculate('/', -2, -1), DELTA);
-        Assert.assertEquals(0,calculator.calculate('/', 0, 5), DELTA);
+    public void divideTest() {
+        Assert.assertEquals(0, calculator.calculate('/', 2, 5), DELTA);
+        Assert.assertEquals(-2, calculator.calculate('/', 4, -2), DELTA);
+        Assert.assertEquals(2, calculator.calculate('/', -2, -1), DELTA);
+        Assert.assertEquals(0, calculator.calculate('/', 0, 5), DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
