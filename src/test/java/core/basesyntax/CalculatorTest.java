@@ -38,6 +38,12 @@ public class CalculatorTest {
     }
 
     @Test
+    public void additionDoubleMaxValue() {
+        double actualResult = calculator.calculate(Double.MAX_VALUE, 1.0, PLUS);
+        Assert.assertEquals(1.7976931348623157E308, actualResult, DELTA);
+    }
+
+    @Test
     public void substractionPositiveDigits() {
         double actualResult = calculator.calculate(5.1, 2.0, MINUS);
         Assert.assertEquals(3.1, actualResult, DELTA);
