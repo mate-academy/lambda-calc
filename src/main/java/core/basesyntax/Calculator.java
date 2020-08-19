@@ -23,7 +23,7 @@ public class Calculator {
             case POW:
                 return raisingToThePower(a, b);
             default:
-                throw new IllegalArgumentException("No such sign");
+                throw new IllegalArgumentException("No such operation");
         }
     }
 

@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
@@ -14,8 +14,8 @@ public class CalculatorTest {
     private static final char WRONG_SIGN1 = '?';
     private static Calculator calculator;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
         calculator = new Calculator();
     }
 
