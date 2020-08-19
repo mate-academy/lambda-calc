@@ -25,15 +25,27 @@ public class Calculator {
     }
 
     private double addition(double a, double b) {
-        return a + b;
+        double res = a + b;
+        if (res >= Double.MAX_VALUE) {
+            throw new ArithmeticException("We can't do such operation");
+        }
+        return res;
     }
 
     private double subtraction(double a, double b) {
-        return a - b;
+        double res = a - b;
+        if (res <= Double.MIN_VALUE) {
+            throw new ArithmeticException("We can't do such operation");
+        }
+        return res;
     }
 
     private double multiplication(double a, double b) {
-        return a * b;
+        double res = a * b;
+        if (res > Double.MAX_VALUE) {
+            throw new ArithmeticException("We can't do such operation");
+        }
+        return res;
     }
 
     private double division(double a, double b) {
@@ -44,6 +56,10 @@ public class Calculator {
     }
 
     private double raisingToThePower(double a, double b) {
-        return Math.pow(a, b);
+        double res = Math.pow(a, b);
+        if (res > Double.MAX_VALUE) {
+            throw new ArithmeticException("We can't do such operation");
+        }
+        return res;
     }
 }

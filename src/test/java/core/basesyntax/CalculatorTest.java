@@ -37,10 +37,14 @@ public class CalculatorTest {
         Assert.assertEquals(-7.1, actualResult, DELTA);
     }
 
-    @Test
+    @Test (expected = ArithmeticException.class)
     public void additionDoubleMaxValue() {
-        double actualResult = calculator.calculate(Double.MAX_VALUE, 1.0, PLUS);
-        Assert.assertEquals(1.7976931348623157E308, actualResult, DELTA);
+       calculator.calculate(Double.MAX_VALUE, 55.8, PLUS);
+    }
+
+    @Test (expected = ArithmeticException.class)
+    public void substractionDoubleMinValue() {
+        calculator.calculate(Double.MIN_VALUE, 10000.0, MINUS);
     }
 
     @Test
@@ -54,6 +58,7 @@ public class CalculatorTest {
         double actualResult = calculator.calculate(3.0, -8.4, MINUS);
         Assert.assertEquals(11.4, actualResult, DELTA);
     }
+
 
     @Test
     public void substractionNegativeDigits() {
