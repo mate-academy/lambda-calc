@@ -8,7 +8,7 @@ import org.junit.Test;
  */
 public class HelloWorldTest {
     private HelloWorld helloWorld;
-    private static final double DELTA = 0.01D;
+    private static final double DELTA = 1E-10;
 
     @Test
     public void additionWithNegativeAndPositive() {
