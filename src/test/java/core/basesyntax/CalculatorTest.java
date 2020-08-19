@@ -2,6 +2,7 @@ package core.basesyntax;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -21,11 +22,9 @@ public class CalculatorTest {
     private static final double NEGATIVE_B = -2;
     private static final double ZERO_VALUE = 0.0;
 
-    private Calculator calculator;
-
-    @Before
-    public void setUp() throws Exception {
-        calculator = new Calculator();
+    @BeforeClass
+    public static void setUp() throws Exception {
+        Calculator calculator = new Calculator();
     }
 
     @Test
