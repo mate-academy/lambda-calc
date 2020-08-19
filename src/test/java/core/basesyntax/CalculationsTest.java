@@ -6,7 +6,7 @@ import org.junit.Assert;
 
 public class CalculationsTest {
     private static final int DELTA = 1;
-    private static final double FLOATING_DELTA = 0.01;
+    private static final double FLOATING_DELTA = 1e-10;
     private static Calculation calc;
 
     @BeforeClass
@@ -132,18 +132,18 @@ public class CalculationsTest {
 
     @Test
     public void PowerFloatingPointNumberOk() {
-        Assert.assertEquals(0.033, calc.calculate(-5.05, -2.0, '^'), FLOATING_DELTA);
+        Assert.assertEquals(0.03921184197627684, calc.calculate(-5.05, -2.0, '^'), FLOATING_DELTA);
     }
 
     @Test
     public void NegativePowerOk() {
-        Assert.assertEquals(-0.037, calc.calculate(-3.0, -3.0, '^'), FLOATING_DELTA);
-        Assert.assertEquals(0.0123, calc.calculate(-3.0, -4.0, '^'), FLOATING_DELTA);
+        Assert.assertEquals(-0.037037037037037035, calc.calculate(-3.0, -3.0, '^'), FLOATING_DELTA);
+        Assert.assertEquals(0.012345679012345678, calc.calculate(-3.0, -4.0, '^'), FLOATING_DELTA);
     }
 
     @Test
     public void FloatingPointPowerOk() {
-        Assert.assertEquals(0.25, calc.calculate(8, -0.66, '^'), FLOATING_DELTA);
-        Assert.assertEquals(13501.251, calc.calculate(44.89, 2.5, '^'), FLOATING_DELTA);
+        Assert.assertEquals(0.2534898699475073, calc.calculate(8, -0.66, '^'), FLOATING_DELTA);
+        Assert.assertEquals(13501.25107, calc.calculate(44.89, 2.5, '^'), FLOATING_DELTA);
     }
 }
