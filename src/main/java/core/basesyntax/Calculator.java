@@ -16,7 +16,14 @@ public class Calculator {
     }
 
     public double calculate(double a, double b, char actionSymbol) {
-        action = map.get(actionSymbol);
+        action = getAction(actionSymbol);
         return action.doAction(a, b);
+    }
+
+    private Action getAction(char actionSymbol) {
+        if (map.get(actionSymbol) == null) {
+            throw new IllegalArgumentException("No such action allowed!");
+        }
+        return map.get(actionSymbol);
     }
 }

@@ -32,6 +32,11 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void IllegalActionTest() {
+        calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '&');
+    }
+
     @Test
     public void AdditionTestPositive() {
         double firstResult = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, PLUS);
@@ -130,16 +135,11 @@ public class CalculatorTest {
         Assert.assertEquals("Wrong division algorithm!", -2, secondResult, DELTA);
     }
 
-    @Test
+    @Test (expected = ArithmeticException.class)
     public void DivisionTestWithZero() {
-        double firstResult = calculator.calculate(0, POSITIVE_NUMBER_2, DIVIDE);
-        Assert.assertEquals("Zero dividing result by any number is zero!", 0, firstResult, DELTA);
-        try {
-            calculator.calculate(POSITIVE_NUMBER_1, ZERO, DIVIDE);
-        } catch (DividingByZeroException e) {
-            return;
-        }
-        Assert.fail("Exception is required to be thrown!");
+        double firstResult = calculator.calculate(ZERO, POSITIVE_NUMBER_1, DIVIDE);
+        Assert.assertEquals("", 0, firstResult, DELTA);
+        calculator.calculate(POSITIVE_NUMBER_1, ZERO, DIVIDE);
     }
 
     @Test
