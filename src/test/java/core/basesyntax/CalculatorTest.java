@@ -21,10 +21,11 @@ public class CalculatorTest {
     private static final double NEGATIVE_A = -10;
     private static final double NEGATIVE_B = -2;
     private static final double ZERO_VALUE = 0.0;
+    private static Calculator calculator;
 
     @BeforeClass
     public static void setUp() throws Exception {
-        Calculator calculator = new Calculator();
+         calculator = new Calculator();
     }
 
     @Test
