@@ -37,7 +37,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void summationIsValid() {
+    public void additionIsValid() {
         Assert.assertEquals(-6.0, calculator.calculate(NEGATIVE_SIX, ZERO, '+'), DELTA);
         Assert.assertEquals(2.0, calculator.calculate(TWO, ZERO, '+'), DELTA);
         Assert.assertEquals(5.2367, calculator.calculate(IRRACIONAL_FIVE, ZERO, '+'), DELTA);
@@ -66,26 +66,20 @@ public class CalculatorTest {
     @Test(expected = ArithmeticException.class)
     public void notValidDivisionOnZero() {
         calculator.calculate(TWO, ZERO, '/');
-        calculator.calculate(NEGATIVE_SIX, ZERO, '/');
-        calculator.calculate(IRRACIONAL_FIVE, ZERO, '/');
-        calculator.calculate(ZERO, ZERO, '/');
-        calculator.calculate(ZERO, ZERO, '/');
     }
 
     @Test(expected = ArithmeticException.class)
     public void notValidZeroInMinusDegree() {
         calculator.calculate(ZERO, NEGATIVE_SIX, '^');
-        calculator.calculate(ZERO, NEGATIVE_TWO, '^');
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void notValidArgument() {
-        calculator.calculate(NEGATIVE_TWO, ZERO, '%');
-        calculator.calculate(TWO, IRRACIONAL_FIVE, '#');
-        calculator.calculate(NEGATIVE_SIX, ZERO, '@');
+    public void notValidValue() {
         calculator.calculate(TWO, null, '*');
-        calculator.calculate(null, ZERO, '/');
-        calculator.calculate(NEGATIVE_SIX, ZERO, null);
-        calculator.calculate(null, null, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notValidSign() {
+        calculator.calculate(NEGATIVE_TWO, ZERO, '%');
     }
 }

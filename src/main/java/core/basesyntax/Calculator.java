@@ -19,7 +19,7 @@ public class Calculator {
                 return firstNumber / secondNumber;
             case ('^'):
                 if (firstNumber == 0 && secondNumber < 0) {
-                    throw new ArithmeticException("Zero in any minus degree is zero!");
+                    throw new ArithmeticException("Zero can't be raised to the negative power!");
                 }
                 return Math.pow(firstNumber, secondNumber);
             default:
