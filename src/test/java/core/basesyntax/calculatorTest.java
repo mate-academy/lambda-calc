@@ -109,14 +109,6 @@ public class calculatorTest {
         calculator.calculate(0, 0, DIVIDE);
     }
 
-    @Test (expected = ArithmeticException.class)
-    public void poweringFractionException() {
-        calculator.calculate(10, 1.5, POWERING);
-        calculator.calculate(10, -1.5, POWERING);
-        calculator.calculate(10, 0.5, POWERING);
-        calculator.calculate(10, -0.5, POWERING);
-    }
-
     @Test (expected = IllegalArgumentException.class)
     public void checkingSignAccuracy() {
         calculator.calculate(2, 3, '@');
