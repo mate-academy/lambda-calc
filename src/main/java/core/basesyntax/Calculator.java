@@ -1,8 +1,5 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class Calculator {
     public double calculate(char operation, double fistDigit, double secondDigit) {
         switch (operation) {

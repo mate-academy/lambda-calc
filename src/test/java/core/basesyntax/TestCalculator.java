@@ -2,11 +2,9 @@ package core.basesyntax;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class TestCalculator {
     private static final double DELTA = 1e-10;
     private static final char ADDITION = '+';
@@ -14,10 +12,10 @@ public class TestCalculator {
     private static final char DIVISION = '/';
     private static final char MULTIPLICATION = '*';
     private static final char POWER = '^';
-    private Calculator calculator;
+    private static Calculator calculator;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
         calculator = new Calculator();
     }
 
