@@ -1,6 +1,5 @@
 package core.basesyntax;
 
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,7 +33,8 @@ public class calculatorTest {
     @Test
     public void checkSummingForBigNumbers() {
         Assert.assertEquals("Test failed!", 1000, calculator.calculate(500, 500, PLUS), DELTA);
-
+        Assert.assertEquals("Test failed!", 1.7976931348623157E308, calculator.calculate(0, Double.MAX_VALUE, PLUS), DELTA);
+        Assert.assertEquals("Test failed!", 1.7976931348623157E308, calculator.calculate(1, Double.MAX_VALUE, PLUS), DELTA);
     }
 
     @Test
@@ -109,7 +109,7 @@ public class calculatorTest {
         calculator.calculate(0, 0, DIVIDE);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void checkingSignAccuracy() {
         calculator.calculate(2, 3, '@');
         calculator.calculate(2, 3, '#');
