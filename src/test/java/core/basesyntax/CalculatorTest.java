@@ -15,7 +15,7 @@ public class CalculatorTest {
     private static double result;
 
     @BeforeClass
-    public void setUp() throws Exception {
+    public static void setUp() throws Exception {
         calculator = new Calculator();
     }
 
