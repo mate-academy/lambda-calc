@@ -6,21 +6,19 @@ public class Calculator {
         if (operation == '/' && y == 0) {
             throw new ArithmeticException("Can't divide by zero");
         }
-        if (operation != '+'
-                && operation != '-'
-                && operation != '/'
-                && operation != '^'
-                && operation != '*') {
-            throw new IllegalArgumentException("Wrong operator");
-        }
-        try {
-            return operation == '+' ? x + y
-                    : operation == '-' ? x - y
-                    : operation == '*' ? x * y
-                    : operation == '/' ? x / y
-                    : operation == '^' ? Math.pow(x, y) : 0;
-        } catch (NullPointerException e) {
-            throw new NullPointerException();
+        switch (operation) {
+            case '+':
+                return x + y;
+            case '-':
+                return x - y;
+            case '*':
+                return x * y;
+            case '/':
+                return x / y;
+            case '^':
+                return Math.pow(x, y);
+            default:
+                throw new IllegalArgumentException("Wrong operator");
         }
     }
 }

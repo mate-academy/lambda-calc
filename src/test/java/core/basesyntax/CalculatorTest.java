@@ -6,9 +6,7 @@ import org.junit.Test;
 
 public class CalculatorTest {
     private static Calculator calculator;
-    private final double EPS = 1e-9;
-    private double x = 2;
-    private double y = 3;
+    private static final double EPS = 1e-9;
 
     @BeforeClass
     public static void createNewCalc() {
@@ -144,5 +142,4 @@ public class CalculatorTest {
     public void wrongOperatorTest() {
         calculator.calculate(2, 3, ')');
     }
-
 }
