@@ -1,9 +1,5 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
-
 public class Calculator {
     private static final char PLUS = '+';
     private static final char MINUS = '-';
@@ -11,7 +7,7 @@ public class Calculator {
     private static final char DIVIDE = '/';
     private static final char POWERING = '^';
 
-    public static double calculate(double num1, double num2, char sign) {
+    public double calculate(double num1, double num2, char sign) {
         switch (sign) {
             case PLUS:
                 return sum(num1, num2);

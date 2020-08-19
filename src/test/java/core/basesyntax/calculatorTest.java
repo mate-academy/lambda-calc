@@ -16,6 +16,7 @@ public class calculatorTest {
     public static final char POWERING = '^';
     public static final double DELTA = 1e-10;
     public static Calculator calculator;
+    public static final Double NULL = null;
 
     @BeforeClass
     public static void setUp() {
