@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.Assert;
 
 public class TestCalculator {
-
     private static final char PLUS = '+';
     private static final char MINUS = '-';
     private static final char MULTIPLICATION = '*';
