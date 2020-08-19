@@ -194,7 +194,6 @@ public class CalculatorTest {
         calculator.calculator(-Double.MAX_VALUE, FRACTION_LESS_THAN_1, DIVISION);
     }
 
-
     @Test
     public void positiveMultiplication() {
         result = calculator.calculator(POSITIVE_VALUE1, POSITIVE_VALUE2, MULTIPLICATION);
