@@ -2,7 +2,7 @@ package core.basesyntax;
 
 public class Calculator {
 
-    public int result(Character method, int a, int b) {
+    public int calculate(char method, int a, int b) {
         switch (method) {
             case '+': return getSum(a, b);
             case '-': return getSubtraction(a,b);
@@ -10,7 +10,7 @@ public class Calculator {
             case '*': return getMultiplication(a, b);
             case '^': return getPower(a, b);
             default: throw new
-                    NoSuchArgument("Method " + method + " doesn't exist!");
+                    NoSuchAOperationException("Method " + method + " doesn't exist!");
         }
     }
 
@@ -31,9 +31,6 @@ public class Calculator {
     }
 
     public int getDifference(int a, int b) {
-        if (b == 0) {
-            throw new ArithmeticException("Can't delete by zero!");
-        }
         return a / b;
     }
 }
