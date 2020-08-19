@@ -67,16 +67,6 @@ public class CalculatorTest {
 
     @Test
     public void divisionTest() {
-        double resultOne = calculator.calculate(POSITIVE_Y, POSITIVE_Y, '^');
-        double resultTwo = calculator.calculate(ZERO, POSITIVE_X, '^');
-        double resultThree = calculator.calculate(POSITIVE_X, ZERO, '^');
-        Assert.assertEquals(27, resultOne, DELTA);
-        Assert.assertEquals(ZERO, resultTwo, DELTA);
-        Assert.assertEquals(1, resultThree, DELTA);
-    }
-
-    @Test
-    public void powerTest() {
         double resultOne = calculator.calculate(POSITIVE_Y, POSITIVE_X, '/');
         double resultTwo = calculator.calculate(POSITIVE_X, NEGATIVE_X, '/');
         double resultThree = calculator.calculate(NEGATIVE_Y, NEGATIVE_X, '/');
@@ -85,5 +75,15 @@ public class CalculatorTest {
         Assert.assertEquals(-1, resultTwo, DELTA);
         Assert.assertEquals(1.5, resultThree, DELTA);
         Assert.assertEquals(ZERO, resultFour, DELTA);
+    }
+
+    @Test
+    public void powerTest() {
+        double resultOne = calculator.calculate(POSITIVE_Y, POSITIVE_Y, '^');
+        double resultTwo = calculator.calculate(ZERO, POSITIVE_X, '^');
+        double resultThree = calculator.calculate(POSITIVE_X, ZERO, '^');
+        Assert.assertEquals(27, resultOne, DELTA);
+        Assert.assertEquals(ZERO, resultTwo, DELTA);
+        Assert.assertEquals(1, resultThree, DELTA);
     }
 }

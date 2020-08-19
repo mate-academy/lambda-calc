@@ -1,7 +1,6 @@
 package core.basesyntax;
 
 public class Calculator {
-    private static final double DELTA = 0.0000001;
 
     public double calculate(double x, double y, char operator) {
         switch (operator) {
@@ -33,7 +32,7 @@ public class Calculator {
     }
 
     private double division(double x, double y) {
-        if (Math.abs(y) < DELTA) {
+        if (Math.abs(y) < 0.000001) {
             throw new ArithmeticException("Can't div by zero");
         }
         return x / y;
