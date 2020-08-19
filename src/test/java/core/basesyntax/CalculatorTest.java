@@ -45,6 +45,11 @@ public class CalculatorTest {
         Assert.assertEquals(-1.1, result, DELTA);
     }
 
+    @Test (expected = ArithmeticException.class)
+    public void additionMaxValueTest() {
+        calculator.calculate(Double.MAX_VALUE, 10, ADDITION);
+    }
+
     @Test
     public void substractionPositiveValuesTest() {
         result = calculator.calculate(2.2, 1.1, SUBSTRACTION);
@@ -69,6 +74,11 @@ public class CalculatorTest {
         Assert.assertEquals(3.3, result, DELTA);
         result = calculator.calculate(0, -1.1, SUBSTRACTION);
         Assert.assertEquals(1.1, result, DELTA);
+    }
+
+    @Test (expected = ArithmeticException.class)
+    public void substractionMaxValueTest() {
+        calculator.calculate(1, Double.MAX_VALUE, SUBSTRACTION);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -102,6 +112,11 @@ public class CalculatorTest {
         Assert.assertEquals(-1.1, result, DELTA);
     }
 
+    @Test (expected = ArithmeticException.class)
+    public void divisionMaxValueTest() {
+        calculator.calculate(Double.MAX_VALUE, 0.1, DIVISION);
+    }
+
     @Test
     public void multiplicationPositiveValuesTest() {
         result = calculator.calculate(2.2, 2, MULTIPLICATION);
@@ -128,6 +143,11 @@ public class CalculatorTest {
         Assert.assertEquals(0, result, DELTA);
     }
 
+    @Test (expected = ArithmeticException.class)
+    public void multiplicationMaxValueTest() {
+        calculator.calculate(Double.MAX_VALUE, 2, MULTIPLICATION);
+    }
+
     @Test
     public void raizingToPowerPositiveValuesTest() {
         result = calculator.calculate(2, 2, RAISING_TO_POWER);
@@ -152,6 +172,11 @@ public class CalculatorTest {
         Assert.assertEquals(0.25, result, DELTA);
         result = calculator.calculate(-2, 0, RAISING_TO_POWER);
         Assert.assertEquals(1, result, DELTA);
+    }
+
+    @Test (expected = ArithmeticException.class)
+    public void raizingToPowerMaxValueTest() {
+        calculator.calculate(Double.MAX_VALUE, 2, RAISING_TO_POWER);
     }
 
     @Test(expected = IllegalArgumentException.class)

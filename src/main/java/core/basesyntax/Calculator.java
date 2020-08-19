@@ -8,19 +8,38 @@ public class Calculator {
     private static final char RAISING_TO_POWER = '^';
 
     public double calculate(double firstNumber, double secondNumber, char operation) {
+        double result;
+
         switch (operation) {
             case ADDITION:
-                return add(firstNumber, secondNumber);
+                result = add(firstNumber, secondNumber);
+                break;
             case SUBSTRACTION:
-                return substract(firstNumber, secondNumber);
+                result = substract(firstNumber, secondNumber);
+                break;
             case DIVISION:
-                return divide(firstNumber, secondNumber);
+                result = divide(firstNumber, secondNumber);
+                break;
             case MULTIPLICATION:
-                return miltiplicate(firstNumber, secondNumber);
+                result = miltiplicate(firstNumber, secondNumber);
+                break;
             case RAISING_TO_POWER:
-                return raiseToPower(firstNumber, secondNumber);
+                result = raiseToPower(firstNumber, secondNumber);
+                break;
             default:
                 throw new IllegalArgumentException("Unknown operation");
+        }
+
+        checkResultForOverflow(result);
+        return result;
+    }
+
+    private void checkResultForOverflow(double result) {
+        if (result == Double.NEGATIVE_INFINITY
+                || result == Double.POSITIVE_INFINITY
+                || result == Double.MAX_VALUE
+                || result == -Double.MAX_VALUE) {
+            throw new ArithmeticException("Double overflow");
         }
     }
 
