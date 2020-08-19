@@ -17,6 +17,7 @@ public class CalculatorTest {
     private static final double NEGATIVE_VALUE2 = -4;
     private static final double POSITIVE_FRACTION1 = 2.5;
     private static final double POSITIVE_FRACTION2 = 1.5;
+    private static final double FRACTION_LESS_THAN_1 = 0.9;
     private static final double NEGATIVE_FRACTION1 = -2.5;
     private static final double NEGATIVE_FRACTION2 = -1.5;
     private static final double ZERO = 0;
@@ -69,6 +70,16 @@ public class CalculatorTest {
         Assert.assertEquals(-1, result, DELTA);
     }
 
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityPositiveValuesAddition() {
+        calculator.calculator(Double.MAX_VALUE, Double.MAX_VALUE, ADDITION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityNegativeValuesAddition() {
+        calculator.calculator(-Double.MAX_VALUE, -Double.MAX_VALUE, ADDITION);
+    }
+
     @Test
     public void positiveSubtraction() {
         result = calculator.calculator(POSITIVE_VALUE1, POSITIVE_VALUE2, SUBTRACTION);
@@ -103,6 +114,16 @@ public class CalculatorTest {
     public void oneNegativeFractionSubtraction() {
         result = calculator.calculator(NEGATIVE_FRACTION1, POSITIVE_FRACTION2, SUBTRACTION);
         Assert.assertEquals(-4, result, DELTA);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityFirstPositiveValueSubtraction() {
+        calculator.calculator(Double.MAX_VALUE, -Double.MAX_VALUE, SUBTRACTION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinitySecondPositiveValueSubtraction() {
+        calculator.calculator(-Double.MAX_VALUE, Double.MAX_VALUE, SUBTRACTION);
     }
 
     @Test
@@ -141,16 +162,38 @@ public class CalculatorTest {
         Assert.assertEquals(-1.25, result, DELTA);
     }
 
-    @Test(expected = ArithmeticException.class)
-    public void arithmeticException() {
-        calculator.calculator(POSITIVE_VALUE1, ZERO, DIVISION);
-    }
 
     @Test
     public void zeroDevided() {
         result = calculator.calculator(ZERO, POSITIVE_VALUE2, DIVISION);
         Assert.assertEquals(0, result, DELTA);
     }
+
+    @Test(expected = ArithmeticException.class)
+    public void arithmeticException() {
+        calculator.calculator(POSITIVE_VALUE1, ZERO, DIVISION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityBothPositiveDivision() {
+        calculator.calculator(Double.MAX_VALUE, FRACTION_LESS_THAN_1, DIVISION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityBothNegativeDivision() {
+        calculator.calculator(-Double.MAX_VALUE, -FRACTION_LESS_THAN_1, DIVISION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityFirstPositiveDivision() {
+        calculator.calculator(Double.MAX_VALUE, -FRACTION_LESS_THAN_1, DIVISION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinitySecondPositiveDivision() {
+        calculator.calculator(-Double.MAX_VALUE, FRACTION_LESS_THAN_1, DIVISION);
+    }
+
 
     @Test
     public void positiveMultiplication() {
@@ -186,6 +229,26 @@ public class CalculatorTest {
     public void oneNegativeFractionMultiplication() {
         result = calculator.calculator(NEGATIVE_FRACTION1, POSITIVE_VALUE2, MULTIPLICATION);
         Assert.assertEquals(-5, result, DELTA);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityBothPositiveValuesMultiplication() {
+        calculator.calculator(Double.MAX_VALUE, POSITIVE_VALUE2, MULTIPLICATION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityOneNegativeValuesMultiplication() {
+        calculator.calculator(Double.MAX_VALUE, NEGATIVE_VALUE2, MULTIPLICATION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityOneNegativeSwapValuesMultiplication() {
+        calculator.calculator(POSITIVE_VALUE1, -Double.MAX_VALUE, MULTIPLICATION);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityBothNegativeValuesMultiplication() {
+        calculator.calculator(-Double.MAX_VALUE, NEGATIVE_VALUE2, MULTIPLICATION);
     }
 
     @Test
@@ -240,5 +303,20 @@ public class CalculatorTest {
     public void powByZero() {
         result = calculator.calculator(POSITIVE_VALUE1, ZERO, POWER);
         Assert.assertEquals(1, result, DELTA);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityBothPositivePower() {
+        calculator.calculator(Double.MAX_VALUE, POSITIVE_VALUE2, POWER);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityBothPositiveSwapPower() {
+        calculator.calculator(POSITIVE_VALUE1, Double.MAX_VALUE, POWER);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isInfinityFirstNegativeSwapPower() {
+        calculator.calculator(NEGATIVE_VALUE1, Double.MAX_VALUE, POWER);
     }
 }
