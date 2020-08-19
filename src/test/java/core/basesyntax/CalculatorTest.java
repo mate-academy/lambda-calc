@@ -15,7 +15,7 @@ public class CalculatorTest {
     private static final String OPERATOR_DIV = "/";
     private static final String OPERATOR_POW = "^";
     private static final String FAKE_OPERATOR = "?";
-    private static final String FAKE_OPERATORS = "1234567890.,!?(){}[]@#$%&_№:;`\\|/" +
+    private static final String FAKE_OPERATORS = "1234567890.,!?(){}[]@#$%&_№:;`\\|" +
             "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
     private static Calculator calculator;
@@ -115,6 +115,6 @@ public class CalculatorTest {
                 countException++;
             }
         }
-        Assert.assertEquals("IllegalArgumentException was expected", FAKE_OPERATORS.length() - 1, countException);
+        Assert.assertEquals("IllegalArgumentException was expected", FAKE_OPERATORS.length(), countException);
     }
 }
