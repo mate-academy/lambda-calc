@@ -1,12 +1,11 @@
 package core.basesyntax;
 
-import core.basesyntax.exception.DividingByZeroException;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private Calculator calculator;
+    private static Calculator calculator;
     public static final double ZERO = 0;
     public static final double POSITIVE_NUMBER_1 = 20;
     public static final double POSITIVE_NUMBER_2 = 40;
@@ -27,12 +26,12 @@ public class CalculatorTest {
     public static final char POWER = '^';
     public static final double DELTA = 0;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         calculator = new Calculator();
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void IllegalActionTest() {
         calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '&');
     }
@@ -135,7 +134,7 @@ public class CalculatorTest {
         Assert.assertEquals("Wrong division algorithm!", -2, secondResult, DELTA);
     }
 
-    @Test (expected = ArithmeticException.class)
+    @Test(expected = ArithmeticException.class)
     public void DivisionTestWithZero() {
         double firstResult = calculator.calculate(ZERO, POSITIVE_NUMBER_1, DIVIDE);
         Assert.assertEquals("", 0, firstResult, DELTA);
@@ -167,7 +166,7 @@ public class CalculatorTest {
     @Test
     public void MultiplicationTestNegative() {
         double firstResult = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, MULTIPLY);
-        Assert.assertEquals("Wrong addition algorithm!", 800, firstResult,  DELTA);
+        Assert.assertEquals("Wrong addition algorithm!", 800, firstResult, DELTA);
         double secondResult = calculator.calculate(NEGATIVE_NUMBER_1, POSITIVE_NUMBER_2, MULTIPLY);
         Assert.assertEquals("Wrong addition algorithm!", -800, secondResult, DELTA);
     }

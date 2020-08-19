@@ -1,12 +1,10 @@
 package core.basesyntax;
 
-import core.basesyntax.exception.DividingByZeroException;
-
 public class Division implements Action {
     @Override
-    public double doAction(double a, double b) throws DividingByZeroException {
+    public double doAction(double a, double b) {
         if (b == 0) {
-            throw new DividingByZeroException("Dividing by zero is not allowed!");
+            throw new ArithmeticException("Dividing by zero is not allowed!");
         }
         return a / b;
     }
