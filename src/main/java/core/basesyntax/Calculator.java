@@ -11,7 +11,7 @@ public class Calculator {
             case '*':
                 return firstNumber * secondNumber;
             case '/':
-                if (mathAction == '/' && secondNumber == 0) {
+                if (secondNumber == 0) {
                     throw new ArithmeticException("Division by zero is impossible");
                 }
                 return firstNumber / secondNumber;
@@ -19,12 +19,6 @@ public class Calculator {
                 return Math.pow(firstNumber, secondNumber);
             default:
                 throw new NoSuchOperationException("Not correct action");
-        }
-    }
-
-    class NoSuchOperationException extends RuntimeException {
-        public NoSuchOperationException(String message) {
-            super(message);
         }
     }
 }

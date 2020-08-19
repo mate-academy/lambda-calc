@@ -14,7 +14,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void additionOk() {
+    public void additionPositiveOk() {
         double actual = calculator.calculate(12, '+', 8);
         Assert.assertEquals(20, actual, DELTA);
     }
@@ -26,7 +26,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtractionOk() {
+    public void subtractionPositiveOk() {
         double actual = calculator.calculate(12, '-', 20);
         Assert.assertEquals(-8, actual, DELTA);
     }
@@ -38,7 +38,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void divisionOk() {
+    public void divisionPositiveOk() {
         double actual = calculator.calculate(12, '/', 2);
         Assert.assertEquals(6, actual, DELTA);
     }
@@ -56,7 +56,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multiplicationOk() {
+    public void multiplicationPositiveOk() {
         double actual = calculator.calculate(12, '*', 3);
         Assert.assertEquals(36, actual, DELTA);
     }
@@ -68,7 +68,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void powerOk() {
+    public void powerPositiveOk() {
         double actual = calculator.calculate(3, '^', 2);
         Assert.assertEquals(9, actual, DELTA);
     }
@@ -84,7 +84,7 @@ public class CalculatorTest {
         calculator.calculate(12, '/', 0);
     }
 
-    @Test(expected = Calculator.NoSuchOperationException.class)
+    @Test(expected = NoSuchOperationException.class)
     public void checkMathAction() {
         calculator.calculate(12, ';', 4);
     }
