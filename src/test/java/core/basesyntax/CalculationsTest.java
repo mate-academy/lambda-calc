@@ -30,51 +30,120 @@ public class CalculationsTest {
     }
 
     @Test
-    public void AdditionTest() {
+    public void AdditionPositiveNumberOk() {
         Assert.assertEquals(7, calc.calculate(5, 2, '+'), DELTA);
-        Assert.assertEquals(57.0, calc.calculate(57.0, 0.0, '+'), DELTA);
-        Assert.assertEquals(-313.7, calc.calculate(-576.88, 263.18, '+'), FLOATING_DELTA);
+    }
+
+    @Test
+    public void AdditionNegativeNumberOk() {
         Assert.assertEquals(-10650.0, calc.calculate(-5784.0, -4866.0, '+'), DELTA);
+    }
+
+    @Test
+    public void ZeroAdditionOk() {
+        Assert.assertEquals(57.0, calc.calculate(57.0, 0.0, '+'), DELTA);
         Assert.assertEquals(0.0, calc.calculate(0.0, 0.0, '+'), DELTA);
     }
 
     @Test
-    public void MultiplicationTest() {
+    public void AdditionFloatingPointNumberOk() {
+        Assert.assertEquals(-313.7, calc.calculate(-576.88, 263.18, '+'), FLOATING_DELTA);
+    }
+
+    @Test
+    public void MultiplicationPositiveNumberOk() {
         Assert.assertEquals(56.0, calc.calculate(7.0, 8.0, '*'), DELTA);
+    }
+
+    @Test
+    public void MultiplicationNegativeNumberOk() {
+        Assert.assertEquals(-56.0, calc.calculate(7.0, -8.0, '*'), DELTA);
+    }
+
+    @Test
+    public void ZeroMultiplicationOk() {
         Assert.assertEquals(0.0, calc.calculate(57.0, 0.0, '*'), DELTA);
-        Assert.assertEquals(-187.44, calc.calculate(-56.8, 3.3, '*'), FLOATING_DELTA);
-        Assert.assertEquals(572.0, calc.calculate(-44.0, -13.0, '*'), DELTA);
         Assert.assertEquals(0.0, calc.calculate(0.0, 0.0, '*'), DELTA);
     }
 
     @Test
-    public void SubtractionTest() {
+    public void MultiplicationFloatingPointNumberOk() {
+        Assert.assertEquals(-187.44, calc.calculate(-56.8, 3.3, '*'), FLOATING_DELTA);
+    }
+
+    @Test
+    public void SubtractionPositiveNumberOk() {
         Assert.assertEquals(77.0, calc.calculate(87.0, 10.0, '-'), DELTA);
-        Assert.assertEquals(88.0, calc.calculate(88.0, 0.0, '-'), DELTA);
-        Assert.assertEquals(-209.77, calc.calculate(-176.66, 33.11, '-'), FLOATING_DELTA);
+    }
+
+    @Test
+    public void SubtractionNegativeNumberOk() {
         Assert.assertEquals(-11.0, calc.calculate(-24.0, -13.0, '-'), DELTA);
+    }
+
+    @Test
+    public void ZeroSubtractionOk() {
+        Assert.assertEquals(88.0, calc.calculate(88.0, 0.0, '-'), DELTA);
         Assert.assertEquals(0.0, calc.calculate(0.0, 0.0, '-'), DELTA);
     }
 
     @Test
-    public void DivisionTest() {
+    public void SubtractionFloatingPointNumberOk() {
+        Assert.assertEquals(-209.77, calc.calculate(-176.66, 33.11, '-'), FLOATING_DELTA);
+    }
+
+    @Test
+    public void DivisionPositiveNumberOk() {
         Assert.assertEquals(11.0, calc.calculate(121, 11, '/'), DELTA);
-        Assert.assertEquals(0.0, calc.calculate(0.0, 18.0, '/'), DELTA);
+    }
+
+    @Test
+    public void DivisionNegativeNumberOk() {
         Assert.assertEquals(-88.0, calc.calculate(-3168.0, 36.0, '/'), DELTA);
         Assert.assertEquals(31.0, calc.calculate(-403.0, -13.0, '/'), DELTA);
+    }
+
+    @Test
+    public void ZeroDivisionOk() {
+        Assert.assertEquals(0.0, calc.calculate(0.0, 18.0, '/'), DELTA);
+    }
+
+    @Test
+    public void DivisionFloatingPointNumberOk() {
         Assert.assertEquals(-3.55, calc.calculate(-1365.6495, 384.69, '/'), FLOATING_DELTA);
     }
 
     @Test
-    public void PowerTest() {
+    public void PowerPositiveNumberOk() {
         Assert.assertEquals(1977326743.0, calc.calculate(7.0, 11.0, '^'), DELTA);
-        Assert.assertEquals(1.0, calc.calculate(88.0, 0.0, '^'), DELTA);
-        Assert.assertEquals(0.0, calc.calculate(0.0, 5.0, '^'), DELTA);
+    }
+
+    @Test
+    public void PowerNegativeNumberOk() {
         Assert.assertEquals(-29791.0, calc.calculate(-31.0, 3.0, '^'), DELTA);
         Assert.assertEquals(46656.0, calc.calculate(-6.0, 6.0, '^'), DELTA);
+    }
+
+    @Test
+    public void ZeroPowerOk() {
+        Assert.assertEquals(1.0, calc.calculate(88.0, 0.0, '^'), DELTA);
+        Assert.assertEquals(0.0, calc.calculate(0.0, 5.0, '^'), DELTA);
+    }
+
+    @Test
+    public void PowerFloatingPointNumberOk() {
+        Assert.assertEquals(0.033, calc.calculate(-5.05, -2.0, '^'), FLOATING_DELTA);
+    }
+
+    @Test
+    public void NegativePowerOk() {
         Assert.assertEquals(-0.037, calc.calculate(-3.0, -3.0, '^'), FLOATING_DELTA);
         Assert.assertEquals(0.0123, calc.calculate(-3.0, -4.0, '^'), FLOATING_DELTA);
-        Assert.assertEquals(1.0, calc.calculate(0.0, 0.0, '^'), DELTA);
-        Assert.assertEquals(0.033, calc.calculate(-5.05, -2.0, '^'), FLOATING_DELTA);
+    }
+
+    @Test
+    public void FloatingPointPowerOk() {
+        Assert.assertEquals(0.25, calc.calculate(8, -0.66, '^'), FLOATING_DELTA);
+        Assert.assertEquals(13501.251, calc.calculate(44.89, 2.5, '^'), FLOATING_DELTA);
     }
 }
