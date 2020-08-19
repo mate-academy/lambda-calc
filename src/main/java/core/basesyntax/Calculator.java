@@ -18,6 +18,9 @@ public class Calculator {
             case ('^'):
                 if (value1 == 0 && value2 < 0) {
                     throw new ArithmeticException("You can't divide by zero");
+                } else if (value1 < 0 && value2 % 2 == 0) {
+                    throw new ArithmeticException("You can't take a paired "
+                            + "root of a negative number");
                 }
                 return Math.pow(value1, value2);
             default:

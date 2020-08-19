@@ -6,13 +6,8 @@ import org.junit.Assert;
 
 
 public class HelloWorldTest {
-    private final static double DELTA = 0.00000001;
-    private final static double SUM_OF_TWO_POSITIVE_NUMBERS = 46.0;
-    private final static double SUM_OF_TWO_POSITIVE_AND_NEGATIVE_NUMBERS = 0;
-    private final static double RESULT_OF_DIVIDING_BY_NOT_NULL = 45 / 7.0;
-    private final static double RESULT_BY_SUBTRACTION_OF_TWO_NEGATIVE_NUMBERS = 5;
-    private final static double RESULT_WITH_MULTIPLICATION_WITH_NULL = 0;
-    private final static double RESULT_WITH_NULL_BASIS_AND_NULL_DEGREE = 1;
+
+    private final static double DELTA = 0.001;
     private static Calculator calculator;
 
     @BeforeClass
@@ -23,13 +18,25 @@ public class HelloWorldTest {
     @Test
     public void getSumOfTwoPositiveNumbers() throws BadOperandException {
         double actualResult = calculator.calculate(12.5, 33.5, '+');
-        Assert.assertEquals(SUM_OF_TWO_POSITIVE_NUMBERS, actualResult, DELTA);
+        Assert.assertEquals(46, actualResult, DELTA);
     }
 
     @Test
     public void getSumOfTwoNegativeAndPositiveNumbers() throws BadOperandException {
         double actualResult = calculator.calculate(58, -58, '+');
-        Assert.assertEquals(SUM_OF_TWO_POSITIVE_AND_NEGATIVE_NUMBERS, actualResult, DELTA);
+        Assert.assertEquals(0, actualResult, DELTA);
+    }
+
+    @Test
+    public void getSumOfTwoNegativeNumbers() throws BadOperandException {
+        double actualResult = calculator.calculate(-12, -5, '+');
+        Assert.assertEquals(-17, actualResult, DELTA);
+    }
+
+    @Test
+    public void getSumWithNull() throws BadOperandException {
+        double actualResult = calculator.calculate(0, 33.5, '+');
+        Assert.assertEquals(33.5, actualResult, DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -38,15 +45,33 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void getResultOfDividingByNotNull() throws BadOperandException {
-        double actualResult = calculator.calculate(45, 7, '/');
-        Assert.assertEquals(RESULT_OF_DIVIDING_BY_NOT_NULL, actualResult, DELTA);
+    public void getResultOfDividingNullByNotNull() throws BadOperandException {
+        double actualResult = calculator.calculate(0, 7, '/');
+        Assert.assertEquals(0, actualResult, DELTA);
+    }
+
+    @Test
+    public void getResultOfDividingNotNullByNotNull() throws BadOperandException {
+        double actualResult = calculator.calculate(45, 5, '/');
+        Assert.assertEquals(9, actualResult, DELTA);
     }
 
     @Test
     public void getResultBySubtractionOfTwoNegativeNumbers() throws BadOperandException {
         double actualResult = calculator.calculate(-2, -7, '-');
-        Assert.assertEquals(RESULT_BY_SUBTRACTION_OF_TWO_NEGATIVE_NUMBERS, actualResult, DELTA);
+        Assert.assertEquals(5, actualResult, DELTA);
+    }
+
+    @Test
+    public void getResultBySubtractionOfTwoNegativeAndPositiveNumbers() throws BadOperandException {
+        double actualResult = calculator.calculate(2, -7, '-');
+        Assert.assertEquals(9, actualResult, DELTA);
+    }
+
+    @Test
+    public void getResultBySubtractionWithNull() throws BadOperandException {
+        double actualResult = calculator.calculate(0, -7, '-');
+        Assert.assertEquals(7, actualResult, DELTA);
     }
 
     @Test(expected = BadOperandException.class)
@@ -57,7 +82,7 @@ public class HelloWorldTest {
     @Test
     public void getResultWithMultiplicationWithNull() throws BadOperandException {
         double actualResult = calculator.calculate(45, 0, '*');
-        Assert.assertEquals(RESULT_WITH_MULTIPLICATION_WITH_NULL, actualResult, DELTA);
+        Assert.assertEquals(0, actualResult, DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -68,6 +93,23 @@ public class HelloWorldTest {
     @Test
     public void getResultWithNullBasisAndNullDegree() throws BadOperandException {
         double actualResult = calculator.calculate(0, 0, '^');
-        Assert.assertEquals(RESULT_WITH_NULL_BASIS_AND_NULL_DEGREE, actualResult, DELTA);
+        Assert.assertEquals(1, actualResult, DELTA);
+    }
+
+    @Test
+    public void getResultWithPositiveBasisAndNegativeIntegerDegree() throws BadOperandException {
+        double actualResult = calculator.calculate(2, -1, '^');
+        Assert.assertEquals(0.5, actualResult, DELTA);
+    }
+
+    @Test
+    public void getResultWithPositiveBasisAndNegativeDoubleDegree() throws BadOperandException {
+        double actualResult = calculator.calculate(4, -0.5, '^');
+        Assert.assertEquals(0.5, actualResult, DELTA);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void getResultWithNegativeBasisAndPairedDegree() throws BadOperandException {
+        double actualResult = calculator.calculate(-16, -2, '^');
     }
 }
