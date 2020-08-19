@@ -13,7 +13,6 @@ public class CalculatorTest {
     private static final double ZERO = 0;
 
     private static Calculator calculator;
-    private double result;
 
     @BeforeClass
     public static void setUp() {
@@ -27,150 +26,150 @@ public class CalculatorTest {
 
     @Test
     public void additionTestPositivePositive() {
-        result = calculator.calculate(POSITIVE_FIRST, '+', POSITIVE_SECOND);
+        double result = calculator.calculate(POSITIVE_FIRST, '+', POSITIVE_SECOND);
         Assert.assertEquals(POSITIVE_FIRST + POSITIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void additionTestPositiveNegative() {
-        result = calculator.calculate(POSITIVE_FIRST, '+', NEGATIVE_FIRST);
+        double result = calculator.calculate(POSITIVE_FIRST, '+', NEGATIVE_FIRST);
         Assert.assertEquals(POSITIVE_FIRST + NEGATIVE_FIRST, result, DELTA);
     }
 
     @Test
     public void additionTestNegativeNegative() {
-        result = calculator.calculate(NEGATIVE_FIRST, '+', NEGATIVE_SECOND);
+        double result = calculator.calculate(NEGATIVE_FIRST, '+', NEGATIVE_SECOND);
         Assert.assertEquals(NEGATIVE_FIRST + NEGATIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void additionTestNegativeZero() {
-        result = calculator.calculate(NEGATIVE_SECOND, '+', ZERO);
+        double result = calculator.calculate(NEGATIVE_SECOND, '+', ZERO);
         Assert.assertEquals(NEGATIVE_SECOND + ZERO, result, DELTA);
     }
 
     @Test
     public void additionTestPositiveZero() {
-        result = calculator.calculate(POSITIVE_FIRST, '+', ZERO);
+        double result = calculator.calculate(POSITIVE_FIRST, '+', ZERO);
         Assert.assertEquals(POSITIVE_FIRST + ZERO, result, DELTA);
     }
 
     @Test
     public void subtractionTestPositivePositive() {
-        result = calculator.calculate(POSITIVE_FIRST, '-', POSITIVE_SECOND);
+        double result = calculator.calculate(POSITIVE_FIRST, '-', POSITIVE_SECOND);
         Assert.assertEquals(POSITIVE_FIRST - POSITIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void subtractionTestPositiveNegative() {
-        result = calculator.calculate(POSITIVE_FIRST, '-', NEGATIVE_FIRST);
+        double result = calculator.calculate(POSITIVE_FIRST, '-', NEGATIVE_FIRST);
         Assert.assertEquals(POSITIVE_FIRST - NEGATIVE_FIRST, result, DELTA);
     }
 
     @Test
     public void subtractionTestNegativeNegative() {
-        result = calculator.calculate(NEGATIVE_FIRST, '-', NEGATIVE_SECOND);
+        double result = calculator.calculate(NEGATIVE_FIRST, '-', NEGATIVE_SECOND);
         Assert.assertEquals(NEGATIVE_FIRST - NEGATIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void subtractionTestNegativeZero() {
-        result = calculator.calculate(NEGATIVE_SECOND, '-', ZERO);
+        double result = calculator.calculate(NEGATIVE_SECOND, '-', ZERO);
         Assert.assertEquals(NEGATIVE_SECOND - ZERO, result, DELTA);
     }
 
     @Test
     public void subtractionTestPositiveZero() {
-        result = calculator.calculate(POSITIVE_FIRST, '-', ZERO);
+        double result = calculator.calculate(POSITIVE_FIRST, '-', ZERO);
         Assert.assertEquals(POSITIVE_FIRST - ZERO, result, DELTA);
     }
 
     @Test
     public void multiplyingTestPositivePositive() {
-        result = calculator.calculate(POSITIVE_FIRST, '*', POSITIVE_SECOND);
+        double result = calculator.calculate(POSITIVE_FIRST, '*', POSITIVE_SECOND);
         Assert.assertEquals(POSITIVE_FIRST * POSITIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void multiplyingTestPositiveNegative() {
-        result = calculator.calculate(POSITIVE_FIRST, '*', NEGATIVE_FIRST);
+        double result = calculator.calculate(POSITIVE_FIRST, '*', NEGATIVE_FIRST);
         Assert.assertEquals(POSITIVE_FIRST * NEGATIVE_FIRST, result, DELTA);
     }
 
     @Test
     public void multiplyingTestNegativeNegative() {
-        result = calculator.calculate(NEGATIVE_FIRST, '*', NEGATIVE_SECOND);
+        double result = calculator.calculate(NEGATIVE_FIRST, '*', NEGATIVE_SECOND);
         Assert.assertEquals(NEGATIVE_FIRST * NEGATIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void multiplyingTestNegativeZero() {
-        result = calculator.calculate(NEGATIVE_SECOND, '*', ZERO);
+        double result = calculator.calculate(NEGATIVE_SECOND, '*', ZERO);
         Assert.assertEquals(NEGATIVE_SECOND * ZERO, result, DELTA);
     }
 
     @Test
     public void multiplyingTestPositiveZero() {
-        result = calculator.calculate(POSITIVE_FIRST, '*', ZERO);
+        double result = calculator.calculate(POSITIVE_FIRST, '*', ZERO);
         Assert.assertEquals(POSITIVE_FIRST * ZERO, result, DELTA);
     }
 
     @Test
     public void toDegreeTestPositivePositive() {
-        result = calculator.calculate(POSITIVE_FIRST, '^', POSITIVE_SECOND);
+        double result = calculator.calculate(POSITIVE_FIRST, '^', POSITIVE_SECOND);
         Assert.assertEquals(Math.pow(POSITIVE_FIRST, POSITIVE_SECOND), result, DELTA);
     }
 
     @Test
     public void toDegreeTestPositiveNegative() {
-        result = calculator.calculate(POSITIVE_FIRST, '^', NEGATIVE_FIRST);
+        double result = calculator.calculate(POSITIVE_FIRST, '^', NEGATIVE_FIRST);
         Assert.assertEquals(Math.pow(POSITIVE_FIRST, NEGATIVE_FIRST), result, DELTA);
     }
 
     @Test
     public void toDegreeTestNegativeNegative() {
-        result = calculator.calculate(NEGATIVE_FIRST, '^', NEGATIVE_SECOND);
+        double result = calculator.calculate(NEGATIVE_FIRST, '^', NEGATIVE_SECOND);
         Assert.assertEquals(Math.pow(NEGATIVE_FIRST, NEGATIVE_SECOND), result, DELTA);
     }
 
     @Test
     public void toDegreeTestNegativeZero() {
-        result = calculator.calculate(NEGATIVE_SECOND, '^', ZERO);
+        double result = calculator.calculate(NEGATIVE_SECOND, '^', ZERO);
         Assert.assertEquals(Math.pow(NEGATIVE_SECOND, ZERO), result, DELTA);
     }
 
     @Test
     public void toDegreeTestPositiveZero() {
-        result = calculator.calculate(POSITIVE_SECOND, '^', ZERO);
+        double result = calculator.calculate(POSITIVE_SECOND, '^', ZERO);
         Assert.assertEquals(Math.pow(POSITIVE_SECOND, ZERO), result, DELTA);
     }
 
     @Test
     public void divisionTestPositivePositive() {
-        result = calculator.calculate(POSITIVE_FIRST, '/', POSITIVE_SECOND);
+        double result = calculator.calculate(POSITIVE_FIRST, '/', POSITIVE_SECOND);
         Assert.assertEquals(POSITIVE_FIRST / POSITIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void divisionTestPositiveNegative() {
-        result = calculator.calculate(POSITIVE_FIRST, '/', NEGATIVE_FIRST);
+        double result = calculator.calculate(POSITIVE_FIRST, '/', NEGATIVE_FIRST);
         Assert.assertEquals(POSITIVE_FIRST / NEGATIVE_FIRST, result, DELTA);
     }
 
     @Test
     public void divisionTestNegativeNegative() {
-        result = calculator.calculate(NEGATIVE_FIRST, '/', NEGATIVE_SECOND);
+        double result = calculator.calculate(NEGATIVE_FIRST, '/', NEGATIVE_SECOND);
         Assert.assertEquals(NEGATIVE_FIRST / NEGATIVE_SECOND, result, DELTA);
     }
 
     @Test
     public void divisionTestZeroNegative() {
-        result = calculator.calculate(ZERO, '/', NEGATIVE_SECOND);
+        double result = calculator.calculate(ZERO, '/', NEGATIVE_SECOND);
         Assert.assertEquals(ZERO / NEGATIVE_SECOND, result, DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
     public void divisionByZero() {
-        result = calculator.calculate(NEGATIVE_FIRST, '/', ZERO);
+        double result = calculator.calculate(NEGATIVE_FIRST, '/', ZERO);
     }
 }
