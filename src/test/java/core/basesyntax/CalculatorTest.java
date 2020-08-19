@@ -1,137 +1,126 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-class CalculatorTest {
+public class CalculatorTest {
 
     private Calculator calculatorTest = new Calculator();
-    private static final double DELTA = 0.1;
+    private static final double DELTA = 1e-10;
 
     @Test
-    void calculateAdditionOk() {
+    public void calculateAdditionOk() {
         assertEquals(4, calculatorTest.calculate(2, '+', 2), DELTA);
     }
 
     @Test
-    void calculateSubtractionOk() {
+    public void calculateSubtractionOk() {
         assertEquals(0, calculatorTest.calculate(2, '-', 2), DELTA);
     }
 
     @Test
-    void calculateMultiplicationOk() {
+    public void calculateMultiplicationOk() {
         assertEquals(4, calculatorTest.calculate(2, '*', 2), DELTA);
     }
 
     @Test
-    void calculateDivisionOk() {
+    public void calculateDivisionOk() {
         assertEquals(1, calculatorTest.calculate(2, '/', 2), DELTA);
     }
 
-    @Test
-    void calculateIllegalArgumentException() {
-        try {
-            calculatorTest.calculate(2, ']', 2);
-            fail("Test failed, expected exception");
-        } catch (IllegalArgumentException exception) {
-            assertEquals("Sorry, illegal operand", exception.getMessage());
-        }
+    @Test(expected = IllegalArgumentException.class)
+    public void calculateIllegalArgumentException() {
+        calculatorTest.calculate(2, ']', 2);
     }
 
     @Test
-    void additionOk() {
+    public void additionOk() {
         assertEquals(4, calculatorTest.addition(2, 2), DELTA);
     }
 
     @Test
-    void additionWithMinus() {
+    public void additionWithMinus() {
         assertEquals(0, calculatorTest.addition(2, -2), DELTA);
     }
 
     @Test
-    void additionNegativeByNegative() {
+    public void additionNegativeByNegative() {
         assertEquals(-4, calculatorTest.addition(-2, -2), DELTA);
     }
 
     @Test
-    void subtractionOk() {
+    public void subtractionOk() {
         assertEquals(0, calculatorTest.subtraction(2, 2), DELTA);
     }
 
     @Test
-    void subtractionWithMinus() {
+    public void subtractionWithMinus() {
         assertEquals(4, calculatorTest.subtraction(2, -2), DELTA);
     }
 
     @Test
-    void subtractionNegativeByNegative() {
+    public void subtractionNegativeByNegative() {
         assertEquals(0, calculatorTest.subtraction(-2, -2), DELTA);
     }
 
-    @Test
-    void divisionByZeroExceptionExpected() {
-        try {
-            calculatorTest.division(2, 0);
-            fail("Test failed, expected exception");
-        } catch (IllegalArgumentException exception) {
-            assertEquals("You can't divide by zero", exception.getMessage());
-        }
+    @Test(expected = IllegalArgumentException.class)
+    public void divisionByZeroExceptionExpected() {
+        calculatorTest.division(2, 0);
     }
 
     @Test
-    void divisionZero() {
+    public void divisionZero() {
         assertEquals(0, calculatorTest.division(0, 2), DELTA);
     }
 
     @Test
-    void divisionOK() {
+    public void divisionOK() {
         assertEquals(2, calculatorTest.division(4, 2), DELTA);
     }
 
     @Test
-    void divisionNegativeByNegative() {
+    public void divisionNegativeByNegative() {
         assertEquals(1, calculatorTest.division(-2, -2), DELTA);
     }
 
     @Test
-    void divisionByNegative() {
+    public void divisionByNegative() {
         assertEquals(-1, calculatorTest.division(2, -2), DELTA);
     }
 
     @Test
-    void multiplicationOk() {
+    public void multiplicationOk() {
         assertEquals(4, calculatorTest.multiplication(2, 2), DELTA);
     }
 
     @Test
-    void multiplicationZero() {
+    public void multiplicationZero() {
         assertEquals(0, calculatorTest.multiplication(0, 2), DELTA);
     }
 
     @Test
-    void multiplicationFloatOk() {
+    public void multiplicationFloatOk() {
         assertEquals(4.4, calculatorTest.multiplication(2.2, 2), DELTA);
     }
 
     @Test
-    void raisingToThePowerOk() {
+    public void raisingToThePowerOk() {
         assertEquals(4, calculatorTest.raisingToThePower(2, 2), DELTA);
     }
 
     @Test
-    void raisingToThePower0() {
+    public void raisingToThePower0() {
         assertEquals(1, calculatorTest.raisingToThePower(2, 0), DELTA);
     }
 
     @Test
-    void raisingToTheMinusPower() {
+    public void raisingToTheMinusPower() {
         assertEquals(0.5, calculatorTest.raisingToThePower(2, -1), DELTA);
     }
 
     @Test
-    void raisingToTheFloatPower() {
+    public void raisingToTheFloatPower() {
         assertEquals(2, calculatorTest.raisingToThePower(4, 0.5), DELTA);
     }
 }

@@ -1,12 +1,6 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class Calculator {
-
-    public Calculator() {
-    }
 
     public double calculate(double firstNum, char operand, double secondNum) {
         switch (operand) {
