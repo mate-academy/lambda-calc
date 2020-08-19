@@ -1,7 +1,6 @@
 package core.basesyntax;
 
 public class Calculator {
-
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
     private static final char MULTIPLICATION = '*';
