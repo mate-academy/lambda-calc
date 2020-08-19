@@ -1,13 +1,9 @@
 package core.basesyntax;
 
 public class Calculator {
-    public static double calculate(Double firstNumber, Double secondNumber, Character sign) {
+    public double calculate(Double firstNumber, Double secondNumber, Character sign) {
         if (firstNumber == null || secondNumber == null || sign == null) {
-            throw new NullPointerException("Argument or sign can't be null!");
-        }
-        if (String.valueOf(firstNumber).contains(",")
-                || String.valueOf(secondNumber).contains(",")) {
-            throw new NumberFormatException("For double digits use only point!");
+            throw new IllegalArgumentException("Argument or sign can't be null!");
         }
         switch (sign) {
             case ('+'):
@@ -22,8 +18,8 @@ public class Calculator {
                 }
                 return firstNumber / secondNumber;
             case ('^'):
-                if (firstNumber == 0 && secondNumber != 0) {
-                    throw new AssertionError("Zero in any degree is zero!");
+                if (firstNumber == 0 && secondNumber < 0) {
+                    throw new ArithmeticException("Zero in any minus degree is zero!");
                 }
                 return Math.pow(firstNumber, secondNumber);
             default:
