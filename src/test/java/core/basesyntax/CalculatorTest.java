@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
-    private static final double DELTA = 0.01;
+    private static final double DELTA = 0.000_001;
     private static final char PLUS = '+';
     private static final char MINUS = '-';
     private static final char MULTIPLY = '*';
@@ -75,20 +75,20 @@ public class CalculatorTest {
 
     @Test
     public void divisionPositiveDigits() {
-        double actualResult = calculator.calculate(15.0, 5.9, DIVIDE);
-        Assert.assertEquals(2.54, actualResult, DELTA);
+        double actualResult = calculator.calculate(20.5, 5.0, DIVIDE);
+        Assert.assertEquals(4.1, actualResult, DELTA);
     }
 
     @Test
     public void divisionPositiveAndNegativeDigits() {
         double actualResult = calculator.calculate(15.0, -5.9, DIVIDE);
-        Assert.assertEquals(-2.54, actualResult, DELTA);
+        Assert.assertEquals(-2.542372881355932, actualResult, DELTA);
     }
 
     @Test
     public void divisionNegativeDigits() {
         double actualResult = calculator.calculate(-15.0, -5.9, DIVIDE);
-        Assert.assertEquals(2.54, actualResult, DELTA);
+        Assert.assertEquals(2.542372881355932, actualResult, DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -110,13 +110,13 @@ public class CalculatorTest {
 
     @Test
     public void powToFloatDigit() {
-        double actualResult = calculator.calculate(5.0, 2.2, POW);
-        Assert.assertEquals(34.49, actualResult, DELTA);
+        double actualResult = calculator.calculate(25.0, 0.5, POW);
+        Assert.assertEquals(5.0, actualResult, DELTA);
     }
 
     @Test
     public void powToZero() {
-        double actualResult = calculator.calculate(5.0, 0, POW);
+        double actualResult = calculator.calculate(10.0, 0, POW);
         Assert.assertEquals(1, actualResult, DELTA);
     }
 
