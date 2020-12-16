@@ -4,6 +4,12 @@ package core.basesyntax;
  * Feel free to remove this class and create your own.
  */
 public class Magical {
+    private static final String ADD = "+";
+    private static final String SUB = "-";
+    private static final String DIV = "/";
+    private static final String MUL = "*";
+    private static final String POW = "p";
+
     /*
     + second adds to first
     - second subtracts from fist
@@ -15,22 +21,22 @@ public class Magical {
         if (operation == null) {
             throw new NullPointerException();
         }
-        if (operation.equals("+")) {
+        if (operation.equals(ADD)) {
             return (double) first + second;
         }
-        if (operation.equals("-")) {
+        if (operation.equals(SUB)) {
             return (double) first - second;
         }
-        if (operation.equals("/")) {
+        if (operation.equals(DIV)) {
             if (second == 0) {
                 throw new ArithmeticException("Can't divide by 0");
             }
             return (double) first / second;
         }
-        if (operation.equals("*")) {
+        if (operation.equals(MUL)) {
             return (double) first * second;
         }
-        if (operation.equals("p") || operation.equals("P")) {
+        if (operation.equals(POW) || operation.equals(POW.toUpperCase())) {
             return Math.pow(first, second);
         }
         throw new RuntimeException("Invalid operation input! Was" + operation
