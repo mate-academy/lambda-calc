@@ -15,22 +15,22 @@ public class Magical {
         if (operation == null) {
             throw new NullPointerException();
         }
-        if (operation == "+") {
+        if (operation.equals("+")) {
             return (double) first + second;
         }
-        if (operation == "-") {
+        if (operation.equals("-")) {
             return (double) first - second;
         }
-        if (operation == "/") {
+        if (operation.equals("/")) {
             if (second == 0) {
-                throw new ArithmeticException("Can't divide bu 0");
+                throw new ArithmeticException("Can't divide by 0");
             }
             return (double) first / second;
         }
-        if (operation == "*") {
+        if (operation.equals("*")) {
             return (double) first * second;
         }
-        if (operation == "p") {
+        if (operation.equals("p") || operation.equals("P")) {
             return Math.pow(first, second);
         }
         throw new RuntimeException("Invalid operation input! Was" + operation

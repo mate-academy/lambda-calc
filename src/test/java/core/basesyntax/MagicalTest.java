@@ -63,4 +63,15 @@ class MagicalTest {
         Assertions.assertEquals((double) MAX_VALUE + MIN_VALUE,
                 magic.calculate(MAX_VALUE, MIN_VALUE, "+"));
     }
+
+    @Test
+    void subtract_max_values_Ok() {
+        Assertions.assertEquals((double) MAX_VALUE, MAX_VALUE,
+                magic.calculate(MAX_VALUE, MAX_VALUE, "-"));
+    }
+
+    @Test
+    void subtract_min_values() {
+        Assertions.assertEquals((double) MIN_VALUE, MIN_VALUE, "-");
+    }
 }
