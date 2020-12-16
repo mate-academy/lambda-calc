@@ -144,9 +144,11 @@ class MagicalTest {
 
     @Test
     void random_input_addition() {
+        int a;
+        int b;
         for (int i = 0; i < 1000; i++) {
-            int a = new Random().nextInt();
-            int b = new Random().nextInt();
+            a = new Random().nextInt();
+            b = new Random().nextInt();
             if ((double) a + b != magic.calculate(a, b, ADD)) {
                 fail("Expected value "+ (double) a + b
                         + "but was " + magic.calculate(a, b, ADD));
@@ -156,9 +158,11 @@ class MagicalTest {
 
     @Test
     void random_input_subtraction() {
+        int a;
+        int b;
         for (int i = 0; i < 1000; i++) {
-            int a = new Random().nextInt();
-            int b = new Random().nextInt();
+            a = new Random().nextInt();
+            b = new Random().nextInt();
             if ((double) a - b != magic.calculate(a, b, SUB)) {
                 fail("Expected value " + ((double) a - b)
                         + "but was " + magic.calculate(a, b, SUB));
@@ -168,9 +172,11 @@ class MagicalTest {
 
     @Test
     void random_input_multiplication() {
+        int a;
+        int b;
         for (int i = 0; i < 1000; i++) {
-            int a = new Random().nextInt();
-            int b = new Random().nextInt();
+            a = new Random().nextInt();
+            b = new Random().nextInt();
             if ((double) a * b != magic.calculate(a, b, MUL)) {
                 fail("Expected value "+ (double) a * b
                         + "but was " + magic.calculate(a, b, MUL));
@@ -180,9 +186,11 @@ class MagicalTest {
 
     @Test
     void random_input_division() {
+        int a;
+        int b;
         for (int i = 0; i < 1000; i++) {
-            int a = new Random().nextInt();
-            int b = new Random().nextInt();
+            a = new Random().nextInt();
+            b = new Random().nextInt();
             if ((double) a / b != magic.calculate(a, b, DIV)) {
                 fail("Expected value "+ (double) a / b
                         + "but was " + magic.calculate(a, b, DIV));
