@@ -57,4 +57,10 @@ class MagicalTest {
         Assertions.assertNotEquals(MIN_VALUE + MIN_VALUE,
                 magic.calculate(MIN_VALUE, MIN_VALUE, "+"));
     }
+
+    @Test
+    void add_negative_value_Ok() {
+        Assertions.assertEquals((double) MAX_VALUE + MIN_VALUE,
+                magic.calculate(MAX_VALUE, MIN_VALUE, "+"));
+    }
 }
