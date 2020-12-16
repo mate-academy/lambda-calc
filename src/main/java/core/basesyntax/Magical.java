@@ -13,6 +13,9 @@ public class Magical {
     p first in the power of second
      */
     public double calculate(double first, double second, String operation) {
+        if (operation == null) {
+            throw new NullPointerException();
+        }
         if (operation == "+") {
             return first + second;
         }

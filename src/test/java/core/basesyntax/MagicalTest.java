@@ -1,14 +1,16 @@
 package core.basesyntax;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MagicalTest {
     static Magical magic;
-    @BeforeAll
-    static void beforeAll() {
+
+    @BeforeEach
+    void setUp() {
         magic = new Magical();
     }
 
@@ -23,4 +25,6 @@ class MagicalTest {
         assertThrows(NullPointerException.class,
                 () -> magic.calculate(0, 0, null));
     }
+
+    void
 }
