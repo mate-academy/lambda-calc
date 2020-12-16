@@ -31,4 +31,11 @@ class MagicalTest {
         Assertions.assertThrows(ArithmeticException.class,
                 () -> magic.calculate(5, 0, "/"));
     }
+    @Test
+    void add_Max_Values_Ok() {
+        double first = Integer.MAX_VALUE;
+        double second = Integer.MAX_VALUE;
+        Assertions.assertEquals(first + second,
+                magic.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, "+"));
+    }
 }

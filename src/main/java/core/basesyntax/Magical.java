@@ -11,24 +11,24 @@ public class Magical {
     * second times first
     p first in the power of second
      */
-    public double calculate(double first, double second, String operation) {
+    public double calculate(int first, int second, String operation) {
         if (operation == null) {
             throw new NullPointerException();
         }
         if (operation == "+") {
-            return first + second;
+            return (double) first + second;
         }
         if (operation == "-") {
-            return first - second;
+            return (double) first - second;
         }
         if (operation == "/") {
             if (second == 0) {
                 throw new ArithmeticException("Can't divide bu 0");
             }
-            return first / second;
+            return (double) first / second;
         }
         if (operation == "*") {
-            return first * second;
+            return (double) first * second;
         }
         if (operation == "p") {
             return Math.pow(first, second);
