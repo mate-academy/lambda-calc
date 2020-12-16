@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MagicalTest {
-    static Magical magic;
+    private static Magical magic;
+    private static final int MAX_VALUE = Integer.MAX_VALUE;
+    private static final int MIN_VALUE = Integer.MIN_VALUE;
 
     @BeforeEach
     void setUp() {
@@ -31,11 +33,16 @@ class MagicalTest {
         Assertions.assertThrows(ArithmeticException.class,
                 () -> magic.calculate(5, 0, "/"));
     }
+
     @Test
     void add_Max_Values_Ok() {
-        double first = Integer.MAX_VALUE;
-        double second = Integer.MAX_VALUE;
-        Assertions.assertEquals(first + second,
-                magic.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, "+"));
+        Assertions.assertEquals((double) MAX_VALUE + MAX_VALUE,
+                magic.calculate(MAX_VALUE, MAX_VALUE, "+"));
+    }
+
+    @Test
+    void add_Max_Values_NotOk() {
+        Assertions.assertNotEquals(MAX_VALUE + MAX_VALUE,
+                magic.calculate(MAX_VALUE, MAX_VALUE, "+"));
     }
 }
