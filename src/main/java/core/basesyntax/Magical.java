@@ -3,7 +3,7 @@ package core.basesyntax;
 /**
  * Feel free to remove this class and create your own.
  */
-public class HelloWorld {
+public class Magical {
 
     /*
     + second adds to first
@@ -20,7 +20,7 @@ public class HelloWorld {
             return first - second;
         }
         if (operation == '/') {
-            return second == 0 ? 0 : first/second;
+            return second == 0 ? 0 : first / second;
         }
         if (operation == '*') {
             return first * second;
