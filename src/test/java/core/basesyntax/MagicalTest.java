@@ -1,5 +1,6 @@
 package core.basesyntax;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +15,20 @@ class MagicalTest {
     }
 
     @Test
-    void assertThrowRuntimeException() {
+    void operation_input_NotOk() {
         assertThrows(RuntimeException.class,
                 () -> magic.calculate(0, 0, "c"));
     }
 
     @Test
-    void assertThrowNullPointerException() {
+    void null_operation_input_NotOk() {
         assertThrows(NullPointerException.class,
                 () -> magic.calculate(0, 0, null));
+    }
+
+    @Test
+    void divide_by_zero_Ok() {
+        Assertions.assertThrows(ArithmeticException.class,
+                () -> magic.calculate(5, 0, "/"));
     }
 }

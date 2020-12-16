@@ -4,7 +4,6 @@ package core.basesyntax;
  * Feel free to remove this class and create your own.
  */
 public class Magical {
-
     /*
     + second adds to first
     - second subtracts from fist
@@ -23,7 +22,10 @@ public class Magical {
             return first - second;
         }
         if (operation == "/") {
-            return second == 0 ? 0 : first / second;
+            if (second == 0) {
+                throw new ArithmeticException("Can't divide bu 0");
+            }
+            return first / second;
         }
         if (operation == "*") {
             return first * second;
