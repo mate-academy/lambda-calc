@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class MagicalTest {
     private static Magical magic;
@@ -14,6 +15,15 @@ class MagicalTest {
     @BeforeEach
     void setUp() {
         magic = new Magical();
+    }
+
+    @Test
+    void case_insensitive_operation_input_NotOk() {
+        try {
+            magic.calculate(0, 0, "P");
+        } catch (RuntimeException e) {
+            fail("Method should be case insensitive");
+        }
     }
 
     @Test
