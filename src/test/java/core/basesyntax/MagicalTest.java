@@ -13,12 +13,14 @@ class MagicalTest {
     }
 
     @Test
-    void incorrectInputOperationExceptionExpected() {
-        try {
-            magic.calculate(0, 0, 'c');
-        } catch (RuntimeException e) {
-            return;
-        }
-        fail("RuntimeException is expected with incorrect input");
+    void incorrect_Input_Operation_Exception_Expected() {
+        assertThrows(RuntimeException.class,
+                () -> magic.calculate(0, 0, "c"));
+    }
+
+    @Test
+    void NPE_exception_Expected() {
+        assertThrows(NullPointerException.class,
+                () -> magic.calculate(0, 0, null));
     }
 }

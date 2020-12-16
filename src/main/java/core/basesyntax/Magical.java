@@ -12,20 +12,20 @@ public class Magical {
     * second times first
     p first in the power of second
      */
-    public double calculate(double first, double second, char operation) {
-        if (operation == '+') {
+    public double calculate(double first, double second, String operation) {
+        if (operation == "+") {
             return first + second;
         }
-        if (operation == '-') {
+        if (operation == "-") {
             return first - second;
         }
-        if (operation == '/') {
+        if (operation == "/") {
             return second == 0 ? 0 : first / second;
         }
-        if (operation == '*') {
+        if (operation == "*") {
             return first * second;
         }
-        if (operation == 'p') {
+        if (operation == "p") {
             return Math.pow(first, second);
         }
         throw new RuntimeException("Invalid operation input! Was" + operation
