@@ -35,43 +35,55 @@ class MagicalTest {
     }
 
     @Test
-    void add_max_positive_values_Ok() {
+    void divide_max_positives_Ok() {
+        Assertions.assertEquals((double) MAX_VALUE / MAX_VALUE,
+                magic.calculate(MAX_VALUE, MAX_VALUE, "/"));
+    }
+
+    @Test
+    void divide_min_negatives_Ok() {
+        Assertions.assertEquals((double) MIN_VALUE / MIN_VALUE,
+                magic.calculate(MIN_VALUE, MIN_VALUE, "/"));
+    }
+
+    @Test
+    void add_max_positive_Ok() {
         Assertions.assertEquals((double) MAX_VALUE + MAX_VALUE,
                 magic.calculate(MAX_VALUE, MAX_VALUE, "+"));
     }
 
     @Test
-    void add_max_positive_values_NotOk() {
+    void add_max_positive_NotOk() {
         Assertions.assertNotEquals(MAX_VALUE + MAX_VALUE,
                 magic.calculate(MAX_VALUE, MAX_VALUE, "+"));
     }
 
     @Test
-    void add_min_values_Ok() {
+    void add_min_negative_Ok() {
         Assertions.assertEquals((double) MIN_VALUE + MIN_VALUE,
                 magic.calculate(MIN_VALUE, MIN_VALUE, "+"));
     }
 
     @Test
-    void add_min_values_NotOk() {
+    void add_min_NotOk() {
         Assertions.assertNotEquals(MIN_VALUE + MIN_VALUE,
                 magic.calculate(MIN_VALUE, MIN_VALUE, "+"));
     }
 
     @Test
-    void add_negative_value_Ok() {
+    void add_negative_Ok() {
         Assertions.assertEquals((double) MAX_VALUE + MIN_VALUE,
                 magic.calculate(MAX_VALUE, MIN_VALUE, "+"));
     }
 
     @Test
-    void subtract_max_positive_values_Ok() {
+    void subtract_max_positive_Ok() {
         Assertions.assertEquals((double) MAX_VALUE - MAX_VALUE,
                 magic.calculate(MAX_VALUE, MAX_VALUE, "-"));
     }
 
     @Test
-    void subtract_min_negative_values_Ok() {
+    void subtract_min_negative_Ok() {
         Assertions.assertEquals((double) MIN_VALUE - MIN_VALUE,
                 magic.calculate(MAX_VALUE, MAX_VALUE, "-"));
     }
