@@ -141,8 +141,31 @@ class CalculatorTest {
     }
 
     @Test
-    void toNthPower_random_test() {
+    void power_random_test() {
+        int a;
+        int b;
+        for (int i = 0; i < 1000; i++) {
+            a = new Random().nextInt(1000);
+            b = new Random().nextInt(1000);
+            if (Math.pow(a, b) != magic.calculate(a, b, POW)) {
+                fail("Expected value "+ Math.pow(a, b)
+                        + "but was " + magic.calculate(a, b, POW));
+            }
+        }
+    }
 
+    @Test
+    void negative_power_random_test() {
+        int a;
+        int b;
+        for (int i = 0; i < 1000; i++) {
+            a = new Random().nextInt(1000);
+            b = new Random().nextInt(1000) * (-1);
+            if (Math.pow(a, b) != magic.calculate(a, b, POW)) {
+                fail("Expected value "+ Math.pow(a, b)
+                        + "but was " + magic.calculate(a, b, POW));
+            }
+        }
     }
 
     @Test
