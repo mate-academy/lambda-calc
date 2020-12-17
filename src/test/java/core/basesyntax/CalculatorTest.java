@@ -7,8 +7,8 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
-class MagicalTest {
-    private static Magical magic;
+class CalculatorTest {
+    private static Calculator magic;
     private static final int MAX_VALUE = Integer.MAX_VALUE;
     private static final int MIN_VALUE = Integer.MIN_VALUE;
     private static final String ADD = "+";
@@ -20,7 +20,7 @@ class MagicalTest {
 
     @BeforeEach
     void setUp() {
-        magic = new Magical();
+        magic = new Calculator();
     }
 
     @Test
@@ -141,6 +141,11 @@ class MagicalTest {
     }
 
     @Test
+    void toNthPower_random_test() {
+
+    }
+
+    @Test
     void random_input_addition() {
         int a;
         int b;
@@ -190,9 +195,11 @@ class MagicalTest {
             a = new Random().nextInt();
             b = new Random().nextInt();
             if ((double) a / b != magic.calculate(a, b, DIV)) {
-                fail("Expected value "+ (double) a / b
+                Assertions.fail("Expected value "+ (double) a / b
                         + "but was " + magic.calculate(a, b, DIV));
             }
         }
     }
+
+
 }

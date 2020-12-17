@@ -3,7 +3,7 @@ package core.basesyntax;
 /**
  * Feel free to remove this class and create your own.
  */
-public class Magical {
+public class Calculator {
     private static final String ADD = "+";
     private static final String SUB = "-";
     private static final String DIV = "/";
