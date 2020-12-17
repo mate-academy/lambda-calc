@@ -16,7 +16,7 @@ class CalculatorTest {
     private static final String DIV = "/";
     private static final String MUL = "*";
     private static final String POW = "p";
-    private static final String POW_UPPERCASE = "p";
+    private static final String POW_UPPERCASE = "P";
 
     @BeforeEach
     void setUp() {
