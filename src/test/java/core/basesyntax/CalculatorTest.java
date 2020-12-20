@@ -12,8 +12,7 @@ class CalculatorTest {
 
     @BeforeAll
     static void calculatorImplementsInterface_True() {
-        Calculator calculator = new Calculator();
-        assertTrue(calculator instanceof Calculable,
+        assertTrue(new Calculator() instanceof Calculable,
                 "Must inherit interface behavior");
     }
 
