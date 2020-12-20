@@ -4,20 +4,22 @@ package core.basesyntax;
  * Feel free to remove this class and create your own.
  */
 public class Calculator implements Calculable{
-    public static int calculate(int value1, int value2, char operand) {
-        switch(operand) {
+
+    @Override
+    public int calculate(int operand1, int operand2, char operator) {
+        switch(operator) {
             case '+':
-                return value1 + value2;
+                return operand1 + operand2;
             case '-':
-                return value1 - value2;
+                return operand1 - operand2;
             case '/':
-                return value1 / value2;
+                return operand1 / operand2;
             case '*':
-                return value1 * value2;
+                return operand1 * operand2;
             case '^':
-                return (int) Math.pow(value1, value2);
+                return (int) Math.pow(operand1, operand2);
             default:
-                throw new RuntimeException("ERROR impossible operand detected: " + operand);
+                throw new RuntimeException("ERROR impossible operand detected: " + operator);
         }
     }
 }

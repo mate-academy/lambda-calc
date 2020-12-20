@@ -1,7 +1,5 @@
 package core.basesyntax;
 
 public interface Calculable {
-    static int calculate() {
-        return 0;
-    }
+    int calculate(int a, int b, char operand);
 }
