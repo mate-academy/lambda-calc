@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class CalculatorTest {
-    private static Calculator magic;
+    private static Calculator calculator;
     private static final int MAX_VALUE = Integer.MAX_VALUE;
     private static final int MIN_VALUE = Integer.MIN_VALUE;
     private static final String ADD = "+";
@@ -20,13 +20,13 @@ class CalculatorTest {
 
     @BeforeEach
     void setUp() {
-        magic = new Calculator();
+        calculator = new Calculator();
     }
 
     @Test
     void case_insensitive_operation_input_Ok() {
         try {
-            magic.calculate(0, 0, POW_UPPERCASE);
+            calculator.calculate(0, 0, POW_UPPERCASE);
         } catch (RuntimeException e) {
             fail("Method should be case insensitive");
         }
@@ -35,117 +35,117 @@ class CalculatorTest {
     @Test
     void operation_input_NotOk() {
         assertThrows(RuntimeException.class,
-                () -> magic.calculate(0, 0, "c"));
+                () -> calculator.calculate(0, 0, "c"));
         assertThrows(RuntimeException.class,
-                () -> magic.calculate(0, 0, "1"));
+                () -> calculator.calculate(0, 0, "1"));
         assertThrows(RuntimeException.class,
-                () -> magic.calculate(0, 0, "z"));
+                () -> calculator.calculate(0, 0, "z"));
         assertThrows(RuntimeException.class,
-                () -> magic.calculate(0, 0, "]"));
+                () -> calculator.calculate(0, 0, "]"));
         assertThrows(RuntimeException.class,
-                () -> magic.calculate(0, 0, "#"));
+                () -> calculator.calculate(0, 0, "#"));
     }
 
     @Test
     void null_operation_input_NotOk() {
         assertThrows(NullPointerException.class,
-                () -> magic.calculate(0, 0, null));
+                () -> calculator.calculate(0, 0, null));
     }
 
     @Test
     void divide_by_zero_Ok() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> magic.calculate(5, 0, DIV));
+                () -> calculator.calculate(5, 0, DIV));
     }
 
     @Test
     void divide_max_positives_Ok() {
         Assertions.assertEquals((double) MAX_VALUE / MAX_VALUE,
-                magic.calculate(MAX_VALUE, MAX_VALUE, DIV));
+                calculator.calculate(MAX_VALUE, MAX_VALUE, DIV));
     }
 
     @Test
     void divide_min_negatives_Ok() {
         Assertions.assertEquals((double) MIN_VALUE / MIN_VALUE,
-                magic.calculate(MIN_VALUE, MIN_VALUE, DIV));
+                calculator.calculate(MIN_VALUE, MIN_VALUE, DIV));
     }
 
     @Test
     void divide_max_positive_by_negative_Ok() {
         Assertions.assertEquals((double) MAX_VALUE / MIN_VALUE,
-                magic.calculate(MAX_VALUE, MIN_VALUE, DIV));
+                calculator.calculate(MAX_VALUE, MIN_VALUE, DIV));
     }
 
     @Test
     void add_max_positive_Ok() {
         Assertions.assertEquals((double) MAX_VALUE + MAX_VALUE,
-                magic.calculate(MAX_VALUE, MAX_VALUE, ADD));
+                calculator.calculate(MAX_VALUE, MAX_VALUE, ADD));
     }
 
     @Test
     void add_max_positive_NotOk() {
         Assertions.assertNotEquals(MAX_VALUE + MAX_VALUE,
-                magic.calculate(MAX_VALUE, MAX_VALUE, ADD));
+                calculator.calculate(MAX_VALUE, MAX_VALUE, ADD));
     }
 
     @Test
     void add_max_positive_and_negative_Ok() {
         Assertions.assertEquals((double) MAX_VALUE + MIN_VALUE,
-                magic.calculate(MAX_VALUE, MIN_VALUE, ADD));
+                calculator.calculate(MAX_VALUE, MIN_VALUE, ADD));
     }
 
     @Test
     void add_min_negative_Ok() {
         Assertions.assertEquals((double) MIN_VALUE + MIN_VALUE,
-                magic.calculate(MIN_VALUE, MIN_VALUE, ADD));
+                calculator.calculate(MIN_VALUE, MIN_VALUE, ADD));
     }
 
     @Test
     void add_min_NotOk() {
         Assertions.assertNotEquals(MIN_VALUE + MIN_VALUE,
-                magic.calculate(MIN_VALUE, MIN_VALUE, ADD));
+                calculator.calculate(MIN_VALUE, MIN_VALUE, ADD));
     }
 
     @Test
     void add_negative_Ok() {
         Assertions.assertEquals((double) MAX_VALUE + MIN_VALUE,
-                magic.calculate(MAX_VALUE, MIN_VALUE, ADD));
+                calculator.calculate(MAX_VALUE, MIN_VALUE, ADD));
     }
 
     @Test
     void subtract_max_positives_Ok() {
         Assertions.assertEquals((double) MAX_VALUE - MAX_VALUE,
-                magic.calculate(MAX_VALUE, MAX_VALUE, SUB));
+                calculator.calculate(MAX_VALUE, MAX_VALUE, SUB));
     }
 
     @Test
     void subtract_min_negatives_Ok() {
         Assertions.assertEquals((double) MIN_VALUE - MIN_VALUE,
-                magic.calculate(MAX_VALUE, MAX_VALUE, SUB));
+                calculator.calculate(MAX_VALUE, MAX_VALUE, SUB));
     }
 
     @Test
     void subtract_max_positive_and_negative() {
         Assertions.assertEquals((double) MAX_VALUE - MIN_VALUE,
-                magic.calculate(MAX_VALUE, MIN_VALUE, SUB));
+                calculator.calculate(MAX_VALUE, MIN_VALUE, SUB));
     }
 
     @Test
     void multiply_max_positives_Ok() {
         Assertions.assertEquals((double) MAX_VALUE * MAX_VALUE,
-                magic.calculate(MAX_VALUE, MAX_VALUE, MUL));
+                calculator.calculate(MAX_VALUE, MAX_VALUE, MUL));
     }
 
     @Test
     void multiply_min_positives_Ok() {
         Assertions.assertEquals((double) MIN_VALUE * MIN_VALUE,
-                magic.calculate(MIN_VALUE, MIN_VALUE, MUL));
+                calculator.calculate(MIN_VALUE, MIN_VALUE, MUL));
     }
 
     @Test
     void multiply_max_positive_and_negative_Ok() {
         Assertions.assertEquals((double) MAX_VALUE * MIN_VALUE,
-                magic.calculate(MAX_VALUE, MIN_VALUE, MUL));
+                calculator.calculate(MAX_VALUE, MIN_VALUE, MUL));
     }
 
     @Test
@@ -155,9 +155,9 @@ class CalculatorTest {
         for (int i = 0; i < 1000; i++) {
             a = new Random().nextInt(1000);
             b = new Random().nextInt(1000);
-            if (Math.pow(a, b) != magic.calculate(a, b, POW)) {
+            if (Math.pow(a, b) != calculator.calculate(a, b, POW)) {
                 fail("Expected value "+ Math.pow(a, b)
-                        + "but was " + magic.calculate(a, b, POW));
+                        + "but was " + calculator.calculate(a, b, POW));
             }
         }
     }
@@ -169,9 +169,9 @@ class CalculatorTest {
         for (int i = 0; i < 1000; i++) {
             a = new Random().nextInt(1000);
             b = new Random().nextInt(1000) * (-1);
-            if (Math.pow(a, b) != magic.calculate(a, b, POW)) {
+            if (Math.pow(a, b) != calculator.calculate(a, b, POW)) {
                 fail("Expected value "+ Math.pow(a, b)
-                        + "but was " + magic.calculate(a, b, POW));
+                        + "but was " + calculator.calculate(a, b, POW));
             }
         }
     }
@@ -183,9 +183,9 @@ class CalculatorTest {
         for (int i = 0; i < 1000; i++) {
             a = new Random().nextInt();
             b = new Random().nextInt();
-            if ((double) a + b != magic.calculate(a, b, ADD)) {
+            if ((double) a + b != calculator.calculate(a, b, ADD)) {
                 fail("Expected value "+ (double) a + b
-                        + "but was " + magic.calculate(a, b, ADD));
+                        + "but was " + calculator.calculate(a, b, ADD));
             }
         }
     }
@@ -197,9 +197,9 @@ class CalculatorTest {
         for (int i = 0; i < 1000; i++) {
             a = new Random().nextInt();
             b = new Random().nextInt();
-            if ((double) a - b != magic.calculate(a, b, SUB)) {
+            if ((double) a - b != calculator.calculate(a, b, SUB)) {
                 fail("Expected value " + ((double) a - b)
-                        + "but was " + magic.calculate(a, b, SUB));
+                        + "but was " + calculator.calculate(a, b, SUB));
             }
         }
     }
@@ -211,9 +211,9 @@ class CalculatorTest {
         for (int i = 0; i < 1000; i++) {
             a = new Random().nextInt();
             b = new Random().nextInt();
-            if ((double) a * b != magic.calculate(a, b, MUL)) {
+            if ((double) a * b != calculator.calculate(a, b, MUL)) {
                 fail("Expected value "+ (double) a * b
-                        + "but was " + magic.calculate(a, b, MUL));
+                        + "but was " + calculator.calculate(a, b, MUL));
             }
         }
     }
@@ -225,9 +225,9 @@ class CalculatorTest {
         for (int i = 0; i < 1000; i++) {
             a = new Random().nextInt();
             b = new Random().nextInt();
-            if ((double) a / b != magic.calculate(a, b, DIV)) {
+            if ((double) a / b != calculator.calculate(a, b, DIV)) {
                 Assertions.fail("Expected value "+ (double) a / b
-                        + "but was " + magic.calculate(a, b, DIV));
+                        + "but was " + calculator.calculate(a, b, DIV));
             }
         }
     }
