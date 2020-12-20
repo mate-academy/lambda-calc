@@ -1,11 +1,18 @@
 package core.basesyntax;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     Calculator calculator = new Calculator();
+
+    @BeforeAll
+    static void calculatorImplementsInterface_True() {
+        Calculator calculator = new Calculator();
+        assertTrue(calculator instanceof Calculable);
+    }
 
     @Test
     void integerOverflow_ThrowsException() {
