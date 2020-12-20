@@ -1,47 +1,37 @@
 package core.basesyntax;
 
 public class Calculator {
-    private Integer result;
     private Integer firstNumber;
     private Integer secondNumber;
-
-    public Calculator(Integer firstNumber, Integer secondNumber) {
-        this.firstNumber = firstNumber;
-        this.secondNumber = secondNumber;
-    }
 
     public boolean checkForNull() {
         if (firstNumber == null || secondNumber == null) {
             throw new NullPointerException();
         }
-        return false;
+        return true;
     }
 
     public Integer addition(Integer a, Integer b) {
-        result = a + b;
-        return result;
+        checkForNull();
+        return a + b;
     }
 
     public Integer subtraction(Integer a, Integer b) {
-        result = a - b;
-        return result;
+        checkForNull();
+        return a - b;
     }
 
     public Integer division(Integer a, Integer b) {
-        if (a < b && a != 0) {
-            result = b / a;
-            return result;
+        checkForNull();
+        if (b == 0) {
+            throw new ArithmeticException("You can't divide the number by zero");
         }
-        if (a > b && b != 0) {
-            result = a / b;
-            return result;
-        }
-        return 1;
+        return a / b;
     }
 
     public Integer multiplication(Integer a, Integer b) {
-        result = a * b;
-        return result;
+        checkForNull();
+        return a * b;
     }
 
     public Integer getFirstNumber() {
@@ -58,10 +48,6 @@ public class Calculator {
 
     public Integer getSecondNumber() {
         return secondNumber;
-    }
-
-    public Integer getResult() {
-        return result;
     }
 
     public boolean setSecondNumber(Integer secondNumber) {

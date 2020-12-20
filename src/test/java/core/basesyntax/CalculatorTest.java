@@ -5,11 +5,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
+    private final static int MAX_VALUE = Integer.MAX_VALUE;
+    private final static int MIN_VALUE = Integer.MIN_VALUE;
     private Calculator calculate;
 
     @BeforeEach
     void create_object() {
-        calculate = new Calculator(10, 20);
+        calculate = new Calculator();
+        calculate.setFirstNumber(20);
+        calculate.setSecondNumber(10);
     }
 
     @Test
@@ -46,14 +50,14 @@ public class CalculatorTest {
 
     @Test
     void checkForConsistent_firstValue() {
-        Integer expected = calculate.getFirstNumber();
-        Assertions.assertEquals(expected, calculate.getFirstNumber(), "You number not equals");
+        Integer actual = calculate.getFirstNumber();
+        Assertions.assertEquals(20, actual, "You number not equals");
     }
 
     @Test
     void checkForConsistent_secondValue() {
-        Integer expected = calculate.getSecondNumber();
-        Assertions.assertEquals(expected, calculate.getSecondNumber(), "You number not equals");
+        Integer actual = calculate.getSecondNumber();
+        Assertions.assertEquals(10, actual, "You number not equals");
     }
 
     @Test
@@ -67,7 +71,7 @@ public class CalculatorTest {
     void subtraction() {
         Integer actual = calculate
                 .subtraction(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(-10, actual);
+        Assertions.assertEquals(10, actual);
     }
 
     @Test
@@ -79,18 +83,17 @@ public class CalculatorTest {
 
     @Test
     void division_NotOk_FirstNumber() {
-        calculate.setFirstNumber(-1);
+        calculate.setFirstNumber(-20);
         Integer actual = calculate
                 .division(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(-20, actual);
+        Assertions.assertEquals(-2, actual);
     }
 
     @Test
     void division_NotOk_SecondNumber() {
         calculate.setSecondNumber(0);
-        Integer actual = calculate
-                .division(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(1, actual);
+        Assertions.assertThrows(ArithmeticException.class, () -> calculate
+                .division(calculate.getFirstNumber(), calculate.getSecondNumber()));
     }
 
     @Test
@@ -98,5 +101,29 @@ public class CalculatorTest {
         Integer actual = calculate
                 .multiplication(calculate.getFirstNumber(), calculate.getSecondNumber());
         Assertions.assertEquals(200, actual);
+    }
+
+    @Test
+    void final_negative() {
+        Assertions.assertEquals(MIN_VALUE - MIN_VALUE,
+                calculate.subtraction(MIN_VALUE, MIN_VALUE));
+        Assertions.assertEquals(MAX_VALUE - MIN_VALUE,
+                calculate.addition(MAX_VALUE, MIN_VALUE));
+    }
+
+    @Test
+    void final_positive() {
+        Assertions.assertEquals(MAX_VALUE + MAX_VALUE,
+                calculate.addition(MAX_VALUE, MAX_VALUE));
+        Assertions.assertEquals(MAX_VALUE + MIN_VALUE,
+                calculate.subtraction(MAX_VALUE, MIN_VALUE));
+    }
+
+    @Test
+    void final_zero() {
+        Assertions.assertEquals(MAX_VALUE - MIN_VALUE,
+                calculate.addition(MAX_VALUE, MIN_VALUE));
+        Assertions.assertEquals(MAX_VALUE - MIN_VALUE,
+                calculate.subtraction(MAX_VALUE, MIN_VALUE));
     }
 }
