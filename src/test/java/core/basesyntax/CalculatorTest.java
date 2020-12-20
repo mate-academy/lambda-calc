@@ -36,11 +36,9 @@ class CalculatorTest {
         int sum1and0 = calculator.calculate(1, 0, '+');
         int sum0and1 = calculator.calculate(0, 1, '+');
         int sum2and2 = calculator.calculate(2, 2, '+');
-
         assertEquals(4,sum2and2);
         assertEquals(1, sum0and1);
         assertEquals(1, sum1and0);
-
     }
 
     @Test
@@ -48,7 +46,6 @@ class CalculatorTest {
         int sub1and0 = calculator.calculate(1, 0, '-');
         int sub0and1 = calculator.calculate(0, 1, '-');
         int sub2and2 = calculator.calculate(2, 2, '-');
-
         assertEquals(0,sub2and2);
         assertEquals(-1, sub0and1);
         assertEquals(1, sub1and0);
@@ -65,7 +62,6 @@ class CalculatorTest {
         int div4and2 = calculator.calculate(4, 2, '/');
         int div2and2 = calculator.calculate(2, 2, '/');
         int div21and1 = calculator.calculate(21, 1, '/');
-
         assertEquals(2,div4and2);
         assertEquals(1, div2and2);
         assertEquals(21, div21and1);
@@ -76,7 +72,6 @@ class CalculatorTest {
         int multi4and1 = calculator.calculate(4, 1, '*');
         int multi2and2 = calculator.calculate(2, 2, '*');
         int multi21and0 = calculator.calculate(21, 0, '*');
-
         assertEquals(4,multi4and1);
         assertEquals(4, multi2and2);
         assertEquals(0, multi21and0);
