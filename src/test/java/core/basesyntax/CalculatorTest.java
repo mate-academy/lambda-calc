@@ -4,15 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    Calculator calculator = new Calculator();
+    static Calculator calculator = new Calculator();
 
-    @BeforeAll
+    @Test
     static void calculatorImplementsInterface_True() {
-        assertTrue(new Calculator() instanceof Calculable,
+        assertTrue(calculator instanceof Calculable,
                 "Must inherit interface behavior");
     }
 
