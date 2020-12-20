@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    static Calculator calculator = new Calculator();
+    Calculator calculator = new Calculator();
 
     @Test
-    static void calculatorImplementsInterface_True() {
+    void calculatorImplementsInterface_True() {
         assertTrue(calculator instanceof Calculable,
                 "Must inherit interface behavior");
     }
