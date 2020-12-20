@@ -1,9 +1,11 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     Calculator calculator = new Calculator();
@@ -11,16 +13,22 @@ class CalculatorTest {
     @BeforeAll
     static void calculatorImplementsInterface_True() {
         Calculator calculator = new Calculator();
-        assertTrue(calculator instanceof Calculable);
+        assertTrue(calculator instanceof Calculable,
+                "Must inherit interface behavior");
     }
 
     @Test
     void integerOverflow_ThrowsException() {
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '*'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(Integer.MIN_VALUE, 1, '-'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(Integer.MAX_VALUE, 1, '+'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '^'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(Integer.MAX_VALUE, 2, '^'));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '*'));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(Integer.MIN_VALUE, 1, '-'));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(Integer.MAX_VALUE, 1, '+'));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '^'));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(Integer.MAX_VALUE, 2, '^'));
     }
 
     @Test
@@ -77,13 +85,12 @@ class CalculatorTest {
     @Test
     void raisingToPowerTest_Correct() {
         int power0to21 = calculator.calculate(0, 21, '^');
-        int power0to0 = calculator.calculate(0, 0, '^');
-        int power1to21 = calculator.calculate(1, 21, '^');
-        int power5to5 = calculator.calculate(5, 5, '^');
-
         assertEquals(0,power0to21);
+        int power0to0 = calculator.calculate(0, 0, '^');
         assertEquals(1,power0to0);
+        int power1to21 = calculator.calculate(1, 21, '^');
         assertEquals(1, power1to21);
+        int power5to5 = calculator.calculate(5, 5, '^');
         assertEquals(3125, power5to5);
     }
 
