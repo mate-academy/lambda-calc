@@ -5,8 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-    private final static int MAX_VALUE = Integer.MAX_VALUE;
-    private final static int MIN_VALUE = Integer.MIN_VALUE;
+    private static final int MAX_VALUE = Integer.MAX_VALUE;
+    private static final int MIN_VALUE = Integer.MIN_VALUE;
     private Calculator calculate;
 
     @BeforeEach
