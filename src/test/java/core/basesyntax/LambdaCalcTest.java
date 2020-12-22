@@ -38,6 +38,25 @@ class LambdaCalcTest {
     }
 
     @Test
+    void checkEdgeValues() {
+        double actual = LambdaCalc
+                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, ADDITION);
+        assertEquals(Integer.MAX_VALUE, actual);
+        actual = LambdaCalc
+                .calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, SUBTRACTION);
+        assertEquals(Integer.MIN_VALUE, actual);
+        actual = LambdaCalc
+                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION);
+        assertEquals(Integer.MAX_VALUE, actual);
+        actual = LambdaCalc
+                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, DIVISION);
+        assertEquals(Integer.MAX_VALUE, actual);
+        actual = LambdaCalc
+                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, POWER);
+        assertEquals(Integer.MAX_VALUE, actual);
+    }
+
+    @Test
     void checkMultiplication() {
         double actual = LambdaCalc
                 .calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, MULTIPLICATION);
@@ -70,7 +89,7 @@ class LambdaCalcTest {
         assertEquals(16, actual);
         actual = LambdaCalc
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, POWER);
-        assertEquals(-0.0625, actual);
+        assertEquals(0.0625, actual);
     }
 
     @Test
