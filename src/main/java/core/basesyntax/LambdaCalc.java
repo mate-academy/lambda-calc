@@ -20,7 +20,6 @@ public class LambdaCalc {
                 return (double) firstNumber / secondNumber;
             }
             case '^': {
-                checkForEdges(firstNumber, secondNumber);
                 return Math.pow(firstNumber, secondNumber);
             }
             default: {
@@ -30,9 +29,7 @@ public class LambdaCalc {
     }
 
     private static void checkForEdges(int first, int second) {
-        if ((first == Integer.MIN_VALUE && second % 2 != 0)
-                || (first % 2 != 0  && second == Integer.MIN_VALUE)
-                || first == Integer.MAX_VALUE || second == Integer.MAX_VALUE
+        if (first == Integer.MAX_VALUE || second == Integer.MAX_VALUE
                 || first == Integer.MIN_VALUE || second == Integer.MIN_VALUE) {
             throw new RuntimeException("Result is undefined");
         }

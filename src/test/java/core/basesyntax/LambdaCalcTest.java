@@ -51,6 +51,10 @@ class LambdaCalcTest {
         expected = Integer.MIN_VALUE - SECOND_NEGATIVE_NUMBER - 1;
         actual = LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void edgeValuesExceptions() {
         assertThrows(RuntimeException.class, () ->
                 LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
         assertThrows(RuntimeException.class, () ->
@@ -59,10 +63,6 @@ class LambdaCalcTest {
                 LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
         assertThrows(RuntimeException.class, () ->
                 LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
-        assertThrows(RuntimeException.class, () ->
-                LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, POWER));
-        assertThrows(RuntimeException.class, () ->
-                LambdaCalc.calculate(Integer.MIN_VALUE, ODD_NUMBER, POWER));
     }
 
     @Test
