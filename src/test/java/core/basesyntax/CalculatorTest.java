@@ -7,11 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static final int FIRST_ELEMENT = 20;
-    private static final int SECOND_ELEMENT = 2;
-    private static final int THIRD_ELEMENT = -30;
-    private static final int FOURTH_ELEMENT = -1;
-    private static final int FIFTH_ELEMENT = 0;
+    private static final int ZERO_ELEMENT = 0;
     private static final int MAX_ELEMENT = Integer.MAX_VALUE;
     private static final int MIN_ELEMENT = Integer.MIN_VALUE;
 
@@ -24,117 +20,82 @@ class CalculatorTest {
 
     @Test
     void commonAddition() {
-        double actual = calculator.calculator(FIRST_ELEMENT, SECOND_ELEMENT, '+');
-        double expected = 22;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(THIRD_ELEMENT, FOURTH_ELEMENT, '+');
-        expected = -31;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(FIRST_ELEMENT, FOURTH_ELEMENT, '+');
-        expected = 19;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(MAX_ELEMENT, FIFTH_ELEMENT, '+');
-        expected = Integer.MAX_VALUE;
-        assertEquals(expected,actual);
+        assertEquals(22, calculator.calculator(20, 2, '+'));
+        assertEquals(-31, calculator.calculator(-30, -1, '+'));
+        assertEquals(19, calculator.calculator(20, -1, '+'));
+        assertEquals(-5, calculator.calculator(-10, 5, '+'));
+        assertEquals(Integer.MAX_VALUE,calculator.calculator(MAX_ELEMENT, ZERO_ELEMENT, '+'));
+        assertEquals(Integer.MIN_VALUE,calculator.calculator(MIN_ELEMENT, ZERO_ELEMENT, '+'));
     }
 
     @Test
     void commonSubtraction() {
-        double actual = calculator.calculator(FIRST_ELEMENT, SECOND_ELEMENT, '-');
-        double expected = 18;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(THIRD_ELEMENT, FOURTH_ELEMENT, '-');
-        expected = -29;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(FIRST_ELEMENT, FOURTH_ELEMENT, '-');
-        expected = 21;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(MIN_ELEMENT, MIN_ELEMENT, '-');
-        expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(18, calculator.calculator(20, 2, '-'));
+        assertEquals(-29, calculator.calculator(-30, -1, '-'));
+        assertEquals(21, calculator.calculator(20, -1, '-'));
+        assertEquals(-15, calculator.calculator(-10, 5, '-'));
+        assertEquals(-10, calculator.calculator(-10, ZERO_ELEMENT, '-'));
+        assertEquals(0, calculator.calculator(MIN_ELEMENT, MIN_ELEMENT, '-'));
     }
 
     @Test
     void commonMultiplication() {
-        double actual = calculator.calculator(FIRST_ELEMENT, SECOND_ELEMENT, '*');
-        double expected = 40;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(THIRD_ELEMENT, FOURTH_ELEMENT, '*');
-        expected = 30;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(FIRST_ELEMENT, FOURTH_ELEMENT, '*');
-        expected = -20;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(SECOND_ELEMENT, FIFTH_ELEMENT, '*');
-        expected = 0;
-        assertEquals(expected,actual);
+        assertEquals(40, calculator.calculator(20, 2, '*'));
+        assertEquals(50, calculator.calculator(-10, -5, '*'));
+        assertEquals(-100, calculator.calculator(20, -5, '*'));
+        assertEquals(-50, calculator.calculator(-10, 5, '*'));
+        assertEquals(0, calculator.calculator(-10, ZERO_ELEMENT, '*'));
+        assertEquals(0, calculator.calculator(ZERO_ELEMENT, 5, '*'));
     }
 
     @Test
     void commonDivision() {
-        double actual = calculator.calculator(FIRST_ELEMENT, SECOND_ELEMENT, '/');
-        double expected = 10;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(THIRD_ELEMENT, FOURTH_ELEMENT, '/');
-        expected = 30;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(FIRST_ELEMENT, FOURTH_ELEMENT, '/');
-        expected = -20;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(FIFTH_ELEMENT, SECOND_ELEMENT, '/');
-        expected = 0;
-        assertEquals(expected,actual);
-        actual = calculator.calculator(MIN_ELEMENT + 1, MAX_ELEMENT, '/');
-        expected = -1;
-        assertEquals(expected, actual);
+        assertEquals(10, calculator.calculator(20, 2, '/'));
+        assertEquals(2, calculator.calculator(-10, -5, '/'));
+        assertEquals(-4, calculator.calculator(20, -5, '/'));
+        assertEquals(-2, calculator.calculator(-10, 5, '/'));
+        assertEquals(0, calculator.calculator(ZERO_ELEMENT, 5, '/'));
+        assertEquals(-1, calculator.calculator(MIN_ELEMENT + 1, MAX_ELEMENT, '/'));
     }
 
     @Test
     void commonRaising() {
-        double actual = calculator.calculator(FIRST_ELEMENT, SECOND_ELEMENT, '^');
-        double expected = 400;
-        assertEquals(expected, actual);
-        actual = calculator.calculator(THIRD_ELEMENT, FOURTH_ELEMENT, '^');
-        expected = 1 / Math.pow(THIRD_ELEMENT, Math.abs(FOURTH_ELEMENT));
-        assertEquals(expected, actual);
-        actual = calculator.calculator(FIRST_ELEMENT, FOURTH_ELEMENT, '^');
-        expected = 1 / Math.pow(FIRST_ELEMENT, Math.abs(FOURTH_ELEMENT));
-        assertEquals(expected, actual);
-        actual = calculator.calculator(FIFTH_ELEMENT, SECOND_ELEMENT, '^');
-        expected = 0;
-        assertEquals(expected,actual);
-        actual = calculator.calculator(SECOND_ELEMENT, FIFTH_ELEMENT, '^');
-        expected = 1;
-        assertEquals(expected,actual);
+        assertEquals(400, calculator.calculator(20, 2, '^'));
+        double expected = 1 / Math.pow(-10, Math.abs(-5));
+        assertEquals(expected, calculator.calculator(-10, -5, '^'));
+        expected = 1 / Math.pow(20, Math.abs(-5));
+        assertEquals(expected, calculator.calculator(20, -5, '^'));
+        assertEquals(0,calculator.calculator(ZERO_ELEMENT, 5, '^'));
+        assertEquals(1,calculator.calculator(50, ZERO_ELEMENT, '^'));
     }
 
     @Test
     void divisionByZero() {
         assertThrows(ArithmeticException.class, () ->
-                calculator.calculator(SECOND_ELEMENT, FIFTH_ELEMENT, '/'));
+                calculator.calculator(20, ZERO_ELEMENT, '/'));
     }
 
     @Test
     void checkingOperator() {
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(FIRST_ELEMENT, SECOND_ELEMENT, '%'));
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(SECOND_ELEMENT, FOURTH_ELEMENT, 'a'));
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(THIRD_ELEMENT, FIFTH_ELEMENT, '5'));
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(FIRST_ELEMENT, SECOND_ELEMENT, '\u0000'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(20, 4, '%'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(5, -10, 'a'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(30, ZERO_ELEMENT, '5'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(-5, -11, '\u0000'));
     }
 
     @Test
     void checkingOutOfBoundResult() {
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(MAX_ELEMENT, SECOND_ELEMENT, '+'));
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(MIN_ELEMENT, FIRST_ELEMENT, '-'));
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(MAX_ELEMENT, SECOND_ELEMENT, '*'));
-        assertThrows(RuntimeException.class, () ->
-                calculator.calculator(SECOND_ELEMENT, MAX_ELEMENT, '^'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(MAX_ELEMENT, 2, '+'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(MIN_ELEMENT, 1, '-'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(MAX_ELEMENT, 4, '*'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculator(2, MAX_ELEMENT, '^'));
     }
 }

@@ -5,31 +5,34 @@ public class Calculator implements ArithmeticOperations {
     public double calculator(int firstElement, int secondElement, char operator) {
         switch (operator) {
             case ('+') :
-                long result = (long) firstElement + (long) secondElement;
-                checkingBound(result);
-                return result;
+                long sum = (long) firstElement + secondElement;
+                checkingBound(sum);
+                return sum;
             case ('-') :
-                long result1 = (long) firstElement - (long) secondElement;
-                checkingBound(result1);
-                return result1;
+                long subtractionResult = (long) firstElement - secondElement;
+                checkingBound(subtractionResult);
+                return subtractionResult;
             case ('*') :
-                long result2 = (long) firstElement * (long) secondElement;
-                checkingBound(result2);
-                return result2;
+                long multiplicationResult = (long) firstElement * secondElement;
+                checkingBound(multiplicationResult);
+                return multiplicationResult;
             case ('/') :
+                if (secondElement == 0) {
+                    throw new ArithmeticException("Division by zero is not allowed");
+                }
                 return firstElement / secondElement;
             case ('^') :
-                double result3 = Math.pow((long) firstElement, (long) secondElement);
-                checkingBound((long) result3);
-                return result3;
+                double raisingResult = Math.pow((long) firstElement, secondElement);
+                checkingBound((long) raisingResult);
+                return raisingResult;
             default:
-                throw new RuntimeException("Your operation is not allowed" + operator);
+                throw new ArithmeticException("Your operation is not allowed" + operator);
         }
     }
 
     private void checkingBound(long result) {
         if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
-            throw new RuntimeException("Result out of bound for int values");
+            throw new ArithmeticException("Result out of bound for int values");
         }
     }
 }
