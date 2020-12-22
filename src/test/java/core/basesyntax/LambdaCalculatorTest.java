@@ -8,6 +8,21 @@ import org.junit.jupiter.api.Test;
 
 class LambdaCalculatorTest {
     private static LambdaCalculator calculator;
+    private static final int TWENTY = 20;
+    private static final int FIFTEEN = 15;
+    private static final int ONE_HUNDRED = 100;
+    private static final int FIFTY = 50;
+    private static final int ZERO = 0;
+    private static final int FIFTY_SIX_THOUSANDS = 56000;
+    private static final int ADDITION_MAX_VALUE = -2;
+    private static final int SUBTRACTION_MAX_VALUE = 0;
+    private static final int DIVISION_MAX_VALUE = 1;
+    private static final int MULTIPLICATION_MAX_VALUE = 1;
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char DIVISION = '/';
+    private static final char MULTIPLICATION = '*';
+    private static final char RAISING_TO_A_POWER = '^';
 
     @BeforeAll
     static void beforeAll() {
@@ -16,103 +31,122 @@ class LambdaCalculatorTest {
 
     @Test
     void testForAddition() {
-        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '+');
-        double secondActual = calculator.calculate(20, 15, '+');
-        double thirdActual = calculator.calculate(-100, 50, '+');
-        assertEquals(-2,firstActual, "Wrong operation! expected:"
-                + System.lineSeparator() + -2 + System.lineSeparator()
+        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, ADDITION);
+        double secondActual = calculator.calculate(TWENTY, FIFTEEN, ADDITION);
+        double thirdActual = calculator.calculate(-ONE_HUNDRED, FIFTY, ADDITION);
+        double secondExpected = TWENTY + FIFTEEN;
+        double thirdExpected = -ONE_HUNDRED + FIFTY;
+        assertEquals(ADDITION_MAX_VALUE, firstActual, "Wrong operation! expected:"
+                + System.lineSeparator() + ADDITION_MAX_VALUE + System.lineSeparator()
                 + "But was:" + firstActual);
-        assertEquals(35,secondActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 35 + System.lineSeparator()
+        assertEquals(secondExpected, secondActual, "Wrong operation! expected:"
+                + System.lineSeparator() + secondExpected + System.lineSeparator()
                 + "But was:" + secondActual);
-        assertEquals(-50,thirdActual, "Wrong operation! expected:"
-                + System.lineSeparator() + -50 + System.lineSeparator()
+        assertEquals(thirdExpected, thirdActual, "Wrong operation! expected:"
+                + System.lineSeparator() + thirdExpected + System.lineSeparator()
                 + "But was:" + thirdActual);
-        double fourthActual = calculator.calculate(0, 56845, '+');
-        assertEquals(56845,fourthActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 56845 + System.lineSeparator()
+        double fourthActual = calculator.calculate(ZERO, FIFTY_SIX_THOUSANDS, ADDITION);
+        double fourthExpected = ZERO + FIFTY_SIX_THOUSANDS;
+        assertEquals(fourthExpected,fourthActual, "Wrong operation! expected:"
+                + System.lineSeparator() + fourthExpected + System.lineSeparator()
                 + "But was:" + fourthActual);
     }
 
     @Test
     void testForSubtraction() {
-        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '-');
-        double secondActual = calculator.calculate(20, 15, '-');
-        double thirdActual = calculator.calculate(-100, 50, '-');
-        assertEquals(0,firstActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 0 + System.lineSeparator()
+        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE,
+                SUBTRACTION);
+        double secondActual = calculator.calculate(TWENTY, FIFTEEN, SUBTRACTION);
+        double thirdActual = calculator.calculate(-ONE_HUNDRED, FIFTY, SUBTRACTION);
+        double secondExpected = TWENTY - FIFTEEN;
+        double thirdExpected = -ONE_HUNDRED - FIFTY;
+        assertEquals(SUBTRACTION_MAX_VALUE, firstActual, "Wrong operation! expected:"
+                + System.lineSeparator() + SUBTRACTION_MAX_VALUE + System.lineSeparator()
                 + "But was:" + firstActual);
-        assertEquals(5,secondActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 5 + System.lineSeparator()
+        assertEquals(secondExpected, secondActual, "Wrong operation! expected:"
+                + System.lineSeparator() + secondExpected + System.lineSeparator()
                 + "But was:" + secondActual);
-        assertEquals(-150,thirdActual, "Wrong operation! expected:"
-                + System.lineSeparator() + -150 + System.lineSeparator()
+        assertEquals(thirdExpected, thirdActual, "Wrong operation! expected:"
+                + System.lineSeparator() + thirdExpected + System.lineSeparator()
                 + "But was:" + thirdActual);
-        double fourthActual = calculator.calculate(0, 56845, '-');
-        assertEquals(-56845,fourthActual, "Wrong operation! expected:"
-                + System.lineSeparator() + -56845 + System.lineSeparator()
+        double fourthActual = calculator.calculate(ZERO, FIFTY_SIX_THOUSANDS, SUBTRACTION);
+        double fourthExpected = ZERO - FIFTY_SIX_THOUSANDS;
+        assertEquals(fourthExpected,fourthActual, "Wrong operation! expected:"
+                + System.lineSeparator() + fourthExpected + System.lineSeparator()
                 + "But was:" + fourthActual);
     }
 
     @Test
     void testForDivision() {
-        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '/');
-        double secondActual = calculator.calculate(20, 10, '/');
-        double thirdActual = calculator.calculate(-100, 50, '/');
-        assertEquals(1,firstActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 1 + System.lineSeparator()
+        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, DIVISION);
+        double secondActual = calculator.calculate(TWENTY, FIFTEEN, DIVISION);
+        double thirdActual = calculator.calculate(-ONE_HUNDRED, FIFTY, DIVISION);
+        double secondExpected = (double) TWENTY / FIFTEEN;
+        double thirdExpected = (double) -ONE_HUNDRED / FIFTY;
+        assertEquals(DIVISION_MAX_VALUE, firstActual, "Wrong operation! expected:"
+                + System.lineSeparator() + DIVISION_MAX_VALUE + System.lineSeparator()
                 + "But was:" + firstActual);
-        assertEquals(2,secondActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 2 + System.lineSeparator()
+        assertEquals(secondExpected, secondActual, "Wrong operation! expected:"
+                + System.lineSeparator() + secondExpected + System.lineSeparator()
                 + "But was:" + secondActual);
-        assertEquals(-2,thirdActual, "Wrong operation! expected:"
-                + System.lineSeparator() + -2 + System.lineSeparator()
+        assertEquals(thirdExpected, thirdActual, "Wrong operation! expected:"
+                + System.lineSeparator() + thirdExpected + System.lineSeparator()
                 + "But was:" + thirdActual);
-        double fourthActual = calculator.calculate(0, 56845, '/');
-        assertEquals(0,fourthActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 0 + System.lineSeparator()
+        double fourthActual = calculator.calculate(ZERO, FIFTY_SIX_THOUSANDS, DIVISION);
+        double fourthExpected = (double) ZERO / FIFTY_SIX_THOUSANDS;
+        assertEquals(fourthExpected, fourthActual, "Wrong operation! expected:"
+                + System.lineSeparator() + fourthExpected + System.lineSeparator()
                 + "But was:" + fourthActual);
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(25, 0, '/'));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(TWENTY, ZERO, DIVISION));
 
     }
 
     @Test
     void testForMultiplication() {
-        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '*');
-        double secondActual = calculator.calculate(20, 15, '*');
-        double thirdActual = calculator.calculate(-100, 50, '*');
-        assertEquals(1,firstActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 1 + System.lineSeparator()
+        double firstActual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE,
+                MULTIPLICATION);
+        double secondActual = calculator.calculate(TWENTY, FIFTEEN, MULTIPLICATION);
+        double thirdActual = calculator.calculate(-ONE_HUNDRED, FIFTY, MULTIPLICATION);
+        double secondExpected = TWENTY * FIFTEEN;
+        double thirdExpected = -ONE_HUNDRED * FIFTY;
+        assertEquals(MULTIPLICATION_MAX_VALUE, firstActual, "Wrong operation! expected:"
+                + System.lineSeparator() + MULTIPLICATION_MAX_VALUE + System.lineSeparator()
                 + "But was:" + firstActual);
-        assertEquals(300,secondActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 300 + System.lineSeparator()
+        assertEquals(secondExpected,secondActual, "Wrong operation! expected:"
+                + System.lineSeparator() + secondExpected + System.lineSeparator()
                 + "But was:" + secondActual);
-        assertEquals(-5000,thirdActual, "Wrong operation! expected:"
-                + System.lineSeparator() + -5000 + System.lineSeparator()
+        assertEquals(thirdExpected,thirdActual, "Wrong operation! expected:"
+                + System.lineSeparator() + thirdExpected + System.lineSeparator()
                 + "But was:" + thirdActual);
-        double fourthActual = calculator.calculate(0, 56845, '*');
-        assertEquals(0,fourthActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 0 + System.lineSeparator()
+        double fourthActual = calculator.calculate(ZERO, FIFTY_SIX_THOUSANDS, MULTIPLICATION);
+        double fourthExpected = 0;
+        assertEquals(fourthExpected, fourthActual, "Wrong operation! expected:"
+                + System.lineSeparator() + fourthExpected + System.lineSeparator()
                 + "But was:" + fourthActual);
     }
 
     @Test
     void testForRaisingToAPower() {
-        double firstActual = calculator.calculate(10, 1, '^');
-        double secondActual = calculator.calculate(2, 10, '^');
-        double thirdActual = calculator.calculate(5, 0, '^');
-        assertEquals(10,firstActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 10 + System.lineSeparator()
+        double firstActual = calculator.calculate(TWENTY, TWENTY, RAISING_TO_A_POWER);
+        double secondActual = calculator.calculate(ZERO, FIFTY_SIX_THOUSANDS, RAISING_TO_A_POWER);
+        double thirdActual = calculator.calculate(FIFTY, ZERO, RAISING_TO_A_POWER);
+        double firstExpected = Math.pow(TWENTY, TWENTY);
+        double secondExpected = Math.pow(ZERO, FIFTY_SIX_THOUSANDS);
+        double thirdExpected = Math.pow(FIFTY, ZERO);
+        assertEquals(firstExpected,firstActual, "Wrong operation! expected:"
+                + System.lineSeparator() + firstExpected + System.lineSeparator()
                 + "But was:" + firstActual);
-        assertEquals(1024,secondActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 1024 + System.lineSeparator()
+        assertEquals(secondExpected,secondActual, "Wrong operation! expected:"
+                + System.lineSeparator() + secondExpected + System.lineSeparator()
                 + "But was:" + secondActual);
-        assertEquals(1,thirdActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 1 + System.lineSeparator()
+        assertEquals(thirdExpected,thirdActual, "Wrong operation! expected:"
+                + System.lineSeparator() + thirdExpected + System.lineSeparator()
                 + "But was:" + thirdActual);
-        double fourthActual = calculator.calculate(1, 150, '^');
-        assertEquals(1,fourthActual, "Wrong operation! expected:"
-                + System.lineSeparator() + 1 + System.lineSeparator()
+        double fourthActual = calculator.calculate(ONE_HUNDRED, DIVISION_MAX_VALUE,
+                RAISING_TO_A_POWER);
+        double fourthExpected = Math.pow(ONE_HUNDRED, DIVISION_MAX_VALUE);
+        assertEquals(fourthExpected,fourthActual, "Wrong operation! expected:"
+                + System.lineSeparator() + fourthExpected + System.lineSeparator()
                 + "But was:" + fourthActual);
     }
 
