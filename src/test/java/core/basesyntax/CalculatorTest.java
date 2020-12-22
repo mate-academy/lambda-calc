@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -122,7 +121,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(MAX, 2, MUL));
         assertEquals(0,testCalculator.calculate(MAX,MAX, SUB));
         assertEquals(0,testCalculator.calculate(MIN,MIN, SUB));
-
     }
 
     @Test
