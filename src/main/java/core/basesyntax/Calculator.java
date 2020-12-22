@@ -17,7 +17,7 @@ public class Calculator implements ArithmeticOperations {
                 checkingBound(result2);
                 return result2;
             case ('/') :
-                return (long)(firstElement / secondElement);
+                return firstElement / secondElement;
             case ('^') :
                 double result3 = Math.pow((long) firstElement, (long) secondElement);
                 checkingBound((long) result3);
