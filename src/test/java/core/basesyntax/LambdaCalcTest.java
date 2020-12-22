@@ -1,15 +1,15 @@
 package core.basesyntax;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class LambdaCalcTest {
     private static final int FIRST_POSITIVE_NUMBER = 2;
     private static final int SECOND_POSITIVE_NUMBER = 4;
     private static final int FIRST_NEGATIVE_NUMBER = -2;
     private static final int SECOND_NEGATIVE_NUMBER = -4;
+    private static final int ODD_NUMBER = 3;
     private static final int ZERO = 0;
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
@@ -39,21 +39,30 @@ class LambdaCalcTest {
 
     @Test
     void checkEdgeValues() {
-        double actual = LambdaCalc
-                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, ADDITION);
-        assertEquals(Integer.MAX_VALUE, actual);
-        actual = LambdaCalc
-                .calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, SUBTRACTION);
-        assertEquals(Integer.MIN_VALUE, actual);
-        actual = LambdaCalc
-                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION);
-        assertEquals(Integer.MAX_VALUE, actual);
-        actual = LambdaCalc
-                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, DIVISION);
-        assertEquals(Integer.MAX_VALUE, actual);
-        actual = LambdaCalc
-                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, POWER);
-        assertEquals(Integer.MAX_VALUE, actual);
+        double expected = Integer.MIN_VALUE + SECOND_POSITIVE_NUMBER - 1;
+        double actual = LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, ADDITION);
+        assertEquals(expected, actual);
+        expected = Integer.MAX_VALUE + SECOND_NEGATIVE_NUMBER + 1;
+        actual = LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, ADDITION);
+        assertEquals(expected, actual);
+        expected = Integer.MAX_VALUE - SECOND_POSITIVE_NUMBER + 1;
+        actual = LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, SUBTRACTION);
+        assertEquals(expected, actual);
+        expected = Integer.MIN_VALUE - SECOND_NEGATIVE_NUMBER - 1;
+        actual = LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
+        assertEquals(expected, actual);
+        assertThrows(RuntimeException.class, () ->
+                LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () ->
+                LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () ->
+                LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () ->
+                LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () ->
+                LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, POWER));
+        assertThrows(RuntimeException.class, () ->
+                LambdaCalc.calculate(Integer.MIN_VALUE, ODD_NUMBER, POWER));
     }
 
     @Test
@@ -90,12 +99,6 @@ class LambdaCalcTest {
         actual = LambdaCalc
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, POWER);
         assertEquals(0.0625, actual);
-    }
-
-    @Test
-    void checkPowerWithBaseZero() {
-        assertThrows(ArithmeticException.class, () ->
-                LambdaCalc.calculate(ZERO, SECOND_POSITIVE_NUMBER, POWER));
     }
 
     @Test
