@@ -13,6 +13,8 @@ public class CalculatorTest {
     private static final String DIV = "/";
     private static final String MUL = "*";
     private static final String POW = "^";
+    private static final int MAX = Integer.MAX_VALUE;
+    private static final int MIN = Integer.MIN_VALUE;
     private Calculator testCalculator;
 
     @BeforeEach
@@ -90,19 +92,42 @@ public class CalculatorTest {
 
     @Test
     void InvalidOperationSymbol() {
-        assertThrows(NullPointerException.class, () -> testCalculator.calculate(-5, 0, null));
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(-5, 0, "$"));
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(-5, 0, "s"));
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(-5, 0, "5"));
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(-5, 0, "MUL"));
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(-5, 0, "ADD"));
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(-5, 0, "*/"));
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(-5, 0, "+-"));
-        assertEquals(-5, testCalculator.calculate(-5, 0, "+   "));
+        assertThrows(NullPointerException.class,
+                () -> testCalculator.calculate(-5, 0, null));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(-5, 0, "$"));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(-5, 0, "s"));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(-5, 0, "5"));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(-5, 0, "MUL"));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(-5, 0, "ADD"));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(-5, 0, "*/"));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(-5, 0, "+-"));
+        assertEquals(-5,
+                testCalculator.calculate(-5, 0, "+   "));
+    }
+
+    @Test
+    void maxAndMinValue() {
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(MAX, 1, ADD));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(MIN, 1, SUB));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(MAX, 2, MUL));
+        assertEquals(0,testCalculator.calculate(MAX,MAX, SUB));
+        assertEquals(0,testCalculator.calculate(MIN,MIN, SUB));
+
     }
 
     @Test
     void divToZero() {
-        assertThrows(ArithmeticException.class, () -> testCalculator.calculate(5, 0, DIV));
+        assertThrows(ArithmeticException.class,
+                () -> testCalculator.calculate(5, 0, DIV));
     }
 }
