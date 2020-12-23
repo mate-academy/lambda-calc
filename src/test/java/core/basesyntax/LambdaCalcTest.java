@@ -33,6 +33,12 @@ public class LambdaCalcTest {
         actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, ADDITION);
         assertEquals(-6, actual);
+        actual = testCalculator
+                .calculate(FIRST_POSITIVE_NUMBER, SECOND_NEGATIVE_NUMBER, ADDITION);
+        assertEquals(-2, actual);
+        actual = testCalculator
+                .calculate(FIRST_NEGATIVE_NUMBER, SECOND_POSITIVE_NUMBER, ADDITION);
+        assertEquals(2, actual);
         actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, ADDITION);
         assertEquals(FIRST_POSITIVE_NUMBER, actual);
         actual = testCalculator.calculate(ZERO, FIRST_NEGATIVE_NUMBER, ADDITION);
@@ -47,6 +53,12 @@ public class LambdaCalcTest {
         actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
         assertEquals(2, actual);
+        actual = testCalculator
+                .calculate(FIRST_POSITIVE_NUMBER, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
+        assertEquals(6, actual);
+        actual = testCalculator
+                .calculate(FIRST_NEGATIVE_NUMBER, SECOND_POSITIVE_NUMBER, SUBTRACTION);
+        assertEquals(-6, actual);
         actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, SUBTRACTION);
         assertEquals((-1) * FIRST_POSITIVE_NUMBER, actual);
         actual = testCalculator.calculate(FIRST_POSITIVE_NUMBER, ZERO, SUBTRACTION);
@@ -93,6 +105,12 @@ public class LambdaCalcTest {
         actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, MULTIPLICATION);
         assertEquals(8, actual);
+        actual = testCalculator
+                .calculate(FIRST_POSITIVE_NUMBER, SECOND_NEGATIVE_NUMBER, MULTIPLICATION);
+        assertEquals(-8, actual);
+        actual = testCalculator
+                .calculate(FIRST_NEGATIVE_NUMBER, SECOND_POSITIVE_NUMBER, MULTIPLICATION);
+        assertEquals(-8, actual);
         actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, MULTIPLICATION);
         assertEquals(0, actual);
         actual = testCalculator.calculate(ZERO, FIRST_NEGATIVE_NUMBER, MULTIPLICATION);
@@ -107,6 +125,12 @@ public class LambdaCalcTest {
         actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, DIVISION);
         assertEquals(0.5, actual);
+        actual = testCalculator
+                .calculate(FIRST_POSITIVE_NUMBER, SECOND_NEGATIVE_NUMBER, DIVISION);
+        assertEquals(-0.5, actual);
+        actual = testCalculator
+                .calculate(FIRST_NEGATIVE_NUMBER, SECOND_POSITIVE_NUMBER, DIVISION);
+        assertEquals(-0.5, actual);
         actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, DIVISION);
         assertEquals(0, actual);
         actual = testCalculator.calculate(ZERO, FIRST_NEGATIVE_NUMBER, DIVISION);
@@ -127,6 +151,12 @@ public class LambdaCalcTest {
         actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, POWER);
         assertEquals(0.0625, actual);
+        actual = testCalculator
+                .calculate(FIRST_POSITIVE_NUMBER, SECOND_NEGATIVE_NUMBER, POWER);
+        assertEquals(0.0625, actual);
+        actual = testCalculator
+                .calculate(FIRST_NEGATIVE_NUMBER, SECOND_POSITIVE_NUMBER, POWER);
+        assertEquals(16, actual);
         actual = testCalculator.calculate(FIRST_NEGATIVE_NUMBER, ODD_NUMBER, POWER);
         assertEquals(-8, actual);
     }
