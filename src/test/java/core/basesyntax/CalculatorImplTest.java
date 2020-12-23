@@ -5,109 +5,96 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import core.basesyntax.exeptions.InvalidOperationException;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorImplTest {
+    private static final char PLUS = '+';
+    private static final char MINUS = '-';
+    private static final char MULTIPLICATION = '*';
+    private static final char DIVISION = '/';
+    private static final char POWER = '^';
     private static final double ZERO = 0;
+    private static final char firstInvalidOperation = '3';
+    private static final char secondInvalidOperation = '=';
     private static CalculatorImpl calculator;
-    private double firstVariable;
-    private double secondVariable;
+    private static double firstVariable;
+    private static double secondVariable;
+    private static double thirdVariable;
+
 
     @BeforeAll
     static void beforeAll() {
         calculator = new CalculatorImpl();
-    }
-
-    @BeforeEach
-    void setUp() {
-        firstVariable = Integer.MAX_VALUE;
-        secondVariable = Integer.MIN_VALUE;
+        firstVariable = -13243.34;
+        secondVariable = 13.567;
+        thirdVariable = 10;
     }
 
     @Test
     void addition_Ok() {
         assertEquals(firstVariable + secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '+'));
-        firstVariable = -4;
-        secondVariable = 13;
-        assertEquals(firstVariable + secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '+'));
-        firstVariable = 100;
-        secondVariable = 0;
-        assertEquals(firstVariable + secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '+'));
+                calculator.calculate(firstVariable, secondVariable, PLUS));
+        assertEquals(firstVariable + thirdVariable,
+                calculator.calculate(firstVariable, thirdVariable, PLUS));
+        assertEquals(thirdVariable + secondVariable,
+                calculator.calculate(thirdVariable, secondVariable, PLUS));
     }
 
     @Test
     void subtraction_Ok() {
         assertEquals(firstVariable - secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '-'));
-        firstVariable = 100;
-        secondVariable = -50;
-        assertEquals(firstVariable - secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '-'));
-        firstVariable = 3;
-        secondVariable = 0;
-        assertEquals(firstVariable - secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '-'));
+                calculator.calculate(firstVariable, secondVariable, MINUS));
+        assertEquals(firstVariable - thirdVariable,
+                calculator.calculate(firstVariable, thirdVariable, MINUS));
+        assertEquals(thirdVariable - secondVariable,
+                calculator.calculate(thirdVariable, secondVariable, MINUS));
     }
 
     @Test
     void multiplication_Ok() {
         assertEquals(firstVariable * secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '*'));
-        firstVariable = 0;
-        secondVariable = 0;
-        assertEquals(firstVariable * secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '*'));
-        firstVariable = 100;
-        secondVariable = -333;
-        assertEquals(firstVariable * secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '*'));
+                calculator.calculate(firstVariable, secondVariable, MULTIPLICATION));
+        assertEquals(firstVariable * thirdVariable,
+                calculator.calculate(firstVariable, thirdVariable, MULTIPLICATION));
+        assertEquals(thirdVariable * secondVariable,
+                calculator.calculate(thirdVariable, secondVariable, MULTIPLICATION));
     }
 
     @Test
     void raisingToAPower_Ok() {
         assertEquals(Math.pow(firstVariable, secondVariable),
-                calculator.calculate(firstVariable, secondVariable, '^'));
-        firstVariable = 4;
-        secondVariable = 65;
-        assertEquals(Math.pow(firstVariable, secondVariable),
-                calculator.calculate(firstVariable, secondVariable, '^'));
-        firstVariable = 0;
-        secondVariable = 0;
-        assertEquals(Math.pow(firstVariable, secondVariable),
-                calculator.calculate(firstVariable, secondVariable, '^'));
+                calculator.calculate(firstVariable, secondVariable, POWER));
+        assertEquals(Math.pow(firstVariable, thirdVariable),
+                calculator.calculate(firstVariable, thirdVariable, POWER));
+        assertEquals(Math.pow(thirdVariable, secondVariable),
+                calculator.calculate(thirdVariable, secondVariable, POWER));
     }
 
     @Test
     void division_Ok() {
-        assertEquals((double) firstVariable / secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '/'));
-        firstVariable = 44;
-        secondVariable = 44;
-        assertEquals((double) firstVariable / secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '/'));
-        firstVariable = 71;
-        secondVariable = -45;
-        assertEquals((double) firstVariable / secondVariable,
-                calculator.calculate(firstVariable, secondVariable, '/'));
-    }
-
-    @Test
-    void unexpectedOperation() {
-        assertThrows(InvalidOperationException.class, () ->
-                calculator.calculate(firstVariable, secondVariable, 'a'));
-        assertThrows(InvalidOperationException.class, () ->
-                calculator.calculate(firstVariable, secondVariable, '6'));
-        assertThrows(InvalidOperationException.class, () ->
-                calculator.calculate(firstVariable, secondVariable, '='));
+        assertEquals(firstVariable / secondVariable,
+                calculator.calculate(firstVariable, secondVariable, DIVISION));
+        assertEquals(firstVariable / thirdVariable,
+                calculator.calculate(firstVariable, thirdVariable, DIVISION));
+        assertEquals(thirdVariable / secondVariable,
+                calculator.calculate(thirdVariable, secondVariable, DIVISION));
     }
 
     @Test
     void divisionByZero_NotOk() {
         assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(firstVariable, ZERO, '/'));
+                calculator.calculate(firstVariable, ZERO, DIVISION));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculate(secondVariable, ZERO, DIVISION));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculate(thirdVariable, ZERO, DIVISION));
+    }
+
+    @Test
+    void invalidOperation_NotOk() {
+        assertThrows(InvalidOperationException.class, () ->
+                calculator.calculate(firstVariable, secondVariable, firstInvalidOperation));
+        assertThrows(InvalidOperationException.class, () ->
+                calculator.calculate(thirdVariable, firstVariable, secondInvalidOperation));
     }
 }
