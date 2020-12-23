@@ -11,8 +11,7 @@ public class LambdaCalculator {
                 }
                 return (double) a / b;
             case '^' : return Math.pow(a, b);
-            default: throw new ArithmeticException("You should choose operator");
+            default: throw new ArithmeticException("Invalid operator");
         }
     }
-
 }
