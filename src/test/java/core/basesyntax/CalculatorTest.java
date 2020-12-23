@@ -32,21 +32,29 @@ class CalculatorTest {
     @Test
     void additionTest_Correct() {
         int sum1and0 = calculator.calculate(1, 0, '+');
+        assertEquals(1, sum1and0);
         int sum0and1 = calculator.calculate(0, 1, '+');
+        assertEquals(1, sum0and1);
         int sum2and2 = calculator.calculate(2, 2, '+');
         assertEquals(4,sum2and2);
-        assertEquals(1, sum0and1);
-        assertEquals(1, sum1and0);
+        int sum2andNegative2 = calculator.calculate(2, -2, '+');
+        assertEquals(0, sum2andNegative2);
+        int negative2andNegative2 = calculator.calculate(-2, -2, '+');
+        assertEquals(-4, negative2andNegative2);
     }
 
     @Test
     void subtractionTest_Correct() {
         int sub1and0 = calculator.calculate(1, 0, '-');
+        assertEquals(1, sub1and0);
         int sub0and1 = calculator.calculate(0, 1, '-');
+        assertEquals(-1, sub0and1);
         int sub2and2 = calculator.calculate(2, 2, '-');
         assertEquals(0,sub2and2);
-        assertEquals(-1, sub0and1);
-        assertEquals(1, sub1and0);
+        int sum2andNegative2 = calculator.calculate(2, -2, '-');
+        assertEquals(4, sum2andNegative2);
+        int negative2andNegative2 = calculator.calculate(-2, -2, '-');
+        assertEquals(0, negative2andNegative2);
     }
 
     @Test
@@ -58,21 +66,29 @@ class CalculatorTest {
     @Test
     void divisionTest_Correct() {
         int div4and2 = calculator.calculate(4, 2, '/');
-        int div2and2 = calculator.calculate(2, 2, '/');
-        int div21and1 = calculator.calculate(21, 1, '/');
         assertEquals(2,div4and2);
+        int div2and2 = calculator.calculate(2, 2, '/');
         assertEquals(1, div2and2);
+        int div21and1 = calculator.calculate(21, 1, '/');
         assertEquals(21, div21and1);
+        int sum2andNegative2 = calculator.calculate(2, -2, '/');
+        assertEquals(-1, sum2andNegative2);
+        int negative2andNegative2 = calculator.calculate(-2, -2, '/');
+        assertEquals(1, negative2andNegative2);
     }
 
     @Test
     void multiplicationTest_Correct() {
         int multi4and1 = calculator.calculate(4, 1, '*');
-        int multi2and2 = calculator.calculate(2, 2, '*');
-        int multi21and0 = calculator.calculate(21, 0, '*');
         assertEquals(4,multi4and1);
+        int multi2and2 = calculator.calculate(2, 2, '*');
         assertEquals(4, multi2and2);
+        int multi21and0 = calculator.calculate(21, 0, '*');
         assertEquals(0, multi21and0);
+        int sum2andNegative2 = calculator.calculate(2, -2, '*');
+        assertEquals(-4, sum2andNegative2);
+        int negative2andNegative2 = calculator.calculate(-2, -2, '*');
+        assertEquals(4, negative2andNegative2);
     }
 
     @Test
@@ -85,6 +101,10 @@ class CalculatorTest {
         assertEquals(1, power1to21);
         int power5to5 = calculator.calculate(5, 5, '^');
         assertEquals(3125, power5to5);
+        int sum2toNegative2 = calculator.calculate(2, -2, '^');
+        assertEquals(0, sum2toNegative2);
+        int negative2toNegative2 = calculator.calculate(-2, -2, '^');
+        assertEquals(0, negative2toNegative2);
     }
 
     @Test
