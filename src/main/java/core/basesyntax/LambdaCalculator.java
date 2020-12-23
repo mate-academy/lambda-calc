@@ -1,25 +1,24 @@
 package core.basesyntax;
 
 public class LambdaCalculator {
-    public double calculate(int firstValue, int secondValue, char operation) {
-        if (operation == '+') {
-            return firstValue + secondValue;
+    public double calculate(double firstValue, double secondValue, char operation) {
+        switch (operation) {
+            case '+':
+                return firstValue + secondValue;
+            case '-':
+                return firstValue - secondValue;
+            case '*':
+                return firstValue * secondValue;
+            case '/':
+                if (secondValue == 0) {
+                    throw new ArithmeticException("We cant divide by 0");
+                }
+                return firstValue / secondValue;
+            case '^':
+                return Math.pow(firstValue, secondValue);
+            default:
+                throw new IllegalArgumentException("Bad operation symbol!");
         }
-        if (operation == '-') {
-            return firstValue - secondValue;
-        }
-        if (operation == '*') {
-            return firstValue * secondValue;
-        }
-        if (operation == '/') {
-            if (secondValue == 0) {
-                throw new ArithmeticException("We cant divide by 0");
-            }
-            return (double) firstValue / secondValue;
-        }
-        if (operation == '^') {
-            return Math.pow(firstValue, secondValue);
-        }
-        throw new IllegalArgumentException("Bad operation symbol!");
     }
 }
+
