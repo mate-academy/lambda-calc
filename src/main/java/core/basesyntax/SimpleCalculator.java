@@ -17,7 +17,7 @@ public class SimpleCalculator implements Calculator {
         init();
         Operation op = operations.get(operation);
         if (op == null) {
-            throw new NoSuchOperationException();
+            throw new NoSuchOperationException("Please enter the valid operation");
         }
         return op.operation(first, second);
     }
