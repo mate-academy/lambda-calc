@@ -16,7 +16,7 @@ public class Calculator {
             case SUBTRACTION:
                 return leftOperand - rightOperand;
             case DIVISION:
-                if (leftOperand == 0 || rightOperand == 0) {
+                if (rightOperand == 0) {
                     throw new ArithmeticException("Can not divide by zero");
                 } else {
                     return leftOperand / rightOperand;

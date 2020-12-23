@@ -73,8 +73,6 @@ class CalculatorTest {
         assertEquals(-58, calculator.calculate(-232, 4, DIVISION));
         assertEquals(0.0, calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, DIVISION));
         assertThrows(ArithmeticException.class, ()
-                -> calculator.calculate(0, 4412, DIVISION));
-        assertThrows(ArithmeticException.class, ()
                 -> calculator.calculate(232, 0, DIVISION));
     }
 
