@@ -1,8 +1,16 @@
 package core.basesyntax;
 
 public class Calculator {
-    private Integer firstNumber;
-    private Integer secondNumber;
+    private Double firstNumber;
+    private Double secondNumber;
+
+    public Calculator() {
+    }
+
+    public Calculator(Double firstNumber, Double secondNumber) {
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
+    }
 
     public boolean checkForNull() {
         if (firstNumber == null || secondNumber == null) {
@@ -10,35 +18,33 @@ public class Calculator {
         }
         return true;
     }
-
-    public Integer addition(Integer a, Integer b) {
+    
+    public double calculate(Double firstNumber, Double secondNumber, char operations) {
         checkForNull();
-        return a + b;
-    }
-
-    public Integer subtraction(Integer a, Integer b) {
-        checkForNull();
-        return a - b;
-    }
-
-    public Integer division(Integer a, Integer b) {
-        checkForNull();
-        if (b == 0) {
-            throw new ArithmeticException("You can't divide the number by zero");
+        switch (operations) {
+            case '+' :
+                return firstNumber + secondNumber;
+            case '-' :
+                return firstNumber - secondNumber;
+            case '*' :
+                return firstNumber * secondNumber;
+            case '/' :
+                if (secondNumber == 0) {
+                    throw new ArithmeticException("Divide to zero");
+                }
+                return firstNumber / secondNumber;
+            case '^':
+                return Math.pow(firstNumber, secondNumber);
+            default :
+                return 0;
         }
-        return a / b;
     }
 
-    public Integer multiplication(Integer a, Integer b) {
-        checkForNull();
-        return a * b;
-    }
-
-    public Integer getFirstNumber() {
+    public Double getFirstNumber() {
         return firstNumber;
     }
 
-    public boolean setFirstNumber(Integer firstNumber) {
+    public boolean setFirstNumber(Double firstNumber) {
         if (firstNumber == null) {
             throw new NullPointerException();
         }
@@ -46,11 +52,11 @@ public class Calculator {
         return true;
     }
 
-    public Integer getSecondNumber() {
+    public Double getSecondNumber() {
         return secondNumber;
     }
 
-    public boolean setSecondNumber(Integer secondNumber) {
+    public boolean setSecondNumber(Double secondNumber) {
         if (secondNumber == null) {
             throw new NullPointerException();
         }

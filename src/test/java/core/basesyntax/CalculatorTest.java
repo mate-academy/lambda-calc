@@ -5,125 +5,149 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-    private static final int MAX_VALUE = Integer.MAX_VALUE;
-    private static final int MIN_VALUE = Integer.MIN_VALUE;
-    private Calculator calculate;
+    private static final double MAX_VALUE = Double.MAX_VALUE;
+    private static final double MIN_VALUE = Double.MIN_VALUE;
+    private static final double ZERO = 0.0;
+    private static Calculator calculator;
 
     @BeforeEach
-    void create_object() {
-        calculate = new Calculator();
-        calculate.setFirstNumber(20);
-        calculate.setSecondNumber(10);
+    void createCalculator() {
+        calculator = new Calculator();
     }
 
     @Test
-    void setters_checkForNull_FirstNumber() {
-        try {
-            Assertions.assertFalse(calculate.setFirstNumber(null));
-            Assertions.assertThrows(NullPointerException.class, () -> calculate.checkForNull());
-        } catch (NullPointerException e) {
-            return;
-        }
-        Assertions.fail("You need to check values for null!");
+    void set_null() {
+        Assertions.assertThrows(NullPointerException.class,
+                () -> calculator.setSecondNumber(null));
+        Assertions.assertThrows(NullPointerException.class,
+                () -> calculator.setFirstNumber(null));
     }
 
     @Test
-    void setters_checkForNull_SecondNumber() {
-        try {
-            Assertions.assertFalse(calculate.setSecondNumber(null));
-            Assertions.assertThrows(NullPointerException.class, () -> calculate.checkForNull());
-        } catch (NullPointerException e) {
-            return;
-        }
-        Assertions.fail("You need to check values for null!");
+    void set_number_ok() {
+        boolean actualFirst = calculator.setFirstNumber(Math.random() * MAX_VALUE);
+        Assertions.assertTrue(true, String.valueOf(actualFirst));
+
+        boolean actualSecond = calculator.setSecondNumber(Math.random() * MAX_VALUE);
+        Assertions.assertTrue(true, String.valueOf(actualSecond));
     }
 
     @Test
-    void isSet_FirstValue() {
-        Assertions.assertTrue(calculate.setFirstNumber(10));
+    void create_constructorWithParameters() {
+        Calculator temp = new Calculator(null, 12.0);
+        calculator = temp;
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.checkForNull());
+
+        temp = new Calculator(12.0, null);
+        calculator = temp;
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.checkForNull());
     }
 
     @Test
-    void isSet_SecondValue() {
-        Assertions.assertTrue(calculate.setSecondNumber(10));
+    void addition_withoutFinal() {
+        double firstNumber = Math.random() * MAX_VALUE;
+        double secondNumber = Math.random() * MIN_VALUE;
+        calculator.setFirstNumber(firstNumber);
+        calculator.setSecondNumber(secondNumber);
+        double expected = firstNumber + secondNumber;
+        double actual = calculator.calculate(firstNumber, secondNumber, '+');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void checkForConsistent_firstValue() {
-        Integer actual = calculate.getFirstNumber();
-        Assertions.assertEquals(20, actual, "You number not equals");
+    void addition_Final() {
+        calculator.setFirstNumber(MAX_VALUE);
+        calculator.setSecondNumber(MIN_VALUE);
+        double expected = MAX_VALUE + MIN_VALUE;
+        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '+');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void checkForConsistent_secondValue() {
-        Integer actual = calculate.getSecondNumber();
-        Assertions.assertEquals(10, actual, "You number not equals");
+    void subtraction_withoutFinal() {
+        double firstNumber = Math.random() * MAX_VALUE;
+        double secondNumber = Math.random() * MIN_VALUE;
+        calculator.setFirstNumber(firstNumber);
+        calculator.setSecondNumber(secondNumber);
+        double expected = firstNumber - secondNumber;
+        double actual = calculator.calculate(firstNumber, secondNumber, '-');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void additional() {
-        Integer actual = calculate
-                .addition(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(30, actual);
+    void subtraction_Final() {
+        calculator.setFirstNumber(MAX_VALUE);
+        calculator.setSecondNumber(MIN_VALUE);
+        double expected = MAX_VALUE - MIN_VALUE;
+        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '-');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void subtraction() {
-        Integer actual = calculate
-                .subtraction(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(10, actual);
+    void division_withoutFinal() {
+        double firstNumber = Math.random() * MAX_VALUE;
+        double secondNumber = Math.random() * MIN_VALUE + 1;
+        calculator.setFirstNumber(firstNumber);
+        calculator.setSecondNumber(secondNumber);
+        double expected = firstNumber / secondNumber;
+        double actual = calculator.calculate(firstNumber, secondNumber, '/');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void division_Ok() {
-        Integer actual = calculate
-                .division(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(2, actual);
+    void division_Final() {
+        calculator.setFirstNumber(MAX_VALUE);
+        calculator.setSecondNumber(MIN_VALUE);
+        double expected = MAX_VALUE / MIN_VALUE;
+        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '/');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void division_NotOk_FirstNumber() {
-        calculate.setFirstNumber(-20);
-        Integer actual = calculate
-                .division(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(-2, actual);
+    void division_byZero() {
+        calculator.setFirstNumber(Math.random() * MAX_VALUE);
+        calculator.setSecondNumber(0.0);
+        Assertions.assertThrows(ArithmeticException.class, () -> calculator
+                .calculate(calculator.getFirstNumber(), calculator.getSecondNumber(), '/'));
     }
 
     @Test
-    void division_NotOk_SecondNumber() {
-        calculate.setSecondNumber(0);
-        Assertions.assertThrows(ArithmeticException.class, () -> calculate
-                .division(calculate.getFirstNumber(), calculate.getSecondNumber()));
+    void multiplication_withoutFinal() {
+        double firstNumber = Math.random() * MAX_VALUE;
+        double secondNumber = Math.random() * MIN_VALUE;
+        calculator.setFirstNumber(firstNumber);
+        calculator.setSecondNumber(secondNumber);
+        double expected = firstNumber * secondNumber;
+        double actual = calculator.calculate(firstNumber, secondNumber, '*');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void multiplication() {
-        Integer actual = calculate
-                .multiplication(calculate.getFirstNumber(), calculate.getSecondNumber());
-        Assertions.assertEquals(200, actual);
+    void multiplication_Final() {
+        calculator.setFirstNumber(MAX_VALUE);
+        calculator.setSecondNumber(MIN_VALUE);
+        double expected = MAX_VALUE * MIN_VALUE;
+        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '*');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void final_negative() {
-        Assertions.assertEquals(MIN_VALUE - MIN_VALUE,
-                calculate.subtraction(MIN_VALUE, MIN_VALUE));
-        Assertions.assertEquals(MAX_VALUE - MIN_VALUE,
-                calculate.addition(MAX_VALUE, MIN_VALUE));
+    void power_withoutFinal() {
+        double firstNumber = Math.random() * MAX_VALUE;
+        double secondNumber = Math.random() * MIN_VALUE;
+        calculator.setFirstNumber(firstNumber);
+        calculator.setSecondNumber(secondNumber);
+        double expected = Math.pow(firstNumber, secondNumber);
+        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void final_positive() {
-        Assertions.assertEquals(MAX_VALUE + MAX_VALUE,
-                calculate.addition(MAX_VALUE, MAX_VALUE));
-        Assertions.assertEquals(MAX_VALUE + MIN_VALUE,
-                calculate.subtraction(MAX_VALUE, MIN_VALUE));
-    }
-
-    @Test
-    void final_zero() {
-        Assertions.assertEquals(MAX_VALUE - MIN_VALUE,
-                calculate.addition(MAX_VALUE, MIN_VALUE));
-        Assertions.assertEquals(MAX_VALUE - MIN_VALUE,
-                calculate.subtraction(MAX_VALUE, MIN_VALUE));
+    void power_Final() {
+        calculator.setFirstNumber(MAX_VALUE);
+        calculator.setSecondNumber(MIN_VALUE);
+        double expected = Math.pow(MAX_VALUE, MIN_VALUE);
+        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '^');
+        Assertions.assertEquals(expected, actual);
     }
 }
