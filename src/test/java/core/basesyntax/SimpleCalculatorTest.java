@@ -42,6 +42,15 @@ public class SimpleCalculatorTest {
         double sumOfPositiveAndNegative = POSITIVE_FIRST + NEGATIVE_SECOND;
         assertEquals(sumOfPositiveAndNegative,
                 calculator.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, ADDITION.getOperation()));
+        double sumWithZero = ZERO + POSITIVE_FIRST;
+        assertEquals(sumWithZero,
+                calculator.calculate(ZERO, POSITIVE_FIRST, ADDITION.getOperation()));
+        double sumWithSecondZero = POSITIVE_SECOND + ZERO;
+        assertEquals(sumWithSecondZero,
+                calculator.calculate(POSITIVE_SECOND, ZERO, ADDITION.getOperation()));
+        double sumMaxAndMin = Double.MAX_VALUE + Double.MIN_VALUE;
+        assertEquals(sumMaxAndMin,
+                calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, ADDITION.getOperation()));
     }
 
     @Test
@@ -58,10 +67,22 @@ public class SimpleCalculatorTest {
         double subtractNegativeFromPositive = NEGATIVE_FIRST - POSITIVE_SECOND;
         assertEquals(subtractNegativeFromPositive,
                 calculator.calculate(NEGATIVE_FIRST, POSITIVE_SECOND, SUBTRACTION.getOperation()));
+        double subtractionWithZero = ZERO - POSITIVE_FIRST;
+        assertEquals(subtractionWithZero,
+                calculator.calculate(ZERO, POSITIVE_FIRST, SUBTRACTION.getOperation()));
+        double subtractionWithSecondZero = POSITIVE_SECOND - ZERO;
+        assertEquals(subtractionWithSecondZero,
+                calculator.calculate(POSITIVE_SECOND, ZERO, SUBTRACTION.getOperation()));
+        double subtractionMaxAndMin = Double.MAX_VALUE - Double.MIN_VALUE;
+        assertEquals(subtractionMaxAndMin, calculator.calculate(Double.MAX_VALUE,
+                Double.MIN_VALUE, SUBTRACTION.getOperation()));
     }
 
     @Test
     void divisionOfTwoNumbers_Ok() {
+        double divisionOfPositive = POSITIVE_FIRST / POSITIVE_SECOND;
+        assertEquals(divisionOfPositive,
+                calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, DIVISION.getOperation()));
         double divisionOfNegative = NEGATIVE_FIRST / NEGATIVE_SECOND;
         assertEquals(divisionOfNegative,
                 calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, DIVISION.getOperation()));
@@ -74,6 +95,9 @@ public class SimpleCalculatorTest {
         double divisionZeroByNumber = ZERO / POSITIVE_SECOND;
         assertEquals(divisionZeroByNumber,
                 calculator.calculate(ZERO, POSITIVE_SECOND, DIVISION.getOperation()));
+        double subtractionMaxAndMin = Double.MIN_VALUE / Double.MAX_VALUE;
+        assertEquals(subtractionMaxAndMin,
+                calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, DIVISION.getOperation()));
     }
 
     @Test
@@ -87,19 +111,34 @@ public class SimpleCalculatorTest {
         double multiplicationByZero = POSITIVE_FIRST * ZERO;
         assertEquals(multiplicationByZero,
                 calculator.calculate(POSITIVE_FIRST, ZERO, MULTIPLICATION.getOperation()));
+        double multiplicationZeroByNumber = ZERO * NEGATIVE_SECOND;
+        assertEquals(multiplicationZeroByNumber,
+                calculator.calculate(ZERO, NEGATIVE_SECOND, MULTIPLICATION.getOperation()));
+        double multiplicationMaxAndMin = Double.MAX_VALUE * Double.MIN_VALUE;
+        assertEquals(multiplicationMaxAndMin, calculator.calculate(Double.MAX_VALUE,
+                Double.MIN_VALUE, MULTIPLICATION.getOperation()));
     }
 
     @Test
     void raisingToPower_Ok() {
-        double raisingToPositivePower = Math.pow(POSITIVE_FIRST, POSITIVE_SECOND);
-        assertEquals(raisingToPositivePower,
+        double raisingPositiveToPositivePower = Math.pow(POSITIVE_FIRST, POSITIVE_SECOND);
+        assertEquals(raisingPositiveToPositivePower,
                 calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, POWER.getOperation()));
-        double raisingToNegativePower = Math.pow(POSITIVE_FIRST, NEGATIVE_FIRST);
-        assertEquals(raisingToNegativePower,
+        double raisingPositiveToNegativePower = Math.pow(POSITIVE_FIRST, NEGATIVE_FIRST);
+        assertEquals(raisingPositiveToNegativePower,
                 calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, POWER.getOperation()));
-        double raisingToZeroPower = Math.pow(POSITIVE_FIRST, ZERO);
-        assertEquals(raisingToZeroPower,
+        double raisingNegativeToPositivePower = Math.pow(NEGATIVE_FIRST, POSITIVE_SECOND);
+        assertEquals(raisingNegativeToPositivePower,
+                calculator.calculate(NEGATIVE_FIRST, POSITIVE_SECOND, POWER.getOperation()));
+        double raisingNegativeToNegativePower = Math.pow(NEGATIVE_SECOND, NEGATIVE_FIRST);
+        assertEquals(raisingNegativeToNegativePower,
+                calculator.calculate(NEGATIVE_SECOND, NEGATIVE_FIRST, POWER.getOperation()));
+        double raisingPositiveToZeroPower = Math.pow(POSITIVE_FIRST, ZERO);
+        assertEquals(raisingPositiveToZeroPower,
                 calculator.calculate(POSITIVE_FIRST, ZERO, POWER.getOperation()));
+        double raisingNegativeToZeroPower = Math.pow(POSITIVE_FIRST, ZERO);
+        assertEquals(raisingNegativeToZeroPower,
+                calculator.calculate(NEGATIVE_SECOND, ZERO, POWER.getOperation()));
         double raisingZeroToPower = Math.pow(ZERO, NEGATIVE_SECOND);
         assertEquals(raisingZeroToPower,
                 calculator.calculate(ZERO, NEGATIVE_SECOND, POWER.getOperation()));
