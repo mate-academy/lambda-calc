@@ -24,10 +24,11 @@ public class CalculatorTest {
 
     @Test
     void addCalculateOk() {
-
         assertEquals(7, testCalculator.calculate(2, 5, ADD),
                 String.format(ERROR_MSG, ADD));
         assertEquals(3, testCalculator.calculate(-2, 5, ADD),
+                String.format(ERROR_MSG, ADD));
+        assertEquals(-3, testCalculator.calculate(2, -5, ADD),
                 String.format(ERROR_MSG, ADD));
         assertEquals(-7, testCalculator.calculate(-2, -5, ADD),
                 String.format(ERROR_MSG, ADD));
@@ -49,9 +50,9 @@ public class CalculatorTest {
                 String.format(ERROR_MSG, SUB));
         assertEquals(-7, testCalculator.calculate(-2, 5, SUB),
                 String.format(ERROR_MSG, SUB));
-        assertEquals(3, testCalculator.calculate(-2, -5, SUB),
+        assertEquals(7, testCalculator.calculate(2, -5, SUB),
                 String.format(ERROR_MSG, SUB));
-        assertEquals(999, testCalculator.calculate(1000, 1, SUB),
+        assertEquals(3, testCalculator.calculate(-2, -5, SUB),
                 String.format(ERROR_MSG, SUB));
         assertEquals(-5, testCalculator.calculate(0, 5, SUB),
                 String.format(ERROR_MSG, SUB));
@@ -70,8 +71,6 @@ public class CalculatorTest {
         assertEquals(-5, testCalculator.calculate(-10, 2, DIV),
                 String.format(ERROR_MSG, DIV));
         assertEquals(5, testCalculator.calculate(-10, -2, DIV),
-                String.format(ERROR_MSG, DIV));
-        assertEquals(1000, testCalculator.calculate(1000, 1, DIV),
                 String.format(ERROR_MSG, DIV));
         assertEquals(0, testCalculator.calculate(0, 5, DIV),
                 String.format(ERROR_MSG, DIV));
@@ -131,18 +130,23 @@ public class CalculatorTest {
         assertEquals(1000,
                 testCalculator.calculate(1000, 1, POW),
                 String.format(ERROR_MSG, POW));
-        assertEquals(1, testCalculator.calculate(1, 1000, POW),
+        assertEquals(1,
+                testCalculator.calculate(1, 1000, POW),
                 String.format(ERROR_MSG, POW));
-        assertEquals(0, testCalculator.calculate(0, 5, POW),
+        assertEquals(0,
+                testCalculator.calculate(0, 5, POW),
                 String.format(ERROR_MSG, POW));
-        assertEquals(1, testCalculator.calculate(5, 0, POW),
+        assertEquals(1,
+                testCalculator.calculate(5, 0, POW),
                 String.format(ERROR_MSG, POW));
         assertEquals(Double.POSITIVE_INFINITY,
                 testCalculator.calculate(0, -5, POW),
                 String.format(ERROR_MSG, POW));
-        assertEquals(1, testCalculator.calculate(-5, 0, POW),
+        assertEquals(1,
+                testCalculator.calculate(-5, 0, POW),
                 String.format(ERROR_MSG, POW));
-        assertEquals(1, testCalculator.calculate(0, 0, POW),
+        assertEquals(1,
+                testCalculator.calculate(0, 0, POW),
                 String.format(ERROR_MSG, POW));
     }
 
