@@ -74,12 +74,12 @@ public class SimpleCalculatorTest {
     @Test
     void multiplicationOfTwoNumbers_Ok() {
         double multiplicationOfPositive = POSITIVE_FIRST * POSITIVE_SECOND;
-        double multiplicationOfNegative = NEGATIVE_FIRST * NEGATIVE_SECOND;
-        double multiplicationByZero = POSITIVE_FIRST * ZERO;
         assertEquals(multiplicationOfPositive,
                 calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, MULTIPLICATION.getOperation()));
+        double multiplicationOfNegative = NEGATIVE_FIRST * NEGATIVE_SECOND;
         assertEquals(multiplicationOfNegative,
                 calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MULTIPLICATION.getOperation()));
+        double multiplicationByZero = POSITIVE_FIRST * ZERO;
         assertEquals(multiplicationByZero,
                 calculator.calculate(POSITIVE_FIRST, ZERO, MULTIPLICATION.getOperation()));
     }
@@ -87,15 +87,15 @@ public class SimpleCalculatorTest {
     @Test
     void raisingToPower_Ok() {
         double raisingToPositivePower = Math.pow(POSITIVE_FIRST, POSITIVE_SECOND);
-        double raisingToNegativePower = Math.pow(POSITIVE_FIRST, NEGATIVE_FIRST);
-        double raisingToZeroPower = Math.pow(POSITIVE_FIRST, ZERO);
-        double raisingZeroToPower = Math.pow(ZERO, NEGATIVE_SECOND);
         assertEquals(raisingToPositivePower,
                 calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, POWER.getOperation()));
+        double raisingToNegativePower = Math.pow(POSITIVE_FIRST, NEGATIVE_FIRST);
         assertEquals(raisingToNegativePower,
                 calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, POWER.getOperation()));
+        double raisingToZeroPower = Math.pow(POSITIVE_FIRST, ZERO);
         assertEquals(raisingToZeroPower,
                 calculator.calculate(POSITIVE_FIRST, ZERO, POWER.getOperation()));
+        double raisingZeroToPower = Math.pow(ZERO, NEGATIVE_SECOND);
         assertEquals(raisingZeroToPower,
                 calculator.calculate(ZERO, NEGATIVE_SECOND, POWER.getOperation()));
     }
