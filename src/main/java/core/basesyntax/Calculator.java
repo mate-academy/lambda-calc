@@ -6,41 +6,23 @@ package core.basesyntax;
 public class Calculator implements Calculable {
 
     @Override
-    public int calculate(int operand1, int operand2, char operator) {
-        long result;
+    public double calculate(int operand1, int operand2, char operator) {
         switch (operator) {
             case '+':
-                result = (long) operand1 + (long) operand2;
-                checkIfInBounds(result);
-                return (int) result;
+                return (double) operand1 + (double) operand2;
             case '-':
-                result = (long) operand1 - (long) operand2;
-                checkIfInBounds(result);
-                return (int) result;
+                return (double) operand1 - (double) operand2;
             case '/':
-                return operand1 / operand2;
+                if (operand2 == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return (double) operand1 / (double) operand2;
             case '*':
-                result = (long) operand1 * (long) operand2;
-                checkIfInBounds(result);
-                return (int) result;
+                return (double) operand1 * (double) operand2;
             case '^':
-                double doubleResult = Math.pow(operand1, operand2);
-                checkIfInBounds(doubleResult);
-                return (int) doubleResult;
+                return Math.pow(operand1, operand2);
             default:
                 throw new RuntimeException("ERROR impossible operand detected: " + operator);
-        }
-    }
-
-    private void checkIfInBounds(long value) {
-        if (value > Integer.MAX_VALUE || value < Integer.MIN_VALUE) {
-            throw new ArithmeticException("Result is out of integer capacity");
-        }
-    }
-
-    private void checkIfInBounds(double value) {
-        if (value > Integer.MAX_VALUE || value < Integer.MIN_VALUE) {
-            throw new ArithmeticException("Result is out of integer capacity");
         }
     }
 }
