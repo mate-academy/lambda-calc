@@ -11,6 +11,90 @@ public class CalculatorTest {
     private static double secondVariable = 5;
 
     @Test
+    void additionWithNegativeValues_Ok() {
+        double expectedResult = -15;
+        double actualResult = calculator.calculate(-firstVariable, -secondVariable,'+');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void additionWithPositiveAndNegativeValues_Ok() {
+        double expectedResult = -5;
+        double actualResult = calculator.calculate(-firstVariable, secondVariable,'+');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void additionWithZero_Ok() {
+        double expectedResult = 5;
+        double actualResult = calculator.calculate(0, secondVariable,'+');
+        assertEquals(expectedResult, actualResult);
+        expectedResult = 10;
+        actualResult = calculator.calculate(firstVariable, 0,'+');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void additionWithMaxValue_NotOk() {
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(firstVariable, Double.MAX_VALUE,'+'));
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(Double.MAX_VALUE, secondVariable,'+'));
+    }
+
+    @Test
+    void subtractionWithMinValue_NotOk() {
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(firstVariable, Double.MIN_VALUE,'-'));
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(Double.MIN_VALUE, secondVariable,'-'));
+    }
+
+    @Test
+    void divisionWithMinValue_NotOk() {
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(firstVariable, Double.MIN_VALUE,'/'));
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(Double.MIN_VALUE, secondVariable,'/'));
+    }
+
+    @Test
+    void multiplyWithMaxValue_NotOk() {
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(firstVariable, Double.MAX_VALUE,'*'));
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(Double.MAX_VALUE, secondVariable,'*'));
+    }
+
+    @Test
+    void raisingToAPowerWithMaxValue_NotOk() {
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(firstVariable, Double.MAX_VALUE,'^'));
+        assertThrows(ValueOutOfBoundException.class, ()
+                -> calculator.calculate(Double.MAX_VALUE, secondVariable,'^'));
+    }
+
+    @Test
+    void raisingZeroToAPower_Ok() {
+        double expectedResult = 1;
+        double actualResult = calculator.calculate(firstVariable, 0,'^');
+        assertEquals(expectedResult, actualResult);
+        expectedResult = 0;
+        actualResult = calculator.calculate(0, secondVariable,'^');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void raisingToAPowerWithNegativeValues_NotOk() {
+        double expectedResult = -100000.0;
+        double actualResult = calculator.calculate(-firstVariable, secondVariable,'^');
+        assertEquals(expectedResult, actualResult);
+        expectedResult = 1.0E-5;
+        actualResult = calculator.calculate(firstVariable, -secondVariable,'^');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
     void correctAddition_Ok() {
         double expectedResult = 15;
         double actualResult = calculator.calculate(firstVariable, secondVariable,'+');
