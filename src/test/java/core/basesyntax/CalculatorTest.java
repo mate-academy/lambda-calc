@@ -1,12 +1,12 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CalculatorTest {
-    private final static double DELTA = 0.000001;
+    private static final double DELTA = 0.000001;
     Calculator calculator = new Calculator();
 
     @Test
@@ -16,7 +16,8 @@ class CalculatorTest {
         assertEquals(4.37, calculator.calculate(5.35, -0.98, "+"), DELTA);
         assertEquals(-129, calculator.calculate(0, -129, "+"), DELTA);
         assertEquals(10025, calculator.calculate(10025, 0, "+"), DELTA);
-        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, "+"), DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
+                Double.MAX_VALUE, Double.MAX_VALUE, "+"), DELTA);
     }
 
     @Test
@@ -39,7 +40,6 @@ class CalculatorTest {
         assertEquals(0, calculator.calculate(10025, 0, "*"), DELTA);
     }
 
-
     @Test
     void divisionTests_Ok() {
         assertEquals(2.5, calculator.calculate(50, 20, "/"), DELTA);
@@ -55,7 +55,6 @@ class CalculatorTest {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(-190, 0, "/"));
     }
 
-
     @Test
     void powerTest_Ok() {
         assertEquals(4, calculator.calculate(2, 2, "^"), DELTA);
@@ -63,11 +62,11 @@ class CalculatorTest {
         assertEquals(-100000, calculator.calculate(-10, 5, "^"), DELTA);
         assertEquals(0.87055, calculator.calculate(2, -0.2, "^"), DELTA);
         assertEquals(0.00390625, calculator.calculate(0.5, 8, "^"), DELTA);
-        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate
-                (Double.MAX_VALUE, Double.MAX_VALUE, "^"), DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
+                Double.MAX_VALUE, Double.MAX_VALUE, "^"), DELTA);
     }
 
-    void invalidOperators () {
+    void invalidOperators() {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(1, 1, "&"));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(1, 1, "|"));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(1, 1, "="));
@@ -80,5 +79,4 @@ class CalculatorTest {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(1, 1, "("));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(1, 1, ")"));
     }
-
 }
