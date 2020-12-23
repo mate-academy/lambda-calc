@@ -58,15 +58,15 @@ public class SimpleCalculatorTest {
     @Test
     void divisionOfTwoNumbers_Ok() {
         double divisionOfNegative = NEGATIVE_FIRST / NEGATIVE_SECOND;
-        double divisionPositiveByNegative = POSITIVE_FIRST / NEGATIVE_SECOND;
-        double divisionNegativeByPositive = NEGATIVE_FIRST / POSITIVE_SECOND;
-        double divisionZeroByNumber = ZERO / POSITIVE_SECOND;
         assertEquals(divisionOfNegative,
                 calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, DIVISION.getOperation()));
+        double divisionPositiveByNegative = POSITIVE_FIRST / NEGATIVE_SECOND;
         assertEquals(divisionPositiveByNegative,
                 calculator.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, DIVISION.getOperation()));
+        double divisionNegativeByPositive = NEGATIVE_FIRST / POSITIVE_SECOND;
         assertEquals(divisionNegativeByPositive,
                 calculator.calculate(NEGATIVE_FIRST, POSITIVE_SECOND, DIVISION.getOperation()));
+        double divisionZeroByNumber = ZERO / POSITIVE_SECOND;
         assertEquals(divisionZeroByNumber,
                 calculator.calculate(ZERO, POSITIVE_SECOND, DIVISION.getOperation()));
     }
