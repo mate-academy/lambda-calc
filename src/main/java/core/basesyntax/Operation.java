@@ -14,7 +14,7 @@ public enum Operation {
     DIVISION('/') {
         public double operation(double first, double second) {
             if (second == 0) {
-                throw new ArithmeticException();
+                throw new ArithmeticException("Can't divide by zero");
             }
             return first / second;
         }
