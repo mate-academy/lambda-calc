@@ -1,21 +1,24 @@
 package core.basesyntax;
 
 public class Calculator {
-    public double calculate(int a, int b, char operate) {
-        switch (operate) {
-            case '+': return (double) a + b;
-            case '-': return (double) a - b;
-            case '*': return ((a == 0 || b == 0) ? 0 : (double) a * b);
+    public double calculate(int value1, int value2, char operator) {
+        switch (operator) {
+            case '+': return (double) value1 + value2;
+            case '-': return (double) value1 - value2;
+            case '*': return (value1 == 0 || value2 == 0) ? 0 : (double) value1 * value2;
             case '/':
-                if (b == 0) {
+                if (value2 == 0) {
                     throw new ArithmeticException("You can't division by zero");
                 }
-                return (double) a / b;
+                return (double) value1 / value2;
             case '^':
-                if (a == 0 && b < 0) {
+                if (value1 == 0 && value2 < 0) {
                     throw new ArithmeticException("You can't raising zero in negative power");
                 }
-                return Math.pow(a, b) > Double.MAX_VALUE ? Double.MAX_VALUE : Math.pow(a, b);
+                if (Double.isInfinite(Math.pow(value1, value2))) {
+                    throw new ArithmeticException("ERROR!!! Large value!");
+                }
+                return Math.pow(value1, value2);
             default: throw new IncorrectOperationException("You try to do incorrect operation");
         }
     }

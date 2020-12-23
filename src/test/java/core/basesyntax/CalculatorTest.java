@@ -7,25 +7,25 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
+public class CalculatorTest {
     private static Calculator calculator;
 
     @BeforeAll
-    static void beforeAll() {
+    public static void beforeAll() {
         calculator = new Calculator();
     }
 
     @Test
-    void operation_notOk() {
-        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(5,7,'n'));
-        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(6,8,'!'));
-        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(9,82,'5'));
-        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(3,7,']'));
-        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(0,0,' '));
+    public void operation_notOk() {
+        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(5, 7, 'n'));
+        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(6, 8, '!'));
+        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(9, 82, '5'));
+        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(3, 7, ']'));
+        assertThrows(IncorrectOperationException.class, () -> calculator.calculate(0, 0, ' '));
     }
 
     @Test
-    void addition_numbers_Ok() {
+    public void addition_numbers_Ok() {
         assertEquals(8.0, calculator.calculate(2, 6, '+'));
         assertEquals(-10.0, calculator.calculate(-5, -5, '+'));
         assertEquals(-2.0, calculator.calculate(-4, 2, '+'));
@@ -36,13 +36,13 @@ class CalculatorTest {
     }
 
     @Test
-    void adding_numbers_notOk() {
+    public void adding_numbers_notOk() {
         assertNotEquals(-2.0, calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '+'));
         assertNotEquals(5.0, calculator.calculate(2, 2, '+'));
     }
 
     @Test
-    void subtraction_numbers_Ok() {
+    public void subtraction_numbers_Ok() {
         assertEquals(0.0, calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '-'));
         assertEquals(-4.294967295E9, calculator.calculate(Integer.MIN_VALUE,
                 Integer.MAX_VALUE, '-'));
@@ -54,13 +54,13 @@ class CalculatorTest {
     }
 
     @Test
-    void subtraction_numbers_notOk() {
+    public void subtraction_numbers_notOk() {
         assertNotEquals(1.0, calculator.calculate(Integer.MIN_VALUE, Integer.MAX_VALUE, '-'));
         assertNotEquals(1.0, calculator.calculate(50, 50, '-'));
     }
 
     @Test
-    void division_numbers_Ok() {
+    public void division_numbers_Ok() {
         double divisionResult1 = 0.5;
         double divisionResult2 = -0.1;
         double divisionResult3 = 8.0;
@@ -73,7 +73,7 @@ class CalculatorTest {
     }
 
     @Test
-    void division_numbers_notOk() {
+    public void division_numbers_notOk() {
         double divisionResult1 = 0.0;
         double divisionResult2 = 1.20;
         assertNotEquals(divisionResult1, calculator.calculate(5, 5, '/'));
@@ -82,11 +82,11 @@ class CalculatorTest {
         double divisionResult4 = 2.0;
         assertNotEquals(divisionResult3, calculator.calculate(25, 4, '/'));
         assertNotEquals(divisionResult4, calculator.calculate(10, 4, '/'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(7,0,'/'));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(7, 0, '/'));
     }
 
     @Test
-    void multiplication_numbers_Ok() {
+    public void multiplication_numbers_Ok() {
         assertEquals(4.6116860141324206E18, calculator.calculate(Integer.MAX_VALUE,
                 Integer.MAX_VALUE, '*'));
         assertEquals(0.0, calculator.calculate(Integer.MAX_VALUE, 0, '*'));
@@ -98,7 +98,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplication_numbers_notOk() {
+    public void multiplication_numbers_notOk() {
         assertNotEquals(Integer.MAX_VALUE, calculator.calculate(Integer.MAX_VALUE,
                 Integer.MAX_VALUE, '*'));
         assertNotEquals(1.0, calculator.calculate(Integer.MAX_VALUE, 0, '*'));
@@ -107,25 +107,25 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingToAPower_Ok() {
-        assertEquals(16.0, calculator.calculate(2,4, '^'));
-        assertEquals(16.0, calculator.calculate(-4,2, '^'));
-        assertEquals(-0.125, calculator.calculate(-2,-3, '^'));
-        assertEquals(0.25, calculator.calculate(2,-2, '^'));
-        assertEquals(1, calculator.calculate(0,0, '^'));
-        assertEquals(1, calculator.calculate(2,0, '^'));
-        assertEquals(1.0, calculator.calculate(Integer.MAX_VALUE,0, '^'));
-        assertEquals(1.0, calculator.calculate(Integer.MIN_VALUE,0, '^'));
-        assertEquals(Double.MAX_VALUE, calculator.calculate(Integer.MAX_VALUE,Integer.MAX_VALUE, '^'));
-        assertEquals(0, calculator.calculate(Integer.MIN_VALUE,Integer.MIN_VALUE, '^'));
+    public void raisingToAPower_Ok() {
+        assertEquals(16.0, calculator.calculate(2, 4, '^'));
+        assertEquals(16.0, calculator.calculate(-4, 2, '^'));
+        assertEquals(-0.125, calculator.calculate(-2, -3, '^'));
+        assertEquals(0.25, calculator.calculate(2, -2, '^'));
+        assertEquals(1, calculator.calculate(0, 0, '^'));
+        assertEquals(1, calculator.calculate(2, 0, '^'));
+        assertEquals(1.0, calculator.calculate(Integer.MAX_VALUE, 0, '^'));
+        assertEquals(1.0, calculator.calculate(Integer.MIN_VALUE, 0, '^'));
+        assertEquals(0, calculator.calculate(Integer.MIN_VALUE, Integer.MIN_VALUE, '^'));
     }
 
     @Test
-    void raisingToAPower_notOk() {
-        assertNotEquals(8.0, calculator.calculate(2,2, '^'));
-        assertNotEquals(1.0, calculator.calculate(4,1, '^'));
-        assertNotEquals(0.0, calculator.calculate(Integer.MAX_VALUE,0, '^'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(0,-5, '^'));
-
+    public void raisingToAPower_notOk() {
+        assertNotEquals(8.0, calculator.calculate(2, 2, '^'));
+        assertNotEquals(1.0, calculator.calculate(4, 1, '^'));
+        assertNotEquals(0.0, calculator.calculate(Integer.MAX_VALUE, 0, '^'));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(0, -5, '^'));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(Integer.MAX_VALUE,
+                Integer.MAX_VALUE, '^'));
     }
 }
