@@ -7,10 +7,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static final int POS_FST = 123;
-    private static final int POS_SCD = 7;
-    private static final int NEG_SCD = -34;
-    private static final int NEG_FST = -1234;
+    private static final int POSITIVE_FIRST = 123;
+    private static final int POSITIVE_SECOND = 7;
+    private static final int NEGATIVE_FIRST = -1234;
+    private static final int NEGATIVE_SECOND = -34;
     private static final String ADD = "+";
     private static final String SUBTR = "-";
     private static final String MULTI = "*";
@@ -58,12 +58,16 @@ class CalculatorTest {
         double actual = calculator.calculate(10, 3, DIV);
         double expected = 3.3333333333333335;
         assertEquals(expected, actual);
-        assertEquals((double) NEG_FST / NEG_SCD, calculator.calculate(NEG_FST, NEG_SCD, DIV));
-        assertEquals((double) POS_FST / POS_SCD, calculator.calculate(POS_FST, POS_SCD, DIV));
-        assertEquals((double) POS_FST / NEG_FST, calculator.calculate(POS_FST, NEG_FST, DIV));
-        assertEquals((double) NEG_SCD / POS_SCD, calculator.calculate(NEG_SCD, POS_SCD, DIV));
-        assertEquals((double) 0 / POS_SCD, calculator.calculate(0, POS_SCD, DIV));
-
+        assertEquals((double) NEGATIVE_FIRST / NEGATIVE_SECOND,
+                calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, DIV));
+        assertEquals((double) POSITIVE_FIRST / POSITIVE_SECOND,
+                calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, DIV));
+        assertEquals((double) POSITIVE_FIRST / NEGATIVE_FIRST,
+                calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, DIV));
+        assertEquals((double) NEGATIVE_SECOND / POSITIVE_SECOND,
+                calculator.calculate(NEGATIVE_SECOND, POSITIVE_SECOND, DIV));
+        assertEquals((double) 0 / POSITIVE_SECOND,
+                calculator.calculate(0, POSITIVE_SECOND, DIV));
     }
 
     @Test
@@ -71,12 +75,18 @@ class CalculatorTest {
         double actual = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, ADD);
         double expected = 4.294967294E9;
         assertEquals(expected, actual);
-        assertEquals((double) NEG_FST + NEG_SCD, calculator.calculate(NEG_FST, NEG_SCD, ADD));
-        assertEquals((double) POS_FST + POS_SCD, calculator.calculate(POS_FST, POS_SCD, ADD));
-        assertEquals((double) POS_FST + NEG_FST, calculator.calculate(POS_FST, NEG_FST, ADD));
-        assertEquals((double) NEG_SCD + POS_SCD, calculator.calculate(NEG_SCD, POS_SCD, ADD));
-        assertEquals((double) 0 + POS_SCD, calculator.calculate(0, POS_SCD, ADD));
-        assertEquals((double) NEG_SCD + 0, calculator.calculate(NEG_SCD, 0, ADD));
+        assertEquals((double) NEGATIVE_FIRST + NEGATIVE_SECOND,
+                calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, ADD));
+        assertEquals((double) POSITIVE_FIRST + POSITIVE_SECOND,
+                calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, ADD));
+        assertEquals((double) POSITIVE_FIRST + NEGATIVE_FIRST,
+                calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, ADD));
+        assertEquals((double) NEGATIVE_SECOND + POSITIVE_SECOND,
+                calculator.calculate(NEGATIVE_SECOND, POSITIVE_SECOND, ADD));
+        assertEquals((double) 0 + POSITIVE_SECOND,
+                calculator.calculate(0, POSITIVE_SECOND, ADD));
+        assertEquals((double) NEGATIVE_SECOND + 0,
+                calculator.calculate(NEGATIVE_SECOND, 0, ADD));
     }
 
     @Test
@@ -84,12 +94,18 @@ class CalculatorTest {
         double actual = calculator.calculate(0, Integer.MIN_VALUE, SUBTR);
         double expected = 2.147483648E9;
         assertEquals(expected, actual);
-        assertEquals((double) NEG_FST - NEG_SCD, calculator.calculate(NEG_FST, NEG_SCD, SUBTR));
-        assertEquals((double) POS_FST - POS_SCD, calculator.calculate(POS_FST, POS_SCD, SUBTR));
-        assertEquals((double) POS_FST - NEG_FST, calculator.calculate(POS_FST, NEG_FST, SUBTR));
-        assertEquals((double) NEG_SCD - POS_SCD, calculator.calculate(NEG_SCD, POS_SCD, SUBTR));
-        assertEquals((double) 0 - POS_SCD, calculator.calculate(0, POS_SCD, SUBTR));
-        assertEquals((double) NEG_SCD - 0, calculator.calculate(NEG_SCD, 0, SUBTR));
+        assertEquals((double) NEGATIVE_FIRST - NEGATIVE_SECOND,
+                calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, SUBTR));
+        assertEquals((double) POSITIVE_FIRST - POSITIVE_SECOND,
+                calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, SUBTR));
+        assertEquals((double) POSITIVE_FIRST - NEGATIVE_FIRST,
+                calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, SUBTR));
+        assertEquals((double) NEGATIVE_SECOND - POSITIVE_SECOND,
+                calculator.calculate(NEGATIVE_SECOND, POSITIVE_SECOND, SUBTR));
+        assertEquals((double) 0 - POSITIVE_SECOND,
+                calculator.calculate(0, POSITIVE_SECOND, SUBTR));
+        assertEquals((double) NEGATIVE_SECOND - 0,
+                calculator.calculate(NEGATIVE_SECOND, 0, SUBTR));
     }
 
     @Test
@@ -97,12 +113,18 @@ class CalculatorTest {
         double actual = calculator.calculate(Integer.MAX_VALUE, Integer.MIN_VALUE, MULTI);
         double expected = -4.6116860162799043E18;
         assertEquals(expected, actual);
-        assertEquals((double) NEG_FST * NEG_SCD, calculator.calculate(NEG_FST, NEG_SCD, MULTI));
-        assertEquals((double) POS_FST * POS_SCD, calculator.calculate(POS_FST, POS_SCD, MULTI));
-        assertEquals((double) POS_FST * NEG_FST, calculator.calculate(POS_FST, NEG_FST, MULTI));
-        assertEquals((double) NEG_SCD * POS_SCD, calculator.calculate(NEG_SCD, POS_SCD, MULTI));
-        assertEquals((double) 0 * POS_SCD, calculator.calculate(0, POS_SCD, MULTI));
-        assertEquals((double) NEG_SCD * 0, calculator.calculate(NEG_SCD, 0, MULTI));
+        assertEquals((double) NEGATIVE_FIRST * NEGATIVE_SECOND,
+                calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MULTI));
+        assertEquals((double) POSITIVE_FIRST * POSITIVE_SECOND,
+                calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, MULTI));
+        assertEquals((double) POSITIVE_FIRST * NEGATIVE_FIRST,
+                calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, MULTI));
+        assertEquals((double) NEGATIVE_SECOND * POSITIVE_SECOND,
+                calculator.calculate(NEGATIVE_SECOND, POSITIVE_SECOND, MULTI));
+        assertEquals((double) 0 * POSITIVE_SECOND,
+                calculator.calculate(0, POSITIVE_SECOND, MULTI));
+        assertEquals((double) NEGATIVE_SECOND * 0,
+                calculator.calculate(NEGATIVE_SECOND, 0, MULTI));
         assertEquals((double) 0 * 0, calculator.calculate(0, 0, MULTI));
     }
 
@@ -111,12 +133,16 @@ class CalculatorTest {
         double actual = calculator.calculate(2, -1, POW);
         double expected = 0.5;
         assertEquals(expected, actual);
-        assertEquals(Math.pow(NEG_FST, NEG_SCD), calculator.calculate(NEG_FST, NEG_SCD, POW));
-        assertEquals(Math.pow(POS_FST, POS_SCD), calculator.calculate(POS_FST, POS_SCD, POW));
-        assertEquals(Math.pow(POS_FST, NEG_FST), calculator.calculate(POS_FST, NEG_FST, POW));
-        assertEquals(Math.pow(NEG_SCD, POS_SCD), calculator.calculate(NEG_SCD, POS_SCD, POW));
-        assertEquals(Math.pow(0, POS_SCD), calculator.calculate(0, POS_SCD, POW));
-        assertEquals(Math.pow(NEG_SCD, 0), calculator.calculate(NEG_SCD, 0, POW));
+        assertEquals(Math.pow(NEGATIVE_FIRST, NEGATIVE_SECOND),
+                calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, POW));
+        assertEquals(Math.pow(POSITIVE_FIRST, POSITIVE_SECOND),
+                calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, POW));
+        assertEquals(Math.pow(POSITIVE_FIRST, NEGATIVE_FIRST),
+                calculator.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, POW));
+        assertEquals(Math.pow(NEGATIVE_SECOND, POSITIVE_SECOND),
+                calculator.calculate(NEGATIVE_SECOND, POSITIVE_SECOND, POW));
+        assertEquals(Math.pow(0, POSITIVE_SECOND), calculator.calculate(0, POSITIVE_SECOND, POW));
+        assertEquals(Math.pow(NEGATIVE_SECOND, 0), calculator.calculate(NEGATIVE_SECOND, 0, POW));
         assertEquals(Math.pow(0, 0), calculator.calculate(0, 0, POW));
     }
 }
