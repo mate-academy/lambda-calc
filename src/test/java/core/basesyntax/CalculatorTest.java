@@ -3,27 +3,27 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-    private static final String ADD = "+";
-    private static final String SUB = "-";
-    private static final String DIV = "/";
-    private static final String MUL = "*";
-    private static final String POW = "^";
+    private static final char ADD = '+';
+    private static final char SUB = '-';
+    private static final char DIV = '/';
+    private static final char MUL = '*';
+    private static final char POW = '^';
     private static final int MAX = Integer.MAX_VALUE;
     private static final int MIN = Integer.MIN_VALUE;
-    private static final String ERROR_MSG = "Operation %s was reject. Check test.";
-    private Calculator testCalculator;
+    private static final String ERROR_MSG = "Operation %c was reject. Check test.";
+    private static Calculator testCalculator;
 
-    @BeforeEach
-    void getCalculator() {
+    @BeforeAll
+    public static void beforeAll() {
         testCalculator = new Calculator();
     }
 
     @Test
-    void addCalculateOk() {
+    public void addCalculateOk() {
         assertEquals(7, testCalculator.calculate(2, 5, ADD),
                 String.format(ERROR_MSG, ADD));
         assertEquals(3, testCalculator.calculate(-2, 5, ADD),
@@ -40,12 +40,10 @@ public class CalculatorTest {
                 String.format(ERROR_MSG, ADD));
         assertEquals(0, testCalculator.calculate(0, 0, ADD),
                 String.format(ERROR_MSG, ADD));
-
-
     }
 
     @Test
-    void subCalculateOk() {
+    public void subCalculateOk() {
         assertEquals(-3, testCalculator.calculate(2, 5, SUB),
                 String.format(ERROR_MSG, SUB));
         assertEquals(-7, testCalculator.calculate(-2, 5, SUB),
@@ -63,7 +61,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void divCalculateOk() {
+    public void divCalculateOk() {
         assertEquals(5, testCalculator.calculate(10, 2, DIV),
                 String.format(ERROR_MSG, DIV));
         assertEquals(-5, testCalculator.calculate(10, -2, DIV),
@@ -77,7 +75,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void mulCalculateOk() {
+    public void mulCalculateOk() {
         assertEquals(10, testCalculator.calculate(2, 5, MUL),
                 String.format(ERROR_MSG, MUL));
         assertEquals(10, testCalculator.calculate(5, 2, MUL),
@@ -109,7 +107,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void powCalculateOk() {
+    public void powCalculateOk() {
         assertEquals(32, testCalculator.calculate(2, 5, POW),
                 String.format(ERROR_MSG, POW));
         assertEquals(25, testCalculator.calculate(5, 2, POW),
@@ -151,29 +149,23 @@ public class CalculatorTest {
     }
 
     @Test
-    void InvalidOperationSymbol() {
-        assertThrows(NullPointerException.class,
-                () -> testCalculator.calculate(-5, 0, null));
+    public void InvalidOperationSymbol() {
         assertThrows(ArithmeticException.class,
-                () -> testCalculator.calculate(-5, 0, "$"));
+                () -> testCalculator.calculate(-5, 0, ' '));
         assertThrows(ArithmeticException.class,
-                () -> testCalculator.calculate(-5, 0, "s"));
+                () -> testCalculator.calculate(-5, 0, '$'));
         assertThrows(ArithmeticException.class,
-                () -> testCalculator.calculate(-5, 0, "5"));
+                () -> testCalculator.calculate(-5, 0, 's'));
         assertThrows(ArithmeticException.class,
-                () -> testCalculator.calculate(-5, 0, "MUL"));
+                () -> testCalculator.calculate(-5, 0, '5'));
         assertThrows(ArithmeticException.class,
-                () -> testCalculator.calculate(-5, 0, "ADD"));
+                () -> testCalculator.calculate(-5, 0, 'M'));
         assertThrows(ArithmeticException.class,
-                () -> testCalculator.calculate(-5, 0, "*/"));
-        assertThrows(ArithmeticException.class,
-                () -> testCalculator.calculate(-5, 0, "+-"));
-        assertEquals(-5,
-                testCalculator.calculate(-5, 0, "+   "));
+                () -> testCalculator.calculate(-5, 0, 'A'));
     }
 
     @Test
-    void maxAndMinValue() {
+    public void maxAndMinValue() {
         assertThrows(ArithmeticException.class,
                 () -> testCalculator.calculate(MAX, 1, ADD));
         assertThrows(ArithmeticException.class,
@@ -185,7 +177,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void divToZero() {
+    public void divToZero() {
         assertThrows(ArithmeticException.class,
                 () -> testCalculator.calculate(5, 0, DIV));
     }

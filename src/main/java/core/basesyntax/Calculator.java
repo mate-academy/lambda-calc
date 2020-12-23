@@ -1,17 +1,13 @@
 package core.basesyntax;
 
 public class Calculator {
-    private static final String ADD = "+";
-    private static final String SUB = "-";
-    private static final String DIV = "/";
-    private static final String MUL = "*";
-    private static final String POW = "^";
+    private static final char ADD = '+';
+    private static final char SUB = '-';
+    private static final char DIV = '/';
+    private static final char MUL = '*';
+    private static final char POW = '^';
 
-    public double calculate(int firstNumber, int secondNumber, String arithmeticalSymbol) {
-        if (arithmeticalSymbol == null) {
-            throw new NullPointerException();
-        }
-        arithmeticalSymbol = arithmeticalSymbol.trim();
+    public double calculate(int firstNumber, int secondNumber, char arithmeticalSymbol) {
         switch (arithmeticalSymbol) {
             case ADD:
                 return Math.addExact(firstNumber, secondNumber);
