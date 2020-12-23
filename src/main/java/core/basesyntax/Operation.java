@@ -1,17 +1,17 @@
 package core.basesyntax;
 
 public enum Operation {
-    ADDITION('+') {
+    ADDITION("+") {
         public double operation(double first, double second) {
             return first + second;
         }
     },
-    SUBTRACTION('-') {
+    SUBTRACTION("-") {
         public double operation(double first, double second) {
             return first - second;
         }
     },
-    DIVISION('/') {
+    DIVISION("/") {
         public double operation(double first, double second) {
             if (second == 0) {
                 throw new ArithmeticException("Can't divide by zero");
@@ -19,25 +19,34 @@ public enum Operation {
             return first / second;
         }
     },
-    MULTIPLICATION('*') {
+    MULTIPLICATION("*") {
         public double operation(double first, double second) {
             return first * second;
         }
     },
-    POWER('^') {
+    POWER("^") {
         public double operation(double first, double second) {
             return Math.pow(first, second);
         }
     };
 
-    private char operation;
+    private final String operation;
 
-    Operation(char operation) {
+    Operation(String operation) {
         this.operation = operation;
     }
 
-    public char getOperation() {
+    public String getOperation() {
         return operation;
+    }
+
+    public static Operation getOperation(String value) {
+        for (Operation o : values()) {
+            if (o.operation.equals(value)) {
+                return o;
+            }
+        }
+        throw new NoSuchOperationException("Please enter the valid operation");
     }
 
     public abstract double operation(double first, double second);
