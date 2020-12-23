@@ -1,37 +1,31 @@
 package core.basesyntax;
 
 public class Calculator {
+    public static void main(String[] args) {
+        System.out.println(Double.MAX_VALUE + Double.MAX_VALUE);
+    }
 
-    public double calculator(int a, int b, char operator) {
-        if (operator == '+') {
-            return (double) a + b;
-        }
-        if (operator == '-') {
-            return (double) a - b;
-        }
-        if (operator == '*') {
-            return a * b;
-        }
-        if (operator == '/') {
-            if (b == 0) {
-                throw new ArithmeticException("Can't division on zero!");
+    public double calculate(double first, double second, char operator) {
+        switch (operator) {
+            case '+': {
+                return first + second;
             }
-            return (double) a / b;
+            case '-': {
+                return first - second;
+            }
+            case '*': {
+                return first * second;
+            }
+            case '/': {
+                if (second == 0) {
+                    throw new ArithmeticException();
+                }
+                return first / second;
+            }
+            default:
+            case '^': {
+                return Math.pow(first, second);
+            }
         }
-        double retValue = a;
-        int counter = 0;
-        if (b < 0) {
-            counter = b * (-1);
-        }
-        for (int i = 1; i < counter; i++) {
-            retValue *= a;
-        }
-        if (b < 0) {
-            retValue = 1 / retValue;
-        }
-        if (b == 0) {
-            retValue = 1;
-        }
-        return retValue;
     }
 }
