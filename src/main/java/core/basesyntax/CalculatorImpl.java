@@ -33,37 +33,44 @@ public class CalculatorImpl implements Calculator {
     }
 
     private double addition() {
-        if (firstNumeric == Double.MAX_VALUE || secondNumeric == Double.MAX_VALUE) {
-            throw new ArithmeticException("addition of MAX_VALUE return infinity");
-        }
-        return firstNumeric + secondNumeric;
+        String operationName = "addition";
+        double result = firstNumeric + secondNumeric;
+        return checkResult(result, operationName);
     }
 
     private double subtraction() {
-        if (firstNumeric == Double.MAX_VALUE && secondNumeric == Double.MAX_VALUE) {
-            throw new ArithmeticException("subtraction of two MAX_VALUE return minus infinity");
-        }
-        return firstNumeric - secondNumeric;
+        String operationName = "subtraction";
+        double result = firstNumeric - secondNumeric;
+        return checkResult(result, operationName);
     }
 
     private double division() {
+        String operationName = "division";
         if (secondNumeric == 0) {
             throw new ArithmeticException("Division by zero");
         }
-        return firstNumeric / secondNumeric;
+        double result = firstNumeric / secondNumeric;
+        return checkResult(result, operationName);
     }
 
     private double multiplication() {
-        if (firstNumeric == Double.MAX_VALUE && secondNumeric == Double.MAX_VALUE) {
-            throw new ArithmeticException("multiplication of two MAX_VALUE return infinity");
-        }
-        return firstNumeric * secondNumeric;
+        String operationName = "multiplication";
+        double result = firstNumeric * secondNumeric;
+        return checkResult(result, operationName);
     }
 
     private double raisingToPower() {
-        if (firstNumeric == Double.MAX_VALUE && secondNumeric == Double.MAX_VALUE) {
-            throw new ArithmeticException("raising to a power of two MAX_VALUE return infinity");
+        String operationName = "raisingToPower";
+        double result = Math.pow(firstNumeric, secondNumeric);
+        return checkResult(result, operationName);
+
+    }
+
+    private double checkResult(double result, String operation) {
+        if (Double.isFinite(result)) {
+            return result;
         }
-        return Math.pow(firstNumeric, secondNumeric);
+        throw new ArithmeticException(String.format("In method %s wrong params -> "
+                + "result is Infinity or NaN", operation));
     }
 }
