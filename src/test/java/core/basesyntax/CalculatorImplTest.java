@@ -20,6 +20,8 @@ class CalculatorImplTest {
     private static double firstVariable;
     private static double secondVariable;
     private static double thirdVariable;
+    private static double maxValue;
+    private static double minValue;
 
     @BeforeAll
     static void beforeAll() {
@@ -27,6 +29,8 @@ class CalculatorImplTest {
         firstVariable = -13243.34;
         secondVariable = 13.567;
         thirdVariable = 10;
+        maxValue = Double.MAX_VALUE;
+        minValue = Double.MIN_VALUE;
     }
 
     @Test
@@ -37,6 +41,13 @@ class CalculatorImplTest {
                 calculator.calculate(firstVariable, thirdVariable, PLUS));
         assertEquals(thirdVariable + secondVariable,
                 calculator.calculate(thirdVariable, secondVariable, PLUS));
+        assertEquals(ZERO + ZERO, calculator.calculate(ZERO, ZERO, PLUS));
+        assertEquals(thirdVariable + ZERO,
+                calculator.calculate(thirdVariable, ZERO, PLUS));
+        assertEquals(maxValue + minValue,
+                calculator.calculate(maxValue, minValue, PLUS));
+        assertEquals(maxValue + maxValue,
+                calculator.calculate(maxValue, maxValue, PLUS));
     }
 
     @Test
@@ -47,6 +58,12 @@ class CalculatorImplTest {
                 calculator.calculate(firstVariable, thirdVariable, MINUS));
         assertEquals(thirdVariable - secondVariable,
                 calculator.calculate(thirdVariable, secondVariable, MINUS));
+        assertEquals(ZERO - ZERO,
+                calculator.calculate(ZERO, ZERO, MINUS));
+        assertEquals(ZERO - secondVariable,
+                calculator.calculate(ZERO, secondVariable, MINUS));
+        assertEquals(maxValue - minValue,
+                calculator.calculate(maxValue, minValue, MINUS));
     }
 
     @Test
@@ -57,6 +74,9 @@ class CalculatorImplTest {
                 calculator.calculate(firstVariable, thirdVariable, MULTIPLICATION));
         assertEquals(thirdVariable * secondVariable,
                 calculator.calculate(thirdVariable, secondVariable, MULTIPLICATION));
+        assertEquals(ZERO * ZERO, calculator.calculate(ZERO, ZERO, MULTIPLICATION));
+        assertEquals(maxValue * minValue,
+                calculator.calculate(maxValue, minValue, MULTIPLICATION));
     }
 
     @Test
@@ -67,6 +87,14 @@ class CalculatorImplTest {
                 calculator.calculate(firstVariable, thirdVariable, POWER));
         assertEquals(Math.pow(thirdVariable, secondVariable),
                 calculator.calculate(thirdVariable, secondVariable, POWER));
+        assertEquals(Math.pow(thirdVariable, ZERO),
+                calculator.calculate(thirdVariable, ZERO, POWER));
+        assertEquals(Math.pow(ZERO, secondVariable),
+                calculator.calculate(ZERO, secondVariable, POWER));
+        assertEquals(Math.pow(maxValue, maxValue),
+                calculator.calculate(maxValue, maxValue, POWER));
+        assertEquals(Math.pow(maxValue, minValue),
+                calculator.calculate(maxValue, minValue, POWER));
     }
 
     @Test
@@ -77,6 +105,12 @@ class CalculatorImplTest {
                 calculator.calculate(firstVariable, thirdVariable, DIVISION));
         assertEquals(thirdVariable / secondVariable,
                 calculator.calculate(thirdVariable, secondVariable, DIVISION));
+        assertEquals(ZERO / secondVariable,
+                calculator.calculate(ZERO, secondVariable, DIVISION));
+        assertEquals(maxValue / maxValue,
+                calculator.calculate(maxValue, maxValue, DIVISION));
+        assertEquals(ZERO / minValue,
+                calculator.calculate(ZERO, minValue, DIVISION));
     }
 
     @Test
@@ -84,9 +118,9 @@ class CalculatorImplTest {
         assertThrows(ArithmeticException.class, () ->
                 calculator.calculate(firstVariable, ZERO, DIVISION));
         assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(secondVariable, ZERO, DIVISION));
+                calculator.calculate(minValue, ZERO, DIVISION));
         assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(thirdVariable, ZERO, DIVISION));
+                calculator.calculate(maxValue, ZERO, DIVISION));
     }
 
     @Test
@@ -94,6 +128,6 @@ class CalculatorImplTest {
         assertThrows(InvalidOperationException.class, () ->
                 calculator.calculate(firstVariable, secondVariable, firstInvalidOperation));
         assertThrows(InvalidOperationException.class, () ->
-                calculator.calculate(thirdVariable, firstVariable, secondInvalidOperation));
+                calculator.calculate(minValue, ZERO, secondInvalidOperation));
     }
 }
