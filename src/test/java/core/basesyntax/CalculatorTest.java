@@ -149,7 +149,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void InvalidOperationSymbol() {
+    public void invalidOperationSymbol() {
         assertThrows(ArithmeticException.class,
                 () -> testCalculator.calculate(-5, 0, ' '));
         assertThrows(ArithmeticException.class,
