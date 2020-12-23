@@ -29,12 +29,12 @@ public class SimpleCalculatorTest {
     @Test
     void sumOfTwoValues_Ok() {
         double sumOfPositive = POSITIVE_FIRST + POSITIVE_SECOND;
-        double sumOfNegative = NEGATIVE_FIRST + NEGATIVE_SECOND;
-        double sumOfPositiveAndNegative = POSITIVE_FIRST + NEGATIVE_SECOND;
         assertEquals(sumOfPositive,
                 calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, ADDITION.getOperation()));
+        double sumOfNegative = NEGATIVE_FIRST + NEGATIVE_SECOND;
         assertEquals(sumOfNegative,
                 calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, ADDITION.getOperation()));
+        double sumOfPositiveAndNegative = POSITIVE_FIRST + NEGATIVE_SECOND;
         assertEquals(sumOfPositiveAndNegative,
                 calculator.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, ADDITION.getOperation()));
     }
