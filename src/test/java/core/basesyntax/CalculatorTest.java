@@ -27,8 +27,12 @@ class CalculatorTest {
     @Test
     void addition_numbers_Ok() {
         assertEquals(8.0, calculator.calculate(2, 6, '+'));
-        assertEquals(80.0, calculator.calculate(79, 1, '+'));
+        assertEquals(-10.0, calculator.calculate(-5, -5, '+'));
+        assertEquals(-2.0, calculator.calculate(-4, 2, '+'));
+        assertEquals(-7.0, calculator.calculate(0, -7, '+'));
+        assertEquals(1.0, calculator.calculate(1, 0, '+'));
         assertEquals(2.14748422E9, calculator.calculate(Integer.MAX_VALUE, 573, '+'));
+        assertEquals(-2.146997227E9, calculator.calculate(Integer.MIN_VALUE, 486421, '+'));
     }
 
     @Test
@@ -43,6 +47,10 @@ class CalculatorTest {
         assertEquals(-4.294967295E9, calculator.calculate(Integer.MIN_VALUE,
                 Integer.MAX_VALUE, '-'));
         assertEquals(5.0, calculator.calculate(20, 15, '-'));
+        assertEquals(-15.0, calculator.calculate(0, 15, '-'));
+        assertEquals(20.0, calculator.calculate(20, 0, '-'));
+        assertEquals(-70.0, calculator.calculate(-50, 20, '-'));
+        assertEquals(0.0, calculator.calculate(-20, -20, '-'));
     }
 
     @Test
@@ -54,11 +62,14 @@ class CalculatorTest {
     @Test
     void division_numbers_Ok() {
         double divisionResult1 = 0.5;
-        double divisionResult2 = 0.1;
+        double divisionResult2 = -0.1;
         double divisionResult3 = 8.0;
         assertEquals(divisionResult1, calculator.calculate(8, 16, '/'));
-        assertEquals(divisionResult2, calculator.calculate(5, 50, '/'));
-        assertEquals(divisionResult3, calculator.calculate(24, 3, '/'));
+        assertEquals(divisionResult2, calculator.calculate(5, -50, '/'));
+        assertEquals(divisionResult3, calculator.calculate(-24, -3, '/'));
+        assertEquals(0, calculator.calculate(0, 5, '/'));
+        assertEquals(1, calculator.calculate(Integer.MIN_VALUE, Integer.MIN_VALUE, '/'));
+        assertEquals(4.656612875245797E-5, calculator.calculate(100000, Integer.MAX_VALUE, '/'));
     }
 
     @Test
@@ -81,7 +92,9 @@ class CalculatorTest {
         assertEquals(0.0, calculator.calculate(Integer.MAX_VALUE, 0, '*'));
         assertEquals(6.0, calculator.calculate(2, 3, '*'));
         assertEquals(-5.0, calculator.calculate(1, -5, '*'));
-        assertEquals(1.0, calculator.calculate(1, 1, '*'));
+        assertEquals(1.0, calculator.calculate(-1, -1, '*'));
+        assertEquals(0, calculator.calculate(0, -4, '*'));
+        assertEquals(0, calculator.calculate(8, 0, '*'));
     }
 
     @Test
@@ -96,10 +109,15 @@ class CalculatorTest {
     @Test
     void raisingToAPower_Ok() {
         assertEquals(16.0, calculator.calculate(2,4, '^'));
-        assertEquals(4.0, calculator.calculate(4,1, '^'));
+        assertEquals(16.0, calculator.calculate(-4,2, '^'));
+        assertEquals(-0.125, calculator.calculate(-2,-3, '^'));
         assertEquals(0.25, calculator.calculate(2,-2, '^'));
+        assertEquals(1, calculator.calculate(0,0, '^'));
+        assertEquals(1, calculator.calculate(2,0, '^'));
         assertEquals(1.0, calculator.calculate(Integer.MAX_VALUE,0, '^'));
         assertEquals(1.0, calculator.calculate(Integer.MIN_VALUE,0, '^'));
+        assertEquals(Double.MAX_VALUE, calculator.calculate(Integer.MAX_VALUE,Integer.MAX_VALUE, '^'));
+        assertEquals(0, calculator.calculate(Integer.MIN_VALUE,Integer.MIN_VALUE, '^'));
     }
 
     @Test
@@ -107,5 +125,7 @@ class CalculatorTest {
         assertNotEquals(8.0, calculator.calculate(2,2, '^'));
         assertNotEquals(1.0, calculator.calculate(4,1, '^'));
         assertNotEquals(0.0, calculator.calculate(Integer.MAX_VALUE,0, '^'));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(0,-5, '^'));
+
     }
 }
