@@ -97,6 +97,8 @@ class CalculatorTest {
         assertEquals(0,power0to21);
         int power0to0 = calculator.calculate(0, 0, '^');
         assertEquals(1,power0to0);
+        int power21to0 = calculator.calculate(21, 0, '^');
+        assertEquals(1,power21to0);
         int power1to21 = calculator.calculate(1, 21, '^');
         assertEquals(1, power1to21);
         int power5to5 = calculator.calculate(5, 5, '^');
