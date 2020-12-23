@@ -1,11 +1,12 @@
 package core.basesyntax;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.Random;
 
 class CalculatorTest {
     private static Calculator calculator;
@@ -156,7 +157,7 @@ class CalculatorTest {
             a = new Random().nextInt(1000);
             b = new Random().nextInt(1000);
             if (Math.pow(a, b) != calculator.calculate(a, b, POW)) {
-                fail("Expected value "+ Math.pow(a, b)
+                fail("Expected value " + Math.pow(a, b)
                         + "but was " + calculator.calculate(a, b, POW));
             }
         }
@@ -170,7 +171,7 @@ class CalculatorTest {
             a = new Random().nextInt(1000);
             b = new Random().nextInt(1000) * (-1);
             if (Math.pow(a, b) != calculator.calculate(a, b, POW)) {
-                fail("Expected value "+ Math.pow(a, b)
+                fail("Expected value " + Math.pow(a, b)
                         + "but was " + calculator.calculate(a, b, POW));
             }
         }
@@ -184,7 +185,7 @@ class CalculatorTest {
             a = new Random().nextInt();
             b = new Random().nextInt();
             if ((double) a + b != calculator.calculate(a, b, ADD)) {
-                fail("Expected value "+ (double) a + b
+                fail("Expected value " + (double) a + b
                         + "but was " + calculator.calculate(a, b, ADD));
             }
         }
@@ -212,7 +213,7 @@ class CalculatorTest {
             a = new Random().nextInt();
             b = new Random().nextInt();
             if ((double) a * b != calculator.calculate(a, b, MUL)) {
-                fail("Expected value "+ (double) a * b
+                fail("Expected value " + (double) a * b
                         + "but was " + calculator.calculate(a, b, MUL));
             }
         }
@@ -226,11 +227,9 @@ class CalculatorTest {
             a = new Random().nextInt();
             b = new Random().nextInt();
             if ((double) a / b != calculator.calculate(a, b, DIV)) {
-                Assertions.fail("Expected value "+ (double) a / b
+                Assertions.fail("Expected value " + (double) a / b
                         + "but was " + calculator.calculate(a, b, DIV));
             }
         }
     }
-
-
 }

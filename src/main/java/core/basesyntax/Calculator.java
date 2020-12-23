@@ -12,9 +12,6 @@ public class Calculator {
     private static final String POW_UPPERCASE = "P";
 
     public double calculate(int first, int second, String operation) {
-        if (operation == null) {
-            throw new NullPointerException();
-        }
         switch (operation) {
             case ADD:
                 return (double) first + second;
