@@ -1,8 +1,10 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 
@@ -56,7 +58,7 @@ class CalculatorTest {
         assertEquals(3,actual);
         actual = calculator.calculate(1,2, "-");
         assertEquals(-1,actual);
-}
+    }
 
     @Test
     void subtractionWithTwoNegativeOperands() {
@@ -212,6 +214,7 @@ class CalculatorTest {
             calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, null);
         });
     }
+
     @Test
     void invalidOperationTest() {
         assertThrows(RuntimeException.class, () -> {
