@@ -3,21 +3,27 @@ package core.basesyntax;
 import core.basesyntax.exception.InvalidOperatorException;
 
 public class Calculator {
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char MULTIPLICATION = '*';
+    private static final char DIVISION = '/';
+    private static final char RAISE_TO_POWER = '^';
+
     public double calculate(double leftOperand, double rightOperand, char operator) {
         switch (operator) {
-            case '+':
+            case ADDITION:
                 return leftOperand + rightOperand;
-            case '-':
+            case SUBTRACTION:
                 return leftOperand - rightOperand;
-            case '/':
+            case DIVISION:
                 if (leftOperand == 0 || rightOperand == 0) {
                     throw new ArithmeticException("Can not divide by zero");
                 } else {
                     return leftOperand / rightOperand;
                 }
-            case '*':
+            case MULTIPLICATION:
                 return leftOperand * rightOperand;
-            case '^':
+            case RAISE_TO_POWER:
                 return Math.pow(leftOperand, rightOperand);
             default:
                 throw new InvalidOperatorException("Invalid operator");
