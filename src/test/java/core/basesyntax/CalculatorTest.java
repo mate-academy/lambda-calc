@@ -3,141 +3,147 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-    private static Calculator calculator = new Calculator();
-    private static double firstVariable = 10;
-    private static double secondVariable = 5;
+    private static Calculator calculator;
+    private static final double FIRST_VARIABLE = 10;
+    private static final double SECOND_VARIABLE = 5;
+
+    @BeforeAll
+    static void beforeAll() {
+        calculator = new Calculator();
+    }
 
     @Test
-    void additionWithNegativeValues_Ok() {
+    public void additionWithNegativeValues_Ok() {
         double expectedResult = -15;
-        double actualResult = calculator.calculate(-firstVariable, -secondVariable,'+');
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, -SECOND_VARIABLE, '+');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void additionWithPositiveAndNegativeValues_Ok() {
+    public void additionWithPositiveAndNegativeValues_Ok() {
         double expectedResult = -5;
-        double actualResult = calculator.calculate(-firstVariable, secondVariable,'+');
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, SECOND_VARIABLE, '+');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void additionWithZero_Ok() {
+    public void additionWithZero_Ok() {
         double expectedResult = 5;
-        double actualResult = calculator.calculate(0, secondVariable,'+');
+        double actualResult = calculator.calculate(0, SECOND_VARIABLE, '+');
         assertEquals(expectedResult, actualResult);
         expectedResult = 10;
-        actualResult = calculator.calculate(firstVariable, 0,'+');
+        actualResult = calculator.calculate(FIRST_VARIABLE, 0, '+');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void additionWithMaxValue_NotOk() {
+    public void additionWithMaxValue_NotOk() {
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(firstVariable, Double.MAX_VALUE,'+'));
+                -> calculator.calculate(FIRST_VARIABLE, Double.MAX_VALUE, '+'));
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(Double.MAX_VALUE, secondVariable,'+'));
+                -> calculator.calculate(Double.MAX_VALUE, SECOND_VARIABLE, '+'));
     }
 
     @Test
-    void subtractionWithMinValue_NotOk() {
+    public void subtractionWithMinValue_NotOk() {
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(firstVariable, Double.MIN_VALUE,'-'));
+                -> calculator.calculate(FIRST_VARIABLE, Double.MIN_VALUE, '-'));
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(Double.MIN_VALUE, secondVariable,'-'));
+                -> calculator.calculate(Double.MIN_VALUE, SECOND_VARIABLE, '-'));
     }
 
     @Test
-    void divisionWithMinValue_NotOk() {
+    public void divisionWithMinValue_NotOk() {
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(firstVariable, Double.MIN_VALUE,'/'));
+                -> calculator.calculate(FIRST_VARIABLE, Double.MIN_VALUE, '/'));
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(Double.MIN_VALUE, secondVariable,'/'));
+                -> calculator.calculate(Double.MIN_VALUE, SECOND_VARIABLE, '/'));
     }
 
     @Test
-    void multiplyWithMaxValue_NotOk() {
+    public void multiplyWithMaxValue_NotOk() {
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(firstVariable, Double.MAX_VALUE,'*'));
+                -> calculator.calculate(FIRST_VARIABLE, Double.MAX_VALUE, '*'));
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(Double.MAX_VALUE, secondVariable,'*'));
+                -> calculator.calculate(Double.MAX_VALUE, SECOND_VARIABLE, '*'));
     }
 
     @Test
-    void raisingToAPowerWithMaxValue_NotOk() {
+    public void raisingToAPowerWithMaxValue_NotOk() {
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(firstVariable, Double.MAX_VALUE,'^'));
+                -> calculator.calculate(FIRST_VARIABLE, Double.MAX_VALUE, '^'));
         assertThrows(ValueOutOfBoundException.class, ()
-                -> calculator.calculate(Double.MAX_VALUE, secondVariable,'^'));
+                -> calculator.calculate(Double.MAX_VALUE, SECOND_VARIABLE, '^'));
     }
 
     @Test
-    void raisingZeroToAPower_Ok() {
+    public void raisingZeroToAPower_Ok() {
         double expectedResult = 1;
-        double actualResult = calculator.calculate(firstVariable, 0,'^');
+        double actualResult = calculator.calculate(FIRST_VARIABLE, 0, '^');
         assertEquals(expectedResult, actualResult);
         expectedResult = 0;
-        actualResult = calculator.calculate(0, secondVariable,'^');
+        actualResult = calculator.calculate(0, SECOND_VARIABLE, '^');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void raisingToAPowerWithNegativeValues_NotOk() {
+    public void raisingToAPowerWithNegativeValues_NotOk() {
         double expectedResult = -100000.0;
-        double actualResult = calculator.calculate(-firstVariable, secondVariable,'^');
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, SECOND_VARIABLE, '^');
         assertEquals(expectedResult, actualResult);
         expectedResult = 1.0E-5;
-        actualResult = calculator.calculate(firstVariable, -secondVariable,'^');
+        actualResult = calculator.calculate(FIRST_VARIABLE, -SECOND_VARIABLE, '^');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void correctAddition_Ok() {
+    public void correctAddition_Ok() {
         double expectedResult = 15;
-        double actualResult = calculator.calculate(firstVariable, secondVariable,'+');
+        double actualResult = calculator.calculate(FIRST_VARIABLE, SECOND_VARIABLE, '+');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void correctSubtraction_Ok() {
+    public void correctSubtraction_Ok() {
         double expectedResult = 5;
-        double actualResult = calculator.calculate(firstVariable, secondVariable,'-');
+        double actualResult = calculator.calculate(FIRST_VARIABLE, SECOND_VARIABLE, '-');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void correctDivision_Ok() {
+    public void correctDivision_Ok() {
         double expectedResult = 2;
-        double actualResult = calculator.calculate(firstVariable, secondVariable,'/');
+        double actualResult = calculator.calculate(FIRST_VARIABLE, SECOND_VARIABLE, '/');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void correctMultiplication_Ok() {
+    public void correctMultiplication_Ok() {
         double expectedResult = 50;
-        double actualResult = calculator.calculate(firstVariable, secondVariable,'*');
+        double actualResult = calculator.calculate(FIRST_VARIABLE, SECOND_VARIABLE, '*');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void correctRaisingToAPower_Ok() {
+    public void correctRaisingToAPower_Ok() {
         double expectedResult = 100000;
-        double actualResult = calculator.calculate(firstVariable, secondVariable,'^');
+        double actualResult = calculator.calculate(FIRST_VARIABLE, SECOND_VARIABLE, '^');
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    void correctOperation_NotOk() {
+    public void correctOperation_NotOk() {
         assertThrows(NotValidOperationException.class, ()
-                -> calculator.calculate(firstVariable, secondVariable,'d'));
+                -> calculator.calculate(FIRST_VARIABLE, SECOND_VARIABLE, 'd'));
     }
 
     @Test
-    void zeroDivision_NotOk() {
+    public void zeroDivision_NotOk() {
         assertThrows(ArithmeticException.class, () ->
-            calculator.calculate(firstVariable, 0,'/'));
+            calculator.calculate(FIRST_VARIABLE, 0, '/'));
     }
 }

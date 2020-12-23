@@ -1,7 +1,6 @@
 package core.basesyntax;
 
 public class Calculator {
-
     public double calculate(double firstVariable,double secondVariable,char operation) {
         switch (operation) {
             case '+':
@@ -12,9 +11,9 @@ public class Calculator {
                 return firstVariable + secondVariable;
             case '-':
                 if (firstVariable == Double.MIN_VALUE
-                    || secondVariable == Double.MIN_VALUE) {
-                throw new ValueOutOfBoundException("Your value more than Double min value.");
-            }
+                        || secondVariable == Double.MIN_VALUE) {
+                    throw new ValueOutOfBoundException("Your value more than Double min value.");
+                }
                 return firstVariable - secondVariable;
             case '*':
                 if (firstVariable == Double.MAX_VALUE
