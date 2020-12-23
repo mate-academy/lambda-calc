@@ -1,10 +1,15 @@
 package core.basesyntax;
 
+import static core.basesyntax.Operation.ADDITION;
+import static core.basesyntax.Operation.DIVISION;
+import static core.basesyntax.Operation.MULTIPLICATION;
+import static core.basesyntax.Operation.POWER;
+import static core.basesyntax.Operation.SUBTRACTION;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static core.basesyntax.Operation.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class SimpleCalculatorTest {
     private static Calculator calculator;
@@ -74,11 +79,11 @@ public class SimpleCalculatorTest {
     @Test
     void multiplicationOfTwoNumbers_Ok() {
         double multiplicationOfPositive = POSITIVE_FIRST * POSITIVE_SECOND;
-        assertEquals(multiplicationOfPositive,
-                calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, MULTIPLICATION.getOperation()));
+        assertEquals(multiplicationOfPositive, calculator.calculate(POSITIVE_FIRST,
+                POSITIVE_SECOND, MULTIPLICATION.getOperation()));
         double multiplicationOfNegative = NEGATIVE_FIRST * NEGATIVE_SECOND;
-        assertEquals(multiplicationOfNegative,
-                calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MULTIPLICATION.getOperation()));
+        assertEquals(multiplicationOfNegative, calculator.calculate(NEGATIVE_FIRST,
+                NEGATIVE_SECOND, MULTIPLICATION.getOperation()));
         double multiplicationByZero = POSITIVE_FIRST * ZERO;
         assertEquals(multiplicationByZero,
                 calculator.calculate(POSITIVE_FIRST, ZERO, MULTIPLICATION.getOperation()));
