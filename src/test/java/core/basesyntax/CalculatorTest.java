@@ -7,16 +7,16 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static Calculator calculator = new Calculator();
-    private int int0 = 0;
-    private int int1 = 3;
-    private int int2 = 4;
-    private int int3 = -5;
-    private int int4 = -7;
-    private int int5 = -2;
-    private int int6 = 1;
+    private final int int0 = 0;
+    private final int int1 = 3;
+    private final int int2 = 4;
+    private final int int3 = -5;
+    private final int int4 = -7;
+    private final int int5 = -2;
+    private final int int6 = 1;
 
     @Test
-    void additionTest_OK() {
+    public void additionTest_OK() {
         double positiveNumbers = calculator.calculation(int1, int2, '+');
         double negativeNumbers = calculator.calculation(int3, int4, '+');
         assertEquals(7, positiveNumbers);
@@ -33,7 +33,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionTest_OK() {
+    public void subtractionTest_OK() {
         double positiveNumbers = calculator.calculation(int1, int2, '-');
         double negativeNumbers = calculator.calculation(int3, int4, '-');
         assertEquals(-1, positiveNumbers);
@@ -45,7 +45,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationTest_OK() {
+    public void multiplicationTest_OK() {
         double positiveNumbers = calculator.calculation(int1, int2, '*');
         double negativeNumbers = calculator.calculation(int3, int4, '*');
         assertEquals(12, positiveNumbers);
@@ -57,7 +57,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionTest_OK() {
+    public void divisionTest_OK() {
         double positiveNumbers = calculator.calculation(int1, int2, '/');
         double negativeNumbers = calculator.calculation(int4, int3, '/');
         assertEquals(0.75, positiveNumbers);
@@ -69,7 +69,7 @@ class CalculatorTest {
     }
 
     @Test
-    void powerTest_OK() {
+    public void powerTest_OK() {
         double positiveNumbers = calculator.calculation(int1, int2, '^');
         double negativeNumbers = calculator.calculation(int3, int5, '^');
         assertEquals(81, positiveNumbers);
@@ -81,13 +81,13 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionByZeroInDivision() {
+    public void divisionByZeroInDivision() {
         assertThrows(DivisionByZeroException.class, ()
                 -> calculator.calculation(int1, int0, '/'));
     }
 
     @Test
-    void wrongOperatorTest() {
+    public void wrongOperatorTest() {
         assertThrows(UnexpectedOperatorException.class, ()
                 -> calculator.calculation(int0, int3, 'a'));
     }
