@@ -15,11 +15,11 @@ public class SimpleCalculator implements Calculator {
     @Override
     public double calculate(double first, double second, char operation) {
         init();
-        Operation op = operations.get(operation);
-        if (op == null) {
+        Operation correspondingOperation = operations.get(operation);
+        if (correspondingOperation == null) {
             throw new NoSuchOperationException("Please enter the valid operation");
         }
-        return op.operation(first, second);
+        return correspondingOperation.operation(first, second);
     }
 
     private void init() {
