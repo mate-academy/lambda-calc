@@ -1,10 +1,6 @@
 package core.basesyntax;
 
 public class Calculator {
-    public static void main(String[] args) {
-        System.out.println(Double.MAX_VALUE + Double.MAX_VALUE);
-    }
-
     public double calculate(double first, double second, char operator) {
         switch (operator) {
             case '+': {
@@ -22,10 +18,15 @@ public class Calculator {
                 }
                 return first / second;
             }
-            default:
             case '^': {
                 return Math.pow(first, second);
             }
+            default:
+                throw new UnsupportedOperationException("Use + for additional \n"
+                        + "Use - for subtraction \n"
+                        + "Use * for multiplication \n"
+                        + "Use / for division \n"
+                        + "Use ^ for raise to power");
         }
     }
 }
