@@ -6,40 +6,40 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
+public class CalculatorTest {
     private static Calculator calculator;
-    private static final int zero = 0;
-    private static final int one = 1;
-    private static final int two = 2;
-    private static final int three = 3;
-    private static final int minusOne = -1;
-    private static final int minusTwo = -2;
-    private static final int minusFive = -5;
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+    private static final int TWO = 2;
+    private static final int THREE = 3;
+    private static final int MINUS_ONE = -1;
+    private static final int MINUS_TWO = -2;
+    private static final int MINUS_FIVE = -5;
 
     @BeforeAll
-    static void beforeAll() {
+    public static void beforeAll() {
         calculator = new Calculator();
     }
 
     @Test
     public void additionTest_OK() {
-        double positiveNumbers = calculator.calculation(one, two, '+');
-        double negativeNumbers = calculator.calculation(minusFive, minusTwo, '+');
+        double positiveNumbers = calculator.calculation(ONE, TWO, '+');
+        double negativeNumbers = calculator.calculation(MINUS_FIVE, MINUS_TWO, '+');
         assertEquals(3, positiveNumbers);
         assertEquals(-7, negativeNumbers);
-        double differentNumbers = calculator.calculation(one, minusFive, '+');
-        double zeroNumberFirst = calculator.calculation(zero, three, '+');
-        double zeroNumberSecond = calculator.calculation(minusFive, zero, '+');
+        double differentNumbers = calculator.calculation(ONE, MINUS_FIVE, '+');
+        double zeroNumberFirst = calculator.calculation(ZERO, THREE, '+');
+        double zeroNumberSecond = calculator.calculation(MINUS_FIVE, ZERO, '+');
         assertEquals(-4, differentNumbers);
         assertEquals(3, zeroNumberFirst);
         assertEquals(-5, zeroNumberSecond);
-        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, one, '+');
+        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, ONE, '+');
         double maxValueSecond = calculator.calculation(Integer.MAX_VALUE,
                 Integer.MAX_VALUE, '+');
         assertEquals(Integer.MIN_VALUE, maxValueFirst);
         assertEquals(-2, maxValueSecond);
-        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, one, '+');
-        double minValueSecond = calculator.calculation(minusFive,
+        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, ONE, '+');
+        double minValueSecond = calculator.calculation(MINUS_FIVE,
                 Integer.MIN_VALUE, '+');
         assertEquals(-2147483647, minValueFirst);
         assertEquals(2147483643, minValueSecond);
@@ -47,23 +47,23 @@ class CalculatorTest {
 
     @Test
     public void subtractionTest_OK() {
-        double positiveNumbers = calculator.calculation(one, two, '-');
-        double negativeNumbers = calculator.calculation(minusFive, minusTwo, '-');
+        double positiveNumbers = calculator.calculation(ONE, TWO, '-');
+        double negativeNumbers = calculator.calculation(MINUS_FIVE, MINUS_TWO, '-');
         assertEquals(-1, positiveNumbers);
         assertEquals(-3, negativeNumbers);
-        double differentNumbers = calculator.calculation(one, minusFive, '-');
-        double zeroNumberFirst = calculator.calculation(zero, three, '-');
-        double zeroNumberSecond = calculator.calculation(minusFive, zero, '-');
+        double differentNumbers = calculator.calculation(ONE, MINUS_FIVE, '-');
+        double zeroNumberFirst = calculator.calculation(ZERO, THREE, '-');
+        double zeroNumberSecond = calculator.calculation(MINUS_FIVE, ZERO, '-');
         assertEquals(6, differentNumbers);
         assertEquals(-3, zeroNumberFirst);
         assertEquals(-5, zeroNumberSecond);
-        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, one, '-');
+        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, ONE, '-');
         double maxValueSecond = calculator.calculation(Integer.MAX_VALUE,
                 Integer.MAX_VALUE, '-');
         assertEquals(2147483646, maxValueFirst);
         assertEquals(0, maxValueSecond);
-        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, one, '-');
-        double minValueSecond = calculator.calculation(minusFive,
+        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, ONE, '-');
+        double minValueSecond = calculator.calculation(MINUS_FIVE,
                 Integer.MIN_VALUE, '-');
         assertEquals(Integer.MAX_VALUE, minValueFirst);
         assertEquals(2147483643, minValueSecond);
@@ -71,23 +71,23 @@ class CalculatorTest {
 
     @Test
     public void multiplicationTest_OK() {
-        double positiveNumbers = calculator.calculation(one, two, '*');
-        double negativeNumbers = calculator.calculation(minusFive, minusTwo, '*');
+        double positiveNumbers = calculator.calculation(ONE, TWO, '*');
+        double negativeNumbers = calculator.calculation(MINUS_FIVE, MINUS_TWO, '*');
         assertEquals(2, positiveNumbers);
         assertEquals(10, negativeNumbers);
-        double differentNumbers = calculator.calculation(one, minusFive, '*');
-        double zeroNumberFirst = calculator.calculation(zero, three, '*');
-        double zeroNumberSecond = calculator.calculation(minusFive, zero, '*');
+        double differentNumbers = calculator.calculation(ONE, MINUS_FIVE, '*');
+        double zeroNumberFirst = calculator.calculation(ZERO, THREE, '*');
+        double zeroNumberSecond = calculator.calculation(MINUS_FIVE, ZERO, '*');
         assertEquals(-5, differentNumbers);
         assertEquals(0, zeroNumberFirst);
         assertEquals(0, zeroNumberSecond);
-        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, two, '*');
+        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, TWO, '*');
         double maxValueSecond = calculator.calculation(Integer.MAX_VALUE,
                 Integer.MAX_VALUE, '*');
         assertEquals(-2, maxValueFirst);
         assertEquals(1, maxValueSecond);
-        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, three, '*');
-        double minValueSecond = calculator.calculation(minusFive,
+        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, THREE, '*');
+        double minValueSecond = calculator.calculation(MINUS_FIVE,
                 Integer.MIN_VALUE, '*');
         assertEquals(-2147483648, minValueFirst);
         assertEquals(-2147483648, minValueSecond);
@@ -95,20 +95,20 @@ class CalculatorTest {
 
     @Test
     public void divisionTest_OK() {
-        double positiveNumbers = calculator.calculation(one, two, '/');
-        double negativeNumbers = calculator.calculation(minusFive, minusTwo, '/');
+        double positiveNumbers = calculator.calculation(ONE, TWO, '/');
+        double negativeNumbers = calculator.calculation(MINUS_FIVE, MINUS_TWO, '/');
         assertEquals(0.5, positiveNumbers);
         assertEquals(2.5, negativeNumbers);
-        double differentNumbers = calculator.calculation(one, minusFive, '/');
-        double zeroNumberFirst = calculator.calculation(zero, three, '/');
+        double differentNumbers = calculator.calculation(ONE, MINUS_FIVE, '/');
+        double zeroNumberFirst = calculator.calculation(ZERO, THREE, '/');
         assertEquals(-0.2, differentNumbers);
         assertEquals(0, zeroNumberFirst);
-        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, one, '/');
+        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, ONE, '/');
         double maxValueSecond = calculator.calculation(Integer.MAX_VALUE,
                 Integer.MAX_VALUE, '/');
         assertEquals(Integer.MAX_VALUE, maxValueFirst);
         assertEquals(1, maxValueSecond);
-        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, one, '/');
+        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, ONE, '/');
         double minValueSecond = calculator.calculation(Integer.MIN_VALUE,
                 Integer.MIN_VALUE, '/');
         assertEquals(Integer.MIN_VALUE, minValueFirst);
@@ -117,23 +117,23 @@ class CalculatorTest {
 
     @Test
     public void powerTest_OK() {
-        double positiveNumbers = calculator.calculation(one, two, '^');
-        double negativeNumbers = calculator.calculation(minusFive, minusTwo, '^');
+        double positiveNumbers = calculator.calculation(ONE, TWO, '^');
+        double negativeNumbers = calculator.calculation(MINUS_FIVE, MINUS_TWO, '^');
         assertEquals(1, positiveNumbers);
         assertEquals(0.04, negativeNumbers);
-        double differentNumbers = calculator.calculation(one, minusFive, '^');
-        double zeroNumberFirst = calculator.calculation(zero, three, '^');
-        double zeroNumberSecond = calculator.calculation(minusFive, zero, '^');
+        double differentNumbers = calculator.calculation(ONE, MINUS_FIVE, '^');
+        double zeroNumberFirst = calculator.calculation(ZERO, THREE, '^');
+        double zeroNumberSecond = calculator.calculation(MINUS_FIVE, ZERO, '^');
         assertEquals(1, differentNumbers);
         assertEquals(0, zeroNumberFirst);
         assertEquals(1, zeroNumberSecond);
-        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, one, '^');
-        double maxValueSecond = calculator.calculation(one,
+        double maxValueFirst = calculator.calculation(Integer.MAX_VALUE, ONE, '^');
+        double maxValueSecond = calculator.calculation(ONE,
                 Integer.MAX_VALUE, '^');
         assertEquals(Integer.MAX_VALUE, maxValueFirst);
         assertEquals(1, maxValueSecond);
-        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, two, '^');
-        double minValueSecond = calculator.calculation(minusFive,
+        double minValueFirst = calculator.calculation(Integer.MIN_VALUE, TWO, '^');
+        double minValueSecond = calculator.calculation(MINUS_FIVE,
                 Integer.MIN_VALUE, '^');
         assertEquals(4.6116860184273879E18, minValueFirst);
         assertEquals(0, minValueSecond);
@@ -142,12 +142,12 @@ class CalculatorTest {
     @Test
     public void divisionByZeroInDivision() {
         assertThrows(DivisionByZeroException.class, ()
-                -> calculator.calculation(one, zero, '/'));
+                -> calculator.calculation(ONE, ZERO, '/'));
     }
 
     @Test
     public void wrongOperatorTest() {
         assertThrows(UnexpectedOperatorException.class, ()
-                -> calculator.calculation(one, two, 'a'));
+                -> calculator.calculation(ONE, TWO, 'a'));
     }
 }
