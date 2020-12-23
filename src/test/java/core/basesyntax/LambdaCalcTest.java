@@ -3,13 +3,8 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.sun.nio.sctp.PeerAddressChangeNotification;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import javax.swing.*;
-import java.lang.reflect.Field;
 
 public class LambdaCalcTest {
     private static final int FIRST_POSITIVE_NUMBER = 2;
@@ -61,29 +56,33 @@ public class LambdaCalcTest {
     @Test
     public void checkEdgeValues() {
         double expected = Integer.MIN_VALUE + SECOND_POSITIVE_NUMBER - 1;
-        double actual = testCalculator.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, ADDITION);
+        double actual = testCalculator
+                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, ADDITION);
         assertEquals(expected, actual);
         expected = Integer.MAX_VALUE + SECOND_NEGATIVE_NUMBER + 1;
-        actual = testCalculator.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, ADDITION);
+        actual = testCalculator
+                .calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, ADDITION);
         assertEquals(expected, actual);
         expected = Integer.MAX_VALUE - SECOND_POSITIVE_NUMBER + 1;
-        actual = testCalculator.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, SUBTRACTION);
+        actual = testCalculator
+                .calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, SUBTRACTION);
         assertEquals(expected, actual);
         expected = Integer.MIN_VALUE - SECOND_NEGATIVE_NUMBER - 1;
-        actual = testCalculator.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
+        actual = testCalculator
+                .calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
         assertEquals(expected, actual);
     }
 
     @Test
     public void edgeValuesExceptions() {
-        assertThrows(RuntimeException.class, () ->
-                testCalculator.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
-        assertThrows(RuntimeException.class, () ->
-                testCalculator.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
-        assertThrows(RuntimeException.class, () ->
-                testCalculator.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
-        assertThrows(RuntimeException.class, () ->
-                testCalculator.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () -> testCalculator
+                .calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () -> testCalculator
+                .calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () -> testCalculator
+                .calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
+        assertThrows(RuntimeException.class, () -> testCalculator
+                .calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
     }
 
     @Test
