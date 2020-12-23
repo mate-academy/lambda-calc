@@ -85,6 +85,9 @@ class CalculatorTest {
         assertEquals(0, calculator.calculate(0, 2342324, '^'));
         assertEquals(1, calculator.calculate(0, 0, '^'));
 
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(98432823, 234892349, '^'));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(-10302103, 12301020, '^'));
+        assertEquals(Double.NEGATIVE_INFINITY, calculator.calculate(-10302103, 12301021, '^'));
         assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(-0, -92454395, '^'));
         assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(0, -3948598, '^'));
     }
