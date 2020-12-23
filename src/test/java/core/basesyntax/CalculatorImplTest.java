@@ -21,7 +21,6 @@ class CalculatorImplTest {
     private static double secondVariable;
     private static double thirdVariable;
 
-
     @BeforeAll
     static void beforeAll() {
         calculator = new CalculatorImpl();
