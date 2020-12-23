@@ -3,9 +3,15 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.sun.nio.sctp.PeerAddressChangeNotification;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LambdaCalcTest {
+import javax.swing.*;
+import java.lang.reflect.Field;
+
+public class LambdaCalcTest {
     private static final int FIRST_POSITIVE_NUMBER = 2;
     private static final int SECOND_POSITIVE_NUMBER = 4;
     private static final int FIRST_NEGATIVE_NUMBER = -2;
@@ -17,94 +23,128 @@ class LambdaCalcTest {
     private static final char MULTIPLICATION = '*';
     private static final char DIVISION = '/';
     private static final char POWER = '^';
+    private static LambdaCalc testCalculator;
+
+    @BeforeAll
+    public static void beforeAll() {
+        testCalculator = new LambdaCalc();
+    }
 
     @Test
-    void checkAddition() {
-        double actual = LambdaCalc
+    public void checkAddition() {
+        double actual = testCalculator
                 .calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, ADDITION);
         assertEquals(6, actual);
-        actual = LambdaCalc
+        actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, ADDITION);
         assertEquals(-6, actual);
+        actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, ADDITION);
+        assertEquals(FIRST_POSITIVE_NUMBER, actual);
+        actual = testCalculator.calculate(ZERO, FIRST_NEGATIVE_NUMBER, ADDITION);
+        assertEquals(FIRST_NEGATIVE_NUMBER, actual);
     }
 
     @Test
-    void checkSubtraction() {
-        double actual = LambdaCalc
+    public void checkSubtraction() {
+        double actual = testCalculator
                 .calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, SUBTRACTION);
         assertEquals(-2, actual);
-        actual = LambdaCalc
+        actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
         assertEquals(2, actual);
+        actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, SUBTRACTION);
+        assertEquals((-1) * FIRST_POSITIVE_NUMBER, actual);
+        actual = testCalculator.calculate(FIRST_POSITIVE_NUMBER, ZERO, SUBTRACTION);
+        assertEquals(FIRST_POSITIVE_NUMBER, actual);
     }
 
     @Test
-    void checkEdgeValues() {
+    public void checkEdgeValues() {
         double expected = Integer.MIN_VALUE + SECOND_POSITIVE_NUMBER - 1;
-        double actual = LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, ADDITION);
+        double actual = testCalculator.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, ADDITION);
         assertEquals(expected, actual);
         expected = Integer.MAX_VALUE + SECOND_NEGATIVE_NUMBER + 1;
-        actual = LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, ADDITION);
+        actual = testCalculator.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, ADDITION);
         assertEquals(expected, actual);
         expected = Integer.MAX_VALUE - SECOND_POSITIVE_NUMBER + 1;
-        actual = LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, SUBTRACTION);
+        actual = testCalculator.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, SUBTRACTION);
         assertEquals(expected, actual);
         expected = Integer.MIN_VALUE - SECOND_NEGATIVE_NUMBER - 1;
-        actual = LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
+        actual = testCalculator.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, SUBTRACTION);
         assertEquals(expected, actual);
     }
 
     @Test
-    void edgeValuesExceptions() {
+    public void edgeValuesExceptions() {
         assertThrows(RuntimeException.class, () ->
-                LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
+                testCalculator.calculate(Integer.MAX_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
         assertThrows(RuntimeException.class, () ->
-                LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
+                testCalculator.calculate(Integer.MIN_VALUE, SECOND_POSITIVE_NUMBER, MULTIPLICATION));
         assertThrows(RuntimeException.class, () ->
-                LambdaCalc.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
+                testCalculator.calculate(Integer.MAX_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
         assertThrows(RuntimeException.class, () ->
-                LambdaCalc.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
+                testCalculator.calculate(Integer.MIN_VALUE, SECOND_NEGATIVE_NUMBER, MULTIPLICATION));
     }
 
     @Test
-    void checkMultiplication() {
-        double actual = LambdaCalc
+    public void checkMultiplication() {
+        double actual = testCalculator
                 .calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, MULTIPLICATION);
         assertEquals(8, actual);
-        actual = LambdaCalc
+        actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, MULTIPLICATION);
         assertEquals(8, actual);
+        actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, MULTIPLICATION);
+        assertEquals(0, actual);
+        actual = testCalculator.calculate(ZERO, FIRST_NEGATIVE_NUMBER, MULTIPLICATION);
+        assertEquals(0, actual);
     }
 
     @Test
-    void checkDivision() {
-        double actual = LambdaCalc
+    public void checkDivision() {
+        double actual = testCalculator
                 .calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, DIVISION);
         assertEquals(0.5, actual);
-        actual = LambdaCalc
+        actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, DIVISION);
         assertEquals(0.5, actual);
+        actual = testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, DIVISION);
+        assertEquals(0, actual);
+        actual = testCalculator.calculate(ZERO, FIRST_NEGATIVE_NUMBER, DIVISION);
+        assertEquals(0, actual);
     }
 
     @Test
-    void checkDivisionByZero() {
+    public void checkDivisionByZero() {
         assertThrows(ArithmeticException.class, () ->
-                LambdaCalc.calculate(FIRST_POSITIVE_NUMBER, ZERO, DIVISION));
+                testCalculator.calculate(FIRST_POSITIVE_NUMBER, ZERO, DIVISION));
     }
 
     @Test
-    void checkPower() {
-        double actual = LambdaCalc
+    public void checkPower() {
+        double actual = testCalculator
                 .calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, POWER);
         assertEquals(16, actual);
-        actual = LambdaCalc
+        actual = testCalculator
                 .calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, POWER);
         assertEquals(0.0625, actual);
+        actual = testCalculator.calculate(FIRST_NEGATIVE_NUMBER, ODD_NUMBER, POWER);
+        assertEquals(-8, actual);
     }
 
     @Test
-    void checkNotValidOperation() {
+    public void checkZeroBasePower() {
+        assertEquals(0, testCalculator.calculate(ZERO, FIRST_POSITIVE_NUMBER, POWER));
+    }
+
+    @Test
+    public void checkRaisingToZeroPower() {
+        assertEquals(1, testCalculator.calculate(FIRST_POSITIVE_NUMBER, ZERO, POWER));
+    }
+
+    @Test
+    public void checkNotValidOperation() {
         assertThrows(RuntimeException.class, () ->
-                LambdaCalc.calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, '$'));
+                testCalculator.calculate(FIRST_POSITIVE_NUMBER, SECOND_POSITIVE_NUMBER, '$'));
     }
 }

@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 public class LambdaCalc {
-    public static double calculate(int firstNumber, int secondNumber, char operation) {
+    public double calculate(int firstNumber, int secondNumber, char operation) {
         switch (operation) {
             case '+': {
                 return firstNumber + secondNumber;
@@ -10,12 +10,18 @@ public class LambdaCalc {
                 return firstNumber - secondNumber;
             }
             case '*': {
-                checkForEdges(firstNumber, secondNumber);
+                if (firstNumber == Integer.MAX_VALUE || secondNumber == Integer.MAX_VALUE
+                        || firstNumber == Integer.MIN_VALUE || secondNumber == Integer.MIN_VALUE) {
+                    throw new RuntimeException("Result is undefined");
+                }
                 return firstNumber * secondNumber;
             }
             case '/': {
                 if (secondNumber == 0) {
                     throw new ArithmeticException("Division by zero is undefined.");
+                }
+                if (firstNumber == 0) {
+                    return 0;
                 }
                 return (double) firstNumber / secondNumber;
             }
@@ -25,13 +31,6 @@ public class LambdaCalc {
             default: {
                 throw new RuntimeException("Wrong input operation! It's only +, -, *, / and ^.");
             }
-        }
-    }
-
-    private static void checkForEdges(int first, int second) {
-        if (first == Integer.MAX_VALUE || second == Integer.MAX_VALUE
-                || first == Integer.MIN_VALUE || second == Integer.MIN_VALUE) {
-            throw new RuntimeException("Result is undefined");
         }
     }
 }
