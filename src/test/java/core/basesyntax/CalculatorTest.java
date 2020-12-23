@@ -3,19 +3,19 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    public static final char OPERATION_ADD = '+';
-    public static final char OPERATION_SUB = '-';
-    public static final char OPERATION_DIV = '/';
-    public static final char OPERATION_MUL = '*';
-    public static final char OPERATION_POW = '^';
-    private Calculator calculator;
+    private static final char OPERATION_ADD = '+';
+    private static final char OPERATION_SUB = '-';
+    private static final char OPERATION_DIV = '/';
+    private static final char OPERATION_MUL = '*';
+    private static final char OPERATION_POW = '^';
+    private static Calculator calculator;
     
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void beforeAll() {
         calculator = new Calculator();
     }
     
