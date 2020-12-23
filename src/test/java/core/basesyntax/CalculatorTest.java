@@ -1,13 +1,14 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import core.basesyntax.exception.DivisionByZeroException;
 import core.basesyntax.exception.IllegalOperatorException;
 import core.basesyntax.exception.InvalidValuesException;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
-    private Calculator calculator = new Calculator();
     private static final int DEFAULT_A = 5;
     private static final int DEFAULT_B = 17;
     private static final double ADD_A_B = 22;
@@ -18,6 +19,7 @@ class CalculatorTest {
     private static final double RAISE_A_TO_B = Math.pow(5, 17);
     private static final double RAISE_B_TO_A = Math.pow(17, 5);
     private static final int ZERO = 0;
+    private Calculator calculator = new Calculator();
 
     @Test
     void add_Ok() {
