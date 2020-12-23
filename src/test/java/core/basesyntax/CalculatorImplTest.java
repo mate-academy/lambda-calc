@@ -51,7 +51,7 @@ class CalculatorImplTest {
 
     @Test
     void divisionByZeroWhenPassSecondNumericZero_expectExceptionTest() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(1, '/', 0);
         });
     }

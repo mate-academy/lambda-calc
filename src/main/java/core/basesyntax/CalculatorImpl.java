@@ -1,8 +1,5 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class CalculatorImpl implements Calculator {
     private double firstNumeric;
     private double secondNumeric;
@@ -36,8 +33,8 @@ public class CalculatorImpl implements Calculator {
     }
 
     private double addition() {
-        if (firstNumeric == Double.MAX_VALUE && secondNumeric == Double.MAX_VALUE) {
-            throw new ArithmeticException("addition of two MAX_VALUE return infinity");
+        if (firstNumeric == Double.MAX_VALUE || secondNumeric == Double.MAX_VALUE) {
+            throw new ArithmeticException("addition of MAX_VALUE return infinity");
         }
         return firstNumeric + secondNumeric;
     }
@@ -51,7 +48,7 @@ public class CalculatorImpl implements Calculator {
 
     private double division() {
         if (secondNumeric == 0) {
-            throw new RuntimeException("Division by zero");
+            throw new ArithmeticException("Division by zero");
         }
         return firstNumeric / secondNumeric;
     }
