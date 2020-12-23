@@ -42,15 +42,15 @@ public class SimpleCalculatorTest {
     @Test
     void subtractingTwoValues_Ok() {
         double subtractionOfPositive = POSITIVE_FIRST - POSITIVE_SECOND;
-        double subtractionOfNegative = NEGATIVE_FIRST - NEGATIVE_SECOND;
-        double subtractPositiveFromNegative = POSITIVE_FIRST - NEGATIVE_SECOND;
-        double subtractNegativeFromPositive = NEGATIVE_FIRST - POSITIVE_SECOND;
         assertEquals(subtractionOfPositive,
                 calculator.calculate(POSITIVE_FIRST, POSITIVE_SECOND, SUBTRACTION.getOperation()));
+        double subtractionOfNegative = NEGATIVE_FIRST - NEGATIVE_SECOND;
         assertEquals(subtractionOfNegative,
                 calculator.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, SUBTRACTION.getOperation()));
+        double subtractPositiveFromNegative = POSITIVE_FIRST - NEGATIVE_SECOND;
         assertEquals(subtractPositiveFromNegative,
                 calculator.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, SUBTRACTION.getOperation()));
+        double subtractNegativeFromPositive = NEGATIVE_FIRST - POSITIVE_SECOND;
         assertEquals(subtractNegativeFromPositive,
                 calculator.calculate(NEGATIVE_FIRST, POSITIVE_SECOND, SUBTRACTION.getOperation()));
     }
