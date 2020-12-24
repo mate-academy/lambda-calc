@@ -1,5 +1,5 @@
 package core.basesyntax;
 
 public interface Calculation {
-    double calculate(int a, int b, char operation);
+    double calculate(int firstValue, int secondValue, char operation);
 }

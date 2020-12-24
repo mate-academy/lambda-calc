@@ -2,21 +2,21 @@ package core.basesyntax;
 
 public class CalculationImpl implements Calculation {
     @Override
-    public double calculate(int a, int b, char operation) {
+    public double calculate(int firstValue, int secondValue, char operation) {
         switch (operation) {
             case '+':
-                return (double) a + b;
+                return (double) firstValue + secondValue;
             case '-':
-                return (double) a - b;
+                return (double) firstValue - secondValue;
             case '*':
-                return (double) a * b;
+                return (double) firstValue * secondValue;
             case '/':
-                if (b != 0) {
-                    return (double) a / b;
+                if (secondValue != 0) {
+                    return (double) firstValue / secondValue;
                 }
                 throw new ArithmeticException("You cannot divide by zero!");
             case '^':
-                return Math.pow(a, b);
+                return Math.pow(firstValue, secondValue);
             default:
                 throw new RuntimeException("Arithmetic operation symbol was entered incorrectly!");
         }
