@@ -82,10 +82,6 @@ public class CalculatorTest {
         assertEquals(5.666666666666667, calculator.calculate(-17, '/', -3));
         assertEquals(-49.75, calculator.calculate(199, '/', -4));
         assertEquals(-5.2631578947368425, calculator.calculate(-1, '/', 0.19));
-
-        assertEquals(0, calculator.calculate(0, '^', 3));
-        assertEquals(1, calculator.calculate(3, '^', 0));
-
         assertEquals(0, calculator.calculate(0, '/', 4));
         assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(4, '/', 0);
@@ -103,13 +99,14 @@ public class CalculatorTest {
         assertEquals(1.0861771343660416E31, calculator.calculate(43, '^', 19));
         assertEquals(-4913.0, calculator.calculate(-17, '^', 3));
         assertEquals(-3.535942135457617E-18, calculator.calculate(-22, '^', -13));
+        assertEquals(0, calculator.calculate(0, '^', 3));
+        assertEquals(1, calculator.calculate(3, '^', 0));
     }
 
     @Test
     public void raisingToPower_NotOK() {
-        assertThrows(ArithmeticException.class, () -> {
-            calculator.calculate(2000000000, '^', 2000000000);
-        });
+        assertThrows(ArithmeticException.class, () ->
+            calculator.calculate(2000000000, '^', 2000000000));
         assertThrows(ArithmeticException.class, () ->
                 calculator.calculate(0, '^', -4));
     }
