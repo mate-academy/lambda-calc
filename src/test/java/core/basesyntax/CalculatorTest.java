@@ -16,8 +16,10 @@ public class CalculatorTest {
 
     @Test
     void check_byNull() {
-        Assertions.assertThrows(NullPointerException.class, () -> calculator.checkForNull(10.0, null));
-        Assertions.assertThrows(NullPointerException.class, () -> calculator.checkForNull(null, 20.0));
+        Assertions.assertThrows(NullPointerException.class,
+                () -> calculator.checkForNull(10.0, null));
+        Assertions.assertThrows(NullPointerException.class,
+                () -> calculator.checkForNull(null, 20.0));
     }
 
     @Test
