@@ -176,6 +176,7 @@ public class CalculatorTest {
 
     @Test
     void doubleOverflow() {
-        assertThrows(RuntimeException.class, () -> calculator.calculate(Double.MAX_VALUE, 1, '+'));
+        assertThrows(ArithmeticException.class, () ->
+                calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '*'));
     }
 }

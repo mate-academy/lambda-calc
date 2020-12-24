@@ -1,8 +1,10 @@
 package core.basesyntax;
 
+import java.math.BigDecimal;
+
 public class Calculator {
 
-    public double calculate(double firstValue, double secondValue, char operator) {
+    public double calculate(int firstValue, int secondValue, char operator) {
         switch (operator) {
             case '+':
                 return add(firstValue, secondValue);
@@ -19,29 +21,30 @@ public class Calculator {
         }
     }
 
-    private double add(double firstValue, double secondValue) {
-        if (Double.MAX_VALUE - firstValue < secondValue) {
-            throw new RuntimeException("Double overflow");
+    private double add(int firstValue, int secondValue) {
+        return (double) firstValue + secondValue;
+    }
+
+    private double subtract(int firstValue, int secondValue) {
+        return (double) firstValue - secondValue;
+    }
+
+    private double multiply(int firstValue, int secondValue) {
+        BigDecimal bigDecimal = new BigDecimal(firstValue).multiply(new BigDecimal(secondValue));
+        if (bigDecimal.compareTo(new BigDecimal((double) firstValue * secondValue)) == 0) {
+            return bigDecimal.doubleValue();
         }
-        return firstValue + secondValue;
+        throw new ArithmeticException("Double overflow");
     }
 
-    private double subtract(double firstValue, double secondValue) {
-        return firstValue - secondValue;
-    }
-
-    private double multiply(double firstValue, double secondValue) {
-        return firstValue * secondValue;
-    }
-
-    private double divide(double firstValue, double secondValue) {
+    private double divide(int firstValue, int secondValue) {
         if (secondValue == 0) {
             throw new ArithmeticException("Division  secondValue by 0");
         }
-        return firstValue / secondValue;
+        return (double) firstValue / secondValue;
     }
 
-    private double pow(double firstValue, double secondValue) {
+    private double pow(int firstValue, int secondValue) {
         return Math.pow(firstValue, secondValue);
     }
 
