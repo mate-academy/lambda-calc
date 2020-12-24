@@ -3,7 +3,6 @@ package core.basesyntax;
 import java.util.NoSuchElementException;
 
 public class Calculator {
-
     public double calculate(int number1, int number2, char operation) {
         switch (operation) {
             case '+':
@@ -46,9 +45,7 @@ public class Calculator {
         if (number2 == 0 && number1 < 0) {
             return -1;
         }
-        if (number1 == 0 && number2 == 0) {
-            return 1;
-        }
+
         if (number1 < 0) {
             throw new IllegalArgumentException("We can't get raising to a power for "
                     + "negative number");
