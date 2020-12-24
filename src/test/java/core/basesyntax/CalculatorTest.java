@@ -19,7 +19,8 @@ public class CalculatorTest {
         assertEquals(0, calculator.calculate(0, 0, '+'));
         assertEquals(4, calculator.calculate(2, 2, '+'));
         assertEquals(143234, calculator.calculate(72143, 71091, '+'));
-        assertEquals(4.294967294E9, calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '+'));
+        assertEquals(4.294967294E9,
+                calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '+'));
     }
 
     @Test
@@ -53,7 +54,8 @@ public class CalculatorTest {
     public void subtraction_positive_result_ok() {
         assertEquals(10, calculator.calculate(-20, -30, '-'));
         assertEquals(43, calculator.calculate(-21, -64, '-'));
-        assertEquals(4.294967294E9, calculator.calculate(Integer.MAX_VALUE, -Integer.MAX_VALUE, '-'));
+        assertEquals(4.294967294E9,
+                calculator.calculate(Integer.MAX_VALUE, -Integer.MAX_VALUE, '-'));
     }
 
     @Test
