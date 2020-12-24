@@ -1,11 +1,10 @@
 package core.basesyntax;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     private static Calculator calculator;
@@ -39,24 +38,18 @@ class CalculatorTest {
     void additionMaxValue() {
         numberFirst = Integer.MAX_VALUE;
         numberSecond = 5;
-        try {
-            calculator.calculate(numberFirst, numberSecond, ArephmeticActs.PLUS);
-        } catch (CalculatorException e) {
-            return;
-        }
-        fail("Value overflow");
+        assertThrows(CalculatorException.class, () ->
+                        calculator.calculate(numberFirst, numberSecond, ArephmeticActs.PLUS)
+        );
     }
 
     @Test
     void additionMinValue() {
         numberFirst = Integer.MIN_VALUE;
         numberSecond = Integer.MIN_VALUE;
-        try {
-            calculator.calculate(numberFirst, numberSecond, ArephmeticActs.PLUS);
-        } catch (CalculatorException e) {
-            return;
-        }
-        fail("Value overflow");
+        assertThrows(CalculatorException.class, () ->
+                calculator.calculate(numberFirst, numberSecond, ArephmeticActs.PLUS)
+        );
     }
 
     @Test
@@ -172,24 +165,18 @@ class CalculatorTest {
     void multiplyMaxValue() {
         numberFirst = Integer.MAX_VALUE;
         numberSecond = Integer.MAX_VALUE;
-        try {
-            calculator.calculate(numberFirst, numberSecond, ArephmeticActs.MULTIPLY);
-        } catch (CalculatorException e) {
-            return;
-        }
-        fail("Value overflow");
+        assertThrows(CalculatorException.class, () ->
+                calculator.calculate(numberFirst, numberSecond, ArephmeticActs.MULTIPLY)
+        );
     }
 
     @Test
     void multiplyMinValue() {
         numberFirst = Integer.MIN_VALUE;
         numberSecond = Integer.MIN_VALUE;
-        try {
-            calculator.calculate(numberFirst, numberSecond, ArephmeticActs.MULTIPLY);
-        } catch (CalculatorException e) {
-            return;
-        }
-        fail("Value overflow");
+        assertThrows(CalculatorException.class, () ->
+                calculator.calculate(numberFirst, numberSecond, ArephmeticActs.MULTIPLY)
+        );
     }
 
     @Test
@@ -268,24 +255,18 @@ class CalculatorTest {
     void divisionWithZeroOnFirst() {
         numberFirst = 0;
         numberSecond = 89;
-        try {
-            calculator.calculate(numberFirst, numberSecond, ArephmeticActs.DIVIDE);
-        } catch (CalculatorException e) {
-            return;
-        }
-        fail();
+        assertThrows(CalculatorException.class, () ->
+                calculator.calculate(numberFirst, numberSecond, ArephmeticActs.DIVIDE)
+        );
     }
 
     @Test
     void divisionWithZeroOnSecond() {
         numberFirst = 50;
         numberSecond = 0;
-        try {
-            calculator.calculate(numberFirst, numberSecond, ArephmeticActs.DIVIDE);
-        } catch (CalculatorException e) {
-            return;
-        }
-        fail();
+        assertThrows(CalculatorException.class, () ->
+                calculator.calculate(numberFirst, numberSecond, ArephmeticActs.DIVIDE)
+        );
     }
 
     @Test
@@ -312,13 +293,9 @@ class CalculatorTest {
     void valueOnMaxPower() {
         numberFirst = Integer.MAX_VALUE;
         numberSecond = Integer.MAX_VALUE;
-        try {
-            calculator.calculate(numberFirst, numberSecond,
-                    ArephmeticActs.POWER);
-        } catch (CalculatorException e) {
-            return;
-        }
-        fail("Value overflow");
+        assertThrows(CalculatorException.class, () ->
+                calculator.calculate(numberFirst, numberSecond, ArephmeticActs.POWER)
+        );
     }
 
     @Test
@@ -353,12 +330,9 @@ class CalculatorTest {
 
     @Test
     void actionNull() {
-        try {
-            calculator.calculate(6,8, null);
-        } catch (NullPointerException e) {
-            return;
-        }
-        fail("Null Action");
+        assertThrows(NullPointerException.class, () ->
+                calculator.calculate(4, 9, null)
+        );
     }
 
     @AfterAll
