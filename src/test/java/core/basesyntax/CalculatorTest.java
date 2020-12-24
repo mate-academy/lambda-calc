@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 public class CalculatorTest {
     private static final double MAX_VALUE = Double.MAX_VALUE;
     private static final double MIN_VALUE = Double.MIN_VALUE;
-    private static final double ZERO = 0.0;
     private static Calculator calculator;
 
     @BeforeEach
