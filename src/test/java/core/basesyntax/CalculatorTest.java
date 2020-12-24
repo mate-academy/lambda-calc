@@ -16,11 +16,20 @@ class CalculatorTest {
 
     @Test
     void addition_Ok() {
-        assertEquals(5 + 6, calculator.calculate(5, 6, '+'));
-        assertEquals((-2) + (-8), calculator.calculate(-2, -8, '+'));
-        assertEquals((-24) + 7, calculator.calculate(-24, 7, '+'));
-        assertEquals(5, calculator.calculate(5, 0, '+'));
-        assertEquals(5, calculator.calculate(0, 5, '+'));
+        double expected = 11;
+        assertEquals(expected, calculator.calculate(5, 6, '+'));
+
+        expected = -10;
+        assertEquals(expected, calculator.calculate(-2, -8, '+'));
+
+        expected = -17;
+        assertEquals(expected, calculator.calculate(-24, 7, '+'));
+
+        expected = 5;
+        assertEquals(expected, calculator.calculate(5, 0, '+'));
+
+        expected = 5;
+        assertEquals(expected, calculator.calculate(0, 5, '+'));
     }
 
     @Test
@@ -32,22 +41,44 @@ class CalculatorTest {
 
     @Test
     void subtraction_Ok() {
-        assertEquals(5 - 6, calculator.calculate(5, 6, '-'));
-        assertEquals((-2) - (-8), calculator.calculate(-2, -8, '-'));
-        assertEquals((-24) - 7, calculator.calculate(-24, 7, '-'));
-        assertEquals(5, calculator.calculate(5, 0, '-'));
-        assertEquals(-5, calculator.calculate(0, 5, '-'));
-        assertEquals(0, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-'));
-        assertEquals(0, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'));
+        double expected = -1;
+        assertEquals(expected, calculator.calculate(5, 6, '-'));
+
+        expected = 6;
+        assertEquals(expected, calculator.calculate(-2, -8, '-'));
+
+        expected = -31;
+        assertEquals(expected, calculator.calculate(-24, 7, '-'));
+
+        expected = 5;
+        assertEquals(expected, calculator.calculate(5, 0, '-'));
+
+        expected = -5;
+        assertEquals(expected, calculator.calculate(0, 5, '-'));
+
+        expected = 0;
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-'));
+
+        expected = 0;
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'));
     }
 
     @Test
     void multiplication_Ok() {
-        assertEquals(5 * 6, calculator.calculate(5, 6, '*'));
-        assertEquals((-2) * (-8), calculator.calculate(-2, -8, '*'));
-        assertEquals((-24) * 7, calculator.calculate(-24, 7, '*'));
-        assertEquals(0, calculator.calculate(5, 0, '*'));
-        assertEquals(0, calculator.calculate(0, 5, '*'));
+        double expected = 30;
+        assertEquals(expected, calculator.calculate(5, 6, '*'));
+
+        expected = 16;
+        assertEquals(expected, calculator.calculate(-2, -8, '*'));
+
+        expected = -168;
+        assertEquals(expected, calculator.calculate(-24, 7, '*'));
+
+        expected = 0;
+        assertEquals(expected, calculator.calculate(5, 0, '*'));
+
+        expected = 0;
+        assertEquals(expected, calculator.calculate(0, 5, '*'));
     }
 
     @Test
@@ -59,12 +90,23 @@ class CalculatorTest {
 
     @Test
     void division_Ok() {
-        assertEquals(5.0 / 6.0, calculator.calculate(5, 6, '/'));
-        assertEquals((-2.0) / (-8.0), calculator.calculate(-2.0, -8.0, '/'));
-        assertEquals((-24.0) / 7.0, calculator.calculate(-24.0, 7.0, '/'));
-        assertEquals(0, calculator.calculate(0, 5, '/'));
-        assertEquals(1, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/'));
-        assertEquals(1, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '/'));
+        double expected = 2;
+        assertEquals(expected, calculator.calculate(8, 4, '/'));
+
+        expected = 4;
+        assertEquals(expected, calculator.calculate(-8.0, -2.0, '/'));
+
+        expected = -3;
+        assertEquals(expected, calculator.calculate(-24.0, 8.0, '/'));
+
+        expected = 0;
+        assertEquals(expected, calculator.calculate(0, 5, '/'));
+
+        expected = 1;
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/'));
+
+        expected = 1;
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '/'));
     }
 
     @Test
@@ -77,13 +119,26 @@ class CalculatorTest {
 
     @Test
     void power_Ok() {
-        assertEquals(Math.pow(5, 5), calculator.calculate(5, 5, '^'));
-        assertEquals(Math.pow(-5, 5), calculator.calculate(-5, 5, '^'));
-        assertEquals(Math.pow(5, -5), calculator.calculate(5, -5, '^'));
-        assertEquals(Math.pow(-5, -5), calculator.calculate(-5, -5, '^'));
-        assertEquals(Math.pow(5, 0), calculator.calculate(5, 0, '^'));
-        assertEquals(Math.pow(-5, 0), calculator.calculate(-5, 0, '^'));
-        assertEquals(Math.pow(0, 5), calculator.calculate(0, 5, '^'));
+        double expected = 3125;
+        assertEquals(expected, calculator.calculate(5, 5, '^'));
+
+        expected = -3125;
+        assertEquals(expected, calculator.calculate(-5, 5, '^'));
+
+        expected = 0.5;
+        assertEquals(expected, calculator.calculate(2, -1, '^'));
+
+        expected = -0.5;
+        assertEquals(expected, calculator.calculate(-2, -1, '^'));
+
+        expected = 1;
+        assertEquals(expected, calculator.calculate(5, 0, '^'));
+
+        expected = 1;
+        assertEquals(expected, calculator.calculate(-5, 0, '^'));
+
+        expected = 0;
+        assertEquals(expected, calculator.calculate(0, 5, '^'));
     }
 
     @Test
