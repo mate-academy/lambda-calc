@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 public class Calculator {
-    public double calculate(double firstVariable,double secondVariable,char operation) {
+    public double calculate(double firstVariable, double secondVariable, char operation) {
         switch (operation) {
             case '+':
                 if (firstVariable == Double.MAX_VALUE

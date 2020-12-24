@@ -143,7 +143,7 @@ public class CalculatorTest {
 
     @Test
     public void zeroDivision_NotOk() {
-        assertThrows(ArithmeticException.class, () ->
-            calculator.calculate(FIRST_VARIABLE, 0, '/'));
+        assertThrows(ArithmeticException.class, ()
+                -> calculator.calculate(FIRST_VARIABLE, 0, '/'));
     }
 }
