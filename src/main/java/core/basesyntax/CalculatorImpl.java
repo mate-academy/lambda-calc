@@ -11,7 +11,8 @@ public class CalculatorImpl implements Calculator {
                 }
                 return firstNumber + secondNumber;
             case SUB :
-                if (firstNumber == Double.MIN_VALUE && secondNumber != firstNumber) {
+                if (firstNumber == Double.MIN_VALUE && secondNumber != firstNumber
+                        && secondNumber > 0) {
                     throw new ArithmeticException("Too small data");
                 }
                 return firstNumber - secondNumber;

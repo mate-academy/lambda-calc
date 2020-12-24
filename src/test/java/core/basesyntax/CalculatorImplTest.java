@@ -78,7 +78,7 @@ class CalculatorImplTest {
         assertEquals(1, testCalc.calculate(1, 10, POW), MESSAGE);
         assertEquals(1, testCalc.calculate(10, 0, POW), MESSAGE);
         assertEquals(1, testCalc.calculate(-13, 0, POW), MESSAGE);
-        assertEquals(1, testCalc.calculate(0, 0, POW), MESSAGE);
+        assertEquals(0, testCalc.calculate(0, 2, POW), MESSAGE);
         assertEquals(500, testCalc.calculate(500, 1, POW), MESSAGE);
     }
 
