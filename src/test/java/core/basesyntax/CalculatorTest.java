@@ -1,8 +1,10 @@
 package core.basesyntax;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeAll;
@@ -259,8 +261,9 @@ class CalculatorTest {
 
     @Test
     void checkOperationRaisingNegativeValueToPositivePower_Ok() {
-        double actual = calculator.calculate(NEGATIVE_NUMBER_2, POSITIVE_NUMBER_2, '^');
-        assertEquals(-729, actual);
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(NEGATIVE_NUMBER_2, NEGATIVE_NUMBER_1, '^');
+        });
     }
 
     @Test
@@ -271,8 +274,9 @@ class CalculatorTest {
 
     @Test
     void checkOperationRaisingNegativeValueToNegativePower_Ok() {
-        double actual = calculator.calculate(NEGATIVE_NUMBER_2, NEGATIVE_NUMBER_1, '^');
-        assertEquals(-0.001, actual);
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(NEGATIVE_NUMBER_2, NEGATIVE_NUMBER_1, '^');
+        });
     }
 
     @Test
@@ -310,5 +314,25 @@ class CalculatorTest {
         assertThrows(NoSuchElementException.class, () -> {
             calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '=');
         });
+    }
+
+    @Test
+    void checkOnTrueSameOperationWithSameNumbers_Ok() {
+        double actual1 = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '+');
+        double actual2 = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '+');
+        assertTrue(actual1 == actual2);
+        double actual3 = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, '*');
+        double actual4 = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, '*');
+        assertTrue(actual3 == actual4);
+    }
+
+    @Test
+    void checkOnFalse_NotOk() {
+        double actual1 = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '*');
+        double actual2 = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '+');
+        assertFalse(actual1 == actual2);
+        double actual3 = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, '-');
+        double actual4 = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, '/');
+        assertFalse(actual3 == actual4);
     }
 }

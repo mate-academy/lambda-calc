@@ -49,6 +49,10 @@ public class Calculator {
         if (number1 == 0 && number2 == 0) {
             return 1;
         }
+        if (number1 < 0) {
+            throw new IllegalArgumentException("We can't get raising to a power for "
+                    + "negative number");
+        }
         double result = Math.pow(number1, number2);
         double scale = Math.pow(10, 3);
         return Math.round(result * scale) / scale;
