@@ -12,6 +12,8 @@ public class CalculationImplTest {
     private double expectedSubtraction;
     private double expectedMultiplication;
     private double expectedPow;
+    private int firstValue;
+    private int secondValue;
 
     @BeforeAll
     public static void setDefaultValue() {
@@ -20,23 +22,32 @@ public class CalculationImplTest {
 
     @Test
     public void calculate_PositiveAndZeroValue_notOk() {
-        int firstValue = 0;
-        int secondValue = 5;
+        firstValue = 0;
+        secondValue = 5;
+        expectedSum = 5;
+        expectedSubtraction = -5;
+        expectedDivision = 0;
+        expectedMultiplication = 0;
+        expectedPow = 0;
         checkCalculate(firstValue, secondValue);
     }
 
     @Test
     public void calculate_divideByZero_notOk() {
-        int firstValue = 5;
-        int secondValue = 0;
+        firstValue = 5;
+        secondValue = 0;
         Assertions.assertThrows(ArithmeticException.class,
                 () -> calculation.calculate(firstValue, secondValue, '/'));
     }
 
     @Test
     public void calculate_maxIntegerValue_NotOk() {
-        int firstValue = Integer.MAX_VALUE;
-        int secondValue = Integer.MAX_VALUE;
+        firstValue = Integer.MAX_VALUE;
+        secondValue = Integer.MAX_VALUE;
+        expectedSum = (double) Integer.MAX_VALUE + Integer.MAX_VALUE;
+        expectedSubtraction = 0;
+        expectedDivision = 1;
+        expectedMultiplication = (double) Integer.MAX_VALUE * Integer.MAX_VALUE;
         checkCalculate(firstValue, secondValue);
     }
 
@@ -48,39 +59,51 @@ public class CalculationImplTest {
 
     @Test
     public void calculate_correctValue_ok() {
-        int firstValue = 10;
-        int secondValue = 2;
+        firstValue = 10;
+        secondValue = 2;
+        expectedSum = 12;
+        expectedSubtraction = 8;
+        expectedDivision = 5;
+        expectedMultiplication = 20;
+        expectedPow = 100;
         checkCalculate(firstValue, secondValue);
     }
 
     @Test
     public void calculate_negativeAndPositiveValue_ok() {
-        int firstValue = 10;
-        int secondValue = -2;
+        firstValue = 10;
+        secondValue = -2;
+        expectedSum = 8;
+        expectedSubtraction = 12;
+        expectedDivision = -5;
+        expectedMultiplication = -20;
         checkCalculate(firstValue, secondValue);
     }
 
     @Test
     public void calculate_twoNegativeValue_ok() {
-        int firstValue = -3;
-        int secondValue = -2;
+        firstValue = -3;
+        secondValue = -2;
+        expectedSum = -5;
+        expectedSubtraction = -1;
+        expectedDivision = 1.5;
+        expectedMultiplication = 6;
         checkCalculate(firstValue, secondValue);
     }
 
     @Test
     public void calculate_minIntegerValue_ok() {
-        int firstValue = Integer.MIN_VALUE;
-        int secondValue = Integer.MIN_VALUE;
+        firstValue = Integer.MIN_VALUE;
+        secondValue = Integer.MIN_VALUE;
+        expectedSum = (double) Integer.MIN_VALUE + Integer.MIN_VALUE;
+        expectedSubtraction = 0;
+        expectedDivision = 1;
+        expectedMultiplication = (double) Integer.MIN_VALUE * Integer.MIN_VALUE;
+        expectedPow = Math.pow(Integer.MIN_VALUE, Integer.MIN_VALUE);
         checkCalculate(firstValue, secondValue);
     }
 
     public void checkCalculate(int firstValue, int secondValue) {
-        expectedSum = (double) firstValue + secondValue;
-        expectedSubtraction = firstValue - secondValue;
-        expectedDivision = (double) firstValue / secondValue;
-        expectedMultiplication = (double) firstValue * secondValue;
-        expectedPow = Math.pow(firstValue, secondValue);
-        System.out.println(expectedPow);
         Assertions.assertEquals(expectedSum,
                 calculation.calculate(firstValue, secondValue, '+'));
         Assertions.assertEquals(expectedSubtraction,
@@ -97,5 +120,4 @@ public class CalculationImplTest {
                     calculation.calculate(firstValue, secondValue, '^'));
         }
     }
-
 }
