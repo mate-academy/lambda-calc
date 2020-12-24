@@ -1,18 +1,8 @@
 package core.basesyntax;
 
 public class Calculator {
-    private Double firstNumber;
-    private Double secondNumber;
 
-    public Calculator() {
-    }
-
-    public Calculator(Double firstNumber, Double secondNumber) {
-        this.firstNumber = firstNumber;
-        this.secondNumber = secondNumber;
-    }
-
-    public boolean checkForNull() {
+    public boolean checkForNull(Double firstNumber, Double secondNumber) {
         if (firstNumber == null || secondNumber == null) {
             throw new NullPointerException();
         }
@@ -20,7 +10,7 @@ public class Calculator {
     }
     
     public double calculate(Double firstNumber, Double secondNumber, char operations) {
-        checkForNull();
+        checkForNull(firstNumber, secondNumber);
         switch (operations) {
             case '+' :
                 return firstNumber + secondNumber;
@@ -38,29 +28,5 @@ public class Calculator {
             default :
                 return 0;
         }
-    }
-
-    public Double getFirstNumber() {
-        return firstNumber;
-    }
-
-    public boolean setFirstNumber(Double firstNumber) {
-        if (firstNumber == null) {
-            throw new NullPointerException();
-        }
-        this.firstNumber = firstNumber;
-        return true;
-    }
-
-    public Double getSecondNumber() {
-        return secondNumber;
-    }
-
-    public boolean setSecondNumber(Double secondNumber) {
-        if (secondNumber == null) {
-            throw new NullPointerException();
-        }
-        this.secondNumber = secondNumber;
-        return true;
     }
 }
