@@ -16,6 +16,12 @@ public class CalculationImpl implements Calculation {
                 }
                 throw new ArithmeticException("You cannot divide by zero!");
             case '^':
+                if (secondValue == Integer.MAX_VALUE) {
+                    throw new ArithmeticException("You cannot bring such a large number!");
+                }
+                if (secondValue < 0) {
+                    throw new ArithmeticException("Degree cannot be negative!");
+                }
                 return Math.pow(firstValue, secondValue);
             default:
                 throw new RuntimeException("Arithmetic operation symbol was entered incorrectly!");

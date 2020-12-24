@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 public class CalculationImplTest {
 
     private static CalculationImpl calculation;
+    private double expectedDivision;
+    private double expectedSum;
+    private double expectedSubtraction;
+    private double expectedMultiplication;
+    private double expectedPow;
 
     @BeforeAll
     public static void setDefaultValue() {
@@ -29,7 +34,7 @@ public class CalculationImplTest {
     }
 
     @Test
-    public void calculate_maxIntegerValue_ok() {
+    public void calculate_maxIntegerValue_NotOk() {
         int firstValue = Integer.MAX_VALUE;
         int secondValue = Integer.MAX_VALUE;
         checkCalculate(firstValue, secondValue);
@@ -70,16 +75,27 @@ public class CalculationImplTest {
     }
 
     public void checkCalculate(int firstValue, int secondValue) {
-        Assertions.assertEquals((double) firstValue + secondValue,
+        expectedSum = (double) firstValue + secondValue;
+        expectedSubtraction = firstValue - secondValue;
+        expectedDivision = (double) firstValue / secondValue;
+        expectedMultiplication = (double) firstValue * secondValue;
+        expectedPow = Math.pow(firstValue, secondValue);
+        System.out.println(expectedPow);
+        Assertions.assertEquals(expectedSum,
                 calculation.calculate(firstValue, secondValue, '+'));
-        Assertions.assertEquals(firstValue - secondValue,
+        Assertions.assertEquals(expectedSubtraction,
                 calculation.calculate(firstValue, secondValue, '-'));
-        Assertions.assertEquals((double) firstValue / secondValue,
+        Assertions.assertEquals(expectedDivision,
                 calculation.calculate(firstValue, secondValue, '/'));
-        Assertions.assertEquals((double) firstValue * secondValue,
+        Assertions.assertEquals(expectedMultiplication,
                 calculation.calculate(firstValue, secondValue, '*'));
-        Assertions.assertEquals(Math.pow(firstValue, secondValue),
-                calculation.calculate(firstValue, secondValue, '^'));
+        if (secondValue < 0 || secondValue == Integer.MAX_VALUE) {
+            Assertions.assertThrows(ArithmeticException.class,
+                    () -> calculation.calculate(firstValue, secondValue, '^'));
+        } else {
+            Assertions.assertEquals(expectedPow,
+                    calculation.calculate(firstValue, secondValue, '^'));
+        }
     }
 
 }
