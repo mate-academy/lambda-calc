@@ -1,69 +1,78 @@
 package core.basesyntax;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class CalculatorTest {
 
-    Calculator calculator;
+    public static final int FIRST_POSITIVE_VALUE = 10;
+    public static final int SECOND_POSITIVE_VALUE = 15;
+
+    public static final int ZERO_VALUE = 0;
+
+    public static final int FIRST_NEGATIVE_VALUE = -10;
+    public static final int SECOND_NEGATIVE_VALUE = -15;
+
+    static Calculator calculator;
     private int firstParam;
     private int secondParam;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    public static void beforeAll() {
         calculator = new Calculator();
     }
 
     @Test
-    void additionTwoPositive() {
-        firstParam = 10;
-        secondParam = 15;
+    public void additionTwoPositive() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam + secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionTwoNegative() {
-        firstParam = -10;
-        secondParam = -15;
+    public void additionTwoNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_NEGATIVE_VALUE;
         double expected = firstParam + secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionPositiveAndNegative() {
-        firstParam = -10;
-        secondParam = 15;
+    public void additionPositiveAndNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam + secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionZeroAtA() {
-        firstParam = 0;
-        secondParam = 15;
+    public void additionZeroAtA() {
+        firstParam = ZERO_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam + secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionZeroAtB() {
-        firstParam = 10;
-        secondParam = 0;
+    public void additionZeroAtB() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = ZERO_VALUE;
         double expected = firstParam + secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionMinAndMaxValues() {
+    public void additionMinAndMaxValues() {
         firstParam = Integer.MAX_VALUE;
         secondParam = Integer.MIN_VALUE;
         double expected = firstParam + secondParam;
@@ -72,52 +81,52 @@ public class CalculatorTest {
     }
 
     @Test
-    void subtractionTwoPositive() {
-        firstParam = 10;
-        secondParam = 15;
+    public void subtractionTwoPositive() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam - secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionTwoNegative() {
-        firstParam = -10;
-        secondParam = -15;
+    public void subtractionTwoNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_NEGATIVE_VALUE;
         double expected = firstParam - secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionPositiveAndNegative() {
-        firstParam = -10;
-        secondParam = 15;
+    public void subtractionPositiveAndNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam - secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionZeroAtA() {
-        firstParam = 0;
-        secondParam = 15;
+    public void subtractionZeroAtA() {
+        firstParam = ZERO_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam - secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionZeroAtB() {
-        firstParam = 10;
-        secondParam = 0;
+    public void subtractionZeroAtB() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = ZERO_VALUE;
         double expected = firstParam - secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionMinAndMaxValues() {
+    public void subtractionMinAndMaxValues() {
         firstParam = Integer.MAX_VALUE;
         secondParam = Integer.MIN_VALUE;
         double expected = firstParam - secondParam;
@@ -126,52 +135,52 @@ public class CalculatorTest {
     }
 
     @Test
-    void multiplicationTwoPositive() {
-        firstParam = 10;
-        secondParam = 15;
+    public void multiplicationTwoPositive() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam * secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationTwoNegative() {
-        firstParam = -10;
-        secondParam = -15;
+    public void multiplicationTwoNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_NEGATIVE_VALUE;
         double expected = firstParam * secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationPositiveAndNegative() {
-        firstParam = -10;
-        secondParam = 15;
+    public void multiplicationPositiveAndNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam * secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationZeroAtA() {
-        firstParam = 0;
-        secondParam = 15;
+    public void multiplicationZeroAtA() {
+        firstParam = ZERO_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam * secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationZeroAtB() {
-        firstParam = 10;
-        secondParam = 0;
+    public void multiplicationZeroAtB() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = ZERO_VALUE;
         double expected = firstParam * secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationMinAndMaxValues() {
+    public void multiplicationMinAndMaxValues() {
         firstParam = Integer.MAX_VALUE;
         secondParam = Integer.MIN_VALUE;
         double expected = firstParam * secondParam;
@@ -180,51 +189,51 @@ public class CalculatorTest {
     }
 
     @Test
-    void divisionTwoPositive() {
-        firstParam = 10;
-        secondParam = 15;
+    public void divisionTwoPositive() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam / secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionTwoNegative() {
-        firstParam = -10;
-        secondParam = -15;
+    public void divisionTwoNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_NEGATIVE_VALUE;
         double expected = firstParam / secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionPositiveAndNegative() {
-        firstParam = -10;
-        secondParam = 15;
+    public void divisionPositiveAndNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam / secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionZeroAtA() {
-        firstParam = 0;
-        secondParam = 15;
+    public void divisionZeroAtA() {
+        firstParam = ZERO_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = firstParam / secondParam;
         double actual = calculator.calculate(firstParam, secondParam, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionZeroAtB() {
-        firstParam = 10;
-        secondParam = 0;
+    public void divisionZeroAtB() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = ZERO_VALUE;
         assertThrows(RuntimeException.class,
                 () -> calculator.calculate(firstParam, secondParam, '/'));
     }
 
     @Test
-    void divisionMinAndMaxValues() {
+    public void divisionMinAndMaxValues() {
         firstParam = Integer.MAX_VALUE;
         secondParam = Integer.MIN_VALUE;
         double expected = firstParam / secondParam;
@@ -233,72 +242,72 @@ public class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveToPositive() {
-        firstParam = 10;
-        secondParam = 15;
+    public void raisingPositiveToPositive() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = (int) Math.pow(firstParam, secondParam);
         double actual = calculator.calculate(firstParam, secondParam, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNegativeToPositive() {
-        firstParam = -10;
-        secondParam = 15;
+    public void raisingNegativeToPositive() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = (int) Math.pow(firstParam, secondParam);
         double actual = calculator.calculate(firstParam, secondParam, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void raisingPositiveToNegative() {
-        firstParam = 10;
-        secondParam = -15;
+    public void raisingPositiveToNegative() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = SECOND_NEGATIVE_VALUE;
         double expected = (int) Math.pow(firstParam, secondParam);
         double actual = calculator.calculate(firstParam, secondParam, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNegativeToNegative() {
-        firstParam = -10;
-        secondParam = -15;
+    public void raisingNegativeToNegative() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = SECOND_NEGATIVE_VALUE;
         double expected = (int) Math.pow(firstParam, secondParam);
         double actual = calculator.calculate(firstParam, secondParam, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void raisingPositiveToZero() {
-        firstParam = 10;
-        secondParam = 0;
+    public void raisingPositiveToZero() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = ZERO_VALUE;
         double expected = (int) Math.pow(firstParam, secondParam);
         double actual = calculator.calculate(firstParam, secondParam, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNegativeToZero() {
-        firstParam = -10;
-        secondParam = 0;
+    public void raisingNegativeToZero() {
+        firstParam = FIRST_NEGATIVE_VALUE;
+        secondParam = ZERO_VALUE;
         double expected = (int) Math.pow(firstParam, secondParam);
         double actual = calculator.calculate(firstParam, secondParam, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void raisingZeroToPower() {
-        firstParam = 0;
-        secondParam = 15;
+    public void raisingZeroToPower() {
+        firstParam = ZERO_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         double expected = (int) Math.pow(firstParam, secondParam);
         double actual = calculator.calculate(firstParam, secondParam, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void illegalOperation() {
-        firstParam = 10;
-        secondParam = 15;
+    public void illegalOperation() {
+        firstParam = FIRST_POSITIVE_VALUE;
+        secondParam = SECOND_POSITIVE_VALUE;
         assertThrows(RuntimeException.class,
                 () -> calculator.calculate(firstParam, secondParam, '$'));
     }
