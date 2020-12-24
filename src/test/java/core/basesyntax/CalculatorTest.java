@@ -16,12 +16,12 @@ public class CalculatorTest {
     private static Calculator calculator;
 
     @BeforeAll
-    static void beforeAll() {
+    public static void beforeAll() {
         calculator = new Calculator();
     }
 
     @AfterAll
-    static void afterAll() {
+    public static void afterAll() {
         assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, 'd'));
         assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '%'));
         assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '9'));
