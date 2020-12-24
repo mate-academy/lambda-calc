@@ -3,11 +3,17 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static final double DELTA = 0.000001;
-    Calculator calculator = new Calculator();
+    private static Calculator calculator;
+
+    @BeforeAll
+    static void setUp() {
+        calculator = new Calculator();
+    }
 
     @Test
     void additionTests_Ok() {
@@ -18,6 +24,8 @@ class CalculatorTest {
         assertEquals(10025, calculator.calculate(10025, 0, "+"), DELTA);
         assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
                 Double.MAX_VALUE, Double.MAX_VALUE, "+"), DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, "+"), DELTA);
     }
 
     @Test
@@ -28,7 +36,11 @@ class CalculatorTest {
         assertEquals(129, calculator.calculate(0, -129, "-"), DELTA);
         assertEquals(10025, calculator.calculate(10025, 0, "-"), DELTA);
         assertEquals(0, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, "-"), DELTA);
-
+        assertEquals(0, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, "-"), DELTA);
+        assertEquals(Double.NaN, calculator.calculate(
+                Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, "-"), DELTA);
+        assertEquals(Double.NaN, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, "-"), DELTA);
     }
 
     @Test
@@ -38,6 +50,13 @@ class CalculatorTest {
         assertEquals(-10.7, calculator.calculate(5.35, -2, "*"), DELTA);
         assertEquals(0, calculator.calculate(0, -129, "*"), DELTA);
         assertEquals(0, calculator.calculate(10025, 0, "*"), DELTA);
+        assertEquals(0, calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, "*"), DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
+                Double.MAX_VALUE, Double.MAX_VALUE, "*"), DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, "*"), DELTA);
+        assertEquals(Double.NEGATIVE_INFINITY, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, "*"), DELTA);
     }
 
     @Test
@@ -46,6 +65,12 @@ class CalculatorTest {
         assertEquals(25, calculator.calculate(-50, -2, "/"), DELTA);
         assertEquals(-5.333333, calculator.calculate(16, -3, "/"), DELTA);
         assertEquals(0, calculator.calculate(0, -129, "/"), DELTA);
+        assertEquals(1, calculator.calculate(
+                Double.MAX_VALUE, Double.MAX_VALUE, "/"), DELTA);
+        assertEquals(Double.NaN, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, "/"), DELTA);
+        assertEquals(Double.NaN, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, "/"), DELTA);
     }
 
     @Test
@@ -64,6 +89,11 @@ class CalculatorTest {
         assertEquals(0.00390625, calculator.calculate(0.5, 8, "^"), DELTA);
         assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
                 Double.MAX_VALUE, Double.MAX_VALUE, "^"), DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, "^"), DELTA);
+        assertEquals(0, calculator.calculate(
+                Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, "^"), DELTA);
+
     }
 
     void invalidOperators() {
