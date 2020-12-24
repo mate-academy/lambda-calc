@@ -1,8 +1,9 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private Calculator calculator = new Calculator();
@@ -93,7 +94,7 @@ class CalculatorTest {
     @Test
     void raisingToPower_NotOK() {
         assertThrows(ArithmeticException.class, () -> {
-            calculator.calculate(2000000000,'^', 2000000000);
+            calculator.calculate(2000000000, '^', 2000000000);
             assertThrows(ArithmeticException.class, () ->
                     calculator.calculate(0, '^', -4));
         });
