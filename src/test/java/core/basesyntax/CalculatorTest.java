@@ -86,7 +86,6 @@ class CalculatorTest {
         assertEquals(Math.pow(0, 5), calculator.calculate(0, 5, '^'));
     }
 
-
     @Test
     void operation_NotOk() {
         int first = 0;
