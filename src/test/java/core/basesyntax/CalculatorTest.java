@@ -6,63 +6,89 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static final double NUMBER1 = 25.003;
-    private static final double NUMBER2 = 2;
+    private static final double FIRST_NUMBER = 25.003;
+    private static final double SECOND_NUMBER = 2;
+    private static final double NEGATIVE_FIRST_NUMBER = -25;
+    private static final double NEGATIVE_SECOND_NUMBER = -3;
+    private static double expected;
 
     @Test
     void additionTwoNumbers() {
-        assertEquals(NUMBER1 + NUMBER2, Calculator.calculate(NUMBER1, NUMBER2, '+'));
-        assertEquals(-NUMBER1 + (-NUMBER2), Calculator.calculate(-NUMBER1, -NUMBER2, '+'));
-        assertEquals(NUMBER1 + (-NUMBER2), Calculator.calculate(NUMBER1, -NUMBER2, '+'));
-        assertEquals(0 + NUMBER2, Calculator.calculate(0, NUMBER2, '+'));
+        expected = FIRST_NUMBER + SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, '+'));
+        expected = NEGATIVE_FIRST_NUMBER + NEGATIVE_SECOND_NUMBER;
+        assertEquals(expected,
+                Calculator.calculate(NEGATIVE_FIRST_NUMBER, NEGATIVE_SECOND_NUMBER, '+'));
+        expected = FIRST_NUMBER + NEGATIVE_SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, NEGATIVE_SECOND_NUMBER, '+'));
+        expected = 0 + SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(0, SECOND_NUMBER, '+'));
         assertThrows(ArithmeticException.class, () ->
                 Calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+'));
     }
 
     @Test
     void subtractionTwoNumbers() {
-        assertEquals(NUMBER1 - NUMBER2, Calculator.calculate(NUMBER1, NUMBER2, '-'));
-        assertEquals(-NUMBER1 - (-NUMBER2), Calculator.calculate(-NUMBER1, -NUMBER2, '-'));
-        assertEquals(-NUMBER1 - NUMBER2, Calculator.calculate(-NUMBER1, NUMBER2, '-'));
-        assertEquals(0 - NUMBER2, Calculator.calculate(0, NUMBER2, '-'));
-        assertEquals(0.0, Calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-'));
+        expected = FIRST_NUMBER - SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, '-'));
+        expected = NEGATIVE_FIRST_NUMBER - NEGATIVE_SECOND_NUMBER;
+        assertEquals(expected,
+                Calculator.calculate(NEGATIVE_FIRST_NUMBER, NEGATIVE_SECOND_NUMBER, '-'));
+        expected = NEGATIVE_FIRST_NUMBER - SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(NEGATIVE_FIRST_NUMBER, SECOND_NUMBER, '-'));
+        expected = 0 - SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(0, SECOND_NUMBER, '-'));
+        expected = 0.0;
+        assertEquals(expected, Calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-'));
         assertThrows(ArithmeticException.class, () ->
                 Calculator.calculate(-Double.MAX_VALUE, Double.MAX_VALUE, '-'));
     }
 
     @Test
     void divisionTwoNumbers() {
-        assertEquals(NUMBER1 / NUMBER2, Calculator.calculate(NUMBER1, NUMBER2, '/'));
-        assertEquals(NUMBER2 / (-NUMBER1), Calculator.calculate(-NUMBER2, NUMBER1, '/'));
-        assertEquals(0 / NUMBER1, Calculator.calculate(0, NUMBER1, '/'));
-        assertEquals(1, Calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/'));
+        expected = FIRST_NUMBER / SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, '/'));
+        expected = SECOND_NUMBER / NEGATIVE_FIRST_NUMBER;
+        assertEquals(expected, Calculator.calculate(SECOND_NUMBER, NEGATIVE_FIRST_NUMBER, '/'));
+        expected = 0;
+        assertEquals(expected, Calculator.calculate(0, FIRST_NUMBER, '/'));
+        expected = 1;
+        assertEquals(expected, Calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/'));
         assertThrows(ArithmeticException.class, () ->
-                Calculator.calculate(NUMBER2, 0, '/'));
+                Calculator.calculate(SECOND_NUMBER, 0, '/'));
     }
 
     @Test
     void multiplicationTwoNumbers() {
-        assertEquals(NUMBER1 * NUMBER2, Calculator.calculate(NUMBER1, NUMBER2, '*'));
-        assertEquals(NUMBER1 * (-NUMBER2), Calculator.calculate(NUMBER1, -NUMBER2, '*'));
-        assertEquals(0 * NUMBER2, Calculator.calculate(0, NUMBER2, '*'));
+        expected = FIRST_NUMBER * SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, '*'));
+        expected = FIRST_NUMBER * NEGATIVE_SECOND_NUMBER;
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, NEGATIVE_SECOND_NUMBER, '*'));
+        expected = 0;
+        assertEquals(expected, Calculator.calculate(0, SECOND_NUMBER, '*'));
         assertThrows(ArithmeticException.class, () ->
                 Calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*'));
     }
 
     @Test
     void raisingValueToPower() {
-        assertEquals(Math.pow(NUMBER1, NUMBER2), Calculator.calculate(NUMBER1, NUMBER2, '^'));
-        assertEquals(Math.pow(NUMBER1, -NUMBER2),
-                Calculator.calculate(NUMBER1, -NUMBER2, '^'));
-        assertEquals(1, Calculator.calculate(NUMBER1, 0, '^'));
-        assertEquals(0, Calculator.calculate(0, NUMBER1, '^'));
-        assertThrows(ArithmeticException.class, () -> Calculator.calculate(0, -2, '^'));
-        assertThrows(ArithmeticException.class, () -> Calculator.calculate(-NUMBER1, 0.3, '^'));
+        expected = Math.pow(FIRST_NUMBER, SECOND_NUMBER);
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, '^'));
+        expected = Math.pow(FIRST_NUMBER, NEGATIVE_SECOND_NUMBER);
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, NEGATIVE_SECOND_NUMBER, '^'));
+        expected = 1;
+        assertEquals(expected, Calculator.calculate(FIRST_NUMBER, 0, '^'));
+        expected = 0;
+        assertEquals(expected, Calculator.calculate(0, FIRST_NUMBER, '^'));
+        assertThrows(ArithmeticException.class, () ->
+                Calculator.calculate(0, -2, '^'));
+        assertThrows(ArithmeticException.class, () ->
+                Calculator.calculate(-FIRST_NUMBER, 0.3, '^'));
     }
 
     @Test
     void operationIsOK() {
         assertThrows(IllegalArgumentException.class, () ->
-                Calculator.calculate(NUMBER1, NUMBER2, '%'));
+                Calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, '%'));
     }
 }
