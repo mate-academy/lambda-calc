@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
+public class CalculatorTest {
     private static final char OPERATION_ADD = '+';
     private static final char OPERATION_SUB = '-';
     private static final char OPERATION_DIV = '/';
@@ -15,12 +15,12 @@ class CalculatorTest {
     private static Calculator calculator;
     
     @BeforeAll
-    static void beforeAll() {
+    public static void beforeAll() {
         calculator = new Calculator();
     }
     
     @Test
-    void calculate_addition() {
+    public void calculate_addition_OK() {
         assertEquals(1_001_000, calculator.calculate(1_000_000, OPERATION_ADD, 1000));
         assertEquals(444, calculator.calculate(123, OPERATION_ADD, 321));
         assertEquals(-20, calculator.calculate(-10, OPERATION_ADD, -10));
@@ -36,7 +36,7 @@ class CalculatorTest {
     }
     
     @Test
-    void calculate_subtraction() {
+    public void calculate_subtraction() {
         assertEquals(999_000, calculator.calculate(1_000_000, OPERATION_SUB, 1000));
         assertEquals(-198, calculator.calculate(123, OPERATION_SUB, 321));
         assertEquals(0, calculator.calculate(-10, OPERATION_SUB, -10));
@@ -52,14 +52,14 @@ class CalculatorTest {
     }
     
     @Test
-    void calculate_divisionByZero() {
+    public void calculate_divisionByZero() {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(0, '/', 0));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(234, '/', 0));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(-234, '/', 0));
     }
     
     @Test
-    void calculate_division() {
+    public void calculate_division() {
         assertEquals(1000, calculator.calculate(1_000_000, OPERATION_DIV, 1000));
         assertEquals(3, calculator.calculate(333, OPERATION_DIV, 111));
         assertEquals(1, calculator.calculate(-10, OPERATION_DIV, -10));
@@ -73,7 +73,7 @@ class CalculatorTest {
     }
     
     @Test
-    void calculate_multiplication() {
+    public void calculate_multiplication() {
         assertEquals(1_000_000, calculator.calculate(1000, OPERATION_MUL, 1000));
         assertEquals(39483, calculator.calculate(123, OPERATION_MUL, 321));
         assertEquals(100, calculator.calculate(-10, OPERATION_MUL, -10));
@@ -90,7 +90,7 @@ class CalculatorTest {
     }
     
     @Test
-    void calculate_power() {
+    public void calculate_power() {
         assertEquals(2209, calculator.calculate(47, OPERATION_POW, 2));
         assertEquals(25, calculator.calculate(5, OPERATION_POW, 2));
         assertEquals(0.04, calculator.calculate(-5, OPERATION_POW, -2));
@@ -107,7 +107,7 @@ class CalculatorTest {
     }
     
     @Test
-    void calculate_invalidOperator() {
+    public void calculate_invalidOperator() {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(0, '=', 10));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(0, '$', 10));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(0, '&', 10));
