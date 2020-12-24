@@ -3,7 +3,6 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,17 +17,6 @@ public class CalculatorTest {
     @BeforeAll
     public static void beforeAll() {
         calculator = new Calculator();
-    }
-
-    @AfterAll
-    public static void afterAll() {
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, 'd'));
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '%'));
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '9'));
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '('));
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '&'));
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '#'));
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '>'));
     }
 
     @Test
@@ -112,5 +100,16 @@ public class CalculatorTest {
         double actualSeventh = calculator.calculate(ZERO_VALUE, POSITIVE_VALUE, '^');
         assertEquals(0, actualSeventh);
 
+    }
+
+    @Test
+    public void illegalArgument() {
+        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, 'd'));
+        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '%'));
+        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '9'));
+        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '('));
+        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '&'));
+        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '#'));
+        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(1, 2, '>'));
     }
 }
