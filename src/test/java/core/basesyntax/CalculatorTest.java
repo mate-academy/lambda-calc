@@ -10,7 +10,7 @@ public class CalculatorTest {
     private static Calculator calculator;
 
     @BeforeAll
-    static void init() {
+    public static void init() {
         calculator = new Calculator();
     }
 
@@ -38,7 +38,7 @@ public class CalculatorTest {
 
     @Test
     public void subtraction_positive_ok() {
-        assertEquals(0, calculator.calculate(-0, -0, '+'));
+        assertEquals(0, calculator.calculate(0, 0, '-'));
         assertEquals(1, calculator.calculate(3, 2, '-'));
         assertEquals(72143, calculator.calculate(143234, 71091, '-'));
         assertEquals(0, calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '-'));
@@ -46,12 +46,14 @@ public class CalculatorTest {
 
     @Test
     public void subtraction_negative_result_ok() {
+        assertEquals(-134, calculator.calculate(-80, 54, '-'));
         assertEquals(-17, calculator.calculate(-67, -50, '-'));
         assertEquals(-1052, calculator.calculate(-72143, -71091, '-'));
     }
 
     @Test
     public void subtraction_positive_result_ok() {
+        assertEquals(24, calculator.calculate(10, -14, '-'));
         assertEquals(10, calculator.calculate(-20, -30, '-'));
         assertEquals(43, calculator.calculate(-21, -64, '-'));
         assertEquals(4.294967294E9,
