@@ -23,47 +23,45 @@ public class CalculatorTest {
     }
 
     @Test
+    void power_negativeNumber() {
+        double firstNumber = -2.0;
+        double secondNumber = 3.0;
+        double expected = Math.pow(firstNumber, secondNumber);
+        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void power_negativeDegree() {
+        double firstNumber = 2.0;
+        double secondNumber = -3.0;
+        double expected = Math.pow(firstNumber, secondNumber);
+        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void power() {
+        double firstNumber = 2.0;
+        double secondNumber = 3.0;
+        double expected = Math.pow(firstNumber, secondNumber);
+        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void power_byFinal() {
+        double expected = Math.pow(MAX_VALUE, MIN_VALUE);
+        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '^');
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void addition_negative() {
         double firstNumber = -20.0;
         double secondNumber = -10.0;
         double expected = firstNumber + secondNumber;
         double actual = calculator.calculate(firstNumber, secondNumber, '+');
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void subtraction_negative() {
-        double firstNumber = -8.0;
-        double secondNumber = -5.0;
-        double expected = firstNumber - secondNumber;
-        double actual = calculator.calculate(firstNumber, secondNumber, '-');
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void division_negative() {
-        double firstNumber = 0.0;
-        double secondNumber = -1.0;
-        double expected = firstNumber / secondNumber;
-        double actual = calculator.calculate(firstNumber, secondNumber, '/');
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void multiplication_negative() {
-        double firstNumber = 5.0;
-        double secondNumber = -8.0;
-        double expected = firstNumber * secondNumber;
-        double actual = calculator.calculate(firstNumber, secondNumber, '*');
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void power_negative() {
-        double firstNumber = -2.0;
-        double secondNumber = -3.0;
-        double expected = Math.pow(firstNumber, secondNumber);
-        double actual = calculator.calculate(firstNumber, secondNumber, '^');
         Assertions.assertEquals(expected, actual);
     }
 
@@ -93,6 +91,15 @@ public class CalculatorTest {
     }
 
     @Test
+    void subtraction_negative() {
+        double firstNumber = -8.0;
+        double secondNumber = -5.0;
+        double expected = firstNumber - secondNumber;
+        double actual = calculator.calculate(firstNumber, secondNumber, '-');
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void subtraction_byFinal() {
         double expected = MAX_VALUE - MIN_VALUE;
         double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '-');
@@ -103,6 +110,15 @@ public class CalculatorTest {
     void division() {
         double firstNumber = 0.0;
         double secondNumber = 1.0;
+        double expected = firstNumber / secondNumber;
+        double actual = calculator.calculate(firstNumber, secondNumber, '/');
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_negative() {
+        double firstNumber = 0.0;
+        double secondNumber = -1.0;
         double expected = firstNumber / secondNumber;
         double actual = calculator.calculate(firstNumber, secondNumber, '/');
         Assertions.assertEquals(expected, actual);
@@ -131,25 +147,18 @@ public class CalculatorTest {
     }
 
     @Test
+    void multiplication_negative() {
+        double firstNumber = 5.0;
+        double secondNumber = -8.0;
+        double expected = firstNumber * secondNumber;
+        double actual = calculator.calculate(firstNumber, secondNumber, '*');
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void multiplication_byFinal() {
         double expected = MAX_VALUE * MIN_VALUE;
         double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '*');
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void power() {
-        double firstNumber = 2.0;
-        double secondNumber = 3.0;
-        double expected = Math.pow(firstNumber, secondNumber);
-        double actual = calculator.calculate(firstNumber, secondNumber, '^');
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    void power_byFinal() {
-        double expected = Math.pow(MAX_VALUE, MIN_VALUE);
-        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, '^');
         Assertions.assertEquals(expected, actual);
     }
 }
