@@ -12,7 +12,7 @@ public class CalculatorTest {
     private static final double SECOND_VARIABLE = 5;
 
     @BeforeAll
-    static void beforeAll() {
+    public static void beforeAll() {
         calculator = new Calculator();
     }
 
@@ -37,6 +37,96 @@ public class CalculatorTest {
         assertEquals(expectedResult, actualResult);
         expectedResult = 10;
         actualResult = calculator.calculate(FIRST_VARIABLE, 0, '+');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void subtractionWithNegativeValues_Ok() {
+        double expectedResult = -5;
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, -SECOND_VARIABLE, '-');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void subtractionWithPositiveAndNegativeValues_Ok() {
+        double expectedResult = -15;
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, SECOND_VARIABLE, '-');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void divisionWithZero_Ok() {
+        double expectedResult = 0;
+        double actualResult = calculator.calculate(0, SECOND_VARIABLE, '/');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void divisionWithNegativeValues_Ok() {
+        double expectedResult = 2;
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, -SECOND_VARIABLE, '/');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void divisionWithPositiveAndNegativeValues_Ok() {
+        double expectedResult = -2;
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, SECOND_VARIABLE, '/');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void multiplicationWithZero_Ok() {
+        double expectedResult = 0;
+        double actualResult = calculator.calculate(0, SECOND_VARIABLE, '*');
+        assertEquals(expectedResult, actualResult);
+        actualResult = calculator.calculate(FIRST_VARIABLE, 0, '*');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void multiplicationWithNegativeValues_Ok() {
+        double expectedResult = 50;
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, -SECOND_VARIABLE, '*');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void multiplicationWithPositiveAndNegativeValues_Ok() {
+        double expectedResult = -50;
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, SECOND_VARIABLE, '*');
+        assertEquals(expectedResult, actualResult);
+        actualResult = calculator.calculate(FIRST_VARIABLE, -SECOND_VARIABLE, '*');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void raisingToAPowerWithZero_Ok() {
+        double expectedResult = 0;
+        double actualResult = calculator.calculate(0, SECOND_VARIABLE, '^');
+        assertEquals(expectedResult, actualResult);
+        expectedResult = 1;
+        actualResult = calculator.calculate(FIRST_VARIABLE, 0, '^');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void raisingToAPowerWithPositiveAndNegativeValues_Ok() {
+        double expectedResult = -100000;
+        double actualResult = calculator.calculate(-FIRST_VARIABLE, SECOND_VARIABLE, '^');
+        assertEquals(expectedResult, actualResult);
+        expectedResult = 1.0E-5;
+        actualResult = calculator.calculate(FIRST_VARIABLE, -SECOND_VARIABLE, '^');
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void subtractionWithZero_Ok() {
+        double expectedResult = -5;
+        double actualResult = calculator.calculate(0, SECOND_VARIABLE, '-');
+        assertEquals(expectedResult, actualResult);
+        expectedResult = 10;
+        actualResult = calculator.calculate(FIRST_VARIABLE, 0, '-');
         assertEquals(expectedResult, actualResult);
     }
 
@@ -91,7 +181,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void raisingToAPowerWithNegativeValues_NotOk() {
+    public void raisingToAPowerWithNegativeValues_Ok() {
         double expectedResult = -100000.0;
         double actualResult = calculator.calculate(-FIRST_VARIABLE, SECOND_VARIABLE, '^');
         assertEquals(expectedResult, actualResult);
