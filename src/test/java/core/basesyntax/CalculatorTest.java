@@ -106,7 +106,7 @@ public class CalculatorTest {
     @Test
     public void raisingToPower_NotOK() {
         assertThrows(ArithmeticException.class, () ->
-            calculator.calculate(2000000000, '^', 2000000000));
+                calculator.calculate(2000000000, '^', 2000000000));
         assertThrows(ArithmeticException.class, () ->
                 calculator.calculate(0, '^', -4));
     }
