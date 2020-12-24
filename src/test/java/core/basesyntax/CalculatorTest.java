@@ -13,7 +13,7 @@ public class CalculatorTest {
     public static final int FIRST_NEGATIVE_VALUE = -10;
     public static final int SECOND_NEGATIVE_VALUE = -15;
 
-    static Calculator calculator;
+    private static Calculator calculator;
 
     @BeforeAll
     public static void beforeAll() {
