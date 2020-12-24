@@ -46,7 +46,7 @@ public class Calculator {
     }
 
     private double multiply(double a, double b) {
-        return a * b;
+        return Math.abs(a * b) == 0 ? 0 : a * b;
     }
 
     private double raiseToPower(double a, double power) {
