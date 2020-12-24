@@ -15,29 +15,80 @@ class CalculatorTest {
     }
 
     @Test
-    void correctInput() {
-        double first = 56;
-        double second = 5;
-
-        assertEquals(first + second, calculator.calculate(first, second, '+'));
-        assertEquals(first - second, calculator.calculate(first, second, '-'));
-        assertEquals(first / second, calculator.calculate(first, second, '/'));
-        assertEquals(first * second, calculator.calculate(first, second, '*'));
-        assertEquals(Math.pow(second, first), calculator.calculate(first, second, '^'));
+    void addition_Ok() {
+        assertEquals(5 + 6, calculator.calculate(5, 6, '+'));
+        assertEquals((-2) + (-8), calculator.calculate(-2, -8, '+'));
+        assertEquals((-24) + 7, calculator.calculate(-24, 7, '+'));
+        assertEquals(5, calculator.calculate(5, 0, '+'));
+        assertEquals(5, calculator.calculate(0, 5, '+'));
     }
 
     @Test
-    void incorrectNumericInput() {
-        double first = 5;
-        double second = 0;
-
+    void addition_NotOk() {
         assertThrows(ArithmeticException.class, () -> {
-            calculator.calculate(first, second, '/');
+            calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
         });
     }
 
     @Test
-    void incorrectOperation() {
+    void subtraction_Ok() {
+        assertEquals(5 - 6, calculator.calculate(5, 6, '-'));
+        assertEquals((-2) - (-8), calculator.calculate(-2, -8, '-'));
+        assertEquals((-24) - 7, calculator.calculate(-24, 7, '-'));
+        assertEquals(5, calculator.calculate(5, 0, '-'));
+        assertEquals(-5, calculator.calculate(0, 5, '-'));
+        assertEquals(0, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-'));
+        assertEquals(0, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'));
+    }
+
+    @Test
+    void multiplication_Ok() {
+        assertEquals(5 * 6, calculator.calculate(5, 6, '*'));
+        assertEquals((-2) * (-8), calculator.calculate(-2, -8, '*'));
+        assertEquals((-24) * 7, calculator.calculate(-24, 7, '*'));
+        assertEquals(0, calculator.calculate(5, 0, '*'));
+        assertEquals(0, calculator.calculate(0, 5, '*'));
+    }
+
+    @Test
+    void multiplication_NotOk() {
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
+        });
+    }
+
+    @Test
+    void division_Ok() {
+        assertEquals(5.0 / 6.0, calculator.calculate(5, 6, '/'));
+        assertEquals((-2.0) / (-8.0), calculator.calculate(-2.0, -8.0, '/'));
+        assertEquals((-24.0) / 7.0, calculator.calculate(-24.0, 7.0, '/'));
+        assertEquals(0, calculator.calculate(0, 5, '/'));
+        assertEquals(1, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/'));
+        assertEquals(1, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '/'));
+    }
+
+    @Test
+    void division_NotOk() {
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(0, 0, '/');
+            calculator.calculate(1, 0, '/');
+        });
+    }
+
+    @Test
+    void power_Ok() {
+        assertEquals(Math.pow(5, 5), calculator.calculate(5, 5, '^'));
+        assertEquals(Math.pow(-5, 5), calculator.calculate(-5, 5, '^'));
+        assertEquals(Math.pow(5, -5), calculator.calculate(5, -5, '^'));
+        assertEquals(Math.pow(-5, -5), calculator.calculate(-5, -5, '^'));
+        assertEquals(Math.pow(5, 0), calculator.calculate(5, 0, '^'));
+        assertEquals(Math.pow(-5, 0), calculator.calculate(-5, 0, '^'));
+        assertEquals(Math.pow(0, 5), calculator.calculate(0, 5, '^'));
+    }
+
+
+    @Test
+    void operation_NotOk() {
         int first = 0;
         int second = 0;
         assertThrows(RuntimeException.class, () -> {
@@ -49,23 +100,12 @@ class CalculatorTest {
     }
 
     @Test
-    void largeCorrectInput() {
-        double first = 3456576870796857345768780235398753205732985732985779832579382753d;
-        double second = 576898324239872349089832823526236235232352357295792759823785972d;
-
-        assertEquals(first + second, calculator.calculate(first, second, '+'));
-        assertEquals(first - second, calculator.calculate(first, second, '-'));
-        assertEquals(first / second, calculator.calculate(first, second, '/'));
-        assertEquals(first * second, calculator.calculate(first, second, '*'));
-    }
-
-    @Test
-    void largeIncorrectInput() {
-        double first = 345657687079685734576878d;
-        double second = 57689832423987234908985d;
-
+    void pow_NotOk() {
         assertThrows(ArithmeticException.class, () -> {
-            calculator.calculate(first, second, '^');
+            calculator.calculate(55555, 55555, '^');
+        });
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(0, -5, '^');
         });
     }
 }

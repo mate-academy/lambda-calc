@@ -22,7 +22,7 @@ public class Calculator {
                 break;
 
             case '^' :
-                result = Math.pow(second, first);
+                result = Math.pow(first, second);
                 break;
 
             default:
