@@ -2,6 +2,7 @@ package core.basesyntax;
 
 import java.util.NoSuchElementException;
 
+
 public class Calculator {
 
     public double calculate(int number1, int number2, char operation) {
