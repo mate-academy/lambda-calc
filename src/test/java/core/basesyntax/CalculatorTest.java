@@ -36,7 +36,8 @@ class CalculatorTest {
         assertNotEquals(19, calculator.calculate(0, 90, "+"));
         assertNotEquals(1.76931348623157E308,
                 calculator.calculate(Double.MAX_VALUE, 120, "+"));
-        assertNotEquals(450, calculator.calculate(Double.MIN_VALUE, 45, "+"));
+        assertNotEquals(450,
+                calculator.calculate(Double.MIN_VALUE + 0.01, Double.MIN_VALUE + 45, "+"));
     }
 
     @Test
@@ -52,7 +53,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateSubstring_NotOk() {
+    void calculateSubtraction_NotOk() {
         assertNotEquals(5, calculator.calculate(8, 8, "-"));
         assertNotEquals(10, calculator.calculate(-8, 2, "-"));
         assertNotEquals(-28, calculator.calculate(-45, -23, "-"));
