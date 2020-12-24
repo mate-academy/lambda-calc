@@ -19,6 +19,7 @@ public class Calculator implements Calculable {
     }
 
     private double add(double first, double second) {
+        checkMaxValues(first, second, '+');
         return first + second;
     }
 
@@ -34,6 +35,7 @@ public class Calculator implements Calculable {
     }
 
     private double multiply(double first, double second) {
+        checkMaxValues(first, second, '*');
         return first * second;
     }
 
@@ -45,5 +47,14 @@ public class Calculator implements Calculable {
             throw new RuntimeException("Negative power fractional is prohibited");
         }
         return Math.pow(first, second);
+    }
+
+    private void checkMaxValues(double first, double second, char operation) {
+        if (first == Double.MAX_VALUE && second == Double.MAX_VALUE) {
+            throw new RuntimeException("Operation " + operation + " two max values is prohibited");
+        }
+        if (first == Double.MAX_VALUE || second == Double.MAX_VALUE) {
+            throw new RuntimeException("Operation " + operation + " with max value is prohibited");
+        }
     }
 }

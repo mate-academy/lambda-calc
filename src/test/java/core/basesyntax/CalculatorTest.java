@@ -51,15 +51,17 @@ class CalculatorTest {
     }
 
     @Test
-    void addMaxValue_Ok() {
-        double actual = calculator.calculate(Double.MAX_VALUE, 15, '+');
-        assertEquals(Double.MAX_VALUE + 15, actual);
+    void addMaxValue_NotOk() {
+        assertThrows(RuntimeException.class, () -> {
+            calculator.calculate(Double.MAX_VALUE, 15, '+');
+        });
     }
 
     @Test
-    void addTwoMaxValues_Ok() {
-        double actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
-        assertEquals(Double.MAX_VALUE + Double.MAX_VALUE, actual);
+    void addTwoMaxValues_NotOk() {
+        assertThrows(RuntimeException.class, () -> {
+            calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
+        });
     }
 
     @Test
@@ -159,15 +161,17 @@ class CalculatorTest {
     }
 
     @Test
-    void mulMaxValue_Ok() {
-        double actual = calculator.calculate(Double.MAX_VALUE, 15, '*');
-        assertEquals(Double.MAX_VALUE * 100, actual);
+    void mulMaxValue_NotOk() {
+        assertThrows(RuntimeException.class, () -> {
+            calculator.calculate(Double.MAX_VALUE, 15, '*');
+        });
     }
 
     @Test
-    void mulTwoMaxValues_Ok() {
-        double actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
-        assertEquals(Double.MAX_VALUE * Double.MAX_VALUE, actual);
+    void mulTwoMaxValues_NotOk() {
+        assertThrows(RuntimeException.class, () -> {
+            calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
+        });
     }
 
     @Test
@@ -195,7 +199,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divZeroSecondArg_Ok() {
+    void divZeroSecondArg_NotOk() {
         assertThrows(RuntimeException.class, () -> {
             calculator.calculate(15, 0, '/');
         });
@@ -262,14 +266,14 @@ class CalculatorTest {
     }
 
     @Test
-    void powZeroPowerNegative_Ok() {
+    void powZeroPowerNegative_NotOk() {
         assertThrows(RuntimeException.class, () -> {
             calculator.calculate(0, -2, '^');
         });
     }
 
     @Test
-    void powNegativeAndFractionalNumber_Ok() {
+    void powNegativeAndFractionalNumber_NotOk() {
         assertThrows(RuntimeException.class, () -> {
             calculator.calculate(-2, 0.5, '^');
         });
