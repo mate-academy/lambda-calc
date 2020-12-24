@@ -17,6 +17,48 @@ public class CalculatorTest {
     }
 
     @Test
+    public void integerMaxValueResults_Correct() {
+        double maxIntegerAddition = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '+');
+        assertEquals(4.294967294E9, maxIntegerAddition);
+        double maxIntegerSubtraction = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '-');
+        assertEquals(0, maxIntegerSubtraction);
+        double maxIntegerMultiplication = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '*');
+        assertEquals(4.6116860141324206E18, maxIntegerMultiplication);
+        double maxIntegerDivision = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '/');
+        assertEquals(1, maxIntegerDivision);
+        double maxIntegerPower = calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '^');
+        assertEquals(Double.POSITIVE_INFINITY, maxIntegerPower);
+    }
+
+    @Test
+    public void integerMinValueResults_Correct() {
+        double maxIntegerAddition = calculator.calculate(Integer.MIN_VALUE, Integer.MIN_VALUE, '+');
+        assertEquals(-4.294967296E9, maxIntegerAddition);
+        double maxIntegerSubtraction = calculator.calculate(Integer.MIN_VALUE, Integer.MIN_VALUE, '-');
+        assertEquals(0, maxIntegerSubtraction);
+        double maxIntegerMultiplication = calculator.calculate(Integer.MIN_VALUE, Integer.MIN_VALUE, '*');
+        assertEquals(4.6116860184273879E18, maxIntegerMultiplication);
+        double maxIntegerDivision = calculator.calculate(Integer.MIN_VALUE, Integer.MIN_VALUE, '/');
+        assertEquals(1, maxIntegerDivision);
+        double maxIntegerPower = calculator.calculate(Integer.MIN_VALUE, Integer.MIN_VALUE, '^');
+        assertEquals(0, maxIntegerPower);
+    }
+
+    @Test
+    public void integerMaxAndMinValueResults_Correct() {
+        double maxIntegerAddition = calculator.calculate(Integer.MAX_VALUE, Integer.MIN_VALUE, '+');
+        assertEquals(-1, maxIntegerAddition);
+        double maxIntegerSubtraction = calculator.calculate(Integer.MAX_VALUE, Integer.MIN_VALUE, '-');
+        assertEquals(4.294967295E9, maxIntegerSubtraction);
+        double maxIntegerMultiplication = calculator.calculate(Integer.MAX_VALUE, Integer.MIN_VALUE, '*');
+        assertEquals(-4.6116860162799043E18, maxIntegerMultiplication);
+        double maxIntegerDivision = calculator.calculate(Integer.MAX_VALUE, Integer.MIN_VALUE, '/');
+        assertEquals(-0.9999999995343387, maxIntegerDivision);
+        double maxIntegerPower = calculator.calculate(Integer.MAX_VALUE, Integer.MIN_VALUE, '^');
+        assertEquals(0, maxIntegerPower);
+    }
+
+    @Test
     public void calculatorImplementsInterface_True() {
         assertTrue(calculator instanceof Calculable,
                 "Must inherit interface behavior");
