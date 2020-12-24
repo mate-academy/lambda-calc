@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import org.junit.jupiter.api.Test;
 
-class CalculationLogicTest {
+public class CalculationLogicTest {
     private static final double MAX = Double.MAX_VALUE;
     private static final double MIN = Double.MIN_VALUE;
     private static final double PLUS_INFINITY = Double.POSITIVE_INFINITY;
@@ -19,7 +19,7 @@ class CalculationLogicTest {
     private final NumberFormat format = new DecimalFormat("0.00");
 
     @Test
-    void illegalOperation_NotOk() {
+    public void illegalOperation_NotOk() {
         assertThrows(UnexpectedOperandException.class,
                 () -> current.calculation(67.4, 5.36, 'x'));
         assertThrows(UnexpectedOperandException.class,
@@ -30,7 +30,7 @@ class CalculationLogicTest {
     }
 
     @Test
-    void additionTest_Ok() {
+    public void additionTest_Ok() {
         assertEquals(10.78, Double.parseDouble(format.format(
                 current.calculation(4, 6.78, '+'))));
         assertEquals(123.15, Double.parseDouble(format.format(
@@ -50,7 +50,7 @@ class CalculationLogicTest {
     }
 
     @Test
-    void subtractionTest_Ok() {
+    public void subtractionTest_Ok() {
         assertEquals(3, Double.parseDouble(format.format(
                 current.calculation(7.65, 4.65, '-'))));
         assertEquals(-5.4, Double.parseDouble(format.format(
@@ -66,7 +66,7 @@ class CalculationLogicTest {
     }
 
     @Test
-    void multiplicationTest_Ok() {
+    public void multiplicationTest_Ok() {
         assertEquals(25, Double.parseDouble(format.format(
                 current.calculation(5, 5, '*'))));
         assertEquals(-25, Double.parseDouble(format.format(
@@ -79,11 +79,10 @@ class CalculationLogicTest {
                 current.calculation(0, -5, '*'))));
         assertThrows(ExpectedException.class,
                 () -> current.calculation(MAX, MAX,'*'));
-
     }
 
     @Test
-    void divisionTest_Ok() {
+    public void divisionTest_Ok() {
         assertEquals(1.33, Double.parseDouble(format.format(
                 current.calculation(4, 3, '/'))));
         assertEquals(4, Double.parseDouble(format.format(
@@ -95,7 +94,7 @@ class CalculationLogicTest {
     }
 
     @Test
-    void powerTest_Ok() {
+    public void powerTest_Ok() {
         assertEquals(4, Double.parseDouble(format.format(
                 current.calculation(2, 2, '^'))));
         assertEquals(0.25, Double.parseDouble(format.format(
