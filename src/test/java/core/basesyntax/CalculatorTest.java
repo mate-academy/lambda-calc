@@ -36,8 +36,8 @@ class CalculatorTest {
         assertNotEquals(19, calculator.calculate(0, 90, "+"));
         assertNotEquals(1.76931348623157E308,
                 calculator.calculate(Double.MAX_VALUE, 120, "+"));
-        assertNotEquals(450,
-                calculator.calculate(Double.MIN_VALUE + 0.01, Double.MIN_VALUE + 45, "+"));
+        assertNotEquals(Double.MIN_VALUE + 0.01,
+                calculator.calculate(Double.MIN_VALUE, 45, "+"));
     }
 
     @Test
