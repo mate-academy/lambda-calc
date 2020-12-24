@@ -1,10 +1,15 @@
 package core.basesyntax;
 
+import static core.basesyntax.ArithmeticOperation.ADD;
+import static core.basesyntax.ArithmeticOperation.DIV;
+import static core.basesyntax.ArithmeticOperation.MUL;
+import static core.basesyntax.ArithmeticOperation.POW;
+import static core.basesyntax.ArithmeticOperation.SUB;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static core.basesyntax.ArithmeticOperation.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorImplTest {
     private static Calculator testCalc;

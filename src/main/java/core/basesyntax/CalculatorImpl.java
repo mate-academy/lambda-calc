@@ -2,7 +2,8 @@ package core.basesyntax;
 
 public class CalculatorImpl implements Calculator {
     @Override
-    public double calculate(double firstNumber, double secondNumber, ArithmeticOperation arithmeticOperation) {
+    public double calculate(double firstNumber, double secondNumber,
+                            ArithmeticOperation arithmeticOperation) {
         switch (arithmeticOperation) {
             case ADD :
                 if (firstNumber == Double.MAX_VALUE || secondNumber == Double.MAX_VALUE) {
@@ -16,7 +17,7 @@ public class CalculatorImpl implements Calculator {
                 return firstNumber - secondNumber;
             case MUL :
                 if (firstNumber == Double.MAX_VALUE || secondNumber == Double.MAX_VALUE
-                    || (long) firstNumber * secondNumber > Double.MAX_VALUE) {
+                        || (long) firstNumber * secondNumber > Double.MAX_VALUE) {
                     throw new ArithmeticException("Too big data");
                 }
                 return firstNumber * secondNumber;
@@ -27,7 +28,8 @@ public class CalculatorImpl implements Calculator {
                 return firstNumber / secondNumber;
             case POW :
                 return Math.pow(firstNumber, secondNumber);
+            default:
+                throw new ArithmeticException("Wrong data");
         }
-        return 0;
     }
 }
