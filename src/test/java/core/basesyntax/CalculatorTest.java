@@ -13,188 +13,208 @@ class CalculatorTest {
     private double secondNumber;
     private Random random = new Random();
     private ArithmeticalOperator arithmeticalOperator = new Calculator();
-    private ArithmeticOperators[] arrayEnum;
+    private ArithmeticOperators[] operations = ArithmeticOperators.values();
 
     @Test
     void randomTest() {
-        arrayEnum = ArithmeticOperators.values();
         int operator = random.nextInt(5);
+        ArithmeticOperators characterOperator = operations[operator];
         firstNumber = random.nextDouble() * MAX_DOUBLE;
         secondNumber = random.nextDouble() * MAX_DOUBLE;
-        double expected = arrayEnum[operator] == ArithmeticOperators.ADDITION
+        double expected = operations[operator] == ArithmeticOperators.ADDITION
                 ? firstNumber + secondNumber
-                : arrayEnum[operator] == ArithmeticOperators.SUBTRACTION
+                : operations[operator] == ArithmeticOperators.SUBTRACTION
                 ? firstNumber - secondNumber
-                : arrayEnum[operator] == ArithmeticOperators.DIVISION
+                : operations[operator] == ArithmeticOperators.DIVISION
                 ? firstNumber / secondNumber
-                : arrayEnum[operator] == ArithmeticOperators.MULTIPLICATION
+                : operations[operator] == ArithmeticOperators.MULTIPLICATION
                 ? firstNumber * secondNumber
                 : Math.pow(firstNumber, secondNumber);
-        double actual = arithmeticalOperator.calculate(arrayEnum[operator],
+        double actual = arithmeticalOperator.calculate(characterOperator.getCharacter(),
                 firstNumber, secondNumber);
         assertEquals(expected, actual);
     }
 
     @Test
     void additionWithTwoPositiveOperands() {
+        ArithmeticOperators addition = operations[0];
         assertEquals(MAX_DOUBLE + MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.ADDITION, MAX_DOUBLE, MAX_DOUBLE));
+                        .calculate(addition.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
     }
 
     @Test
     void additionWithTwoNegativeOperands() {
+        ArithmeticOperators addition = operations[0];
         assertEquals(MIN_DOUBLE + MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.ADDITION, MIN_DOUBLE, MIN_DOUBLE));
+                        .calculate(addition.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void additionWithPositiveAndNegativeOperands() {
+        ArithmeticOperators addition = operations[0];
         assertEquals(MAX_DOUBLE + MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.ADDITION, MAX_DOUBLE, MIN_DOUBLE));
+                        .calculate(addition.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void additionWithZeroInDifferentPlaces() {
+        ArithmeticOperators addition = operations[0];
         assertEquals(MAX_DOUBLE + 0,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.ADDITION, MAX_DOUBLE, 0));
+                        .calculate(addition.getCharacter(), MAX_DOUBLE, 0));
         assertEquals(0 + MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.ADDITION, 0, MAX_DOUBLE));
+                        .calculate(addition.getCharacter(), 0, MAX_DOUBLE));
     }
 
     @Test
     void subtractionWithTwoPositiveOperands() {
+        ArithmeticOperators subtract = operations[1];
         assertEquals(MAX_DOUBLE - MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.SUBTRACTION, MAX_DOUBLE, MAX_DOUBLE));
+                        .calculate(subtract.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
     }
 
     @Test
     void subtractionWithTwoNegativeOperands() {
+        ArithmeticOperators subtract = operations[1];
         assertEquals(MIN_DOUBLE - MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.SUBTRACTION, MIN_DOUBLE, MIN_DOUBLE));
+                        .calculate(subtract.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void subtractionWithPositiveAndNegativeOperands() {
+        ArithmeticOperators subtract = operations[1];
         assertEquals(MAX_DOUBLE - MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.SUBTRACTION, MAX_DOUBLE, MIN_DOUBLE));
+                        .calculate(subtract.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void subtractionWithZeroInDifferentPlaces() {
+        ArithmeticOperators subtract = operations[1];
         assertEquals(MAX_DOUBLE - 0.0,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.SUBTRACTION, MAX_DOUBLE, 0.0));
+                        .calculate(subtract.getCharacter(), MAX_DOUBLE, 0.0));
         assertEquals(0.0 - MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.SUBTRACTION, 0.0, MAX_DOUBLE));
+                        .calculate(subtract.getCharacter(), 0.0, MAX_DOUBLE));
     }
 
     @Test
     void divisionWithTwoPositiveOperands() {
+        ArithmeticOperators division = operations[2];
         assertEquals(MAX_DOUBLE / MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.DIVISION, MAX_DOUBLE, MAX_DOUBLE));
+                        .calculate(division.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
     }
 
     @Test
     void divisionWithTwoNegativeOperands() {
+        ArithmeticOperators division = operations[2];
         assertEquals(MIN_DOUBLE / MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.DIVISION, MIN_DOUBLE, MIN_DOUBLE));
+                        .calculate(division.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void divisionWithPositiveAndNegativeOperands() {
+        ArithmeticOperators division = operations[2];
         assertEquals(MAX_DOUBLE / MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.DIVISION, MAX_DOUBLE, MIN_DOUBLE));
+                        .calculate(division.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void divisionWithWithZeroInDifferentPlaces() {
+        ArithmeticOperators division = operations[2];
         assertEquals(0 / MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.DIVISION, 0, MAX_DOUBLE));
+                        .calculate(division.getCharacter(), 0, MAX_DOUBLE));
         assertThrows(ArithmeticException.class, () -> {
             arithmeticalOperator
-                    .calculate(ArithmeticOperators.DIVISION, MAX_DOUBLE, 0);
+                    .calculate(division.getCharacter(), MAX_DOUBLE, 0);
         });
         assertThrows(ArithmeticException.class, () -> {
             arithmeticalOperator
-                    .calculate(ArithmeticOperators.DIVISION,0, 0);
+                    .calculate(division.getCharacter(), 0, 0);
         });
     }
 
     @Test
     void multiplicationWithTwoPositiveOperands() {
+        ArithmeticOperators multiplication = operations[3];
         assertEquals(MAX_DOUBLE * MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.MULTIPLICATION, MAX_DOUBLE, MAX_DOUBLE));
+                        .calculate(multiplication.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
     }
 
     @Test
     void multiplicationWithTwoNegativeOperands() {
+        ArithmeticOperators multiplication = operations[3];
         assertEquals(MIN_DOUBLE * MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.MULTIPLICATION, MIN_DOUBLE, MIN_DOUBLE));
+                        .calculate(multiplication.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void multiplicationWithPositiveAndNegativeOperands() {
+        ArithmeticOperators multiplication = operations[3];
         assertEquals(MAX_DOUBLE * MIN_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.MULTIPLICATION, MAX_DOUBLE, MIN_DOUBLE));
+                        .calculate(multiplication.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void multiplicationWithWithZeroInDifferentPlaces() {
+        ArithmeticOperators multiplication = operations[3];
         assertEquals(0 * MAX_DOUBLE,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.MULTIPLICATION, 0, MAX_DOUBLE));
+                        .calculate(multiplication.getCharacter(), 0, MAX_DOUBLE));
         assertEquals(MAX_DOUBLE * 0,
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.MULTIPLICATION, MAX_DOUBLE, 0));
+                        .calculate(multiplication.getCharacter(), MAX_DOUBLE, 0));
     }
 
     @Test
     void raisingWithTwoPositiveValues() {
+        ArithmeticOperators raising = operations[4];
         assertEquals(Math.pow(MAX_DOUBLE, MAX_DOUBLE),
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.RISING_TO_POWER, MAX_DOUBLE, MAX_DOUBLE));
+                        .calculate(raising.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
     }
 
     @Test
     void raisingWithTwoNegativeValues() {
+        ArithmeticOperators raising = operations[4];
         assertEquals(Math.pow(MIN_DOUBLE, MIN_DOUBLE),
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.RISING_TO_POWER, MIN_DOUBLE, MIN_DOUBLE));
+                        .calculate(raising.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void raisingWithPOsitiveAndNegativeValues() {
+        ArithmeticOperators raising = operations[4];
         assertEquals(Math.pow(MAX_DOUBLE, MIN_DOUBLE),
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.RISING_TO_POWER, MAX_DOUBLE, MIN_DOUBLE));
+                        .calculate(raising.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
     }
 
     @Test
     void raisingWithZeroInDifferentPlaces() {
+        ArithmeticOperators raising = operations[4];
         assertEquals(Math.pow(0, MIN_DOUBLE),
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.RISING_TO_POWER, 0, MIN_DOUBLE));
+                        .calculate(raising.getCharacter(), 0, MIN_DOUBLE));
         assertEquals(Math.pow(MAX_DOUBLE, 0),
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.RISING_TO_POWER, MAX_DOUBLE, 0));
+                        .calculate(raising.getCharacter(), MAX_DOUBLE, 0));
         assertEquals(Math.pow(0, 0),
                 arithmeticalOperator
-                        .calculate(ArithmeticOperators.RISING_TO_POWER, 0, 0));
+                        .calculate(raising.getCharacter(), 0, 0));
     }
 }

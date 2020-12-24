@@ -3,20 +3,20 @@ package core.basesyntax;
 public class Calculator implements ArithmeticalOperator {
 
     @Override
-    public double calculate(ArithmeticOperators operations, double firstValue, double secondValue) {
+    public double calculate(Character operations, double firstValue, double secondValue) {
         switch (operations) {
-            case ADDITION:
+            case '+':
                 return firstValue + secondValue;
-            case SUBTRACTION:
+            case '-':
                 return firstValue - secondValue;
-            case DIVISION:
+            case '/':
                 if (secondValue == 0) {
                     throw new ArithmeticException("You cannot divide by zero");
                 }
                 return firstValue / secondValue;
-            case MULTIPLICATION:
+            case '*':
                 return firstValue * secondValue;
-            case RISING_TO_POWER:
+            case '^':
                 return Math.pow(firstValue, secondValue);
             default:
                 throw new ArithmeticException("Wrong Arithmetic operation!");
