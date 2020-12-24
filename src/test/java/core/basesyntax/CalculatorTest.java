@@ -3,16 +3,10 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-    Calculator calculator;
-
-    @BeforeEach
-    private void beforeEach() {
-        calculator = new Calculator();
-    }
+    Calculator calculator = new Calculator();
 
     @Test
     void addTwoPositiveOperands() {
@@ -157,7 +151,6 @@ public class CalculatorTest {
         assertEquals(-0.125, actual);
     }
 
-    //- raising positive/negative value to zero power
     @Test
     void raisePositiveValueToZeroPow() {
         double actual = calculator.calculate(69, 0, '^');
@@ -179,5 +172,10 @@ public class CalculatorTest {
     @Test
     void illegalOperation() {
         assertThrows(RuntimeException.class, () -> calculator.calculate(10, 0, '?'));
+    }
+
+    @Test
+    void doubleOverflow() {
+        assertThrows(RuntimeException.class, () -> calculator.calculate(Double.MAX_VALUE, 1, '+'));
     }
 }

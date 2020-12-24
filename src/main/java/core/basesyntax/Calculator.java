@@ -2,44 +2,47 @@ package core.basesyntax;
 
 public class Calculator {
 
-    public double calculate(double a, double b, char operator) {
+    public double calculate(double firstValue, double secondValue, char operator) {
         switch (operator) {
             case '+':
-                return add(a, b);
+                return add(firstValue, secondValue);
             case '-':
-                return subtract(a, b);
+                return subtract(firstValue, secondValue);
             case '*':
-                return multiply(a, b);
+                return multiply(firstValue, secondValue);
             case '/':
-                return divide(a, b);
+                return divide(firstValue, secondValue);
             case '^':
-                return pow(a, b);
+                return pow(firstValue, secondValue);
             default:
                 throw new RuntimeException("No such operation exception: " + operator);
         }
     }
 
-    private double add(double a, double b) {
-        return a + b;
-    }
-
-    private double subtract(double a, double b) {
-        return a - b;
-    }
-
-    private double multiply(double a, double b) {
-        return a * b;
-    }
-
-    private double divide(double a, double b) {
-        if (b == 0) {
-            throw new ArithmeticException("Division by 0");
+    private double add(double firstValue, double secondValue) {
+        if (Double.MAX_VALUE - firstValue < secondValue) {
+            throw new RuntimeException("Double overflow");
         }
-        return a / b;
+        return firstValue + secondValue;
     }
 
-    private double pow(double a, double b) {
-        return Math.pow(a, b);
+    private double subtract(double firstValue, double secondValue) {
+        return firstValue - secondValue;
+    }
+
+    private double multiply(double firstValue, double secondValue) {
+        return firstValue * secondValue;
+    }
+
+    private double divide(double firstValue, double secondValue) {
+        if (secondValue == 0) {
+            throw new ArithmeticException("Division  secondValue by 0");
+        }
+        return firstValue / secondValue;
+    }
+
+    private double pow(double firstValue, double secondValue) {
+        return Math.pow(firstValue, secondValue);
     }
 
 }
