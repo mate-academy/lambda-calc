@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-import core.basesyntax.exceptions.ExpectedException;
+import core.basesyntax.exceptions.InfinityException;
 import core.basesyntax.exceptions.UnexpectedOperandException;
 
 public class CalculationLogic {
@@ -10,22 +10,22 @@ public class CalculationLogic {
     private static final char PLUS = '+';
     private static final char POWER = '^';
 
-    public double calculation(double a, double b, char operand) {
+    public double calculation(double value1, double value2, char operand) {
         switch (operand) {
             case PLUS: {
-                return addition(a, b);
+                return addition(value1, value2);
             }
             case MINUS: {
-                return subtraction(a, b);
+                return subtraction(value1, value2);
             }
             case MULTIPLY: {
-                return multiplication(a, b);
+                return multiplication(value1, value2);
             }
             case DIVIDE: {
-                return division(a, b);
+                return division(value1, value2);
             }
             case POWER: {
-                return power(a, b);
+                return power(value1, value2);
             }
             default:
                 throw new UnexpectedOperandException("Unexpected operation. Only addition, "
@@ -33,38 +33,35 @@ public class CalculationLogic {
         }
     }
 
-    private double addition(double a, double b) {
-        return a + b;
+    private double addition(double value1, double value2) {
+        return value1 + value2;
     }
 
-    private double subtraction(double a, double b) {
-        return a - b;
+    private double subtraction(double value1, double value2) {
+        return value1 - value2;
     }
 
-    private double multiplication(double a, double b) {
-        if (a == 0 && b < 0) {
+    private double multiplication(double value1, double value2) {
+        if (value1 == 0 && value2 < 0) {
             return 0;
         }
-        if (Double.isInfinite(a * b)) {
-            throw new ExpectedException("Result is infinity");
+        if (Double.isInfinite(value1 * value2)) {
+            throw new InfinityException("Result is infinity");
         }
-        return a * b;
+        return value1 * value2;
     }
 
-    private double division(double a, double b) {
-        if (b == 0) {
+    private double division(double value1, double value2) {
+        if (value2 == 0) {
             throw new ArithmeticException("can't divide by 0");
         }
-        return a / b;
+        return value1 / value2;
     }
 
-    private double power(double a, double b) {
-        if (Double.isInfinite(Math.pow(a, b)) && a > 0 && b > 0) {
-            throw new ExpectedException("Result is infinity");
+    private double power(double value1, double value2) {
+        if (Double.isInfinite(Math.pow(value1, value2)) && value1 > 0 && value2 > 0) {
+            throw new InfinityException("Result is infinity");
         }
-        return Math.pow(a, b);
+        return Math.pow(value1, value2);
     }
 }
-
-
-

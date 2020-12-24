@@ -3,20 +3,20 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import core.basesyntax.exceptions.ExpectedException;
+import core.basesyntax.exceptions.InfinityException;
 import core.basesyntax.exceptions.UnexpectedOperandException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import org.junit.jupiter.api.Test;
 
 public class CalculationLogicTest {
+    private static final CalculationLogic current = new CalculationLogic();
+    private static final NumberFormat format = new DecimalFormat("0.00");
+
     private static final double MAX = Double.MAX_VALUE;
     private static final double MIN = Double.MIN_VALUE;
     private static final double PLUS_INFINITY = Double.POSITIVE_INFINITY;
     private static final double MINUS_INFINITY = Double.NEGATIVE_INFINITY;
-
-    private static final CalculationLogic current = new CalculationLogic();
-    private final NumberFormat format = new DecimalFormat("0.00");
 
     @Test
     public void illegalOperation_NotOk() {
@@ -26,7 +26,6 @@ public class CalculationLogicTest {
                 () -> current.calculation(5.73, 67.45, '3'));
         assertThrows(UnexpectedOperandException.class,
                 () -> current.calculation(0, 67.45, '!'));
-
     }
 
     @Test
@@ -59,6 +58,8 @@ public class CalculationLogicTest {
                 current.calculation(7.65, -4.65, '-'))));
         assertEquals(-781.38, Double.parseDouble(format.format(
                 current.calculation(-775.98, 5.4, '-'))));
+        assertEquals(13.91, Double.parseDouble(format.format(
+                current.calculation(-21.56, -35.47, '-'))));
         assertEquals(MINUS_INFINITY,
                 current.calculation(-MAX, MAX, '-'));
         assertEquals(0,
@@ -77,7 +78,7 @@ public class CalculationLogicTest {
                 current.calculation(5, 0, '*'))));
         assertEquals(0, Double.parseDouble(format.format(
                 current.calculation(0, -5, '*'))));
-        assertThrows(ExpectedException.class,
+        assertThrows(InfinityException.class,
                 () -> current.calculation(MAX, MAX,'*'));
     }
 
@@ -89,6 +90,10 @@ public class CalculationLogicTest {
                 current.calculation(12, 3, '/'))));
         assertEquals(0,
                 current.calculation(0, MAX, '/'));
+        assertEquals(-2, Double.parseDouble(format.format(
+                current.calculation(-4, 2, '/'))));
+        assertEquals(3, Double.parseDouble(format.format(
+                current.calculation(-12, -4, '/'))));
         assertThrows(ArithmeticException.class,
                 () -> current.calculation(500, 0, '/'));
     }
@@ -109,7 +114,7 @@ public class CalculationLogicTest {
                 current.calculation(0, -3, '^'));
         assertEquals(1, Double.parseDouble(format.format(
                 current.calculation(MIN, MIN, '^'))));
-        assertThrows(ExpectedException.class,
+        assertThrows(InfinityException.class,
                 () -> current.calculation(MAX, MAX, '^'));
     }
 }
