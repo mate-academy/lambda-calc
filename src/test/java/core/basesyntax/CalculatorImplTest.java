@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class CalculatorImplTest {
+public class CalculatorImplTest {
     private static Calculator testCalc;
     private static String MESSAGE = "Rejected";
 

@@ -1,5 +1,7 @@
 package core.basesyntax;
 
+import java.math.BigDecimal;
+
 public class CalculatorImpl implements Calculator {
     @Override
     public double calculate(double firstNumber, double secondNumber,
@@ -17,8 +19,11 @@ public class CalculatorImpl implements Calculator {
                 }
                 return firstNumber - secondNumber;
             case MUL :
+                int isSmoller = BigDecimal.valueOf(firstNumber)
+                        .multiply(BigDecimal.valueOf(secondNumber))
+                        .compareTo(BigDecimal.valueOf(Double.MAX_VALUE));
                 if (firstNumber == Double.MAX_VALUE || secondNumber == Double.MAX_VALUE
-                        || (long) firstNumber * secondNumber > Double.MAX_VALUE) {
+                        || isSmoller > 0) {
                     throw new ArithmeticException("Too big data");
                 }
                 return firstNumber * secondNumber;
