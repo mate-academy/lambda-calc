@@ -75,7 +75,6 @@ class CalculatorTest {
         double expected = 89;
         double actual = calculator.calculate(numberFirst, numberSecond, ArephmeticActs.PLUS);
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -140,7 +139,6 @@ class CalculatorTest {
         double expected = -89;
         double actual = calculator.calculate(numberFirst, numberSecond, ArephmeticActs.MINUS);
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -210,7 +208,6 @@ class CalculatorTest {
         double expected = 0;
         double actual = calculator.calculate(numberFirst, numberSecond, ArephmeticActs.MULTIPLY);
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -247,7 +244,6 @@ class CalculatorTest {
         double expected = 1;
         double actual = calculator.calculate(numberFirst, numberSecond, ArephmeticActs.DIVIDE);
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -257,7 +253,6 @@ class CalculatorTest {
         double expected = 1;
         double actual = calculator.calculate(numberFirst, numberSecond, ArephmeticActs.DIVIDE);
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -279,7 +274,6 @@ class CalculatorTest {
             return;
         }
         fail();
-
     }
 
     @Test
@@ -345,7 +339,6 @@ class CalculatorTest {
         double actual = calculator.calculate(numberFirst, numberSecond,
                 ArephmeticActs.POWER);
         assertEquals(expected, actual);
-
     }
 
     @Test
