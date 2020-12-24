@@ -48,6 +48,11 @@ public class LambdaCalculatorTest {
         assertEquals(fourthExpected,fourthActual,
                 String.format("Wrong operation! expected: %f But was: %f",
                         fourthExpected, fourthActual));
+        double fifthActual = calculator.calculate(-TWENTY, -FIFTEEN, ADDITION);
+        double fifthExpected = -35;
+        assertEquals(fifthExpected,fifthActual,
+                String.format("Wrong operation! expected: %f But was: %f",
+                        fifthExpected, fifthActual));
     }
 
     @Test
@@ -73,6 +78,12 @@ public class LambdaCalculatorTest {
         assertEquals(fourthExpected, fourthActual,
                 String.format("Wrong operation! expected: %f But was: %f",
                         fourthExpected, fourthActual));
+        double fifthActual = calculator.calculate(-TWENTY, -FIFTEEN, SUBTRACTION);
+        double fifthExpected = -5;
+        assertEquals(fifthExpected,fifthActual,
+                String.format("Wrong operation! expected: %f But was: %f",
+                        fifthExpected, fifthActual));
+
     }
 
     @Test
@@ -98,7 +109,11 @@ public class LambdaCalculatorTest {
                 String.format("Wrong operation! expected: %f But was: %f",
                         fourthExpected, fourthActual));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(TWENTY, ZERO, DIVISION));
-
+        double fifthActual = calculator.calculate(-TWENTY, -FIFTEEN, DIVISION);
+        double fifthExpected = 1.3333333333333333;
+        assertEquals(fifthExpected,fifthActual,
+                String.format("Wrong operation! expected: %f But was: %f",
+                        fifthExpected, fifthActual));
     }
 
     @Test
@@ -124,6 +139,11 @@ public class LambdaCalculatorTest {
         assertEquals(fourthExpected, fourthActual,
                 String.format("Wrong operation! expected: %f But was: %f",
                         fourthExpected, fourthActual));
+        double fifthActual = calculator.calculate(-TWENTY, -FIFTEEN, MULTIPLICATION);
+        double fifthExpected = 300;
+        assertEquals(fifthExpected,fifthActual,
+                String.format("Wrong operation! expected: %f But was: %f",
+                        fifthExpected, fifthActual));
     }
 
     @Test
@@ -149,6 +169,16 @@ public class LambdaCalculatorTest {
         assertEquals(fourthExpected,fourthActual,
                 String.format("Wrong operation! expected: %f But was: %f",
                         fourthExpected, fourthActual));
+        double fifthActual = calculator.calculate(-TWENTY, ZERO, RAISING_TO_A_POWER);
+        double fifthExpected = 1;
+        assertEquals(fifthExpected,fifthActual,
+                String.format("Wrong operation! expected: %f But was: %f",
+                        fifthExpected, fifthActual));
+        double sixthActual = calculator.calculate(ONE_HUNDRED, -ONE, RAISING_TO_A_POWER);
+        double sixthExpected = 0.01;
+        assertEquals(sixthExpected,sixthActual,
+                String.format("Wrong operation! expected: %f But was: %f",
+                        sixthExpected, sixthActual));
     }
 
     @Test
