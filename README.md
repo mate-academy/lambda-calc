@@ -1,7 +1,7 @@
 # jv-lambda-calc
 
-Write a calculator. Method `calculate()` should accept three parameters: two numeric values and char as operation. 
-This method should be able to perform the following operations: 
+Write a calculator. Method `calculate()` should accept three parameters: two numeric values and char as operation. This
+method should be able to perform the following operations:
 
 - Addition
 - Subtraction
