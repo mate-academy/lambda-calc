@@ -52,14 +52,20 @@ class CalculatorTest {
 
     @Test
     void addMaxValue_NotOk() {
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(Double.MAX_VALUE, 15, '+');
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE * 0.1, '+');
         });
     }
 
     @Test
+    void addMaxValue_Ok() {
+        double actual = calculator.calculate(Double.MAX_VALUE, 15, '+');
+        assertEquals(Double.MAX_VALUE, actual);
+    }
+
+    @Test
     void addTwoMaxValues_NotOk() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
         });
     }
@@ -162,14 +168,14 @@ class CalculatorTest {
 
     @Test
     void mulMaxValue_NotOk() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(Double.MAX_VALUE, 15, '*');
         });
     }
 
     @Test
     void mulTwoMaxValues_NotOk() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
         });
     }
@@ -200,7 +206,7 @@ class CalculatorTest {
 
     @Test
     void divZeroSecondArg_NotOk() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(15, 0, '/');
         });
     }
@@ -267,15 +273,22 @@ class CalculatorTest {
 
     @Test
     void powZeroPowerNegative_NotOk() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(0, -2, '^');
         });
     }
 
     @Test
     void powNegativeAndFractionalNumber_NotOk() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(-2, 0.5, '^');
+        });
+    }
+
+    @Test
+    void wrongOperation_NotOk() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(3, 5, 'g');
         });
     }
 }
