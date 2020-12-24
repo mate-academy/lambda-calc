@@ -319,8 +319,8 @@ public class CalculatorTest {
     @Test
     public void falseCasesTests_NotOk() {
         double actualAddition = calculator.calculate(123, 456, '+');
-        double notExpertedAddition = 123456;
-        assertFalse(actualAddition == notExpertedAddition);
+        double notExpectedAddition = 123456;
+        assertFalse(actualAddition == notExpectedAddition);
         double actualSubtraction = calculator.calculate(123456, 123, '-');
         double notExpectedSubtraction = 456;
         assertFalse(actualSubtraction == notExpectedSubtraction);
@@ -331,7 +331,7 @@ public class CalculatorTest {
         double notExpectedDivide = 15;
         assertFalse(actualDivide == notExpectedDivide);
         double actualRisePower = calculator.calculate(2, 3, '^');
-        double notExpectedRisePowe = 6;
-        assertFalse(actualRisePower == notExpectedRisePowe);
+        double notExpectedRisePower = 6;
+        assertFalse(actualRisePower == notExpectedRisePower);
     }
 }

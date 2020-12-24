@@ -12,16 +12,13 @@ public class Calculator {
             case '/':
                 if (secondDigit == 0) {
                     throw new ArithmeticException("Dividing by zero forbidden");
-                } else {
-                    return firstDigit / secondDigit;
                 }
+                    return firstDigit / secondDigit;
             case '^':
                 if (firstDigit < 0 && secondDigit < 1) {
                     throw new ArithmeticException("Negative number can't "
-                            + "be raised to power less than 1 ");
-                } else {
+                            + "be raised to power less than 1 ");}
                     return Math.pow(firstDigit, secondDigit);
-                }
             default:
                 throw new UnsupportedOperationException("Operator was not defined properly");
         }
