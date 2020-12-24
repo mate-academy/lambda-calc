@@ -16,7 +16,7 @@ public class Calculator {
                 }
                 return (double) first / second;
             case '^':
-                if (first == 0 && second > 0) {
+                if (first == 0 && second < 0) {
                     throw new ArithmeticException("Sorry, I can't raising zero in negative pow");
                 }
                 if (Double.isInfinite(Math.pow(first, second))) {
