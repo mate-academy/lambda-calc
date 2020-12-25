@@ -1,9 +1,8 @@
 package core.basesyntax;
 
-public class Calculator implements ArithmeticalOperator {
-
+public class Calculator implements Calculable {
     @Override
-    public double calculate(Character operations, double firstValue, double secondValue) {
+    public double calculate(char operations, double firstValue, double secondValue) {
         switch (operations) {
             case '+':
                 return firstValue + secondValue;
