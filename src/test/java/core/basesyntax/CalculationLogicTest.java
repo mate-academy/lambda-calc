@@ -7,16 +7,24 @@ import core.basesyntax.exceptions.InfinityException;
 import core.basesyntax.exceptions.UnexpectedOperandException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class CalculationLogicTest {
-    private static final CalculationLogic current = new CalculationLogic();
-    private static final NumberFormat format = new DecimalFormat("0.00");
-
     private static final double MAX = Double.MAX_VALUE;
     private static final double MIN = Double.MIN_VALUE;
     private static final double PLUS_INFINITY = Double.POSITIVE_INFINITY;
     private static final double MINUS_INFINITY = Double.NEGATIVE_INFINITY;
+
+    private static CalculationLogic current;
+    private static NumberFormat format;
+
+    @BeforeAll
+    static void setUp() {
+        current = new CalculationLogic();
+        format = new DecimalFormat("0.00");
+    }
 
     @Test
     public void illegalOperation_NotOk() {
