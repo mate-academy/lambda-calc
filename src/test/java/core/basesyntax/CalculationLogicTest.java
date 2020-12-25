@@ -20,7 +20,7 @@ public class CalculationLogicTest {
     private static CalculationLogic current;
 
     @BeforeAll
-    static void setUp() {
+    public static void setUp() {
         current = new CalculationLogic();
     }
 
