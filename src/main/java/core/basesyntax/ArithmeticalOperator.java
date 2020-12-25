@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-public interface ArithmeticalOperator {
+public interface Calculable {
 
     double calculate(Character operations, double firstValue, double secondValue);
 }
