@@ -2,5 +2,5 @@ package core.basesyntax;
 
 public interface Calculable {
 
-    double calculate(Character operations, double firstValue, double secondValue);
+    double calculate(char operation, double firstValue, double secondValue);
 }
