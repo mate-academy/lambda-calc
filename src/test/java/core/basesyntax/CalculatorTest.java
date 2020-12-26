@@ -4,19 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Random;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
     private static final double MAX_DOUBLE = Double.MAX_VALUE;
     private static final double MIN_DOUBLE = Double.MIN_VALUE;
-    private Random random;
-    private Calculable calculable;
-    private ArithmeticOperators[] operations;
-    private ArithmeticOperators operator;
+    private static Random random;
+    private static Calculable calculable;
+    private static ArithmeticOperators[] operations;
 
-    @BeforeEach
-    public void setUp() {
+    @BeforeAll
+    public static void init() {
         random = new Random();
         calculable = new Calculator();
         operations = ArithmeticOperators.values();
@@ -44,7 +43,7 @@ public class CalculatorTest {
 
     @Test
     public void additionWithTwoPositiveOperands() {
-        operator = operations[0];
+        ArithmeticOperators operator = operations[0];
         assertEquals(MAX_DOUBLE + MAX_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
@@ -52,7 +51,7 @@ public class CalculatorTest {
 
     @Test
     public void additionWithTwoNegativeOperands() {
-        operator = operations[0];
+        ArithmeticOperators operator = operations[0];
         assertEquals(MIN_DOUBLE + MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
@@ -60,7 +59,7 @@ public class CalculatorTest {
 
     @Test
     public void additionWithPositiveAndNegativeOperands() {
-        operator = operations[0];
+        ArithmeticOperators operator = operations[0];
         assertEquals(MAX_DOUBLE + MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
@@ -68,7 +67,7 @@ public class CalculatorTest {
 
     @Test
     public void additionWithZeroInDifferentPlaces() {
-        operator = operations[0];
+        ArithmeticOperators operator = operations[0];
         assertEquals(MAX_DOUBLE + 0,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, 0));
@@ -79,7 +78,7 @@ public class CalculatorTest {
 
     @Test
     public void subtractionWithTwoPositiveOperands() {
-        operator = operations[1];
+        ArithmeticOperators operator = operations[1];
         assertEquals(MAX_DOUBLE - MAX_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
@@ -87,7 +86,7 @@ public class CalculatorTest {
 
     @Test
     public void subtractionWithTwoNegativeOperands() {
-        operator = operations[1];
+        ArithmeticOperators operator = operations[1];
         assertEquals(MIN_DOUBLE - MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
@@ -95,7 +94,7 @@ public class CalculatorTest {
 
     @Test
     public void subtractionWithPositiveAndNegativeOperands() {
-        operator = operations[1];
+        ArithmeticOperators operator = operations[1];
         assertEquals(MAX_DOUBLE - MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
@@ -103,7 +102,7 @@ public class CalculatorTest {
 
     @Test
     public void subtractionWithZeroInDifferentPlaces() {
-        operator = operations[1];
+        ArithmeticOperators operator = operations[1];
         assertEquals(MAX_DOUBLE - 0.0,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, 0.0));
@@ -114,7 +113,7 @@ public class CalculatorTest {
 
     @Test
     public void divisionWithTwoPositiveOperands() {
-        operator = operations[2];
+        ArithmeticOperators operator = operations[2];
         assertEquals(MAX_DOUBLE / MAX_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
@@ -122,7 +121,7 @@ public class CalculatorTest {
 
     @Test
     public void divisionWithTwoNegativeOperands() {
-        operator = operations[2];
+        ArithmeticOperators operator = operations[2];
         assertEquals(MIN_DOUBLE / MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
@@ -130,7 +129,7 @@ public class CalculatorTest {
 
     @Test
     public void divisionWithPositiveAndNegativeOperands() {
-        operator = operations[2];
+        ArithmeticOperators operator = operations[2];
         assertEquals(MAX_DOUBLE / MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
@@ -138,7 +137,7 @@ public class CalculatorTest {
 
     @Test
     public void divisionWithWithZeroInDifferentPlaces() {
-        operator = operations[2];
+        ArithmeticOperators operator = operations[2];
         assertEquals(0 / MAX_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), 0, MAX_DOUBLE));
@@ -154,7 +153,7 @@ public class CalculatorTest {
 
     @Test
     public void multiplicationWithTwoPositiveOperands() {
-        operator = operations[3];
+        ArithmeticOperators operator = operations[3];
         assertEquals(MAX_DOUBLE * MAX_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
@@ -162,7 +161,7 @@ public class CalculatorTest {
 
     @Test
     public void multiplicationWithTwoNegativeOperands() {
-        operator = operations[3];
+        ArithmeticOperators operator = operations[3];
         assertEquals(MIN_DOUBLE * MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
@@ -170,7 +169,7 @@ public class CalculatorTest {
 
     @Test
     public void multiplicationWithPositiveAndNegativeOperands() {
-        operator = operations[3];
+        ArithmeticOperators operator = operations[3];
         assertEquals(MAX_DOUBLE * MIN_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MIN_DOUBLE));
@@ -178,7 +177,7 @@ public class CalculatorTest {
 
     @Test
     public void multiplicationWithWithZeroInDifferentPlaces() {
-        operator = operations[3];
+        ArithmeticOperators operator = operations[3];
         assertEquals(0 * MAX_DOUBLE,
                 calculable
                         .calculate(operator.getCharacter(), 0, MAX_DOUBLE));
@@ -189,7 +188,7 @@ public class CalculatorTest {
 
     @Test
     public void raisingWithTwoPositiveValues() {
-        operator = operations[4];
+        ArithmeticOperators operator = operations[4];
         assertEquals(Math.pow(MAX_DOUBLE, MAX_DOUBLE),
                 calculable
                         .calculate(operator.getCharacter(), MAX_DOUBLE, MAX_DOUBLE));
@@ -197,7 +196,7 @@ public class CalculatorTest {
 
     @Test
     public void raisingWithTwoNegativeValues() {
-        operator = operations[4];
+        ArithmeticOperators operator = operations[4];
         assertEquals(Math.pow(MIN_DOUBLE, MIN_DOUBLE),
                 calculable
                         .calculate(operator.getCharacter(), MIN_DOUBLE, MIN_DOUBLE));
