@@ -3,7 +3,6 @@ package core.basesyntax;
 import java.math.BigDecimal;
 
 public class Calculator {
-
     public double calculate(int firstValue, int secondValue, char operator) {
         switch (operator) {
             case '+':
@@ -39,7 +38,7 @@ public class Calculator {
 
     private double divide(int firstValue, int secondValue) {
         if (secondValue == 0) {
-            throw new ArithmeticException("Division  secondValue by 0");
+            throw new ArithmeticException("Division secondValue by 0");
         }
         return (double) firstValue / secondValue;
     }
@@ -47,5 +46,4 @@ public class Calculator {
     private double pow(int firstValue, int secondValue) {
         return Math.pow(firstValue, secondValue);
     }
-
 }

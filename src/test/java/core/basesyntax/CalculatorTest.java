@@ -3,73 +3,79 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-    Calculator calculator = new Calculator();
+    private static Calculator calculator;
+
+    @BeforeAll
+    static void setUp() {
+        calculator = new Calculator();
+    }
 
     @Test
-    void addTwoPositiveOperands() {
+    public void addTwoPositiveOperands() {
         double actual = calculator.calculate(10, 15, '+');
         assertEquals(25, actual);
     }
 
     @Test
-    void addTwoNegativeOperands() {
+    public void addTwoNegativeOperands() {
         double actual = calculator.calculate(-10, -15, '+');
         assertEquals(-25, actual);
     }
 
     @Test
-    void addPositiveAndNegative() {
+    public void addPositiveAndNegative() {
         double actual = calculator.calculate(10, -15, '+');
         assertEquals(-5, actual);
     }
 
     @Test
-    void addZeroAndOperand() {
+    public void addZeroAndOperand() {
         double actual = calculator.calculate(0, 15, '+');
         assertEquals(15, actual);
     }
 
     @Test
-    void addOperandAndZero() {
+    public void addOperandAndZero() {
         double actual = calculator.calculate(10, 0, '+');
         assertEquals(10, actual);
     }
 
     @Test
-    void subtractTwoPositiveOperands() {
+    public void subtractTwoPositiveOperands() {
         double actual = calculator.calculate(10, 15, '-');
         assertEquals(-5, actual);
     }
 
     @Test
-    void subtractTwoNegativeOperands() {
+    public void subtractTwoNegativeOperands() {
         double actual = calculator.calculate(-10, -15, '-');
         assertEquals(5, actual);
     }
 
     @Test
-    void subtractPositiveAndNegative() {
+    public void subtractPositiveAndNegative() {
         double actual = calculator.calculate(10, -15, '-');
         assertEquals(25, actual);
     }
 
     @Test
-    void subtractZeroAndOperand() {
+    public void subtractZeroAndOperand() {
         double actual = calculator.calculate(0, 15, '-');
         assertEquals(-15, actual);
     }
 
     @Test
-    void subtractOperandAndZero() {
+    public void subtractOperandAndZero() {
         double actual = calculator.calculate(10, 0, '-');
         assertEquals(10, actual);
     }
 
     @Test
-    void multiplyTwoPositiveOperands() {
+    public void multiplyTwoPositiveOperands() {
         double actual = calculator.calculate(10, 15, '*');
         assertEquals(150, actual);
     }
@@ -81,101 +87,101 @@ public class CalculatorTest {
     }
 
     @Test
-    void multiplyPositiveAndNegative() {
+    public void multiplyPositiveAndNegative() {
         double actual = calculator.calculate(10, -15, '*');
         assertEquals(-150, actual);
     }
 
     @Test
-    void multiplyZeroAndOperand() {
+    public void multiplyZeroAndOperand() {
         double actual = calculator.calculate(0, 15, '*');
         assertEquals(0, actual);
     }
 
     @Test
-    void multiplyOperandAndZero() {
+    public void multiplyOperandAndZero() {
         double actual = calculator.calculate(10, 0, '*');
         assertEquals(0, actual);
     }
 
     @Test
-    void divideTwoPositiveOperands() {
+    public void divideTwoPositiveOperands() {
         double actual = calculator.calculate(10, 15, '/');
         assertEquals(10.0 / 15.0, actual);
     }
 
     @Test
-    void divideTwoNegativeOperands() {
+    public void divideTwoNegativeOperands() {
         double actual = calculator.calculate(-100, -50, '/');
         assertEquals(2.0, actual);
     }
 
     @Test
-    void dividePositiveAndNegative() {
+    public void dividePositiveAndNegative() {
         double actual = calculator.calculate(-100, 25, '/');
         assertEquals(-4, actual);
     }
 
     @Test
-    void divideZeroAndOperand() {
+    public void divideZeroAndOperand() {
         double actual = calculator.calculate(0, 15, '/');
         assertEquals(0, actual);
     }
 
     @Test
-    void divisionByZero() {
+    public void divisionByZero() {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(10, 0, '/'));
     }
 
     @Test
-    void raisePositiveValueToPositivePow() {
+    public void raisePositiveValueToPositivePow() {
         double actual = calculator.calculate(2, 3, '^');
         assertEquals(8, actual);
     }
 
     @Test
-    void raisePositiveValueToNegativePow() {
+    public void raisePositiveValueToNegativePow() {
         double actual = calculator.calculate(2, -3, '^');
         assertEquals(0.125, actual);
     }
 
     @Test
-    void raiseNegativeValueToPositivePow() {
+    public void raiseNegativeValueToPositivePow() {
         double actual = calculator.calculate(-2, 3, '^');
         assertEquals(-8, actual);
     }
 
     @Test
-    void raiseNegativeValueToNegativePow() {
+    public void raiseNegativeValueToNegativePow() {
         double actual = calculator.calculate(-2, -3, '^');
         assertEquals(-0.125, actual);
     }
 
     @Test
-    void raisePositiveValueToZeroPow() {
+    public void raisePositiveValueToZeroPow() {
         double actual = calculator.calculate(69, 0, '^');
         assertEquals(1, actual);
     }
 
     @Test
-    void raiseNegativeValueToZeroPow() {
+    public void raiseNegativeValueToZeroPow() {
         double actual = calculator.calculate(-69, 0, '^');
         assertEquals(1, actual);
     }
 
     @Test
-    void raiseZeroToPow() {
+    public void raiseZeroToPow() {
         double actual = calculator.calculate(0, 13, '^');
         assertEquals(0, actual);
     }
 
     @Test
-    void illegalOperation() {
+    public void illegalOperation() {
         assertThrows(RuntimeException.class, () -> calculator.calculate(10, 0, '?'));
     }
 
     @Test
-    void doubleOverflow() {
+    public void doubleOverflow() {
         assertThrows(ArithmeticException.class, () ->
                 calculator.calculate(Integer.MAX_VALUE, Integer.MAX_VALUE, '*'));
     }
