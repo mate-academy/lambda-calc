@@ -18,12 +18,4 @@ public class Calculator {
                 };
         return operator.applyAsDouble(first, second);
     }
-
-    public static void main(String[] args) {
-        System.out.println(calculate(10d, 20d, '+'));
-        System.out.println(calculate(10d, 20d, '-'));
-        System.out.println(calculate(10d, 20d, '*'));
-        System.out.println(calculate(10d, 20d, '/'));
-        System.out.println(calculate(10d, 2d, '^'));
-    }
 }
