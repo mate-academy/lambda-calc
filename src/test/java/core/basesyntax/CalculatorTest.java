@@ -412,4 +412,10 @@ public class CalculatorTest {
         assertEquals(expected, result, delta,
                 String.format("Expected is %.1f but get %.1f", expected, result));
     }
+
+    @Test
+    void calculate_illegalOperation_isIllegalArgumentException(){
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculate(5.0, 6.68, 'f'));
+    }
 }
