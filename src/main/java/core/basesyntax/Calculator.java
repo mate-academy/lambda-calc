@@ -1,60 +1,38 @@
 package core.basesyntax;
 
-import java.math.BigDecimal;
-
 public class Calculator {
-    public double calculate(double firstOperand, double secondOperand,
-                            char operation) {
-        switch (operation) {
-            case '+':
-                return addition(firstOperand, secondOperand);
-            case '-':
-                return subtraction(firstOperand, secondOperand);
-            case '*':
-                return multiplication(firstOperand, secondOperand);
-            case '/':
-                return division(firstOperand, secondOperand);
-            case '^':
-                return pow(firstOperand, secondOperand);
-            default:
-                throw new IllegalArgumentException("[" + operation + "] no such operation.");
+    private static final String CORRECT_OPERATION = "+-/*^";
+
+    public double calculate(double firstArgument, double secondArgument, char operation) {
+        checkOperation(operation);
+        checkDivideByZero(secondArgument, operation);
+        ICalculate calculate = (firstArg, secondArg) -> operation == '+' ? firstArg + secondArg
+                : operation == '-' ? firstArg - secondArg
+                : operation == '*' ? firstArg * secondArg
+                : operation == '/' ? firstArg / secondArg
+                : Math.pow(firstArg, secondArg);
+        double calculated = calculate.calculate(firstArgument, secondArgument);
+        checkInfinityNumber(calculated);
+        return calculated;
+    }
+
+    private void checkInfinityNumber(double number) {
+        if (number == Double.POSITIVE_INFINITY || number == Double.NEGATIVE_INFINITY) {
+            throw new ArithmeticException("The number is [" + number + "]!");
         }
     }
 
-    private double addition(double first, double second) {
-        if (first == Double.MAX_VALUE || second == Double.MAX_VALUE) {
-            throw new ArithmeticException("Value is too big.");
+    private void checkOperation(char operation) {
+        if (CORRECT_OPERATION.indexOf(operation) < 0) {
+            throw new IllegalArgumentException("No such operation [" + operation + "]!");
         }
-        return first + second;
     }
 
-    private double subtraction(double first, double second) {
-        if (first == Double.MIN_VALUE && second > 0) {
-            throw new ArithmeticException("Value is too small.");
+    private void checkDivideByZero(double argument, char operation) {
+        if (argument == 0 && operation == '/') {
+            throw new ArithmeticException(
+                    "Division by zero because second argument is [" + argument + "]!");
         }
-        return first - second;
-    }
-
-    private double multiplication(double first, double second) {
-        int isTooBigValue = BigDecimal.valueOf(first)
-                .multiply(BigDecimal.valueOf(second))
-                .compareTo(BigDecimal.valueOf(Double.MAX_VALUE));
-        if (first == Double.MAX_VALUE
-                || second == Double.MAX_VALUE
-                || isTooBigValue > 0) {
-            throw new ArithmeticException("Value is to big.");
-        }
-        return first * second;
-    }
-
-    private double division(double first, double second) {
-        if (second == 0) {
-            throw new ArithmeticException("Division by zero.");
-        }
-        return first / second;
-    }
-
-    private double pow(double first, double pow) {
-        return Math.pow(first, pow);
     }
 }
+
