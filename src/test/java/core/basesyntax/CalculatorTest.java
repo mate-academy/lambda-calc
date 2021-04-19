@@ -1,8 +1,9 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static final char ADDITION = '+';
@@ -13,7 +14,7 @@ class CalculatorTest {
     private static final double DELTA = 0.0001;
 
     @Test
-    void AdditionWithTwoPositiveOperands() {
+    void additionWithTwoPositiveOperands() {
         Calculator calculator = new Calculator();
         double positive1 = 10.5;
         double positive2 = 20.1;
@@ -23,7 +24,7 @@ class CalculatorTest {
     }
 
     @Test
-    void AdditionWithtTwoNegativeOperands() {
+    void additionWithTwoNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumberOne = -3.5;
         double negativeNumberTwo = -7.9;
@@ -33,18 +34,17 @@ class CalculatorTest {
     }
 
     @Test
-    void AdditionWithtPositiveAndNegativeOperands() {
+    void additionWithPositiveAndNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumber = -5.7;
         double positiveNumber = 10.2;
         double expected = 4.5;
-        double delta = 0.0001;
         double actual = calculator.calculate(negativeNumber, positiveNumber, ADDITION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void AdditionWithZeros() {
+    void additionWithZeros() {
         Calculator calculator = new Calculator();
         double zero = 0;
         double numberTwo = 3.14159265359;
@@ -56,18 +56,20 @@ class CalculatorTest {
     }
 
     @Test
-    void AdditionWithMinAndMaxOperands() {
+    void additionWithMinAndMaxOperands() {
         Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 1;
         double negativeNumber = -1;
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(maxDouble, positiveNumber, ADDITION));
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(minDouble, negativeNumber, ADDITION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(maxDouble, positiveNumber, ADDITION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(minDouble, negativeNumber, ADDITION));
     }
 
     @Test
-    void SubstractionWithTwoPositiveOperands() {
+    void substractionWithTwoPositiveOperands() {
         Calculator calculator = new Calculator();
         double positiveNumber = 10.5;
         double postivieNumberTwo = 20.1;
@@ -77,7 +79,7 @@ class CalculatorTest {
     }
 
     @Test
-    void SubstractionWithTwoNegativeOperands() {
+    void substractionWithTwoNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumberOne = -3.5;
         double negativeNumberTwo = -7.9;
@@ -87,7 +89,7 @@ class CalculatorTest {
     }
 
     @Test
-    void SubstractionWithtPositiveAndNegativeOperands() {
+    void substractionWithtPositiveAndNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumber = -5.7;
         double positiveNumber = 10.2;
@@ -97,7 +99,7 @@ class CalculatorTest {
     }
 
     @Test
-    void SubstractionWithZeros() {
+    void substractionWithZeros() {
         Calculator calculator = new Calculator();
         double zero = 0;
         double numberTwo = 3.14159265359;
@@ -110,18 +112,20 @@ class CalculatorTest {
     }
 
     @Test
-    void SubstractionWithMinAndMaxOperands() {
+    void substractionWithMinAndMaxOperands() {
         Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 1;
         double negativeNumber = -1;
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(maxDouble, negativeNumber, SUBSTRACTION));
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(minDouble, positiveNumber, SUBSTRACTION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(maxDouble, negativeNumber, SUBSTRACTION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(minDouble, positiveNumber, SUBSTRACTION));
     }
 
     @Test
-    void MultiplicationWithTwoPositiveOperands() {
+    void multiplicationWithTwoPositiveOperands() {
         Calculator calculator = new Calculator();
         double positiveNumber = 14.5;
         double positiveNumberTwo = 219.56;
@@ -131,7 +135,7 @@ class CalculatorTest {
     }
 
     @Test
-    void MultiplicationWithTwoNegativeOperands() {
+    void multiplicationWithTwoNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumberOne = -100.51;
         double negativeNumberTwo = -21.45;
@@ -141,7 +145,7 @@ class CalculatorTest {
     }
 
     @Test
-    void MultiplicationWithtPositiveAndNegativeOperands() {
+    void multiplicationWithtPositiveAndNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumber = -18.91;
         double positiveNumber = 4.1;
@@ -151,7 +155,7 @@ class CalculatorTest {
     }
 
     @Test
-    void MultiplicationWithZeros() {
+    void multiplicationWithZeros() {
         Calculator calculator = new Calculator();
         double zero = 0;
         double numberTwo = 3.14159265359;
@@ -163,18 +167,20 @@ class CalculatorTest {
     }
 
     @Test
-    void  MultiplicationWithMinAndMaxOperands() {
+    void multiplicationWithMinAndMaxOperands() {
         Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 2;
         double negativeNumber = -2;
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(maxDouble, negativeNumber, MULTIPLICATION));
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(minDouble, positiveNumber, MULTIPLICATION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(maxDouble, negativeNumber, MULTIPLICATION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(minDouble, positiveNumber, MULTIPLICATION));
     }
 
     @Test
-    void DivisionWithTwoPositiveOperands() {
+    void divisionWithTwoPositiveOperands() {
         Calculator calculator = new Calculator();
         double positive1 = 6.4;
         double positive2 = 4.6;
@@ -184,7 +190,7 @@ class CalculatorTest {
     }
 
     @Test
-    void DivisionWithTwoNegativeOperands() {
+    void divisionWithTwoNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumberOne = -8.2;
         double negativeNumberTwo = -16.12;
@@ -194,7 +200,7 @@ class CalculatorTest {
     }
 
     @Test
-    void DivisionWithtPositiveAndNegativeOperands() {
+    void divisionWithPositiveAndNegativeOperands() {
         Calculator calculator = new Calculator();
         double negativeNumber = -9.45;
         double positiveNumber = 26.1950;
@@ -204,29 +210,32 @@ class CalculatorTest {
     }
 
     @Test
-    void DivisionWithZeros() {
+    void divisionWithZeros() {
         Calculator calculator = new Calculator();
         double zero = 0;
         double numberTwo = 3.14159265359;
         double expected = 0;
         double actual = calculator.calculate(zero, numberTwo, DIVISION);
         assertEquals(expected, actual, DELTA);
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(numberTwo, zero, DIVISION));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(numberTwo, zero, DIVISION));
     }
 
     @Test
-    void  DivisionWithMinAndMaxOperands() {
+    void divisionWithMinAndMaxOperands() {
         Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 0.5;
         double negativeNumber = -0.5;
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(maxDouble, positiveNumber, DIVISION));
-        assertThrows(LimitDoubleValueReachedException.class,() -> calculator.calculate(minDouble, negativeNumber, DIVISION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(maxDouble, positiveNumber, DIVISION));
+        assertThrows(LimitDoubleValueReachedException.class,
+                () -> calculator.calculate(minDouble, negativeNumber, DIVISION));
     }
 
     @Test
-    void RaisingNumbersToTheNegative() {
+    void raisingNumbersToTheNegative() {
         Calculator calculator = new Calculator();
         double positiveNumber = 8.5;
         double negativeNumber = -3.95;
@@ -239,7 +248,7 @@ class CalculatorTest {
     }
 
     @Test
-    void RaisingNumbersToThePositive() {
+    void raisingNumbersToThePositive() {
         Calculator calculator = new Calculator();
         double positiveNumber = 5.61;
         double negativeNumber = -2.48;
@@ -252,7 +261,7 @@ class CalculatorTest {
     }
 
     @Test
-    void RaisingNumbersToZero() {
+    void raisingNumbersToZero() {
         Calculator calculator = new Calculator();
         double positiveNumber = 1023012.123919329;
         double negativeNumber = -12391294219149.120014201241042102;
@@ -266,7 +275,7 @@ class CalculatorTest {
     }
 
     @Test
-    void RaisingZeroToPower() {
+    void raisingZeroToPower() {
         Calculator calculator = new Calculator();
         double positiveNumber = 89.89;
         double negativeNumber = 98.98;
@@ -279,10 +288,11 @@ class CalculatorTest {
     }
 
     @Test
-    void IllegalOperation() {
+    void illegalOperation() {
         Calculator calculator = new Calculator();
         double firstNumber = 19.65;
         double secondNumber = 12.56;
-        assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(firstNumber, secondNumber, 'I'));
+        assertThrows(UnsupportedOperationException.class,
+                () -> calculator.calculate(firstNumber, secondNumber, 'I'));
     }
 }
