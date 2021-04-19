@@ -3,7 +3,7 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -16,14 +16,12 @@ class CalculatorTest {
     private static final double POSITIVE_VALUE = 12345.678;
     private static final double NEGATIVE_VALUE = -876.543;
     private static final double ZERO = 0;
-    private static final double MAX_VALUE = Double.MAX_VALUE;
-    private static final double MIN_VALUE = Double.MIN_VALUE;
-    private Calculator calculator;
+    private static Calculator calculator;
     private double expected;
     private double actual;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void beforeAll() {
         calculator = new Calculator();
     }
 
@@ -61,12 +59,12 @@ class CalculatorTest {
 
     @Test
     public void additionForMinAndMaxDoubleValues_Ok() {
-        expected = MAX_VALUE + POSITIVE_VALUE;
-        actual = calculator.calculate(MAX_VALUE, POSITIVE_VALUE, ADDITION);
+        expected = Double.MAX_VALUE + POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, POSITIVE_VALUE, ADDITION);
         assertEquals(expected, actual);
 
-        expected = MIN_VALUE + POSITIVE_VALUE;
-        actual = calculator.calculate(MIN_VALUE, POSITIVE_VALUE, ADDITION);
+        expected = Double.MIN_VALUE + POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MIN_VALUE, POSITIVE_VALUE, ADDITION);
         assertEquals(expected, actual);
     }
 
@@ -104,12 +102,12 @@ class CalculatorTest {
 
     @Test
     public void subtractionForMinAndMaxDoubleValues_Ok() {
-        expected = MAX_VALUE - POSITIVE_VALUE;
-        actual = calculator.calculate(MAX_VALUE, POSITIVE_VALUE, SUBTRACTION);
+        expected = Double.MAX_VALUE - POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, POSITIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
 
-        expected = MIN_VALUE - POSITIVE_VALUE;
-        actual = calculator.calculate(MIN_VALUE, POSITIVE_VALUE, SUBTRACTION);
+        expected = Double.MIN_VALUE - POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MIN_VALUE, POSITIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
     }
 
@@ -147,12 +145,12 @@ class CalculatorTest {
 
     @Test
     public void multiplicationForMinAndMaxDoubleValues_Ok() {
-        expected = MAX_VALUE * POSITIVE_VALUE;
-        actual = calculator.calculate(MAX_VALUE, POSITIVE_VALUE, MULTIPLICATION);
+        expected = Double.MAX_VALUE * POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, POSITIVE_VALUE, MULTIPLICATION);
         assertEquals(expected, actual);
 
-        expected = MIN_VALUE * POSITIVE_VALUE;
-        actual = calculator.calculate(MIN_VALUE, POSITIVE_VALUE, MULTIPLICATION);
+        expected = Double.MIN_VALUE * POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MIN_VALUE, POSITIVE_VALUE, MULTIPLICATION);
         assertEquals(expected, actual);
     }
 
@@ -193,12 +191,12 @@ class CalculatorTest {
 
     @Test
     public void divisionForMinAndMaxDoubleValues_Ok() {
-        expected = MAX_VALUE / POSITIVE_VALUE;
-        actual = calculator.calculate(MAX_VALUE, POSITIVE_VALUE, DIVISION);
+        expected = Double.MAX_VALUE / POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, POSITIVE_VALUE, DIVISION);
         assertEquals(expected, actual);
 
-        expected = MIN_VALUE / POSITIVE_VALUE;
-        actual = calculator.calculate(MIN_VALUE, POSITIVE_VALUE, DIVISION);
+        expected = Double.MIN_VALUE / POSITIVE_VALUE;
+        actual = calculator.calculate(Double.MIN_VALUE, POSITIVE_VALUE, DIVISION);
         assertEquals(expected, actual);
     }
 
@@ -250,11 +248,7 @@ class CalculatorTest {
     public void illegalOperation_notOk() {
         assertThrows(RuntimeException.class, () -> {
             calculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, ILLEGAL_OPERATION);
-        });
-        assertThrows(RuntimeException.class, () -> {
             calculator.calculate(NEGATIVE_VALUE, POSITIVE_VALUE, ILLEGAL_OPERATION);
-        });
-        assertThrows(RuntimeException.class, () -> {
             calculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, ILLEGAL_OPERATION);
         });
     }

@@ -20,6 +20,6 @@ public class Calculator {
         if (operation == '^') {
             return Math.pow(first, second);
         }
-        throw new RuntimeException("Unknown operation");
+        throw new RuntimeException("Unknown operation " + operation);
     }
 }
