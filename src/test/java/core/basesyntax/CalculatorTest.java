@@ -1,9 +1,10 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     private static Calculator calculator;
@@ -217,7 +218,9 @@ class CalculatorTest {
     void divideWithSecondZeroOperand_Ok() {
         double firstNumber = 10;
         double secondNumber = 0;
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(firstNumber, secondNumber, '/'));
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(firstNumber, secondNumber, '/');
+        });
     }
 
     @Test
@@ -286,6 +289,8 @@ class CalculatorTest {
     @Test
     void illegalOperation_NotOk() {
         double secondNumber = 2;
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(Double.MAX_VALUE, secondNumber, '?'));
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(Double.MAX_VALUE, secondNumber, '?');
+        });
     }
 }
