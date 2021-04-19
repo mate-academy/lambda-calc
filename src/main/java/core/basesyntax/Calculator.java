@@ -26,5 +26,4 @@ public class Calculator implements Calculate {
                 throw new RuntimeException("There is no such operation: " + character);
         }
     }
-
 }
