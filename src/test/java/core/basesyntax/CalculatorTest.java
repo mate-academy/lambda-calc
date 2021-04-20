@@ -3,6 +3,7 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -12,20 +13,24 @@ class CalculatorTest {
     private static final char MULTIPLICATION = '*';
     private static final char RAISING_TO_A_POWER = '^';
     private static final double DELTA = 0.0001;
+    private static Calculator calculator;
+
+    @BeforeAll
+    static void beforeAll() {
+        calculator = new Calculator();
+    }
 
     @Test
     void additionWithTwoPositiveOperands() {
-        Calculator calculator = new Calculator();
-        double positive1 = 10.5;
-        double positive2 = 20.1;
+        double positiveNumberOne = 10.5;
+        double positiveNumberTwo = 20.1;
         double expected = 30.6;
-        double actual = calculator.calculate(positive1, positive2, ADDITION);
+        double actual = calculator.calculate(positiveNumberOne, positiveNumberTwo, ADDITION);
         assertEquals(expected, actual);
     }
 
     @Test
     void additionWithTwoNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumberOne = -3.5;
         double negativeNumberTwo = -7.9;
         double expected = -11.4;
@@ -35,7 +40,6 @@ class CalculatorTest {
 
     @Test
     void additionWithPositiveAndNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumber = -5.7;
         double positiveNumber = 10.2;
         double expected = 4.5;
@@ -45,7 +49,6 @@ class CalculatorTest {
 
     @Test
     void additionWithZeros() {
-        Calculator calculator = new Calculator();
         double zero = -0;
         double numberTwo = 3.14159265359;
         double expected = 3.14159265359;
@@ -60,7 +63,6 @@ class CalculatorTest {
 
     @Test
     void additionWithMinAndMaxOperands() {
-        Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 1;
@@ -73,17 +75,15 @@ class CalculatorTest {
 
     @Test
     void substractionWithTwoPositiveOperands() {
-        Calculator calculator = new Calculator();
         double positiveNumber = 10.5;
-        double postivieNumberTwo = 20.1;
+        double postivieNumber = 20.1;
         double expected = -9.6;
-        double actual = calculator.calculate(positiveNumber, postivieNumberTwo, SUBSTRACTION);
+        double actual = calculator.calculate(positiveNumber, postivieNumber, SUBSTRACTION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void substractionWithTwoNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumberOne = -3.5;
         double negativeNumberTwo = -7.9;
         double expected = 4.4;
@@ -93,7 +93,6 @@ class CalculatorTest {
 
     @Test
     void substractionWithtPositiveAndNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumber = -5.7;
         double positiveNumber = 10.2;
         double expected = -15.9;
@@ -103,7 +102,6 @@ class CalculatorTest {
 
     @Test
     void substractionWithZeros() {
-        Calculator calculator = new Calculator();
         double zero = 0;
         double numberTwo = 3.14159265359;
         double expected = -3.14159265359;
@@ -119,7 +117,6 @@ class CalculatorTest {
 
     @Test
     void substractionWithMinAndMaxOperands() {
-        Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 1;
@@ -132,7 +129,6 @@ class CalculatorTest {
 
     @Test
     void multiplicationWithTwoPositiveOperands() {
-        Calculator calculator = new Calculator();
         double positiveNumber = 14.5;
         double positiveNumberTwo = 219.56;
         double expected = 3183.62;
@@ -142,7 +138,6 @@ class CalculatorTest {
 
     @Test
     void multiplicationWithTwoNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumberOne = -100.51;
         double negativeNumberTwo = -21.45;
         double expected = 2155.9395;
@@ -152,7 +147,6 @@ class CalculatorTest {
 
     @Test
     void multiplicationWithtPositiveAndNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumber = -18.91;
         double positiveNumber = 4.1;
         double expected = -77.531;
@@ -162,7 +156,6 @@ class CalculatorTest {
 
     @Test
     void multiplicationWithZeros() {
-        Calculator calculator = new Calculator();
         double zero = 0;
         double numberTwo = 3.14159265359;
         double expected = 0;
@@ -177,7 +170,6 @@ class CalculatorTest {
 
     @Test
     void multiplicationWithMinAndMaxOperands() {
-        Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 2;
@@ -190,7 +182,6 @@ class CalculatorTest {
 
     @Test
     void divisionWithTwoPositiveOperands() {
-        Calculator calculator = new Calculator();
         double positive1 = 6.4;
         double positive2 = 4.6;
         double expected = 1.39130434783;
@@ -200,7 +191,6 @@ class CalculatorTest {
 
     @Test
     void divisionWithTwoNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumberOne = -8.2;
         double negativeNumberTwo = -16.12;
         double expected = 0.50868486352;
@@ -210,7 +200,6 @@ class CalculatorTest {
 
     @Test
     void divisionWithPositiveAndNegativeOperands() {
-        Calculator calculator = new Calculator();
         double negativeNumber = -9.45;
         double positiveNumber = 26.1950;
         double expected = -0.36075586944;
@@ -220,7 +209,6 @@ class CalculatorTest {
 
     @Test
     void divisionWithZeros() {
-        Calculator calculator = new Calculator();
         double zero = 0;
         double numberTwo = 3.14159265359;
         double expected = 0;
@@ -232,7 +220,6 @@ class CalculatorTest {
 
     @Test
     void divisionWithMinAndMaxOperands() {
-        Calculator calculator = new Calculator();
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 0.5;
@@ -245,7 +232,6 @@ class CalculatorTest {
 
     @Test
     void raisingNumbersToTheNegative() {
-        Calculator calculator = new Calculator();
         double positiveNumber = 8.5;
         double negativeNumber = -3.95;
         double expected = 0.00021320394;
@@ -258,7 +244,6 @@ class CalculatorTest {
 
     @Test
     void raisingNumbersToThePositive() {
-        Calculator calculator = new Calculator();
         double positiveNumber = 5.61;
         double negativeNumber = -2.48;
         double expected = 15910.4202723;
@@ -271,7 +256,6 @@ class CalculatorTest {
 
     @Test
     void raisingNumbersToZero() {
-        Calculator calculator = new Calculator();
         double positiveNumber = 1023012.123919329;
         double negativeNumber = -12391294219149.120014201241042102;
         double zero = 0;
@@ -285,7 +269,6 @@ class CalculatorTest {
 
     @Test
     void raisingZeroToPower() {
-        Calculator calculator = new Calculator();
         double positiveNumber = 89.89;
         double negativeNumber = 98.98;
         double zero = 0;
@@ -298,7 +281,6 @@ class CalculatorTest {
 
     @Test
     void illegalOperation() {
-        Calculator calculator = new Calculator();
         double firstNumber = 19.65;
         double secondNumber = 12.56;
         assertThrows(UnsupportedOperationException.class,
