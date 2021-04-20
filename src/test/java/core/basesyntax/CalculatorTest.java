@@ -414,7 +414,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_illegalOperation_isIllegalArgumentException(){
+    void calculate_illegalOperation_isIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class,
                 () -> calculator.calculate(5.0, 6.68, 'f'));
     }
