@@ -203,7 +203,7 @@ class CalculatorTest {
 
     @Test
     void calculate_illegalCharacter_Ok() {
-        assertThrows(RuntimeException.class, () ->
-                calculatorTest.calculate(15, 3, RAISING_TO_POWER));
+        assertThrows(RuntimeException.class, ()
+                -> calculatorTest.calculate(15, 3, '3'));
     }
 }
