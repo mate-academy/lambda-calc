@@ -1,5 +1,6 @@
 package core.basesyntax;
 
+import core.basesyntax.exception.DoubleLimitException;
 import core.basesyntax.exception.InvalidOperatorException;
 import core.basesyntax.exception.NullDivisorException;
 
@@ -16,37 +17,37 @@ public class Calculator {
             case ADDITION:
                 result = firstNumber + secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new ArithmeticException();
+                    throw new DoubleLimitException("");
                 }
-                return result;
+                return result + 0;
             case SUBTRACTION:
                 result = firstNumber - secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new ArithmeticException();
+                    throw new DoubleLimitException("");
                 }
-                return result;
+                return result + 0;
             case MULTIPLYING:
                 result = firstNumber * secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new ArithmeticException();
+                    throw new DoubleLimitException("");
                 }
-                return result;
+                return result + 0;
             case DIVIDING:
                 if (secondNumber == 0) {
                     throw new NullDivisorException("");
                 }
                 result = firstNumber / secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new ArithmeticException();
+                    throw new DoubleLimitException("");
                 }
-                return result;
+                return result + 0;
             case POWER:
                 if (firstNumber == 0 && secondNumber < 0) {
                     throw new NullDivisorException("");
                 }
                 result = Math.pow(firstNumber, secondNumber);
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new ArithmeticException();
+                    throw new DoubleLimitException("");
                 }
                 return result;
             default:
