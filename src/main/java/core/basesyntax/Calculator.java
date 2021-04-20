@@ -9,7 +9,7 @@ public class Calculator {
                 return firstArgument - secondArgument;
             case '/':
                 if (secondArgument == 0) {
-                    throw new ArithmeticException("Division by zero is not allowed");
+                    throw new ArithmeticException("Division by zero!");
                 }
                 return firstArgument / secondArgument;
             case '*':
@@ -17,7 +17,7 @@ public class Calculator {
             case '^':
                 return Math.pow(firstArgument, secondArgument);
             default:
-                throw new IllegalArgumentException("Illegal operator passed");
+                throw new RuntimeException("No such operation!");
         }
     }
 }
