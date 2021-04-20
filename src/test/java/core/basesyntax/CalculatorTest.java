@@ -116,32 +116,4 @@ class CalculatorTest {
                 calculator.calculate(-Double.MAX_VALUE,
                         Double.MIN_VALUE, SUBTRACTION_OPERATOR), DELTA);
     }
-
-    @Test
-    void calculate_infinityNumber_notOk() {
-        assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(Double.MAX_VALUE,
-                        Double.MAX_VALUE, ADDITION_OPERATOR));
-        assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(-Double.MAX_VALUE,
-                        -Double.MAX_VALUE, ADDITION_OPERATOR));
-        assertThrows(ArithmeticException.class,
-                () -> calculator.calculate(-Double.MAX_VALUE,
-                        Double.MAX_VALUE, SUBTRACTION_OPERATOR));
-        assertThrows(ArithmeticException.class,
-                () -> calculator.calculate(Double.MAX_VALUE,
-                        -Double.MAX_VALUE, SUBTRACTION_OPERATOR));
-        assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(Double.MAX_VALUE,
-                        Double.MAX_VALUE, MULTIPLICATION_OPERATOR));
-        assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(Double.MAX_VALUE,
-                        -Double.MAX_VALUE, MULTIPLICATION_OPERATOR));
-        assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(-Double.MAX_VALUE,
-                        -Double.MAX_VALUE, MULTIPLICATION_OPERATOR));
-        assertThrows(ArithmeticException.class, () ->
-                calculator.calculate(-Double.MAX_VALUE,
-                        Double.MIN_VALUE, DIVISION_OPERATOR));
-    }
 }
