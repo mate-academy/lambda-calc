@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import core.basesyntax.exception.ValidationException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -12,17 +11,11 @@ class CalculatorTest {
     static final double DOUBLE_MAX_VALUE = Double.MAX_VALUE;
     static final double DOUBLE_MIN_VALUE = Double.MIN_VALUE;
     private Calculator calculator = new Calculator();
-    private double firstValue;
-    private double secondValue;
-
-    @BeforeEach
-    void setUp() {
-        firstValue = 1.5;
-        secondValue = 2.6;
-    }
 
     @Test
     void additionPositiveNumbers_Ok() throws ValidationException {
+        double firstValue = 1.5;
+        double secondValue = 2.6;
         double expected = 4.1;
         double actual = calculator.calculate(firstValue, secondValue, '+');
         assertEquals(expected, actual, DELTA);
@@ -75,7 +68,7 @@ class CalculatorTest {
     void additionTwoMaxValues_Ok() {
         double actual = 0;
         try {
-            actual = calculator.calculate(DOUBLE_MIN_VALUE, DOUBLE_MIN_VALUE, '+');
+            actual = calculator.calculate(DOUBLE_MAX_VALUE, DOUBLE_MAX_VALUE, '+');
         } catch (ValidationException e) {
             throw new RuntimeException("Result out of memory!", e);
         }
@@ -83,6 +76,8 @@ class CalculatorTest {
 
     @Test
     void subtractionPositiveNumbers_Ok() throws ValidationException {
+        double firstValue = 1.5;
+        double secondValue = 2.6;
         double expected = -1.1;
         double actual = calculator.calculate(firstValue, secondValue, '-');
         assertEquals(expected, actual, DELTA);
@@ -199,6 +194,8 @@ class CalculatorTest {
 
     @Test
     void multiplicationPositiveNumbers_Ok() throws ValidationException {
+        double firstValue = 1.5;
+        double secondValue = 2.6;
         double expected = 3.9;
         double actual = calculator.calculate(firstValue, secondValue, '*');
         assertEquals(expected, actual, DELTA);
@@ -320,6 +317,8 @@ class CalculatorTest {
 
     @Test
     void calculate_illegalOperation_NotOk() {
+        double firstValue = 1.5;
+        double secondValue = 2.6;
         try {
             double actual = calculator.calculate(firstValue, secondValue, '!');
         } catch (ValidationException e) {

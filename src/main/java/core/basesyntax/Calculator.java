@@ -11,7 +11,7 @@ public class Calculator {
             return a - b;
         }
         if (b == 0 && operation == '/') {
-            throw new ValidationException("Second value can't be zero!");
+            throw new ValidationException("Can't divide by zero!");
         }
 
         if (b != 0 && operation == '/') {
