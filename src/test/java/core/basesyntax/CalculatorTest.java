@@ -17,7 +17,7 @@ public class CalculatorTest {
     private static final double NEGATIVE_VALUE = -1234.567;
     private static final double ZERO = 0;
     private static final double DELTA = 0.0001;
-    private static Calculator calculator;
+    private static Calculate calculator;
     private double expected;
     private double actual;
 
@@ -98,6 +98,10 @@ public class CalculatorTest {
 
         actual = calculator.calculate(ZERO, POSITIVE_VALUE, SUBTRACTION);
         expected = ZERO - POSITIVE_VALUE;
+        assertEquals(expected, actual, DELTA);
+
+        actual = calculator.calculate(ZERO, ZERO, SUBTRACTION);
+        expected = ZERO - ZERO;
         assertEquals(expected, actual, DELTA);
     }
 

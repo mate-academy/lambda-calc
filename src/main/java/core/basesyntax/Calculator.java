@@ -1,6 +1,8 @@
 package core.basesyntax;
 
-public class Calculator {
+public class Calculator implements Calculate {
+
+    @Override
     public double calculate(double a, double b, char operator) {
         switch (operator) {
             case '+':
