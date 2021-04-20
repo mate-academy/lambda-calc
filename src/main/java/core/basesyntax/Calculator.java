@@ -2,28 +2,36 @@ package core.basesyntax;
 
 public class Calculator {
     public double calculate(double number1, double number2, char operationType) {
+        double result = 0;
         switch (operationType) {
             case ('+'):
                 checkNumbers(number1, number2, operationType);
-                return number1 + number2;
+                result = number1 + number2;
+                break;
             case ('-'):
                 checkNumbers(number1, number2, operationType);
-                return number1 - number2;
+                result = number1 - number2;
+                break;
             case ('*'):
                 checkNumbers(number1, number2, operationType);
-                return number1 * number2;
+                result = number1 * number2;
+                break;
             case ('/'):
                 checkNumbers(number1, number2, operationType);
-                return number1 / number2;
+                result = number1 / number2;
+                break;
             case ('^'):
                 checkNumbers(number1, number2, operationType);
                 if (number1 < 0) {
-                    return Math.pow(number1 * -1, number2) * -1;
+                    result = Math.pow(number1 * -1, number2) * -1;
+                    break;
                 }
-                return Math.pow(number1, number2);
+                result = Math.pow(number1, number2);
+                break;
             default:
                 throw new UnsupportedOperationException();
         }
+        return result;
     }
 
     private void checkNumbers(double number1, double number2, char operationType) {

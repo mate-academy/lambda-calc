@@ -46,12 +46,15 @@ class CalculatorTest {
     @Test
     void additionWithZeros() {
         Calculator calculator = new Calculator();
-        double zero = 0;
+        double zero = -0;
         double numberTwo = 3.14159265359;
         double expected = 3.14159265359;
         double actual = calculator.calculate(zero, numberTwo, ADDITION);
         assertEquals(expected, actual);
         actual = calculator.calculate(numberTwo, zero, ADDITION);
+        assertEquals(expected, actual);
+        actual = calculator.calculate(zero, zero, ADDITION);
+        expected = 0;
         assertEquals(expected, actual);
     }
 
@@ -106,9 +109,12 @@ class CalculatorTest {
         double expected = -3.14159265359;
         double actual = calculator.calculate(zero, numberTwo, SUBSTRACTION);
         assertEquals(expected, actual, DELTA);
-        actual = calculator.calculate(numberTwo, zero, ADDITION);
+        actual = calculator.calculate(numberTwo, zero, SUBSTRACTION);
         expected = 3.14159265359;
         assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(zero, zero, SUBSTRACTION);
+        expected = 0;
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -164,6 +170,9 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA);
         actual = calculator.calculate(numberTwo, zero, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(zero, zero, MULTIPLICATION);
+        expected = 0;
+        assertEquals(expected, actual);
     }
 
     @Test
