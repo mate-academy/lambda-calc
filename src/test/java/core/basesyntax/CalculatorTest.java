@@ -43,16 +43,16 @@ public class CalculatorTest {
     }
 
     @Test
-    void add_zeroInDifferentPlaces() {
-        actual = calculatorTest.calculate(0, 5,PLUS);
+    void add_zeroInDifferentPlaces_Ok() {
+        actual = calculatorTest.calculate(0, 5, PLUS);
         expected = 5;
         assertEquals(expected, actual);
 
-        actual = calculatorTest.calculate(3.5, 0.0,PLUS);
+        actual = calculatorTest.calculate(3.5, 0, PLUS);
         expected = 3.5;
         assertEquals(expected, actual);
 
-        actual = calculatorTest.calculate(-34.0, -6.05,PLUS);
+        actual = calculatorTest.calculate(-34, -6.05,PLUS);
         expected = -40.05;
         assertEquals(expected, actual);
 
@@ -62,14 +62,14 @@ public class CalculatorTest {
     }
 
     @Test
-    void add_twoMaxValue() {
+    void add_twoMaxValue_Ok() {
         actual = calculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE,PLUS);
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void add_twoMinValue() {
+    void add_twoMinValue_Ok() {
         actual = calculatorTest.calculate(Double.MIN_VALUE, Double.MIN_VALUE,PLUS);
         expected = 1.0E-323;
         assertEquals(expected, actual);
@@ -97,7 +97,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void subtract_zeroInDifferentPlaces() {
+    void subtract_zeroInDifferentPlaces_Ok() {
         actual = calculatorTest.calculate(0, 5, MINUS);
         expected = -5;
         assertEquals(expected, actual);
@@ -116,14 +116,14 @@ public class CalculatorTest {
     }
 
     @Test
-    void subtract_twoMaxValue() {
+    void subtract_twoMaxValue_Ok() {
         actual = calculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MINUS);
         expected = 0.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtract_twoMinValue() {
+    void subtract_twoMinValue_Ok() {
         actual = calculatorTest.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MINUS);
         expected = 0.0;
         assertEquals(expected, actual);
@@ -152,21 +152,16 @@ public class CalculatorTest {
     }
 
     @Test
-    void divide_zeroInDifferentPlaces_Ok() {
+    void divide_zeroByNumber_Ok() {
         actual = calculatorTest.calculate(0, 5, DIVIDE);
         expected = 0;
         assertEquals(expected, actual);
+    }
 
+    @Test
+    void divide_numberByZero_notOk() {
         assertThrows(ArithmeticException.class,() -> calculatorTest
                 .calculate(3.5,0, DIVIDE));
-
-        actual = calculatorTest.calculate(-64.0, -8, DIVIDE);
-        expected = 8;
-        assertEquals(expected, actual);
-
-        actual = calculatorTest.calculate(0.03, 0.02, DIVIDE);
-        expected = 1.5;
-        assertEquals(expected, actual);
     }
 
     @Test
@@ -205,21 +200,13 @@ public class CalculatorTest {
     }
 
     @Test
-    void multiply_zeroInDifferentPlaces_Ok() {
+    void multiply_zeroByNumberAndNumberByZero_Ok() {
         actual = calculatorTest.calculate(0, 5, MULTIPLY);
-        expected = 0.0;
+        expected = 0;
         assertEquals(expected, actual);
 
-        actual = calculatorTest.calculate(3.5, 0.0, MULTIPLY);
-        expected = 0.0;
-        assertEquals(expected, actual);
-
-        actual = calculatorTest.calculate(-34.0, -6.05, MULTIPLY);
-        expected = 205.7;
-        assertEquals(expected, actual);
-
-        actual = calculatorTest.calculate(0.03, 0.02, MULTIPLY);
-        expected = 6.0E-4;
+        actual = calculatorTest.calculate(3.5, 0, MULTIPLY);
+        expected = 0;
         assertEquals(expected, actual);
     }
 
