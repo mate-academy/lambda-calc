@@ -1,8 +1,8 @@
 package core.basesyntax;
 
 public class Calculator {
-    public double calculate(double number1, double number2, char action) {
-        switch (action) {
+    public double calculate(double number1, double number2, char operation) {
+        switch (operation) {
             case '+':
                 return number1 + number2;
             case '-':
@@ -20,7 +20,7 @@ public class Calculator {
                 }
                 return Math.pow(number1, number2);
             default:
-                throw new IllegalArgumentException("We can't use this operator" + action);
+                throw new IllegalArgumentException("We can't use this operator" + operation);
         }
     }
 }
