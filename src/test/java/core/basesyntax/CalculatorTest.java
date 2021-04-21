@@ -1,19 +1,20 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CalculatorTest {
-    private final static char ADDITIONAL = '+';
-    private final static char SUBTRACTION = '-';
-    private final static char MULTIPLY = '*';
-    private final static char DIVIDE = '/';
-    private final static char POWER = '^';
-    private final static double POSITIVE_NUMBER = 2.0;
-    private final static double NEGATIVE_NUMBER = -5.0;
-    private final static double DELTA = 0.0001;
+    private static final char ADDITIONAL = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char MULTIPLY = '*';
+    private static final char DIVIDE = '/';
+    private static final char POWER = '^';
+    private static final double POSITIVE_NUMBER = 5.0;
+    private static final double NEGATIVE_NUMBER = -5.0;
+    private static final double DELTA = 0.0001;
     private static Calculator calculator;
     private double expected;
     private double actual;
@@ -167,8 +168,6 @@ class CalculatorTest {
         expected = Double.MIN_VALUE * 0;
         actual = calculator.calculate(Double.MIN_VALUE, 0, MULTIPLY);
         assertEquals(expected, actual);
-
-
     }
 
     @Test
@@ -229,7 +228,7 @@ class CalculatorTest {
     @Test
     void divideToZero_NotOk() {
         assertThrows(ArithmeticException.class, () -> {
-            calculator.calculate(POSITIVE_NUMBER, 0, DIVIDE);});
+            calculator.calculate(POSITIVE_NUMBER, 0, DIVIDE); });
     }
 
     @Test
@@ -238,7 +237,9 @@ class CalculatorTest {
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, POWER);
         assertEquals(expected, actual, DELTA);
 
-    }@Test
+    }
+
+    @Test
     void raisingToPowerNegativeNumbers_Ok() {
         expected = Math.pow(NEGATIVE_NUMBER, NEGATIVE_NUMBER);
         actual = calculator.calculate(NEGATIVE_NUMBER, NEGATIVE_NUMBER, POWER);
@@ -258,7 +259,7 @@ class CalculatorTest {
 
     @Test
     void raisingToPowerWhenOneValueIsZero_Ok() {
-        expected = Math.pow(0 , NEGATIVE_NUMBER);
+        expected = Math.pow(0, NEGATIVE_NUMBER);
         actual = calculator.calculate(0, NEGATIVE_NUMBER, POWER);
         assertEquals(expected, actual, DELTA);
 

@@ -3,7 +3,7 @@ package core.basesyntax;
 public class Calculator {
     public double calculate(double first, double second, char operation) {
         if (operation == '+') {
-           return first + second;
+            return first + second;
         }
         if (operation == '-') {
             return first - second;
