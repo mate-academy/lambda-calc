@@ -1,62 +1,53 @@
 package core.basesyntax;
 
+
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static final double MAX_VALUE = Double.MAX_VALUE;
-    private static final double MIN_VALUE = Double.MIN_VALUE;
-    private static final double POSITIVE_VALUE = 636.123;
-    private static final double NEGATIVE_VALUE = -570.38;
-    private static final double POSITIVE_POWER = 1.3;
-    private static final double NEGATIVE_POWER = - 1.3;
-    private static final double ZERO = 0.0;
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
     private static final char DIVISION = '/';
     private static final char MULTIPLICATION = '*';
     private static final char POWER = '^';
     private static final char NOT_CORRECT_OPERATOR = '\\';
-    private Calculator calculator;
-
-    @BeforeEach
-    public void setUp() {
-        calculator = new Calculator();
-    }
+    private static final double DELTA = 1e-6;
+    private final Calculator calculator = new Calculator();
 
     @Test
-    public void additionWithTwoPositive() {
+    public void additionWithTwoPositive_Ok() {
         double sum = calculator.calculator(
-                POSITIVE_VALUE, POSITIVE_VALUE, ADDITION);
-        double correctResult = POSITIVE_VALUE + POSITIVE_VALUE;
+                0.1, 0.1, ADDITION);
+        double correctResult = 0.2;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void additionWithTwoNegative() {
+    public void additionWithTwoNegative_Ok() {
         double sum = calculator.calculator(
-                NEGATIVE_VALUE, NEGATIVE_VALUE, ADDITION);
-        double correctResult = NEGATIVE_VALUE + NEGATIVE_VALUE;
+                -0.3, -0.3, ADDITION);
+        double correctResult = -0.6;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void additionWithPositiveAndNegative() {
+    public void additionWithPositiveAndNegative_Ok() {
         double sum = calculator.calculator(
-                NEGATIVE_VALUE, POSITIVE_VALUE, ADDITION);
-        double correctResult = NEGATIVE_VALUE + POSITIVE_VALUE;
-        Assertions.assertEquals(correctResult, sum);
+                -0.3, 0.1, ADDITION);
+        double correctResult = -0.1999999;
+        Assertions.assertEquals(correctResult, sum, DELTA);
     }
 
     @Test
-    public void additionWithZeroInDifferentPlace() {
+    public void additionWithZeroInDifferentPlace_Ok() {
         double sumOne = calculator.calculator(
-                ZERO, NEGATIVE_VALUE, ADDITION);
+                0.0, -0.3, ADDITION);
         double sumTwo = calculator.calculator(
-                POSITIVE_VALUE, ZERO, ADDITION);
-        double correctResultOne = ZERO + NEGATIVE_VALUE;
-        double correctResultTwo = ZERO + POSITIVE_VALUE;
+                0.1, 0.0, ADDITION);
+        double correctResultOne = -0.3;
+        double correctResultTwo = 0.1;
 
         Assertions.assertEquals(sumOne, correctResultOne);
         Assertions.assertEquals(sumTwo, correctResultTwo);
@@ -64,90 +55,139 @@ class CalculatorTest {
     }
 
     @Test
-    public void additionMinAndMaxValues() {
+    public void additionMinAndMaxValues_Ok() {
         double sum = calculator.calculator(
-                MIN_VALUE, MAX_VALUE, ADDITION);
-        double correctResult = MIN_VALUE + MAX_VALUE;
+                Double.MIN_VALUE, Double.MAX_VALUE, ADDITION);
+        double correctResult = 1.7976931348623157E308;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void subtractionWithTwoPositive() {
+    public void subtractionWithTwoPositive_Ok() {
         double sum = calculator.calculator(
-                POSITIVE_VALUE, POSITIVE_VALUE, SUBTRACTION);
-        double correctResult = POSITIVE_VALUE - POSITIVE_VALUE;
+                0.1, 0.1, SUBTRACTION);
+        double correctResult = 0.0;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void subtractionWithTwoNegative() {
+    public void subtractionWithTwoNegative_Ok() {
         double sum = calculator.calculator(
-                NEGATIVE_VALUE, NEGATIVE_VALUE, SUBTRACTION);
-        double correctResult = NEGATIVE_VALUE - NEGATIVE_VALUE;
+                -0.3, -0.3, SUBTRACTION);
+        double correctResult = 0.0;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void subtractionWithPositiveAndNegative() {
+    public void subtractionWithPositiveAndNegative_Ok() {
         double sum = calculator.calculator(
-                NEGATIVE_VALUE, POSITIVE_VALUE, SUBTRACTION);
-        double correctResult = NEGATIVE_VALUE - POSITIVE_VALUE;
+                -0.3, 0.1, SUBTRACTION);
+        double correctResult = -0.4;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void subtractionWithZeroInDifferentPlace() {
+    public void subtractionWithZeroInDifferentPlace_Ok() {
         double sumOne = calculator.calculator(
-                ZERO, NEGATIVE_VALUE, SUBTRACTION);
+                0.0, -0.3, SUBTRACTION);
         double sumTwo = calculator.calculator(
-                POSITIVE_VALUE, ZERO, SUBTRACTION);
-        double correctResultOne = ZERO - NEGATIVE_VALUE;
-        double correctResultTwo = POSITIVE_VALUE - ZERO;
+                0.1, 0.0, SUBTRACTION);
+        double correctResultOne = 0.3;
+        double correctResultTwo = 0.1;
 
         Assertions.assertEquals(sumOne, correctResultOne);
         Assertions.assertEquals(sumTwo, correctResultTwo);
     }
 
     @Test
-    public void subtractionMinAndMaxValues() {
+    public void subtractionMinAndMaxValues_Ok() {
         double sum = calculator.calculator(
-                MIN_VALUE, MAX_VALUE, SUBTRACTION);
-        double correctResult = MIN_VALUE - MAX_VALUE;
+                Double.MIN_VALUE, Double.MAX_VALUE, SUBTRACTION);
+        double correctResult = Double.MIN_VALUE - Double.MAX_VALUE;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void divisionWithTwoPositive() {
+    public void divisionWithTwoPositive_Ok() {
         double sum = calculator.calculator(
-                POSITIVE_VALUE, POSITIVE_VALUE, DIVISION);
-        double correctResult = POSITIVE_VALUE / POSITIVE_VALUE;
+                0.1, 0.1, DIVISION);
+        double correctResult = 1;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void divisionWithTwoNegative() {
+    public void divisionWithTwoNegative_Ok() {
         double sum = calculator.calculator(
-                NEGATIVE_VALUE, NEGATIVE_VALUE, DIVISION);
-        double correctResult = NEGATIVE_VALUE / NEGATIVE_VALUE;
+                -0.3, -0.3, DIVISION);
+        double correctResult = 1;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void divisionWithPositiveAndNegative() {
+    public void divisionWithPositiveAndNegative_Ok() {
         double sum = calculator.calculator(
-                NEGATIVE_VALUE, POSITIVE_VALUE, DIVISION);
-        double correctResult = NEGATIVE_VALUE / POSITIVE_VALUE;
+                -0.3, 0.1, DIVISION);
+        double correctResult = -2.9999999;
+        Assertions.assertEquals(correctResult, sum, DELTA);
+    }
+
+    @Test
+    public void divisionWithZeroInDifferentPlace_NotOk() {
+        double sum = calculator.calculator(
+                0.0, -0.3, DIVISION);
+        double correctResult = -0.0;
+
+        Assertions.assertEquals(correctResult, sum);
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            calculator.calculator(
+                    0.1, 0.0, DIVISION);
+        });
+
+    }
+
+    @Test
+    public void divisionMinAndMaxValues_Ok() {
+        double sum = calculator.calculator(
+                Double.MAX_VALUE, Double.MAX_VALUE, DIVISION);
+        double correctResult = 1;
+        Assertions.assertEquals(correctResult, sum);
+
+        double sumOne = calculator.calculator(Double.MIN_VALUE, Double.MIN_VALUE, DIVISION);
+        Assertions.assertEquals(correctResult, sumOne);
+    }
+
+    @Test
+    public void multiplicationWithTwoPositive_Ok() {
+        double sum = calculator.calculator(
+                0.1, 0.1, MULTIPLICATION);
+        double correctResult = 0.01;
+        Assertions.assertEquals(correctResult, sum, DELTA);
+    }
+
+    @Test
+    public void multiplicationWithTwoNegative_Ok() {
+        double sum = calculator.calculator(
+                -0.3, -0.3, MULTIPLICATION);
+        double correctResult = 0.09;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void divisionWithZeroInDifferentPlace() {
+    public void multiplicationWithPositiveAndNegative_Ok() {
+        double sum = calculator.calculator(
+                -0.3, 0.1, MULTIPLICATION);
+        double correctResult = -0.03;
+        Assertions.assertEquals(correctResult, sum);
+    }
+
+    @Test
+    public void multiplicationWithZeroInDifferentPlace_Ok() {
         double sumOne = calculator.calculator(
-                ZERO, NEGATIVE_VALUE, DIVISION);
+                0.0, -0.3, MULTIPLICATION);
         double sumTwo = calculator.calculator(
-                POSITIVE_VALUE, ZERO, DIVISION);
-        double correctResultOne = ZERO / NEGATIVE_VALUE;
-        double correctResultTwo = POSITIVE_VALUE / ZERO;
+                0.1, 0.0, MULTIPLICATION);
+        double correctResultOne = -0.0;
+        double correctResultTwo = 0.0;
 
         Assertions.assertEquals(correctResultOne, sumOne);
         Assertions.assertEquals(correctResultTwo, sumTwo);
@@ -155,120 +195,78 @@ class CalculatorTest {
     }
 
     @Test
-    public void divisionMinAndMaxValues() {
+    public void multiplicationMinAndMaxValues_Ok() {
         double sum = calculator.calculator(
-                MIN_VALUE, MAX_VALUE, DIVISION);
-        double correctResult = MIN_VALUE / MAX_VALUE;
+                1000, Double.MAX_VALUE, MULTIPLICATION);
+        double correctResult = Double.POSITIVE_INFINITY;
+        Assertions.assertEquals(correctResult, sum);
+
+        double sumOne = calculator.calculator(0.1, Double.MIN_VALUE, MULTIPLICATION);
+        double correctResultOne = 0.0;
+        Assertions.assertEquals(correctResultOne, sumOne);
+    }
+
+    @Test
+    public void positiveValueToPositivePower_Ok() {
+        double sum = calculator.calculator(
+                0.1, 1.3, POWER);
+        double correctResult = 0.0501187234;
+        Assertions.assertEquals(correctResult, sum, DELTA);
+    }
+
+    @Test
+    public void negativeValueToPositivePower_Ok() {
+        double sum = calculator.calculator(
+                -0.3, 5, POWER);
+        double correctResult = -0.00243;
+        Assertions.assertEquals(correctResult, sum, DELTA);
+    }
+
+    @Test
+    public void positiveValueToNegativePower_Ok() {
+        double sum = calculator.calculator(
+                0.1, -1.3, POWER);
+        double correctResult = 19.9526231;
+        Assertions.assertEquals(correctResult, sum, DELTA);
+    }
+
+    @Test
+    public void negativeValueToNegativePower_Ok() {
+        double sum = calculator.calculator(
+                -0.3, -5, POWER);
+        double correctResult = -411.522634;
+        Assertions.assertEquals(correctResult, sum, DELTA);
+    }
+
+    @Test
+    public void positiveValueToZeroPower_Ok() {
+        double sum = calculator.calculator(
+                0.1, 0.0, POWER);
+        double correctResult = 1.0;
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void multiplicationWithTwoPositive() {
+    public void negativeValueToZeroPower_Ok() {
         double sum = calculator.calculator(
-                POSITIVE_VALUE, POSITIVE_VALUE, MULTIPLICATION);
-        double correctResult = POSITIVE_VALUE * POSITIVE_VALUE;
+                -0.3, 0.0, POWER);
+        double correctResult = Math.pow(-1.3, 0.0);
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void multiplicationWithTwoNegative() {
+    public void zeroValueToPower_Ok() {
         double sum = calculator.calculator(
-                NEGATIVE_VALUE, NEGATIVE_VALUE, MULTIPLICATION);
-        double correctResult = NEGATIVE_VALUE * NEGATIVE_VALUE;
+                0.0, 1.3, POWER);
+        double correctResult = Math.pow(0.0, 1.3);
         Assertions.assertEquals(correctResult, sum);
     }
 
     @Test
-    public void multiplicationWithPositiveAndNegative() {
-        double sum = calculator.calculator(
-                NEGATIVE_VALUE, POSITIVE_VALUE, MULTIPLICATION);
-        double correctResult = NEGATIVE_VALUE * POSITIVE_VALUE;
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void multiplicationWithZeroInDifferentPlace() {
-        double sumOne = calculator.calculator(
-                ZERO, NEGATIVE_VALUE, MULTIPLICATION);
-        double sumTwo = calculator.calculator(
-                POSITIVE_VALUE, ZERO, MULTIPLICATION);
-        double correctResultOne = ZERO * NEGATIVE_VALUE;
-        double correctResultTwo = ZERO * POSITIVE_VALUE;
-
-        Assertions.assertEquals(sumOne, correctResultOne);
-        Assertions.assertEquals(sumTwo, correctResultTwo);
-
-    }
-
-    @Test
-    public void multiplicationMinAndMaxValues() {
-        double sum = calculator.calculator(
-                MIN_VALUE, MAX_VALUE, MULTIPLICATION);
-        double correctResult = MIN_VALUE * MAX_VALUE;
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void positiveValueToPositivePower() {
-        double sum = calculator.calculator(
-                POSITIVE_VALUE, POSITIVE_POWER, POWER);
-        double correctResult = Math.pow(POSITIVE_VALUE, POSITIVE_POWER);
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void negativeValueToPositivePower() {
-        double sum = calculator.calculator(
-                NEGATIVE_VALUE, POSITIVE_POWER, POWER);
-        double correctResult = Math.pow(NEGATIVE_POWER, POSITIVE_POWER);
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void positiveValueToNegativePower() {
-        double sum = calculator.calculator(
-                POSITIVE_VALUE, NEGATIVE_POWER, POWER);
-        double correctResult = Math.pow(POSITIVE_VALUE, NEGATIVE_POWER);
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void negativeValueToNegativePower() {
-        double sum = calculator.calculator(
-                NEGATIVE_VALUE, NEGATIVE_POWER, POWER);
-        double correctResult = Math.pow(NEGATIVE_POWER, NEGATIVE_POWER);
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void positiveValueToZeroPower() {
-        double sum = calculator.calculator(
-                POSITIVE_VALUE, ZERO, POWER);
-        double correctResult = Math.pow(POSITIVE_VALUE, ZERO);
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void negativeValueToZeroPower() {
-        double sum = calculator.calculator(
-                NEGATIVE_VALUE, ZERO, POWER);
-        double correctResult = Math.pow(NEGATIVE_POWER, ZERO);
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void zeroValueToPower() {
-        double sum = calculator.calculator(
-                ZERO, POSITIVE_POWER, POWER);
-        double correctResult = Math.pow(ZERO, POSITIVE_POWER);
-        Assertions.assertEquals(correctResult, sum);
-    }
-
-    @Test
-    public void illegalOperation() {
+    public void illegalOperation_NotOk() {
         Assertions.assertThrows(RuntimeException.class, () -> {
             calculator.calculator(
-                        POSITIVE_VALUE, POSITIVE_POWER, NOT_CORRECT_OPERATOR);
+                        0.1, 1.3, NOT_CORRECT_OPERATOR);
         });
     }
 }
