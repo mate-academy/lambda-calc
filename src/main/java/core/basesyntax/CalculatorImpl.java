@@ -1,6 +1,9 @@
 package core.basesyntax;
 
 public class CalculatorImpl implements Calculator {
+    private static final String ARITHMETIC_MESSAGE = "Can`t divide by Zero!";
+    private static final String BAD_OPERAND_MESSAGE = "Invalid type of operand";
+
     @Override
     public double calculate(double a, double b, char operand) {
         switch (operand) {
@@ -9,19 +12,16 @@ public class CalculatorImpl implements Calculator {
             case '-':
                 return a - b;
             case '*':
-                if (a == 0 || b == 0) {
-                    return 0;
-                }
                 return a * b;
             case '/':
                 if (b == 0) {
-                    throw new ArithmeticException("Can`t divide by 0");
+                    throw new ArithmeticException(ARITHMETIC_MESSAGE);
                 }
                 return a / b;
             case '^':
                 return Math.pow(a, b);
             default:
-                throw new IllegalArgumentException("Bad type of argument");
+                throw new IllegalArgumentException(BAD_OPERAND_MESSAGE);
         }
     }
 }

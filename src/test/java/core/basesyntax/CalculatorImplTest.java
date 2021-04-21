@@ -21,28 +21,28 @@ class CalculatorImplTest {
     }
 
     @Test
-    void addTwoPositiveOperand_Ok() {
+    void addTwoPositiveValues_Ok() {
         double actual = calculator.calculate(2.22, 3.33, PLUS);
         double expected = 5.55;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void addTwoNegativeOperand_Ok() {
+    void addTwoNegativeValues_Ok() {
         double actual = calculator.calculate(-2.1, -6.23, PLUS);
         double expected = -8.33;
-        assertEquals(expected, actual,DELTA);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void addOneNegativeOnePositiveOperand_Ok() {
+    void addOneNegativeOnePositiveValues_Ok() {
         double actual = calculator.calculate(-7.7, 4.6, PLUS);
         double expected = -3.1;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void addOnePositiveOneNegativeOperand_Ok() {
+    void addOnePositiveOneNegativeValues_Ok() {
         double actual = calculator.calculate(4.245, -7.455, PLUS);
         double expected = -3.21;
         assertEquals(expected, actual, DELTA);
@@ -77,9 +77,37 @@ class CalculatorImplTest {
     }
 
     @Test
-    void addToMaxDouble() {
+    void addToMaxDouble_Ok() {
         double actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, PLUS);
         double expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void addTwoNegativeDoubleMax_Ok() {
+        double actual = calculator.calculate(-Double.MAX_VALUE, -Double.MAX_VALUE, PLUS);
+        double expected = Double.NEGATIVE_INFINITY;
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void addOnePositiveDoubleMinAndNegativeDoubleMax_Ok() {
+        double actual = calculator.calculate(Double.MIN_VALUE, -Double.MAX_VALUE, PLUS);
+        double expected = -Double.MAX_VALUE;
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void addOnePositiveDoubleMaxAndNegativeDoubleMax_Ok() {
+        double actual = calculator.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, PLUS);
+        double expected = 0.0;
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void subAdditionDoubleMaxAndNegativeDoubleMin_Ok() {
+        double actual = calculator.calculate(Double.MAX_VALUE, -Double.MIN_VALUE, MINUS);
+        double expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -126,10 +154,10 @@ class CalculatorImplTest {
     }
 
     @Test
-    void subAdditionTwoZero() {
+    void subAdditionTwoZero_Ok() {
         double actual = calculator.calculate(0, 0, MINUS);
         double expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -171,6 +199,13 @@ class CalculatorImplTest {
     void multiplyWithFloatingPoint_Ok() {
         double actual = calculator.calculate(23.48959, 2.355, MULTIPLY);
         double expected = 55.31798445;
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void multiplyDoubleMinValueByNegativeDoubleMaxValue_Ok() {
+        double actual = calculator.calculate(Double.MIN_VALUE, -Double.MAX_VALUE, MULTIPLY);
+        double expected = -8.881784197001251E-16;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -227,6 +262,20 @@ class CalculatorImplTest {
         double expected = 1.0;
         assertEquals(expected, actual, DELTA);
 
+    }
+
+    @Test
+    void divideDoubleMinValue_OK() {
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, DIVIDE);
+        double expected = 1.0;
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void divideDoubleMaxByNegativeDoubleMin_Ok() {
+        double actual = calculator.calculate(Double.MAX_VALUE, -Double.MIN_VALUE, DIVIDE);
+        double expected = Double.NEGATIVE_INFINITY;
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
