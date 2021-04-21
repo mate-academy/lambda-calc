@@ -298,7 +298,7 @@ class CalculatorImpTest {
     @Test
     void calculate_RaiseZeroToPower_Ok() {
         double actual = calculator.calculate(ZERO, POSITIVE_NUMBER2, POWER);
-        assertEquals(ZERO, actual, DELTA);
+        assertEquals(ZERO, actual);
     }
 
     @Test
