@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static Calculator calculator;
-    private static double delta = 0.0001;
-    private static char PLUS = '+';
-    private static char MINUS = '-';
-    private static char MULTIPLICATION = '*';
-    private static char DIVISION = '/';
-    private static char POW = '^';
-    private static char ILLEGAL_ARGUMENT = '&';
+    private static final double delta = 0.0001;
+    private static final char PLUS = '+';
+    private static final char MINUS = '-';
+    private static final char MULTIPLICATION = '*';
+    private static final char DIVISION = '/';
+    private static final char POW = '^';
+    private static final char ILLEGAL_ARGUMENT = '&';
 
     @BeforeAll
     static void beforeAll() {
