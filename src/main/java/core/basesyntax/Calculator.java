@@ -17,41 +17,42 @@ public class Calculator {
             case ADDITION:
                 result = firstNumber + secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new DoubleLimitException("");
+                    throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
-                return result + 0;
+                return result;
             case SUBTRACTION:
                 result = firstNumber - secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new DoubleLimitException("");
+                    throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
-                return result + 0;
+                return result;
             case MULTIPLYING:
                 result = firstNumber * secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new DoubleLimitException("");
+                    throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
-                return result + 0;
+                return result + 0; //because -10 * 0 = -0.0 and it is not equal to 0
             case DIVIDING:
                 if (secondNumber == 0) {
-                    throw new NullDivisorException("");
+                    throw new NullDivisorException("You can't divide by zero");
                 }
                 result = firstNumber / secondNumber;
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new DoubleLimitException("");
+                    throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
-                return result + 0;
+                return result;
             case POWER:
                 if (firstNumber == 0 && secondNumber < 0) {
-                    throw new NullDivisorException("");
+                    throw new NullDivisorException("You can't raise zero to negative power");
                 }
                 result = Math.pow(firstNumber, secondNumber);
                 if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
-                    throw new DoubleLimitException("");
+                    throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
                 return result;
             default:
-                throw new InvalidOperatorException("");
+                throw new InvalidOperatorException("You can use only "
+                        + "'+' '-' '*' '/' '^' operators");
         }
     }
 }
