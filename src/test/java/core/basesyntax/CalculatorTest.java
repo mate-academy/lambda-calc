@@ -207,7 +207,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveOrNegativeValueToThePositivePower() {
+    void raisingPositiveOrNegativeValueToThePositivePower_Ok() {
         actual = calculator.calculate(FIRST_POSITIVE_DIGIT, SECOND_POSITIVE_DIGIT, POWER);
         expected = Math.pow(FIRST_POSITIVE_DIGIT, SECOND_POSITIVE_DIGIT);
         assertEquals(expected, actual);
@@ -218,7 +218,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveOrNegativeValueToTheNegativePower() {
+    void raisingPositiveOrNegativeValueToTheNegativePower_Ok() {
         actual = calculator.calculate(FIRST_POSITIVE_DIGIT, FIRST_NEGATIVE_DIGIT, POWER);
         expected = Math.pow(FIRST_POSITIVE_DIGIT, FIRST_NEGATIVE_DIGIT);
         assertEquals(expected, actual);
@@ -229,7 +229,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveOrNegativeValueToZeroPower() {
+    void raisingPositiveOrNegativeValueToZeroPower_Ok() {
         actual = calculator.calculate(FIRST_NEGATIVE_DIGIT, ZERO_DIGIT, POWER);
         expected = Math.pow(FIRST_NEGATIVE_DIGIT, ZERO_DIGIT);
         assertEquals(expected, actual);
@@ -240,7 +240,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToPower() {
+    void raisingZeroToPower_Ok() {
         actual = calculator.calculate(ZERO_DIGIT, FIRST_NEGATIVE_DIGIT, POWER);
         expected = Math.pow(ZERO_DIGIT, FIRST_NEGATIVE_DIGIT);
         assertEquals(expected, actual);
@@ -251,7 +251,7 @@ class CalculatorTest {
     }
 
     @Test
-    void illegalOperation() {
+    void illegalOperation_notOk() {
         try {
             calculator.calculate(FIRST_POSITIVE_DIGIT, SECOND_NEGATIVE_DIGIT, ILLEGAL_OPERATION);
         } catch (RuntimeException e) {
