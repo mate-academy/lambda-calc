@@ -20,6 +20,6 @@ public class Calculator {
         if (operation == '^') {
             return Math.pow(firstDigit, secondDigit);
         }
-        throw new RuntimeException("Illegal operation symbol");
+        throw new RuntimeException("Illegal operation symbol: " + operation);
     }
 }
