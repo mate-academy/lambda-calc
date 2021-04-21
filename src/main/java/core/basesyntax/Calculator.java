@@ -5,10 +5,8 @@ public class Calculator {
         switch (operating) {
             case '+':
                 return number1 + number2;
-
             case '-':
                 return number1 - number2;
-
             case '/':
                 return number1 / number2;
             case '*':
