@@ -25,39 +25,39 @@ public class CalculatorTest {
 
     @Test
     public void additionWithPositiveValues_OK() {
-        expected = 2.4 + 2.8;
+        expected = 5.2;
         actual = calculator.calculate(2.4, 2.8, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void additionWithNegativeValues_OK() {
-        expected = -2.4 + -2.8;
+        expected = -5.2;
         actual = calculator.calculate(-2.4, -2.8, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void additionWithPositiveAndNegativeValues_OK() {
-        expected = 2.4 + -2.8;
+        expected = -0.4;
         actual = calculator.calculate(2.4, -2.8, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void additionWithZeroInDifferentPlaces_Ok() {
-        expected = 2.4 + 0;
+        expected = 2.4;
         actual = calculator.calculate(2.4, 0, PLUS);
         assertEquals(expected, actual, DELTA);
 
-        expected = 0 + 2.8;
+        expected = 2.8;
         actual = calculator.calculate(0, 2.8, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void additionForMinAndMaxDoubleValues_Ok() {
-        expected = Double.MAX_VALUE + 2.8;
+        expected = Double.MAX_VALUE;
         actual = calculator.calculate(Double.MAX_VALUE, 2.8, PLUS);
         assertEquals(expected, actual, DELTA);
 
@@ -68,32 +68,32 @@ public class CalculatorTest {
 
     @Test
     public void subtractionWithPositiveValues_Ok() {
-        expected = 2.4 - 2.8;
+        expected = -0.4;
         actual = calculator.calculate(2.4, 2.8, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void subtractionWithNegativeValues_Ok() {
-        expected = -2.4 - -2.8;
+        expected = 0.4;
         actual = calculator.calculate(-2.4, -2.8, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void subtractionWithPositiveAndNegativeValues_Ok() {
-        expected = -2.4 - 2.8;
+        expected = -5.2;
         actual = calculator.calculate(-2.4, 2.8, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void subtractionWithZeroInDifferentPlaces_Ok() {
-        expected = 2.4 - 0;
+        expected = 2.4;
         actual = calculator.calculate(2.4, 0, MINUS);
         assertEquals(expected, actual, DELTA);
 
-        expected = 0 - 2.8;
+        expected = -2.8;
         actual = calculator.calculate(0, 2.8, MINUS);
         assertEquals(expected, actual, DELTA);
     }
@@ -111,39 +111,39 @@ public class CalculatorTest {
 
     @Test
     public void multiplicationWithPositiveValues_Ok() {
-        expected = 2.4 * 2.8;
+        expected = 6.72;
         actual = calculator.calculate(2.4, 2.8, MULTIPLIER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void multiplicationWithNegativeValues_Ok() {
-        expected = -2.4 * -2.8;
+        expected = 6.72;
         actual = calculator.calculate(-2.4, -2.8, MULTIPLIER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void multiplicationWithPositiveAndNegativeValues_Ok() {
-        expected = -2.4 * 2.8;
+        expected = -6.72;
         actual = calculator.calculate(-2.4, 2.8, MULTIPLIER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void multiplicationWithZeroInDifferentPlaces_Ok() {
-        expected = 2.4 * 0;
+        expected = 0;
         actual = calculator.calculate(2.4, 0, MULTIPLIER);
         assertEquals(expected, actual, DELTA);
 
-        expected = 0 * 2.8;
+        expected = 0;
         actual = calculator.calculate(0, 2.8, MULTIPLIER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void multiplicationForMinAndMaxDoubleValues_Ok() {
-        expected = Double.MAX_VALUE * 2.8;
+        expected = Double.POSITIVE_INFINITY;
         actual = calculator.calculate(Double.MAX_VALUE, 2.8, MULTIPLIER);
         assertEquals(expected, actual, DELTA);
 
@@ -154,28 +154,28 @@ public class CalculatorTest {
 
     @Test
     public void divisionWithPositiveValues_Ok() {
-        expected = 2.4 / 2.8;
+        expected = 0.85714;
         actual = calculator.calculate(2.4, 2.8, DIVIDER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void divisionWithNegativeValues_Ok() {
-        expected = -2.4 / -2.8;
+        expected = 0.85714;
         actual = calculator.calculate(-2.4, -2.8, DIVIDER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void divisionWithPositiveAndNegativeValues_Ok() {
-        expected = -2.4 / 2.8;
+        expected = -0.85714;
         actual = calculator.calculate(-2.4, 2.8, DIVIDER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void divisionWithZero_Ok() {
-        expected = 0 / 2.8;
+        expected = 0;
         actual = calculator.calculate(0, 2.8, DIVIDER);
         assertEquals(expected, actual, DELTA);
     }
@@ -193,25 +193,25 @@ public class CalculatorTest {
         actual = calculator.calculate(Double.MAX_VALUE, 2.8, DIVIDER);
         assertEquals(expected, actual, DELTA);
 
-        expected = Double.MIN_VALUE / 2.4;
+        expected = Double.MIN_VALUE;
         actual = calculator.calculate(Double.MIN_VALUE, 2.4, DIVIDER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void raisingPositiveAndNegativeValuesToPositivePower_Ok() {
-        expected = Math.pow(2.4, 2.8);
+        expected = 11.60356;
         actual = calculator.calculate(2.4, 2.8, POWER);
         assertEquals(expected, actual, DELTA);
 
-        expected = Math.pow(-2.4, 2.8);
+        expected = Math.pow(-2.4, -2.8);
         actual = calculator.calculate(-2.4, -2.8, POWER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void raisingPositiveAndNegativeValuesToNegativePower_Ok() {
-        expected = Math.pow(2.4, -2.8);
+        expected = 0.08618;
         actual = calculator.calculate(2.4, -2.8, POWER);
         assertEquals(expected, actual, DELTA);
 
@@ -222,18 +222,18 @@ public class CalculatorTest {
 
     @Test
     public void raisingPositiveAndNegativeValuesToZeroPower_Ok() {
-        expected = Math.pow(2.4, 0);
+        expected = 1;
         actual = calculator.calculate(2.4, 0, POWER);
         assertEquals(expected, actual, DELTA);
 
-        expected = Math.pow(-2.4, 0);
+        expected = 1;
         actual = calculator.calculate(-2.4, 0, POWER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     public void raisingZeroToPower_Ok() {
-        expected = Math.pow(0, 2.4);
+        expected = 0;
         actual = calculator.calculate(0, 2.4, POWER);
         assertEquals(expected, actual, DELTA);
 
