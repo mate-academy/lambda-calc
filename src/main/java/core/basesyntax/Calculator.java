@@ -2,7 +2,7 @@ package core.basesyntax;
 
 public class Calculator {
 
-    double calculate(double firstOperand, double secondOperand, char operation) {
+    public double calculate(double firstOperand, double secondOperand, char operation) {
         switch (operation) {
             case '+':
                 return firstOperand + secondOperand;

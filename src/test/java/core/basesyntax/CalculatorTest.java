@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-
     private static final double FIRST_POS_OPERAND = 0.125;
     private static final double SECOND_POS_OPERAND = 7.1;
     private static final double FIRST_NEG_OPERAND = -2.0;
