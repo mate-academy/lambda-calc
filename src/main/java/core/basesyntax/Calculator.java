@@ -10,7 +10,7 @@ public class Calculator {
             case '*' :
                 return value1 * value2;
             case '/' :
-                if (value2 == 2) {
+                if (value2 == 0) {
                     throw new ArithmeticException();
                 }
                 return value1 / value2;
