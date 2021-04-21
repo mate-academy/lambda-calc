@@ -30,14 +30,14 @@ public class CalculateTest {
     }
 
     @Test
-    public void calculate_sumWithTwoNegativesNumbers_Ok() {
+    public void calculate_sumWithTwoNegativeNumbers_Ok() {
         actual = calculatorTest.calculate(-10, -10, ADDITION_OPERATOR);
         expected = -20;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    public void calculate_sumWithTwoNumbersNegativesAndPositive_Ok() {
+    public void calculate_sumWithTwoNumbersNegativeAndPositive_Ok() {
         actual = calculatorTest.calculate(-10, 12, ADDITION_OPERATOR);
         expected = 2;
         assertEquals(expected, actual, DELTA);
@@ -79,7 +79,7 @@ public class CalculateTest {
     }
 
     @Test
-    public void calculate_subtractionWithTwoNegativesNumbers_Ok() {
+    public void calculate_subtractionWithTwoNegativeNumbers_Ok() {
         actual = calculatorTest.calculate(-2, -2, SUBTRACTION_OPERATOR);
         expected = 0;
         assertEquals(expected, actual, DELTA);
