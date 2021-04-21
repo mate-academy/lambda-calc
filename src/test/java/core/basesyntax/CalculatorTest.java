@@ -21,57 +21,69 @@ class CalculatorTest {
     }
 
     @Test
-    void add_positiveOperands_ok() {
+    void addPositiveOperands_ok() {
         double actual = calculatorTest.calculate(12.4, 8.6, ADDITION);
         assertEquals(21, actual);
     }
 
     @Test
-    void add_negativeOperands_ok() {
+    void addNegativeOperands_ok() {
         double actual = calculatorTest.calculate(-21, -90, ADDITION);
         assertEquals(-111, actual);
     }
 
     @Test
-    void add_operandsWithDifferentSign_ok() {
+    void addOperandsWithDifferentSign_ok() {
         double actual = calculatorTest.calculate(15, -24, ADDITION);
         assertEquals(-9, actual);
     }
 
     @Test
-    void add_zero_ok() {
+    void addZero_ok() {
         double actual = calculatorTest.calculate(0, -2, ADDITION);
-        double actual2 = calculatorTest.calculate(4, 0, ADDITION);
         assertEquals(-2, actual);
+        double actual2 = calculatorTest.calculate(4, 0, ADDITION);
         assertEquals(4, actual2);
     }
 
     @Test
-    void add_minAndMaxValues_ok() {
-        double actual = calculatorTest.calculate(Double.MAX_VALUE, Double.MIN_VALUE, ADDITION);
-        assertEquals(Double.MAX_VALUE + Double.MIN_VALUE, actual);
+    void addMaxValues_notOk() {
+        assertThrows(ArithmeticException.class, () ->
+                calculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE, ADDITION));
     }
 
     @Test
-    void subtract_positiveValues_ok() {
+    void addMinValues_ok() {
+        double actual = calculatorTest.calculate(Double.MIN_VALUE, Double.MIN_VALUE, ADDITION);
+        assertEquals(1.0E-323, actual);
+    }
+
+    @Test
+    void addMinAndMaxValues_ok() {
+        double actual = calculatorTest.calculate(Double.MAX_VALUE, Double.MIN_VALUE, ADDITION);
+        assertEquals(1.7976931348623157E308, actual);
+    }
+
+    @Test
+    void subtractPositiveValues_ok() {
         double actual = calculatorTest.calculate(24, 4, SUBTRACTION);
         assertEquals(20, actual);
     }
 
     @Test
-    void subtract_negativeValues_ok() {
+    void subtractNegativeValues_ok() {
         double actual = calculatorTest.calculate(-9, -4, SUBTRACTION);
         assertEquals(-5, actual);
     }
 
     @Test
-    void subtract_differentOperands_ok() {
+    void subtractDifferentOperands_ok() {
         double actual = calculatorTest.calculate(-65, 5, SUBTRACTION);
         assertEquals(-70, actual);
     }
 
     @Test
-    void subtract_withOneZero_ok() {
+    void subtractWithOneZero_ok() {
         double actual = calculatorTest.calculate(0, 4, SUBTRACTION);
         assertEquals(-4, actual);
         double actual2 = calculatorTest.calculate(21, 0, SUBTRACTION);
@@ -79,33 +91,33 @@ class CalculatorTest {
     }
 
     @Test
-    void subtract_withMinAndMaxValues_ok() {
+    void subtractWithMinAndMaxValues_ok() {
         double actual = calculatorTest.calculate(Double.MAX_VALUE, Double.MIN_VALUE, SUBTRACTION);
-        assertEquals(Double.MAX_VALUE - Double.MIN_VALUE, actual);
+        assertEquals(1.7976931348623157E308, actual);
         double actual2 = calculatorTest.calculate(Double.MIN_VALUE, Double.MAX_VALUE, SUBTRACTION);
-        assertEquals(Double.MIN_VALUE - Double.MAX_VALUE, actual2);
+        assertEquals(-1.7976931348623157E308, actual2);
     }
 
     @Test
-    void multiply_PositiveOperands_ok() {
+    void multiplyPositiveOperands_ok() {
         double actual = calculatorTest.calculate(24, 4, MULTIPLICATION);
         assertEquals(96, actual);
     }
 
     @Test
-    void multiply_NegativeOperands_ok() {
+    void multiplyNegativeOperands_ok() {
         double actual = calculatorTest.calculate(-9.97, -4.565, MULTIPLICATION);
-        assertEquals(-9.97 * -4.565, actual);
+        assertEquals(45.51305000000001, actual);
     }
 
     @Test
-    void multiply_differentOperands_ok() {
+    void multiplyDifferentOperands_ok() {
         double actual = calculatorTest.calculate(-65, 5, MULTIPLICATION);
         assertEquals(-325, actual);
     }
 
     @Test
-    void multiply_withOneZero_ok() {
+    void multiplyWithOneZero_ok() {
         double actual = calculatorTest.calculate(0, 4, MULTIPLICATION);
         assertEquals(0, actual);
         double actual2 = calculatorTest.calculate(21, 0, MULTIPLICATION);
@@ -113,74 +125,92 @@ class CalculatorTest {
     }
 
     @Test
-    void multiply_minAndMaxValues_ok() {
+    void multiplyMinAndMaxValues_ok() {
         double actual = calculatorTest.calculate(Double.MAX_VALUE,
                 Double.MIN_VALUE, MULTIPLICATION);
-        assertEquals(Double.MAX_VALUE * Double.MIN_VALUE, actual);
+        assertEquals(8.881784197001251E-16, actual);
         double actual2 = calculatorTest.calculate(Double.MIN_VALUE,
                 Double.MAX_VALUE, MULTIPLICATION);
-        assertEquals(Double.MIN_VALUE * Double.MAX_VALUE, actual2);
+        assertEquals(8.881784197001251E-16, actual2);
     }
 
     @Test
-    void divide_withTwoPositiveOperands_ok() {
+    void multiplyMaxValues_notOk() {
+        assertThrows(ArithmeticException.class, () ->
+                calculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLICATION));
+    }
+
+    @Test
+    void multiplyMinValues_notOk() {
+        double actual = calculatorTest.calculate(Double.MIN_VALUE,
+                Double.MIN_VALUE, MULTIPLICATION);
+        assertEquals(0, actual);
+    }
+
+    @Test
+    void divideWithTwoPositiveOperands_ok() {
         double actual = calculatorTest.calculate(12, 8, DIVISION_1);
-        assertEquals((double) 12 / 8, actual);
+        assertEquals(1.5, actual);
     }
 
     @Test
-    void divide_withTwoNegativeOperands_ok() {
+    void divideWithTwoNegativeOperands_ok() {
         double actual = calculatorTest.calculate(-21, -90, DIVISION_2);
-        assertEquals((double) -21 / -90, actual);
+        assertEquals(0.23333333333333334, actual);
     }
 
     @Test
-    void divide_withDifferentOperands_ok() {
+    void divideWithDifferentOperands_ok() {
         double actual = calculatorTest.calculate(15, -24, DIVISION_1);
-        assertEquals((double) 15 / -24, actual);
+        assertEquals(-0.625, actual);
     }
 
     @Test
-    void divide_zeroByValue_ok() {
+    void divideZeroByValue_ok() {
         double actual = calculatorTest.calculate(0, -2, DIVISION_2);
         assertEquals(0, actual);
     }
 
     @Test
-    void divide_valueByZero_notOk() {
-        assertThrows(ArithmeticException.class, () -> calculatorTest.calculate(4, 0, DIVISION_2));
+    void divideValueByZero_notOk() {
+        assertThrows(ArithmeticException.class, () ->
+                calculatorTest.calculate(4, 0, DIVISION_2));
     }
 
     @Test
-    void divide_withMinAndMaxValues_ok() {
-        double actual = calculatorTest.calculate(Double.MAX_VALUE, Double.MIN_VALUE, DIVISION_1);
-        assertEquals(Double.MAX_VALUE / Double.MIN_VALUE, actual);
+    void divideWithMinDivisor_notOk() {
+        assertThrows(ArithmeticException.class, () ->
+                calculatorTest.calculate(Double.MAX_VALUE, Double.MIN_VALUE, DIVISION_1));
+    }
+
+    @Test
+    void divideWithMaxDivisor_ok() {
         double actual2 = calculatorTest.calculate(Double.MIN_VALUE, Double.MAX_VALUE, DIVISION_2);
-        assertEquals(Double.MIN_VALUE / Double.MAX_VALUE, actual2);
+        assertEquals(0, actual2);
     }
 
     @Test
-    void raise_positiveNumberToPower_ok() {
+    void raisePositiveNumberToPower_ok() {
         double actual = calculatorTest.calculate(3.65, 3, RAISING_TO_POWER);
-        assertEquals(3.65 * 3.65 * 3.65, actual);
+        assertEquals(48.627125, actual);
     }
 
     @Test
-    void raise_NegativeNumberToPower_ok() {
+    void raiseNegativeNumberToPower_ok() {
         double actual = calculatorTest.calculate(-2, 3, RAISING_TO_POWER);
         assertEquals(-8, actual);
     }
 
     @Test
-    void raise_positiveNumberToNegativePower_ok() {
+    void raisePositiveNumberToNegativePower_ok() {
         double actual = calculatorTest.calculate(6, -8, RAISING_TO_POWER);
-        assertEquals(Math.pow(6, -8), actual);
+        assertEquals(5.953741807651273E-7, actual);
     }
 
     @Test
-    void raise_negativeNumberToNegativePower_ok() {
+    void raiseNegativeNumberToNegativePower_ok() {
         double actual = calculatorTest.calculate(-12, -3, RAISING_TO_POWER);
-        assertEquals(Math.pow(-12, -3), actual);
+        assertEquals(-5.787037037037037E-4, actual);
     }
 
     @Test
@@ -202,7 +232,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_illegalCharacter_Ok() {
+    void calculateIllegalCharacter_notOk() {
         assertThrows(RuntimeException.class, ()
                 -> calculatorTest.calculate(15, 3, '3'));
     }

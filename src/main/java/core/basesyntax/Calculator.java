@@ -1,8 +1,5 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class Calculator implements Calculate {
     public double calculate(double first, double second, char character) {
         switch (character) {
@@ -10,13 +7,19 @@ public class Calculator implements Calculate {
                 if (first == 0) {
                     return 0;
                 }
-                if (second == 0) {
-                    throw new ArithmeticException("Division by 0 is restricted");
+                if (second == 0 || second == Double.MIN_VALUE) {
+                    throw new ArithmeticException("Divisor " + second + " is not allowed");
                 }
                 return first / second;
             case '*':
+                if (first == second && first == Double.MAX_VALUE) {
+                    throw new ArithmeticException("Infinity");
+                }
                 return first * second;
             case '+':
+                if (first == second && first == Double.MAX_VALUE) {
+                    throw new ArithmeticException("Infinity");
+                }
                 return first + second;
             case '-':
                 return first - second;
