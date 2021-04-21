@@ -1,9 +1,7 @@
 package core.basesyntax;
 
-
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -14,8 +12,12 @@ class CalculatorTest {
     private static final char POWER = '^';
     private static final char NOT_CORRECT_OPERATOR = '\\';
     private static final double DELTA = 1e-6;
-    private final Calculator calculator = new Calculator();
+    private static Calculator calculator;
 
+    @BeforeAll
+    public static void setUp(){
+        calculator = new Calculator();
+    }
     @Test
     public void additionWithTwoPositive_Ok() {
         double sum = calculator.calculator(
@@ -266,7 +268,7 @@ class CalculatorTest {
     public void illegalOperation_NotOk() {
         Assertions.assertThrows(RuntimeException.class, () -> {
             calculator.calculator(
-                        0.1, 1.3, NOT_CORRECT_OPERATOR);
+                    0.1, 1.3, NOT_CORRECT_OPERATOR);
         });
     }
 }
