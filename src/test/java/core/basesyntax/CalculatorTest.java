@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static Calculator calculator;
-    private static final double delta = 0.0001;
+    private static final double DELTA = 0.0001;
     private static final char PLUS = '+';
     private static final char MINUS = '-';
     private static final char MULTIPLICATION = '*';
@@ -25,21 +25,21 @@ class CalculatorTest {
     void addingWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(125.6, 45.1, PLUS);
         double expected = 170.7;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void addingWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-2, -3, PLUS);
         double expected = -5;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void addingWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(12.65, -2, PLUS);
         double expected = 10.65;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -58,29 +58,29 @@ class CalculatorTest {
         double actualForMax = calculator.calculate(Double.MAX_VALUE, 1, PLUS);
         double expectedForMin = 1;
         double expectedForMax = Double.MAX_VALUE;
-        assertEquals(actualForMin, expectedForMin, delta);
-        assertEquals(actualForMax, expectedForMax, delta);
+        assertEquals(actualForMin, expectedForMin, DELTA);
+        assertEquals(actualForMax, expectedForMax, DELTA);
     }
 
     @Test
     void subtractionWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(1254.12, 54.12, MINUS);
         double expected = 1200;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void subtractionWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-45, -12.5, MINUS);
         double expected = -32.5;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void subtractionWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(450.54, -49.46, MINUS);
         double expected = 500;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -99,29 +99,29 @@ class CalculatorTest {
         double actualForMax = calculator.calculate(Double.MAX_VALUE - 1, Double.MAX_VALUE, MINUS);
         double expectedForMin = -1.0;
         double expectedForMax = 0.0;
-        assertEquals(actualForMin, expectedForMin, delta);
-        assertEquals(actualForMax, expectedForMax, delta);
+        assertEquals(actualForMin, expectedForMin, DELTA);
+        assertEquals(actualForMax, expectedForMax, DELTA);
     }
 
     @Test
     void multiplicationWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(12.5, 2.0, MULTIPLICATION);
         double expected = 25.0;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void multiplicationWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-5.2, -2.0, MULTIPLICATION);
         double expected = 10.4;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void multiplicationWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(-5.5, 5.5, MULTIPLICATION);
         double expected = -30.25;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -140,29 +140,29 @@ class CalculatorTest {
         double actualForMax = calculator.calculate(Double.MAX_VALUE, 1, MULTIPLICATION);
         double expectedForMin = 4.9E-324;
         double expectedForMax = 1.7976931348623157E308;
-        assertEquals(actualForMin, expectedForMin, delta);
-        assertEquals(actualForMax, expectedForMax, delta);
+        assertEquals(actualForMin, expectedForMin, DELTA);
+        assertEquals(actualForMax, expectedForMax, DELTA);
     }
 
     @Test
     void divisionWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(12.0, 2.0, DIVISION);
         double expected = 6.0;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void divisionWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-45.0, -22.5, DIVISION);
         double expected = 2.0;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void divisionWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(-5.5, 5.5, DIVISION);
         double expected = -1.0;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -181,8 +181,8 @@ class CalculatorTest {
         double actualForMax = calculator.calculate(Double.MAX_VALUE, 139.0, DIVISION);
         double expectedForMin = 0.0;
         double expectedForMax = 1.2933044135700114E306;
-        assertEquals(actualForMin, expectedForMin, delta);
-        assertEquals(actualForMax, expectedForMax, delta);
+        assertEquals(actualForMin, expectedForMin, DELTA);
+        assertEquals(actualForMax, expectedForMax, DELTA);
     }
 
     @Test
@@ -197,8 +197,8 @@ class CalculatorTest {
         double actualWithNegative = calculator.calculate(-4.2, 4, POW);
         double expectedWithPositive = 144.0;
         double expectedWithNegative = 311.16960000000006;
-        assertEquals(expectedWithPositive, actualWithPositive, delta);
-        assertEquals(expectedWithNegative, actualWithNegative, delta);
+        assertEquals(expectedWithPositive, actualWithPositive, DELTA);
+        assertEquals(expectedWithNegative, actualWithNegative, DELTA);
     }
 
     @Test
@@ -207,8 +207,8 @@ class CalculatorTest {
         double actualWithNegative = calculator.calculate(-4.2, -4, POW);
         double expectedWithPositive = 0.006944444444444444;
         double expectedWithNegative = 0.0032136815421557885;
-        assertEquals(expectedWithPositive, actualWithPositive, delta);
-        assertEquals(expectedWithNegative, actualWithNegative, delta);
+        assertEquals(expectedWithPositive, actualWithPositive, DELTA);
+        assertEquals(expectedWithNegative, actualWithNegative, DELTA);
     }
 
     @Test
@@ -217,8 +217,8 @@ class CalculatorTest {
         double actualWithNegative = calculator.calculate(-4.2, 0.0, POW);
         double expectedWithPositive = 1.0;
         double expectedWithNegative = 1.0;
-        assertEquals(expectedWithPositive, actualWithPositive, delta);
-        assertEquals(expectedWithNegative, actualWithNegative, delta);
+        assertEquals(expectedWithPositive, actualWithPositive, DELTA);
+        assertEquals(expectedWithNegative, actualWithNegative, DELTA);
     }
 
     @Test
@@ -227,8 +227,8 @@ class CalculatorTest {
         double actualWithPositive = calculator.calculate(0.0, 2, POW);
         double expectedWithZero = 1.0;
         double expectedWithPositive = 0.0;
-        assertEquals(actualWithZero, expectedWithZero, delta);
-        assertEquals(expectedWithPositive, actualWithPositive, delta);
+        assertEquals(actualWithZero, expectedWithZero, DELTA);
+        assertEquals(expectedWithPositive, actualWithPositive, DELTA);
     }
 
     @Test

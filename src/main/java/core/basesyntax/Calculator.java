@@ -20,7 +20,7 @@ public class Calculator {
                 }
                 return Math.pow(number1, number2);
             default:
-                throw new IllegalArgumentException("We can't use this operator");
+                throw new IllegalArgumentException("We can't use this operator" + action);
         }
     }
 }
