@@ -18,7 +18,7 @@ public class CalculatorTest {
     private static final char DIVIDE = '/';
     private static final char POW = '^';
     private double actualResult;
-    private Calculator calculator;
+    private Calculator calculator = new Calculator();
 
     @Test
     public void additionWithTwoPositiveOperands_Ok() {
