@@ -294,43 +294,53 @@ public class CalculatorTest {
 
     @Test
     public void raisingWithPositiveOperandsToPositivePow_Ok(){
-        actualResult = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, ADD);
+        actualResult = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, {POW});
         assertEquals(Math.pow(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
     public void raisingWithNegativeOperandsToPositivePow_Ok(){
-        actualResult = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_POSITIVE_OPERAND, ADD);
+        actualResult = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_POSITIVE_OPERAND, POW);
         assertEquals(Math.pow(FIRST_NEGATIVE_OPERAND, SECOND_POSITIVE_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
     public void raisingWithPositiveOperandsToNegativePow_Ok(){
-        actualResult = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADD);
+        actualResult = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND, POW);
         assertEquals(Math.pow(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
     public void raisingWithNegativeOperandsToNegativePow_Ok(){
-        actualResult = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADD);
+        actualResult = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, POW);
         assertEquals(Math.pow(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
     public void raisingWithPositiveOperandsToZeroPow_Ok(){
-        actualResult = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_POSITIVE_OPERAND, ADD);
-        assertEquals(Math.pow(FIRST_NEGATIVE_OPERAND, SECOND_POSITIVE_OPERAND), actualResult, ERROR_MESSAGE);
+        actualResult = calculator.calculate(FIRST_POSITIVE_OPERAND, 0, POW);
+        assertEquals(Math.pow(FIRST_POSITIVE_OPERAND, 0), actualResult, ERROR_MESSAGE);
     }
 
     @Test
     public void raisingWithNegativeOperandsToZeroPow_Ok(){
-        actualResult = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADD);
-        assertEquals(Math.pow(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND), actualResult, ERROR_MESSAGE);
+        actualResult = calculator.calculate(FIRST_NEGATIVE_OPERAND, 0, POW);
+        assertEquals(Math.pow(FIRST_POSITIVE_OPERAND, 0), actualResult, ERROR_MESSAGE);
     }
 
 
-//    raising positive/negative value to zero power;
-//    raising zero to power;
+    @Test
+    public void raisingWithZeroToPositivePow_Ok(){
+        actualResult = calculator.calculate(0, SECOND_POSITIVE_OPERAND, POW);
+        assertEquals(Math.pow(0, SECOND_POSITIVE_OPERAND), actualResult, ERROR_MESSAGE);
+    }
+
+    @Test
+    public void raisingWithZeroToNegativePow_Ok(){
+        actualResult = calculator.calculate(0, SECOND_NEGATIVE_OPERAND, POW);
+        assertEquals(Math.pow(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND), actualResult, ERROR_MESSAGE);
+    }
+
 //    illegal operation;
 
 }
