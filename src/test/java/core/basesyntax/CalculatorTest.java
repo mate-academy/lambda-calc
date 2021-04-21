@@ -3,7 +3,7 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -13,10 +13,10 @@ class CalculatorTest {
     private static final char DIVISION_OPERATOR = '/';
     private static final char POWER_OPERATOR = '^';
     private static final double DELTA = 0.0001;
-    private Calculator calculator;
+    private static Calculator calculator;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void beforeAll() {
         calculator = new Calculator();
     }
 
@@ -100,7 +100,7 @@ class CalculatorTest {
 
     @Test
     void calculate_illegalOperation_notOk() {
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(RuntimeException.class,
                 () -> calculator.calculate(5, 10, '!'));
     }
 

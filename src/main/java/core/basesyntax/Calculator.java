@@ -17,7 +17,7 @@ public class Calculator {
             case '^':
                 return Math.pow(firstArgument, secondArgument);
             default:
-                throw new RuntimeException("No such operation!");
+                throw new RuntimeException("No such operation! [ " + operation + "]");
         }
     }
 }
