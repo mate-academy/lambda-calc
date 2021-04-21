@@ -21,7 +21,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithTwoPositiveOperands() {
+    void additionWithTwoPositiveOperands_OK() {
         double positiveNumberOne = 10.5;
         double positiveNumberTwo = 20.1;
         double expected = 30.6;
@@ -30,7 +30,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithTwoNegativeOperands() {
+    void additionWithTwoNegativeOperands_OK() {
         double negativeNumberOne = -3.5;
         double negativeNumberTwo = -7.9;
         double expected = -11.4;
@@ -39,7 +39,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithPositiveAndNegativeOperands() {
+    void additionWithPositiveAndNegativeOperands_OK() {
         double negativeNumber = -5.7;
         double positiveNumber = 10.2;
         double expected = 4.5;
@@ -48,7 +48,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithZeros() {
+    void additionWithZeros_OK() {
         double zero = -0;
         double numberTwo = 3.14159265359;
         double expected = 3.14159265359;
@@ -62,19 +62,20 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithMinAndMaxOperands() {
+    void additionWithMinAndMaxOperands_OK() {
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 1;
         double negativeNumber = -1;
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(maxDouble, positiveNumber, ADDITION));
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(minDouble, negativeNumber, ADDITION));
+        double expected = Double.MAX_VALUE;
+        double actual = calculator.calculate(maxDouble, positiveNumber, ADDITION);
+        assertEquals(expected, actual);
+        expected = Double.MIN_VALUE;
+        actual = calculator.calculate(minDouble, negativeNumber, ADDITION);
     }
 
     @Test
-    void substractionWithTwoPositiveOperands() {
+    void substractionWithTwoPositiveOperands_OK() {
         double positiveNumber = 10.5;
         double postivieNumber = 20.1;
         double expected = -9.6;
@@ -83,7 +84,7 @@ class CalculatorTest {
     }
 
     @Test
-    void substractionWithTwoNegativeOperands() {
+    void substractionWithTwoNegativeOperands_OK() {
         double negativeNumberOne = -3.5;
         double negativeNumberTwo = -7.9;
         double expected = 4.4;
@@ -92,7 +93,7 @@ class CalculatorTest {
     }
 
     @Test
-    void substractionWithtPositiveAndNegativeOperands() {
+    void substractionWithtPositiveAndNegativeOperands_OK() {
         double negativeNumber = -5.7;
         double positiveNumber = 10.2;
         double expected = -15.9;
@@ -101,7 +102,7 @@ class CalculatorTest {
     }
 
     @Test
-    void substractionWithZeros() {
+    void substractionWithZeros_OK() {
         double zero = 0;
         double numberTwo = 3.14159265359;
         double expected = -3.14159265359;
@@ -116,19 +117,19 @@ class CalculatorTest {
     }
 
     @Test
-    void substractionWithMinAndMaxOperands() {
+    void substractionWithMinAndMaxOperands_OK() {
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 1;
         double negativeNumber = -1;
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(maxDouble, negativeNumber, SUBSTRACTION));
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(minDouble, positiveNumber, SUBSTRACTION));
+        double expected = Double.MAX_VALUE;
+        double actual = calculator.calculate(maxDouble, positiveNumber, SUBSTRACTION);
+        assertEquals(expected, actual);
+        actual = calculator.calculate(minDouble, negativeNumber, SUBSTRACTION);
     }
 
     @Test
-    void multiplicationWithTwoPositiveOperands() {
+    void multiplicationWithTwoPositiveOperands_OK() {
         double positiveNumber = 14.5;
         double positiveNumberTwo = 219.56;
         double expected = 3183.62;
@@ -137,7 +138,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithTwoNegativeOperands() {
+    void multiplicationWithTwoNegativeOperands_OK() {
         double negativeNumberOne = -100.51;
         double negativeNumberTwo = -21.45;
         double expected = 2155.9395;
@@ -146,7 +147,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithtPositiveAndNegativeOperands() {
+    void multiplicationWithtPositiveAndNegativeOperands_OK() {
         double negativeNumber = -18.91;
         double positiveNumber = 4.1;
         double expected = -77.531;
@@ -155,7 +156,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithZeros() {
+    void multiplicationWithZeros_OK() {
         double zero = 0;
         double numberTwo = 3.14159265359;
         double expected = 0;
@@ -169,19 +170,21 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithMinAndMaxOperands() {
+    void multiplicationWithMinAndMaxOperands_OK() {
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 2;
         double negativeNumber = -2;
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(maxDouble, negativeNumber, MULTIPLICATION));
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(minDouble, positiveNumber, MULTIPLICATION));
+        double expected = Double.POSITIVE_INFINITY;
+        double actual = calculator.calculate(maxDouble, positiveNumber, MULTIPLICATION);
+        assertEquals(expected, actual);
+        actual = calculator.calculate(minDouble, positiveNumber, MULTIPLICATION);
+        expected = Double.NEGATIVE_INFINITY;
+        assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithTwoPositiveOperands() {
+    void divisionWithTwoPositiveOperands_OK() {
         double positive1 = 6.4;
         double positive2 = 4.6;
         double expected = 1.39130434783;
@@ -190,7 +193,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithTwoNegativeOperands() {
+    void divisionWithTwoNegativeOperands_OK() {
         double negativeNumberOne = -8.2;
         double negativeNumberTwo = -16.12;
         double expected = 0.50868486352;
@@ -199,7 +202,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithPositiveAndNegativeOperands() {
+    void divisionWithPositiveAndNegativeOperands_OK() {
         double negativeNumber = -9.45;
         double positiveNumber = 26.1950;
         double expected = -0.36075586944;
@@ -208,30 +211,37 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithZeros() {
+    void divisionZeroFirst_OK() {
         double zero = 0;
         double numberTwo = 3.14159265359;
         double expected = 0;
         double actual = calculator.calculate(zero, numberTwo, DIVISION);
         assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void divisionByZero_Not_OK() {
+        double zero = 0;
+        double numberTwo = 3.14159265359;
         assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(numberTwo, zero, DIVISION));
     }
 
     @Test
-    void divisionWithMinAndMaxOperands() {
+    void divisionWithMinAndMaxOperands_OK() {
         double maxDouble = Double.MAX_VALUE;
         double minDouble = -Double.MAX_VALUE;
         double positiveNumber = 0.5;
         double negativeNumber = -0.5;
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(maxDouble, positiveNumber, DIVISION));
-        assertThrows(LimitDoubleValueReachedException.class,
-                () -> calculator.calculate(minDouble, negativeNumber, DIVISION));
+        double actual = calculator.calculate(maxDouble, positiveNumber, DIVISION);
+        double expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, actual);
+        actual = calculator.calculate(minDouble, negativeNumber, DIVISION);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNumbersToTheNegative() {
+    void raisingNumbersToTheNegative_OK() {
         double positiveNumber = 8.5;
         double negativeNumber = -3.95;
         double expected = 0.00021320394;
@@ -243,7 +253,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingNumbersToThePositive() {
+    void raisingNumbersToThePositive_OK() {
         double positiveNumber = 5.61;
         double negativeNumber = -2.48;
         double expected = 15910.4202723;
@@ -255,7 +265,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingNumbersToZero() {
+    void raisingNumbersToZero_OK() {
         double positiveNumber = 1023012.123919329;
         double negativeNumber = -12391294219149.120014201241042102;
         double zero = 0;
@@ -268,7 +278,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToPower() {
+    void raisingZeroToPower_OK() {
         double positiveNumber = 89.89;
         double negativeNumber = 98.98;
         double zero = 0;
@@ -280,7 +290,7 @@ class CalculatorTest {
     }
 
     @Test
-    void illegalOperation() {
+    void illegalOperation_Not_OK() {
         double firstNumber = 19.65;
         double secondNumber = 12.56;
         assertThrows(UnsupportedOperationException.class,
