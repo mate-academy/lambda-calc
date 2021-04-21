@@ -20,7 +20,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void additionWithTwoPositive_Ok() {
+    public void additionWithTwoPositiveValues_Ok() {
         double sum = calculator.calculator(
                 0.1, 0.1, ADDITION);
         double correctResult = 0.2;
@@ -28,7 +28,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void additionWithTwoNegative_Ok() {
+    public void additionWithTwoNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, -0.3, ADDITION);
         double correctResult = -0.6;
@@ -36,7 +36,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void additionWithPositiveAndNegative_Ok() {
+    public void additionWithPositiveAndNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, 0.1, ADDITION);
         double correctResult = -0.1999999;
@@ -66,7 +66,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void subtractionWithTwoPositive_Ok() {
+    public void subtractionWithTwoPositiveValues_Ok() {
         double sum = calculator.calculator(
                 0.1, 0.1, SUBTRACTION);
         double correctResult = 0.0;
@@ -74,7 +74,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void subtractionWithTwoNegative_Ok() {
+    public void subtractionWithTwoNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, -0.3, SUBTRACTION);
         double correctResult = 0.0;
@@ -82,7 +82,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void subtractionWithPositiveAndNegative_Ok() {
+    public void subtractionWithPositiveAndNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, 0.1, SUBTRACTION);
         double correctResult = -0.4;
@@ -111,7 +111,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void divisionWithTwoPositive_Ok() {
+    public void divisionWithTwoPositiveValues_Ok() {
         double sum = calculator.calculator(
                 0.1, 0.1, DIVISION);
         double correctResult = 1;
@@ -119,7 +119,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void divisionWithTwoNegative_Ok() {
+    public void divisionWithTwoNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, -0.3, DIVISION);
         double correctResult = 1;
@@ -127,7 +127,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void divisionWithPositiveAndNegative_Ok() {
+    public void divisionWithPositiveAndNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, 0.1, DIVISION);
         double correctResult = -2.9999999;
@@ -160,7 +160,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void multiplicationWithTwoPositive_Ok() {
+    public void multiplicationWithTwoPositiveValues_Ok() {
         double sum = calculator.calculator(
                 0.1, 0.1, MULTIPLICATION);
         double correctResult = 0.01;
@@ -168,7 +168,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void multiplicationWithTwoNegative_Ok() {
+    public void multiplicationWithTwoNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, -0.3, MULTIPLICATION);
         double correctResult = 0.09;
@@ -176,7 +176,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void multiplicationWithPositiveAndNegative_Ok() {
+    public void multiplicationWithPositiveAndNegativeValues_Ok() {
         double sum = calculator.calculator(
                 -0.3, 0.1, MULTIPLICATION);
         double correctResult = -0.03;
