@@ -4,23 +4,22 @@ public class Calculator {
 
     public double calculate(double a, double b, char operator) {
         switch (operator) {
-            case '+': {
+            case '+':
                 return a + b;
-            } case '-': {
+            case '-':
                 return a - b;
-            } case '*': {
+            case '*':
                 return a * b;
-            } case '/' : {
+            case '/' :
                 if (b == 0) {
                     throw new ArithmeticException("/ by zero");
                 }
                 return a / b;
-            } case '^': {
+            case '^':
                 return Math.pow(a, b);
-            } default: {
+            default:
                 throw new UnsupportedOperationException("This operator is not supported: "
                         + operator);
-            }
         }
     }
 }

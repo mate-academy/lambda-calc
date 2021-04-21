@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static final char ADDITION = '+';
-    private static Calculator calculator;
     private static final char SUBTRACTION = '-';
     private static final char DIVISION = '/';
     private static final char MULTIPLICATION = '*';
@@ -18,6 +17,7 @@ class CalculatorTest {
     private static final double NEGATIVE_VALUE = -9876.5433;
     private static final double ZERO = 0;
     private static final double DELTA = 0.0001;
+    private static Calculator calculator;
     private double actual;
     private double expected;
 
