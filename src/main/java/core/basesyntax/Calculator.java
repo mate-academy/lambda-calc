@@ -15,11 +15,11 @@ public class Calculator implements Calculate {
                 return Math.pow(a, b);
             case '/':
                 if (b == 0) {
-                    throw new IllegalArgumentException("You can't divide by 0");
+                    throw new ArithmeticException("You can't divide by 0");
                 }
                 return a / b;
             default:
-                throw new IllegalArgumentException("Unsupported operator");
+                throw new RuntimeException("Unsupported operator");
         }
     }
 }
