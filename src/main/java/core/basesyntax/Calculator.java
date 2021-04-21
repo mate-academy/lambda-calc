@@ -16,19 +16,19 @@ public class Calculator {
         switch (operator) {
             case ADDITION:
                 result = firstNumber + secondNumber;
-                if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
+                if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
                     throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
                 return result;
             case SUBTRACTION:
                 result = firstNumber - secondNumber;
-                if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
+                if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
                     throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
                 return result;
             case MULTIPLYING:
                 result = firstNumber * secondNumber;
-                if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
+                if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
                     throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
                 return result + 0; //because -10 * 0 = -0.0 and it is not equal to 0
@@ -37,7 +37,7 @@ public class Calculator {
                     throw new NullDivisorException("You can't divide by zero");
                 }
                 result = firstNumber / secondNumber;
-                if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
+                if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
                     throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
                 return result;
@@ -46,7 +46,7 @@ public class Calculator {
                     throw new NullDivisorException("You can't raise zero to negative power");
                 }
                 result = Math.pow(firstNumber, secondNumber);
-                if (result >= Double.MAX_VALUE || result <= -Double.MAX_VALUE) {
+                if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
                     throw new DoubleLimitException("Limit is exceeded - use lower numbers");
                 }
                 return result;
