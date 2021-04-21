@@ -12,11 +12,7 @@ public class Calculator {
                 return number1 - number2;
             }
             case '*' : {
-                if (number1 == 0 || number2 == 0) {
-                    return 0;
-                } else {
-                    return number1 * number2;
-                }
+                return number1 * number2;
             }
             case '/' : {
                 if (number2 == 0) {
@@ -33,7 +29,5 @@ public class Calculator {
                 return Math.pow(number1, number2); }
             default: throw new UnsupportedOperationException("You use illegal operation");
         }
-
     }
-
 }

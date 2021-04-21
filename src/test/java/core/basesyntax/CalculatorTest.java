@@ -138,7 +138,7 @@ public class CalculatorTest {
 
     @Test
     void multiplication_ZeroInDifferentPlaces_OK() {
-        actual = calculator.calculate(0, -0.0005, MULTIPLICATION);
+        actual = calculator.calculate(0, 0.0005, MULTIPLICATION);
         expected = 0;
         assertEquals(expected, actual);
 
@@ -240,9 +240,9 @@ public class CalculatorTest {
         expected = -2915.45189504;
         assertEquals(expected, actual,DELTA);
 
-        actualSecond = calculator.calculate(-20, -0.2, RAISING);
-        expectedSecond = 0.0025;
-        assertEquals(expectedSecond, actualSecond, DELTA);
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(-20, -0.2, RAISING);
+        });
     }
 
     @Test
