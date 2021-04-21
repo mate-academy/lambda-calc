@@ -1,0 +1,40 @@
+package core.basesyntax;
+
+public class Calculator {
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char DIVISION = '/';
+    private static final char MULTIPLICATION = '*';
+    private static final char RISING_TO_POWER = '^';
+    private static final double MAX_VALUE = Double.MAX_VALUE;
+    private static final double MIN_VALUE = Double.MIN_VALUE;
+
+    public double calculate(double value1, double value2, char operation) {
+        if (operation == ADDITION) {
+            return value1 + value2;
+        }
+
+        if (operation == SUBTRACTION) {
+            if (value1 < 0 || value2 < 0) {
+                return value1 + value2;
+            }
+            return value1 - value2;
+        }
+
+        if (operation == DIVISION) {
+            if (value2 == 0) {
+                throw new ArithmeticException("Can't divide by zero");
+            }
+            return value1 / value2;
+        }
+
+        if (operation == MULTIPLICATION) {
+            return value1 * value2;
+        }
+
+        if (operation == RISING_TO_POWER) {
+            return Math.pow(value1, value2);
+        }
+        throw new IllegalArgumentException();
+    }
+}
