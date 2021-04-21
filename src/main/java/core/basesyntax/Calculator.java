@@ -7,19 +7,13 @@ public class Calculator implements Calculate {
                 if (first == 0) {
                     return 0;
                 }
-                if (second == 0 || second == Double.MIN_VALUE) {
+                if (second == 0) {
                     throw new ArithmeticException("Divisor " + second + " is not allowed");
                 }
                 return first / second;
             case '*':
-                if (first == second && first == Double.MAX_VALUE) {
-                    throw new ArithmeticException("Infinity");
-                }
                 return first * second;
             case '+':
-                if (first == second && first == Double.MAX_VALUE) {
-                    throw new ArithmeticException("Infinity");
-                }
                 return first + second;
             case '-':
                 return first - second;
