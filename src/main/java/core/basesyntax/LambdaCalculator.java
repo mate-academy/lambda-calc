@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-public class LambdaCalc implements Calculator {
+public class LambdaCalculator implements Calculator {
 
     @Override
     public double calculate(double firstValue, double secondValue, char operation) {
