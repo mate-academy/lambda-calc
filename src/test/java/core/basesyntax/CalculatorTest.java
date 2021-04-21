@@ -15,9 +15,10 @@ class CalculatorTest {
     private static Calculator calculator;
 
     @BeforeAll
-    public static void setUp(){
+    public static void setUp() {
         calculator = new Calculator();
     }
+
     @Test
     public void additionWithTwoPositive_Ok() {
         double sum = calculator.calculator(
