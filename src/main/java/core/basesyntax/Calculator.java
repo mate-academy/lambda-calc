@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 public class Calculator {
-    public double calculator(double number1, double number2, char operating) {
+    public double calculate(double number1, double number2, char operating) {
         switch (operating) {
             case '+':
                 return number1 + number2;
@@ -17,7 +17,7 @@ public class Calculator {
                 }
                 return Math.pow(number1, number2);
             default:
-                throw new RuntimeException("Wrong operator");
+                throw new RuntimeException("Wrong operator:" + operating);
         }
     }
 }
