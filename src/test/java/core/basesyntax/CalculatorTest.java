@@ -69,25 +69,25 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_SubstractionWithTwoPositiveValue_Ok() {
+    void calculate_SubtractionWithTwoPositiveValue_Ok() {
         assertEquals(ZERO_VALUE,calculator
                 .calculate(firstPositiveValue, secondPositiveValue,SUBTRACTION_OPERATOR),DELTA);
     }
 
     @Test
-    void calculate_SubstractionWithTwoNegativeValue_Ok() {
+    void calculate_SubtractionWithTwoNegativeValue_Ok() {
         assertEquals(2.0,calculator
                 .calculate(firstNegativeValue, secondNegativeValue,SUBTRACTION_OPERATOR),DELTA);
     }
 
     @Test
-    void calculate_SubstractionWithPositiveAndNegativeValue_Ok() {
+    void calculate_SubtractionWithPositiveAndNegativeValue_Ok() {
         assertEquals(15.0,calculator
                 .calculate(firstPositiveValue, secondNegativeValue,SUBTRACTION_OPERATOR),DELTA);
     }
 
     @Test
-    void calculate_SubstractionWithZeroValue_Ok() {
+    void calculate_SubtractionWithZeroValue_Ok() {
         assertEquals(10.0,calculator
                 .calculate(firstPositiveValue, ZERO_VALUE,SUBTRACTION_OPERATOR),DELTA);
         assertEquals(5.0,calculator
@@ -95,7 +95,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_SubstractionWithMaxAndMinValue_Ok() {
+    void calculate_SubtractionWithMaxAndMinValue_Ok() {
         assertEquals(ZERO_VALUE,calculator
                 .calculate(-Double.MAX_VALUE, -Double.MAX_VALUE,SUBTRACTION_OPERATOR),DELTA);
         assertEquals(ZERO_VALUE,calculator
@@ -134,6 +134,8 @@ class CalculatorTest {
                 .calculate(Double.MAX_VALUE, Double.MAX_VALUE,MULTIPLICATION_OPERATOR),DELTA);
         assertEquals(ZERO_VALUE,calculator
                 .calculate(Double.MIN_VALUE, Double.MIN_VALUE,MULTIPLICATION_OPERATOR),DELTA);
+        assertEquals(ZERO_VALUE,calculator
+                .calculate(Double.MIN_VALUE, Double.MAX_VALUE,MULTIPLICATION_OPERATOR),DELTA);
     }
 
     @Test
@@ -172,6 +174,8 @@ class CalculatorTest {
                 .calculate(Double.MAX_VALUE, Double.MAX_VALUE,DIVISION_OPERATOR),DELTA);
         assertEquals(1.0,calculator
                 .calculate(Double.MIN_VALUE, Double.MIN_VALUE,DIVISION_OPERATOR),DELTA);
+        assertEquals(0.0,calculator
+                .calculate(Double.MIN_VALUE, Double.MAX_VALUE,DIVISION_OPERATOR),DELTA);
     }
 
     @Test
@@ -194,6 +198,8 @@ class CalculatorTest {
                 .calculate(firstPositiveValue, secondNegativeValue,POWER_OPERATOR),DELTA);
         assertEquals(0.001,calculator
                 .calculate(secondPositiveValue, firstNegativeValue,POWER_OPERATOR),DELTA);
+        assertEquals(-0.008,calculator
+                .calculate(secondNegativeValue, firstNegativeValue,POWER_OPERATOR),DELTA);
     }
 
     @Test
@@ -208,7 +214,7 @@ class CalculatorTest {
     void calculate_RisingZeroToPower_Ok() {
         assertEquals(0.0,calculator
                 .calculate(ZERO_VALUE, firstPositiveValue,POWER_OPERATOR),DELTA);
-        assertEquals(0.0,calculator
-                .calculate(ZERO_VALUE, secondPositiveValue,POWER_OPERATOR),DELTA);
+        assertEquals(Double.POSITIVE_INFINITY,calculator
+                .calculate(ZERO_VALUE, secondNegativeValue,POWER_OPERATOR),DELTA);
     }
 }
