@@ -19,6 +19,9 @@ public class Calculator implements ICalculate {
                 return firstOperand * secondOperand;
             }
             case DIVISION_ACTION: {
+                if (secondOperand == 0.0) {
+                    throw new ArithmeticException("Can't division by zero");
+                }
                 return firstOperand / secondOperand;
             }
             case RAISING_ACTION: {
