@@ -12,7 +12,7 @@ public class CalculatorImpl implements Calculator {
                 return firstElement * secondElement;
             case ('/'):
                 if (secondElement == 0) {
-                    throw new ArithmeticException();
+                    throw new ArithmeticException("Can't divide on zero");
                 }
                 return firstElement / secondElement;
             case ('^'):
