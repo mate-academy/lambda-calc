@@ -17,7 +17,7 @@ public class Calculator {
             case '^':
                 return Math.pow(firstNumber, secondNumber);
             default:
-                throw new RuntimeException("Operation is incorrect");
+                throw new RuntimeException("Operation is incorrect: " + operation);
         }
     }
 }
