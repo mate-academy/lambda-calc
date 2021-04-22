@@ -18,6 +18,7 @@ class CalculatorTest {
     private static final double POSITIVE_VALUE = 1985.021;
     private static final double NEGATIVE_VALUE = -2105.123;
     private static final double NEGATIVE_ONE = -1.0;
+    private static final double DOUBLE_MIN_VALUE = Double.MAX_VALUE * NEGATIVE_ONE;
     private static Calculator calculator;
     private double expected;
     private double actual;
@@ -92,22 +93,22 @@ class CalculatorTest {
 
     @Test
     void calculate_addPositiveAndDoubleMinValues_Ok() {
-        expected = POSITIVE_VALUE;
-        actual = calculator.calculate(POSITIVE_VALUE, Double.MIN_VALUE, ADDITION);
+        expected = DOUBLE_MIN_VALUE;
+        actual = calculator.calculate(POSITIVE_VALUE, DOUBLE_MIN_VALUE, ADDITION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_addNegativeAndDoubleMinValues_Ok() {
-        expected = NEGATIVE_VALUE;
-        actual = calculator.calculate(NEGATIVE_VALUE, Double.MIN_VALUE, ADDITION);
+        expected = DOUBLE_MIN_VALUE;
+        actual = calculator.calculate(NEGATIVE_VALUE, DOUBLE_MIN_VALUE, ADDITION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_addZeroAndDoubleMinValues_Ok() {
-        expected = Double.MIN_VALUE;
-        actual = calculator.calculate(ZERO, Double.MIN_VALUE, ADDITION);
+        expected = DOUBLE_MIN_VALUE;
+        actual = calculator.calculate(ZERO, DOUBLE_MIN_VALUE, ADDITION);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -204,36 +205,36 @@ class CalculatorTest {
 
     @Test
     void calculate_subtractPositiveAndDoubleMinValues_Ok() {
-        expected = POSITIVE_VALUE;
-        actual = calculator.calculate(POSITIVE_VALUE, Double.MIN_VALUE, SUBTRACTION);
+        expected = Double.MAX_VALUE;
+        actual = calculator.calculate(POSITIVE_VALUE, DOUBLE_MIN_VALUE, SUBTRACTION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractDoubleMinAndPositiveValues_Ok() {
-        expected = POSITIVE_VALUE * NEGATIVE_ONE;
-        actual = calculator.calculate(Double.MIN_VALUE, POSITIVE_VALUE, SUBTRACTION);
+        expected = DOUBLE_MIN_VALUE;
+        actual = calculator.calculate(DOUBLE_MIN_VALUE, POSITIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractNegativeAndDoubleMinValues_Ok() {
-        expected = NEGATIVE_VALUE;
-        actual = calculator.calculate(NEGATIVE_VALUE, Double.MIN_VALUE, SUBTRACTION);
+        expected = Double.MAX_VALUE;
+        actual = calculator.calculate(NEGATIVE_VALUE, DOUBLE_MIN_VALUE, SUBTRACTION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractDoubleMinAndNegativeValues_Ok() {
-        expected = NEGATIVE_VALUE * NEGATIVE_ONE;
-        actual = calculator.calculate(Double.MIN_VALUE, NEGATIVE_VALUE, SUBTRACTION);
+        expected = DOUBLE_MIN_VALUE;
+        actual = calculator.calculate(DOUBLE_MIN_VALUE, NEGATIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractZeroAndDoubleMinValues_Ok() {
-        expected = Double.MIN_VALUE;
-        actual = calculator.calculate(ZERO, Double.MIN_VALUE, SUBTRACTION);
+        expected = Double.MAX_VALUE;
+        actual = calculator.calculate(ZERO, DOUBLE_MIN_VALUE, SUBTRACTION);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -295,15 +296,15 @@ class CalculatorTest {
 
     @Test
     void calculate_multiplyPositiveAndDoubleMinValues_Ok() {
-        expected = 9.807E-321;
-        actual = calculator.calculate(POSITIVE_VALUE, Double.MIN_VALUE, MULTIPLICATION);
+        expected = Double.NEGATIVE_INFINITY;
+        actual = calculator.calculate(POSITIVE_VALUE, DOUBLE_MIN_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplyNegativeAndDoubleMinValues_Ok() {
-        expected = -1.04E-320;
-        actual = calculator.calculate(NEGATIVE_VALUE, Double.MIN_VALUE, MULTIPLICATION);
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.calculate(NEGATIVE_VALUE, DOUBLE_MIN_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -365,15 +366,15 @@ class CalculatorTest {
 
     @Test
     void calculate_dividePositiveByDoubleMinValues_Ok() {
-        expected = Double.POSITIVE_INFINITY;
-        actual = calculator.calculate(POSITIVE_VALUE, Double.MIN_VALUE, DIVISION);
+        expected = -1.104204583921956E-305;
+        actual = calculator.calculate(POSITIVE_VALUE, DOUBLE_MIN_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divideNegativeByDoubleMinValues_Ok() {
-        expected = Double.NEGATIVE_INFINITY;
-        actual = calculator.calculate(NEGATIVE_VALUE, Double.MIN_VALUE, DIVISION);
+        expected = 1.171013539060564E-305;
+        actual = calculator.calculate(NEGATIVE_VALUE, DOUBLE_MIN_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
