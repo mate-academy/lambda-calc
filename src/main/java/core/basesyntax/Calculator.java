@@ -9,7 +9,6 @@ public class Calculator {
     private static final String DIVIDE_BY_ZERO = "Divide by zero";
     private static final String UNKNOWN_OPERAND = "Unknown operand";
 
-
     public double calculate(double a, double b, char operation) {
         switch (operation) {
             case ADD:
