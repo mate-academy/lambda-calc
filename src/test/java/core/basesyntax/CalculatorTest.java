@@ -19,9 +19,7 @@ class CalculatorTest {
             + "expected: %1f, actual: %1f";
     private static final double ZERO = 0.0;
     private static final double DELTA = 0.0001;
-    private static final char ILLEGAL_SIGN_OPERATOR = '@';
-    private static final char ILLEGAL_NUMBER_OPERATOR = '1';
-    private static final char ILLEGAL_LETTER_OPERATOR = 'q';
+    private static final char ILLEGAL_OPERATOR = '@';
     private Calculator calculator;
     private double actual;
     private double expected;
@@ -347,9 +345,7 @@ class CalculatorTest {
     @Test
     void illegalOperation_throwsException() {
         assertThrows(IllegalOperationException.class, () -> {
-            calculator.calculate(1,2, ILLEGAL_LETTER_OPERATOR);
-            calculator.calculate(1,2, ILLEGAL_NUMBER_OPERATOR);
-            calculator.calculate(1,2, ILLEGAL_SIGN_OPERATOR);
+            calculator.calculate(1,2, ILLEGAL_OPERATOR);
         });
     }
 }

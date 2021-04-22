@@ -5,27 +5,23 @@ public class Calculator {
         double result;
         switch (operator) {
             case '+':
-                result = a + b;
-                break;
+                return a + b;
             case '-':
-                result = a - b;
-                break;
+                return a - b;
             case '*':
-                result = a * b;
-                break;
+                return a * b;
             case '/':
                 if (b == 0) {
                     throw new ArithmeticException("Division by zero");
                 }
-                result = a / b;
-                break;
+                return a / b;
+
             case '^':
-                result = Math.pow(a, b);
-                break;
+                return Math.pow(a, b);
+
             default:
                 throw new IllegalOperationException("Bad operator or operation is not supported");
         }
-        return result;
     }
 
 }
