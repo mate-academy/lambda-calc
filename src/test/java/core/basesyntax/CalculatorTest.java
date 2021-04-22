@@ -140,7 +140,6 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-
     @Test
     void calculate_subtractionTwoMax_Ok() {
         expected = ZERO;
