@@ -2,25 +2,24 @@ package core.basesyntax;
 
 public class Calculator {
     public double calculate(double first, double second, char operation) {
-        if (operation == '+') {
-            return first + second;
+        switch (operation) {
+            case '+':
+                return first + second;
+            case '-':
+                return first - second;
+            case '*':
+                return first * second;
+            case '/':
+                if (second == 0) {
+                    throw new ArithmeticException("Not possible divide to zero");
+                } else {
+                    return first / second;
+                }
+            case '^':
+                return first < 0 && second == 0 ? -Math.pow(first, second)
+                        : Math.pow(first, second);
+            default:
+                throw new RuntimeException("Incorrect arithmetic operation");
         }
-        if (operation == '-') {
-            return first - second;
-        }
-        if (operation == '*') {
-            return first * second;
-        }
-        if (operation == '/') {
-            if (second == 0) {
-                throw new ArithmeticException("Not possible divide to zero");
-            } else {
-                return first / second;
-            }
-        }
-        if (operation == '^') {
-            return Math.pow(first, second);
-        }
-        throw new RuntimeException("Incorrect arithmetic operation");
     }
 }
