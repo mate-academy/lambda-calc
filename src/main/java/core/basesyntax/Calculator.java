@@ -19,7 +19,8 @@ public class Calculator {
                 return first * second;
             case '^' :
                 return Math.pow(first, second);
-            default: throw new NotSupportOperationException("This operation '"
+            default:
+                throw new NotSupportOperationException("This operation '"
                     + operation + "' not supports!");
         }
     }
