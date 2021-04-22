@@ -11,14 +11,13 @@ public class Calculator {
                 return value1 * value2;
             case '/':
                 if (value2 == 0) {
-                    throw new ArithmeticException();
+                    throw new ArithmeticException("You cannot divide by zero!");
                 }
                 return value1 / value2;
             case '^':
                 return Math.pow(value1,value2);
             default:
-                throw new RuntimeException("Invalid operator");
+                throw new RuntimeException("Invalid operator" + operation);
         }
-
     }
 }
