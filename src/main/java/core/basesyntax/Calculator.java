@@ -18,7 +18,7 @@ public class Calculator implements Calculate {
             case '^':
                 return Math.pow(value1, value2);
             default:
-                throw new IllegalArgumentException("Inappropriate operation.");
+                throw new IllegalArgumentException("Inappropriate operation " + operation);
         }
     }
 }

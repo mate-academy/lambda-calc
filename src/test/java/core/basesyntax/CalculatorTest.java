@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-
     private static final char PLUS = '+';
     private static final char MINUS = '-';
     private static final char MULTIPLIER = '*';
