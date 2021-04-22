@@ -10,7 +10,7 @@ public class Calculator {
             case '*':
                 return firstOperand * secondOperand;
             case '/':
-                if (secondOperand == 0) {
+                if (secondOperand == 0.0) {
                     throw new ArithmeticException("You can't divide by 0");
                 }
                 return firstOperand / secondOperand;
