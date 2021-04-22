@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import core.basesyntax.exception.DivisionByZeroException;
 import core.basesyntax.exception.NotSupportOperationException;
@@ -257,11 +256,7 @@ class CalculatorTest {
     @Test
     void notSupportedOperation_NotOK() {
         char operation = '$';
-        try {
-            calculator.calculate(0.0, 0.0, operation);
-        } catch (NotSupportOperationException e) {
-            return;
-        }
-        fail("This operation '" + operation + "' not supports!");
+        assertThrows(NotSupportOperationException.class, () ->
+                calculator.calculate(ZERO, ZERO, operation));
     }
 }
