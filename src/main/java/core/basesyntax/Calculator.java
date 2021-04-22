@@ -4,6 +4,12 @@ public class Calculator {
 
     public double calculate(double firstNumber, double secondNumber, char operation) {
         if (operation == '^') {
+            if (firstNumber < 0 && secondNumber - (int) secondNumber != 0) {
+                throw new ArithmeticException("You must divide on integer number.");
+            }
+            if (secondNumber < 0) {
+                return 1 / Math.pow(firstNumber, secondNumber * -1);
+            }
             return Math.pow(firstNumber, secondNumber);
         }
         if (operation == '+') {
