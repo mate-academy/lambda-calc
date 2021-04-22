@@ -19,8 +19,8 @@ class CalculatorTest {
     private static final char MINUS = '-';
     private static final char POWER = '^';
     private static final char PLUS = '+';
-    private static Calculator calculator;
     private static final double ZERO = 0;
+    private static Calculator calculator;
     private double expected;
     private double actual;
 
@@ -180,14 +180,14 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_divisionNumberWithZero_isOk() {
+    void calculate_divisionNumberByZero_isOk() {
         expected = ZERO;
         actual = calculator.calculate(ZERO, POSITIVE_NUMBER, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculate_divisionNumberWithZero_isNotOk() {
+    void calculate_divisionNumberByZero_isNotOk() {
         assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(POSITIVE_NUMBER, ZERO, DIVISION);
         });
