@@ -3,21 +3,27 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static final ICalculate calculator = new Calculator();
     private static final String ERROR_MESSAGE = "Error! Expected value is not equal actual";
-    private static final double MAX_DOUBLE_VALUE = Double.MAX_VALUE;
     private static final double MIN_DOUBLE_VALUE = -Double.MAX_VALUE;
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
     private static final char MULTIPLICATION = '*';
     private static final char DIVISION = '/';
     private static final char RAISING = '^';
+    private static final char ILLEGAL_OPERATION = '?';
     private static final double DELTA = 0.0001;
+    private static ICalculate calculator;
     private double actual;
     private double expected;
+
+    @BeforeAll
+    static void beforeAll() {
+        calculator = new Calculator();
+    }
 
     @Test
     void additionWithTwoPositives_Ok() {
@@ -75,23 +81,23 @@ class CalculatorTest {
 
     @Test
     void additionWithPositiveAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(15.45, MAX_DOUBLE_VALUE, ADDITION);
-        expected = MAX_DOUBLE_VALUE;
+        actual = calculator.calculate(15.45, Double.MAX_VALUE, ADDITION);
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, 13.67, ADDITION);
-        expected = MAX_DOUBLE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, 13.67, ADDITION);
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
     @Test
     void additionWithNegativeAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(-15.44, MAX_DOUBLE_VALUE, ADDITION);
-        expected = MAX_DOUBLE_VALUE;
+        actual = calculator.calculate(-15.44, Double.MAX_VALUE, ADDITION);
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, -13.67, ADDITION);
-        expected = MAX_DOUBLE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, -13.67, ADDITION);
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
@@ -173,30 +179,30 @@ class CalculatorTest {
 
     @Test
     void subtractionWithPositiveAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(10.34, MAX_DOUBLE_VALUE, SUBTRACTION);
+        actual = calculator.calculate(10.34, Double.MAX_VALUE, SUBTRACTION);
         expected = MIN_DOUBLE_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, 23.15, SUBTRACTION);
-        expected = MAX_DOUBLE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, 23.15, SUBTRACTION);
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
     @Test
     void subtractionWithNegativeAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(-10.34, MAX_DOUBLE_VALUE, SUBTRACTION);
+        actual = calculator.calculate(-10.34, Double.MAX_VALUE, SUBTRACTION);
         expected = MIN_DOUBLE_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, -34.65, SUBTRACTION);
-        expected = MAX_DOUBLE_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, -34.65, SUBTRACTION);
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
     @Test
     void subtractionWithPositiveAndMinDoubleValue_Ok() {
         actual = calculator.calculate(10.34, MIN_DOUBLE_VALUE, SUBTRACTION);
-        expected = MAX_DOUBLE_VALUE;
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
         actual = calculator.calculate(MIN_DOUBLE_VALUE, 23.15, SUBTRACTION);
@@ -207,7 +213,7 @@ class CalculatorTest {
     @Test
     void subtractionWithNegativeAndMinDoubleValue_Ok() {
         actual = calculator.calculate(-10.36, MIN_DOUBLE_VALUE, SUBTRACTION);
-        expected = MAX_DOUBLE_VALUE;
+        expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
         actual = calculator.calculate(MIN_DOUBLE_VALUE, -23.05, SUBTRACTION);
@@ -271,22 +277,22 @@ class CalculatorTest {
 
     @Test
     void multiplicationWithPositiveAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(10.34, MAX_DOUBLE_VALUE, MULTIPLICATION);
+        actual = calculator.calculate(10.34, Double.MAX_VALUE, MULTIPLICATION);
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, 23.15, MULTIPLICATION);
+        actual = calculator.calculate(Double.MAX_VALUE, 23.15, MULTIPLICATION);
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
     @Test
     void multiplicationWithNegativeAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(-10.34, MAX_DOUBLE_VALUE, MULTIPLICATION);
+        actual = calculator.calculate(-10.34, Double.MAX_VALUE, MULTIPLICATION);
         expected = Double.NEGATIVE_INFINITY;
         assertEquals(expected, actual, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, -34.65, MULTIPLICATION);
+        actual = calculator.calculate(Double.MAX_VALUE, -34.65, MULTIPLICATION);
         expected = Double.NEGATIVE_INFINITY;
         assertEquals(expected, actual, ERROR_MESSAGE);
     }
@@ -364,22 +370,22 @@ class CalculatorTest {
 
     @Test
     void divisionWithPositiveAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(10.34, MAX_DOUBLE_VALUE, DIVISION);
+        actual = calculator.calculate(10.34, Double.MAX_VALUE, DIVISION);
         expected = 5.751815924241116E-308;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, 23.15, DIVISION);
+        actual = calculator.calculate(Double.MAX_VALUE, 23.15, DIVISION);
         expected = 7.76541310955644E306;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
     @Test
     void divisionWithNegativeAndMaxDoubleValue_Ok() {
-        actual = calculator.calculate(-10.34, MAX_DOUBLE_VALUE, DIVISION);
+        actual = calculator.calculate(-10.34, Double.MAX_VALUE, DIVISION);
         expected = -5.751815924241116E-308;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
 
-        actual = calculator.calculate(MAX_DOUBLE_VALUE, -34.65, DIVISION);
+        actual = calculator.calculate(Double.MAX_VALUE, -34.65, DIVISION);
         expected = -5.1881475753602184E306;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
@@ -392,7 +398,7 @@ class CalculatorTest {
 
         actual = calculator.calculate(MIN_DOUBLE_VALUE, 23.15, DIVISION);
         expected = -7.76541310955644E306;
-        assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
+        assertEquals(expected, actual, DELTA,ERROR_MESSAGE);
     }
 
     @Test
@@ -472,8 +478,7 @@ class CalculatorTest {
     @Test
     void wrongOperationType_NotOk() {
         assertThrows(IllegalOperationException.class, () -> {
-            calculator.calculate(21.44, 2.78, '?');
+            calculator.calculate(21.44, 2.78, ILLEGAL_OPERATION);
         });
     }
 }
-
