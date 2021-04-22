@@ -123,11 +123,14 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_divisionWithNull_isOk() {
+    void calculate_divisionOfNull_isOk() {
         actual = calculator.calculate(0.0, 7.33, DIVISION_OPERATOR);
         expected = 0.0;
         assertEquals(expected, actual, DELTA);
+    }
 
+    @Test
+    void calculate_divisionByNull_notOk() {
         assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(7.33, 0.0, DIVISION_OPERATOR));
     }
@@ -227,7 +230,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_illegalOperations_isNotOk() {
+    void calculate_illegalOperations_notOk() {
         assertThrows(RuntimeException.class,
                 () -> calculator.calculate(7.33, 13.66, ILLEGAL_OPERATOR));
     }
