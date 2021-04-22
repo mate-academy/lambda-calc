@@ -6,7 +6,7 @@ public class Calculator {
         switch (operation) {
             case '^':
                 if (firstNumber < 0 && secondNumber - (int) secondNumber != 0) {
-                    throw new ArithmeticException("You must raise power with integer number.");
+                    throw new ArithmeticException("We cannot raise negative number to a fractional power.");
                 }
                 if (secondNumber < 0) {
                     return 1 / Math.pow(firstNumber, secondNumber * -1);
