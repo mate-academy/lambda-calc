@@ -174,4 +174,10 @@ class CalculatorTest {
         assertEquals(INFINITY, calculator.calculate(MAX_VALUE,2, RAISING));
         assertEquals(INFINITY, calculator.calculate(-MAX_VALUE,2, RAISING));
     }
+
+    @Test
+    void differentOperation_NotOk() {
+        assertThrows(IllegalAccessException.class, () ->
+                calculator.calculate(POSITIVE_FIRST_NUMBER, POSITIVE_SECOND_NUMBER, '!'));
+    }
 }
