@@ -3,6 +3,7 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
@@ -16,8 +17,13 @@ public class CalculatorTest {
     private static final char MULTIPLY = '*';
     private static final char DIVIDE = '/';
     private static final char POW = '^';
+    private static Calculator calculator;
     private double actualResult;
-    private Calculator calculator = new Calculator();
+
+    @BeforeAll
+    static void setUpCalculator() {
+        calculator = new Calculator();
+    }
 
     @Test
     public void additionWithTwoPositiveOperands_Ok() {
