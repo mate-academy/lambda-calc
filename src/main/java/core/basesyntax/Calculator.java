@@ -10,6 +10,9 @@ public class Calculator {
             return firstOperand - secondOperand;
         }
         if (operation == 'd') {
+            if (secondOperand == 0.0) {
+                throw new ArithmeticException("Illegal operation: division by zero");
+            }
             return firstOperand / secondOperand;
         }
         if (operation == 'm') {
@@ -18,6 +21,6 @@ public class Calculator {
         if (operation == 'p') {
             return Math.pow(firstOperand, secondOperand);
         }
-        throw new IllegalArgumentException("Operation letter is not valid");
+        throw new IllegalArgumentException("Operation symbol is not valid");
     }
 }
