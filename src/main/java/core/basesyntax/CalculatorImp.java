@@ -11,7 +11,7 @@ public class CalculatorImp implements Calculator {
         }
         if (operation == '/') {
             if (number2 == 0) {
-                throw new ArithmeticException();
+                throw new ArithmeticException("Can`t divide by zero");
             }
             return number1 / number2;
         }
@@ -24,6 +24,6 @@ public class CalculatorImp implements Calculator {
             }
             return Math.pow(number1, number2);
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Illegal argument " + operation);
     }
 }
