@@ -228,7 +228,7 @@ public class CalculateTest {
     @Test
     public void calculate_raisingWithNegativeNumberAndPositivePower_Ok() {
         actual = calculatorTest.calculate(-2, 2, POWER_OPERATOR);
-        expected = -4;
+        expected = 4;
         assertEquals(actual, expected, DELTA);
     }
 
@@ -242,7 +242,7 @@ public class CalculateTest {
     @Test
     public void calculate_raisingWithNegativeNumberAndNegativePower_Ok() {
         actual = calculatorTest.calculate(-2, -2, POWER_OPERATOR);
-        expected = -0.25;
+        expected = 0.25;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -256,7 +256,7 @@ public class CalculateTest {
     @Test
     public void calculate_raisingWithNegativeAndZeroPower_Ok() {
         actual = calculatorTest.calculate(-2, 0, POWER_OPERATOR);
-        expected = -1;
+        expected = 1;
         assertEquals(expected, actual, DELTA);
     }
 
