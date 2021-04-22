@@ -57,18 +57,18 @@ class LambdaCalculatorTest {
 
     @Test
     void additionForMinAndMaxDoubleValues() {
-        double actualFirst =
+        double actualTwoMaxValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE, ADD);
-        assertEquals(Double.POSITIVE_INFINITY, actualFirst);
-        double actualSecond =
+        assertEquals(Double.POSITIVE_INFINITY, actualTwoMaxValues);
+        double actualTwoMinValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, -Double.MAX_VALUE, ADD);
-        assertEquals(Double.NEGATIVE_INFINITY, actualSecond);
-        double actualThird =
+        assertEquals(Double.NEGATIVE_INFINITY, actualTwoMinValues);
+        double actualMaxAndMinValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, ADD);
-        assertEquals(0.0, actualThird);
-        double actualFourth =
+        assertEquals(0.0, actualMaxAndMinValues);
+        double actualMinAndMaxValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, Double.MAX_VALUE, ADD);
-        assertEquals(0.0, actualFourth);
+        assertEquals(0.0, actualMinAndMaxValues);
     }
 
     @Test
@@ -97,28 +97,28 @@ class LambdaCalculatorTest {
 
     @Test
     void subtractionWithZeroValues() {
-        double actualFirst = lambdaCalculatorTest.calculate(0.0, 3.5, SUBTRACT);
-        double actualSecond = lambdaCalculatorTest.calculate(2.3, 0.0, SUBTRACT);
-        double actualThird = lambdaCalculatorTest.calculate(0.0, 0.0, SUBTRACT);
-        assertEquals(-3.5, actualFirst);
-        assertEquals(2.3, actualSecond);
-        assertEquals(0.0, actualThird);
+        double actualZeroFirst = lambdaCalculatorTest.calculate(0.0, 3.5, SUBTRACT);
+        double actualZeroSecond = lambdaCalculatorTest.calculate(2.3, 0.0, SUBTRACT);
+        double actualBothZeros = lambdaCalculatorTest.calculate(0.0, 0.0, SUBTRACT);
+        assertEquals(-3.5, actualZeroFirst);
+        assertEquals(2.3, actualZeroSecond);
+        assertEquals(0.0, actualBothZeros);
     }
 
     @Test
     void subtractionForMinAndMaxDoubleValues() {
-        double actualFirst =
+        double actualTwoMaxValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE, SUBTRACT);
-        assertEquals(0.0, actualFirst);
-        double actualSecond =
+        assertEquals(0.0, actualTwoMaxValues);
+        double actualTwoMinValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, -Double.MAX_VALUE, SUBTRACT);
-        assertEquals(0.0, actualSecond);
-        double actualThird =
+        assertEquals(0.0, actualTwoMinValues);
+        double actualMaxAndMinValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, SUBTRACT);
-        assertEquals(Double.POSITIVE_INFINITY, actualThird);
-        double actualFourth =
+        assertEquals(Double.POSITIVE_INFINITY, actualMaxAndMinValues);
+        double actualMinAndMaxValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, Double.MAX_VALUE, SUBTRACT);
-        assertEquals(Double.NEGATIVE_INFINITY, actualFourth);
+        assertEquals(Double.NEGATIVE_INFINITY, actualMinAndMaxValues);
     }
 
     @Test
@@ -147,28 +147,28 @@ class LambdaCalculatorTest {
 
     @Test
     void multiplicationWithZeroValues() {
-        double actualFirst = lambdaCalculatorTest.calculate(0.0, 3.5, MULTIPLY);
-        double actualSecond = lambdaCalculatorTest.calculate(2.3, 0.0, MULTIPLY);
-        double actualThird = lambdaCalculatorTest.calculate(0.0, 0.0, MULTIPLY);
-        assertEquals(0.0, actualFirst);
-        assertEquals(0.0, actualSecond);
-        assertEquals(0.0, actualThird);
+        double actualZeroFirst = lambdaCalculatorTest.calculate(0.0, 3.5, MULTIPLY);
+        double actualZeroSecond = lambdaCalculatorTest.calculate(2.3, 0.0, MULTIPLY);
+        double actualBothZeros = lambdaCalculatorTest.calculate(0.0, 0.0, MULTIPLY);
+        assertEquals(0.0, actualZeroFirst);
+        assertEquals(0.0, actualZeroSecond);
+        assertEquals(0.0, actualBothZeros);
     }
 
     @Test
     void multiplicationForMinAndMaxDoubleValues() {
-        double actualFirst =
+        double actualTwoMaxValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLY);
-        assertEquals(Double.POSITIVE_INFINITY, actualFirst);
-        double actualSecond =
+        assertEquals(Double.POSITIVE_INFINITY, actualTwoMaxValues);
+        double actualTwoMinValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, -Double.MAX_VALUE, MULTIPLY);
-        assertEquals(Double.POSITIVE_INFINITY, actualSecond);
-        double actualThird =
+        assertEquals(Double.POSITIVE_INFINITY, actualTwoMinValues);
+        double actualMaxAndMinValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, MULTIPLY);
-        assertEquals(Double.NEGATIVE_INFINITY, actualThird);
-        double actualFourth =
+        assertEquals(Double.NEGATIVE_INFINITY, actualMaxAndMinValues);
+        double actualMinAndMaxValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLY);
-        assertEquals(Double.NEGATIVE_INFINITY, actualFourth);
+        assertEquals(Double.NEGATIVE_INFINITY, actualMinAndMaxValues);
     }
 
     @Test
@@ -209,50 +209,50 @@ class LambdaCalculatorTest {
 
     @Test
     void divisionForMinAndMaxDoubleValues() {
-        double actualFirst =
+        double actualTwoMaxValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, Double.MAX_VALUE, DIVIDE);
-        assertEquals(1.0, actualFirst);
-        double actualSecond =
+        assertEquals(1.0, actualTwoMaxValues);
+        double actualTwoMinValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, -Double.MAX_VALUE, DIVIDE);
-        assertEquals(1.0, actualSecond);
-        double actualThird =
+        assertEquals(1.0, actualTwoMinValues);
+        double actualMaxAndMinValues =
                 lambdaCalculatorTest.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, DIVIDE);
-        assertEquals(-1.0, actualThird);
-        double actualFourth =
+        assertEquals(-1.0, actualMaxAndMinValues);
+        double actualMinAndMaxValues =
                 lambdaCalculatorTest.calculate(-Double.MAX_VALUE, Double.MAX_VALUE, DIVIDE);
-        assertEquals(-1.0, actualFourth);
+        assertEquals(-1.0, actualMinAndMaxValues);
     }
 
     @Test
     void raisingPositiveOrNegativeValuesToThePositivePower() {
-        double actualFirst = lambdaCalculatorTest.calculate(2.3, 3.5, POW);
-        double actualSecond = lambdaCalculatorTest.calculate(-2.3, 3.5, POW);
-        assertEquals(18.45216, actualFirst, DELTA);
-        assertEquals(Double.NaN, actualSecond, DELTA);
+        double actualPositiveToPositivePower = lambdaCalculatorTest.calculate(2.3, 3.5, POW);
+        double actualNegativeToPositivePower = lambdaCalculatorTest.calculate(-2.3, 3.5, POW);
+        assertEquals(18.45216, actualPositiveToPositivePower, DELTA);
+        assertEquals(Double.NaN, actualNegativeToPositivePower, DELTA);
     }
 
     @Test
     void raisingPositiveOrNegativeValuesToTheNegativePower() {
-        double actualFirst = lambdaCalculatorTest.calculate(2.3, -3.5, POW);
-        double actualSecond = lambdaCalculatorTest.calculate(-2.3, -3.5, POW);
-        assertEquals(0.05419, actualFirst, DELTA);
-        assertEquals(Double.NaN, actualSecond, DELTA);
+        double actualPositiveToNegativePower = lambdaCalculatorTest.calculate(2.3, -3.5, POW);
+        double actualNegativeToNegativePower = lambdaCalculatorTest.calculate(-2.3, -3.5, POW);
+        assertEquals(0.05419, actualPositiveToNegativePower, DELTA);
+        assertEquals(Double.NaN, actualNegativeToNegativePower, DELTA);
     }
 
     @Test
     void raisingPositiveOrNegativeValuesToZeroPower() {
-        double actualFirst = lambdaCalculatorTest.calculate(2.3, 0.0, POW);
-        double actualSecond = lambdaCalculatorTest.calculate(-2.3, 0.0, POW);
-        assertEquals(1.0, actualFirst);
-        assertEquals(1.0, actualSecond);
+        double actualPositiveToZeroPower = lambdaCalculatorTest.calculate(2.3, 0.0, POW);
+        double actualNegativeToZeroPower = lambdaCalculatorTest.calculate(-2.3, 0.0, POW);
+        assertEquals(1.0, actualPositiveToZeroPower);
+        assertEquals(1.0, actualNegativeToZeroPower);
     }
 
     @Test
     void raisingZeroToPositiveOrNegativePower() {
-        double actualFirst = lambdaCalculatorTest.calculate(0.0, 3.5, POW);
-        double actualSecond = lambdaCalculatorTest.calculate(0.0, -3.5, POW);
-        assertEquals(0.0, actualFirst, DELTA);
-        assertEquals(Double.POSITIVE_INFINITY, actualSecond, DELTA);
+        double actualZeroToPositivePower = lambdaCalculatorTest.calculate(0.0, 3.5, POW);
+        double actualZeroToNegativePower = lambdaCalculatorTest.calculate(0.0, -3.5, POW);
+        assertEquals(0.0, actualZeroToPositivePower, DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, actualZeroToNegativePower, DELTA);
     }
 
     @Test
