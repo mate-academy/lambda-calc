@@ -121,6 +121,7 @@ public class CalculatorTest {
         actual = calculator.calculate(ZERO, NEGATIVE_NUMBER, MINUS);
         expected = 905.073;
         assertEquals(expected, actual, DELTA);
+
         actual = calculator.calculate(NEGATIVE_NUMBER, ZERO, MINUS);
         expected = -905.073;
         assertEquals(expected, actual, DELTA);
@@ -145,6 +146,7 @@ public class CalculatorTest {
         actual = calculator.calculate(POSITIVE_NUMBER, Double.MAX_VALUE, MINUS);
         expected = -1.7976931348623157E308;
         assertEquals(expected, actual, DELTA);
+
         actual = calculator.calculate(POSITIVE_NUMBER, Double.MIN_VALUE, MINUS);
         expected = 457.199;
         assertEquals(expected, actual, DELTA);
@@ -176,6 +178,7 @@ public class CalculatorTest {
         actual = calculator.calculate(ZERO, NEGATIVE_NUMBER, MULTIPLICATION);
         expected = ZERO;
         assertEquals(expected, actual, DELTA);
+
         actual = calculator.calculate(POSITIVE_NUMBER, ZERO, MULTIPLICATION);
         expected = ZERO;
         assertEquals(expected, actual, DELTA);
@@ -186,6 +189,7 @@ public class CalculatorTest {
         actual = calculator.calculate(POSITIVE_NUMBER, Double.MAX_VALUE, MULTIPLICATION);
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
+
         actual = calculator.calculate(NEGATIVE_NUMBER, Double.MIN_VALUE, MULTIPLICATION);
         expected = -4.47E-321;
         assertEquals(expected, actual, DELTA);
@@ -218,6 +222,7 @@ public class CalculatorTest {
         actual = calculator.calculate(ZERO, NEGATIVE_NUMBER, DIVISION);
         expected = ZERO;
         assertEquals(expected, actual, DELTA);
+
         actual = calculator.calculate(ZERO, POSITIVE_NUMBER, DIVISION);
         expected = ZERO;
         assertEquals(expected, actual, DELTA);
