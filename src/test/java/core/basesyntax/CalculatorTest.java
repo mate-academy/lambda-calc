@@ -7,10 +7,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private Calculator calculator;
+    private static Calculator calculator;
 
     @BeforeAll
-    void init() {
+    static void beforeAll() {
         calculator = new Calculator();
     }
 
