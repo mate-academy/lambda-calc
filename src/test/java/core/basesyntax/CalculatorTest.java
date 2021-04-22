@@ -222,7 +222,7 @@ class CalculatorTest {
     void raisingPositiveAndNegativeValuesOperandsToNegativePower_Ok() {
         actual = calculator.calculate(-3.98, -2, RAISING_TO_A_POWER);
         expected = 0.063129718946491;
-        assertEquals(expected, actual ,DELTA);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
