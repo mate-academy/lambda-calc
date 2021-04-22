@@ -177,7 +177,7 @@ class CalculatorTest {
 
     @Test
     void differentOperation_NotOk() {
-        assertThrows(IllegalAccessException.class, () ->
+        assertThrows(IllegalArgumentException.class, () ->
                 calculator.calculate(POSITIVE_FIRST_NUMBER, POSITIVE_SECOND_NUMBER, '!'));
     }
 }
