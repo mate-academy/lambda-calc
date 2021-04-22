@@ -7,13 +7,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class LambdaCalculatorTest {
-    private static LambdaCalculator lambdaCalculatorTest;
     private static final char ADD = '+';
     private static final char SUBTRACT = '-';
     private static final char MULTIPLY = '*';
     private static final char DIVIDE = '/';
     private static final char POW = '^';
+    private static final char ILLEGAL_OPERATION = '$';
     private static final double DELTA = 0.0001;
+    private static LambdaCalculator lambdaCalculatorTest;
 
     @BeforeAll
     static void beforeAll() {
@@ -46,12 +47,12 @@ class LambdaCalculatorTest {
 
     @Test
     void additionWithZeroValues() {
-        double actualFirst = lambdaCalculatorTest.calculate(0.0, 3.5, ADD);
-        double actualSecond = lambdaCalculatorTest.calculate(2.3, 0.0, ADD);
-        double actualThird = lambdaCalculatorTest.calculate(0.0, 0.0, ADD);
-        assertEquals(3.5, actualFirst);
-        assertEquals(2.3, actualSecond);
-        assertEquals(0.0, actualThird);
+        double actualZeroFirst = lambdaCalculatorTest.calculate(0.0, 3.5, ADD);
+        double actualZeroSecond = lambdaCalculatorTest.calculate(2.3, 0.0, ADD);
+        double actualBothZeros = lambdaCalculatorTest.calculate(0.0, 0.0, ADD);
+        assertEquals(3.5, actualZeroFirst);
+        assertEquals(2.3, actualZeroSecond);
+        assertEquals(0.0, actualBothZeros);
     }
 
     @Test
@@ -257,6 +258,6 @@ class LambdaCalculatorTest {
     @Test
     void checkForIllegalOperation() {
         assertThrows(RuntimeException.class,
-                () -> lambdaCalculatorTest.calculate(0.0, -3.5, '$'));
+                () -> lambdaCalculatorTest.calculate(0.0, -3.5, ILLEGAL_OPERATION));
     }
 }
