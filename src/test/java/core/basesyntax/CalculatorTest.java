@@ -26,27 +26,27 @@ class CalculatorTest {
 
     @Test
     void additionWithTwoPositiveOperands_OK() {
-        actual = calculator.calculate(1.10,5.75, ADDITION);
+        actual = calculator.calculate(1.10, 5.75, ADDITION);
         expected = 6.85;
-        assertEquals(expected,actual,DELTA);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void additionWithTwoNegativeOperands_OK() {
-        actual = calculator.calculate(-2.75,-3.35, ADDITION);
+        actual = calculator.calculate(-2.75, -3.35, ADDITION);
         expected = -6.10;
-        assertEquals(expected,actual,DELTA);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void additionWithPositiveAndNegativeOperands_OK() {
-        actual = calculator.calculate(2.55,-1.25, ADDITION);
+        actual = calculator.calculate(2.55, -1.25, ADDITION);
         expected = 1.30;
-        assertEquals(expected,actual,DELTA);
+        assertEquals(expected, actual, DELTA);
 
-        actual = calculator.calculate(-2.55,1.25, ADDITION);
+        actual = calculator.calculate(-2.55, 1.25, ADDITION);
         expected = -1.30;
-        assertEquals(expected,actual,DELTA);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -220,16 +220,16 @@ class CalculatorTest {
 
     @Test
     void raisingPositiveAndNegativeValuesOperandsToNegativePower_Ok() {
-        actual = calculator.calculate(-3.98,-2, RAISING_TO_A_POWER);
+        actual = calculator.calculate(-3.98, -2, RAISING_TO_A_POWER);
         expected = 0.063129718946491;
-        assertEquals(expected,actual,DELTA);
+        assertEquals(expected, actual ,DELTA);
     }
 
     @Test
     void raisingPositiveAndNegativeValuesOperandsToZeroPower_Ok() {
-        actual = calculator.calculate(2,2,RAISING_TO_A_POWER);
+        actual = calculator.calculate(2, 2, RAISING_TO_A_POWER);
         expected = 4;
-        assertEquals(expected,actual,DELTA);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
