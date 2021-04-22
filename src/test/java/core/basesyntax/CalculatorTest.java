@@ -46,13 +46,6 @@ class CalculatorTest {
     }
 
     @Test
-    void positiveAndNegativeNumbersAddition_Ok() {
-        expected = POSITIVE_VALUE + NEGATIVE_VALUE;
-        actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, ADDITION);
-        assertEquals(expected, actual);
-    }
-
-    @Test
     void negativeAndPositiveNumbersAddition_Ok() {
         expected = NEGATIVE_VALUE + POSITIVE_VALUE;
         actual = calculator.calculate(NEGATIVE_VALUE, POSITIVE_VALUE, ADDITION);
@@ -94,7 +87,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // SUBTRACTION
     @Test
     void positiveNumbersSubtraction_Ok() {
         expected = ZERO;
@@ -151,7 +143,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // MULTIPLICATION
     @Test
     void positiveNumbersMultiplication_Ok() {
         expected = POSITIVE_VALUE * POSITIVE_VALUE;
@@ -201,8 +192,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // DIVISION
-
     @Test
     void positiveNumbersDivision_Ok() {
         expected = POSITIVE_VALUE / POSITIVE_VALUE;
@@ -251,7 +240,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // RISING TO A POWER
     @Test
     void risingPositiveNumberToPositivePower_Ok() {
         expected = Math.pow(POSITIVE_VALUE, POSITIVE_POWER);
