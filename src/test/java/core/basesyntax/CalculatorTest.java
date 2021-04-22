@@ -306,7 +306,7 @@ class CalculatorTest {
 
     @Test
     void calculate_raisingNumberToNegativePower_Ok() {
-        expected = 0.0;
+        expected = ZERO;
         actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, POWER);
         assertEquals(expected, actual, DELTA);
 
