@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -16,18 +15,14 @@ class CalculatorTest {
     private static final char MULTIPLICATION_OPERATOR = '*';
     private static final char DIVISION_OPERATOR = '/';
     private static final char POWER_OPERATOR = '^';
-    private double firstPositiveValue;
-    private double secondPositiveValue;
-    private double firstNegativeValue;
-    private double secondNegativeValue;
+    private static double firstPositiveValue;
+    private static double secondPositiveValue;
+    private static double firstNegativeValue;
+    private static double secondNegativeValue;
 
     @BeforeAll
     static void beforeAll() {
         calculator = new Calculator();
-    }
-
-    @BeforeEach
-    void setUp() {
         firstPositiveValue = 10.0;
         secondPositiveValue = 10.0;
         firstNegativeValue = -3.0;

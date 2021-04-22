@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-public class Calculator implements Calculate{
+class Calculator implements Calculate {
 
     public double calculate(double firstValue, double secondValue, char operation) {
         switch (operation) {
@@ -18,7 +18,7 @@ public class Calculator implements Calculate{
             case '^':
                 return Math.pow(firstValue, secondValue);
             default:
-                throw new RuntimeException("There is no such operation.");
+                throw new RuntimeException("There is no such operation " + operation);
         }
     }
 }
