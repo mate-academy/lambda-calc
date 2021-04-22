@@ -16,7 +16,7 @@ public class Calculator {
             case '*':
                 return firstNumber * secondNumber;
             case '^':
-                return Math.pow(firstNumber, secondNumber);
+                return Math.pow(firstNumber, (long) (secondNumber));
             default:
                 throw new RuntimeException("Unknown operation : " + operand);
         }
