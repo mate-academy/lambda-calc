@@ -3,11 +3,10 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static ICalculate calculator;
+    private static final ICalculate calculator = new Calculator();
     private static final String ERROR_MESSAGE = "Error! Expected value is not equal actual";
     private static final double MAX_DOUBLE_VALUE = Double.MAX_VALUE;
     private static final double MIN_DOUBLE_VALUE = -Double.MAX_VALUE;
@@ -19,15 +18,6 @@ class CalculatorTest {
     private static final double DELTA = 0.0001;
     private double actual;
     private double expected;
-
-    @BeforeAll
-    static void beforeAll() {
-        calculator = new Calculator();
-    }
-
-    /**
-     * Addition
-     */
 
     @Test
     void additionWithTwoPositives_Ok() {
@@ -127,10 +117,6 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
-    /**
-     * Subtraction
-     */
-
     @Test
     void subtractionWithTwoPositives_Ok() {
         actual = calculator.calculate(24.25, 14.24, SUBTRACTION);
@@ -228,10 +214,6 @@ class CalculatorTest {
         expected = MIN_DOUBLE_VALUE;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
-
-    /**
-     * Multiplication
-     */
 
     @Test
     void multiplicationWithTwoPositives_Ok() {
@@ -331,10 +313,6 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
-    /**
-     * Division
-     */
-
     @Test
     void divisionPositiveValueByPositive_Ok() {
         actual = calculator.calculate(247.25, 14.24, DIVISION);
@@ -414,7 +392,7 @@ class CalculatorTest {
 
         actual = calculator.calculate(MIN_DOUBLE_VALUE, 23.15, DIVISION);
         expected = -7.76541310955644E306;
-        assertEquals(expected, actual, DELTA,ERROR_MESSAGE);
+        assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
     @Test
@@ -427,10 +405,6 @@ class CalculatorTest {
         expected = -7.799102537363625E306;
         assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
-
-    /**
-     * Raising
-     */
 
     @Test
     void raisingPositiveValueToPositivePower_Ok() {
@@ -502,3 +476,4 @@ class CalculatorTest {
         });
     }
 }
+
