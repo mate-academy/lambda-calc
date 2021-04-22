@@ -6,7 +6,7 @@ public class Calculator {
         switch (operation) {
             case '^':
                 if (firstNumber < 0 && secondNumber - (int) secondNumber != 0) {
-                    throw new ArithmeticException("You must divide on integer number.");
+                    throw new ArithmeticException("You must raise power with integer number.");
                 }
                 if (secondNumber < 0) {
                     return 1 / Math.pow(firstNumber, secondNumber * -1);
