@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static Calculator calculator;
+    private static ICalculate calculator;
     private static final String ERROR_MESSAGE = "Error! Expected value is not equal actual";
     private static final double MAX_DOUBLE_VALUE = Double.MAX_VALUE;
     private static final double MIN_DOUBLE_VALUE = -Double.MAX_VALUE;

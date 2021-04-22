@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-public class Calculator {
+public class Calculator implements ICalculate {
     private static final char ADDITION_ACTION = '+';
     private static final char SUBTRACTION_ACTION = '-';
     private static final char MULTIPLICATION_ACTION = '*';
