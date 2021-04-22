@@ -398,7 +398,7 @@ class CalculatorTest {
 
         actual = calculator.calculate(MIN_DOUBLE_VALUE, 23.15, DIVISION);
         expected = -7.76541310955644E306;
-        assertEquals(expected, actual, DELTA,ERROR_MESSAGE);
+        assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
     }
 
     @Test
