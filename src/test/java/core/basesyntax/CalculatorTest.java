@@ -3,19 +3,25 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    static final char ADDITIONAL_OPERATION = '+';
-    static final char SUBTRACTION_OPERATION = '-';
-    static final char DIVISION_OPERATION = '/';
-    static final char MULTIPLICATION_OPERATION = '*';
-    static final char RAISING_OPERATION = '^';
-    static final char ILLEGAL_OPERATION = '%';
-    static final double DELTA = 0.0000001;
-    private final Calculator calculator = new Calculator();
+    private static final char ADDITIONAL_OPERATION = '+';
+    private static final char SUBTRACTION_OPERATION = '-';
+    private static final char DIVISION_OPERATION = '/';
+    private static final char MULTIPLICATION_OPERATION = '*';
+    private static final char RAISING_OPERATION = '^';
+    private static final char ILLEGAL_OPERATION = '%';
+    private static final double DELTA = 0.0000001;
+    private Calculator calculator;
     private double expected;
     private double actual;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
 
     @Test
     void calculate_AddTwoPositiveNumbers_Ok() {
