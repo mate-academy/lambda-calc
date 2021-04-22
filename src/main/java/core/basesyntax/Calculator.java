@@ -4,9 +4,6 @@ public class Calculator implements Calculatable {
 
     @Override
     public double calculate(double a, double b, char sign) {
-        if (sign != 42 && sign != 43 && sign != 45 && sign != 47 && sign != 94) {
-            throw new IllegalArgumentException("An illegal character was passed");
-        }
         switch (sign) {
             case 43: {
                 return a + b;
@@ -23,10 +20,12 @@ public class Calculator implements Calculatable {
             case 94: {
                 return Math.pow(a, b);
             }
+            case 42: {
+                return a * b;
+            }
             default: {
-                break;
+                throw new IllegalArgumentException("An illegal character was passed");
             }
         }
-        return a * b;
     }
 }
