@@ -6,8 +6,6 @@ public class Calculator {
     private static final char DIVISION = '/';
     private static final char MULTIPLICATION = '*';
     private static final char RISING_TO_POWER = '^';
-    private static final double MAX_VALUE = Double.MAX_VALUE;
-    private static final double MIN_VALUE = Double.MIN_VALUE;
 
     public double calculate(double value1, double value2, char operation) {
         if (operation == ADDITION) {
@@ -15,7 +13,6 @@ public class Calculator {
         }
 
         if (operation == SUBTRACTION) {
-
             return value1 - value2;
         }
 
@@ -33,6 +30,6 @@ public class Calculator {
         if (operation == RISING_TO_POWER) {
             return Math.pow(value1, value2);
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Unknown operation sign");
     }
 }
