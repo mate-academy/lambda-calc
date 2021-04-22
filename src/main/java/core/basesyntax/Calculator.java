@@ -16,6 +16,10 @@ public class Calculator {
                 }
                 return firstValue / secondValue;
             case '^':
+                if (firstValue < 0 && secondValue % 1 != 0) {
+                    throw new ArithmeticException("Can't raise negative number "
+                            + "to a fractional power");
+                }
                 return Math.pow(firstValue, secondValue);
             default:
                 throw new RuntimeException("No such operator:" + operator);

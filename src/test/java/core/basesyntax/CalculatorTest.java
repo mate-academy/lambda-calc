@@ -190,10 +190,6 @@ class CalculatorTest {
         actual = calculator.calculate(1.5, 3.5, RAISE_TO_POWER_OPERATOR);
         expected = 4.1335;
         assertEquals(expected, actual, DELTA);
-
-        actual = calculator.calculate(-1.5, 3.5, RAISE_TO_POWER_OPERATOR);
-        expected = Double.NaN;
-        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -201,10 +197,12 @@ class CalculatorTest {
         actual = calculator.calculate(1.5, -3.5, RAISE_TO_POWER_OPERATOR);
         expected = 0.2419;
         assertEquals(expected, actual, DELTA);
+    }
 
-        actual = calculator.calculate(-1.5, -3.5, RAISE_TO_POWER_OPERATOR);
-        expected = Double.NaN;
-        assertEquals(expected, actual, DELTA);
+    @Test
+    void calculate_raisingNegativeValueToFractionalPower_notOk() {
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(-1.5, -3.5, RAISE_TO_POWER_OPERATOR));
     }
 
     @Test
