@@ -1,6 +1,7 @@
 package core.basesyntax;
 
 public class Calculator {
+
     public double calculate(Double first, Double second, char operator) {
         switch (operator) {
             case '+':
