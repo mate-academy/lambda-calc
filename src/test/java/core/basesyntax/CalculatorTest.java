@@ -40,7 +40,7 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
 
         actual = calculator.calculate(NEGATIVE_NUMBER, -NEGATIVE_NUMBER, ADD);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -112,7 +112,7 @@ public class CalculatorTest {
     @Test
     void subtracion_withTwoNegativeOperands_OK() {
         actual = calculator.calculate(NEGATIVE_NUMBER, NEGATIVE_NUMBER, MINUS);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -136,7 +136,7 @@ public class CalculatorTest {
     @Test
     void subtracion_withTwoPositiveOperands_OK() {
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, MINUS);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -174,10 +174,10 @@ public class CalculatorTest {
     @Test
     void multiplication_withZero_OK() {
         actual = calculator.calculate(ZERO, NEGATIVE_NUMBER, MULTIPLICATION);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
         actual = calculator.calculate(POSITIVE_NUMBER, ZERO, MULTIPLICATION);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -216,10 +216,10 @@ public class CalculatorTest {
     @Test
     void division_withZero_OK() {
         actual = calculator.calculate(ZERO, NEGATIVE_NUMBER, DIVISION);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
         actual = calculator.calculate(ZERO, POSITIVE_NUMBER, DIVISION);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
     }
 
@@ -244,7 +244,7 @@ public class CalculatorTest {
     @Test
     void raising_toNegativePowerOperands_OK() {
         actual = calculator.calculate(POSITIVE_NUMBER, NEGATIVE_NUMBER, POWER);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
 
         actual = calculator.calculate(NEGATIVE_NUMBER, NEGATIVE_NUMBER, POWER);
@@ -266,7 +266,7 @@ public class CalculatorTest {
     @Test
     void raising_zeroToPowerOperands_OK() {
         actual = calculator.calculate(ZERO, POSITIVE_NUMBER, POWER);
-        expected = 0.0;
+        expected = ZERO;
         assertEquals(expected, actual, DELTA);
 
         actual = calculator.calculate(ZERO, NEGATIVE_NUMBER, POWER);
