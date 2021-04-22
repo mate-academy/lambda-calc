@@ -1,8 +1,8 @@
 package core.basesyntax;
 
 public class Calculator {
-    public static final String DIVISION_BY_ZERO = "Division by zero.";
-    public static final String UNEXPECTED_OPERATOR = "Unexpected operator ";
+    private static final String DIVISION_BY_ZERO = "Division by zero.";
+    private static final String UNEXPECTED_OPERATOR = "Unexpected operator ";
 
     public double calculate(double firstOperand, double secondOperand, char operator) {
         switch (operator) {
