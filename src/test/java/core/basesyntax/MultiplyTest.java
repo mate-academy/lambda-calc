@@ -8,6 +8,7 @@ public class MultiplyTest {
     private static final double DELTA = 0.001;
     private static final double MAX = Double.MAX_VALUE;
     private static final double MIN = Double.MIN_VALUE;
+    private static final double ZERO = 0;
     private static final char MULTIPLY = '*';
     private static Calculator calculator;
     private static double firstElement;
@@ -43,14 +44,14 @@ public class MultiplyTest {
 
     @Test
     void multiplicationWithFirstElementZero_Ok() {
-        double actual = calculator.calculate(firstElement, 0, MULTIPLY);
+        double actual = calculator.calculate(firstElement, ZERO, MULTIPLY);
         double expected = 0;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void multiplicationWithSecondElementZero_Ok() {
-        double actual = calculator.calculate(0, secondElement, MULTIPLY);
+        double actual = calculator.calculate(ZERO, secondElement, MULTIPLY);
         double expected = 0;
         Assertions.assertEquals(expected, actual);
     }

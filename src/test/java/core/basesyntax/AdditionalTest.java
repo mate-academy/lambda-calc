@@ -8,6 +8,7 @@ public class AdditionalTest {
     private static final double DELTA = 0.001;
     private static final double MAX = Double.MAX_VALUE;
     private static final double MIN = Double.MIN_VALUE;
+    private static final double ZERO = 0;
     private static final char ADDITION = '+';
     private static Calculator calculator;
     private static double firstElement;
@@ -43,21 +44,21 @@ public class AdditionalTest {
 
     @Test
     void additionalWithFirstElementZero_Ok() {
-        double actual = calculator.calculate(firstElement, 0, ADDITION);
+        double actual = calculator.calculate(firstElement, ZERO, ADDITION);
         double expected = firstElement;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void additionalWithSecondElementZero_Ok() {
-        double actual = calculator.calculate(0, secondElement, ADDITION);
+        double actual = calculator.calculate(ZERO, secondElement, ADDITION);
         double expected = secondElement;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void additionalWithMaxDoubleValueAndZero_Ok() {
-        double actual = calculator.calculate(MAX, 0, ADDITION);
+        double actual = calculator.calculate(MAX, ZERO, ADDITION);
         double expected = MAX;
         Assertions.assertEquals(expected, actual);
     }

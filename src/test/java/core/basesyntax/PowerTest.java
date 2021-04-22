@@ -11,6 +11,7 @@ class PowerTest {
     private static final double ONE = 1.0;
     private static final double ZERO = 0.0;
     private static final char POWER = '^';
+    private static final char ILLEGAL_OPERATOR = '?';
     private static Calculator calculator;
     private static double firstElement;
     private static double secondElement;
@@ -52,21 +53,21 @@ class PowerTest {
 
     @Test
     void raiseNegativeValueToZeroPower_Ok() {
-        double actual = calculator.calculate(-firstElement, 0, POWER);
+        double actual = calculator.calculate(-firstElement, ZERO, POWER);
         double expected = ONE;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void raisePositiveValueToZeroPower_Ok() {
-        double actual = calculator.calculate(firstElement, 0, POWER);
+        double actual = calculator.calculate(firstElement, ZERO, POWER);
         double expected = ONE;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void raiseZeroToPower_Ok() {
-        double actual = calculator.calculate(0, firstElement, POWER);
+        double actual = calculator.calculate(ZERO, firstElement, POWER);
         double expected = ZERO;
         Assertions.assertEquals(expected, actual);
     }
@@ -97,5 +98,12 @@ class PowerTest {
         double actual = calculator.calculate(MIN, -firstElement, POWER);
         double expected = Math.pow(MIN, -firstElement);
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void illegalOperation_NotOk() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(firstElement, secondElement, ILLEGAL_OPERATOR);
+        });
     }
 }

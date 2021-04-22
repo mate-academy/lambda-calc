@@ -8,6 +8,7 @@ public class SubtractionTest {
     private static final double DELTA = 0.001;
     private static final double MAX = Double.MAX_VALUE;
     private static final double MIN = Double.MIN_VALUE;
+    private static final double ZERO = 0;
     private static final char SUBTRACTION = '-';
     private static Calculator calculator;
     private static double firstElement;
@@ -43,14 +44,14 @@ public class SubtractionTest {
 
     @Test
     void subtractionWithSecondElementZero_Ok() {
-        double actual = calculator.calculate(firstElement, 0, SUBTRACTION);
+        double actual = calculator.calculate(firstElement, ZERO, SUBTRACTION);
         double expected = firstElement;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void subtractionWithFirstElementZero_Ok() {
-        double actual = calculator.calculate(0, secondElement, SUBTRACTION);
+        double actual = calculator.calculate(ZERO, secondElement, SUBTRACTION);
         double expected = -secondElement;
         Assertions.assertEquals(expected, actual);
     }

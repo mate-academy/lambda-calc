@@ -8,6 +8,7 @@ public class DividingTest {
     private static final double DELTA = 0.001;
     private static final double MAX = Double.MAX_VALUE;
     private static final double MIN = Double.MIN_VALUE;
+    private static final double ZERO = 0;
     private static final char DIVIDE = '/';
     private static Calculator calculator;
     private static double firstElement;
@@ -44,14 +45,14 @@ public class DividingTest {
     @Test
     void divisionOnZero_NotOk() {
         Assertions.assertThrows(ArithmeticException.class, () -> {
-            calculator.calculate(firstElement, 0, DIVIDE);
+            calculator.calculate(firstElement, ZERO, DIVIDE);
         });
     }
 
     @Test
     void divisionWithZeroOnSecondElement_Ok() {
-        double actual = calculator.calculate(0, secondElement, DIVIDE);
-        double expected = 0;
+        double actual = calculator.calculate(ZERO, secondElement, DIVIDE);
+        double expected = ZERO;
         Assertions.assertEquals(expected, actual);
     }
 
