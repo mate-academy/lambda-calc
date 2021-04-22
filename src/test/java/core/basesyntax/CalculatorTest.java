@@ -182,6 +182,13 @@ class CalculatorTest {
     }
 
     @Test
+    void calculate_risingBothNegativeTest_notOK() {
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(-5.0, -1.5, POW);
+        });
+    }
+
+    @Test
     void calculate_illegalOperandTest_OK() {
         assertThrows(RuntimeException.class, () -> {
             calculator.calculate(FIRST_NEGATIVE_NUMBER, SECOND_NEGATIVE_NUMBER, ILLEGAL_OPERAND);
