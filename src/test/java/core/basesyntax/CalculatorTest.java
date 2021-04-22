@@ -120,7 +120,7 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA,
                 String.format(FAILED_ADDITION_MSG, expected, actual));
 
-        expected = -4;
+        expected = 4;
         actual = calculator.calculate(ZERO, -4, '-');
         assertEquals(expected, actual, DELTA,
                 String.format(FAILED_ADDITION_MSG, expected, actual));
