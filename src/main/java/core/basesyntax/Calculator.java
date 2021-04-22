@@ -22,7 +22,7 @@ public class Calculator {
                 return Math.pow(number1, number2);
             }
             default: {
-                throw new UnsupportedOperationException("This operator is not supported"
+                throw new UnsupportedOperationException("This operator is not supported "
                         + operation);
             }
         }
