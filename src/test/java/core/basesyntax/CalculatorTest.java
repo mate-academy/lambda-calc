@@ -26,25 +26,25 @@ public class CalculatorTest {
     }
 
     @Test
-    public void addition_TwoPositiveOperands_isOk() {
+    public void calculate_additionWithTwoPositiveOperands_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_POS_OPERAND, ADD);
         assertEquals(FIRST_POS_OPERAND + SECOND_POS_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void addition_TwoNegativeOperands_isOk() {
+    public void calculate_additionWithTwoNegativeOperands_isOk() {
         actualResult = calculator.calculate(FIRST_NEG_OPERAND, SECOND_NEG_OPERAND, ADD);
         assertEquals(FIRST_NEG_OPERAND + SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void addition_PositiveAndNegativeOperands_isOk() {
+    public void calculate_additionWithPositiveAndNegativeOperands_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_NEG_OPERAND, ADD);
         assertEquals(FIRST_POS_OPERAND + SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void addition_Zero_isOk() {
+    public void calculate_additionWithZero_isOk() {
         actualResult = calculator.calculate(0, SECOND_NEG_OPERAND, ADD);
         assertEquals(SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(FIRST_POS_OPERAND, 0, ADD);
@@ -58,7 +58,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void addition_MaxValue_isOk() {
+    public void calculate_additionWithMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, ADD);
         assertEquals(Double.POSITIVE_INFINITY, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, SECOND_POS_OPERAND, ADD);
@@ -72,7 +72,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void addition_MinValue_isOk() {
+    public void calculate_additionWithMinValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, ADD);
         assertEquals(Double.MIN_VALUE + Double.MIN_VALUE, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MIN_VALUE, SECOND_POS_OPERAND, ADD);
@@ -86,7 +86,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void addition_MinAndMaxValue_isOk() {
+    public void calculate_additionWithMinAndMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, ADD);
         assertEquals(Double.MIN_VALUE + Double.MAX_VALUE, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, ADD);
@@ -94,25 +94,25 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtraction_TwoPositiveOperands_isOk() {
+    public void calculate_subtractionWithTwoPositiveOperands_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_POS_OPERAND, SUBTRACT);
         assertEquals(FIRST_POS_OPERAND - SECOND_POS_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void subtraction_TwoNegativeOperands_isOk() {
+    public void calculate_subtractionWithTwoNegativeOperands_isOk() {
         actualResult = calculator.calculate(FIRST_NEG_OPERAND, SECOND_NEG_OPERAND, SUBTRACT);
         assertEquals(FIRST_NEG_OPERAND - SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void subtraction_PositiveAndNegativeOperands_isOk() {
+    public void calculate_subtractionWithPositiveAndNegativeOperands_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_NEG_OPERAND, SUBTRACT);
         assertEquals(FIRST_POS_OPERAND - SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void subtraction_Zero_isOk() {
+    public void calculate_subtractionWithZero_isOk() {
         actualResult = calculator.calculate(0, SECOND_NEG_OPERAND, SUBTRACT);
         assertEquals(-SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(FIRST_POS_OPERAND, 0, SUBTRACT);
@@ -126,7 +126,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtraction_MaxValue_isOk() {
+    public void calculate_subtractionWithMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, SUBTRACT);
         assertEquals(0, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, SECOND_POS_OPERAND, SUBTRACT);
@@ -140,7 +140,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtraction_MinValue_isOk() {
+    public void calculate_subtractionWithMinValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, SUBTRACT);
         assertEquals(0, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MIN_VALUE, SECOND_POS_OPERAND, SUBTRACT);
@@ -154,7 +154,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtraction_MinAndMaxValue_isOk() {
+    public void calculate_subtractionWithMinAndMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, SUBTRACT);
         assertEquals(Double.MIN_VALUE - Double.MAX_VALUE, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, SUBTRACT);
@@ -162,25 +162,25 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multiplication_TwoPositiveOperands_isOk() {
+    public void calculate_multiplicationWithTwoPositiveOperands_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_POS_OPERAND, MULTIPLY);
         assertEquals(FIRST_POS_OPERAND * SECOND_POS_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void multiplication_TwoNegativeOperands_isOk() {
+    public void calculate_multiplicationWithTwoNegativeOperands_isOk() {
         actualResult = calculator.calculate(FIRST_NEG_OPERAND, SECOND_NEG_OPERAND, MULTIPLY);
         assertEquals(FIRST_NEG_OPERAND * SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void multiplication_PositiveAndNegativeOperands_isOk() {
+    public void calculate_multiplicationWithPositiveAndNegativeOperands_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_NEG_OPERAND, MULTIPLY);
         assertEquals(FIRST_POS_OPERAND * SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void multiplication_Zero_isOk() {
+    public void calculate_multiplicationWithZero_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, 0, MULTIPLY);
         assertEquals(0, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(0, SECOND_POS_OPERAND, MULTIPLY);
@@ -194,7 +194,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multiplication_MaxValue_isOk() {
+    public void calculate_multiplicationWithMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLY);
         assertEquals(Double.POSITIVE_INFINITY, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, SECOND_POS_OPERAND, MULTIPLY);
@@ -208,7 +208,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multiplication_MinValue_isOk() {
+    public void calculate_multiplicationWithMinValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MULTIPLY);
         assertEquals(0, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MIN_VALUE, SECOND_POS_OPERAND, MULTIPLY);
@@ -222,7 +222,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multiplication_MinAndMaxValue_isOk() {
+    public void calculate_multiplicationWithMinAndMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, MULTIPLY);
         assertEquals(Double.MIN_VALUE * Double.MAX_VALUE, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, MULTIPLY);
@@ -230,25 +230,25 @@ public class CalculatorTest {
     }
 
     @Test
-    public void division_TwoPositiveOperands_isOk() {
+    public void calculate_divisionWithTwoPositiveOperands_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_POS_OPERAND, DIVIDE);
         assertEquals(FIRST_POS_OPERAND / SECOND_POS_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void division_TwoNegativeOperands_isOk() {
+    public void calculate_divisionWithTwoNegativeOperands_isOk() {
         actualResult = calculator.calculate(FIRST_NEG_OPERAND, SECOND_NEG_OPERAND, DIVIDE);
         assertEquals(FIRST_NEG_OPERAND / SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void division_PositiveAndNegativeOperands_sOk() {
+    public void calculate_divisionWithPositiveAndNegativeOperands_sOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_NEG_OPERAND, DIVIDE);
         assertEquals(FIRST_POS_OPERAND / SECOND_NEG_OPERAND, actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void division_Zero_isOk() {
+    public void calculate_divisionWithZero_isOk() {
         actualResult = calculator.calculate(0, SECOND_POS_OPERAND, DIVIDE);
         assertEquals(0, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(0, SECOND_NEG_OPERAND, DIVIDE);
@@ -262,7 +262,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void division_MaxValue_isOk() {
+    public void calculate_divisionWithMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, DIVIDE);
         assertEquals(1, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, SECOND_POS_OPERAND, DIVIDE);
@@ -276,7 +276,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void division_MinValue_isOk() {
+    public void calculate_divisionWithMinValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, DIVIDE);
         assertEquals(1, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MIN_VALUE, SECOND_POS_OPERAND, DIVIDE);
@@ -290,7 +290,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void division_MinAndMaxValue_isOk() {
+    public void calculate_divisionWithMinAndMaxValue_isOk() {
         actualResult = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, DIVIDE);
         assertEquals(0, actualResult, ERROR_MESSAGE);
         actualResult = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, DIVIDE);
@@ -298,49 +298,49 @@ public class CalculatorTest {
     }
 
     @Test
-    public void raising_PositiveOperandToPositivePow_isOk() {
+    public void calculate_raisingWithPositiveOperandToPositivePow_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_POS_OPERAND, POW);
         assertEquals(Math.pow(FIRST_POS_OPERAND, SECOND_POS_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void raising_NegativeOperandsToPositivePow_isOk() {
+    public void calculate_raisingWithNegativeOperandsToPositivePow_isOk() {
         actualResult = calculator.calculate(FIRST_NEG_OPERAND, SECOND_POS_OPERAND, POW);
         assertEquals(Math.pow(FIRST_NEG_OPERAND, SECOND_POS_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void raising_PositiveOperandsToNegativePow_isOk() {
+    public void calculate_raisingWithPositiveOperandsToNegativePow_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, SECOND_NEG_OPERAND, POW);
         assertEquals(Math.pow(FIRST_POS_OPERAND, SECOND_NEG_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void raising_NegativeOperandsToNegativePow_isOk() {
+    public void calculate_raisingWithNegativeOperandsToNegativePow_isOk() {
         actualResult = calculator.calculate(FIRST_NEG_OPERAND, SECOND_NEG_OPERAND, POW);
         assertEquals(Math.pow(FIRST_NEG_OPERAND, SECOND_NEG_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void raising_PositiveOperandsToZeroPow_isOk() {
+    public void calculate_raisingWithPositiveOperandsToZeroPow_isOk() {
         actualResult = calculator.calculate(FIRST_POS_OPERAND, 0, POW);
         assertEquals(Math.pow(FIRST_POS_OPERAND, 0), actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void raising_NegativeOperandsToZeroPow_isOk() {
+    public void calculate_raisingWithNegativeOperandsToZeroPow_isOk() {
         actualResult = calculator.calculate(FIRST_NEG_OPERAND, 0, POW);
         assertEquals(Math.pow(FIRST_POS_OPERAND, 0), actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void raising_ZeroToPositivePow_isk() {
+    public void calculate_raisingWithZeroToPositivePow_isk() {
         actualResult = calculator.calculate(0, SECOND_POS_OPERAND, POW);
         assertEquals(Math.pow(0, SECOND_POS_OPERAND), actualResult, ERROR_MESSAGE);
     }
 
     @Test
-    public void raising_ZeroToNegativePow_isOk() {
+    public void calculate_raisingWithZeroToNegativePow_isOk() {
         actualResult = calculator.calculate(0, SECOND_NEG_OPERAND, POW);
         assertEquals(Math.pow(0, SECOND_NEG_OPERAND), actualResult, ERROR_MESSAGE);
     }
