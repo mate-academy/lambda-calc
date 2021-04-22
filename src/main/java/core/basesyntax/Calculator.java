@@ -11,7 +11,7 @@ public class Calculator {
                 return a * b;
             case '/':
                 if (b == 0) {
-                    throw new ArithmeticException();
+                    throw new ArithmeticException("You can't divide by zero!");
                 }
                 return a / b;
             case '^':

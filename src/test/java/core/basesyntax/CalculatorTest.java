@@ -12,6 +12,7 @@ class CalculatorTest {
     private static final char MULTIPLICATION = '*';
     private static final char DIVISION = '/';
     private static final char RAISING_TO_A_POWER = '^';
+    private static final char ILLEGAL_OPERATION_SYMBOL = '?';
     private static final double POSITIVE_VALUE = 123.123;
     private static final double NEGATIVE_VALUE = -456.456;
     private static final double ZERO = 0;
@@ -274,6 +275,6 @@ class CalculatorTest {
     @Test
     void calculate_illegalOperation_notOk() {
         assertThrows(UnsupportedOperationException.class, () ->
-                calculator.calculate(10, 10, '?'));
+                calculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, ILLEGAL_OPERATION_SYMBOL));
     }
 }
