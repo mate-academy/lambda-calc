@@ -104,28 +104,28 @@ class CalculatorTest {
 
     @Test
     void negativeNumbersSubtraction_Ok() {
-        expected = NEGATIVE_VALUE + NEGATIVE_VALUE;
+        expected = NEGATIVE_VALUE - NEGATIVE_VALUE;
         actual = calculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
     }
 
     @Test
     void negativeNumberAtFirstSubtraction_OK() {
-        expected = NEGATIVE_VALUE + POSITIVE_VALUE;
+        expected = NEGATIVE_VALUE - POSITIVE_VALUE;
         actual = calculator.calculate(NEGATIVE_VALUE, POSITIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
     }
 
     @Test
     void negativeNumberAtSecondElementSubtraction_OK() {
-        expected = POSITIVE_VALUE + NEGATIVE_VALUE;
+        expected = POSITIVE_VALUE - NEGATIVE_VALUE;
         actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
     }
 
     @Test
     void zeroAtFirstElementSubtraction_Ok() {
-        expected = NEGATIVE_VALUE;
+        expected = ZERO - NEGATIVE_VALUE;
         actual = calculator.calculate(ZERO, NEGATIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
     }
@@ -139,14 +139,14 @@ class CalculatorTest {
 
     @Test
     void maxValueSubtraction_Ok() {
-        expected = MAX_VALUE + NEGATIVE_VALUE;
+        expected = MAX_VALUE - NEGATIVE_VALUE;
         actual = calculator.calculate(MAX_VALUE, NEGATIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
     }
 
     @Test
     void minValueSubtraction_Ok() {
-        expected = MIN_VALUE + NEGATIVE_VALUE;
+        expected = MIN_VALUE - NEGATIVE_VALUE;
         actual = calculator.calculate(MIN_VALUE, NEGATIVE_VALUE, SUBTRACTION);
         assertEquals(expected, actual);
     }
