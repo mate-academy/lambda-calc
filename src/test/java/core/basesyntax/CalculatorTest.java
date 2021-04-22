@@ -14,9 +14,6 @@ class CalculatorTest {
     private static final char DIVISION = '/';
     private static final char POWER = '^';
     private static final double DELTA = 0.01;
-    private static final double MAX = Double.MAX_VALUE;
-    private static final double MIN = -Double.MAX_VALUE;
-    private static final double INFINITY = Double.POSITIVE_INFINITY;
 
     @BeforeAll
     static void beforeAll() {
@@ -41,19 +38,22 @@ class CalculatorTest {
     void calculate_addPositiveAndNegative_isOk() {
         assertEquals(100.0, calculator.calculate(170.0, -70.0, PLUS));
         assertEquals(40.0, calculator.calculate(-30.0, 70.0, PLUS));
-        assertEquals(0.0, calculator.calculate(MAX, MIN, PLUS));
+        assertEquals(0.0, calculator.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, PLUS));
     }
 
     @Test
     void calculate_addMaxValue_isOk() {
-        assertEquals(INFINITY, calculator.calculate(MAX, MAX, PLUS));
-        assertEquals(MAX, calculator.calculate(MAX, 300000000.0, PLUS));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(Double.MAX_VALUE,
+                                                            Double.MAX_VALUE, PLUS));
+        assertEquals(Double.MAX_VALUE, calculator.calculate(Double.MAX_VALUE, 300000000.0, PLUS));
     }
 
     @Test
     void calculate_addMinValue_isOk() {
-        assertEquals(-INFINITY, calculator.calculate(MIN, MIN, PLUS), DELTA);
-        assertEquals(-MAX, calculator.calculate(MIN, -300000000.0, PLUS), DELTA);
+        assertEquals(-Double.POSITIVE_INFINITY, calculator.calculate(-Double.MAX_VALUE,
+                                                        -Double.MAX_VALUE, PLUS), DELTA);
+        assertEquals(-Double.MAX_VALUE, calculator.calculate(-Double.MAX_VALUE,
+                                                -300000000.0, PLUS), DELTA);
     }
 
     @Test
@@ -80,18 +80,23 @@ class CalculatorTest {
 
     @Test
     void calculate_subtractMaxValue_isOk() {
-        assertEquals(0.0, calculator.calculate(MAX, MAX, MINUS));
-        assertEquals(INFINITY, calculator.calculate(MAX, MIN, MINUS), DELTA);
-        assertEquals(MAX, calculator.calculate(MAX, -300000000.0, MINUS));
-        assertEquals(-MAX, calculator.calculate(-300000000.0, MAX, MINUS));
+        assertEquals(0.0, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MINUS));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(Double.MAX_VALUE,
+                                                    -Double.MAX_VALUE, MINUS), DELTA);
+        assertEquals(Double.MAX_VALUE, calculator.calculate(Double.MAX_VALUE, -300000000.0, MINUS));
+        assertEquals(-Double.MAX_VALUE, calculator.calculate(-300000000.0,
+                                                    Double.MAX_VALUE, MINUS));
     }
 
     @Test
     void calculate_subtractMinValue_isOk() {
-        assertEquals(0.0, calculator.calculate(MIN, MIN, MINUS));
-        assertEquals(-INFINITY, calculator.calculate(MIN, MAX, MINUS));
-        assertEquals(MIN, calculator.calculate(MIN, -300000000.0, MINUS), DELTA);
-        assertEquals(MAX, calculator.calculate(-300000000.0, MIN, MINUS), DELTA);
+        assertEquals(0.0, calculator.calculate(-Double.MAX_VALUE, -Double.MAX_VALUE, MINUS));
+        assertEquals(-Double.POSITIVE_INFINITY, calculator.calculate(-Double.MAX_VALUE,
+                                                            Double.MAX_VALUE, MINUS));
+        assertEquals(-Double.MAX_VALUE, calculator.calculate(-Double.MAX_VALUE,
+                                                -300000000.0, MINUS), DELTA);
+        assertEquals(Double.MAX_VALUE, calculator.calculate(-300000000.0,
+                                            -Double.MAX_VALUE, MINUS), DELTA);
     }
 
     @Test
@@ -118,16 +123,22 @@ class CalculatorTest {
 
     @Test
     void calculate_multiplyMaxValue_isOk() {
-        assertEquals(INFINITY, calculator.calculate(MAX, MAX, MULTIPLICATION));
-        assertEquals(INFINITY, calculator.calculate(MAX,30.0, MULTIPLICATION));
-        assertEquals(-INFINITY, calculator.calculate(MAX, MIN, MULTIPLICATION));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(Double.MAX_VALUE,
+                                                Double.MAX_VALUE, MULTIPLICATION));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(Double.MAX_VALUE,
+                                                        30.0, MULTIPLICATION));
+        assertEquals(-Double.POSITIVE_INFINITY, calculator.calculate(Double.MAX_VALUE,
+                                                    -Double.MAX_VALUE, MULTIPLICATION));
     }
 
     @Test
     void calculate_multiplyMinValue_isOk() {
-        assertEquals(INFINITY, calculator.calculate(MIN, MIN, MULTIPLICATION));
-        assertEquals(INFINITY, calculator.calculate(MIN,-30.0, MULTIPLICATION), DELTA);
-        assertEquals(-INFINITY, calculator.calculate(MIN,30.0, MULTIPLICATION), DELTA);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(-Double.MAX_VALUE,
+                                                -Double.MAX_VALUE, MULTIPLICATION));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(-Double.MAX_VALUE,
+                                                    -30.0, MULTIPLICATION), DELTA);
+        assertEquals(-Double.POSITIVE_INFINITY, calculator.calculate(-Double.MAX_VALUE,
+                                                    30.0, MULTIPLICATION), DELTA);
     }
 
     @Test
@@ -174,17 +185,25 @@ class CalculatorTest {
     }
 
     @Test
+    void calculate_powTwoNegatives_NotOk() {
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(-9.0, -0.5, POWER);
+        });
+    }
+
+    @Test
     void calculate_powMaxValue_isOk() {
-        assertEquals(INFINITY, calculator.calculate(MAX, 2.0, POWER));
-        assertEquals(INFINITY, calculator.calculate(3, MAX, POWER));
-        assertEquals(1.0, calculator.calculate(MAX, 0.0, POWER));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(Double.MAX_VALUE, 2.0, POWER));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(3, Double.MAX_VALUE, POWER));
+        assertEquals(1.0, calculator.calculate(Double.MAX_VALUE, 0.0, POWER));
     }
 
     @Test
     void calculate_powMinValue_isOk() {
-        assertEquals(-INFINITY, calculator.calculate(MIN, 3.0, POWER));
-        assertEquals(0.0, calculator.calculate(5, MIN, POWER));
-        assertEquals(1.0, calculator.calculate(MIN, 0.0, POWER));
+        assertEquals(-Double.POSITIVE_INFINITY, calculator.calculate(-Double.MAX_VALUE,
+                                                                    3.0, POWER));
+        assertEquals(0.0, calculator.calculate(5, -Double.MAX_VALUE, POWER));
+        assertEquals(1.0, calculator.calculate(-Double.MAX_VALUE, 0.0, POWER));
     }
 
     @Test
@@ -192,7 +211,7 @@ class CalculatorTest {
         assertEquals(1.0, calculator.calculate(6.0, 0.0, POWER));
         assertEquals(0.0, calculator.calculate(0.0, 2.0, POWER));
         assertEquals(1.0, calculator.calculate(-3.0, 0.0, POWER));
-        assertEquals(INFINITY, calculator.calculate(0.0, -5.0, POWER));
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(0.0, -5.0, POWER));
     }
 
     @Test
