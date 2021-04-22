@@ -379,9 +379,9 @@ class CalculatorTest {
 
     @Test
     void divisionZeroValueByZero_Ok() {
-        actual = calculator.calculate(0.0, 0.0, DIVISION);
-        expected = Double.NaN;
-        assertEquals(expected, actual, DELTA, ERROR_MESSAGE);
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(0.0, 0.0, DIVISION);
+        });
     }
 
     @Test
