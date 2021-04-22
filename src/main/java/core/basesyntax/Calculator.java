@@ -2,21 +2,21 @@ package core.basesyntax;
 
 public class Calculator {
 
-    public double calculate(Double first, Double second, char operator) {
+    public double calculate(Double firstValue, Double secondValue, char operator) {
         switch (operator) {
             case '+':
-                return first + second;
+                return firstValue + secondValue;
             case '-':
-                return first - second;
+                return firstValue - secondValue;
             case '*':
-                return first * second;
+                return firstValue * secondValue;
             case '/':
-                if (second == 0) {
-                    throw new ArithmeticException();
+                if (secondValue == 0) {
+                    throw new ArithmeticException("Can't be divided by zero");
                 }
-                return first / second;
+                return firstValue / secondValue;
             case '^':
-                return Math.pow(first, second);
+                return Math.pow(firstValue, secondValue);
             default:
                 throw new RuntimeException("No such operator:" + operator);
         }
