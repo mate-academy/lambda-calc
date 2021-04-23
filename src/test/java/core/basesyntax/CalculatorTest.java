@@ -28,28 +28,28 @@ public class CalculatorTest {
     private double expected;
 
     @Test
-    void addingTwoPositive_Ok() {
+    void calculate_addingTwoPositive_ok() {
         expected = 15.5;
         actual = calculator.calculate(FIVE_POSITIVE, TEN_POSITIVE, ADD);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void addingTwoNegative_Ok() {
+    void calculate_addingTwoNegative_ok() {
         expected = -15.5;
         actual = calculator.calculate(FIVE_NEGATIVE, TEN_NEGATIVE, ADD);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void addingPositiveToNegative_Ok() {
+    void calculate_addingPositiveToNegative_ok() {
         expected = -5.3;
         actual = calculator.calculate(TEN_NEGATIVE, FIVE_POSITIVE, ADD);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void addingZero_Ok() {
+    void calculate_addingZero_ok() {
         expected = 10.4;
         actual = calculator.calculate(0, TEN_POSITIVE, ADD);
         assertEquals(expected, actual, DELTA);
@@ -60,7 +60,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void addingMinAndMaxValues_Ok() {
+    void calculate_addingMinAndMaxValues_ok() {
         actual = calculator.calculate(MAX_DOUBLE_VALUE, MAX_DOUBLE_VALUE, ADD);
         assertEquals(Double.POSITIVE_INFINITY, actual);
 
@@ -72,14 +72,14 @@ public class CalculatorTest {
     }
 
     @Test
-    void subtractingTwoPositive_Ok() {
+    void calculate_subtractingTwoPositive_ok() {
         expected = -5.3;
         double actual = calculator.calculate(FIVE_POSITIVE, TEN_POSITIVE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void subtractingTwoNegative_Ok() {
+    void calculate_subtractingTwoNegative_ok() {
         expected = 5.3;
         actual = calculator.calculate(FIVE_NEGATIVE, TEN_NEGATIVE, MINUS);
         assertEquals(expected, actual, DELTA);
@@ -87,21 +87,21 @@ public class CalculatorTest {
     }
 
     @Test
-    void negativeMinusPositive_Ok() {
+    void calculate_negativeMinusPositive_ok() {
         expected = -15.5;
         actual = calculator.calculate(TEN_NEGATIVE, FIVE_POSITIVE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void positiveMinusNegative_Ok() {
+    void calculate_positiveMinusNegative_ok() {
         expected = 15.5;
         actual = calculator.calculate(TEN_POSITIVE, FIVE_NEGATIVE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void subtractingZero_Ok() {
+    void calculate_subtractingZero_ok() {
         expected = 5.1;
         actual = calculator.calculate(FIVE_POSITIVE, 0.0, MINUS);
         assertEquals(expected, actual);
@@ -119,7 +119,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void subtractingMinAndMaxValues_Ok() {
+    void calculate_subtractingMinAndMaxValues_ok() {
         actual = calculator.calculate(MAX_DOUBLE_VALUE, MIN_DOUBLE_VALUE, MINUS);
         assertEquals(POSITIVE_DIFF_OF_MIN_AND_MAX_VALUES, actual);
 
@@ -128,28 +128,28 @@ public class CalculatorTest {
     }
 
     @Test
-    void multiplyTwoPositive_Ok() {
+    void calculate_multiplyTwoPositive_ok() {
         expected = 53.04;
         actual = calculator.calculate(TEN_POSITIVE, FIVE_POSITIVE, MULTIPLY);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void multiplyTwoNegative_Ok() {
+    void calculate_multiplyTwoNegative_ok() {
         expected = 53.04;
         actual = calculator.calculate(TEN_NEGATIVE, FIVE_NEGATIVE, MULTIPLY);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void multiplyPositiveAndNegative_Ok() {
+    void calculate_multiplyPositiveAndNegative_ok() {
         expected = -53.04;
         actual = calculator.calculate(TEN_NEGATIVE, FIVE_POSITIVE, MULTIPLY);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void multiplyByZero_Ok() {
+    void calculate_multiplyByZero_ok() {
         expected = -0.0;
         actual = calculator.calculate(TEN_NEGATIVE, 0.0, MULTIPLY);
         assertEquals(expected, actual);
@@ -160,7 +160,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void multiplyMinAndMaxValues_Ok() {
+    void calculate_multiplyMinAndMaxValues_ok() {
         actual = calculator.calculate(MIN_DOUBLE_VALUE, MAX_DOUBLE_VALUE, MULTIPLY);
         assertEquals(MULTIPLY_MIN_BY_MAX, actual);
 
@@ -173,35 +173,35 @@ public class CalculatorTest {
     }
 
     @Test
-    void divideTwoPositive_Ok() {
+    void calculate_divideTwoPositive_ok() {
         expected = 2.03921568627451;
         actual = calculator.calculate(TEN_POSITIVE, FIVE_POSITIVE, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideTwoNegative() {
+    void calculate_divideTwoNegative_ok() {
         expected = 2.03921568627451;
         actual = calculator.calculate(TEN_NEGATIVE, FIVE_NEGATIVE, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void dividePositiveByNegative_Ok() {
+    void calculate_dividePositiveByNegative_ok() {
         expected = -2.03921568627451;
         actual = calculator.calculate(TEN_POSITIVE, FIVE_NEGATIVE, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideNegativeByPositive_Ok() {
+    void calculate_divideNegativeByPositive_ok() {
         expected = -2.03921568627451;
         actual = calculator.calculate(TEN_NEGATIVE, FIVE_POSITIVE, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideByNumberItself() {
+    void calculate_divideByNumberItself_ok() {
         expected = 1.0;
         actual = calculator.calculate(FIVE_POSITIVE, FIVE_POSITIVE, DIVIDE);
         assertEquals(expected, actual);
@@ -212,19 +212,19 @@ public class CalculatorTest {
     }
 
     @Test
-    void divideByZero_NotOk() {
+    void calculate_divideByZero_notOk() {
         assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(FIVE_POSITIVE, 0, DIVIDE));
     }
 
     @Test
-    void calculate_divideZero_Ok() {
+    void calculate_divideZero_ok() {
         actual = calculator.calculate(0, FIVE_POSITIVE, DIVIDE);
         assertEquals(0.0, actual);
     }
 
     @Test
-    void calculate_divideMinAndMaxValues() {
+    void calculate_divideMinAndMaxValues_ok() {
         actual = calculator.calculate(MAX_DOUBLE_VALUE, MIN_DOUBLE_VALUE, DIVIDE);
         assertEquals(Double.POSITIVE_INFINITY, actual);
 
@@ -233,35 +233,35 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_raisePositiveToPositive_Ok() {
+    void calculate_raisePositiveToPositive_ok() {
         expected = 153769.43917747992;
         actual = calculator.calculate(TEN_POSITIVE, FIVE_POSITIVE, POW);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_raiseNegativeToNegative_Ok() {
+    void calculate_raiseNegativeToNegative_ok() {
         expected = -0.09615384615384615;
         actual = calculator.calculate(TEN_NEGATIVE, -1, POW);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_raisePositiveToNegative_Ok() {
+    void calculate_raisePositiveToNegative_ok() {
         expected = 0.19607843137254904;
         actual = calculator.calculate(FIVE_POSITIVE, -1, POW);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_raiseNegativeToPositive_Ok() {
+    void calculate_raiseNegativeToPositive_ok() {
         expected = -0.19607843137254904;
         actual = calculator.calculate(FIVE_NEGATIVE, -1, POW);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_raiseToZero_Ok() {
+    void calculate_raiseToZero_ok() {
         actual = calculator.calculate(FIVE_POSITIVE, 0, POW);
         assertEquals(1.0, actual);
 
@@ -270,7 +270,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_raiseMinAndMaxValues_Ok() {
+    void calculate_raiseMinAndMaxValues_ok() {
         actual = calculator.calculate(MIN_DOUBLE_VALUE, MAX_DOUBLE_VALUE, POW);
         assertEquals(0.0, actual);
 
@@ -285,7 +285,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_WithIllegalOperator_NotOk() {
+    void calculate_WithIllegalOperator_notOk() {
         assertThrows(RuntimeException.class,
                 () -> calculator.calculate(FIVE_POSITIVE, FIVE_POSITIVE, ILLEGAL_OPERATION));
     }
