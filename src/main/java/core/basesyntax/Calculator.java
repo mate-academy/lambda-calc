@@ -18,7 +18,6 @@ public class Calculator {
                 return Math.pow(value1, value2);
             default:
                 throw new RuntimeException("Operation sign is invalid!");
-                // testing git
         }
     }
 }
