@@ -6,18 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
+public class CalculatorTest {
     private static Calculator calculator;
     private static final double DELTA = 0.0001;
 
     @BeforeAll
-    static void beforeAll() {
+    public static void beforeAll() {
         calculator = new Calculator();
     }
 
     //Addition
     @Test
-    void additionWithPositivesOperands_Ok() {
+    public void calculate_additionWithPositivesOperands_ok() {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = 30;
@@ -26,7 +26,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithNegativesOperands_Ok() {
+    public void calculate_additionWithNegativesOperands_ok() {
         double firstNumber = -5;
         double secondNumber = -22;
         double expect = -27;
@@ -35,7 +35,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithDifferentOperands_Ok() {
+    public void calculate_additionWithDifferentOperands_ok() {
         double firstNumber = 25;
         double secondNumber = -15;
         double expect = 10;
@@ -44,7 +44,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithFirstZeroOperand_Ok() {
+    public void calculate_additionWithFirstZeroOperand_ok() {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = -15;
@@ -53,7 +53,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithSecondZeroOperand_Ok() {
+    public void calculate_additionWithSecondZeroOperand_ok() {
         double firstNumber = -10;
         double secondNumber = 0;
         double expect = -10;
@@ -62,7 +62,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionMinAndMaxValue_Ok() {
+    public void calculate_additionMinAndMaxValue_ok() {
         double secondNumber = 5;
         double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, '+');
         double expected = 1.7976931348623157E308;
@@ -71,7 +71,7 @@ class CalculatorTest {
 
     //Subtraction
     @Test
-    void subtractionWithPositivesOperands_Ok() {
+    public void calculate_subtractionWithPositivesOperands_ok() {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = -10;
@@ -80,7 +80,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithNegativesOperands_Ok() {
+    public void calculate_subtractionWithNegativesOperands_ok() {
         double firstNumber = -5;
         double secondNumber = -25;
         double expect = 20;
@@ -89,7 +89,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithDifferentOperands_Ok() {
+    public void calculate_subtractionWithDifferentOperands_ok() {
         double firstNumber = -25;
         double secondNumber = 30;
         double expect = -55;
@@ -98,7 +98,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithFirstZeroOperand_Ok() {
+    public void calculate_subtractionWithFirstZeroOperand_ok() {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = 15;
@@ -107,7 +107,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithSecondZeroOperand_Ok() {
+    public void calculate_subtractionWithSecondZeroOperand_ok() {
         double firstNumber = 10;
         double secondNumber = 0;
         double expect = 10;
@@ -116,7 +116,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionMinAndMaxValue_Ok() {
+    public void calculate_subtractionMinAndMaxValue_ok() {
         double secondNumber = 1;
         double actual = calculator.calculate(Double.MIN_VALUE, secondNumber, '-');
         double expected = -1;
@@ -125,7 +125,7 @@ class CalculatorTest {
 
     //Multiple
     @Test
-    void multipleWithPositivesOperands_Ok() {
+    public void calculate_multipleWithPositivesOperands_ok() {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = 200;
@@ -134,7 +134,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multipleWithNegativesOperands_Ok() {
+    public void calculate_multipleWithNegativesOperands_ok() {
         double firstNumber = -5;
         double secondNumber = -5;
         double expect = 25;
@@ -143,7 +143,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multipleWithDifferentOperands_Ok() {
+    public void calculate_multipleWithDifferentOperands_ok() {
         double firstNumber = -2;
         double secondNumber = 5;
         double expect = -10;
@@ -152,7 +152,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multipleWithFirstZeroOperand_Ok() {
+    public void calculate_multipleWithFirstZeroOperand_ok() {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = 0;
@@ -161,7 +161,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multipleWithSecondZeroOperand_Ok() {
+    public void calculate_multipleWithSecondZeroOperand_ok() {
         double firstNumber = 10;
         double secondNumber = 0;
         double expect = 0;
@@ -170,7 +170,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multipleMinAndMaxValue_Ok() {
+    public void calculate_multipleMinAndMaxValue_ok() {
         double secondNumber = 2;
         double actual = calculator.calculate(Double.MIN_VALUE, secondNumber, '*');
         double expected = 1.0E-323;
@@ -179,7 +179,7 @@ class CalculatorTest {
 
     //Divide
     @Test
-    void divideWithPositivesOperands_Ok() {
+    public void calculate_divideWithPositivesOperands_ok() {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = 0.5;
@@ -188,7 +188,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideWithNegativesOperands_Ok() {
+    public void calculate_divideWithNegativesOperands_ok() {
         double firstNumber = -5;
         double secondNumber = -5;
         double expect = 1;
@@ -197,7 +197,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideWithDifferentOperands_Ok() {
+    public void calculate_divideWithDifferentOperands_ok() {
         double firstNumber = -20;
         double secondNumber = 5;
         double expect = -4;
@@ -206,7 +206,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideWithFirstZeroOperand_Ok() {
+    public void calculate_divideWithFirstZeroOperand_ok() {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = 0;
@@ -215,7 +215,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideWithSecondZeroOperand_Ok() {
+    public void calculate_divideWithSecondZeroOperand_ok() {
         double firstNumber = 10;
         double secondNumber = 0;
         assertThrows(IllegalArgumentException.class, () -> {
@@ -224,7 +224,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideMinAndMaxValue_Ok() {
+    public void calculate_divideMinAndMaxValue_ok() {
         double secondNumber = 2;
         double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, '/');
         double expected = 8.988465674311579E307;
@@ -233,7 +233,7 @@ class CalculatorTest {
 
     //Raising
     @Test
-    void raisingWithPositivesOperands_Ok() {
+    public void calculate_raisingWithPositivesOperands_ok() {
         double firstNumber = 10;
         double secondNumber = 2;
         double expect = 100;
@@ -242,7 +242,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingWithNegativesOperands_Ok() {
+    public void calculate_raisingWithNegativesOperands_ok() {
         double firstNumber = -5;
         double secondNumber = 3;
         double expect = -125;
@@ -251,7 +251,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingWithDifferentOperands_Ok() {
+    public void calculate_raisingWithDifferentOperands_ok() {
         double firstNumber = 5;
         double secondNumber = -3;
         double expect = 0.008;
@@ -260,7 +260,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingWithFirstZeroOperand_Ok() {
+    public void calculate_raisingWithFirstZeroOperand_ok() {
         double firstNumber = 0;
         double secondNumber = 2;
         double expect = 0;
@@ -269,7 +269,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingWithSecondZeroOperand_Ok() {
+    public void calculate_raisingWithSecondZeroOperand_ok() {
         double firstNumber = 10;
         double secondNumber = 0;
         double expect = 1;
@@ -278,7 +278,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingMinAndMaxValue_Ok() {
+    public void calculate_raisingMinAndMaxValue_ok() {
         double secondNumber = 2;
         double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, '^');
         double expected = Double.POSITIVE_INFINITY;
@@ -287,7 +287,7 @@ class CalculatorTest {
 
     //Illegal operation
     @Test
-    void illegalOperation_NotOk() {
+    public void set_illegalOperation_notOk() {
         double secondNumber = 2;
         assertThrows(IllegalArgumentException.class, () -> {
             calculator.calculate(Double.MAX_VALUE, secondNumber, '?');
