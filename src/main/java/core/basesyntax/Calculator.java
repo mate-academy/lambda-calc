@@ -1,11 +1,11 @@
 package core.basesyntax;
 
 public class Calculator {
-    private final static char PLUS_OPERATION = '+';
-    private final static char MINUS_OPERATION = '-';
-    private final static char MULTIPLE_OPERATION = '*';
-    private final static char DIVIDE_OPERATION = '/';
-    private final static char RAISING_OPERATION = '^';
+    private static final char PLUS_OPERATION = '+';
+    private static final char MINUS_OPERATION = '-';
+    private static final char MULTIPLE_OPERATION = '*';
+    private static final char DIVIDE_OPERATION = '/';
+    private static final char RAISING_OPERATION = '^';
 
     public double calculate(double firstNumber, double secondNumber, char operation) {
         switch (operation) {
