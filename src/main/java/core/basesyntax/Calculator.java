@@ -19,7 +19,6 @@ public class Calculator {
                 if (secondNumber == 0) {
                     throw new IllegalArgumentException("Divide on zero unavailable");
                 }
-
                 return firstNumber / secondNumber;
             case RAISING_OPERATION:
                 return Math.pow(firstNumber, secondNumber);

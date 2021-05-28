@@ -9,6 +9,12 @@ import org.junit.jupiter.api.Test;
 public class CalculatorTest {
     private static Calculator calculator;
     private static final double DELTA = 0.0001;
+    private static final char PLUS_OPERATION = '+';
+    private static final char MINUS_OPERATION = '-';
+    private static final char MULTIPLE_OPERATION = '*';
+    private static final char DIVIDE_OPERATION = '/';
+    private static final char RAISING_OPERATION = '^';
+    private static final char ILLEGAL_OPERATION = '?';
 
     @BeforeAll
     public static void beforeAll() {
@@ -21,7 +27,7 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = 30;
-        double actual = calculator.calculate(firstNumber, secondNumber, '+');
+        double actual = calculator.calculate(firstNumber, secondNumber, PLUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -30,7 +36,7 @@ public class CalculatorTest {
         double firstNumber = -5;
         double secondNumber = -22;
         double expect = -27;
-        double actual = calculator.calculate(firstNumber, secondNumber, '+');
+        double actual = calculator.calculate(firstNumber, secondNumber, PLUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -39,7 +45,7 @@ public class CalculatorTest {
         double firstNumber = 25;
         double secondNumber = -15;
         double expect = 10;
-        double actual = calculator.calculate(firstNumber, secondNumber, '+');
+        double actual = calculator.calculate(firstNumber, secondNumber, PLUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -48,7 +54,7 @@ public class CalculatorTest {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = -15;
-        double actual = calculator.calculate(firstNumber, secondNumber, '+');
+        double actual = calculator.calculate(firstNumber, secondNumber, PLUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -57,14 +63,14 @@ public class CalculatorTest {
         double firstNumber = -10;
         double secondNumber = 0;
         double expect = -10;
-        double actual = calculator.calculate(firstNumber, secondNumber, '+');
+        double actual = calculator.calculate(firstNumber, secondNumber, PLUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
     @Test
     public void calculate_additionMinAndMaxValue_ok() {
         double secondNumber = 5;
-        double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, '+');
+        double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, PLUS_OPERATION);
         double expected = 1.7976931348623157E308;
         assertEquals(actual, expected, DELTA);
     }
@@ -75,7 +81,7 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = -10;
-        double actual = calculator.calculate(firstNumber, secondNumber, '-');
+        double actual = calculator.calculate(firstNumber, secondNumber, MINUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -84,7 +90,7 @@ public class CalculatorTest {
         double firstNumber = -5;
         double secondNumber = -25;
         double expect = 20;
-        double actual = calculator.calculate(firstNumber, secondNumber, '-');
+        double actual = calculator.calculate(firstNumber, secondNumber, MINUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -93,7 +99,7 @@ public class CalculatorTest {
         double firstNumber = -25;
         double secondNumber = 30;
         double expect = -55;
-        double actual = calculator.calculate(firstNumber, secondNumber, '-');
+        double actual = calculator.calculate(firstNumber, secondNumber, MINUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -102,7 +108,7 @@ public class CalculatorTest {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = 15;
-        double actual = calculator.calculate(firstNumber, secondNumber, '-');
+        double actual = calculator.calculate(firstNumber, secondNumber, MINUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -111,14 +117,14 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 0;
         double expect = 10;
-        double actual = calculator.calculate(firstNumber, secondNumber, '-');
+        double actual = calculator.calculate(firstNumber, secondNumber, MINUS_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
     @Test
     public void calculate_subtractionMinAndMaxValue_ok() {
         double secondNumber = 1;
-        double actual = calculator.calculate(Double.MIN_VALUE, secondNumber, '-');
+        double actual = calculator.calculate(Double.MIN_VALUE, secondNumber, MINUS_OPERATION);
         double expected = -1;
         assertEquals(actual, expected, DELTA);
     }
@@ -129,7 +135,7 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = 200;
-        double actual = calculator.calculate(firstNumber, secondNumber, '*');
+        double actual = calculator.calculate(firstNumber, secondNumber, MULTIPLE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -138,7 +144,7 @@ public class CalculatorTest {
         double firstNumber = -5;
         double secondNumber = -5;
         double expect = 25;
-        double actual = calculator.calculate(firstNumber, secondNumber, '*');
+        double actual = calculator.calculate(firstNumber, secondNumber, MULTIPLE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -147,7 +153,7 @@ public class CalculatorTest {
         double firstNumber = -2;
         double secondNumber = 5;
         double expect = -10;
-        double actual = calculator.calculate(firstNumber, secondNumber, '*');
+        double actual = calculator.calculate(firstNumber, secondNumber, MULTIPLE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -156,7 +162,7 @@ public class CalculatorTest {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = 0;
-        double actual = calculator.calculate(firstNumber, secondNumber, '*');
+        double actual = calculator.calculate(firstNumber, secondNumber, MULTIPLE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -165,14 +171,14 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 0;
         double expect = 0;
-        double actual = calculator.calculate(firstNumber, secondNumber, '*');
+        double actual = calculator.calculate(firstNumber, secondNumber, MULTIPLE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
     @Test
     public void calculate_multipleMinAndMaxValue_ok() {
         double secondNumber = 2;
-        double actual = calculator.calculate(Double.MIN_VALUE, secondNumber, '*');
+        double actual = calculator.calculate(Double.MIN_VALUE, secondNumber, MULTIPLE_OPERATION);
         double expected = 1.0E-323;
         assertEquals(actual, expected, DELTA);
     }
@@ -183,7 +189,7 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 20;
         double expect = 0.5;
-        double actual = calculator.calculate(firstNumber, secondNumber, '/');
+        double actual = calculator.calculate(firstNumber, secondNumber, DIVIDE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -192,7 +198,7 @@ public class CalculatorTest {
         double firstNumber = -5;
         double secondNumber = -5;
         double expect = 1;
-        double actual = calculator.calculate(firstNumber, secondNumber, '/');
+        double actual = calculator.calculate(firstNumber, secondNumber, DIVIDE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -201,7 +207,7 @@ public class CalculatorTest {
         double firstNumber = -20;
         double secondNumber = 5;
         double expect = -4;
-        double actual = calculator.calculate(firstNumber, secondNumber, '/');
+        double actual = calculator.calculate(firstNumber, secondNumber, DIVIDE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -210,7 +216,7 @@ public class CalculatorTest {
         double firstNumber = 0;
         double secondNumber = -15;
         double expect = 0;
-        double actual = calculator.calculate(firstNumber, secondNumber, '/');
+        double actual = calculator.calculate(firstNumber, secondNumber, DIVIDE_OPERATION);
         assertEquals(expect, actual, DELTA);
     }
 
@@ -219,14 +225,14 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 0;
         assertThrows(IllegalArgumentException.class, () -> {
-            calculator.calculate(firstNumber, secondNumber, '/');
+            calculator.calculate(firstNumber, secondNumber, DIVIDE_OPERATION);
         });
     }
 
     @Test
     public void calculate_divideMinAndMaxValue_ok() {
         double secondNumber = 2;
-        double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, '/');
+        double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, DIVIDE_OPERATION);
         double expected = 8.988465674311579E307;
         assertEquals(actual, expected, DELTA);
     }
@@ -237,7 +243,7 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 2;
         double expect = 100;
-        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        double actual = calculator.calculate(firstNumber, secondNumber, RAISING_OPERATION);
         assertEquals(expect, actual);
     }
 
@@ -246,7 +252,7 @@ public class CalculatorTest {
         double firstNumber = -5;
         double secondNumber = 3;
         double expect = -125;
-        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        double actual = calculator.calculate(firstNumber, secondNumber, RAISING_OPERATION);
         assertEquals(expect, actual);
     }
 
@@ -255,7 +261,7 @@ public class CalculatorTest {
         double firstNumber = 5;
         double secondNumber = -3;
         double expect = 0.008;
-        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        double actual = calculator.calculate(firstNumber, secondNumber, RAISING_OPERATION);
         assertEquals(expect, actual);
     }
 
@@ -264,7 +270,7 @@ public class CalculatorTest {
         double firstNumber = 0;
         double secondNumber = 2;
         double expect = 0;
-        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        double actual = calculator.calculate(firstNumber, secondNumber, RAISING_OPERATION);
         assertEquals(expect, actual);
     }
 
@@ -273,14 +279,14 @@ public class CalculatorTest {
         double firstNumber = 10;
         double secondNumber = 0;
         double expect = 1;
-        double actual = calculator.calculate(firstNumber, secondNumber, '^');
+        double actual = calculator.calculate(firstNumber, secondNumber, RAISING_OPERATION);
         assertEquals(expect, actual);
     }
 
     @Test
     public void calculate_raisingMinAndMaxValue_ok() {
         double secondNumber = 2;
-        double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, '^');
+        double actual = calculator.calculate(Double.MAX_VALUE, secondNumber, RAISING_OPERATION);
         double expected = Double.POSITIVE_INFINITY;
         assertEquals(actual, expected, DELTA);
     }
@@ -290,7 +296,7 @@ public class CalculatorTest {
     public void set_illegalOperation_notOk() {
         double secondNumber = 2;
         assertThrows(IllegalArgumentException.class, () -> {
-            calculator.calculate(Double.MAX_VALUE, secondNumber, '?');
+            calculator.calculate(Double.MAX_VALUE, secondNumber, ILLEGAL_OPERATION);
         });
     }
 }
