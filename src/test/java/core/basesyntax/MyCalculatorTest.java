@@ -3,10 +3,16 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class MyCalculatorTest {
-    private final MyCalculator calculator = new MyCalculator();
+    private static MyCalculator calculator;
+
+    @BeforeAll
+    static void init() {
+        calculator = new MyCalculator();
+    }
 
     @Test
     void additionTwoPositive_Ok() {
