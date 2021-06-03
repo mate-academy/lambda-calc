@@ -21,7 +21,7 @@ public class MyCalculator {
             case '^':
                 return Math.pow(a, b);
             default:
-                throw new RuntimeException("Wrong operator");
+                throw new RuntimeException("Wrong operator" + operation);
         }
     }
 }
