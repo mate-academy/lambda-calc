@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-public class HelloWorld {
+public class Calculator {
 
     public double calculate(double firstArg, double secondArg, char operator) {
         switch (operator) {
@@ -9,6 +9,9 @@ public class HelloWorld {
             case '-':
                 return firstArg - secondArg;
             case '/':
+                if (secondArg == 0) {
+                    // TODO: 21.06.2021
+                }
                 return firstArg / secondArg;
             case '*':
                 return firstArg * secondArg;
