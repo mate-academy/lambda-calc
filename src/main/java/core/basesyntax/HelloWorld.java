@@ -1,8 +1,21 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
 public class HelloWorld {
 
+    public double calculate(double firstArg, double secondArg, char operator) {
+        switch (operator) {
+            case '+':
+                return firstArg + secondArg;
+            case '-':
+                return firstArg - secondArg;
+            case '/':
+                return firstArg / secondArg;
+            case '*':
+                return firstArg * secondArg;
+            case '^':
+                return Math.pow(firstArg, secondArg);
+            default:
+                throw new RuntimeException("Invalid operation: " + operator);
+        }
+    }
 }
