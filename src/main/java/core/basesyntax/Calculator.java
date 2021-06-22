@@ -18,7 +18,7 @@ public class Calculator {
             case '^':
                 return Math.pow(firstArg, secondArg);
             default:
-                throw new RuntimeException("Invalid operation: " + operator);
+                throw new IllegalArgumentException("Invalid operation: " + operator);
         }
     }
 }
