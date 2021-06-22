@@ -10,7 +10,7 @@ public class Calculator {
                 return firstArg - secondArg;
             case '/':
                 if (secondArg == 0) {
-                    // TODO: 21.06.2021
+                    throw new ArithmeticException("Dividing by zero!");
                 }
                 return firstArg / secondArg;
             case '*':
