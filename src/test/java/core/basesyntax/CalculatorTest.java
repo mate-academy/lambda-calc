@@ -104,7 +104,7 @@ class CalculatorTest {
 
     @Test
     void illigalOperation_NotOk() {
-        assertThrows(RuntimeException.class,
+        assertThrows(IllegalArgumentException.class,
                 () -> calculator.calculate(15, 2.3, '?'));
     }
 

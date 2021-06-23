@@ -23,7 +23,7 @@ public class Calculator {
             case RAISING_TO_A_POWER_OPERATION:
                 return Math.pow(first, second);
             default:
-                throw new RuntimeException("No such operation: " + operation + " !");
+                throw new IllegalArgumentException("No such operation: " + operation + " !");
         }
     }
 }
