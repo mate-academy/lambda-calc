@@ -1,13 +1,10 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.function.DoubleBinaryOperator;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     private static final double DELTA = 0.0001;
