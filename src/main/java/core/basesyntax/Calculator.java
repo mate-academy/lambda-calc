@@ -1,22 +1,27 @@
 package core.basesyntax;
 
 public class Calculator {
+    private static final char PLUS = '+';
+    private static final char MINUS = '-';
+    private static final char MULTIPLICATION = '*';
+    private static final char DIVISION = '/';
+    private static final char POW = '^';
 
-    public double calculate(double firstArg, double secondArg, char operator) {
+    public double calculate(double firstArgument, double secondArgument, char operator) {
         switch (operator) {
-            case '+':
-                return firstArg + secondArg;
-            case '-':
-                return firstArg - secondArg;
-            case '/':
-                if (secondArg == 0) {
+            case PLUS:
+                return firstArgument + secondArgument;
+            case MINUS:
+                return firstArgument - secondArgument;
+            case DIVISION:
+                if (secondArgument == 0) {
                     throw new ArithmeticException("Dividing by zero!");
                 }
-                return firstArg / secondArg;
-            case '*':
-                return firstArg * secondArg;
-            case '^':
-                return Math.pow(firstArg, secondArg);
+                return firstArgument / secondArgument;
+            case MULTIPLICATION:
+                return firstArgument * secondArgument;
+            case POW:
+                return Math.pow(firstArgument, secondArgument);
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operator);
         }
