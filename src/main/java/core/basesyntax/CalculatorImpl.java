@@ -27,5 +27,4 @@ public class CalculatorImpl implements Calculator {
                 throw new OperationNonValidException("This is unknown operation!");
         }
     }
-
 }
