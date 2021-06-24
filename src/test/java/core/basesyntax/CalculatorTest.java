@@ -128,7 +128,7 @@ public class CalculatorTest {
     @Test
     void calculate_divisionOfPositiveNumberAndZero_Ok() {
         double expected = ZERO;
-        double actual = calculator.calculate(POSITIVE_NUMBER, ZERO, DIVISION);
+        double actual = calculator.calculate(ZERO, POSITIVE_NUMBER, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
