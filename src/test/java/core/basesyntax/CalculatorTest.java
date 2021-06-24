@@ -177,7 +177,7 @@ class CalculatorTest {
                 calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, '/'), DELTA);
         assertEquals(Double.MAX_VALUE / valueFirstPositive,
                 calculator.calculate(Double.MAX_VALUE, valueFirstPositive, '/'), DELTA);
-        assertEquals(Double.MIN_VALUE * valueSecondNegative,
+        assertEquals(Double.MIN_VALUE / valueSecondNegative,
                 calculator.calculate(Double.MIN_VALUE, valueSecondNegative, '/'), DELTA);
     }
 
