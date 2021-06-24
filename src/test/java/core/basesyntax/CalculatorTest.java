@@ -133,7 +133,8 @@ class CalculatorTest {
     @Test
     void calculate_MultiplicationForMinAndMaxDoubleValues_Ok() {
         BigDecimal expected = BigDecimal.valueOf(Double.MIN_VALUE * Double.MAX_VALUE);
-        BigDecimal actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, MULTIPLICATION);
+        BigDecimal actual = calculator.calculate(Double.MIN_VALUE,
+                Double.MAX_VALUE, MULTIPLICATION);
         assertEquals(expected, actual);
     }
 
