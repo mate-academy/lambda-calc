@@ -8,13 +8,16 @@ public class LambdaCalculator {
             case '-':
                 return number1 - number2;
             case '/':
+                if (number2 == 0) {
+                    throw new ArithmeticException("Can't divide by ZERO");
+                }
                 return number1 / number2;
             case '*':
                 return number1 * number2;
             case '^':
                 return Math.pow(number1, number2);
             default:
-                throw new RuntimeException("Wrong operator type");
+                throw new IllegalArgumentException("Wrong operator type");
         }
     }
 }
