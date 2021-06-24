@@ -15,6 +15,101 @@ class CalculatorImplTest {
     private static CalculatorImpl calculator;
     private static final double DELTA = 0.0001;
 
+    @Test
+    public void calculate_ExpressionTrue_notOk() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            for (int character = 0; character < 1000; character++) {
+                if (character == (int) PLUS
+                        || character == (int) MINUS
+                        || character == (int) CHARACTER_DIVISION
+                        || character == (int) CHARACTER_MULTIPLICATION
+                        || character == (int) CHARACTER_POWER) {
+                    continue;
+                }
+                calculator.calculate("34" + (char) character + 45);
+            }
+        });
+    }
+
+    @Test
+    public void calculate_additionExpression_ok() {
+        for (int i = -100; i < 100; i++) {
+            for (int j = -100; j < 100; j++) {
+                assertEquals(i + j, calculator.calculate(i + " + " + j));
+            }
+        }
+        assertEquals(-35.56 + 30.56, calculator.calculate(-35.56 + " + " + 30.56), DELTA);
+        assertEquals(-35.56 + -30.56, calculator.calculate(-35.56 + " + " + -30.56), DELTA);
+        assertEquals(35.56 + -30.56, calculator.calculate(35.56 + " + " + -30.56), DELTA);
+        assertEquals(35.56 + 30.56, calculator.calculate(35.56 + " + " + 30.56), DELTA);
+    }
+
+    @Test
+    public void calculate_subtractionExpression_ok() {
+        for (int i = -100; i < 100; i++) {
+            for (int j = -100; j < 100; j++) {
+                assertEquals(i - j, calculator.calculate(i + " -- " + j), DELTA,
+                        "i = " + i + " j = " + j);
+            }
+        }
+        assertEquals(-35.56 - 30.56, calculator.calculate(-35.56 + " -- " + 30.56), DELTA);
+        assertEquals(-35.56 - -30.56, calculator.calculate(-35.56 + " -- " + -30.56), DELTA);
+        assertEquals(35.56 - -30.56, calculator.calculate(35.56 + " -- " + -30.56), DELTA);
+        assertEquals(35.56 - 30.56, calculator.calculate(35.56 + " -- " + 30.56), DELTA);
+    }
+
+    @Test
+    public void calculate_divisionExpression_ok() {
+        for (int i = -100; i < 100; i++) {
+            for (int j = -100; j < 100; j++) {
+                if (j == 0) {
+                    continue;
+                }
+                assertEquals((double) i / j, calculator.calculate(i + " / " + j), DELTA,
+                        "i = " + i + " j = " + j);
+            }
+        }
+        assertEquals(-35.56 / 30.56, calculator.calculate(-35.56 + " / " + 30.56), DELTA);
+        assertEquals(-35.56 / -30.56, calculator.calculate(-35.56 + " / " + -30.56), DELTA);
+        assertEquals(35.56 / -30.56, calculator.calculate(35.56 + " / " + -30.56), DELTA);
+        assertEquals(35.56 / 30.56, calculator.calculate(35.56 + " / " + 30.56), DELTA);
+    }
+
+    @Test
+    public void calculate_multiplyExpression_ok() {
+        for (int i = -100; i < 100; i++) {
+            for (int j = -100; j < 100; j++) {
+                if (j == 0) {
+                    continue;
+                }
+                assertEquals((double) i * j, calculator.calculate(i + " * " + j), DELTA,
+                        "i = " + i + " j = " + j);
+            }
+        }
+        assertEquals(-35.56 * 30.56, calculator.calculate(-35.56 + " * " + 30.56), DELTA);
+        assertEquals(-35.56 * -30.56, calculator.calculate(-35.56 + " * " + -30.56), DELTA);
+        assertEquals(35.56 * -30.56, calculator.calculate(35.56 + " * " + -30.56), DELTA);
+        assertEquals(35.56 * 30.56, calculator.calculate(35.56 + " * " + 30.56), DELTA);
+    }
+
+    @Test
+    public void calculate_powerExpression_ok() {
+        for (int i = -100; i < 100; i++) {
+            for (int j = -100; j < 100; j++) {
+                if (j == 0) {
+                    continue;
+                }
+                assertEquals(Math.pow(i, j), calculator.calculate(i + " ^ " + j), DELTA,
+                        "i = " + i + " j = " + j);
+            }
+        }
+        assertEquals(Math.pow(-35.56, 30.56), calculator.calculate(-35.56 + " ^ " + 30.56), DELTA);
+        assertEquals(Math.pow(35.56, -30.56), calculator.calculate(35.56 + " ^ " + -30.56), DELTA);
+        assertEquals(Math.pow(35.56, 30.56), calculator.calculate(35.56 + " ^ " + 30.56), DELTA);
+        assertEquals(Math.pow(-35.56, -30.56), calculator.calculate(-35.56 + " ^ " + -30.56),
+                DELTA);
+    }
+
     @BeforeAll
     static void setCalculator() {
         calculator = new CalculatorImpl();

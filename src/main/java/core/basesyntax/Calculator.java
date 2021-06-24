@@ -1,6 +1,8 @@
 package core.basesyntax;
 
 public interface Calculator {
+    double calculate(String expression);
+
     double calculate(double a, double b, char charOfOperation);
 
     double add(double a, double b);
