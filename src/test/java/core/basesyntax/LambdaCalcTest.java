@@ -349,7 +349,7 @@ public class LambdaCalcTest {
     }
 
     @Test
-    void raisingZeroValueToTheNegativePower_Ok() {
+    void raisingZeroValueToTheNegativePower_NotOk() {
         assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(0, (- SECOND_NUMBER), POWER));
     }
