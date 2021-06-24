@@ -29,6 +29,6 @@ public class Calculator {
             }
             return Math.pow(firstOperand, secondOperand);
         }
-        throw new UnsupportedOperationException("This operation is unsupported!");
+        throw new IllegalArgumentException("This operation is unsupported!");
     }
 }
