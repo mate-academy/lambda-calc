@@ -16,7 +16,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionTwoElements_Ok() {
+    void calculate_additionTwoElements_Ok() {
         assertEquals(15.8,
                 calculator.calculate(5, 10.8, '+'), DELTA);
         assertEquals(3.4,
@@ -29,11 +29,10 @@ class CalculatorTest {
                 calculator.calculate(29.56, 0, '+'), DELTA);
         assertEquals(7,
                 calculator.calculate(-3, 10, '+'), DELTA);
-
     }
 
     @Test
-    void subtractionTwoElements_Ok() {
+    void calculate_subtractionTwoElements_Ok() {
         assertEquals(0,
                 calculator.calculate(13.6, 13.6, '-'), DELTA);
         assertEquals(-434.55,
@@ -49,7 +48,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionTwoElements_Ok() {
+    void calculate_divisionTwoElements_Ok() {
         assertEquals(8,
                 calculator.calculate(32, 4, '/'), DELTA);
         assertEquals(0,
@@ -60,18 +59,18 @@ class CalculatorTest {
                 calculator.calculate(13.65, 1, '/'), DELTA);
         assertEquals(-9,
                 calculator.calculate(-81, 9, '/'), DELTA);
-        assertEquals(79,
-                calculator.calculate(1896, 24, '/'), DELTA);
+        assertEquals(8,
+                calculator.calculate(-24, -3, '/'), DELTA);
     }
 
     @Test
-    void divisionByZero_NotOk() {
+    void calculate_divisionByZero_NotOk() {
         assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(342.56, 0, '/'));
     }
 
     @Test
-    void multiplicationTwoElements_Ok() {
+    void calculate_multiplicationTwoElements_Ok() {
         assertEquals(4454.9726,
                 calculator.calculate(156.26, 28.51, '*'), DELTA);
         assertEquals(64.4,
@@ -87,32 +86,38 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingToAPowerValue() {
+    void calculate_raisingToAPowerValue() {
         assertEquals(8,
                 calculator.calculate(2, 3, '^'), DELTA);
-        assertEquals(1.0,
-                calculator.calculate(125, 0, '^'), DELTA);
+        assertEquals(6561,
+                calculator.calculate(-9, 4, '^'), DELTA);
         assertEquals(0,
                 calculator.calculate(0, 5, '^'), DELTA);
         assertEquals(1.0,
                 calculator.calculate(-7, 0, '^'), DELTA);
-        assertEquals(729,
-                calculator.calculate(9, 3, '^'), DELTA);
+        assertEquals(0.0004572474,
+                calculator.calculate(3, -7, '^'), DELTA);
         assertEquals(28561,
                 calculator.calculate(13, 4, '^'), DELTA);
     }
 
     @Test
-    void illigalOperation_NotOk() {
+    void illegalOperation_NotOk() {
         assertThrows(IllegalArgumentException.class,
                 () -> calculator.calculate(15, 2.3, '?'));
     }
 
     @Test
-    void twoElementsAreMaxAndMinValue() {
+    void calculate_twoElementsAreMaxAndMinValue() {
         assertEquals(0,
                 calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'), DELTA);
         assertEquals(0,
                 calculator.calculate(-Double.MAX_VALUE, Double.MAX_VALUE, '+'), DELTA);
+        assertEquals(8.881784197001251E-16,
+                calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '*'), DELTA);
+        assertEquals(0.0,
+                calculator.calculate(Double.MIN_VALUE, 543.234, '/'), DELTA);
+        assertEquals(3.3092426741741416E305,
+                calculator.calculate(Double.MAX_VALUE, 543.234, '/'), DELTA);
     }
 }
