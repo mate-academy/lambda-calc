@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigDecimal;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -29,8 +30,8 @@ class CalculatorTest {
 
     @Test
     void calculate_AdditionWithTwoNegativeOperands_Ok() {
-        BigDecimal expected = BigDecimal.valueOf(-123.5 + 321.5);
-        BigDecimal actual = calculator.calculate(123.5, 321.5, PLUS);
+        BigDecimal expected = BigDecimal.valueOf(-123.5 + -321.5);
+        BigDecimal actual = calculator.calculate(-123.5, -321.5, PLUS);
         assertEquals(expected, actual);
     }
 
@@ -61,14 +62,14 @@ class CalculatorTest {
 
     @Test
     void calculate_SubtractionWithTwoPositiveOperands_Ok() {
-        BigDecimal expected = BigDecimal.valueOf(0);
-        BigDecimal actual = calculator.calculate(123.5, 123.5, MINUS);
+        BigDecimal expected = BigDecimal.valueOf(123.5 - 124.5);
+        BigDecimal actual = calculator.calculate(123.5, 124.5, MINUS);
         assertEquals(expected, actual);
     }
 
     @Test
     void calculate_SubtractionWithTwoNegativeOperands_Ok() {
-        BigDecimal expected = BigDecimal.valueOf(-123.5 - 122.3);
+        BigDecimal expected = BigDecimal.valueOf(-123.5 - -122.3);
         BigDecimal actual = calculator.calculate(-123.5, -122.3, MINUS);
         assertEquals(expected, actual);
     }
@@ -121,7 +122,7 @@ class CalculatorTest {
 
     @Test
     void calculate_MultiplicationWithZeroInDifferentPlaces_Ok() {
-        BigDecimal expected = BigDecimal.valueOf(0);
+        BigDecimal expected = BigDecimal.valueOf(0 * 123.5);
         BigDecimal actual = calculator.calculate(0, 123.5, MULTIPLICATION);
         assertEquals(expected, actual);
 
@@ -161,14 +162,14 @@ class CalculatorTest {
 
     @Test
     void calculate_DivisionWithZeroAndPositiveOperand_Ok() {
-        BigDecimal expected = BigDecimal.valueOf(0);
+        BigDecimal expected = BigDecimal.valueOf(0 / 123.5);
         BigDecimal actual = calculator.calculate(0, 123.5, DIVISION);
         assertEquals(expected, actual);
     }
 
     @Test
     void calculate_DivisionWithZeroAndNegativeOperand_Ok() {
-        BigDecimal expected = BigDecimal.valueOf(0);
+        BigDecimal expected = BigDecimal.valueOf(0.0);
         BigDecimal actual = calculator.calculate(0, -123.5, DIVISION);
         assertEquals(expected, actual);
     }
@@ -222,7 +223,7 @@ class CalculatorTest {
 
     @Test
     void calculate_RaisingZeroToPower_Ok() {
-        BigDecimal expected = BigDecimal.valueOf(0);
+        BigDecimal expected = BigDecimal.valueOf(Math.pow(0, 123.5));
         BigDecimal actual = calculator.calculate(0, 123.5, POWER);
         assertEquals(expected, actual);
 
