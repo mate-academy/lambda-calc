@@ -15,12 +15,10 @@ class LambdaCalculatorTest {
     private static final double DELTA = 0.0001;
     private static final char PLUS = '+';
     private static final char MINUS = '-';
-    private static final char MULTIPLY = '*';
+    private static final char MULTIPLICATION = '*';
     private static final char DIVISION = '/';
     private static final char POWER = '^';
     private static LambdaCalculator lambdaCalculator;
-    private double expected;
-    private double actual;
 
     @BeforeAll
     static void beforeAll() {
@@ -29,29 +27,29 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_addingTwoPositive_Ok() {
-        expected = FIRST_POSITIVE + SECOND_POSITIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, PLUS);
+        double expected = FIRST_POSITIVE + SECOND_POSITIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_addingTwoNegative_Ok() {
-        expected = FIRST_NEGATIVE + SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, PLUS);
+        double expected = FIRST_NEGATIVE + SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_addingPositiveAndNegative_Ok() {
-        expected = FIRST_POSITIVE + SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, PLUS);
+        double expected = FIRST_POSITIVE + SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_addingZero_Ok() {
-        expected = ZERO + SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(ZERO, SECOND_NEGATIVE, PLUS);
+        double expected = ZERO + SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(ZERO, SECOND_NEGATIVE, PLUS);
         assertEquals(expected, actual, DELTA);
 
         expected = FIRST_POSITIVE + ZERO;
@@ -75,29 +73,29 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_substractingTwoPositive_Ok() {
-        expected = FIRST_POSITIVE - SECOND_POSITIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, MINUS);
+        double expected = FIRST_POSITIVE - SECOND_POSITIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_substractingTwoNegative_Ok() {
-        expected = FIRST_NEGATIVE - SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, MINUS);
+        double expected = FIRST_NEGATIVE - SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_substractingPositiveAndNegative_Ok() {
-        expected = FIRST_POSITIVE - SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, MINUS);
+        double expected = FIRST_POSITIVE - SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_substractingZero_Ok() {
-        expected = ZERO - SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(ZERO, SECOND_NEGATIVE, MINUS);
+        double expected = ZERO - SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(ZERO, SECOND_NEGATIVE, MINUS);
         assertEquals(expected, actual, DELTA);
 
         expected = FIRST_POSITIVE - ZERO;
@@ -121,72 +119,72 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_multiplyingPositives_Ok() {
-        expected = FIRST_POSITIVE * SECOND_POSITIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, MULTIPLY);
+        double expected = FIRST_POSITIVE * SECOND_POSITIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplyingNegatives_Ok() {
-        expected = FIRST_NEGATIVE * SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, MULTIPLY);
+        double expected = FIRST_NEGATIVE * SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplyingPositiveAndNegative_Ok() {
-        expected = FIRST_POSITIVE * SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, MULTIPLY);
+        double expected = FIRST_POSITIVE * SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplyingZero_Ok() {
-        expected = FIRST_POSITIVE * ZERO;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, ZERO, MULTIPLY);
+        double expected = FIRST_POSITIVE * ZERO;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, ZERO, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
 
         expected = ZERO * SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(ZERO, SECOND_NEGATIVE, MULTIPLY);
+        actual = lambdaCalculator.calculate(ZERO, SECOND_NEGATIVE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplyingMaxAndMinValues_Ok() {
-        expected = Double.POSITIVE_INFINITY;
-        actual = lambdaCalculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLY);
+        double expected = Double.POSITIVE_INFINITY;
+        double actual = lambdaCalculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
 
         expected = ZERO;
-        actual = lambdaCalculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MULTIPLY);
+        actual = lambdaCalculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_dividingPositives_Ok() {
-        expected = FIRST_POSITIVE / SECOND_POSITIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, DIVISION);
+        double expected = FIRST_POSITIVE / SECOND_POSITIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_dividingNegatives_Ok() {
-        expected = FIRST_NEGATIVE / SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, DIVISION);
+        double expected = FIRST_NEGATIVE / SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_NEGATIVE, SECOND_NEGATIVE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_dividingPositiveAndNegative_Ok() {
-        expected = FIRST_POSITIVE / SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, DIVISION);
+        double expected = FIRST_POSITIVE / SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_dividingZero_Ok() {
-        expected = ZERO / SECOND_POSITIVE;
-        actual = lambdaCalculator.calculate(ZERO, SECOND_POSITIVE, DIVISION);
+        double expected = ZERO / SECOND_POSITIVE;
+        double actual = lambdaCalculator.calculate(ZERO, SECOND_POSITIVE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -198,8 +196,8 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_dividingMaxAndMinValues() {
-        expected = Double.MAX_VALUE / SECOND_NEGATIVE;
-        actual = lambdaCalculator.calculate(Double.MAX_VALUE, SECOND_NEGATIVE, DIVISION);
+        double expected = Double.MAX_VALUE / SECOND_NEGATIVE;
+        double actual = lambdaCalculator.calculate(Double.MAX_VALUE, SECOND_NEGATIVE, DIVISION);
         assertEquals(expected, actual, DELTA);
 
         expected = Double.MIN_VALUE / SECOND_POSITIVE;
@@ -209,8 +207,8 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_raisingToPositive_Ok() {
-        expected = Math.pow(FIRST_POSITIVE, SECOND_POSITIVE);
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, POWER);
+        double expected = Math.pow(FIRST_POSITIVE, SECOND_POSITIVE);
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_POSITIVE, POWER);
         assertEquals(expected, actual, DELTA);
 
         expected = Math.pow(FIRST_NEGATIVE, SECOND_POSITIVE);
@@ -220,8 +218,8 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_raisingToNegative_Ok() {
-        expected = Math.pow(FIRST_POSITIVE, SECOND_NEGATIVE);
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, POWER);
+        double expected = Math.pow(FIRST_POSITIVE, SECOND_NEGATIVE);
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, SECOND_NEGATIVE, POWER);
         assertEquals(expected, actual, DELTA);
 
         expected = Math.pow(FIRST_NEGATIVE, SECOND_NEGATIVE);
@@ -231,8 +229,8 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_raisingToZero_Ok() {
-        expected = Math.pow(FIRST_POSITIVE, ZERO);
-        actual = lambdaCalculator.calculate(FIRST_POSITIVE, ZERO, POWER);
+        double expected = Math.pow(FIRST_POSITIVE, ZERO);
+        double actual = lambdaCalculator.calculate(FIRST_POSITIVE, ZERO, POWER);
         assertEquals(expected, actual, DELTA);
 
         expected = Math.pow(FIRST_NEGATIVE, ZERO);
@@ -242,8 +240,8 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_raisingZeroToPower() {
-        expected = Math.pow(ZERO, FIRST_POSITIVE);
-        actual = lambdaCalculator.calculate(ZERO, FIRST_POSITIVE, POWER);
+        double expected = Math.pow(ZERO, FIRST_POSITIVE);
+        double actual = lambdaCalculator.calculate(ZERO, FIRST_POSITIVE, POWER);
         assertEquals(expected, actual, DELTA);
 
         expected = Math.pow(ZERO, FIRST_NEGATIVE);
