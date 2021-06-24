@@ -16,7 +16,7 @@ public class Calculator {
             case MINUS:
                 return BigDecimal.valueOf(number1 - number2);
             case MULTIPLY:
-                return  BigDecimal.valueOf(number1 * number2);
+                return BigDecimal.valueOf(number1 * number2);
             case DIVIDE:
                 if (number2 == 0) {
                     throw new ArithmeticException("Can't divide by zero");
