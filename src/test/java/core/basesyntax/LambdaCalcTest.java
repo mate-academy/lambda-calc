@@ -1,6 +1,7 @@
 package core.basesyntax;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,7 @@ public class LambdaCalcTest {
     @Test
     void additionWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(FIRST_NUMBER, (- SECOND_NUMBER), ADDITION);
-        double expected = FIRST_NUMBER + ( - SECOND_NUMBER);
+        double expected = FIRST_NUMBER + (- SECOND_NUMBER);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -275,17 +276,20 @@ public class LambdaCalcTest {
 
     @Test
     void divisionWithZeroAndZeroOperands_NotOk() {
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(0, 0, DIVISION));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(0, 0, DIVISION));
     }
 
     @Test
     void divisionWithPositiveAndZeroOperands_NotOk() {
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(FIRST_NUMBER, 0, DIVISION));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(FIRST_NUMBER, 0, DIVISION));
     }
 
     @Test
     void divisionWithNegativeAndZeroOperands_NotOk() {
-        assertThrows(ArithmeticException.class, () -> calculator.calculate((- FIRST_NUMBER), 0, DIVISION));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate((- FIRST_NUMBER), 0, DIVISION));
     }
 
     @Test
@@ -354,6 +358,7 @@ public class LambdaCalcTest {
     @Test
     void illegalOperation_NotOk() {
         char operation = '$';
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, operation));
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculate(FIRST_NUMBER, SECOND_NUMBER, operation));
     }
 }
