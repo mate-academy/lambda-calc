@@ -21,6 +21,9 @@ public class LambdaCalc {
                 }
                 return firstNumber / secondNumber;
             case POWER:
+                if (firstNumber == 0 && secondNumber < 0) {
+                    throw new ArithmeticException("Division by zero is prohibited!");
+                }
                 return Math.pow(firstNumber, secondNumber);
             default:
                 throw new IllegalArgumentException("Operation don't exist!");
