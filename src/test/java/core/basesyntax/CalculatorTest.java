@@ -293,7 +293,7 @@ class CalculatorTest {
     void calculate_incorrectOperation_notOk() {
         double valueFirstPositive = 10.3;
         double valueSecondNegative = -15.5;
-        assertThrows(UnsupportedOperationException.class, () ->
+        assertThrows(IllegalArgumentException.class, () ->
                 calculator.calculate(valueFirstPositive, valueSecondNegative, '='));
     }
 }
