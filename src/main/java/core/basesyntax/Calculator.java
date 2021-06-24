@@ -5,7 +5,7 @@ public class Calculator {
     private static final char MINUS = '-';
     private static final char MULTIPLICATION = '*';
     private static final char DIVISION = '/';
-    private static final char POW = '^';
+    private static final char POWER = '^';
 
     public double calculate(double firstArgument, double secondArgument, char operator) {
         switch (operator) {
@@ -20,7 +20,7 @@ public class Calculator {
                 return firstArgument / secondArgument;
             case MULTIPLICATION:
                 return firstArgument * secondArgument;
-            case POW:
+            case POWER:
                 return Math.pow(firstArgument, secondArgument);
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operator);
