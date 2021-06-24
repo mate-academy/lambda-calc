@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-public class LambdaCalc {
+public class LambdaCalculator {
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
     private static final char MULTIPLICATION = '*';
@@ -22,7 +22,7 @@ public class LambdaCalc {
                 return firstNumber / secondNumber;
             case POWER:
                 if (firstNumber == 0 && secondNumber < 0) {
-                    throw new ArithmeticException("Division by zero is prohibited!");
+                    throw new ArithmeticException("Zero can't power to a negative degree!");
                 }
                 return Math.pow(firstNumber, secondNumber);
             default:
