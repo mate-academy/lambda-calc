@@ -152,7 +152,8 @@ class LambdaCalculatorTest {
     @Test
     void calculate_multiplyingMaxAndMinValues_Ok() {
         double expected = Double.POSITIVE_INFINITY;
-        double actual = lambdaCalculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLICATION);
+        double actual = lambdaCalculator
+                .calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
 
         expected = ZERO;
