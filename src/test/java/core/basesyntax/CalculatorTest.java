@@ -7,8 +7,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static Calculator calculator;
     private static final double DELTA = 0.0001;
+    private static Calculator calculator;
 
     @BeforeAll
     static void beforeAll() {
