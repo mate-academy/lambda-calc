@@ -10,13 +10,16 @@ public class Calculator implements CalculatorService {
             case '-' :
                 return firsValue - secondValue;
             case '/' :
+                if (secondValue == 0) {
+                    throw new IncorrectDataEntryException("Value can`t be zero!");
+                }
                 return firsValue / secondValue;
             case '*' :
                 return firsValue * secondValue;
             case '^' :
                 return Math.pow(firsValue, secondValue);
             default:
-                throw new IllegalArgumentException("Illegal such operator " + operator);
+                throw new IncorrectDataEntryException("Illegal such operator " + operator);
         }
     }
 }
