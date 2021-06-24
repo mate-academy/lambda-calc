@@ -1,37 +1,30 @@
 package core.basesyntax;
 
 public class LambdaCalc {
-
-    public LambdaCalc() {
-    }
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char MULTIPLICATION = '*';
+    private static final char DIVISION = '/';
+    private static final char POWER = '^';
 
     public double calculate(double firstNumber, double secondNumber, char operation) {
-        if (operation == '+') {
-            return calculatorSum(firstNumber, secondNumber);
+        switch (operation) {
+            case ADDITION:
+                return calculatorAddition(firstNumber, secondNumber);
+            case SUBTRACTION:
+                return calculatorSubtraction(firstNumber, secondNumber);
+            case MULTIPLICATION:
+                return calculatorMultiplication(firstNumber, secondNumber);
+            case DIVISION:
+                return calculatorDivision(firstNumber, secondNumber);
+            case POWER:
+                return calculatorPower(firstNumber, secondNumber);
+            default:
+                throw new IllegalArgumentException("Operation don't exist!");
         }
-        if (operation == '-') {
-            return calculatorSubtraction(firstNumber, secondNumber);
-        }
-        if (operation == '*') {
-            return calculatorMultiplication(firstNumber, secondNumber);
-        }
-        if (operation == '/') {
-            return calculatorDivision(firstNumber, secondNumber);
-        }
-        if (operation == '^') {
-            return calculatorPower(firstNumber, secondNumber);
-        }
-        if (operation != '+' || operation == '-'
-                || operation == '*'
-                || operation == '/'
-                || operation == '^') {
-            throw new IllegalArgumentException("Operation don't exist!");
-        }
-
-        return 0;
     }
 
-    private double calculatorSum(double firstNumber, double secondNumber) {
+    private double calculatorAddition(double firstNumber, double secondNumber) {
         return firstNumber + secondNumber;
     }
 
