@@ -1,9 +1,9 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.BeforeAll;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeAll;
 
 class LambdaCalculatorTest {
     private static final double FIRST_POSITIVE = 34.2;
@@ -222,6 +222,4 @@ class LambdaCalculatorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> lambdaCalculator.calculate(FIRST_NEGATIVE, FIRST_POSITIVE, '1'));
     }
-
-
 }
