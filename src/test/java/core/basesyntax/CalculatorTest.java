@@ -32,28 +32,28 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateAdditionWithTwoPositiveOperands_Ok() {
+    void calculate_AdditionWithTwoPositiveOperands_Ok() {
         expected = BigDecimal.valueOf(positiveOperand + positiveOperand);
         BigDecimal actual = calculator.calculate(positiveOperand, positiveOperand, PLUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateAdditionWithTwoNegativeOperands_Ok() {
+    void calculate_AdditionWithTwoNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(negativeOperand + negativeOperand);
         BigDecimal actual = calculator.calculate(negativeOperand, negativeOperand, PLUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateAdditionWithPositiveAndNegativeOperands_Ok() {
+    void calculate_AdditionWithPositiveAndNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(positiveOperand + negativeOperand);
         BigDecimal actual = calculator.calculate(positiveOperand, negativeOperand, PLUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateAdditionWithZeroInDifferentPlaces_Ok() {
+    void calculate_AdditionWithZeroInDifferentPlaces_Ok() {
         BigDecimal expected1 = BigDecimal.valueOf(zeroOperand + negativeOperand);
         BigDecimal actual1 = calculator.calculate(zeroOperand, negativeOperand, PLUS);
         assertEquals(expected1, actual1);
@@ -64,35 +64,35 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateAdditionForMinAndMaxDoubleValues_Ok() {
+    void calculate_AdditionForMinAndMaxDoubleValues_Ok() {
         expected = BigDecimal.valueOf(minDoubleValue + maxDoubleValue);
         BigDecimal actual = calculator.calculate(minDoubleValue, maxDoubleValue, PLUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionWithTwoPositiveOperands_Ok() {
+    void calculate_SubtractionWithTwoPositiveOperands_Ok() {
         expected = BigDecimal.valueOf(zeroOperand);
         BigDecimal actual = calculator.calculate(positiveOperand, positiveOperand, MINUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionWithTwoNegativeOperands_Ok() {
+    void calculate_SubtractionWithTwoNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(zeroOperand);
         BigDecimal actual = calculator.calculate(negativeOperand, negativeOperand, MINUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionWithPositiveAndNegativeOperands_Ok() {
+    void calculate_SubtractionWithPositiveAndNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(positiveOperand - negativeOperand);
         BigDecimal actual = calculator.calculate(positiveOperand, negativeOperand, MINUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionWithZeroInDifferentPlaces_Ok() {
+    void calculate_SubtractionWithZeroInDifferentPlaces_Ok() {
         BigDecimal expected1 = BigDecimal.valueOf(zeroOperand - positiveOperand);
         BigDecimal actual1 = calculator.calculate(zeroOperand, positiveOperand, MINUS);
         assertEquals(expected1, actual1);
@@ -103,35 +103,35 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateSubtractionForMinAndMaxDoubleValues_Ok() {
+    void calculate_SubtractionForMinAndMaxDoubleValues_Ok() {
         expected = BigDecimal.valueOf(minDoubleValue - maxDoubleValue);
         BigDecimal actual = calculator.calculate(minDoubleValue, maxDoubleValue, MINUS);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithTwoPositiveOperands_Ok() {
+    void calculate_MultiplicationWithTwoPositiveOperands_Ok() {
         expected = BigDecimal.valueOf(positiveOperand * positiveOperand);
         BigDecimal actual = calculator.calculate(positiveOperand, positiveOperand, MULTIPLY);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithTwoNegativeOperands_Ok() {
+    void calculate_MultiplicationWithTwoNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(negativeOperand * negativeOperand);
         BigDecimal actual = calculator.calculate(negativeOperand, negativeOperand, MULTIPLY);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithPositiveAndNegativeOperands_Ok() {
+    void calculate_MultiplicationWithPositiveAndNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(positiveOperand * negativeOperand);
         BigDecimal actual = calculator.calculate(positiveOperand, negativeOperand, MULTIPLY);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithZeroInDifferentPlaces_Ok() {
+    void calculate_MultiplicationWithZeroInDifferentPlaces_Ok() {
         expected = BigDecimal.valueOf(zeroOperand);
         BigDecimal actual1 = calculator.calculate(zeroOperand, positiveOperand, MULTIPLY);
         assertEquals(expected, actual1);
@@ -142,42 +142,42 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateMultiplicationForMinAndMaxDoubleValues_Ok() {
+    void calculate_MultiplicationForMinAndMaxDoubleValues_Ok() {
         expected = BigDecimal.valueOf(minDoubleValue * maxDoubleValue);
         BigDecimal actual = calculator.calculate(minDoubleValue, maxDoubleValue, MULTIPLY);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWithTwoPositiveOperands_Ok() {
+    void calculate_DivisionWithTwoPositiveOperands_Ok() {
         expected = BigDecimal.valueOf(1.0);
         BigDecimal actual = calculator.calculate(positiveOperand, positiveOperand, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWithTwoNegativeOperands_Ok() {
+    void calculate_DivisionWithTwoNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(1.0);
         BigDecimal actual = calculator.calculate(negativeOperand, negativeOperand, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWithPositiveAndNegativeOperands_Ok() {
+    void calculate_DivisionWithPositiveAndNegativeOperands_Ok() {
         expected = BigDecimal.valueOf(positiveOperand / negativeOperand);
         BigDecimal actual = calculator.calculate(positiveOperand, negativeOperand, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWithZeroAndPositiveOperand_Ok() {
+    void calculate_DivisionWithZeroAndPositiveOperand_Ok() {
         expected = BigDecimal.valueOf(zeroOperand);
         BigDecimal actual = calculator.calculate(zeroOperand, positiveOperand, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWithZeroAndNegativeOperand_Ok() {
+    void calculate_DivisionWithZeroAndNegativeOperand_Ok() {
         expected = BigDecimal.valueOf(zeroOperand);
         BigDecimal actual = calculator.calculate(zeroOperand, negativeOperand, DIVIDE);
         assertEquals(expected, actual);
@@ -191,14 +191,14 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateDivisionForMinAndMaxDoubleValues_Ok() {
+    void calculate_DivisionForMinAndMaxDoubleValues_Ok() {
         expected = BigDecimal.valueOf(minDoubleValue / maxDoubleValue);
         BigDecimal actual = calculator.calculate(minDoubleValue, maxDoubleValue, DIVIDE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingNegativeAndPositiveValueToThePositivePower() {
+    void calculate_RaisingNegativeAndPositiveValueToThePositivePower_Ok() {
         expected = BigDecimal.valueOf(Math.pow(positiveOperand, positiveOperand));
         BigDecimal actual = calculator.calculate(positiveOperand, positiveOperand, POWER);
         assertEquals(expected, actual);
@@ -209,7 +209,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateRaisingNegativeAndPositiveValueToTheNegativePower() {
+    void calculate_RaisingNegativeAndPositiveValueToTheNegativePower_Ok() {
         expected = BigDecimal.valueOf(Math.pow(positiveOperand, negativeOperand));
         BigDecimal actual = calculator.calculate(positiveOperand, negativeOperand, POWER);
         assertEquals(expected, actual);
@@ -220,7 +220,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateRaisingNegativeAndPositiveValueToZeroPower() {
+    void calculate_RaisingNegativeAndPositiveValueToZeroPower_Ok() {
         BigDecimal expected1 = BigDecimal.valueOf(Math.pow(negativeOperand, zeroOperand));
         BigDecimal actual1 = calculator.calculate(negativeOperand, zeroOperand, POWER);
         assertEquals(expected1, actual1);
@@ -231,7 +231,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateRaisingZeroToPower_Ok() {
+    void calculate_RaisingZeroToPower_Ok() {
         expected = BigDecimal.valueOf(zeroOperand);
         BigDecimal actual = calculator.calculate(zeroOperand, positiveOperand, POWER);
         assertEquals(expected, actual);
@@ -244,7 +244,7 @@ class CalculatorTest {
     @Test
     void checkIllegalOperation_NotOk() {
         assertThrows(IllegalArgumentException.class, () -> {
-            calculator.checkOperationValid('~');
+            calculator.calculate(positiveOperand, positiveOperand, '~');
         });
     }
 
