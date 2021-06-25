@@ -137,7 +137,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_divisionOfTwoNegativeDoubleNumbers_OK() {
+    void calculate_calculate_divisionOfTwoNegativeDoubleNumbers_OK() {
         assertEquals(10.3, calculator.calculate(-103.0, -10.0, '/'), DELTA);
         assertEquals(1.0, calculator.calculate(-102.0, -102.0, '/'), DELTA);
         assertEquals(2.0, calculator.calculate(-200.0, -100.0, '/'), DELTA);
