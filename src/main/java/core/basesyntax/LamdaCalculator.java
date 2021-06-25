@@ -4,7 +4,7 @@ public class LamdaCalculator {
     private static final char ADDITION = '+';
     private static final char SUBSTRACTION = '-';
     private static final char DIVISION = '/';
-    private static final char MULTIPLIKATION = '*';
+    private static final char MULTIPLICATION = '*';
     private static final char RAISING = '^';
 
     public double calculate(double a, double b, char operation) {
@@ -18,7 +18,7 @@ public class LamdaCalculator {
                     throw new ArithmeticException("Can`t make division by 0, go back to school!");
                 }
                 return a / b;
-            case MULTIPLIKATION:
+            case MULTIPLICATION:
                 return a * b;
             case RAISING:
                 return Math.pow(a, b);
