@@ -16,359 +16,359 @@ class CalculatorTest {
     }
 
     @Test
-    void additionTwoPositiveOperands_Ok() {
+    void calculateAdditionTwoPositiveOperands_Ok() {
         double expected = 55.55;
         assertEquals(expected, calculator.calculate(22.22, 33.33,
                 '+'), DELTA);
     }
 
     @Test
-    void additionTwoNegativeOperands_Ok() {
+    void calculateAdditionTwoNegativeOperands_Ok() {
         double expected = -55.55;
         assertEquals(expected, calculator.calculate(-22.22, -33.33,
                 '+'), DELTA);
     }
 
     @Test
-    void additionFirstPositiveSecondNegativeOperands_Ok() {
+    void calculateAdditionFirstPositiveSecondNegativeOperands_Ok() {
         double expected = -11.11;
         assertEquals(expected, calculator.calculate(22.22, -33.33,
                 '+'), DELTA);
     }
 
     @Test
-    void additionFirstNegativeSecondPositiveOperands_Ok() {
+    void calculateAdditionFirstNegativeSecondPositiveOperands_Ok() {
         double expected = 11.11;
         assertEquals(expected, calculator.calculate(-22.22, 33.33,
                 '+'), DELTA);
     }
 
     @Test
-    void additionFirstZeroOperand_Ok() {
+    void calculateAdditionFirstZeroOperand_Ok() {
         double expected = 33.33;
         assertEquals(expected, calculator.calculate(0, 33.33,
                 '+'), DELTA);
     }
 
     @Test
-    void additionSecondZeroOperand_Ok() {
+    void calculateAdditionSecondZeroOperand_Ok() {
         double expected = 22.22;
         assertEquals(expected, calculator.calculate(22.22, 0,
                 '+'), DELTA);
     }
 
     @Test
-    void additionTwoZeroOperands_Ok() {
+    void calculateAdditionTwoZeroOperands_Ok() {
         assertEquals(0, calculator.calculate(0, 0,
                 '+'));
     }
 
     @Test
-    void additionTwoMaxValueOperand_Ok() {
+    void calculateAdditionTwoMaxValueOperand_Ok() {
         double expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE,
                 '+'), DELTA);
     }
 
     @Test
-    void additionTwoMinValueOperand_Ok() {
+    void calculateAdditionTwoMinValueOperand_Ok() {
         double expected = 1.0E-323;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE,
                 '+'));
     }
 
     @Test
-    void additionToOneMaxValueOperand_Ok() {
+    void calculateAdditionToOneMaxValueOperand_Ok() {
         double expected = Double.MAX_VALUE;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 4.444,
                 '+'));
     }
 
     @Test
-    void additionToOneMinValueOperand_Ok() {
+    void calculateAdditionToOneMinValueOperand_Ok() {
         double expected = Double.MIN_VALUE + 5.555;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 5.555,
                 '+'));
     }
 
     @Test
-    void subtractionTwoPositiveOperands_Ok() {
+    void calculateSubtractionTwoPositiveOperands_Ok() {
         double expected = -11.11;
         assertEquals(expected, calculator.calculate(22.22, 33.33,
                 '-'), DELTA);
     }
 
     @Test
-    void subtractionTwoNegativeOperands_Ok() {
+    void calculateSubtractionTwoNegativeOperands_Ok() {
         double expected = 11.11;
         assertEquals(expected, calculator.calculate(-22.22, -33.33,
                 '-'), DELTA);
     }
 
     @Test
-    void subtractionFirstPositiveSecondNegativeOperands_Ok() {
+    void calculateSubtractionFirstPositiveSecondNegativeOperands_Ok() {
         double expected = 55.55;
         assertEquals(expected, calculator.calculate(22.22, -33.33,
                 '-'), DELTA);
     }
 
     @Test
-    void subtractionFirstNegativeSecondPositiveOperands_Ok() {
+    void calculateSubtractionFirstNegativeSecondPositiveOperands_Ok() {
         double expected = -55.55;
         assertEquals(expected, calculator.calculate(-22.22, 33.33,
                 '-'), DELTA);
     }
 
     @Test
-    void subtractionFirstZeroOperand_Ok() {
+    void calculateSubtractionFirstZeroOperand_Ok() {
         double expected = -33.33;
         assertEquals(expected, calculator.calculate(0, 33.33,
                 '-'), DELTA);
     }
 
     @Test
-    void subtractionSecondZeroOperand_Ok() {
+    void calculateSubtractionSecondZeroOperand_Ok() {
         double expected = 22.22;
         assertEquals(expected, calculator.calculate(22.22, 0,
                 '-'), DELTA);
     }
 
     @Test
-    void subtractionTwoZeroOperands_Ok() {
+    void calculateSubtractionTwoZeroOperands_Ok() {
         assertEquals(0, calculator.calculate(0, 0,
                 '-'));
     }
 
     @Test
-    void subtractionTwoMaxValueOperand_Ok() {
+    void calculateSubtractionTwoMaxValueOperand_Ok() {
         double expected = 0.0;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE,
                 '-'), DELTA);
     }
 
     @Test
-    void subtractionTwoMinValueOperand_Ok() {
+    void calculateSubtractionTwoMinValueOperand_Ok() {
         double expected = 0.0;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE,
                 '-'));
     }
 
     @Test
-    void subtractionToOneMaxValueOperand_Ok() {
+    void calculateSubtractionToOneMaxValueOperand_Ok() {
         double expected = Double.MAX_VALUE;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 4.444,
                 '-'));
     }
 
     @Test
-    void subtractionToOneMinValueOperand_Ok() {
+    void calculateSubtractionToOneMinValueOperand_Ok() {
         double expected = Double.MIN_VALUE - 5.555;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 5.555,
                 '-'));
     }
 
     @Test
-    void multiplicationTwoPositiveOperands_Ok() {
+    void calculateMultiplicationTwoPositiveOperands_Ok() {
         double expected = 740.5926;
         assertEquals(expected, calculator.calculate(22.22, 33.33,
                 '*'), DELTA);
     }
 
     @Test
-    void multiplicationTwoNegativeOperands_Ok() {
+    void calculateMultiplicationTwoNegativeOperands_Ok() {
         double expected = 740.5926;
         assertEquals(expected, calculator.calculate(-22.22, -33.33,
                 '*'), DELTA);
     }
 
     @Test
-    void multiplicationFirstPositiveSecondNegativeOperands_Ok() {
+    void calculateMultiplicationFirstPositiveSecondNegativeOperands_Ok() {
         double expected = -740.5926;
         assertEquals(expected, calculator.calculate(22.22, -33.33,
                 '*'), DELTA);
     }
 
     @Test
-    void multiplicationFirstNegativeSecondPositiveOperands_Ok() {
+    void calculateMultiplicationFirstNegativeSecondPositiveOperands_Ok() {
         double expected = -740.5926;
         assertEquals(expected, calculator.calculate(-22.22, 33.33,
                 '*'), DELTA);
     }
 
     @Test
-    void multiplicationFirstZeroOperand_Ok() {
+    void calculateMultiplicationFirstZeroOperand_Ok() {
         double expected = 0.0;
         assertEquals(expected, calculator.calculate(0, 33.33,
                 '*'), DELTA);
     }
 
     @Test
-    void multiplicationSecondZeroOperand_Ok() {
+    void calculateMultiplicationSecondZeroOperand_Ok() {
         double expected = 0.0;
         assertEquals(expected, calculator.calculate(22.22, 0,
                 '*'), DELTA);
     }
 
     @Test
-    void multiplicationTwoZeroOperands_Ok() {
+    void calculateMultiplicationTwoZeroOperands_Ok() {
         assertEquals(0, calculator.calculate(0, 0,
                 '*'));
     }
 
     @Test
-    void multiplicationTwoMaxValueOperand_Ok() {
+    void calculateMultiplicationTwoMaxValueOperand_Ok() {
         double expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE,
                 '*'), DELTA);
     }
 
     @Test
-    void multiplicationTwoMinValueOperand_Ok() {
+    void calculateMultiplicationTwoMinValueOperand_Ok() {
         double expected = 0.0;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE,
                 '*'));
     }
 
     @Test
-    void multiplicationToOneMaxValueOperand_Ok() {
+    void calculateMultiplicationToOneMaxValueOperand_Ok() {
         double expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 4.444,
                 '*'));
     }
 
     @Test
-    void multiplicationToOneMinValueOperand_Ok() {
+    void calculateMultiplicationToOneMinValueOperand_Ok() {
         double expected = Double.MIN_VALUE * 5.555;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 5.555,
                 '*'));
     }
 
     @Test
-    void divisionTwoPositiveOperands_Ok() {
+    void calculateDivisionTwoPositiveOperands_Ok() {
         double expected = 2.0;
         assertEquals(expected, calculator.calculate(44.44, 22.22,
                 '/'), DELTA);
     }
 
     @Test
-    void divisionTwoNegativeOperands_Ok() {
+    void calculateDivisionTwoNegativeOperands_Ok() {
         double expected = 2.0;
         assertEquals(expected, calculator.calculate(-44.44, -22.22,
                 '/'), DELTA);
     }
 
     @Test
-    void divisionFirstPositiveSecondNegativeOperands_Ok() {
+    void calculateDivisionFirstPositiveSecondNegativeOperands_Ok() {
         double expected = -2.0;
         assertEquals(expected, calculator.calculate(44.44, -22.22,
                 '/'), DELTA);
     }
 
     @Test
-    void divisionFirstNegativeSecondPositiveOperands_Ok() {
+    void calculateDivisionFirstNegativeSecondPositiveOperands_Ok() {
         double expected = -2.0;
         assertEquals(expected, calculator.calculate(-44.44, 22.22,
                 '/'), DELTA);
     }
 
     @Test
-    void divisionFirstZeroOperand_Ok() {
+    void calculateDivisionFirstZeroOperand_Ok() {
         double expected = 0.0;
         assertEquals(expected, calculator.calculate(0, 22.22,
                 '/'), DELTA);
     }
 
     @Test
-    void divisionSecondZeroOperand_NotOk() {
+    void calculateDivisionSecondZeroOperand_NotOk() {
         assertThrows(IncorrectDataEntryException.class, () -> calculator.calculate(44.44, 0,
                 '/'));
     }
 
     @Test
-    void divisionTwoZeroOperands_NotOk() {
+    void calculateDivisionTwoZeroOperands_NotOk() {
         assertThrows(IncorrectDataEntryException.class, () -> calculator.calculate(0, 0,
                 '/'));
     }
 
     @Test
-    void divisionTwoMaxValueOperand_Ok() {
+    void calculateDivisionTwoMaxValueOperand_Ok() {
         double expected = 1.0;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE,
                 '/'), DELTA);
     }
 
     @Test
-    void divisionTwoMinValueOperand_Ok() {
+    void calculateDivisionTwoMinValueOperand_Ok() {
         double expected = 1.0;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE,
                 '/'));
     }
 
     @Test
-    void divisionToOneMaxValueOperand_Ok() {
+    void calculateDivisionToOneMaxValueOperand_Ok() {
         double expected = Double.MAX_VALUE / 20.222;
         assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 20.222,
                 '/'));
     }
 
     @Test
-    void divisionToOneMinValueOperand_Ok() {
+    void calculateDivisionToOneMinValueOperand_Ok() {
         double expected = Double.MIN_VALUE / 5.555;
         assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 5.555,
                 '/'));
     }
 
     @Test
-    void raisingPositiveValueToPositivePower_Ok() {
+    void calculateRaisingPositiveValueToPositivePower_Ok() {
         double expected = Math.pow(2.22, 3.33);
         assertEquals(expected, calculator.calculate(2.22, 3.33,
                 '^'), DELTA);
     }
 
     @Test
-    void raisingNegativeValueToPositivePower_Ok() {
+    void calculateRaisingNegativeValueToPositivePower_Ok() {
         double expected = Math.pow(-2.22, 3.33);
         assertEquals(expected, calculator.calculate(-2.22, 3.33,
                 '^'), DELTA);
     }
 
     @Test
-    void raisingPositiveValueToNegativePower_Ok() {
+    void calculateRaisingPositiveValueToNegativePower_Ok() {
         double expected = Math.pow(2.22, -3.33);
         assertEquals(expected, calculator.calculate(2.22, -3.33,
                 '^'), DELTA);
     }
 
     @Test
-    void raisingNegativeValueToNegativePower_Ok() {
+    void calculateRaisingNegativeValueToNegativePower_Ok() {
         double expected = Math.pow(-2.22, -3.33);
         assertEquals(expected, calculator.calculate(-2.22, -3.33,
                 '^'), DELTA);
     }
 
     @Test
-    void raisingPositiveValueToZeroPower_Ok() {
+    void calculateRaisingPositiveValueToZeroPower_Ok() {
         double expected = 1.0;
         assertEquals(expected, calculator.calculate(2.22, 0,
                 '^'));
     }
 
     @Test
-    void raisingNegativeValueToZeroPower_Ok() {
+    void calculateRaisingNegativeValueToZeroPower_Ok() {
         double expected = 1.0;
         assertEquals(expected, calculator.calculate(-2.22, 0,
                 '^'));
     }
 
     @Test
-    void raisingZeroValueToPower_Ok() {
+    void calculateRaisingZeroValueToPower_Ok() {
         double expected = 0.0;
         assertEquals(expected, calculator.calculate(0, 2.22,
                 '^'));
     }
 
     @Test
-    void illegalOperation_NotOk() {
+    void calculateIllegalOperation_NotOk() {
         assertThrows(IncorrectDataEntryException.class, () -> calculator.calculate(2.22, 3.33,
                 '%'));
     }
