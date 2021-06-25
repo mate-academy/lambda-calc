@@ -254,7 +254,6 @@ class CalculatorTest {
         double expected = 1;
         Assertions.assertEquals(expected, actual, DELTA);
         actual = calculator.calculate(-87.2445, 0,'^');
-        expected = 1;
         Assertions.assertEquals(expected, actual, DELTA);
     }
 

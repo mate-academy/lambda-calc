@@ -33,7 +33,7 @@ public class Calculator {
     }
 
     private double divide(double a, double b) {
-        if (b == 0 || b == Double.MIN_VALUE) {
+        if (b == 0) {
             throw new ArithmeticException("Division by zero");
         }
         return a / b;
@@ -48,10 +48,10 @@ public class Calculator {
 
     private double raiseToPower(double a, double b) {
         if (a < 0.0 && b % (int)b != 0.0 && b != 0) {
-            throw new ArithmeticException("can't have negative base and decimal exponent");
+            throw new ArithmeticException("Can't have negative base and decimal exponent");
         }
         if (a == 0 && b < 0) {
-            throw new ArithmeticException("Division by zero");
+            throw new ArithmeticException("Can't have zero base and negative exponent");
         }
         return Math.pow(a, b);
     }
