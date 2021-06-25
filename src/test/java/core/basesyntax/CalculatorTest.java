@@ -280,13 +280,13 @@ class CalculatorTest {
 
     @Test
     void calculateDivisionSecondZeroOperand_NotOk() {
-        assertThrows(IncorrectDataEntryException.class, () -> calculator.calculate(44.44, 0,
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(44.44, 0,
                 '/'));
     }
 
     @Test
     void calculateDivisionTwoZeroOperands_NotOk() {
-        assertThrows(IncorrectDataEntryException.class, () -> calculator.calculate(0, 0,
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(0, 0,
                 '/'));
     }
 

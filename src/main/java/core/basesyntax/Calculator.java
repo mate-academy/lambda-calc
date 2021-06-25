@@ -1,23 +1,22 @@
 package core.basesyntax;
 
 public class Calculator implements CalculatorService {
-
     @Override
-    public double calculate(double firsValue, double secondValue, char operator) {
+    public double calculate(double firstValue, double secondValue, char operator) {
         switch (operator) {
             case '+' :
-                return firsValue + secondValue;
+                return firstValue + secondValue;
             case '-' :
-                return firsValue - secondValue;
+                return firstValue - secondValue;
             case '/' :
                 if (secondValue == 0) {
-                    throw new IncorrectDataEntryException("Value can`t be zero!");
+                    throw new ArithmeticException("Value can`t be zero!");
                 }
-                return firsValue / secondValue;
+                return firstValue / secondValue;
             case '*' :
-                return firsValue * secondValue;
+                return firstValue * secondValue;
             case '^' :
-                return Math.pow(firsValue, secondValue);
+                return Math.pow(firstValue, secondValue);
             default:
                 throw new IncorrectDataEntryException("Illegal such operator " + operator);
         }
