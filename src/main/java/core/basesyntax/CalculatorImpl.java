@@ -71,11 +71,13 @@ public class CalculatorImpl implements Calculator {
     }
 
     /**
-     * -?(\\d+\\.?\\d+)\\s*[+*^/-]\\s*-?(\\d+\\.?\\d+)" is concatenation of three patterns :
-     * 1.NUMBER_REGEX "-?(\\d+\\.?\\d+)" matches positive or negative numbers of int or
-     * double(float) type 2.CHARACTER_REGEX \\s*[+*^/-]\\s*-? matches characters of operations
+     * "-?(\d*\.?\d*)\s*[+*^/-]\s*-?(\d*\.?\d*)" is concatenation of three patterns :
+     * 1.NUMBER_REGEX "-?(\\d+\\.?\\d*)" matches positive or negative numbers of int or
+     * double(float) type.
+     * 2.CHARACTER_REGEX "\\s*[+*^/-]\\s*" matches characters of operations
      * addition '+', subtractive '-', power '^', division '/' or multiplication '*' with or without
-     * whitespaces 3.NUMBER_REGEX
+     * whitespaces
+     * 3.NUMBER_REGEX
      *
      * @param expression input string of math expression
      */
@@ -89,7 +91,6 @@ public class CalculatorImpl implements Calculator {
 
     /**
      * method seeks in expression necessary character of operation with Pattern CHARACTER_REGEX
-     *
      * @param expression input string of math expression
      * @return char of operation
      * @throws IllegalArgumentException if matcher does not find
@@ -106,7 +107,7 @@ public class CalculatorImpl implements Calculator {
      * method seeks in expression double or int number with Pattern NUMBERS_REGEX
      *
      * @param expression input string of math expression
-     * @return double or int numbers
+     * @return double number
      * @throws IllegalArgumentException if matcher does not find
      */
     private double getNum(String expression) {
@@ -117,6 +118,12 @@ public class CalculatorImpl implements Calculator {
         throw new IllegalArgumentException();
     }
 
+    /**
+     * remove string "a" from expressionCopy
+     * @param expressionCopy input string of math expression
+     * @param a target number
+     * @return new string without a
+     */
     private String getExpression(String expressionCopy, String a) {
         String fractionalPart = a.substring(a.indexOf(".") + 1);
         if (fractionalPart.length() > 1) {
