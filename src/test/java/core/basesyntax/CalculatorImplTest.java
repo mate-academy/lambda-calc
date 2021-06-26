@@ -12,23 +12,17 @@ class CalculatorImplTest {
     public static final char CHARACTER_MULTIPLICATION = '*';
     public static final char CHARACTER_DIVISION = '/';
     public static final char CHARACTER_POWER = '^';
-    private static CalculatorImpl calculator;
     private static final double DELTA = 0.0001;
+    private static CalculatorImpl calculator;
+
+    @BeforeAll
+    static void setCalculator() {
+        calculator = new CalculatorImpl();
+    }
 
     @Test
     public void calculate_ExpressionTrue_notOk() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            for (int character = 0; character < 1000; character++) {
-                if (character == (int) PLUS
-                        || character == (int) MINUS
-                        || character == (int) CHARACTER_DIVISION
-                        || character == (int) CHARACTER_MULTIPLICATION
-                        || character == (int) CHARACTER_POWER) {
-                    continue;
-                }
-                calculator.calculate("34" + (char) character + 45);
-            }
-        });
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(34 + "&" + 45));
     }
 
     @Test
@@ -47,15 +41,15 @@ class CalculatorImplTest {
     @Test
     public void calculate_subtractionExpression_ok() {
         for (int i = -100; i < 100; i++) {
-            for (int j = -100; j < 100; j++) {
-                assertEquals(i - j, calculator.calculate(i + " -- " + j), DELTA,
+            for (int j = -9; j < 100; j++) {
+                assertEquals(i - j, calculator.calculate(i + " - " + j), DELTA,
                         "i = " + i + " j = " + j);
             }
         }
-        assertEquals(-35.56 - 30.56, calculator.calculate(-35.56 + " -- " + 30.56), DELTA);
-        assertEquals(-35.56 - -30.56, calculator.calculate(-35.56 + " -- " + -30.56), DELTA);
-        assertEquals(35.56 - -30.56, calculator.calculate(35.56 + " -- " + -30.56), DELTA);
-        assertEquals(35.56 - 30.56, calculator.calculate(35.56 + " -- " + 30.56), DELTA);
+        assertEquals(-35.56 - 30.56, calculator.calculate(-35.56 + " - " + 30.56), DELTA);
+        assertEquals(-35.56 - -30.56, calculator.calculate(-35.56 + " - " + -30.56), DELTA);
+        assertEquals(35.56 - -30.56, calculator.calculate(35.56 + " - " + -30.56), DELTA);
+        assertEquals(35.56 - 30.56, calculator.calculate(35.56 + " - " + 30.56), DELTA);
     }
 
     @Test
@@ -79,10 +73,7 @@ class CalculatorImplTest {
     public void calculate_multiplyExpression_ok() {
         for (int i = -100; i < 100; i++) {
             for (int j = -100; j < 100; j++) {
-                if (j == 0) {
-                    continue;
-                }
-                assertEquals((double) i * j, calculator.calculate(i + " * " + j), DELTA,
+                assertEquals(i * j, calculator.calculate(i + " * " + j), DELTA,
                         "i = " + i + " j = " + j);
             }
         }
@@ -96,9 +87,6 @@ class CalculatorImplTest {
     public void calculate_powerExpression_ok() {
         for (int i = -100; i < 100; i++) {
             for (int j = -100; j < 100; j++) {
-                if (j == 0) {
-                    continue;
-                }
                 assertEquals(Math.pow(i, j), calculator.calculate(i + " ^ " + j), DELTA,
                         "i = " + i + " j = " + j);
             }
@@ -108,11 +96,6 @@ class CalculatorImplTest {
         assertEquals(Math.pow(35.56, 30.56), calculator.calculate(35.56 + " ^ " + 30.56), DELTA);
         assertEquals(Math.pow(-35.56, -30.56), calculator.calculate(-35.56 + " ^ " + -30.56),
                 DELTA);
-    }
-
-    @BeforeAll
-    static void setCalculator() {
-        calculator = new CalculatorImpl();
     }
 
     @Test
@@ -153,8 +136,7 @@ class CalculatorImplTest {
         double a = -0.5;
         double b = 0.345;
         double expected = a + b;
-        double actual = calculator.calculate(a, b, PLUS
-        );
+        double actual = calculator.calculate(a, b, PLUS);
         assertEquals(expected, actual);
         a = 0.5;
         b = -0.345;
@@ -383,18 +365,6 @@ class CalculatorImplTest {
 
     @Test
     void calculate_illegalOperation_notOk() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            for (int character = 0; character < 1000; character++) {
-                if (character == (int) PLUS
-                        || character == (int) MINUS
-                        || character == (int) CHARACTER_DIVISION
-                        || character == (int) CHARACTER_MULTIPLICATION
-                        || character == (int) CHARACTER_POWER) {
-                    continue;
-                }
-                calculator.calculate(34, 53, (char) character);
-            }
-        });
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(34, 53, '&'));
     }
-
 }

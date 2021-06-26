@@ -4,38 +4,42 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CalculatorImpl implements Calculator {
-
-    public static final String NUMBERS = "-?\\d+\\.?\\d+|-?\\d+";
-    public static final String CHARACTER = "[+/*^]|--";
+    public static final String NUMBERS_REGEX = "-?\\d+\\.?\\d*";
+    public static final String CHARACTER_REGEX = "[+/*^-]";
 
     @Override
     public double calculate(String expression) {
-        checkExpression(expression);
-        Matcher matcher = Pattern.compile(NUMBERS).matcher(expression);
-        double a = getNum(matcher);
-        double b = getNum(matcher);
-        char characterOperation = getCharacter(Pattern.compile(CHARACTER).matcher(expression));
+        String expressionCopy = expression;
+        checkExpression(expressionCopy);
+        double a = getNum(expressionCopy);
+        expressionCopy = getExpression(expressionCopy, String.valueOf(a));
+        double b = getNum(expressionCopy);
+        expressionCopy = getExpression(expressionCopy, String.valueOf(b));
+        char characterOperation = getCharacter(expressionCopy);
         return calculate(a, b, characterOperation);
     }
 
     @Override
     public double calculate(double a, double b, char operation) {
-        if (operation == '*') {
-            return multiply(a, b);
+        switch (operation) {
+            case '*': {
+                return multiply(a, b);
+            }
+            case '+': {
+                return add(a, b);
+            }
+            case '-': {
+                return subtract(a, b);
+            }
+            case '/': {
+                return divide(a, b);
+            }
+            case '^': {
+                return power(a, b);
+            }
+            default:
+                throw new IllegalArgumentException("Not defined function");
         }
-        if (operation == '+') {
-            return add(a, b);
-        }
-        if (operation == '-') {
-            return subtract(a, b);
-        }
-        if (operation == '/') {
-            return div(a, b);
-        }
-        if (operation == '^') {
-            return pow(a, b);
-        }
-        throw new IllegalArgumentException("Not defined function");
     }
 
     @Override
@@ -49,7 +53,7 @@ public class CalculatorImpl implements Calculator {
     }
 
     @Override
-    public double div(double a, double b) {
+    public double divide(double a, double b) {
         if (b == 0) {
             throw new ArithmeticException("Divide on zero");
         }
@@ -62,30 +66,62 @@ public class CalculatorImpl implements Calculator {
     }
 
     @Override
-    public double pow(double a, double power) {
+    public double power(double a, double power) {
         return Math.pow(a, power);
     }
 
+    /**
+     * -?(\\d+\\.?\\d+)\\s*[+*^/-]\\s*-?(\\d+\\.?\\d+)" is concatenation of three patterns :
+     * 1.NUMBER_REGEX "-?(\\d+\\.?\\d+)" matches positive or negative numbers of int or
+     * double(float) type 2.CHARACTER_REGEX \\s*[+*^/-]\\s*-? matches characters of operations
+     * addition '+', subtractive '-', power '^', division '/' or multiplication '*' with or without
+     * whitespaces 3.NUMBER_REGEX
+     *
+     * @param expression input string of math expression
+     */
     private void checkExpression(String expression) {
-        if (!expression.matches("-?\\d+\\.?\\d+\\s?[+*^/]\\s*-?\\d+\\.?\\d+|"
-                + "-?\\d+\\s?[+*^/]\\s*-?\\d+|"
-                + "-?\\d+\\s?--\\s*-?\\d+|"
-                + "-?\\d+\\.?\\d+\\s?--\\s*-?\\d+\\.?\\d+")) {
-            throw new IllegalArgumentException();
+        if (expression.matches(
+                "-?(\\d*\\.?\\d*)\\s*[+*^/-]\\s*-?(\\d*\\.?\\d*)")) {
+            return;
         }
+        throw new IllegalArgumentException();
     }
 
-    private char getCharacter(Matcher matcher) {
+    /**
+     * method seeks in expression necessary character of operation with Pattern CHARACTER_REGEX
+     *
+     * @param expression input string of math expression
+     * @return char of operation
+     * @throws IllegalArgumentException if matcher does not find
+     */
+    private char getCharacter(String expression) {
+        Matcher matcher = Pattern.compile(CHARACTER_REGEX).matcher(expression);
         if (matcher.find()) {
             return matcher.group().charAt(0);
         }
         throw new IllegalArgumentException();
     }
 
-    private double getNum(Matcher matcher) {
+    /**
+     * method seeks in expression double or int number with Pattern NUMBERS_REGEX
+     *
+     * @param expression input string of math expression
+     * @return double or int numbers
+     * @throws IllegalArgumentException if matcher does not find
+     */
+    private double getNum(String expression) {
+        Matcher matcher = Pattern.compile(NUMBERS_REGEX).matcher(expression);
         if (matcher.find()) {
-            return Double.parseDouble(matcher.group());
+            return Double.parseDouble(matcher.group(0));
         }
         throw new IllegalArgumentException();
+    }
+
+    private String getExpression(String expressionCopy, String a) {
+        String fractionalPart = a.substring(a.indexOf(".") + 1);
+        if (fractionalPart.length() > 1) {
+            return expressionCopy.replaceFirst(a, "");
+        }
+        return expressionCopy.replaceFirst(a.substring(0, a.indexOf(".")), "");
     }
 }
