@@ -115,9 +115,7 @@ class CalculatorTest {
 
     @Test
     void calculate_divisionByZero_Ok() {
-        expected = 15d / 0;
-        actual = calculator.calculate(15, 0, '/');
-        assertEquals(expected, actual, DELTA);
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(15, 0, '/'));
     }
 
     @Test
