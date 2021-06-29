@@ -33,7 +33,7 @@ class Calculator {
                 }
                 return first % second;
             default:
-                throw new InvalidOperatorException();
+                throw new InvalidOperatorException("There is no arithmetic operator like this");
         }
     }
 }
