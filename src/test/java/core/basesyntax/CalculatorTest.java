@@ -1964,7 +1964,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMaxAndMinusDoubleMax_OK() {
+    void calculate_powerOfMinusDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -1974,7 +1974,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMaxAndNegativeNumber_OK() {
+    void calculate_powerOfMinusDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -1984,7 +1984,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMaxAndMinusDoubleMin_notOK() {
+    void calculate_powerOfMinusDoubleMaxAndMinusDoubleMin_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -1993,7 +1993,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMaxAndZero_OK() {
+    void calculate_powerOfMinusDoubleMaxAndZero_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2003,7 +2003,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMaxAndDoubleMin_notOK() {
+    void calculate_powerOfMinusDoubleMaxAndDoubleMin_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2012,7 +2012,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMaxAndPositiveNumber_notOK() {
+    void calculate_powerOfMinusDoubleMaxAndPositiveNumber_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 2;
         char operation = '^';
@@ -2021,7 +2021,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMaxAndDoubleMax_notOK() {
+    void calculate_powerOfMinusDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2030,7 +2030,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfNegativeNumberAndMinusDoubleMax_OK() {
+    void calculate_powerOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -2.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2040,7 +2040,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfNegativeNumberAndNegativeNumber_OK() {
+    void calculate_powerOfNegativeNumberAndNegativeNumber_OK() {
         double firstArgument = -2.0;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2050,7 +2050,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfNegativeNumberAndMinusDoubleMin_notOK() {
+    void calculate_powerOfNegativeNumberAndMinusDoubleMin_notOK() {
         double firstArgument = -2.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2059,7 +2059,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfNegativeNumberAndZero_OK() {
+    void calculate_powerOfNegativeNumberAndZero_OK() {
         double firstArgument = -2.0;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2069,7 +2069,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfNegativeNumberAndDoubleMin_notOK() {
+    void calculate_powerOfNegativeNumberAndDoubleMin_notOK() {
         double firstArgument = -2.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2078,7 +2078,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfNegativeNumberAndPositiveNumber_OK() {
+    void calculate_powerOfNegativeNumberAndPositiveNumber_OK() {
         double firstArgument = -2.0;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2088,7 +2088,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfNegativeNumberAndDoubleMax_notOK() {
+    void calculate_powerOfNegativeNumberAndDoubleMax_notOK() {
         double firstArgument = -2.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2097,7 +2097,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMinAndMinusDoubleMax_notOK() {
+    void calculate_powerOfMinusDoubleMinAndMinusDoubleMax_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2106,7 +2106,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMinAndNegativeNumber_notOK() {
+    void calculate_powerOfMinusDoubleMinAndNegativeNumber_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2115,7 +2115,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMinAndMinusDoubleMin_notOK() {
+    void calculate_powerOfMinusDoubleMinAndMinusDoubleMin_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2124,7 +2124,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMinAndZero_OK() {
+    void calculate_powerOfMinusDoubleMinAndZero_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2134,7 +2134,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMinAndDoubleMin_notOK() {
+    void calculate_powerOfMinusDoubleMinAndDoubleMin_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2143,7 +2143,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMinAndPositiveNumber_OK() {
+    void calculate_powerOfMinusDoubleMinAndPositiveNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2153,7 +2153,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfMinusDoubleMinAndDoubleMax_OK() {
+    void calculate_powerOfMinusDoubleMinAndDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2163,7 +2163,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfZeroAndMinusDoubleMax_notOK() {
+    void calculate_powerOfZeroAndMinusDoubleMax_notOK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2172,7 +2172,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfZeroAndNegativeNumber_notOK() {
+    void calculate_powerOfZeroAndNegativeNumber_notOK() {
         double firstArgument = 0.0;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2181,7 +2181,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfZeroAndMinusDoubleMin_notOK() {
+    void calculate_powerOfZeroAndMinusDoubleMin_notOK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2190,7 +2190,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfZeroAndZero_OK() {
+    void calculate_powerOfZeroAndZero_OK() {
         double firstArgument = 0.0;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2200,7 +2200,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfZeroAndDoubleMin_OK() {
+    void calculate_powerOfZeroAndDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2210,7 +2210,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfZeroAndPositiveNumber_OK() {
+    void calculate_powerOfZeroAndPositiveNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2220,7 +2220,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfZeroAndDoubleMax_OK() {
+    void calculate_powerOfZeroAndDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2230,7 +2230,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMinAndMinusDoubleMax_notOK() {
+    void calculate_powerOfDoubleMinAndMinusDoubleMax_notOK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2239,7 +2239,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMinAndNegativeNumber_notOK() {
+    void calculate_powerOfDoubleMinAndNegativeNumber_notOK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2248,7 +2248,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMinAndMinusDoubleMin_OK() {
+    void calculate_powerOfDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2258,7 +2258,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMinAndZero_OK() {
+    void calculate_powerOfDoubleMinAndZero_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2268,7 +2268,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMinAndDoubleMin_OK() {
+    void calculate_powerOfDoubleMinAndDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2278,7 +2278,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMinAndPositiveNumber_OK() {
+    void calculate_powerOfDoubleMinAndPositiveNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2288,7 +2288,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMinAndDoubleMax_OK() {
+    void calculate_powerOfDoubleMinAndDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2298,7 +2298,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfPositiveNumberAndMinusDoubleMax_OK() {
+    void calculate_powerOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 2.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2308,7 +2308,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfPositiveNumberAndNegativeNumber_OK() {
+    void calculate_powerOfPositiveNumberAndNegativeNumber_OK() {
         double firstArgument = 2.0;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2318,7 +2318,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfPositiveNumberAndMinusDoubleMin_OK() {
+    void calculate_powerOfPositiveNumberAndMinusDoubleMin_OK() {
         double firstArgument = 2.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2328,7 +2328,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfPositiveNumberAndZero_OK() {
+    void calculate_powerOfPositiveNumberAndZero_OK() {
         double firstArgument = 2.0;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2338,7 +2338,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfPositiveNumberAndDoubleMin_OK() {
+    void calculate_powerOfPositiveNumberAndDoubleMin_OK() {
         double firstArgument = 2.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2348,7 +2348,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfPositiveNumberAndPositiveNumber_OK() {
+    void calculate_powerOfPositiveNumberAndPositiveNumber_OK() {
         double firstArgument = 2.0;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2358,7 +2358,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfPositiveNumberAndDoubleMax_notOK() {
+    void calculate_powerOfPositiveNumberAndDoubleMax_notOK() {
         double firstArgument = 2.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2367,7 +2367,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMaxAndMinusDoubleMax_OK() {
+    void calculate_powerOfDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2377,7 +2377,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMaxAndNegativeNumber_OK() {
+    void calculate_powerOfDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2387,7 +2387,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMaxAndMinusDoubleMin_OK() {
+    void calculate_powerOfDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2397,7 +2397,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMaxAndZero_OK() {
+    void calculate_powerOfDoubleMaxAndZero_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2407,7 +2407,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMaxAndDoubleMin_OK() {
+    void calculate_powerOfDoubleMaxAndDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2417,7 +2417,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMaxAndPositiveNumber_notOK() {
+    void calculate_powerOfDoubleMaxAndPositiveNumber_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2426,7 +2426,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_PowerOfDoubleMaxAndDoubleMax_notOK() {
+    void calculate_powerOfDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
