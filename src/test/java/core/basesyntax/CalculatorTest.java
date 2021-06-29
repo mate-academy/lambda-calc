@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class JUnitCalculatorTest {
+class CalculatorTest {
     private static final char PLUS = '+';
     private static final char MINUS = '-';
     private static final char MULTIPLICATION = '*';
@@ -17,49 +17,49 @@ class JUnitCalculatorTest {
     private static final double DELTA = 0.0001;
     private static final double POSITIVE_VALUE = 438.004;
     private static final double NEGATIVE_VALUE = -247.036;
-    private static JUnitCalculator jUnitCalculator;
+    private static Calculator calculator;
 
     @BeforeAll
     static void createCalculator() {
-        jUnitCalculator = new JUnitCalculator();
+        calculator = new Calculator();
     }
 
     @Test
     void calculate_sumOfTwoPositiveValue_Ok() {
         double expected = POSITIVE_VALUE + POSITIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, PLUS);
+        double actual = calculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_sumOfTwoNegativeValue_Ok() {
         double expected = NEGATIVE_VALUE + NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, PLUS);
+        double actual = calculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, PLUS);
         assertEquals(expected,actual, DELTA);
     }
 
     @Test
     void calculate_sumOfPositiveAndNegativeValue_Ok() {
         double expected = POSITIVE_VALUE + NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, PLUS);
+        double actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_sumOfPositiveValueAndZero_Ok() {
         double expected = POSITIVE_VALUE + ZERO;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, ZERO, PLUS);
+        double actual = calculator.calculate(POSITIVE_VALUE, ZERO, PLUS);
         assertEquals(expected, actual, DELTA);
-        actual = jUnitCalculator.calculate(ZERO, POSITIVE_VALUE, PLUS);
+        actual = calculator.calculate(ZERO, POSITIVE_VALUE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_sumOfNegativeValueAndZero_Ok() {
         double expected = ZERO + NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(ZERO, NEGATIVE_VALUE, PLUS);
+        double actual = calculator.calculate(ZERO, NEGATIVE_VALUE, PLUS);
         assertEquals(expected, actual, DELTA);
-        actual = jUnitCalculator.calculate(NEGATIVE_VALUE, ZERO, PLUS);
+        actual = calculator.calculate(NEGATIVE_VALUE, ZERO, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -67,48 +67,48 @@ class JUnitCalculatorTest {
     void calculate_sumOfTwoMaxAndMinDoubleValues_Ok() {
         double expected = Double.POSITIVE_INFINITY;
         double actual =
-                jUnitCalculator.calculate(Double.MAX_VALUE, Double. MAX_VALUE, PLUS);
+                calculator.calculate(Double.MAX_VALUE, Double. MAX_VALUE, PLUS);
         assertEquals(expected, actual, DELTA);
         expected = 1.0E-323;
-        actual = jUnitCalculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, PLUS);
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_sumOfPositiveAndNegativeNumber_Ok() {
         double expected = POSITIVE_VALUE + NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, PLUS);
+        double actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractionOfTwoPositiveValue_Ok() {
         double expected = ZERO;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, MINUS);
+        double actual = calculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractionOfTwoNegativeValue_Ok() {
         double expected = ZERO;
-        double actual = jUnitCalculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, MINUS);
+        double actual = calculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractionOfPositiveAndNegativeValue_Ok() {
         double expected = POSITIVE_VALUE - NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, MINUS);
+        double actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractionOfPositiveWithZero_Ok() {
         double expected = POSITIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, ZERO, MINUS);
+        double actual = calculator.calculate(POSITIVE_VALUE, ZERO, MINUS);
         assertEquals(expected, actual, DELTA);
         expected = -POSITIVE_VALUE;
-        actual = jUnitCalculator.calculate(ZERO, POSITIVE_VALUE, MINUS);
+        actual = calculator.calculate(ZERO, POSITIVE_VALUE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -116,82 +116,82 @@ class JUnitCalculatorTest {
     void calculate_subtractionOfMinAndMax_Ok() {
         double expected = ZERO;
         double actual =
-                jUnitCalculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MINUS);
+                calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MINUS);
         assertEquals(expected, actual, DELTA);
-        actual = jUnitCalculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MINUS);
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MINUS);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divisionOfTwoPositiveValue_Ok() {
         double expected = 1.0;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, DIVISION);
+        double actual = calculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divisionOfTwoNegativeValue_Ok() {
         double expected = 1.0;
-        double actual = jUnitCalculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, DIVISION);
+        double actual = calculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divisionOfPositiveAndNegativeValue_Ok() {
         double expected = POSITIVE_VALUE / NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, DIVISION);
+        double actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divisionOfPositiveValueAndZero_Ok() {
         double expected = ZERO;
-        double actual = jUnitCalculator.calculate(ZERO, POSITIVE_VALUE, DIVISION);
+        double actual = calculator.calculate(ZERO, POSITIVE_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divisionOfValueWithZero_NotOk() {
         assertThrows(ArithmeticException.class,
-                () -> jUnitCalculator.calculate(POSITIVE_VALUE, ZERO, DIVISION));
+                () -> calculator.calculate(POSITIVE_VALUE, ZERO, DIVISION));
     }
 
     @Test
     void calculate_divisionOfMinAndMax_Ok() {
         double expected = 1.0;
-        double actual = jUnitCalculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, DIVISION);
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
-        actual = jUnitCalculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, DIVISION);
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplicationOfTwoPositiveValue_Ok() {
         double expected = POSITIVE_VALUE * POSITIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, MULTIPLICATION);
+        double actual = calculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplicationOfTwoNegativeValue_Ok() {
         double expected = NEGATIVE_VALUE * NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, MULTIPLICATION);
+        double actual = calculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplicationOfPositiveAndNegativeValue_Ok() {
         double expected = POSITIVE_VALUE * NEGATIVE_VALUE;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, MULTIPLICATION);
+        double actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplicationOfValueWithZero_Ok() {
         double expected = ZERO;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, ZERO, MULTIPLICATION);
+        double actual = calculator.calculate(POSITIVE_VALUE, ZERO, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
-        actual = jUnitCalculator.calculate(ZERO, POSITIVE_VALUE, MULTIPLICATION);
+        actual = calculator.calculate(ZERO, POSITIVE_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -199,42 +199,42 @@ class JUnitCalculatorTest {
     void calculate_multiplicationOfMinAndMax_Ok() {
         double expected = Double.POSITIVE_INFINITY;
         double actual =
-                jUnitCalculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLICATION);
+                calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
         expected = Double.MIN_VALUE * Double.MIN_VALUE;
         actual =
-                jUnitCalculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MULTIPLICATION);
+                calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_powerOfTwoPositiveValue_Ok() {
         double expected = Math.pow(POSITIVE_VALUE, POSITIVE_VALUE);
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, POWER);
+        double actual = calculator.calculate(POSITIVE_VALUE, POSITIVE_VALUE, POWER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_powerOfTwoNegativeValue_Ok() {
         double expected = Math.pow(NEGATIVE_VALUE, NEGATIVE_VALUE);
-        double actual = jUnitCalculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, POWER);
+        double actual = calculator.calculate(NEGATIVE_VALUE, NEGATIVE_VALUE, POWER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_powerOfPositiveAndNegativeValue_Ok() {
         double expected = Math.pow(POSITIVE_VALUE, NEGATIVE_VALUE);
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, POWER);
+        double actual = calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, POWER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_powerOfValueWithZero_Ok() {
         double expected = 1.0;
-        double actual = jUnitCalculator.calculate(POSITIVE_VALUE, ZERO, POWER);
+        double actual = calculator.calculate(POSITIVE_VALUE, ZERO, POWER);
         assertEquals(expected, actual, DELTA);
         expected = ZERO;
-        actual = jUnitCalculator.calculate(ZERO, POSITIVE_VALUE, POWER);
+        actual = calculator.calculate(ZERO, POSITIVE_VALUE, POWER);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -242,16 +242,16 @@ class JUnitCalculatorTest {
     void calculate_powerOfMinAndMax_Ok() {
         double expected = Math.pow(Double.MAX_VALUE, Double.MAX_VALUE);
         double actual =
-                jUnitCalculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, POWER);
+                calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, POWER);
         assertEquals(expected, actual, DELTA);
         expected = Math.pow(Double.MIN_VALUE, Double.MIN_VALUE);
-        actual = jUnitCalculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, POWER);
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, POWER);
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void illegalArgument_NotOk() {
         assertThrows(IllegalArgumentException.class,
-                () -> jUnitCalculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, ILLEGAL_ARGUMENT));
+                () -> calculator.calculate(POSITIVE_VALUE, NEGATIVE_VALUE, ILLEGAL_ARGUMENT));
     }
 }
