@@ -12,8 +12,8 @@ class CalculatorTest {
     private static final String BAD_MULTIPLY_MESSAGE = "Wrong multiply.";
     private static final String BAD_DIVISION_MESSAGE = "Wrong division.";
     private static final String BAD_POW_MESSAGE = "Wrong pow.";
-    private static final double POSITIVE_NUMBER = 3;
-    private static final double NEGATIVE_NUMBER = -1;
+    private static final double POSITIVE_NUMBER = 2.5;
+    private static final double NEGATIVE_NUMBER = -12.01;
     private static final double ZERO = 0;
     private static final double MAX_NUMBER = Double.MAX_VALUE;
     private static final double MIN_NUMBER = Double.MIN_VALUE;
