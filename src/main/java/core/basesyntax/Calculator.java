@@ -17,7 +17,7 @@ class Calculator {
                 return first - second;
             case DIVISION:
                 if (second == 0) {
-                throw new ArithmeticException(DIVISION_BY_ZERO_MESSAGE);
+                    throw new ArithmeticException(DIVISION_BY_ZERO_MESSAGE);
                 }
                 return first / second;
             case MULTIPLICATION:
@@ -32,7 +32,8 @@ class Calculator {
                     return 0;
                 }
                 return first % second;
+            default:
+                throw new InvalidOperatorException();
         }
-        throw new InvalidOperatorException();
     }
 }
