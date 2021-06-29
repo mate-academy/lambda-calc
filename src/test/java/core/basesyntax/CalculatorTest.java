@@ -2029,7 +2029,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-
     @Test
     void calculate_PowerOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -2.0;
