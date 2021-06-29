@@ -10,32 +10,28 @@ class Calculator {
     private static final String DIVISION_BY_ZERO_MESSAGE = "Division by zero.";
 
     public double calculate(double first, double second, char operation) {
-        if (operation == ADDITION) {
-            return first + second;
-        }
-        if (operation == SUBTRACTION) {
-            return first - second;
-        }
-        if (operation == DIVISION) {
-            if (second == 0) {
+        switch (operation) {
+            case ADDITION:
+                return first + second;
+            case SUBTRACTION:
+                return first - second;
+            case DIVISION:
+                if (second == 0) {
                 throw new ArithmeticException(DIVISION_BY_ZERO_MESSAGE);
-            }
-            return first / second;
-        }
-        if (operation == MULTIPLICATION) {
-            return first * second;
-        }
-        if (operation == POW) {
-            return Math.pow(first, second);
-        }
-        if (operation == REMAINDER_DIVISION) {
-            if (second == 0) {
-                throw new ArithmeticException(DIVISION_BY_ZERO_MESSAGE);
-            }
-            if (first % second == -0) {
-                return 0;
-            }
-            return first % second;
+                }
+                return first / second;
+            case MULTIPLICATION:
+                return first * second; 
+            case POW:
+                return Math.pow(first, second);
+            case REMAINDER_DIVISION:
+                if (second == 0) {
+                    throw new ArithmeticException(DIVISION_BY_ZERO_MESSAGE);
+                }
+                if (first % second == -0) {
+                    return 0;
+                }
+                return first % second;
         }
         throw new InvalidOperatorException();
     }
