@@ -66,9 +66,6 @@ public class Calculator implements CalculatorService {
     @Override
     public double calculateMultiplication(double firstArgument, double secondArgument) {
         double result = firstArgument * secondArgument;
-        if (Double.isNaN(result)) {
-            throw new ArithmeticException("NaN");
-        }
         if (result == Double.NEGATIVE_INFINITY) {
             throw new ArithmeticException("Negative Infinity");
         }
