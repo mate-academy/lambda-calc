@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 class CalculatorTest {
     private static final double DELTA = 0.0001;
     private static Calculator calculator;
-    private double expected;
-    private double actual;
 
     @BeforeAll
     static void beforeAll() {
@@ -19,29 +17,29 @@ class CalculatorTest {
 
     @Test
     void calculate_additionTwoPositiveOperands_Ok() {
-        expected = 15d + 20d;
-        actual = calculator.calculate(15, 20, '+');
+        double expected = 15d + 20d;
+        double actual = calculator.calculate(15, 20, '+');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_additionTwoNegativeOperands_Ok() {
-        expected = -15d + -20d;
-        actual = calculator.calculate(-15, -20, '+');
+        double expected = -15d + -20d;
+        double actual = calculator.calculate(-15, -20, '+');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_additionWithPositiveAndNegativeOperands_Ok() {
-        expected = -15d + 20d;
-        actual = calculator.calculate(-15, 20, '+');
+        double expected = -15d + 20d;
+        double actual = calculator.calculate(-15, 20, '+');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_additionWithZero_Ok() {
-        expected = 0 + 20d;
-        actual = calculator.calculate(0, 20, '+');
+        double expected = 0 + 20d;
+        double actual = calculator.calculate(0, 20, '+');
         assertEquals(expected, actual, DELTA);
 
         expected = 15d + 0;
@@ -51,8 +49,8 @@ class CalculatorTest {
 
     @Test
     void calculate_additionForMinMaxValues_Ok() {
-        expected = Double.MAX_VALUE + Double.MIN_VALUE;
-        actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '+');
+        double expected = Double.MAX_VALUE + Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '+');
         assertEquals(expected, actual, DELTA);
 
         expected = Double.MAX_VALUE + Double.MAX_VALUE;
@@ -66,8 +64,8 @@ class CalculatorTest {
 
     @Test
     void calculate_subtractionForMinMaxValues_Ok() {
-        expected = Double.MAX_VALUE - Double.MIN_VALUE;
-        actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '-');
+        double expected = Double.MAX_VALUE - Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '-');
         assertEquals(expected, actual, DELTA);
 
         expected = Double.MAX_VALUE - Double.MAX_VALUE;
@@ -81,8 +79,8 @@ class CalculatorTest {
 
     @Test
     void calculate_multiplicationForMinMaxValues_Ok() {
-        expected = Double.MAX_VALUE * Double.MIN_VALUE;
-        actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '*');
+        double expected = Double.MAX_VALUE * Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '*');
         assertEquals(expected, actual, DELTA);
 
         expected = Double.MAX_VALUE * Double.MAX_VALUE;
@@ -96,8 +94,8 @@ class CalculatorTest {
 
     @Test
     void calculate_divisionForMinMaxValues_Ok() {
-        expected = Double.MAX_VALUE / Double.MIN_VALUE;
-        actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '/');
+        double expected = Double.MAX_VALUE / Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '/');
         assertEquals(expected, actual, DELTA);
 
         expected = Double.MIN_VALUE / Double.MAX_VALUE;
@@ -120,8 +118,8 @@ class CalculatorTest {
 
     @Test
     void calculate_raisingValueToPositiveNumber_Ok() {
-        expected = Math.pow(15d, 20d);
-        actual = calculator.calculate(15, 20, '^');
+        double expected = Math.pow(15d, 20d);
+        double actual = calculator.calculate(15, 20, '^');
         assertEquals(expected, actual, DELTA);
 
         expected = Math.pow(-15d, 20d);
@@ -131,8 +129,8 @@ class CalculatorTest {
 
     @Test
     void calculate_raisingValueToNegativeNumber_Ok() {
-        expected = Math.pow(15d, -20d);
-        actual = calculator.calculate(15, -20, '^');
+        double expected = Math.pow(15d, -20d);
+        double actual = calculator.calculate(15, -20, '^');
         assertEquals(expected, actual, DELTA);
 
         expected = Math.pow(-15d, -20d);
@@ -142,8 +140,8 @@ class CalculatorTest {
 
     @Test
     void calculate_raisingValueToZero_Ok() {
-        expected = Math.pow(15d, 0);
-        actual = calculator.calculate(15, 0, '^');
+        double expected = Math.pow(15d, 0);
+        double actual = calculator.calculate(15, 0, '^');
         assertEquals(expected, actual, DELTA);
 
         expected = Math.pow(-15d, 0);
@@ -153,8 +151,8 @@ class CalculatorTest {
 
     @Test
     void calculate_raisingZeroToPower_Ok() {
-        expected = Math.pow(0, 20d);
-        actual = calculator.calculate(0, 20d, '^');
+        double expected = Math.pow(0, 20d);
+        double actual = calculator.calculate(0, 20d, '^');
         assertEquals(expected, actual, DELTA);
     }
 
