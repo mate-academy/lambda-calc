@@ -28,7 +28,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addition() {
+    void additionTest() {
         operation = '+';
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = POSITIVE_NUMBER + POSITIVE_NUMBER;
@@ -51,7 +51,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtraction() {
+    void subtractionTest() {
         operation = '-';
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = ZERO;
@@ -70,7 +70,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplication() {
+    void multiplicationTest() {
         operation = '*';
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = POSITIVE_NUMBER * POSITIVE_NUMBER;
@@ -93,7 +93,7 @@ class CalculatorTest {
     }
 
     @Test
-    void division() {
+    void divisionTest() {
         operation = '/';
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = 1;
@@ -111,7 +111,7 @@ class CalculatorTest {
     }
 
     @Test
-    void remainderDivision() {
+    void remainderDivisionTest() {
         operation = '%';
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = ZERO;
@@ -129,7 +129,7 @@ class CalculatorTest {
     }
 
     @Test
-    void pow() {
+    void powTest() {
         operation = '^';
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = Math.pow(POSITIVE_NUMBER, POSITIVE_NUMBER);
@@ -139,8 +139,10 @@ class CalculatorTest {
         assertEquals(actual, expected, BAD_POW_MESSAGE);
         actual = calculator.calculate(ZERO, NEGATIVE_NUMBER, operation);
         expected = Math.pow(ZERO, NEGATIVE_NUMBER);
+        assertEquals(actual, expected, BAD_POW_MESSAGE);
         actual = calculator.calculate(POSITIVE_NUMBER, ZERO, operation);
         expected = Math.pow(POSITIVE_NUMBER, ZERO);
+        assertEquals(actual, expected, BAD_POW_MESSAGE);
     }
 
     @Test
