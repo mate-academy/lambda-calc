@@ -17,6 +17,12 @@ class CalculatorTest {
     private static final double ZERO = 0;
     private static final double MAX_NUMBER = Double.MAX_VALUE;
     private static final double MIN_NUMBER = Double.MIN_VALUE;
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char DIVISION = '/';
+    private static final char MULTIPLICATION = '*';
+    private static final char POW = '^';
+    private static final char REMAINDER_DIVISION = '%';
     private static Calculator calculator;
     private char operation;
     private double actual;
@@ -29,7 +35,7 @@ class CalculatorTest {
 
     @Test
     void additionTest() {
-        operation = '+';
+        operation = ADDITION;
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = POSITIVE_NUMBER + POSITIVE_NUMBER;
         assertEquals(actual, expected, BAD_ADDITION_MESSAGE);
@@ -52,7 +58,7 @@ class CalculatorTest {
 
     @Test
     void subtractionTest() {
-        operation = '-';
+        operation = SUBTRACTION;
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = ZERO;
         assertEquals(actual, expected, BAD_SUBTRACTION_MESSAGE);
@@ -71,7 +77,7 @@ class CalculatorTest {
 
     @Test
     void multiplicationTest() {
-        operation = '*';
+        operation = MULTIPLICATION;
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = POSITIVE_NUMBER * POSITIVE_NUMBER;
         assertEquals(actual, expected, BAD_MULTIPLY_MESSAGE);
@@ -94,7 +100,7 @@ class CalculatorTest {
 
     @Test
     void divisionTest() {
-        operation = '/';
+        operation = DIVISION;
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = 1;
         assertEquals(actual, expected, BAD_DIVISION_MESSAGE);
@@ -112,7 +118,7 @@ class CalculatorTest {
 
     @Test
     void remainderDivisionTest() {
-        operation = '%';
+        operation = REMAINDER_DIVISION;
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = ZERO;
         assertEquals(actual, expected, BAD_DIVISION_MESSAGE);
@@ -130,7 +136,7 @@ class CalculatorTest {
 
     @Test
     void powTest() {
-        operation = '^';
+        operation = POW;
         actual = calculator.calculate(POSITIVE_NUMBER, POSITIVE_NUMBER, operation);
         expected = Math.pow(POSITIVE_NUMBER, POSITIVE_NUMBER);
         assertEquals(actual, expected, BAD_POW_MESSAGE);
