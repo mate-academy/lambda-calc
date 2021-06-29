@@ -15,11 +15,8 @@ public class CalculatorTest {
         testCalculator = new Calculator();
     }
 
-    /**
-     * Tests for method calculate()
-     */
     @Test
-    void calculate_LegalOperation_OK() {
+    void calculate_legalOperation_OK() {
         double firstArgument = 200.0;
         double secondArgument = 100.0;
         char operation = '+';
@@ -29,7 +26,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_IllegalOperation_notOK() {
+    void calculate_illegalOperation_notOK() {
         double firstArgument = 200.0;
         double secondArgument = 100.0;
         char operation = '?';
@@ -37,9 +34,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for addition, first parameter : -MAX_VALUE
-     */
     @Test
     void calculate_additionOfMinusDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
@@ -109,9 +103,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for addition, first parameter :  negative number
-     */
     @Test
     void calculate_additionOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -200.0;
@@ -182,9 +173,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for addition, first parameter :  -MIN_VALUE
-     */
     @Test
     void calculate_additionOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
@@ -255,9 +243,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for addition, first parameter :  Zero
-     */
     @Test
     void calculate_additionOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
@@ -328,9 +313,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for addition, first parameter :  MIN_VALUE
-     */
     @Test
     void calculate_additionOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
@@ -401,9 +383,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for addition, first parameter :  positive number
-     */
     @Test
     void calculate_additionOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 200.0;
@@ -474,9 +453,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for addition, first parameter : MAX_VALUE
-     */
     @Test
     void calculate_additionOfDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
@@ -546,9 +522,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for subtraction, first parameter : -MAX_VALUE
-     */
     @Test
     void calculate_subtractionOfMinusDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
@@ -618,9 +591,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for subtraction, first parameter :  negative number
-     */
     @Test
     void calculate_subtractionOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -200.0;
@@ -691,9 +661,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for subtraction, first parameter :  -MIN_VALUE
-     */
     @Test
     void calculate_subtractionOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
@@ -764,9 +731,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for subtraction, first parameter :  Zero
-     */
     @Test
     void calculate_subtractionOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
@@ -837,9 +801,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for subtraction, first parameter :  MIN_VALUE
-     */
     @Test
     void calculate_subtractionOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
@@ -910,9 +871,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for subtraction, first parameter :  positive number
-     */
     @Test
     void calculate_subtractionOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 200.0;
@@ -983,9 +941,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for subtraction, first parameter : MAX_VALUE
-     */
     @Test
     void calculate_subtractionOfDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
@@ -1055,9 +1010,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for division, first parameter : -MAX_VALUE
-     */
     @Test
     void calculate_divisionOfMinusDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
@@ -1125,9 +1077,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for division, first parameter :  negative number
-     */
     @Test
     void calculate_divisionOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -2.0;
@@ -1195,9 +1144,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for division, first parameter :  -MIN_VALUE
-     */
     @Test
     void calculate_divisionOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
@@ -1267,9 +1213,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for division, first parameter :  Zero
-     */
     @Test
     void calculate_divisionOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
@@ -1339,9 +1282,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for division, first parameter :  MIN_VALUE
-     */
     @Test
     void calculate_divisionOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
@@ -1411,9 +1351,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for division, first parameter :  positive number
-     */
     @Test
     void calculate_divisionOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 4.0;
@@ -1481,9 +1418,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for division, first parameter : MAX_VALUE
-     */
     @Test
     void calculate_divisionOfDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
@@ -1551,9 +1485,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for multiplication, first parameter : -MAX_VALUE
-     */
     @Test
     void calculate_multiplicationOfMinusDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
@@ -1620,9 +1551,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for multiplication, first parameter :  negative number
-     */
     @Test
     void calculate_multiplicationOfNegativeNumberAndMinusDoubleMax_notOK() {
         double firstArgument = -200.0;
@@ -1691,9 +1619,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for multiplication, first parameter :  -MIN_VALUE
-     */
     @Test
     void calculate_multiplicationOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
@@ -1764,9 +1689,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for multiplication, first parameter :  Zero
-     */
     @Test
     void calculate_multiplicationOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
@@ -1837,9 +1759,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for multiplication, first parameter :  MIN_VALUE
-     */
     @Test
     void calculate_multiplicationOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
@@ -1910,9 +1829,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for multiplication, first parameter :  positive number
-     */
     @Test
     void calculate_multiplicationOfPositiveNumberAndMinusDoubleMax_notOK() {
         double firstArgument = 200.0;
@@ -1981,9 +1897,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for multiplication, first parameter : MAX_VALUE
-     */
     @Test
     void calculate_multiplicationOfDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
@@ -2050,9 +1963,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for raising to a power, first parameter : -MAX_VALUE
-     */
     @Test
     void calculate_PowerOfMinusDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
@@ -2119,9 +2029,7 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for raising to a power, first parameter :  negative number
-     */
+
     @Test
     void calculate_PowerOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -2.0;
@@ -2189,9 +2097,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for raising to a power, first parameter :  -MIN_VALUE
-     */
     @Test
     void calculate_PowerOfMinusDoubleMinAndMinusDoubleMax_notOK() {
         double firstArgument = -Double.MIN_VALUE;
@@ -2258,9 +2163,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for raising to a power, first parameter :  Zero
-     */
     @Test
     void calculate_PowerOfZeroAndMinusDoubleMax_notOK() {
         double firstArgument = 0.0;
@@ -2328,9 +2230,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for raising to a power, first parameter :  MIN_VALUE
-     */
     @Test
     void calculate_PowerOfDoubleMinAndMinusDoubleMax_notOK() {
         double firstArgument = Double.MIN_VALUE;
@@ -2399,9 +2298,6 @@ public class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    /**
-     * Tests for raising to a power, first parameter :  positive number
-     */
     @Test
     void calculate_PowerOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 2.0;
@@ -2471,9 +2367,6 @@ public class CalculatorTest {
                 () -> testCalculator.calculate(firstArgument, secondArgument, operation));
     }
 
-    /**
-     * Tests for raising to a power, first parameter : MAX_VALUE
-     */
     @Test
     void calculate_PowerOfDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;

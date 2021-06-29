@@ -77,12 +77,6 @@ public class Calculator implements CalculatorService {
 
     @Override
     public double calculateRaisingToAPower(double firstArgument, double secondArgument) {
-        if (secondArgument == 0) {
-            return 1.0;
-        }
-        if (firstArgument == 0 && secondArgument > 0) {
-            return 0.0;
-        }
         double result = Math.pow(firstArgument, secondArgument);
         if (result == Double.POSITIVE_INFINITY) {
             throw new ArithmeticException("Infinity");
