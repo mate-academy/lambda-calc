@@ -41,7 +41,7 @@ public class CalculatorTest {
      * Tests for addition, first parameter : -MAX_VALUE
      */
     @Test
-    void calculate_Addition_MinusDoubleMax_VS_MinusDoubleMax_notOK() {
+    void calculate_additionOfMinusDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '+';
@@ -50,7 +50,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMax_VS_NegativeNumber_OK() {
+    void calculate_additionOfMinusDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 100.0;
         char operation = '+';
@@ -60,7 +60,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMax_VS_MinusDoubleMin_OK() {
+    void calculate_additionOfMinusDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '+';
@@ -70,7 +70,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMax_VS_Zero_OK() {
+    void calculate_additionOfMinusDoubleMaxAndZero_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '+';
@@ -80,7 +80,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMax_VS_DoubleMin_OK() {
+    void calculate_additionOfMinusDoubleMaxAndDoubleMin_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '+';
@@ -90,7 +90,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMax_VS_PositiveNumber_OK() {
+    void calculate_additionOfMinusDoubleMaxAndPositiveNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 100.0;
         char operation = '+';
@@ -100,7 +100,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMax_VS_DoubleMax_OK() {
+    void calculate_additionOfMinusDoubleMaxAndDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -113,7 +113,7 @@ public class CalculatorTest {
      * Tests for addition, first parameter :  negative number
      */
     @Test
-    void calculate_Addition_NegativeNumber_VS_MinusDoubleMax_OK() {
+    void calculate_additionOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -200.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '+';
@@ -123,7 +123,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_NegativeNumber_VS_NegativeNumber_OK() {
+    void calculate_additionOfNegativeNumberAndNegativeNumber_OK() {
         double firstArgument = -200.0;
         double secondArgument = -100.0;
         char operation = '+';
@@ -133,7 +133,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_NegativeNumber_VS_MinusDoubleMin_OK() {
+    void calculate_additionOfNegativeNumberAndMinusDoubleMin_OK() {
         double firstArgument = -200.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '+';
@@ -143,7 +143,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_NegativeNumber_VS_Zero_OK() {
+    void calculate_additionOfNegativeNumberAndZero_OK() {
         double firstArgument = -200.0;
         double secondArgument = 0.0;
         char operation = '+';
@@ -153,7 +153,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_NegativeNumber_VS_DoubleMin_OK() {
+    void calculate_additionOfNegativeNumberAndDoubleMin_OK() {
         double firstArgument = -200.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '+';
@@ -163,7 +163,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_NegativeNumber_VS_PositiveNumber_OK() {
+    void calculate_additionOfNegativeNumberAndPositiveNumber_OK() {
         double firstArgument = -200.0;
         double secondArgument = 100.0;
         char operation = '+';
@@ -173,7 +173,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_NegativeNumber_VS_DoubleMax_OK() {
+    void calculate_additionOfNegativeNumberAndDoubleMax_OK() {
         double firstArgument = -200.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -186,7 +186,7 @@ public class CalculatorTest {
      * Tests for addition, first parameter :  -MIN_VALUE
      */
     @Test
-    void calculate_Addition_MinusDoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_additionOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '+';
@@ -196,7 +196,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMin_VS_NegativeNumber_OK() {
+    void calculate_additionOfMinusDoubleMinAndNegativeNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -100.0;
         char operation = '+';
@@ -206,7 +206,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_additionOfMinusDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '+';
@@ -216,7 +216,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMin_VS_Zero_OK() {
+    void calculate_additionOfMinusDoubleMinAndZero_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '+';
@@ -226,7 +226,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMin_VS_DoubleMin_OK() {
+    void calculate_additionOfMinusDoubleMinAndDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '+';
@@ -236,7 +236,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMin_VS_PositiveNumber_OK() {
+    void calculate_additionOfMinusDoubleMinAndPositiveNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 100.0;
         char operation = '+';
@@ -246,7 +246,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_MinusDoubleMin_VS_DoubleMax_OK() {
+    void calculate_additionOfMinusDoubleMinAndDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -259,7 +259,7 @@ public class CalculatorTest {
      * Tests for addition, first parameter :  Zero
      */
     @Test
-    void calculate_Addition_Zero_VS_MinusDoubleMax_OK() {
+    void calculate_additionOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '+';
@@ -269,7 +269,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_Zero_VS_NegativeNumber_OK() {
+    void calculate_additionOfZeroAndNegativeNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = -100.0;
         char operation = '+';
@@ -279,7 +279,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_Zero_VS_MinusDoubleMin_OK() {
+    void calculate_additionOfZeroAndMinusDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '+';
@@ -289,7 +289,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_Zero_VS_Zero_OK() {
+    void calculate_additionOfZeroAndZero_OK() {
         double firstArgument = 0.0;
         double secondArgument = 0.0;
         char operation = '+';
@@ -299,7 +299,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_Zero_VS_DoubleMin_OK() {
+    void calculate_additionOfZeroAndDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '+';
@@ -309,7 +309,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_Zero_VS_PositiveNumber_OK() {
+    void calculate_additionOfZeroAndPositiveNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = 100.0;
         char operation = '+';
@@ -319,7 +319,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_Zero_VS_DoubleMax_OK() {
+    void calculate_additionOfZeroAndDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -332,7 +332,7 @@ public class CalculatorTest {
      * Tests for addition, first parameter :  MIN_VALUE
      */
     @Test
-    void calculate_Addition_DoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_additionOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '+';
@@ -342,7 +342,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMin_VS_NegativeNumber_OK() {
+    void calculate_additionOfDoubleMinAndNegativeNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -100.0;
         char operation = '+';
@@ -352,7 +352,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_additionOfDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '+';
@@ -362,7 +362,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMin_VS_Zero_OK() {
+    void calculate_additionOfDoubleMinAndZero_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 0;
         char operation = '+';
@@ -372,7 +372,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMin_VS_DoubleMin_OK() {
+    void calculate_additionOfDoubleMinAndDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -382,7 +382,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMin_VS_PositiveNumber_OK() {
+    void calculate_additionOfDoubleMinAndPositiveNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 100.0;
         char operation = '+';
@@ -392,7 +392,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMin_VS_DoubleMax_OK() {
+    void calculate_additionOfDoubleMinAndDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -405,7 +405,7 @@ public class CalculatorTest {
      * Tests for addition, first parameter :  positive number
      */
     @Test
-    void calculate_Addition_PositiveNumber_VS_MinusDoubleMax_OK() {
+    void calculate_additionOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 200.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '+';
@@ -415,7 +415,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_PositiveNumber_VS_NegativeNumber_OK() {
+    void calculate_additionOfPositiveNumberAndNegativeNumber_OK() {
         double firstArgument = 200.0;
         double secondArgument = -100.0;
         char operation = '+';
@@ -425,7 +425,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_PositiveNumber_VS_MinusDoubleMin_OK() {
+    void calculate_additionOfPositiveNumberAndMinusDoubleMin_OK() {
         double firstArgument = 200.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '+';
@@ -435,7 +435,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_PositiveNumber_VS_Zero_OK() {
+    void calculate_additionOfPositiveNumberAndZero_OK() {
         double firstArgument = 200.0;
         double secondArgument = 0.0;
         char operation = '+';
@@ -445,7 +445,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_PositiveNumber_VS_DoubleMin_OK() {
+    void calculate_additionOfPositiveNumberAndDoubleMin_OK() {
         double firstArgument = 200.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '+';
@@ -455,7 +455,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_PositiveNumber_VS_PositiveNumber_OK() {
+    void calculate_additionOfPositiveNumberAndPositiveNumber_OK() {
         double firstArgument = 200.0;
         double secondArgument = 100.0;
         char operation = '+';
@@ -465,7 +465,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_PositiveNumber_VS_DoubleMax_OK() {
+    void calculate_additionOfPositiveNumberAndDoubleMax_OK() {
         double firstArgument = 200.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -478,7 +478,7 @@ public class CalculatorTest {
      * Tests for addition, first parameter : MAX_VALUE
      */
     @Test
-    void calculate_Addition_DoubleMax_VS_MinusDoubleMax_OK() {
+    void calculate_additionOfDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '+';
@@ -488,7 +488,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMax_VS_NegativeNumber_OK() {
+    void calculate_additionOfDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -100.0;
         char operation = '+';
@@ -498,7 +498,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMax_VS_MinusDoubleMin_OK() {
+    void calculate_additionOfDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '+';
@@ -508,7 +508,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMax_VS_Zero_OK() {
+    void calculate_additionOfDoubleMaxAndZero_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '+';
@@ -518,7 +518,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMax_VS_DoubleMin_OK() {
+    void calculate_additionOfDoubleMaxAndDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '+';
@@ -528,7 +528,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMax_VS_PositiveNumber_OK() {
+    void calculate_additionOfDoubleMaxAndPositiveNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 100.0;
         char operation = '+';
@@ -538,7 +538,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Addition_DoubleMax_VS_DoubleMax_notOK() {
+    void calculate_additionOfDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '+';
@@ -550,7 +550,7 @@ public class CalculatorTest {
      * Tests for subtraction, first parameter : -MAX_VALUE
      */
     @Test
-    void calculate_Subtraction_MinusDoubleMax_VS_MinusDoubleMax_OK() {
+    void calculate_subtractionOfMinusDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '-';
@@ -560,7 +560,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMax_VS_NegativeNumber_OK() {
+    void calculate_subtractionOfMinusDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -100.0;
         char operation = '-';
@@ -570,7 +570,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMax_VS_MinusDoubleMin_OK() {
+    void calculate_subtractionOfMinusDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '-';
@@ -580,7 +580,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMax_VS_Zero_OK() {
+    void calculate_subtractionOfMinusDoubleMaxAndZero_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '-';
@@ -590,7 +590,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMax_VS_DoubleMin_OK() {
+    void calculate_subtractionOfMinusDoubleMaxAndDoubleMin_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '-';
@@ -600,7 +600,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMax_VS_PositiveNumber_OK() {
+    void calculate_subtractionOfMinusDoubleMaxAndPositiveNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 100.0;
         char operation = '-';
@@ -610,7 +610,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMax_VS_DoubleMax_notOK() {
+    void calculate_subtractionOfMinusDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '-';
@@ -622,7 +622,7 @@ public class CalculatorTest {
      * Tests for subtraction, first parameter :  negative number
      */
     @Test
-    void calculate_Subtraction_NegativeNumber_VS_MinusDoubleMax_OK() {
+    void calculate_subtractionOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -200.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '-';
@@ -632,7 +632,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_NegativeNumber_VS_NegativeNumber_OK() {
+    void calculate_subtractionOfNegativeNumberAndNegativeNumber_OK() {
         double firstArgument = -200.0;
         double secondArgument = -100.0;
         char operation = '-';
@@ -642,7 +642,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_NegativeNumber_VS_MinusDoubleMin_OK() {
+    void calculate_subtractionOfNegativeNumberAndMinusDoubleMin_OK() {
         double firstArgument = -200.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '-';
@@ -652,7 +652,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_NegativeNumber_VS_Zero_OK() {
+    void calculate_subtractionOfNegativeNumberAndZero_OK() {
         double firstArgument = -200.0;
         double secondArgument = 0.0;
         char operation = '-';
@@ -662,7 +662,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_NegativeNumber_VS_DoubleMin_OK() {
+    void calculate_subtractionOfNegativeNumberAndDoubleMin_OK() {
         double firstArgument = -200.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '-';
@@ -672,7 +672,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_NegativeNumber_VS_PositiveNumber_OK() {
+    void calculate_subtractionOfNegativeNumberAndPositiveNumber_OK() {
         double firstArgument = -200.0;
         double secondArgument = 100.0;
         char operation = '-';
@@ -682,7 +682,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_NegativeNumber_VS_DoubleMax_OK() {
+    void calculate_subtractionOfNegativeNumberAndDoubleMax_OK() {
         double firstArgument = -200.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '-';
@@ -695,7 +695,7 @@ public class CalculatorTest {
      * Tests for subtraction, first parameter :  -MIN_VALUE
      */
     @Test
-    void calculate_Subtraction_MinusDoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_subtractionOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '-';
@@ -705,7 +705,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMin_VS_NegativeNumber_OK() {
+    void calculate_SubtractionOfMinusDoubleMinAndNegativeNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -100.0;
         char operation = '-';
@@ -715,7 +715,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_subtractionOfMinusDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '-';
@@ -725,7 +725,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMin_VS_Zero_OK() {
+    void calculate_subtractionOfMinusDoubleMinAndZero_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '-';
@@ -735,7 +735,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMin_VS_DoubleMin_OK() {
+    void calculate_subtractionOfMinusDoubleMinAndDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '-';
@@ -745,7 +745,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMin_VS_PositiveNumber_OK() {
+    void calculate_subtractionOfMinusDoubleMinAndPositiveNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 100.0;
         char operation = '-';
@@ -755,7 +755,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_MinusDoubleMin_VS_DoubleMax_OK() {
+    void calculate_subtractionOfMinusDoubleMinAndDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '-';
@@ -768,7 +768,7 @@ public class CalculatorTest {
      * Tests for subtraction, first parameter :  Zero
      */
     @Test
-    void calculate_Subtraction_Zero_VS_MinusDoubleMax_OK() {
+    void calculate_subtractionOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '-';
@@ -778,7 +778,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_Zero_VS_NegativeNumber_OK() {
+    void calculate_subtractionOfZeroAndNegativeNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = -100.0;
         char operation = '-';
@@ -788,7 +788,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_Zero_VS_MinusDoubleMin_OK() {
+    void calculate_subtractionOfZeroAndMinusDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '-';
@@ -798,7 +798,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_Zero_VS_Zero_OK() {
+    void calculate_subtractionOfZeroAndZero_OK() {
         double firstArgument = 0.0;
         double secondArgument = 0.0;
         char operation = '-';
@@ -808,7 +808,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_Zero_VS_DoubleMin_OK() {
+    void calculate_subtractionOfZeroAndDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '-';
@@ -818,7 +818,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_Zero_VS_PositiveNumber_OK() {
+    void calculate_subtractionOfZeroAndPositiveNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = 100.0;
         char operation = '-';
@@ -828,7 +828,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_Zero_VS_DoubleMax_OK() {
+    void calculate_subtractionOfZeroAndDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '-';
@@ -841,7 +841,7 @@ public class CalculatorTest {
      * Tests for subtraction, first parameter :  MIN_VALUE
      */
     @Test
-    void calculate_Subtraction_DoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_subtractionOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '-';
@@ -851,7 +851,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMin_VS_NegativeNumber_OK() {
+    void calculate_subtractionOfDoubleMinAndNegativeNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -100.0;
         char operation = '-';
@@ -861,7 +861,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_subtractionOfDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '-';
@@ -871,7 +871,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMin_VS_Zero_OK() {
+    void calculate_subtractionOfDoubleMinAndZero_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '-';
@@ -881,7 +881,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMin_VS_DoubleMin_OK() {
+    void calculate_subtractionOfDoubleMinAndDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '-';
@@ -891,7 +891,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMin_VS_PositiveNumber_OK() {
+    void calculate_subtractionOfDoubleMinAndPositiveNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 100.0;
         char operation = '-';
@@ -901,7 +901,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMin_VS_DoubleMax_OK() {
+    void calculate_subtractionOfDoubleMinAndDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '-';
@@ -914,7 +914,7 @@ public class CalculatorTest {
      * Tests for subtraction, first parameter :  positive number
      */
     @Test
-    void calculate_Subtraction_PositiveNumber_VS_MinusDoubleMax_OK() {
+    void calculate_subtractionOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 200.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '-';
@@ -924,7 +924,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_PositiveNumber_VS_NegativeNumber_OK() {
+    void calculate_subtractionOfPositiveNumberAndNegativeNumber_OK() {
         double firstArgument = 200.0;
         double secondArgument = -100.0;
         char operation = '-';
@@ -934,7 +934,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_PositiveNumber_VS_MinusDoubleMin_OK() {
+    void calculate_subtractionOfPositiveNumberAndMinusDoubleMin_OK() {
         double firstArgument = 200.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '-';
@@ -944,7 +944,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_PositiveNumber_VS_Zero_OK() {
+    void calculate_subtractionOfPositiveNumberAndZero_OK() {
         double firstArgument = 200.0;
         double secondArgument = 0.0;
         char operation = '-';
@@ -954,7 +954,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_PositiveNumber_VS_DoubleMin_OK() {
+    void calculate_subtractionOfPositiveNumberAndDoubleMin_OK() {
         double firstArgument = 200.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '-';
@@ -964,7 +964,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_PositiveNumber_VS_PositiveNumber_OK() {
+    void calculate_subtractionOfPositiveNumberAndPositiveNumber_OK() {
         double firstArgument = 200.0;
         double secondArgument = 100.0;
         char operation = '-';
@@ -974,7 +974,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_PositiveNumber_VS_DoubleMax_OK() {
+    void calculate_subtractionOfPositiveNumberAndDoubleMax_OK() {
         double firstArgument = 200.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '-';
@@ -987,7 +987,7 @@ public class CalculatorTest {
      * Tests for subtraction, first parameter : MAX_VALUE
      */
     @Test
-    void calculate_Subtraction_DoubleMax_VS_MinusDoubleMax_notOK() {
+    void calculate_subtractionOfDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '-';
@@ -996,7 +996,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMax_VS_NegativeNumber_OK() {
+    void calculate_subtractionOfDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -100.0;
         char operation = '-';
@@ -1006,7 +1006,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMax_VS_MinusDoubleMin_OK() {
+    void calculate_subtractionOfDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '-';
@@ -1016,7 +1016,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMax_VS_Zero_OK() {
+    void calculate_subtractionOfDoubleMaxAndZero_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '-';
@@ -1026,7 +1026,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMax_VS_DoubleMin_OK() {
+    void calculate_subtractionOfDoubleMaxAndDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '-';
@@ -1036,7 +1036,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMax_VS_PositiveNumber_OK() {
+    void calculate_subtractionOfDoubleMaxAndPositiveNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 100.0;
         char operation = '-';
@@ -1046,7 +1046,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Subtraction_DoubleMax_VS_DoubleMax_OK() {
+    void calculate_subtractionOfDoubleMaxAndDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '-';
@@ -1059,7 +1059,7 @@ public class CalculatorTest {
      * Tests for division, first parameter : -MAX_VALUE
      */
     @Test
-    void calculate_Division_MinusDoubleMax_VS_MinusDoubleMax_OK() {
+    void calculate_divisionOfMinusDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '/';
@@ -1069,7 +1069,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMax_VS_NegativeNumber_OK() {
+    void calculate_divisionOfMinusDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -2.0;
         char operation = '/';
@@ -1079,7 +1079,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMax_VS_MinusDoubleMin_notOK() {
+    void calculate_divisionOfMinusDoubleMaxAndMinusDoubleMin_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '/';
@@ -1088,7 +1088,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMax_VS_Zero_notOK() {
+    void calculate_divisionOfMinusDoubleMaxAndZero_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '/';
@@ -1097,7 +1097,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMax_VS_DoubleMin_notOK() {
+    void calculate_divisionOfMinusDoubleMaxAndDoubleMin_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '/';
@@ -1106,7 +1106,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMax_VS_PositiveNumber_OK() {
+    void calculate_divisionOfMinusDoubleMaxAndPositiveNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 2.0;
         char operation = '/';
@@ -1116,7 +1116,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMax_VS_DoubleMax_OK() {
+    void calculate_divisionOfMinusDoubleMaxAndDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '/';
@@ -1129,7 +1129,7 @@ public class CalculatorTest {
      * Tests for division, first parameter :  negative number
      */
     @Test
-    void calculate_Division_NegativeNumber_VS_MinusDoubleMax_OK() {
+    void calculate_divisionOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -2.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '/';
@@ -1139,7 +1139,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_NegativeNumber_VS_NegativeNumber_OK() {
+    void calculate_divisionOfNegativeNumberAndNegativeNumber_OK() {
         double firstArgument = -4.0;
         double secondArgument = -2.0;
         char operation = '/';
@@ -1149,7 +1149,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_NegativeNumber_VS_MinusDoubleMin_notOK() {
+    void calculate_divisionOfNegativeNumberAndMinusDoubleMin_notOK() {
         double firstArgument = -2.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '/';
@@ -1158,7 +1158,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_NegativeNumber_VS_Zero_notOK() {
+    void calculate_divisionOfNegativeNumberAndZero_notOK() {
         double firstArgument = -2.0;
         double secondArgument = 0;
         char operation = '/';
@@ -1167,7 +1167,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_NegativeNumber_VS_DoubleMin_notOK() {
+    void calculate_divisionOfNegativeNumberAndDoubleMin_notOK() {
         double firstArgument = -2.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '/';
@@ -1176,7 +1176,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_NegativeNumber_VS_PositiveNumber_OK() {
+    void calculate_divisionOfNegativeNumberAndPositiveNumber_OK() {
         double firstArgument = -4.0;
         double secondArgument = 2.0;
         char operation = '/';
@@ -1186,7 +1186,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_NegativeNumber_VS_DoubleMax_OK() {
+    void calculate_divisionOfNegativeNumberAndDoubleMax_OK() {
         double firstArgument = -2.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '/';
@@ -1199,7 +1199,7 @@ public class CalculatorTest {
      * Tests for division, first parameter :  -MIN_VALUE
      */
     @Test
-    void calculate_Division_MinusDoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_divisionOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '/';
@@ -1209,7 +1209,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMin_VS_NegativeNumber_OK() {
+    void calculate_divisionOfMinusDoubleMinAndNegativeNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -2.0;
         char operation = '/';
@@ -1219,7 +1219,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_divisionOfMinusDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '/';
@@ -1229,7 +1229,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMin_VS_Zero_notOK() {
+    void calculate_divisionOfMinusDoubleMinAndZero_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 0;
         char operation = '/';
@@ -1238,7 +1238,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMin_VS_DoubleMin_OK() {
+    void calculate_divisionOfMinusDoubleMinAndDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '/';
@@ -1248,7 +1248,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMin_VS_PositiveNumber_OK() {
+    void calculate_divisionOfMinusDoubleMinAndPositiveNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 2.0;
         char operation = '/';
@@ -1258,7 +1258,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_MinusDoubleMin_VS_DoubleMax_OK() {
+    void calculate_divisionOfMinusDoubleMinAndDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '/';
@@ -1271,7 +1271,7 @@ public class CalculatorTest {
      * Tests for division, first parameter :  Zero
      */
     @Test
-    void calculate_Division_Zero_VS_MinusDoubleMax_OK() {
+    void calculate_divisionOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '/';
@@ -1281,7 +1281,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_Zero_VS_NegativeNumber_OK() {
+    void calculate_divisionOfZeroAndNegativeNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = -2.0;
         char operation = '/';
@@ -1291,7 +1291,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_Zero_VS_MinusDoubleMin_OK() {
+    void calculate_divisionOfZeroAndMinusDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '/';
@@ -1301,7 +1301,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_Zero_VS_Zero_notOK() {
+    void calculate_divisionOfZeroAndZero_notOK() {
         double firstArgument = 0.0;
         double secondArgument = 0.0;
         char operation = '/';
@@ -1310,7 +1310,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_Zero_VS_DoubleMin_OK() {
+    void calculate_divisionOfZeroAndDoubleMin_OK() {
         double firstArgument = 0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '/';
@@ -1320,7 +1320,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_Zero_VS_PositiveNumber_OK() {
+    void calculate_divisionOfZeroAndPositiveNumber_OK() {
         double firstArgument = 0;
         double secondArgument = 2.0;
         char operation = '/';
@@ -1330,7 +1330,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_Zero_VS_DoubleMax_OK() {
+    void calculate_divisionOfZeroAndDoubleMax_OK() {
         double firstArgument = 0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '/';
@@ -1343,7 +1343,7 @@ public class CalculatorTest {
      * Tests for division, first parameter :  MIN_VALUE
      */
     @Test
-    void calculate_Division_DoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_divisionOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '/';
@@ -1353,7 +1353,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMin_VS_NegativeNumber_OK() {
+    void calculate_divisionOfDoubleMinAndNegativeNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -2.0;
         char operation = '/';
@@ -1363,7 +1363,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_divisionOfDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '/';
@@ -1373,7 +1373,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMin_VS_Zero_notOK() {
+    void calculate_divisionOfDoubleMinAndZero_notOK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '/';
@@ -1382,7 +1382,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMin_VS_DoubleMin_OK() {
+    void calculate_divisionOfDoubleMinAndDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '/';
@@ -1392,7 +1392,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMin_VS_PositiveNumber_OK() {
+    void calculate_divisionOfDoubleMinAndPositiveNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 2.0;
         char operation = '/';
@@ -1402,7 +1402,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMin_VS_DoubleMax_OK() {
+    void calculate_divisionOfDoubleMinAndDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '/';
@@ -1415,7 +1415,7 @@ public class CalculatorTest {
      * Tests for division, first parameter :  positive number
      */
     @Test
-    void calculate_Division_PositiveNumber_VS_MinusDoubleMax_OK() {
+    void calculate_divisionOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 4.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '/';
@@ -1425,7 +1425,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_PositiveNumber_VS_NegativeNumber_OK() {
+    void calculate_divisionOfPositiveNumberAndNegativeNumber_OK() {
         double firstArgument = 4.0;
         double secondArgument = -2.0;
         char operation = '/';
@@ -1435,7 +1435,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_PositiveNumber_VS_MinusDoubleMin_notOK() {
+    void calculate_divisionOfPositiveNumberAndMinusDoubleMin_notOK() {
         double firstArgument = 4.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '/';
@@ -1444,7 +1444,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_PositiveNumber_VS_Zero_notOK() {
+    void calculate_divisionOfPositiveNumberAndZero_notOK() {
         double firstArgument = 4.0;
         double secondArgument = 0.0;
         char operation = '/';
@@ -1453,7 +1453,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_PositiveNumber_VS_DoubleMin_notOK() {
+    void calculate_divisionOfPositiveNumberAndDoubleMin_notOK() {
         double firstArgument = 4.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '/';
@@ -1462,7 +1462,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_PositiveNumber_VS_PositiveNumber_OK() {
+    void calculate_divisionOfPositiveNumberAndPositiveNumber_OK() {
         double firstArgument = 4.0;
         double secondArgument = 2.0;
         char operation = '/';
@@ -1472,7 +1472,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_PositiveNumber_VS_DoubleMax_OK() {
+    void calculate_divisionOfPositiveNumberAndDoubleMax_OK() {
         double firstArgument = 4.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '/';
@@ -1485,7 +1485,7 @@ public class CalculatorTest {
      * Tests for division, first parameter : MAX_VALUE
      */
     @Test
-    void calculate_Division_DoubleMax_VS_MinusDoubleMax_OK() {
+    void calculate_divisionOfDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '/';
@@ -1495,7 +1495,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMax_VS_NegativeNumber_OK() {
+    void calculate_divisionOfDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -2.0;
         char operation = '/';
@@ -1505,7 +1505,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMax_VS_MinusDoubleMin_notOK() {
+    void calculate_divisionOfDoubleMaxAndMinusDoubleMin_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '/';
@@ -1514,7 +1514,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMax_VS_Zero_notOK() {
+    void calculate_divisionOfDoubleMaxAndZero_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '/';
@@ -1523,7 +1523,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMax_VS_DoubleMin_notOK() {
+    void calculate_divisionOfDoubleMaxAndDoubleMin_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '/';
@@ -1532,7 +1532,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMax_VS_PositiveNumber_OK() {
+    void calculate_divisionOfDoubleMaxAndPositiveNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 2.0;
         char operation = '/';
@@ -1542,7 +1542,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Division_DoubleMax_VS_DoubleMax_OK() {
+    void calculate_divisionOfDoubleMaxAndDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '/';
@@ -1555,7 +1555,7 @@ public class CalculatorTest {
      * Tests for multiplication, first parameter : -MAX_VALUE
      */
     @Test
-    void calculate_Multiplication_MinusDoubleMax_VS_MinusDoubleMax_notOK() {
+    void calculate_multiplicationOfMinusDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1564,7 +1564,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMax_VS_NegativeNumber_notOK() {
+    void calculate_multiplicationOfMinusDoubleMaxAndNegativeNumber_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -200.0;
         char operation = '*';
@@ -1573,7 +1573,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMax_VS_MinusDoubleMin_OK() {
+    void calculate_multiplicationOfMinusDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '*';
@@ -1583,7 +1583,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMax_VS_Zero_OK() {
+    void calculate_multiplicationOfMinusDoubleMaxAndZero_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '*';
@@ -1593,7 +1593,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMax_VS_DoubleMin_OK() {
+    void calculate_multiplicationOfMinusDoubleMaxAndDoubleMin_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '*';
@@ -1603,7 +1603,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMax_VS_PositiveNumber_notOK() {
+    void calculate_multiplicationOfMinusDoubleMaxAndPositiveNumber_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 200.0;
         char operation = '*';
@@ -1612,7 +1612,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMax_VS_DoubleMax_notOK() {
+    void calculate_multiplicationOfMinusDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '*';
@@ -1624,7 +1624,7 @@ public class CalculatorTest {
      * Tests for multiplication, first parameter :  negative number
      */
     @Test
-    void calculate_Multiplication_NegativeNumber_VS_MinusDoubleMax_notOK() {
+    void calculate_multiplicationOfNegativeNumberAndMinusDoubleMax_notOK() {
         double firstArgument = -200.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1633,7 +1633,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_NegativeNumber_VS_NegativeNumber_OK() {
+    void calculate_multiplicationOfNegativeNumberAndNegativeNumber_OK() {
         double firstArgument = -200.0;
         double secondArgument = -100.0;
         char operation = '*';
@@ -1643,7 +1643,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_NegativeNumber_VS_MinusDoubleMin_OK() {
+    void calculate_multiplicationOfNegativeNumberAndMinusDoubleMin_OK() {
         double firstArgument = -200.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '*';
@@ -1653,7 +1653,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_NegativeNumber_VS_Zero_OK() {
+    void calculate_multiplicationOfNegativeNumberAndZero_OK() {
         double firstArgument = -200.0;
         double secondArgument = 0.0;
         char operation = '*';
@@ -1663,7 +1663,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_NegativeNumber_VS_DoubleMin_OK() {
+    void calculate_multiplicationOfNegativeNumberAndDoubleMin_OK() {
         double firstArgument = -200.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '*';
@@ -1673,7 +1673,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_NegativeNumber_VS_PositiveNumber_OK() {
+    void calculate_multiplicationOfNegativeNumberAndPositiveNumber_OK() {
         double firstArgument = -200.0;
         double secondArgument = 100.0;
         char operation = '*';
@@ -1683,7 +1683,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_NegativeNumber_VS_DoubleMax_notOK() {
+    void calculate_multiplicationOfNegativeNumberAndDoubleMax_notOK() {
         double firstArgument = -200.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1695,7 +1695,7 @@ public class CalculatorTest {
      * Tests for multiplication, first parameter :  -MIN_VALUE
      */
     @Test
-    void calculate_Multiplication_MinusDoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_multiplicationOfMinusDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1705,7 +1705,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMin_VS_NegativeNumber_OK() {
+    void calculate_multiplicationOfMinusDoubleMinAndNegativeNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -100.0;
         char operation = '*';
@@ -1715,7 +1715,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_multiplicationOfMinusDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '*';
@@ -1725,7 +1725,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMin_VS_Zero_OK() {
+    void calculate_multiplicationOfMinusDoubleMinAndZero_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '*';
@@ -1735,7 +1735,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMin_VS_DoubleMin_OK() {
+    void calculate_multiplicationOfMinusDoubleMinAndDoubleMin_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '*';
@@ -1745,7 +1745,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMin_VS_PositiveNumber_OK() {
+    void calculate_multiplicationOfMinusDoubleMinAndPositiveNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 100.0;
         char operation = '*';
@@ -1755,7 +1755,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_MinusDoubleMin_VS_DoubleMax_OK() {
+    void calculate_multiplicationOfMinusDoubleMinAndDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '*';
@@ -1768,7 +1768,7 @@ public class CalculatorTest {
      * Tests for multiplication, first parameter :  Zero
      */
     @Test
-    void calculate_Multiplication_Zero_VS_MinusDoubleMax_OK() {
+    void calculate_multiplicationOfZeroAndMinusDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1778,7 +1778,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_Zero_VS_NegativeNumber_OK() {
+    void calculate_multiplicationOfZeroAndNegativeNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = -100.0;
         char operation = '*';
@@ -1788,7 +1788,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_Zero_VS_MinusDoubleMin_OK() {
+    void calculate_multiplicationOfZeroAndMinusDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '*';
@@ -1798,7 +1798,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_Zero_VS_Zero_OK() {
+    void calculate_multiplicationOfZeroAndZero_OK() {
         double firstArgument = 0.0;
         double secondArgument = 0.0;
         char operation = '*';
@@ -1808,7 +1808,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_Zero_VS_DoubleMin_OK() {
+    void calculate_multiplicationOfZeroAndDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '*';
@@ -1818,7 +1818,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_Zero_VS_PositiveNumber_OK() {
+    void calculate_multiplicationOfZeroAndPositiveNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = 100.0;
         char operation = '*';
@@ -1828,7 +1828,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_Zero_VS_DoubleMax_OK() {
+    void calculate_multiplicationOfZeroAndDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '*';
@@ -1841,7 +1841,7 @@ public class CalculatorTest {
      * Tests for multiplication, first parameter :  MIN_VALUE
      */
     @Test
-    void calculate_Multiplication_DoubleMin_VS_MinusDoubleMax_OK() {
+    void calculate_multiplicationOfDoubleMinAndMinusDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1851,7 +1851,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMin_VS_NegativeNumber_OK() {
+    void calculate_multiplicationOfDoubleMinAndNegativeNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -200.0;
         char operation = '*';
@@ -1861,7 +1861,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_multiplicationOfDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '*';
@@ -1871,7 +1871,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMin_VS_Zero_OK() {
+    void calculate_multiplicationOfDoubleMinAndZero_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '*';
@@ -1881,7 +1881,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMin_VS_DoubleMin_OK() {
+    void calculate_multiplicationOfDoubleMinAndDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '*';
@@ -1891,7 +1891,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMin_VS_PositiveNumber_OK() {
+    void calculate_multiplicationOfDoubleMinAndPositiveNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 100.0;
         char operation = '*';
@@ -1901,7 +1901,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMin_VS_DoubleMax_OK() {
+    void calculate_multiplicationOfDoubleMinAndDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '*';
@@ -1914,7 +1914,7 @@ public class CalculatorTest {
      * Tests for multiplication, first parameter :  positive number
      */
     @Test
-    void calculate_Multiplication_PositiveNumber_VS_MinusDoubleMax_notOK() {
+    void calculate_multiplicationOfPositiveNumberAndMinusDoubleMax_notOK() {
         double firstArgument = 200.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1923,7 +1923,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_PositiveNumber_VS_NegativeNumber_OK() {
+    void calculate_multiplicationOfPositiveNumberAndNegativeNumber_OK() {
         double firstArgument = 200.0;
         double secondArgument = -100.0;
         char operation = '*';
@@ -1933,7 +1933,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_PositiveNumber_VS_MinusDoubleMin_OK() {
+    void calculate_multiplicationOfPositiveNumberAndMinusDoubleMin_OK() {
         double firstArgument = 200.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '*';
@@ -1943,7 +1943,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_PositiveNumber_VS_Zero_OK() {
+    void calculate_multiplicationOfPositiveNumberAndZero_OK() {
         double firstArgument = 200.0;
         double secondArgument = 0.0;
         char operation = '*';
@@ -1953,7 +1953,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_PositiveNumber_VS_DoubleMin_OK() {
+    void calculate_multiplicationOfPositiveNumberAndDoubleMin_OK() {
         double firstArgument = 200.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '*';
@@ -1963,7 +1963,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_PositiveNumber_VS_PositiveNumber_OK() {
+    void calculate_multiplicationOfPositiveNumberAndPositiveNumber_OK() {
         double firstArgument = 200.0;
         double secondArgument = 100.0;
         char operation = '*';
@@ -1973,7 +1973,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_PositiveNumber_VS_DoubleMax_notOK() {
+    void calculate_multiplicationOfPositiveNumberAndDoubleMax_notOK() {
         double firstArgument = 200.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '*';
@@ -1985,7 +1985,7 @@ public class CalculatorTest {
      * Tests for multiplication, first parameter : MAX_VALUE
      */
     @Test
-    void calculate_Multiplication_DoubleMax_VS_MinusDoubleMax_notOK() {
+    void calculate_multiplicationOfDoubleMaxAndMinusDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '*';
@@ -1994,7 +1994,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMax_VS_NegativeNumber_notOK() {
+    void calculate_multiplicationOfDoubleMaxAndNegativeNumber_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -200.0;
         char operation = '*';
@@ -2003,7 +2003,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMax_VS_MinusDoubleMin_OK() {
+    void calculate_multiplicationOfDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '*';
@@ -2013,7 +2013,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMax_VS_Zero_OK() {
+    void calculate_multiplicationOfDoubleMaxAndZero_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '*';
@@ -2023,7 +2023,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMax_VS_DoubleMin_OK() {
+    void calculate_multiplicationOfDoubleMaxAndDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '*';
@@ -2033,7 +2033,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMax_VS_PositiveNumber_notOK() {
+    void calculate_multiplicationOfDoubleMaxAndPositiveNumber_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 100.0;
         char operation = '*';
@@ -2042,7 +2042,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Multiplication_DoubleMax_VS_DoubleMax_notOK() {
+    void calculate_multiplicationOfDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '*';
@@ -2054,7 +2054,7 @@ public class CalculatorTest {
      * Tests for raising to a power, first parameter : -MAX_VALUE
      */
     @Test
-    void calculate_Power_MinusDoubleMax_VS_MinusDoubleMax_OK() {
+    void calculate_PowerOfMinusDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2064,7 +2064,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMax_VS_NegativeNumber_OK() {
+    void calculate_PowerOfMinusDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2074,7 +2074,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMax_VS_MinusDoubleMin_notOK() {
+    void calculate_PowerOfMinusDoubleMaxAndMinusDoubleMin_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2083,7 +2083,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMax_VS_Zero_OK() {
+    void calculate_PowerOfMinusDoubleMaxAndZero_OK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2093,7 +2093,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMax_VS_DoubleMin_notOK() {
+    void calculate_PowerOfMinusDoubleMaxAndDoubleMin_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2102,7 +2102,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMax_VS_PositiveNumber_notOK() {
+    void calculate_PowerOfMinusDoubleMaxAndPositiveNumber_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = 2;
         char operation = '^';
@@ -2111,7 +2111,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMax_VS_DoubleMax_notOK() {
+    void calculate_PowerOfMinusDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = -Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2123,7 +2123,7 @@ public class CalculatorTest {
      * Tests for raising to a power, first parameter :  negative number
      */
     @Test
-    void calculate_Power_NegativeNumber_VS_MinusDoubleMax_OK() {
+    void calculate_PowerOfNegativeNumberAndMinusDoubleMax_OK() {
         double firstArgument = -2.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2133,7 +2133,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_NegativeNumber_VS_NegativeNumber_OK() {
+    void calculate_PowerOfNegativeNumberAndNegativeNumber_OK() {
         double firstArgument = -2.0;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2143,7 +2143,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_NegativeNumber_VS_MinusDoubleMin_notOK() {
+    void calculate_PowerOfNegativeNumberAndMinusDoubleMin_notOK() {
         double firstArgument = -2.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2152,7 +2152,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_NegativeNumber_VS_Zero_OK() {
+    void calculate_PowerOfNegativeNumberAndZero_OK() {
         double firstArgument = -2.0;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2162,7 +2162,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_NegativeNumber_VS_DoubleMin_notOK() {
+    void calculate_PowerOfNegativeNumberAndDoubleMin_notOK() {
         double firstArgument = -2.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2171,7 +2171,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_NegativeNumber_VS_PositiveNumber_OK() {
+    void calculate_PowerOfNegativeNumberAndPositiveNumber_OK() {
         double firstArgument = -2.0;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2181,7 +2181,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_NegativeNumber_VS_DoubleMax_notOK() {
+    void calculate_PowerOfNegativeNumberAndDoubleMax_notOK() {
         double firstArgument = -2.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2193,7 +2193,7 @@ public class CalculatorTest {
      * Tests for raising to a power, first parameter :  -MIN_VALUE
      */
     @Test
-    void calculate_Power_MinusDoubleMin_VS_MinusDoubleMax_notOK() {
+    void calculate_PowerOfMinusDoubleMinAndMinusDoubleMax_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2202,7 +2202,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMin_VS_NegativeNumber_notOK() {
+    void calculate_PowerOfMinusDoubleMinAndNegativeNumber_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2211,7 +2211,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMin_VS_MinusDoubleMin_notOK() {
+    void calculate_PowerOfMinusDoubleMinAndMinusDoubleMin_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2220,7 +2220,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMin_VS_Zero_OK() {
+    void calculate_PowerOfMinusDoubleMinAndZero_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2230,7 +2230,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMin_VS_DoubleMin_notOK() {
+    void calculate_PowerOfMinusDoubleMinAndDoubleMin_notOK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2239,7 +2239,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMin_VS_PositiveNumber_OK() {
+    void calculate_PowerOfMinusDoubleMinAndPositiveNumber_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2249,7 +2249,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_MinusDoubleMin_VS_DoubleMax_OK() {
+    void calculate_PowerOfMinusDoubleMinAndDoubleMax_OK() {
         double firstArgument = -Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2262,7 +2262,7 @@ public class CalculatorTest {
      * Tests for raising to a power, first parameter :  Zero
      */
     @Test
-    void calculate_Power_Zero_VS_MinusDoubleMax_notOK() {
+    void calculate_PowerOfZeroAndMinusDoubleMax_notOK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2271,7 +2271,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_Zero_VS_NegativeNumber_notOK() {
+    void calculate_PowerOfZeroAndNegativeNumber_notOK() {
         double firstArgument = 0.0;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2280,7 +2280,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_Zero_VS_MinusDoubleMin_notOK() {
+    void calculate_PowerOfZeroAndMinusDoubleMin_notOK() {
         double firstArgument = 0.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2289,7 +2289,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_Zero_VS_Zero_OK() {
+    void calculate_PowerOfZeroAndZero_OK() {
         double firstArgument = 0.0;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2299,7 +2299,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_Zero_VS_DoubleMin_OK() {
+    void calculate_PowerOfZeroAndDoubleMin_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2309,7 +2309,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_Zero_VS_PositiveNumber_OK() {
+    void calculate_PowerOfZeroAndPositiveNumber_OK() {
         double firstArgument = 0.0;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2319,7 +2319,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_Zero_VS_DoubleMax_OK() {
+    void calculate_PowerOfZeroAndDoubleMax_OK() {
         double firstArgument = 0.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2332,7 +2332,7 @@ public class CalculatorTest {
      * Tests for raising to a power, first parameter :  MIN_VALUE
      */
     @Test
-    void calculate_Power_DoubleMin_VS_MinusDoubleMax_notOK() {
+    void calculate_PowerOfDoubleMinAndMinusDoubleMax_notOK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2341,7 +2341,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMin_VS_NegativeNumber_notOK() {
+    void calculate_PowerOfDoubleMinAndNegativeNumber_notOK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2350,7 +2350,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMin_VS_MinusDoubleMin_OK() {
+    void calculate_PowerOfDoubleMinAndMinusDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2360,7 +2360,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMin_VS_Zero_OK() {
+    void calculate_PowerOfDoubleMinAndZero_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2370,7 +2370,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMin_VS_DoubleMin_OK() {
+    void calculate_PowerOfDoubleMinAndDoubleMin_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2380,7 +2380,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMin_VS_PositiveNumber_OK() {
+    void calculate_PowerOfDoubleMinAndPositiveNumber_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2390,7 +2390,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMin_VS_DoubleMax_OK() {
+    void calculate_PowerOfDoubleMinAndDoubleMax_OK() {
         double firstArgument = Double.MIN_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2403,7 +2403,7 @@ public class CalculatorTest {
      * Tests for raising to a power, first parameter :  positive number
      */
     @Test
-    void calculate_Power_PositiveNumber_VS_MinusDoubleMax_OK() {
+    void calculate_PowerOfPositiveNumberAndMinusDoubleMax_OK() {
         double firstArgument = 2.0;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2413,7 +2413,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_PositiveNumber_VS_NegativeNumber_OK() {
+    void calculate_PowerOfPositiveNumberAndNegativeNumber_OK() {
         double firstArgument = 2.0;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2423,7 +2423,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_PositiveNumber_VS_MinusDoubleMin_OK() {
+    void calculate_PowerOfPositiveNumberAndMinusDoubleMin_OK() {
         double firstArgument = 2.0;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2433,7 +2433,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_PositiveNumber_VS_Zero_OK() {
+    void calculate_PowerOfPositiveNumberAndZero_OK() {
         double firstArgument = 2.0;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2443,7 +2443,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_PositiveNumber_VS_DoubleMin_OK() {
+    void calculate_PowerOfPositiveNumberAndDoubleMin_OK() {
         double firstArgument = 2.0;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2453,7 +2453,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_PositiveNumber_VS_PositiveNumber_OK() {
+    void calculate_PowerOfPositiveNumberAndPositiveNumber_OK() {
         double firstArgument = 2.0;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2463,7 +2463,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_PositiveNumber_VS_DoubleMax_notOK() {
+    void calculate_PowerOfPositiveNumberAndDoubleMax_notOK() {
         double firstArgument = 2.0;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
@@ -2475,7 +2475,7 @@ public class CalculatorTest {
      * Tests for raising to a power, first parameter : MAX_VALUE
      */
     @Test
-    void calculate_Power_DoubleMax_VS_MinusDoubleMax_OK() {
+    void calculate_PowerOfDoubleMaxAndMinusDoubleMax_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MAX_VALUE;
         char operation = '^';
@@ -2485,7 +2485,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMax_VS_NegativeNumber_OK() {
+    void calculate_PowerOfDoubleMaxAndNegativeNumber_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -2.0;
         char operation = '^';
@@ -2495,7 +2495,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMax_VS_MinusDoubleMin_OK() {
+    void calculate_PowerOfDoubleMaxAndMinusDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = -Double.MIN_VALUE;
         char operation = '^';
@@ -2505,7 +2505,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMax_VS_Zero_OK() {
+    void calculate_PowerOfDoubleMaxAndZero_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 0.0;
         char operation = '^';
@@ -2515,7 +2515,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMax_VS_DoubleMin_OK() {
+    void calculate_PowerOfDoubleMaxAndDoubleMin_OK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MIN_VALUE;
         char operation = '^';
@@ -2525,7 +2525,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMax_VS_PositiveNumber_notOK() {
+    void calculate_PowerOfDoubleMaxAndPositiveNumber_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = 2.0;
         char operation = '^';
@@ -2534,7 +2534,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void calculate_Power_DoubleMax_VS_DoubleMax_notOK() {
+    void calculate_PowerOfDoubleMaxAndDoubleMax_notOK() {
         double firstArgument = Double.MAX_VALUE;
         double secondArgument = Double.MAX_VALUE;
         char operation = '^';
