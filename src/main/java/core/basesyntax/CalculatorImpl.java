@@ -86,7 +86,7 @@ public class CalculatorImpl implements Calculator {
                 "-?(\\d*\\.?\\d*)\\s*[+*^/-]\\s*-?(\\d*\\.?\\d*)")) {
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Input expression is wrong.");
     }
 
     /**
@@ -98,9 +98,9 @@ public class CalculatorImpl implements Calculator {
     private char getCharacter(String expression) {
         Matcher matcher = Pattern.compile(CHARACTER_REGEX).matcher(expression);
         if (matcher.find()) {
-            return matcher.group().charAt(0);
+            return matcher.group(0).charAt(0);
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Input expression is wrong.");
     }
 
     /**
@@ -115,7 +115,7 @@ public class CalculatorImpl implements Calculator {
         if (matcher.find()) {
             return Double.parseDouble(matcher.group(0));
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Input expression is wrong.");
     }
 
     /**
