@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 class LambdaCalcTest {
     private static final int INT_NUM = 10;
-    private static final double DOUBLE_NUM = 15.5;
+    private static final double DOUBLE_NUM = 0.05;
     private static final byte BYTE_NUM = 100;
-    private static final float FLOAT_NUM = 15.5f;
+    private static final float FLOAT_NUM = 0.5f;
     private static final short SHORT_NUM = 1;
     private static final long LONG_NUM = 999;
     private static final char CHAR1 = 'A';
@@ -261,7 +261,7 @@ class LambdaCalcTest {
         double expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, calc.calculate(INT_NUM, Double.MAX_VALUE, MULTIPLICATION));
 
-        expected = Double.NEGATIVE_INFINITY;
+        expected = Double.MAX_VALUE * (-FLOAT_NUM);
         assertEquals(expected, calc.calculate(Double.MAX_VALUE, -FLOAT_NUM, MULTIPLICATION));
 
         expected = 0;
