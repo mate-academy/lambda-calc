@@ -47,6 +47,9 @@ class LambdaCalcTest {
 
         expected = CHAR1 + CHAR2;
         assertEquals(expected, calc.calculate(CHAR1, CHAR2, ADDITION));
+
+        expected = INT_NUM + DOUBLE_NUM;
+        assertEquals(expected, calc.calculate(INT_NUM, DOUBLE_NUM, CHAR_OK_OPERATION));
     }
 
     @Test
@@ -429,8 +432,5 @@ class LambdaCalcTest {
 
         assertThrows(IllegalArgumentException.class, () ->
                 calc.calculate(INT_NUM, BYTE_NUM, ILLEGAL_OPERATION4));
-
-        double expected = INT_NUM + DOUBLE_NUM;
-        assertEquals(expected, calc.calculate(INT_NUM, DOUBLE_NUM, CHAR_OK_OPERATION));
     }
 }
