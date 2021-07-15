@@ -15,7 +15,7 @@ public class MyCalculatorTest {
 
     // 1. ADDITION
     @Test
-    void addictionPositiveOperands_Ok() {
+    void additionPositiveOperands_Ok() {
         actual = calculator.calculate(17, 102.99999, '+');
         expected = 119.99999;
         assertEquals(expected, actual);
@@ -30,7 +30,7 @@ public class MyCalculatorTest {
     }
 
     @Test
-    void addictionPositiveOperands_NotOk() {
+    void additionPositiveOperands_NotOk() {
         actual = calculator.calculate(15, 123456, '+');
         expected = 100;
         assertNotEquals(expected, actual);
@@ -45,7 +45,7 @@ public class MyCalculatorTest {
     }
 
     @Test
-    void addictionNegativeOperands_Ok() {
+    void additionNegativeOperands_Ok() {
         actual = calculator.calculate(-17, -102.99999, '+');
         expected = -119.99999;
         assertEquals(expected, actual);
@@ -60,7 +60,7 @@ public class MyCalculatorTest {
     }
 
     @Test
-    void addictionNegativeOperands_NotOk() {
+    void additionNegativeOperands_NotOk() {
         actual = calculator.calculate(-15, -123456, '+');
         expected = -100;
         assertNotEquals(expected, actual);
