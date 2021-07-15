@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class MyCalculatorTest {
     private MyCalculator calculator = new MyCalculator();
     private static final double DELTA = 0.0001;
-    double actual;
-    double expected;
+    private double actual;
+    private double expected;
 
     // 1. ADDITION
     @Test
