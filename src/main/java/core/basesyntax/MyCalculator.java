@@ -18,7 +18,7 @@ public class MyCalculator implements Calculator {
             case '^':
                 return Math.pow(operand1, operand2);
             default:
-                throw new RuntimeException("Unknown operation " + operand1);
+                throw new RuntimeException("Unknown operation " + operation);
         }
     }
 }
