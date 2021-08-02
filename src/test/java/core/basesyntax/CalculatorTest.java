@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static BigCalculator calculator;
-    private double actual;
-    private double expected;
     private double first;
     private double second;
     private char operation;
@@ -24,8 +22,8 @@ class CalculatorTest {
         first = 2.0;
         second = 1.0;
         operation = '+';
-        expected = 3.0;
-        actual = calculator.calculate(first, second, operation);
+        double expected = 3.0;
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -34,8 +32,8 @@ class CalculatorTest {
         first = -2.0;
         second = -1.0;
         operation = '+';
-        expected = -3.0;
-        actual = calculator.calculate(first, second, operation);
+        double expected = -3.0;
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -43,9 +41,9 @@ class CalculatorTest {
     void addPositiveAndNegative_Ok() {
         first = 2.0;
         second = -1.0;
-        expected = 1.0;
+        double expected = 1.0;
         operation = '+';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -54,8 +52,8 @@ class CalculatorTest {
         first = 0.0;
         second = 1.0;
         operation = '+';
-        actual = calculator.calculate(first, second, operation);
-        expected = 1.0;
+        double actual = calculator.calculate(first, second, operation);
+        double expected = 1.0;
         assertEquals(expected, actual);
 
         first = 1.0;
@@ -75,9 +73,9 @@ class CalculatorTest {
     void addMaxAndMinDoubleValue() {
         first = Double.MAX_VALUE;
         second = Double.MIN_VALUE;
-        expected = Double.MAX_VALUE + Double.MIN_VALUE;
+        double expected = Double.MAX_VALUE + Double.MIN_VALUE;
         operation = '+';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -85,9 +83,9 @@ class CalculatorTest {
     void subtractionPositive_Ok() {
         first = 2.0;
         second = 1.0;
-        expected = 1.0;
+        double expected = 1.0;
         operation = '-';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -95,9 +93,9 @@ class CalculatorTest {
     void subtractionNegative_Ok() {
         first = -2.0;
         second = -1.0;
-        expected = -1.0;
+        double expected = -1.0;
         operation = '-';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -105,9 +103,9 @@ class CalculatorTest {
     void subtractionPositiveAndNegative_Ok() {
         first = 2.0;
         second = -1.0;
-        expected = 3.0;
+        double expected = 3.0;
         operation = '-';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -116,8 +114,8 @@ class CalculatorTest {
         first = 0.0;
         second = 1.0;
         operation = '-';
-        actual = calculator.calculate(first, second, operation);
-        expected = -1.0;
+        double actual = calculator.calculate(first, second, operation);
+        double expected = -1.0;
         assertEquals(expected, actual);
 
         first = 1.0;
@@ -137,9 +135,9 @@ class CalculatorTest {
     void subtractionMaxAndMinDoubleValue_Ok() {
         first = Double.MAX_VALUE;
         second = Double.MIN_VALUE;
-        expected = Double.MAX_VALUE - Double.MIN_VALUE;
+        double expected = Double.MAX_VALUE - Double.MIN_VALUE;
         operation = '-';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -147,9 +145,9 @@ class CalculatorTest {
     void multiplicationPositive_Ok() {
         first = 2.0;
         second = 1.0;
-        expected = 2.0;
+        double expected = 2.0;
         operation = '*';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -157,9 +155,9 @@ class CalculatorTest {
     void multiplicationNegative_Ok() {
         first = -2.0;
         second = -1.0;
-        expected = 2.0;
+        double expected = 2.0;
         operation = '*';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -167,9 +165,9 @@ class CalculatorTest {
     void multiplicationPositiveAndNegative_Ok() {
         first = 2.0;
         second = -1.0;
-        expected = -2.0;
+        double expected = -2.0;
         operation = '*';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -178,8 +176,8 @@ class CalculatorTest {
         first = 0.0;
         second = 1.0;
         operation = '*';
-        actual = calculator.calculate(first, second, operation);
-        expected = 0.0;
+        double actual = calculator.calculate(first, second, operation);
+        double expected = 0.0;
         assertEquals(expected, actual);
 
         first = 1.0;
@@ -199,9 +197,9 @@ class CalculatorTest {
     void multiplicationMaxAndMinDoubleValue_Ok() {
         first = Double.MAX_VALUE;
         second = Double.MIN_VALUE;
-        expected = Double.MAX_VALUE * Double.MIN_VALUE;
+        double expected = Double.MAX_VALUE * Double.MIN_VALUE;
         operation = '*';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -209,9 +207,9 @@ class CalculatorTest {
     void divisionPositiveOk() {
         first = 2.0;
         second = 1.0;
-        expected = 2.0;
+        double expected = 2.0;
         operation = '/';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -219,9 +217,9 @@ class CalculatorTest {
     void divisionNegativeOk() {
         first = -2.0;
         second = -1.0;
-        expected = 2.0;
+        double expected = 2.0;
         operation = '/';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -229,9 +227,9 @@ class CalculatorTest {
     void divisionPositiveAndNegative_Ok() {
         first = 2.0;
         second = -1.0;
-        expected = -2.0;
+        double expected = -2.0;
         operation = '/';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -240,8 +238,8 @@ class CalculatorTest {
         first = 0.0;
         second = 1.0;
         operation = '/';
-        actual = calculator.calculate(first, second, operation);
-        expected = 0.0;
+        double actual = calculator.calculate(first, second, operation);
+        double expected = 0.0;
         assertEquals(expected, actual);
     }
 
@@ -269,9 +267,9 @@ class CalculatorTest {
     void raisingPositiveAndNegativeToPositive_Ok() {
         first = 2.0;
         second = -3.0;
-        expected = 0.125;
+        double expected = 0.125;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -279,9 +277,9 @@ class CalculatorTest {
     void raisingNegativeAndPositiveToNegative_Ok() {
         first = -2.0;
         second = 3.0;
-        expected = -8.0;
+        double expected = -8.0;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -289,9 +287,9 @@ class CalculatorTest {
     void raisingNegativeToNegative_Ok() {
         first = -2.0;
         second = -3.0;
-        expected = -0.125;
+        double expected = -0.125;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -299,9 +297,9 @@ class CalculatorTest {
     void raisingPositiveToPositive_Ok() {
         first = 2.0;
         second = 3.0;
-        expected = 8.0;
+        double expected = 8.0;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -309,9 +307,9 @@ class CalculatorTest {
     void raisingPositiveToZero_Ok() {
         first = 2.0;
         second = 0.0;
-        expected = 1.0;
+        double expected = 1.0;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -319,9 +317,9 @@ class CalculatorTest {
     void raisingNegativeToZero_Ok() {
         first = -2.0;
         second = 0.0;
-        expected = 1.0;
+        double expected = 1.0;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -329,9 +327,9 @@ class CalculatorTest {
     void raisingZeroToZero_Ok() {
         first = 0.0;
         second = 0.0;
-        expected = 1.0;
+        double expected = 1.0;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -339,9 +337,9 @@ class CalculatorTest {
     void raisingZeroToPower_Ok() {
         first = 0.0;
         second = 8.0;
-        expected = 0.0;
+        double expected = 0.0;
         operation = '^';
-        actual = calculator.calculate(first, second, operation);
+        double actual = calculator.calculate(first, second, operation);
         assertEquals(expected, actual);
     }
 
@@ -349,7 +347,8 @@ class CalculatorTest {
     void calculate_illegalOperation_notOk() {
         first = 0.0;
         second = 8.0;
+        char illegalOperand = '?';
         assertThrows(IllegalArgumentException.class, () ->
-                calculator.calculate(first, second, '?'));
+                calculator.calculate(first, second, illegalOperand));
     }
 }
