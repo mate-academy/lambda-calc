@@ -12,7 +12,7 @@ public class Calculator {
                     throw new ArithmeticException("Division by zero.");
                 }
                 return value1 / value2;
-            case 'p': return Math.pow(value1, value2);
+            case '^': return Math.pow(value1, value2);
             default: throw new IllegalArgumentException("Illegal argument operation");
         }
     }

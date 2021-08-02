@@ -14,14 +14,13 @@ class CalculatorTest {
     private final double firstNegativeOperand = -12.24;
     private final double secondNegativeOperand = -31.10;
     private final int zeroOperand = 0;
-    private final double minDouble = Double.MIN_VALUE;
-    private final double maxDouble = Double.MAX_VALUE;
 
     private final char addition = '+';
     private final char subtraction = '-';
     private final char division = '/';
     private final char multiplication = '*';
-    private final char raisingToPower = 'p';
+    private final char raisingToPower = '^';
+    private final char illegalOperation = 'k';
 
     @BeforeAll
     static void beforeAll() {
@@ -67,8 +66,8 @@ class CalculatorTest {
 
     @Test
     void additionOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(minDouble, maxDouble, addition);
-        double expected = minDouble + maxDouble;
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, addition);
+        double expected = Double.MIN_VALUE + Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Addition of min value and max value"
                 + " should be " + expected + " but it is " + actual);
     }
@@ -115,8 +114,8 @@ class CalculatorTest {
 
     @Test
     void subtractionOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(minDouble, maxDouble, subtraction);
-        double expected = minDouble - maxDouble;
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, subtraction);
+        double expected = Double.MIN_VALUE - Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Subtraction of min value and max value"
                 + " should be " + expected + " but it is " + actual);
     }
@@ -159,8 +158,8 @@ class CalculatorTest {
 
     @Test
     void divisionOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(minDouble, maxDouble, division);
-        double expected = minDouble / maxDouble;
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, division);
+        double expected = Double.MIN_VALUE / Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Division of min value and max value"
                 + " should be " + expected + " but it is " + actual);
     }
@@ -207,8 +206,8 @@ class CalculatorTest {
 
     @Test
     void multiplicationOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(minDouble, maxDouble, multiplication);
-        double expected = minDouble * maxDouble;
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, multiplication);
+        double expected = Double.MIN_VALUE * Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Multiplication of min value and max value"
                 + " should be " + expected + " but it is " + actual);
     }
@@ -250,6 +249,7 @@ class CalculatorTest {
     @Test
     void calculate_illegalOperation_notOk() {
         assertThrows(IllegalArgumentException.class, () ->
-                calculator.calculate(firstPositiveOperand, secondPositiveOperand, 'k'));
+                calculator.calculate(firstPositiveOperand, secondPositiveOperand,
+                        illegalOperation));
     }
 }
