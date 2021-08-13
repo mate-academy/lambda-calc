@@ -9,7 +9,7 @@ public class Calculator {
 
             case '/':
                 if (b == 0) {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("The second argument can't be zero.");
                 }
                 return a / b;
 
@@ -20,7 +20,7 @@ public class Calculator {
                 return Math.pow(a, b);
 
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Operation is invalid.");
         }
     }
 }
