@@ -273,7 +273,8 @@ class SimpleCalculatorTest {
     void illegalOperation_NotOK() {
         double a = 20;
         double b = 20;
-        assertThrows(RuntimeException.class, () -> calculator.calculate(a, b, 'h'));
+        char invalidOperand = 'h';
+        assertThrows(RuntimeException.class, () -> calculator.calculate(a, b, invalidOperand));
     }
 }
 
