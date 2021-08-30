@@ -17,11 +17,10 @@ public class Calculator {
             case MULTIPLICATION:
                 return operandA * operandB;
             case DIVISION:
-                if (operandB != 0) {
-                    return operandA / operandB;
-                } else {
-                    throw new ArithmeticException("Division by zero");
+                if (operandB == 0) {
+                    throw new ArithmeticException("/ by zero");
                 }
+                return operandA / operandB;
             case RAISING_TO_POWER:
                 return Math.pow(operandA, operandB);
             default:

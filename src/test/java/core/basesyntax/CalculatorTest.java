@@ -298,7 +298,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_illegalOperation_notOk() {
+    void calculateIllegalOperation_notOk() {
         assertThrows(ValidationException.class, () -> calculator.calculate(201.11, 0, '#'));
     }
 }
