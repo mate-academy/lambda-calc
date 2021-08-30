@@ -2,9 +2,9 @@ package core.basesyntax;
 
 public class Calculator {
     public double calculate(double firstParam, double secondParam, char operation) {
-        switch(operation) {
+        switch (operation) {
             case '+':
-              return firstParam + secondParam;
+                return firstParam + secondParam;
             case '-':
                 return firstParam - secondParam;
             case '/':
