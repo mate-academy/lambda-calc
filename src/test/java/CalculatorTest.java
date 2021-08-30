@@ -1,14 +1,16 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CalculatorTest {
     private static final double DELTA = 0.0001;
     private Calculator calcucator;
 
-    @BeforeEach
+    @BeforeAll
     void setUp() {
         calcucator = new Calculator();
     }
@@ -55,8 +57,6 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    //
-
     @Test
     void calculate_subtractionTwoPositiveOperands_Ok() {
         double expected = 30.0;
@@ -98,8 +98,6 @@ class CalculatorTest {
         double actual = calcucator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '-');
         assertEquals(expected, actual, DELTA);
     }
-
-    //
 
     @Test
     void calculate_multiplicationTwoPositiveOperands_Ok() {
@@ -143,8 +141,6 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA);
     }
 
-    //
-
     @Test
     void calculate_divisionTwoPositiveOperands_Ok() {
         double expected = 4.0;
@@ -186,8 +182,6 @@ class CalculatorTest {
         double actual = calcucator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '/');
         assertEquals(expected, actual, DELTA);
     }
-
-    //
 
     @Test
     void calculate_raisingPositiveValueToPositivePower_Ok() {
