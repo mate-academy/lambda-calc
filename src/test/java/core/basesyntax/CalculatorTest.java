@@ -15,11 +15,6 @@ class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @BeforeEach
-    void setUp() {
-
-    }
-
     @Test
     void calculate_additionTwoPositiveIntegers_ok() {
         double expected = 30;
