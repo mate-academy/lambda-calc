@@ -49,14 +49,14 @@ class CalculatorTest {
 
     @Test
     void calculate_additionMaxDoubleValues_ok() {
-        expected = Double.MAX_VALUE + Double.MAX_VALUE;
+        expected = Double.POSITIVE_INFINITY;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_additionMinDoubleValues_ok() {
-        expected = Double.MIN_VALUE + Double.MIN_VALUE;
+        expected = 0;
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '+');
         assertEquals(expected, actual, DELTA);
     }
@@ -94,14 +94,14 @@ class CalculatorTest {
 
     @Test
     void calculate_subtractionMaxDoubleValues_ok() {
-        expected = Double.MAX_VALUE - Double.MAX_VALUE;
+        expected = 0;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractionMinDoubleValues_ok() {
-        expected = Double.MIN_VALUE - Double.MIN_VALUE;
+        expected = 0;
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-');
         assertEquals(expected, actual, DELTA);
     }
@@ -138,14 +138,14 @@ class CalculatorTest {
 
     @Test
     void calculate_multiplicationMaxDoubleValues_ok() {
-        expected = Double.MAX_VALUE * Double.MAX_VALUE;
+        expected = Double.POSITIVE_INFINITY;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplicationMinDoubleValues_ok() {
-        expected = Double.MIN_VALUE * Double.MIN_VALUE;
+        expected = 0;
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '*');
         assertEquals(expected, actual, DELTA);
     }
@@ -187,14 +187,14 @@ class CalculatorTest {
 
     @Test
     void calculate_divisionMaxDoubleValues_ok() {
-        expected = Double.MAX_VALUE / Double.MAX_VALUE;
+        expected = 1;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divisionMinDoubleValues_ok() {
-        expected = Double.MIN_VALUE / Double.MIN_VALUE;
+        expected = 1;
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '/');
         assertEquals(expected, actual, DELTA);
     }
