@@ -3,35 +3,27 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorImplTest {
     private static final double DELTA = 0.001;
-    private CalculatorImpl calculator;
+    private static CalculatorImpl calculator;
 
     @BeforeAll
     static void beforeAll() {
         System.out.println("Let's start the tests.");
-    }
-
-    @BeforeEach
-    void setUp() {
         calculator = new CalculatorImpl();
     }
 
     @Test
     void addition_bothPositive_Ok() {
         assertEquals(30, calculator.calculate(10, 20, '+'));
-        assertEquals(40, calculator.calculate(20, 20, '+'));
     }
 
     @Test
     void addition_bothNegative_Ok() {
         assertEquals(-30, calculator.calculate(-10, -20, '+'));
-        assertEquals(-50, calculator.calculate(-30, -20, '+'));
     }
 
     @Test
@@ -63,13 +55,11 @@ class CalculatorImplTest {
 
     @Test
     void subtraction_bothPositive_Ok() {
-        assertEquals(-10, calculator.calculate(10, 20, '-'));
         assertEquals(10.3, calculator.calculate(20.8, 10.5, '-'));
     }
 
     @Test
     void subtraction_bothNegative_Ok() {
-        assertEquals(10, calculator.calculate(-10, -20, '-'));
         assertEquals(-10, calculator.calculate(-30.5, -20.5, '-'));
     }
 
@@ -101,13 +91,11 @@ class CalculatorImplTest {
 
     @Test
     void multiplication_bothPositive_Ok() {
-        assertEquals(200, calculator.calculate(10, 20, '*'));
         assertEquals(218.4, calculator.calculate(20.8, 10.5, '*'));
     }
 
     @Test
     void multiplication_bothNegative_Ok() {
-        assertEquals(200, calculator.calculate(-10, -20, '*'));
         assertEquals(625.25, calculator.calculate(-30.5, -20.5, '*'));
     }
 
@@ -142,13 +130,11 @@ class CalculatorImplTest {
 
     @Test
     void division_bothPositive_Ok() {
-        assertEquals(0.5, calculator.calculate(10, 20, '/'));
         assertEquals(1.98095, calculator.calculate(20.8, 10.5, '/'), DELTA);
     }
 
     @Test
     void division_bothNegative_Ok() {
-        assertEquals(0.5, calculator.calculate(-10, -20, '/'));
         assertEquals(1.487804, calculator.calculate(-30.5, -20.5, '/'), DELTA);
     }
 
@@ -160,13 +146,11 @@ class CalculatorImplTest {
 
     @Test
     void division_withZero_Ok() {
-        assertEquals(0, calculator.calculate(0, 10, '/'));
         assertEquals(0, calculator.calculate(0, 1000, '/'));
     }
 
     @Test
     void division_withZero_notOk() {
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(10, 0, '/'));
         assertThrows(ArithmeticException.class, () -> calculator.calculate(10000, 0, '/'));
     }
 
@@ -234,10 +218,5 @@ class CalculatorImplTest {
                 .calculate(1, Double.parseDouble(new String()), '+'));
         assertThrows(RuntimeException.class, () -> calculator.calculate(1, 2, '3'));
         assertThrows(RuntimeException.class, () -> calculator.calculate(1, 2, '%'));
-    }
-
-    @AfterAll
-    static void afterAll() {
-        System.out.println("Tests are completed.");
     }
 }
