@@ -23,7 +23,7 @@ public class HelloWorld {
         if (sign == '^') {
             return Math.pow(number1, number2);
         }
-        return 0.0;
+        throw new RuntimeException("Wrong sign!");
     }
 
 }

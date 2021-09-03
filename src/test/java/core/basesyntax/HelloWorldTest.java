@@ -234,4 +234,13 @@ public class HelloWorldTest {
         assertEquals(0, actual);
     }
 
+    @Test
+    void calculate_IllegalOperation_NotOk() {
+        assertThrows(RuntimeException.class, () -> {
+            calculator.calculate(positive1, positive2 ,'?');
+            calculator.calculate(positive1, positive2 ,'!');
+            calculator.calculate(positive1, positive2 ,'a');
+                });
+    }
+
 }
