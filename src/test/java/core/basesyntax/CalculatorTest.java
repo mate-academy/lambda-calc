@@ -190,6 +190,13 @@ class CalculatorTest {
     }
 
     @Test
+    void calculate_divisionPositiveMinDouble_Ok() {
+        double actual = calculator.calculate(10.1, Double.MIN_VALUE, '/');
+        double expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void calculate_divisionZeroNegative_Ok() {
         double actual = calculator.calculate(0.0, -20.0, '/');
         double expected = 0.0;
@@ -257,6 +264,12 @@ class CalculatorTest {
         double actual = calculator.calculate(0.0, 4.0, '^');
         double expected = 0.0;
         assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_rootOfNegative_NotOk() {
+        assertThrows(IllegalValues.class,
+                () -> calculator.calculate(-9, 0.5, '^'));
     }
 
     @Test
