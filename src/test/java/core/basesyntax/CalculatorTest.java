@@ -80,19 +80,19 @@ public class CalculatorTest {
     @Test
     void calculate_Subtraction_TwoPositive_OK() {
         double actual = calculator.calculate(firstPositive, secondPostive,'-');
-        assertEquals(firstPositive - secondPostive, actual);
+        assertEquals(firstPositive - secondPostive, actual, DELTA);
     }
 
     @Test
     void calculate_Subtraction_TwoNegatives_OK() {
         double actual = calculator.calculate(firstNegative, secondNegative,'-');
-        assertEquals(firstNegative - secondNegative, actual);
+        assertEquals(firstNegative - secondNegative, actual, DELTA);
     }
 
     @Test
     void calculate_Subtraction_OneNegatives_OK() {
         double actual = calculator.calculate(firstPositive, firstNegative,'-');
-        assertEquals(firstPositive - firstNegative, actual);
+        assertEquals(firstPositive - firstNegative, actual, DELTA);
         actual = calculator.calculate(secondNegative, secondPostive,'-');
         assertEquals(secondNegative - secondPostive, actual);
     }
@@ -100,35 +100,35 @@ public class CalculatorTest {
     @Test
     void calculate_Subtraction_Zero_OK() {
         double actual = calculator.calculate(0, 0,'-');
-        assertEquals(0, actual);
+        assertEquals(0, actual, DELTA);
         actual = calculator.calculate(0, firstPositive,'-');
-        assertEquals(firstNegative, actual);
+        assertEquals(firstNegative, actual, DELTA);
         actual = calculator.calculate(secondPostive, 0,'-');
-        assertEquals(secondPostive, actual);
+        assertEquals(secondPostive, actual, DELTA);
         actual = calculator.calculate(firstNegative, 0,'-');
-        assertEquals(firstNegative, actual);
+        assertEquals(firstNegative, actual, DELTA);
         actual = calculator.calculate(0, secondNegative,'-');
-        assertEquals(secondPostive, actual);
+        assertEquals(secondPostive, actual, DELTA);
     }
 
     @Test
     void calculate_Division_TwoPositive_OK() {
         double actual = calculator.calculate(firstPositive, secondPostive,'/');
-        assertEquals(firstPositive / secondPostive, actual);
+        assertEquals(firstPositive / secondPostive, actual, DELTA);
     }
 
     @Test
     void calculate_Division_TwoNegatives_OK() {
         double actual = calculator.calculate(firstNegative, secondNegative,'/');
-        assertEquals(firstNegative / secondNegative, actual);
+        assertEquals(firstNegative / secondNegative, actual, DELTA);
     }
 
     @Test
     void calculate_Division_OneNegatives_OK() {
         double actual = calculator.calculate(firstPositive, firstNegative,'/');
-        assertEquals(firstPositive / firstNegative, actual);
+        assertEquals(firstPositive / firstNegative, actual, DELTA);
         actual = calculator.calculate(secondNegative, secondPostive,'/');
-        assertEquals(secondNegative / secondPostive, actual);
+        assertEquals(secondNegative / secondPostive, actual, DELTA);
     }
 
     @Test
@@ -143,9 +143,9 @@ public class CalculatorTest {
     @Test
     void calculate_Division_ZeroByNumber_OK() {
         double actual = calculator.calculate(0, firstPositive,'/');
-        assertEquals(0.0, actual);
+        assertEquals(0.0, actual, DELTA);
         actual = calculator.calculate(0, secondNegative,'/');
-        assertEquals(-0.0, actual);
+        assertEquals(-0.0, actual, DELTA);
     }
 
     @Test
@@ -205,33 +205,33 @@ public class CalculatorTest {
     @Test
     void calculate_Raising_PositivePower_OK() {
         double actual = calculator.calculate(firstPositive,firstPositive,'^');
-        assertEquals(Math.pow(firstPositive, firstPositive), actual);
+        assertEquals(Math.pow(firstPositive, firstPositive), actual, DELTA);
         actual = calculator.calculate(firstNegative,firstPositive,'^');
-        assertEquals(Math.pow(firstNegative, firstPositive), actual);
+        assertEquals(Math.pow(firstNegative, firstPositive), actual, DELTA);
     }
 
     @Test
     void calculate_Raising_NegativePower_OK() {
         double actual = calculator.calculate(firstPositive, firstNegative,'^');
-        assertEquals(Math.pow(firstPositive, firstNegative), actual);
+        assertEquals(Math.pow(firstPositive, firstNegative), actual, DELTA);
         actual = calculator.calculate(firstNegative, firstNegative,'^');
-        assertEquals(Math.pow(firstNegative, firstNegative), actual);
+        assertEquals(Math.pow(firstNegative, firstNegative), actual, DELTA);
     }
 
     @Test
     void calculate_Raising_ZeroPower_OK() {
         double actual = calculator.calculate(firstPositive, 0,'^');
-        assertEquals(Math.pow(firstPositive, 0), actual);
+        assertEquals(Math.pow(firstPositive, 0), actual, DELTA);
         actual = calculator.calculate(firstNegative, 0,'^');
-        assertEquals(Math.pow(firstNegative, 0), actual);
+        assertEquals(Math.pow(firstNegative, 0), actual, DELTA);
     }
 
     @Test
     void calculate_Raising_ZeroToPower_OK() {
         double actual = calculator.calculate(0, firstNegative,'^');
-        assertEquals(Math.pow(0, firstNegative), actual);
+        assertEquals(Math.pow(0, firstNegative), actual, DELTA);
         actual = calculator.calculate(0, firstPositive,'^');
-        assertEquals(Math.pow(0, firstPositive), actual);
+        assertEquals(Math.pow(0, firstPositive), actual, DELTA);
     }
 
     @Test
