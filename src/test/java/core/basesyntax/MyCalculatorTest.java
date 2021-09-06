@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 class MyCalculatorTest {
     private static final double DELTA = 0.0001;
     private static MyCalculator myCalculator;
+    private double actual;
+    private double expected;
 
     @BeforeAll
     static void beforeAll() {
@@ -27,36 +29,36 @@ class MyCalculatorTest {
 
     @Test
     void calculate_additionTwoPositiveValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(7.7, 3.3, '+');
-        double expected = 11;
+        actual = myCalculator.calculate(7.7, 3.3, '+');
+        expected = 11;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_additionPositiveAndNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(2, -1.1, '+');
-        double expected = 0.9;
+        actual = myCalculator.calculate(2, -1.1, '+');
+        expected = 0.9;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
-    void calculate_additionTowNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(-2, -1.1, '+');
-        double expected = -3.1;
+    void calculate_additionTwoNegativeValues_Ok() throws Exception {
+        actual = myCalculator.calculate(-2, -1.1, '+');
+        expected = -3.1;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
     void calculate_additionWithFirstZero_Ok() throws Exception {
-        double actual = myCalculator.calculate(0, 7, '+');
-        double expected = 7;
+        actual = myCalculator.calculate(0, 7, '+');
+        expected = 7;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_additionWithSecondZero_Ok() throws Exception {
-        double actual = myCalculator.calculate(10, 0, '+');
-        double expected = 10;
+        actual = myCalculator.calculate(10, 0, '+');
+        expected = 10;
         assertEquals(actual, expected);
     }
 
@@ -74,36 +76,36 @@ class MyCalculatorTest {
 
     @Test
     void calculate_subtractionTwoPositiveValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(7.7, 3.3, '-');
-        double expected = 4.4;
+        actual = myCalculator.calculate(7.7, 3.3, '-');
+        expected = 4.4;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_subtractionPositiveAndNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(2, -1.1, '-');
-        double expected = 3.1;
+        actual = myCalculator.calculate(2, -1.1, '-');
+        expected = 3.1;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
-    void calculate_subtractionTowNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate((-2), -1.1, '-');
-        double expected = -0.9;
+    void calculate_subtractionTwoNegativeValues_Ok() throws Exception {
+        actual = myCalculator.calculate(-2, -1.1, '-');
+        expected = -0.9;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
     void calculate_subtractionWithFirstZero_Ok() throws Exception {
-        double actual = myCalculator.calculate(0, 7, '-');
-        double expected = -7;
+        actual = myCalculator.calculate(0, 7, '-');
+        expected = -7;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_subtractionWithSecondZero_Ok() throws Exception {
-        double actual = myCalculator.calculate(10, 0, '-');
-        double expected = 10;
+        actual = myCalculator.calculate(10, 0, '-');
+        expected = 10;
         assertEquals(actual, expected);
     }
 
@@ -121,36 +123,36 @@ class MyCalculatorTest {
 
     @Test
     void calculate_multiplicationTwoPositiveValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(3, 5, '*');
-        double expected = 15;
+        actual = myCalculator.calculate(3, 5, '*');
+        expected = 15;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_multiplicationPositiveAndNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(2, -5, '*');
-        double expected = -10;
+        actual = myCalculator.calculate(2, -5, '*');
+        expected = -10;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
-    void calculate_multiplicationTowNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate((-2), -1.1, '*');
-        double expected = 2.2;
+    void calculate_multiplicationTwoNegativeValues_Ok() throws Exception {
+        actual = myCalculator.calculate(-2, -1.1, '*');
+        expected = 2.2;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
     void calculate_multiplicationWithFirstZero_Ok() throws Exception {
-        double actual = myCalculator.calculate(0, 7, '*');
-        double expected = 0;
+        actual = myCalculator.calculate(0, 7, '*');
+        expected = 0;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_multiplicationWithSecondZero_Ok() throws Exception {
-        double actual = myCalculator.calculate(10, 0, '*');
-        double expected = 0;
+        actual = myCalculator.calculate(10, 0, '*');
+        expected = 0;
         assertEquals(actual, expected);
     }
 
@@ -168,29 +170,29 @@ class MyCalculatorTest {
 
     @Test
     void calculate_divisionTwoPositiveValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(9.9, 3.3, '/');
-        double expected = 3;
+        actual = myCalculator.calculate(9.9, 3.3, '/');
+        expected = 3;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
     void calculate_divisionPositiveAndNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate(10, -5, '/');
-        double expected = -2;
+        actual = myCalculator.calculate(10, -5, '/');
+        expected = -2;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
-    void calculate_divisionTowNegativeValues_Ok() throws Exception {
-        double actual = myCalculator.calculate((-2.2), -1.1, '/');
-        double expected = 2;
+    void calculate_divisionTwoNegativeValues_Ok() throws Exception {
+        actual = myCalculator.calculate(-2.2, -1.1, '/');
+        expected = 2;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
     void calculate_divisionWithFirstZero_Ok() throws Exception {
-        double actual = myCalculator.calculate(0, 7, '/');
-        double expected = 0;
+        actual = myCalculator.calculate(0, 7, '/');
+        expected = 0;
         assertEquals(actual, expected);
     }
 
@@ -208,50 +210,50 @@ class MyCalculatorTest {
 
     @Test
     void calculate_raisingPositiveValueToPositivePower_Ok() throws MyCalculateException {
-        double actual = myCalculator.calculate(7, 2, '^');
-        double expected = 49;
+        actual = myCalculator.calculate(7, 2, '^');
+        expected = 49;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_raisingNegativeValueToPositivePower_Ok() throws MyCalculateException {
-        double actual = myCalculator.calculate(-7, 2, '^');
-        double expected = 49;
+        actual = myCalculator.calculate(-7, 2, '^');
+        expected = 49;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_raisingPositiveValueToNegativePower_Ok() throws MyCalculateException {
-        double actual = myCalculator.calculate(6.0, -2, '^');
-        double expected = 1 / 36.0;
+        actual = myCalculator.calculate(6.0, -2, '^');
+        expected = 1 / 36.0;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
     void calculate_raisingNegativeValueToNegativePower_Ok() throws MyCalculateException {
-        double actual = myCalculator.calculate(-7.0, -2, '^');
-        double expected = 1 / 49.0;
+        actual = myCalculator.calculate(-7.0, -2, '^');
+        expected = 1 / 49.0;
         assertEquals(actual, expected, DELTA);
     }
 
     @Test
     void calculate_raisingPositiveValueToZeroPower_Ok() throws MyCalculateException {
-        double actual = myCalculator.calculate(7.0, 0, '^');
-        double expected = 1;
+        actual = myCalculator.calculate(7.0, 0, '^');
+        expected = 1;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_raisingNegativeValueToZeroPower_Ok() throws MyCalculateException {
-        double actual = myCalculator.calculate(-7.0, 0, '^');
-        double expected = 1;
+        actual = myCalculator.calculate(-7.0, 0, '^');
+        expected = 1;
         assertEquals(actual, expected);
     }
 
     @Test
     void calculate_raisingZeroValueToPower_Ok() throws MyCalculateException {
-        double actual = myCalculator.calculate(0, 3, '^');
-        double expected = 0;
+        actual = myCalculator.calculate(0, 3, '^');
+        expected = 0;
         assertEquals(actual, expected);
     }
 }
