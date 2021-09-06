@@ -1,20 +1,23 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static java.lang.Double.NaN;
-
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 class CalculatorImplTest {
-  private  double first;
-  private  double second;
-  private  char action;
-  private  double actual;
-  private double expected;
-  private static final double delta = 0.0001;
-  private static  Calculator calculator;
-  private static final double MAX_VALUE = Double.MAX_VALUE;
-  private static final double POSITIVE_INFINITY = Double.POSITIVE_INFINITY;
-  private static final double MIN_VALUE = Double.MIN_VALUE;
+    private static final double MAX_VALUE = Double.MAX_VALUE;
+    private static final double POSITIVE_INFINITY = Double.POSITIVE_INFINITY;
+    private static final double MIN_VALUE = Double.MIN_VALUE;
+    private static final double NAN = Double.NaN;
+    private static final double delta = 0.0001;
+    private static Calculator calculator;
+    private double first;
+    private double second;
+    private char action;
+    private double actual;
+    private double expected;
 
     @BeforeAll
     static void createCalculatorInstance() {
@@ -217,7 +220,7 @@ class CalculatorImplTest {
         action = '*';
         actual = calculator.calculate(first, second, action);
         assertEquals(expected, actual);
-        assertEquals(expected , calculator.calculate(second, first, action));
+        assertEquals(expected, calculator.calculate(second, first, action));
     }
 
     @Test
@@ -305,7 +308,7 @@ class CalculatorImplTest {
 
     @Test
     void nan_valuesNotOk() {
-        assertThrows(RuntimeException.class, () -> calculator.calculate(NaN, NaN, action));
+        assertThrows(RuntimeException.class, () -> calculator.calculate(NAN, NAN, action));
     }
 
     @Test
@@ -314,7 +317,7 @@ class CalculatorImplTest {
         second = 3;
         expected = 3;
         action = '/';
-        actual = calculator.calculate(first, second ,action);
+        actual = calculator.calculate(first, second,action);
         assertEquals(expected, actual);
         assertEquals(0.3333333333333333, calculator.calculate(second, first, action), delta);
     }
@@ -406,7 +409,8 @@ class CalculatorImplTest {
 
     @Test
     void infinityValuesNotOk() {
-        assertThrows(RuntimeException.class, () -> calculator.calculate(POSITIVE_INFINITY, POSITIVE_INFINITY, '/'));
+        assertThrows(RuntimeException.class, () ->
+                calculator.calculate(POSITIVE_INFINITY, POSITIVE_INFINITY, '/'));
     }
 
     @Test
@@ -431,6 +435,4 @@ class CalculatorImplTest {
         assertEquals(expected, calculator.calculate(-first, second, action));
         
     }
-
-
 }
