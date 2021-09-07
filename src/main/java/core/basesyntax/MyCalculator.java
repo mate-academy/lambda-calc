@@ -1,8 +1,6 @@
 package core.basesyntax;
 
 public class MyCalculator implements Calculator {
-    private static final double POSITIVE_MAX_VALUE = Double.MAX_VALUE;
-    private static final double NEGATIVE_MAX_VALUE = -Double.MAX_VALUE;
     private static final String TOO_LARGE_VALUE = "Too large or little result!";
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
@@ -42,7 +40,7 @@ public class MyCalculator implements Calculator {
     }
 
     private void checkMaxMinValues(double result) throws MyCalculateException {
-        if (result >= POSITIVE_MAX_VALUE || result <= NEGATIVE_MAX_VALUE) {
+        if (!Double.isFinite(result)) {
             throw new MyCalculateException(TOO_LARGE_VALUE);
         }
     }
