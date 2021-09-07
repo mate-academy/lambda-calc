@@ -4,10 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.NoSuchElementException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private Calculator calculator = new Calculator();
+    private static Calculator calculator;
+
+    @BeforeAll
+    static void beforeAll() {
+        calculator = new Calculator();
+    }
 
     @Test
     void addition_with_two_positive_operands_Ok() {
@@ -60,17 +66,57 @@ class CalculatorTest {
     }
 
     @Test
-    void addition_for_Min_Max_value_ok() {
+    void addition_for_Min_value_ok() {
         String add = "+";
         double a = Double.MIN_VALUE;
-        double b = Double.MAX_VALUE;
+        double b = 9;
         double expected = a + b;
         double actual = calculator.calculate(a, b, add);
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtraction_Ok() {
+    void addition_for_Max_value_ok() {
+        String add = "+";
+        double a = Double.MAX_VALUE;
+        double b = 9;
+        double expected = a + b;
+        double actual = calculator.calculate(a, b, add);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_with_two_positive_operands_Ok() {
+        String subtraction = "-";
+        double a = 7;
+        double b = 8;
+        double expected = -1;
+        double actual = calculator.calculate(a, b, subtraction);
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void subtraction_with_two_negative_operands_Ok() {
+        String subtraction = "-";
+        double a = -7;
+        double b = -9;
+        double expected = 2;
+        double actual = calculator.calculate(a, b, subtraction);
+    }
+
+    @Test
+    void subtraction_with_positive_and_negative_operands_Ok() {
+        String subtraction = "-";
+        double a = -7;
+        double b = 8;
+        double expected = -15;
+        double actual = calculator.calculate(a, b, subtraction);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_with_first_zero_Ok() {
         String subtraction = "-";
         double a = 0;
         double b = 8;
@@ -80,11 +126,101 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplication_Ok() {
+    void subtraction_with_second_zero_Ok() {
+        String subtraction = "-";
+        double a = 8;
+        double b = 0;
+        double expected = 8;
+        double actual = calculator.calculate(a, b, subtraction);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_for_Min_value_ok() {
+        String subtraction = "-";
+        double a = Double.MIN_VALUE;
+        double b = 9;
+        double expected = a - b;
+        double actual = calculator.calculate(a, b, subtraction);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_for_Max_value_ok() {
+        String subtraction = "-";
+        double a = Double.MAX_VALUE;
+        double b = 9;
+        double expected = a - b;
+        double actual = calculator.calculate(a, b, subtraction);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_with_two_positive_operands_Ok() {
         String multiplication = "*";
-        double a = 3;
+        double a = 7;
         double b = 8;
-        double expected = 24;
+        double expected = 56;
+        double actual = calculator.calculate(a, b, multiplication);
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void multiplication_with_two_negative_operands_Ok() {
+        String multiplication = "*";
+        double a = -7;
+        double b = -9;
+        double expected = 63;
+        double actual = calculator.calculate(a, b, multiplication);
+    }
+
+    @Test
+    void multiplication_with_positive_and_negative_operands_Ok() {
+        String multiplication = "*";
+        double a = -7;
+        double b = 8;
+        double expected = -56;
+        double actual = calculator.calculate(a, b, multiplication);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_with_first_zero_Ok() {
+        String multiplication = "*";
+        double a = 0;
+        double b = 8;
+        double expected = 0;
+        double actual = calculator.calculate(a, b, multiplication);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_with_second_zero_Ok() {
+        String multiplication = "*";
+        double a = 8;
+        double b = 0;
+        double expected = 0;
+        double actual = calculator.calculate(a, b, multiplication);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_for_Min_value_ok() {
+        String multiplication = "*";
+        double a = Double.MIN_VALUE;
+        double b = 9;
+        double expected = a * b;
+        double actual = calculator.calculate(a, b, multiplication);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_for_Max_value_ok() {
+        String multiplication = "*";
+        double a = Double.MAX_VALUE;
+        double b = 9;
+        double expected = a * b;
         double actual = calculator.calculate(a, b, multiplication);
         assertEquals(expected, actual);
     }
@@ -98,11 +234,61 @@ class CalculatorTest {
     }
 
     @Test
-    void division_Ok() {
+    void division_with_first_zero_Ok() {
         String division = "/";
-        double a = 7;
+        double a = 0;
         double b = 2;
-        double expected = 3.5;
+        double expected = 0;
+        double actual = calculator.calculate(a, b, division);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_for_Min_value_ok() {
+        String division = "/";
+        double a = Double.MIN_VALUE;
+        double b = 9;
+        double expected = a / b;
+        double actual = calculator.calculate(a, b, division);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_for_Max_value_ok() {
+        String division = "/";
+        double a = Double.MAX_VALUE;
+        double b = 9;
+        double expected = 1.9974368165136842E307;
+        double actual = calculator.calculate(a, b, division);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_with_two_positive_operands_Ok() {
+        String division = "/";
+        double a = 10;
+        double b = 8;
+        double expected = 1.25;
+        double actual = calculator.calculate(a, b, division);
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void division_with_two_negative_operands_Ok() {
+        String division = "/";
+        double a = -9;
+        double b = -3;
+        double expected = 3;
+        double actual = calculator.calculate(a, b, division);
+    }
+
+    @Test
+    void division_with_positive_and_negative_operands_Ok() {
+        String division = "/";
+        double a = -7;
+        double b = 2;
+        double expected = -3.5;
         double actual = calculator.calculate(a, b, division);
         assertEquals(expected, actual);
     }
