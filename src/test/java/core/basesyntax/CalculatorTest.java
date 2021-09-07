@@ -8,209 +8,214 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
     private static final Calculator calculator = new Calculator();
-    private static final double DELTA = 0.000001;
 
     @Test
-    void additionWithTwoPositiveOperands() {
+    void additionWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(10, 20, Operations.PLUS);
         double expected = 30;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void additionWithTwoNegativeOperands() {
+    void additionWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-10, -20, Operations.PLUS);
         double expected = -30;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void additionWithPositiveAndNegativeOperands() {
+    void additionWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(10, -20, Operations.PLUS);
         double expected = -10;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void additionWithZeroInDifferentPlaces_Ok() {
+    void additionWithZeroInDifferentPlaces_Ok_Ok() {
         double actual = calculator.calculate(0, 30, Operations.PLUS);
         double expected = 30;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
         actual = calculator.calculate(30, 0, Operations.PLUS);
         expected = 30;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
         actual = calculator.calculate(0, 0, Operations.PLUS);
         expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionWithTwoPositiveOperands() {
+    void subtractionWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(10, 20, Operations.MINUS);
         double expected = -10;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionWithTwoNegativeOperands() {
+    void subtractionWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-30, -20, Operations.MINUS);
         double expected = -10;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionWithPositiveAndNegativeOperands() {
+    void subtractionWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(50, -30, Operations.MINUS);
         double expected = 80;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void subtractionWithZeroInDifferentPlaces_Ok() {
         double actual = calculator.calculate(0, 30, Operations.MINUS);
         double expected = -30;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
         actual = calculator.calculate(30, 0, Operations.MINUS);
         expected = 30;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
         actual = calculator.calculate(0, 0, Operations.MINUS);
         expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationWithTwoPositiveOperands() {
+    void multiplicationWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(10, 20, Operations.MULTIPLY);
         double expected = 200;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationWithTwoNegativeOperands() {
+    void multiplicationWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-10, -20, Operations.MULTIPLY);
         double expected = 200;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationWithPositiveAndNegativeOperands() {
+    void multiplicationWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(10, -20, Operations.MULTIPLY);
         double expected = -200;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void multiplicationWithZeroInDifferentPlaces_Ok() {
         double actual = calculator.calculate(0, 30, Operations.MULTIPLY);
         double expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
         actual = calculator.calculate(30, 0, Operations.MULTIPLY);
         expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
         actual = calculator.calculate(0, 0, Operations.MULTIPLY);
         expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithTwoPositiveOperands() {
+    void divisionWithTwoPositiveOperands_Ok() {
         double actual = calculator.calculate(10, 2, Operations.DIVIDE);
         double expected = 5;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithTwoNegativeOperands() {
+    void divisionWithTwoNegativeOperands_Ok() {
         double actual = calculator.calculate(-10, -2, Operations.DIVIDE);
         double expected = 5;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithPositiveAndNegativeOperands() {
+    void divisionWithPositiveAndNegativeOperands_Ok() {
         double actual = calculator.calculate(10, -2, Operations.DIVIDE);
         double expected = -5;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithZeroInDifferentPlaces_Ok() {
+    void divisionWithZeroInStart_Ok() {
         double actual = calculator.calculate(0, 30, Operations.DIVIDE);
         double expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
+    }
 
+    @Test
+    void divisionWithZeroInEnd_notOk() {
         assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(30, 0, Operations.DIVIDE));
+    }
 
+    @Test
+    void divisionWithZeroInStartAndEnd_notOk() {
         assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(0, 0, Operations.DIVIDE));
     }
 
     @Test
-    void raisingPositiveValueToThePositivePower() {
-        double actual = calculator.calculate(10,3, Operations.POW);
+    void raisingPositiveValueToThePositivePower_Ok() {
+        double actual = calculator.calculate(10, 3, Operations.POW);
         double expected = 1000;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNegativeValueToThePositivePower() {
-        double actual = calculator.calculate(-10,3, Operations.POW);
+    void raisingNegativeValueToThePositivePower_Ok() {
+        double actual = calculator.calculate(-10, 3, Operations.POW);
         double expected = -1000;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingPositiveValueToTheNegativePower() {
-        double actual = calculator.calculate(10,-3,Operations.POW);
+    void raisingPositiveValueToTheNegativePower_Ok() {
+        double actual = calculator.calculate(10, -3,Operations.POW);
         double expected = 0.001;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNegativeValueToTheNegativePower() {
-        double actual = calculator.calculate(-10,-3, Operations.POW);
+    void raisingNegativeValueToTheNegativePower_Ok() {
+        double actual = calculator.calculate(-10, -3, Operations.POW);
         double expected = -0.001;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingPositiveValueToZeroPower() {
-        double actual = calculator.calculate(10,0, Operations.POW);
+    void raisingPositiveValueToZeroPower_Ok() {
+        double actual = calculator.calculate(10, 0, Operations.POW);
         double expected = 1;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNegativeValueToZeroPower() {
-        double actual = calculator.calculate(-10,0, Operations.POW);
+    void raisingNegativeValueToZeroPower_Ok() {
+        double actual = calculator.calculate(-10, 0, Operations.POW);
         double expected = 1;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingZeroValueToPower() {
-        double actual = calculator.calculate(0,0, Operations.POW);
+    void raisingZeroValueToPower_Ok() {
+        double actual = calculator.calculate(0, 0, Operations.POW);
         double expected = 1;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
-        actual = calculator.calculate(0,10, Operations.POW);
+        actual = calculator.calculate(0, 10, Operations.POW);
         expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
 
-        actual = calculator.calculate(0,-10, Operations.POW);
+        actual = calculator.calculate(0, -10, Operations.POW);
         expected = Double.POSITIVE_INFINITY;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void calculateIllegalOperation() {
+    void calculateIllegalOperation_notOk() {
         assertThrows(NoSuchElementException.class,
                 () -> calculator.calculate(100, 10, Operations.NO_EXISTED));
     }
