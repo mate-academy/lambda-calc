@@ -6,9 +6,9 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public double calculate(double first, double second, char action) {
-        if ((first == NAN || second == NAN) || (first == POSITIVE_INFINITY
-                || second == POSITIVE_INFINITY)) {
-            throw new RuntimeException("input numbers cant be NaN or Infinity");
+        if (first == POSITIVE_INFINITY
+                || second == POSITIVE_INFINITY) {
+            throw new RuntimeException("input numbers cant be Infinity");
         }
         if ((first == 0 || second == 0) && action == '/') {
             throw new ArithmeticException("division by zero");
