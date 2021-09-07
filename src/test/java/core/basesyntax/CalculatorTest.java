@@ -21,30 +21,30 @@ class CalculatorTest {
     void calculate_additionTwoPositiveIntegers_ok() {
         expected = 30;
         actual = calculator.calculate(10, 20, '+');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_additionTwoNegativeIntegers_ok() {
         expected = -30;
         actual = calculator.calculate(-10, -20, '+');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_additionPositiveAndNegativeIntegers_ok() {
         expected = -10;
         actual = calculator.calculate(10, -20, '+');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_additionWithZeroParameter_ok() {
         expected = 20;
         actual = calculator.calculate(0, 20, '+');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
         actual = calculator.calculate(20, 0, '+');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -65,31 +65,31 @@ class CalculatorTest {
     void calculate_subtractionTwoPositiveIntegers_ok() {
         expected = 10;
         actual = calculator.calculate(20, 10, '-');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_subtractionTwoNegativeIntegers_ok() {
         expected = 10;
         actual = calculator.calculate(-10, -20, '-');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_subtractionPositiveAndNegativeIntegers_ok() {
         expected = 30;
         actual = calculator.calculate(10, -20, '-');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_subtractionWithZeroParameter_ok() {
         expected = -20;
         actual = calculator.calculate(0, 20, '-');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
         expected = 20;
         actual = calculator.calculate(20, 0, '-');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -117,23 +117,23 @@ class CalculatorTest {
     void calculate_multiplicationTwoNegativeIntegers_ok() {
         expected = 200;
         actual = calculator.calculate(-10, -20, '*');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_multiplicationPositiveAndNegativeIntegers_ok() {
         expected = -200;
         actual = calculator.calculate(10, -20, '*');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_multiplicationWithZeroParameter_ok() {
         expected = 0;
         actual = calculator.calculate(0, 20, '*');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
         actual = calculator.calculate(20, 0, '*');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -154,28 +154,28 @@ class CalculatorTest {
     void calculate_divisionTwoPositiveIntegers_ok() {
         expected = 0.5;
         actual = calculator.calculate(10, 20, '/');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_divisionTwoNegativeIntegers_ok() {
         expected = 0.5;
         actual = calculator.calculate(-10, -20, '/');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_divisionPositiveAndNegativeIntegers_ok() {
         expected = -0.5;
         actual = calculator.calculate(10, -20, '/');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_divisionWithZeroFirstParameter_ok() {
         expected = 0;
         actual = calculator.calculate(0, 20, '/');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -203,49 +203,49 @@ class CalculatorTest {
     void calculate_raisingPositiveIntegerToPositivePower_ok() {
         expected = 8;
         actual = calculator.calculate(2, 3, '^');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_raisingNegativeIntegerToPositivePower_ok() {
         expected = -8;
         actual = calculator.calculate(-2, 3, '^');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_raisingPositiveIntegerToNegativePower_ok() {
         expected = 1.0 / 8 / 8;
         actual = calculator.calculate(8, -2, '^');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_raisingNegativeIntegerToNegativePower_ok() {
         expected = 1.0 / 8 / 8;
         actual = calculator.calculate(-8, -2, '^');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_raisingPositiveIntegerToZeroPower_ok() {
         expected = 1;
         actual = calculator.calculate(8, 0, '^');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_raisingNegativeIntegerToZeroPower_ok() {
         expected = 1;
         actual = calculator.calculate(-8, 0, '^');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_raisingZeroToPower_ok() {
         expected = 0;
         actual = calculator.calculate(0, 3, '^');
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
