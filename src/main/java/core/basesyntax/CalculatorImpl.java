@@ -8,7 +8,7 @@ public class CalculatorImpl implements Calculator {
                 || second == Double.POSITIVE_INFINITY) {
             throw new RuntimeException("input numbers cant be Infinity");
         }
-        if ((first == 0 || second == 0) && action == '/') {
+        if ((second == 0) && action == '/') {
             throw new ArithmeticException("division by zero");
         }
         switch (action) {

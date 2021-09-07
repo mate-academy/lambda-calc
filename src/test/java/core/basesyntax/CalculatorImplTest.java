@@ -216,7 +216,6 @@ class CalculatorImplTest {
     @Test
     void division_byZeroNotOk() {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(4, 0, '/'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(0, 4, '/'));
     }
 
     @Test
