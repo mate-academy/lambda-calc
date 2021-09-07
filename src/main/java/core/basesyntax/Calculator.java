@@ -26,7 +26,7 @@ public class Calculator {
                 return firstValue * secondValue;
             case DIVISION:
                 if (secondValue == 0.0) {
-                    throw new DivisionByZero("DivisionByZero");
+                    throw new DivisionByZero("Division by zero");
                 }
                 checkBigResult(firstValue / secondValue);
                 return firstValue / secondValue;
