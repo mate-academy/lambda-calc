@@ -18,22 +18,26 @@ public class CalculatorImpl implements Calculator {
         } else if (operation == '*') {
             return firstNumber * secondNumber;
         } else if (operation == '^') {
-            double result = 1;
-            if (secondNumber >= 0) {
-                for (int i = 0; i < (int) secondNumber; i++) {
-                    result *= firstNumber;
-                }
-            } else {
-                if (firstNumber == 0) {
-                    return 0;
-                }
-                for (int i = 0; i < (-1 * (int) secondNumber); i++) {
-                    result /= firstNumber;
-                }
-            }
-            return result;
+            return power(firstNumber, secondNumber);
         } else {
             throw new InvalidOperationException(INVALID_OPERATION_MESSAGE);
         }
+    }
+
+    private double power(double firstNumber, double secondNumber) {
+        double result = 1;
+        if (secondNumber >= 0) {
+            for (int i = 0; i < (int) secondNumber; i++) {
+                result *= firstNumber;
+            }
+        } else {
+            if (firstNumber == 0) {
+                return 0;
+            }
+            for (int i = 0; i < (-1 * (int) secondNumber); i++) {
+                result /= firstNumber;
+            }
+        }
+        return result;
     }
 }
