@@ -16,11 +16,7 @@ public class Calculator implements Calc {
             case '*':
                 return firstOperand * secondOperand;
             case '^':
-                double result = 1;
-                for (int i = 1; i <= secondOperand; i++) {
-                    result = result * firstOperand;
-                }
-                return result;
+                return Math.pow(firstOperand, secondOperand);
             default:
                 throw new RuntimeException("such an operation is not possible" + operation);
         }
