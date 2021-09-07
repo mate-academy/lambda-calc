@@ -1,28 +1,28 @@
 package core.basesyntax;
 
-public class Calculator {
+public class Calculator implements Calc {
 
-    public double calculate(double value1, double value2, char operation) {
+    public double calculate(double firstOperand, double secondOperand, char operation) {
         if (operation == '+') {
-            return value1 + value2;
+            return firstOperand + secondOperand;
         }
 
         if (operation == '-') {
-            return value1 - value2;
+            return firstOperand - secondOperand;
         }
 
         if (operation == '/') {
-            return value1 / value2;
+            return firstOperand / secondOperand;
         }
 
         if (operation == '*') {
-            return value1 * value2;
+            return firstOperand * secondOperand;
         }
 
         if (operation == '^') {
             double result = 1;
-            for (int i = 1; i <= value2; i++) {
-                result = result * value1;
+            for (int i = 1; i <= secondOperand; i++) {
+                result = result * firstOperand;
             }
             return result;
         }
