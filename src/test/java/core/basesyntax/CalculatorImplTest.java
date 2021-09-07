@@ -9,8 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorImplTest {
-    private static final String MAX_VALUE_ADDITION_MESSAGE = "Addition with near max values must be infinity";
-    private static final String MAX_VALUE_MULTIPLICATION_MESSAGE = "Multiplication with near values must be infinity";
+    private static final String MAX_VALUE_ADDITION_MESSAGE =
+            "Addition with near max values must be infinity";
+    private static final String MAX_VALUE_MULTIPLICATION_MESSAGE =
+            "Multiplication with near values must be infinity";
     private static double firstDouble;
     private static double secondDouble;
     private static CalculatorImpl doubleCalculator;
