@@ -3,7 +3,6 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import core.basesyntax.exceptions.NotAnumberException;
 import core.basesyntax.exceptions.UnknownOperationException;
 import core.basesyntax.exceptions.ZeroDivisionException;
 import core.basesyntax.service.Calculator;
@@ -21,6 +20,7 @@ class CalculatorImplTest {
     private static final double NEGATIVE_INTEGER_POWER = -7;
     private static final double ZERO_POWER = 0;
     private static final double ZERO_OPERAND = 0;
+    private static final double ZERO_DOUBLE_OPERAND = 0.0d;
     private static final double DELTA = 0.00001;
     private static Calculator newCalculator;
     private char operator;
@@ -38,7 +38,7 @@ class CalculatorImplTest {
         expected = 15.557;
         actual = newCalculator.calculate(FIRST_POSITIVE_OPERAND,
                 SECOND_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -47,7 +47,7 @@ class CalculatorImplTest {
         expected = -19.83;
         actual = newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
                 SECOND_NEGATIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -56,7 +56,7 @@ class CalculatorImplTest {
         expected = 5.16;
         actual = newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
                 SECOND_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -65,7 +65,7 @@ class CalculatorImplTest {
         expected = Double.POSITIVE_INFINITY;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 Double.MAX_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -74,7 +74,7 @@ class CalculatorImplTest {
         expected = 1.0E-323;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 Double.MIN_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -83,7 +83,7 @@ class CalculatorImplTest {
         expected = 1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 Double.MAX_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -92,7 +92,7 @@ class CalculatorImplTest {
         expected = 5.567;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 FIRST_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -101,7 +101,7 @@ class CalculatorImplTest {
         expected = -4.83;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 FIRST_NEGATIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -110,7 +110,7 @@ class CalculatorImplTest {
         expected = 1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 FIRST_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -119,7 +119,7 @@ class CalculatorImplTest {
         expected = 1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 FIRST_NEGATIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -128,7 +128,7 @@ class CalculatorImplTest {
         expected = -4.423;
         actual = newCalculator.calculate(FIRST_POSITIVE_OPERAND,
                 SECOND_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -137,7 +137,7 @@ class CalculatorImplTest {
         expected = 10.17;
         actual = newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
                 SECOND_NEGATIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -146,7 +146,7 @@ class CalculatorImplTest {
         expected = -14.82;
         actual = newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
                 SECOND_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -164,7 +164,7 @@ class CalculatorImplTest {
         expected = 0.0;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 Double.MAX_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -173,7 +173,7 @@ class CalculatorImplTest {
         expected = 0.0;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 Double.MIN_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -182,7 +182,7 @@ class CalculatorImplTest {
         expected = -1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 Double.MAX_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -191,7 +191,7 @@ class CalculatorImplTest {
         expected = 1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 Double.MIN_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -200,7 +200,7 @@ class CalculatorImplTest {
         expected = -5.567;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 FIRST_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -209,7 +209,7 @@ class CalculatorImplTest {
         expected = 4.83;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 FIRST_NEGATIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -218,7 +218,7 @@ class CalculatorImplTest {
         expected = 1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 FIRST_POSITIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -227,7 +227,7 @@ class CalculatorImplTest {
         expected = 1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 FIRST_NEGATIVE_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -236,7 +236,7 @@ class CalculatorImplTest {
         expected = -1.7976931348623157E+308;
         actual = newCalculator.calculate(SECOND_POSITIVE_OPERAND,
                 Double.MAX_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -245,7 +245,7 @@ class CalculatorImplTest {
         expected = -1.7976931348623157E+308;
         actual = newCalculator.calculate(SECOND_NEGATIVE_OPERAND,
                 Double.MAX_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -254,7 +254,7 @@ class CalculatorImplTest {
         expected = 9.99;
         actual = newCalculator.calculate(SECOND_POSITIVE_OPERAND,
                 Double.MIN_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -263,7 +263,7 @@ class CalculatorImplTest {
         expected = -15.0;
         actual = newCalculator.calculate(SECOND_NEGATIVE_OPERAND,
                 Double.MIN_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -272,7 +272,7 @@ class CalculatorImplTest {
         expected = -4.9E-324;
         actual = newCalculator.calculate(ZERO_OPERAND,
                 Double.MIN_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -281,7 +281,7 @@ class CalculatorImplTest {
         expected = -1.7976931348623157E+308;
         actual = newCalculator.calculate(ZERO_OPERAND,
                 Double.MAX_VALUE, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -290,7 +290,7 @@ class CalculatorImplTest {
         expected = 4.9E-324;
         actual = newCalculator.calculate(Double.MIN_VALUE,
                 ZERO_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -299,7 +299,7 @@ class CalculatorImplTest {
         expected = 1.7976931348623157E+308;
         actual = newCalculator.calculate(Double.MAX_VALUE,
                 ZERO_OPERAND, operator);
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -509,6 +509,15 @@ class CalculatorImplTest {
     }
 
     @Test
+    public void getDivision_doubleZeroByZero_OK() {
+        operator = '/';
+        expected = Double.NaN;
+        actual = newCalculator.calculate(ZERO_DOUBLE_OPERAND,
+                ZERO_OPERAND, operator);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
     public void getPowerOf_positiveValueAndPositiveDecimalPower_Ok() {
         operator = '^';
         expected = 27.8382;
@@ -554,11 +563,12 @@ class CalculatorImplTest {
     }
 
     @Test
-    public void getPowerOf_negativeValueAndPositiveDecimalPower_NotOk() {
+    public void getPowerOf_negativeValueAndPositiveDecimalPower_Ok() {
         operator = '^';
-        assertThrows(NotAnumberException.class, () -> {
-            newCalculator.calculate(FIRST_NEGATIVE_OPERAND, POSITIVE_DECIMAL_POWER, operator);
-        });
+        expected = Double.NaN;
+        actual = newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
+                POSITIVE_DECIMAL_POWER, operator);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -571,11 +581,12 @@ class CalculatorImplTest {
     }
 
     @Test
-    public void getPowerOf_negativeValueAndNegativeDecimalPower_NotOk() {
+    public void getPowerOf_negativeValueAndNegativeDecimalPower_Ok() {
         operator = '^';
-        assertThrows(NotAnumberException.class, () -> {
-            newCalculator.calculate(FIRST_NEGATIVE_OPERAND, NEGATIVE_DECIMAL_POWER, operator);
-        });
+        expected = Double.NaN;
+        actual = newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
+                NEGATIVE_DECIMAL_POWER, operator);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -732,12 +743,12 @@ class CalculatorImplTest {
     }
 
     @Test
-    public void getPowerOf_negativeValueAndMinValuePower_NotOk() {
+    public void getPowerOf_negativeValueAndMinValuePower_Ok() {
         operator = '^';
-        assertThrows(NotAnumberException.class, () -> {
-            newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
-                    Double.MIN_VALUE, operator);
-        });
+        expected = Double.NaN;
+        actual = newCalculator.calculate(FIRST_NEGATIVE_OPERAND,
+                Double.MIN_VALUE, operator);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test

@@ -1,6 +1,5 @@
 package core.basesyntax;
 
-import core.basesyntax.exceptions.NotAnumberException;
 import core.basesyntax.exceptions.UnknownOperationException;
 import core.basesyntax.exceptions.ZeroDivisionException;
 import core.basesyntax.service.Calculator;
@@ -38,16 +37,13 @@ public class CalculatorImpl implements Calculator {
     }
 
     private double division(double firstOperand, double secondOperand) {
-        if (secondOperand == 0) {
+        if (firstOperand != 0.0d && secondOperand == 0) {
             throw new ZeroDivisionException("Division by zero!");
         }
         return firstOperand / secondOperand;
     }
 
     private double toPower(double firstOperand, double powerOperand) {
-        if (firstOperand < 0 && powerOperand % 1 != 0) {
-            throw new NotAnumberException("Result is NaN!");
-        }
         return Math.pow(firstOperand, powerOperand);
     }
 }
