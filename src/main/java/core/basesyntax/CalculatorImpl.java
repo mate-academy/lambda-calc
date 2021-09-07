@@ -1,13 +1,11 @@
 package core.basesyntax;
 
 public class CalculatorImpl implements Calculator {
-    private static final double POSITIVE_INFINITY = Double.POSITIVE_INFINITY;
-    private static final double NAN = Double.NaN;
 
     @Override
     public double calculate(double first, double second, char action) {
-        if (first == POSITIVE_INFINITY
-                || second == POSITIVE_INFINITY) {
+        if (first == Double.POSITIVE_INFINITY
+                || second == Double.POSITIVE_INFINITY) {
             throw new RuntimeException("input numbers cant be Infinity");
         }
         if ((first == 0 || second == 0) && action == '/') {

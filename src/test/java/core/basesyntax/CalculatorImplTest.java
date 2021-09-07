@@ -7,10 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorImplTest {
-    private static final double MAX_VALUE = Double.MAX_VALUE;
-    private static final double POSITIVE_INFINITY = Double.POSITIVE_INFINITY;
-    private static final double MIN_VALUE = Double.MIN_VALUE;
-    private static final double NAN = Double.NaN;
     private static final double delta = 0.0001;
     private static Calculator calculator;
     private double expected;
@@ -57,24 +53,24 @@ class CalculatorImplTest {
 
     @Test
     void addition_positive_maxValuesOk() {
-        expected = MAX_VALUE;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, 741.5, '+'));
-        assertEquals(expected, calculator.calculate(741.5, MAX_VALUE, '+'));
+        expected = Double.MAX_VALUE;
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 741.5, '+'));
+        assertEquals(expected, calculator.calculate(741.5, Double.MAX_VALUE, '+'));
     }
 
     @Test
     void addiction_maxAndMinValuesOk() {
         expected = 1.7976931348623157E308;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, -232157, '+'));
-        assertEquals(expected, calculator.calculate(-232157, MAX_VALUE, '+'));
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, -232157, '+'));
+        assertEquals(expected, calculator.calculate(-232157, Double.MAX_VALUE, '+'));
         expected = 1.0E-323;
-        assertEquals(expected, calculator.calculate(MIN_VALUE, MIN_VALUE, '+'));
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '+'));
     }
 
     @Test
     void infinityTestOk() {
-        expected = POSITIVE_INFINITY;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, MAX_VALUE, '+'));
+        expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+'));
     }
 
     @Test
@@ -121,30 +117,30 @@ class CalculatorImplTest {
     @Test
     void subtraction_minValuesOk() {
         expected = 0;
-        assertEquals(expected, calculator.calculate(MIN_VALUE, MIN_VALUE, '-'));
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-'));
     }
 
     @Test
     void subtraction_oneMinValuesOk() {
         expected = -543.4;
-        assertEquals(expected, calculator.calculate(MIN_VALUE, 543.4, '-'), delta);
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 543.4, '-'), delta);
         expected = 543.4;
-        assertEquals(expected, calculator.calculate(543.4, MIN_VALUE, '-'), delta);
+        assertEquals(expected, calculator.calculate(543.4, Double.MIN_VALUE, '-'), delta);
 
     }
 
     @Test
     void subtraction_MaxValuesOk() {
         expected = 0;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, MAX_VALUE, '-'));
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'));
     }
 
     @Test
     void subtraction_oneMaxValueOk() {
         expected = 1.7976931348623157E308;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, 21345, '-'));
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 21345, '-'));
         expected = 1.7976931348623157E308;
-        assertEquals(-expected, calculator.calculate(21345, MAX_VALUE,'-'));
+        assertEquals(-expected, calculator.calculate(21345, Double.MAX_VALUE,'-'));
     }
 
     @Test
@@ -178,28 +174,28 @@ class CalculatorImplTest {
 
     @Test
     void multiply_maxValueByOneOk() {
-        expected = MAX_VALUE;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, 1, '*'));
-        assertEquals(expected, calculator.calculate(1, MAX_VALUE, '*'));
-        assertEquals(-expected, calculator.calculate(MAX_VALUE, -1, '*'));
+        expected = Double.MAX_VALUE;
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 1, '*'));
+        assertEquals(expected, calculator.calculate(1, Double.MAX_VALUE, '*'));
+        assertEquals(-expected, calculator.calculate(Double.MAX_VALUE, -1, '*'));
     }
 
     @Test
     void multiply_maxValueOk() {
-        expected = POSITIVE_INFINITY;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, MAX_VALUE, '*'));
-        assertEquals(-expected, calculator.calculate(MAX_VALUE, -MAX_VALUE, '*'));
-        assertEquals(expected, calculator.calculate(MAX_VALUE, 48, '*'));
+        expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*'));
+        assertEquals(-expected, calculator.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, '*'));
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 48, '*'));
     }
 
     @Test
     void multiply_minValuesOk() {
         expected = 0;
-        assertEquals(expected, calculator.calculate(MIN_VALUE, -MIN_VALUE, '*'));
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, -Double.MIN_VALUE, '*'));
         expected = 1.14E-322;
-        assertEquals(expected, calculator.calculate(MIN_VALUE, 23, '*'));
-        assertEquals(expected, calculator.calculate(23, MIN_VALUE, '*'));
-        assertEquals(-expected, calculator.calculate(-23, MIN_VALUE, '*'));
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 23, '*'));
+        assertEquals(expected, calculator.calculate(23, Double.MIN_VALUE, '*'));
+        assertEquals(-expected, calculator.calculate(-23, Double.MIN_VALUE, '*'));
     }
 
     @Test
@@ -246,21 +242,21 @@ class CalculatorImplTest {
     @Test
     void division_MaxNumsOk() {
         expected = 1;
-        assertEquals(expected, calculator.calculate(MAX_VALUE, MAX_VALUE, '/'));
+        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/'));
         expected = 2.9482228625220422E-307;
-        assertEquals(expected, calculator.calculate(53, MAX_VALUE,'/'), delta);
+        assertEquals(expected, calculator.calculate(53, Double.MAX_VALUE,'/'), delta);
         expected = -2.9482228625220422E-307;
-        assertEquals(expected, calculator.calculate(53, -MAX_VALUE, '/'), delta);
+        assertEquals(expected, calculator.calculate(53, -Double.MAX_VALUE, '/'), delta);
     }
 
     @Test
     void division_minValueOk() {
-        expected = POSITIVE_INFINITY;
-        assertEquals(expected, calculator.calculate(48, MIN_VALUE, '/'));
-        assertEquals(-expected, calculator.calculate(-48, MIN_VALUE, '/'));
+        expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, calculator.calculate(48, Double.MIN_VALUE, '/'));
+        assertEquals(-expected, calculator.calculate(-48, Double.MIN_VALUE, '/'));
         expected = 0;
-        assertEquals(expected, calculator.calculate(MIN_VALUE, 48, '/'));
-        assertEquals(expected, calculator.calculate(MIN_VALUE, -48, '/'));
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 48, '/'));
+        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, -48, '/'));
     }
 
     @Test
@@ -281,14 +277,14 @@ class CalculatorImplTest {
     @Test
     void infinityValuesNotOk() {
         assertThrows(RuntimeException.class, () ->
-                calculator.calculate(POSITIVE_INFINITY, POSITIVE_INFINITY, '/'));
+                calculator.calculate(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, '/'));
     }
 
     @Test
     void raisingToPower_zeroToPowerOk() {
         expected = 0;
         assertEquals(expected, calculator.calculate(0, 12,'^'));
-        expected = POSITIVE_INFINITY;
+        expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, calculator.calculate(0, -12, '^'));
     }
 
