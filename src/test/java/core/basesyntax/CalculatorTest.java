@@ -1,21 +1,22 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CalculatorTest {
     private static Calculator calc;
-    private double value1;
-    private double value2;
-    private double actual;
-    private double expected;
     private static final char ADD = '+';
     private static final char SUB = '-';
     private static final char DIV = '/';
     private static final char MUL = '*';
     private static final char POW = '^';
+    private double value1;
+    private double value2;
+    private double actual;
+    private double expected;
 
     @BeforeAll
     static void beforeAll() {
@@ -61,7 +62,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addMaxAndMinDoubleValues() {///
+    void addMaxAndMinDoubleValues() {
         value1 = Double.MIN_VALUE;
         value2 = Double.MAX_VALUE;
         actual = calc.calculate(value1, value2, ADD);
@@ -269,5 +270,4 @@ class CalculatorTest {
         char invalidChar = '@';
         assertThrows(RuntimeException.class, () -> calc.calculate(value1, value2, invalidChar));
     }
-
 }
