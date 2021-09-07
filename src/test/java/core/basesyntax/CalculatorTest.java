@@ -268,6 +268,7 @@ class CalculatorTest {
         valueFirst = -5;
         valueSecond = 0;
         char invalidChar = '@';
-        assertThrows(RuntimeException.class, () -> calc.calculate(valueFirst, valueSecond, invalidChar));
+        assertThrows(RuntimeException.class, () ->
+                calc.calculate(valueFirst, valueSecond, invalidChar));
     }
 }
