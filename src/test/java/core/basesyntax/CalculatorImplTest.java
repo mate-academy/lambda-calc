@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorImplTest {
+    private static final String MAX_VALUE_ADDITION_MESSAGE = "Addition with near max values must be infinity";
+    private static final String MAX_VALUE_MULTIPLICATION_MESSAGE = "Multiplication with near values must be infinity";
     private static double firstDouble;
     private static double secondDouble;
     private static CalculatorImpl doubleCalculator;
@@ -71,7 +73,7 @@ class CalculatorImplTest {
         firstDouble = Double.MAX_VALUE;
         secondDouble = Double.MAX_VALUE;
         assertTrue(Double.isInfinite(doubleCalculator.calculate(firstDouble, '+', secondDouble)),
-                "addition with max values must be infinity");
+                MAX_VALUE_ADDITION_MESSAGE);
     }
 
     @Test
@@ -79,7 +81,7 @@ class CalculatorImplTest {
         firstDouble = -Double.MAX_VALUE;
         secondDouble = -Double.MAX_VALUE;
         assertTrue(Double.isInfinite(doubleCalculator.calculate(firstDouble, '+', secondDouble)),
-                "addition with max values must be infinity");
+                MAX_VALUE_ADDITION_MESSAGE);
     }
 
     @Test
@@ -200,7 +202,7 @@ class CalculatorImplTest {
     void multiplication_oneMaxValue_Ok() {
         firstDouble = Double.MAX_VALUE;
         assertTrue(Double.isInfinite(doubleCalculator.calculate(firstDouble, '*', secondDouble)),
-                "multiplication with max values must be infinity");
+                MAX_VALUE_MULTIPLICATION_MESSAGE);
     }
 
     @Test
@@ -214,7 +216,7 @@ class CalculatorImplTest {
         firstDouble = Double.MAX_VALUE;
         secondDouble = Double.MAX_VALUE;
         assertTrue(Double.isInfinite(doubleCalculator.calculate(firstDouble, '*', secondDouble)),
-                "multiplication with max values must be infinity");
+                MAX_VALUE_MULTIPLICATION_MESSAGE);
     }
 
     @Test
@@ -222,7 +224,7 @@ class CalculatorImplTest {
         firstDouble = -Double.MAX_VALUE;
         secondDouble = -Double.MAX_VALUE;
         assertTrue(Double.isInfinite(doubleCalculator.calculate(firstDouble, '*', secondDouble)),
-                "multiplication with max values must be infinity");
+                MAX_VALUE_MULTIPLICATION_MESSAGE);
     }
 
     @Test
