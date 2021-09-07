@@ -18,7 +18,7 @@ public class Calculator implements Calc {
             case '^':
                 return Math.pow(firstOperand, secondOperand);
             default:
-                throw new RuntimeException("such an operation is not possible" + operation);
+                throw new RuntimeException("such an operation is not possible " + operation);
         }
     }
 }

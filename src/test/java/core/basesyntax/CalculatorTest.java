@@ -13,8 +13,8 @@ class CalculatorTest {
     private static final char DIV = '/';
     private static final char MUL = '*';
     private static final char POW = '^';
-    private double value1;
-    private double value2;
+    private double valueFirst;
+    private double valueSecond;
     private double actual;
     private double expected;
 
@@ -25,249 +25,249 @@ class CalculatorTest {
 
     @Test
     void addPositiveOperands() {
-        value1 = 5.0;
-        value2 = 12.0;
-        actual = calc.calculate(value1, value2, ADD);
-        expected = value1 + value2;
+        valueFirst = 5.0;
+        valueSecond = 12.0;
+        actual = calc.calculate(valueFirst, valueSecond, ADD);
+        expected = valueFirst + valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void addNegativeOperands() {
-        value1 = -5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, ADD);
-        expected = value1 + value2;
+        valueFirst = -5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, ADD);
+        expected = valueFirst + valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void addPositiveAndNegativeOperands() {
-        value1 = 5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, ADD);
-        expected = value1 + value2;
+        valueFirst = 5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, ADD);
+        expected = valueFirst + valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void addZeroInDifferentPlaces() {
-        value1 = 5.0;
-        value2 = 0;
-        actual = calc.calculate(value1, value2, ADD);
+        valueFirst = 5.0;
+        valueSecond = 0;
+        actual = calc.calculate(valueFirst, valueSecond, ADD);
         expected = 5.0;
         assertEquals(expected, actual);
-        actual = calc.calculate(value2, value1, ADD);
+        actual = calc.calculate(valueSecond, valueFirst, ADD);
         assertEquals(expected, actual);
     }
 
     @Test
     void addMaxAndMinDoubleValues() {
-        value1 = Double.MIN_VALUE;
-        value2 = Double.MAX_VALUE;
-        actual = calc.calculate(value1, value2, ADD);
-        expected = value1 + value2;
+        valueFirst = Double.MIN_VALUE;
+        valueSecond = Double.MAX_VALUE;
+        actual = calc.calculate(valueFirst, valueSecond, ADD);
+        expected = valueFirst + valueSecond;
         assertEquals(actual, expected);
     }
 
     @Test
     void subPositiveOperands() {
-        value1 = 5.0;
-        value2 = 12.0;
-        actual = calc.calculate(value1, value2, SUB);
-        expected = value1 - value2;
+        valueFirst = 5.0;
+        valueSecond = 12.0;
+        actual = calc.calculate(valueFirst, valueSecond, SUB);
+        expected = valueFirst - valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void subNegativeOperands() {
-        value1 = -5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, SUB);
-        expected = value1 - value2;
+        valueFirst = -5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, SUB);
+        expected = valueFirst - valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void subPositiveAndNegativeOperands() {
-        value1 = 5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, SUB);
-        expected = value1 - value2;
+        valueFirst = 5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, SUB);
+        expected = valueFirst - valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void subZeroInDifferentPlaces() {
-        value1 = 5.0;
-        actual = calc.calculate(value1, 0, SUB);
+        valueFirst = 5.0;
+        actual = calc.calculate(valueFirst, 0, SUB);
         assertEquals(actual, 5.0);
-        actual = calc.calculate(0, value1, SUB);
+        actual = calc.calculate(0, valueFirst, SUB);
         expected = -5.0;
         assertEquals(expected, actual);
     }
 
     @Test
     void subMaxAndMinDoubleValues() {
-        value1 = Double.MIN_VALUE;
-        value2 = Double.MAX_VALUE;
-        actual = calc.calculate(value1, value2, SUB);
-        expected = value1 - value2;
+        valueFirst = Double.MIN_VALUE;
+        valueSecond = Double.MAX_VALUE;
+        actual = calc.calculate(valueFirst, valueSecond, SUB);
+        expected = valueFirst - valueSecond;
         assertEquals(actual, expected);
     }
 
     @Test
     void mulPositiveOperands() {
-        value1 = 5.0;
-        value2 = 12.0;
-        actual = calc.calculate(value1, value2, MUL);
-        expected = value1 * value2;
+        valueFirst = 5.0;
+        valueSecond = 12.0;
+        actual = calc.calculate(valueFirst, valueSecond, MUL);
+        expected = valueFirst * valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void mulNegativeOperands() {
-        value1 = -5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, MUL);
-        expected = value1 * value2;
+        valueFirst = -5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, MUL);
+        expected = valueFirst * valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void mulPositiveAndNegativeOperands() {
-        value1 = 5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, MUL);
-        expected = value1 * value2;
+        valueFirst = 5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, MUL);
+        expected = valueFirst * valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void mulZeroInDifferentPlaces() {
-        value1 = 5.0;
-        value2 = 0;
-        actual = calc.calculate(value1, value2, MUL);
+        valueFirst = 5.0;
+        valueSecond = 0;
+        actual = calc.calculate(valueFirst, valueSecond, MUL);
         expected = 0;
         assertEquals(expected, actual);
-        actual = calc.calculate(value2, value1, MUL);
+        actual = calc.calculate(valueSecond, valueFirst, MUL);
         assertEquals(expected, actual);
     }
 
     @Test
     void mulMaxAndMinDoubleValues() {
-        value1 = Double.MIN_VALUE;
-        value2 = Double.MAX_VALUE;
-        actual = calc.calculate(value1, value2, MUL);
-        expected = value1 * value2;
+        valueFirst = Double.MIN_VALUE;
+        valueSecond = Double.MAX_VALUE;
+        actual = calc.calculate(valueFirst, valueSecond, MUL);
+        expected = valueFirst * valueSecond;
         assertEquals(actual, expected);
     }
 
     @Test
     void divPositiveOperands() {
-        value1 = 5.0;
-        value2 = 12.0;
-        actual = calc.calculate(value1, value2, DIV);
-        expected = value1 / value2;
+        valueFirst = 5.0;
+        valueSecond = 12.0;
+        actual = calc.calculate(valueFirst, valueSecond, DIV);
+        expected = valueFirst / valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void divNegativeOperands() {
-        value1 = -5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, DIV);
-        expected = value1 / value2;
+        valueFirst = -5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, DIV);
+        expected = valueFirst / valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void divPositiveAndNegativeOperands() {
-        value1 = 5.0;
-        value2 = -12.0;
-        actual = calc.calculate(value1, value2, DIV);
-        expected = value1 / value2;
+        valueFirst = 5.0;
+        valueSecond = -12.0;
+        actual = calc.calculate(valueFirst, valueSecond, DIV);
+        expected = valueFirst / valueSecond;
         assertEquals(expected, actual);
     }
 
     @Test
     void divZeroInDifferentPlaces() {
-        value1 = 5.0;
-        value2 = 0;
-        assertThrows(ArithmeticException.class, () -> calc.calculate(value1, value2, DIV));
+        valueFirst = 5.0;
+        valueSecond = 0;
+        assertThrows(ArithmeticException.class, () -> calc.calculate(valueFirst, valueSecond, DIV));
         expected = 0;
-        actual = calc.calculate(value2, value1, DIV);
+        actual = calc.calculate(valueSecond, valueFirst, DIV);
         assertEquals(expected, actual);
     }
 
     @Test
     void divMaxAndMinDoubleValues() {
-        value1 = Double.MIN_VALUE;
-        value2 = Double.MAX_VALUE;
-        actual = calc.calculate(value2, value1, DIV);
-        expected = value2 / value1;
+        valueFirst = Double.MIN_VALUE;
+        valueSecond = Double.MAX_VALUE;
+        actual = calc.calculate(valueSecond, valueFirst, DIV);
+        expected = valueSecond / valueFirst;
         assertEquals(actual, expected);
     }
 
     @Test
     void raisingPositiveToPowerPositive() {
-        value1 = 2;
-        value2 = 8;
-        double actual = calc.calculate(value1, value2, POW);
+        valueFirst = 2;
+        valueSecond = 8;
+        double actual = calc.calculate(valueFirst, valueSecond, POW);
         double expected = 256;
         assertEquals(expected, actual);
     }
 
     @Test
     void raisingPositiveToPowerNegative() {
-        value1 = 5;
-        value2 = -2;
-        actual = calc.calculate(value1, value2, POW);
+        valueFirst = 5;
+        valueSecond = -2;
+        actual = calc.calculate(valueFirst, valueSecond, POW);
         expected = 0.04;
         assertEquals(expected, actual);
     }
 
     @Test
     void raisingNegativeToPowerPositive() {
-        value1 = -5;
-        value2 = 2;
-        actual = calc.calculate(value1, value2, POW);
+        valueFirst = -5;
+        valueSecond = 2;
+        actual = calc.calculate(valueFirst, valueSecond, POW);
         expected = 25;
         assertEquals(expected, actual);
     }
 
     @Test
     void raisingNegativeToPowerNegative() {
-        value1 = -2;
-        value2 = -5;
-        double actual = calc.calculate(value1, value2, POW);
+        valueFirst = -2;
+        valueSecond = -5;
+        double actual = calc.calculate(valueFirst, valueSecond, POW);
         double expected = -0.03125;
         assertEquals(expected, actual);
     }
 
     @Test
     void raisingPositiveToPowerOfZero() {
-        value1 = 5;
-        value2 = 0;
-        double actual = calc.calculate(value1, value2, POW);
+        valueFirst = 5;
+        valueSecond = 0;
+        double actual = calc.calculate(valueFirst, valueSecond, POW);
         double expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
     void raisingNegativeToPowerOfZero_OK() {
-        value1 = -5;
-        value2 = 0;
-        double actual = calc.calculate(value1, value2, POW);
+        valueFirst = -5;
+        valueSecond = 0;
+        double actual = calc.calculate(valueFirst, valueSecond, POW);
         double expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
     void illegalOperation_NotOK() {
-        value1 = -5;
-        value2 = 0;
+        valueFirst = -5;
+        valueSecond = 0;
         char invalidChar = '@';
-        assertThrows(RuntimeException.class, () -> calc.calculate(value1, value2, invalidChar));
+        assertThrows(RuntimeException.class, () -> calc.calculate(valueFirst, valueSecond, invalidChar));
     }
 }
