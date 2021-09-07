@@ -1,7 +1,7 @@
 package core.basesyntax;
 
 public class IllegalOperation extends RuntimeException {
-    public IllegalOperation() {
-        super("Illegal Parameter");
+    public IllegalOperation(String message) {
+        super(message);
     }
 }

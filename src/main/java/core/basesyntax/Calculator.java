@@ -12,7 +12,7 @@ public class Calculator {
 
     public double calculate(double firstValue, double secondValue, char operation) {
         if (Character.toString(operation).matches("[^\\+\\-\\*\\/\\^]")) {
-            throw new IllegalOperation();
+            throw new IllegalOperation("Illegal Parameter");
         }
         switch (operation) {
             case ADDITION:
@@ -26,7 +26,7 @@ public class Calculator {
                 return firstValue * secondValue;
             case DIVISION:
                 if (secondValue == 0.0) {
-                    throw new DivisionByZero();
+                    throw new DivisionByZero("DivisionByZero");
                 }
                 checkBigResult(firstValue / secondValue);
                 return firstValue / secondValue;
