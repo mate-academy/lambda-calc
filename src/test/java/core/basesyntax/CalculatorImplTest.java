@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 class CalculatorImplTest {
     private static final double delta = 0.0001;
     private static Calculator calculator;
-    private double expected;
 
     @BeforeAll
     static void createCalculatorInstance() {
@@ -18,59 +17,77 @@ class CalculatorImplTest {
 
     @Test
     void addition_positive_numbersOk() {
-        expected = 12;
-        assertEquals(expected, calculator.calculate(5, 7, '+'));
+        double first = 5;
+        double second = 7;
+        char action = '+';
+        double actual = calculator.calculate(first, second, action);
+        double expected = 12;
+        assertEquals(expected, actual,
+                "wrong result with positive numbers, expected: "
+                        + expected + ", but was: " + actual);
+    }
+
+    @Test
+    void addition_Negative_numbersOk() {
+        double first = -8;
+        double second = -5;
+        char action = '+';
+        double expected = -13;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "wrong result with negative numbers, expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void addition_oneNegative_numberOk() {
-        expected = 3;
-        assertEquals(expected, calculator.calculate(8,-5,'+'));
-        assertEquals(expected, calculator.calculate(-5, 8, '+'));
-    }
-
-    @Test
-    void addition_twoNegativeNumsOk() {
-        expected = -23;
-        assertEquals(expected, calculator.calculate(-7, -16, '+'));
+        double first = -8;
+        double second = 6.3;
+        char action = '+';
+        double expected = -1.7;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, delta,
+                "wrong result with negative numbers, expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
     void addition_zeroNumOk() {
-        expected = 41;
-        assertEquals(expected, calculator.calculate(41, 0, '+'));
-        assertEquals(expected, calculator.calculate(0, 41, '+'));
-    }
-
-    @Test
-    void addition_floatingPointNumsOk() {
-        expected = 64.2;
-        assertEquals(expected,calculator.calculate(28.4, 35.8, '+'), delta);
-        assertEquals(expected, calculator.calculate(35.8, 28.4, '+'), delta);
-        expected = 24.3;
-        assertEquals(expected, calculator.calculate(-12.1, 36.4, '+'), delta);
+        double first = 41;
+        double second = 0;
+        char action = '+';
+        double expected = 41;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with zero. Expected: "
+                        + expected + ", but was: " + actual);
+        assertEquals(expected, actual,
+                "Wrong result with zero. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
     void addition_positive_maxValuesOk() {
-        expected = Double.MAX_VALUE;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 741.5, '+'));
-        assertEquals(expected, calculator.calculate(741.5, Double.MAX_VALUE, '+'));
+        double first = Double.MAX_VALUE;
+        double second = 741;
+        char action = '+';
+        double expected = Double.MAX_VALUE;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with MaxValue. Expected: "
+                        + expected + " , but was: " + actual);
     }
 
     @Test
     void addiction_maxAndMinValuesOk() {
-        expected = 1.7976931348623157E308;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, -232157, '+'));
-        assertEquals(expected, calculator.calculate(-232157, Double.MAX_VALUE, '+'));
-        expected = 1.0E-323;
-        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '+'));
-    }
-
-    @Test
-    void infinityTestOk() {
-        expected = Double.POSITIVE_INFINITY;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+'));
+        double first = Double.MIN_VALUE;
+        double second = 56;
+        char action = '+';
+        double expected = 56;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with MinValue. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
@@ -80,137 +97,163 @@ class CalculatorImplTest {
 
     @Test
     void subtraction_twoPositiveNumsOk() {
-        expected = 15;
-        assertEquals(expected, calculator.calculate(43, 28, '-'));
+        double first = 43;
+        double second = 28.1;
+        char action = '-';
+        double expected = 14.9;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, delta,
+                "Wrong result with positive numbers. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
     void subtraction_twoNegativeNumsOk() {
-        expected = -11;
-        assertEquals(expected, calculator.calculate(-32, -21, '-'));
+        double first = -32;
+        double second = -21;
+        char action = '-';
+        double expected = -11;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with negative numbers. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
     void subtraction_oneNegativeNumOk() {
-        expected = -76;
-        assertEquals(expected, calculator.calculate(-53, 23, '-'));
-        expected = 76;
-        assertEquals(expected, calculator.calculate(23, -53, '-'));
+        double first = -53;
+        double second = 23;
+        char action = '-';
+        double expected = -76;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with one negative number. Expected: " + expected
+                        + ", but was: " + actual);
     }
 
     @Test
     void subtraction_zeroNumOk() {
-        expected = -38;
-        assertEquals(expected, calculator.calculate(0, 38, '-'));
+        double first = 0;
+        double second = 38;
+        char action = '-';
+        double expected = -38;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with 1st zero. Expected: "
+                        + expected + ", but was: " + actual);
         expected = 38;
-        assertEquals(38, calculator.calculate(38, 0, '-'));
+        actual = calculator.calculate(second, first, action);
+        assertEquals(expected, actual,
+                "Wrong result with 2nd zero. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
-    void subtraction_floatingPointNumsOk() {
-        expected = -12.2;
-        assertEquals(expected, calculator.calculate(33.4, 45.6,'-'), delta);
-        expected = 12.2;
-        assertEquals(12.2, calculator.calculate(45.6, 33.4, '-'), delta);
-    }
-
-    @Test
-    void subtraction_minValuesOk() {
-        expected = 0;
-        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-'));
-    }
-
-    @Test
-    void subtraction_oneMinValuesOk() {
-        expected = -543.4;
-        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 543.4, '-'), delta);
-        expected = 543.4;
-        assertEquals(expected, calculator.calculate(543.4, Double.MIN_VALUE, '-'), delta);
-
-    }
-
-    @Test
-    void subtraction_MaxValuesOk() {
-        expected = 0;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-'));
+    void subtraction_minValueOk() {
+        double first = Double.MIN_VALUE;
+        double second = 98;
+        char action = '-';
+        double expected = -98;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with MinValue. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
     void subtraction_oneMaxValueOk() {
-        expected = 1.7976931348623157E308;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 21345, '-'));
-        expected = 1.7976931348623157E308;
-        assertEquals(-expected, calculator.calculate(21345, Double.MAX_VALUE,'-'));
+        double first = Double.MAX_VALUE;
+        double second = 21345;
+        char action = '-';
+        double expected = 1.7976931348623157E308;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with MaxValue. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
     void multiply_positiveNumsOk() {
-        expected = 32;
-        assertEquals(expected, calculator.calculate(4, 8, '*'));
-        assertEquals(expected, calculator.calculate(8, 4, '*'));
+        double first = 4;
+        double second = 8;
+        char action = '*';
+        double expected = 32;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with positive numbers. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void multiply_negativeNumsOk() {
-        expected = 24;
-        assertEquals(expected, calculator.calculate(-4, -6, '*'));
-        assertEquals(expected, calculator.calculate(-6, -4, '*'));
+        double first = -4;
+        double second = -6.7;
+        char action = '*';
+        double expected = 26.8;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, delta,
+                "Wrong result with negative numbers. Expected: "
+                        + expected + ", but was: " + actual);
     }
 
     @Test
     void multiply_oneNegativeNumOk() {
-        expected = -60;
-        assertEquals(expected, calculator.calculate(-6, 10, '*'));
-        assertEquals(expected, calculator.calculate(10, -6, '*'));
+        double first = -6;
+        double second = 10;
+        char action = '*';
+        double expected = -60;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with one negative number. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void multiply_byZeroOk() {
-        expected = 0;
-        assertEquals(expected, calculator.calculate(24, 0, '*'));
-        assertEquals(expected, calculator.calculate(0, 24, '*'));
-        assertEquals(expected, calculator.calculate(-24, 0, '*'));
-    }
-
-    @Test
-    void multiply_maxValueByOneOk() {
-        expected = Double.MAX_VALUE;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 1, '*'));
-        assertEquals(expected, calculator.calculate(1, Double.MAX_VALUE, '*'));
-        assertEquals(-expected, calculator.calculate(Double.MAX_VALUE, -1, '*'));
+        double first = 24;
+        double second = 0;
+        char action = '*';
+        double expected = 0;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual,
+                "Wrong result with zero. Expected: " + expected + ", but was: " + actual);
+        actual = calculator.calculate(second, first, action);
+        assertEquals(expected, actual, "Wrong result with zero. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void multiply_maxValueOk() {
-        expected = Double.POSITIVE_INFINITY;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*'));
-        assertEquals(-expected, calculator.calculate(Double.MAX_VALUE, -Double.MAX_VALUE, '*'));
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, 48, '*'));
+        double first = Double.MAX_VALUE;
+        double second = 35;
+        char action = '*';
+        double expected = Double.POSITIVE_INFINITY;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, "Wrong result with MaxValue. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void multiply_minValuesOk() {
-        expected = 0;
-        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, -Double.MIN_VALUE, '*'));
-        expected = 1.14E-322;
-        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 23, '*'));
-        assertEquals(expected, calculator.calculate(23, Double.MIN_VALUE, '*'));
-        assertEquals(-expected, calculator.calculate(-23, Double.MIN_VALUE, '*'));
-    }
-
-    @Test
-    void multiply_floatingPointNumbersOk() {
-        expected = 176.64;
-        assertEquals(expected, calculator.calculate(38.4, 4.6,'*'), delta);
-        assertEquals(-expected, calculator.calculate(-38.4, 4.6, '*'), delta);
+        double first = Double.MIN_VALUE;
+        double second = 23;
+        char action = '*';
+        double expected = 1.14E-322;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, "Wrong result with MinValue. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void division_positiveNumsOk() {
-        expected = 3;
-        assertEquals(expected, calculator.calculate(9, 3,'/'));
-        expected = 0.3333333333333333;
-        assertEquals(expected, calculator.calculate(3, 9, '/'), delta);
+        double first = 3;
+        double second = 9;
+        char action = '/';
+        double expected = 0.3333333333333333;
+        double actual = calculator.calculate(first, second,action);
+        assertEquals(expected, actual, delta, "Wrong result with positive numbers. Expected: "
+                + expected + ", but was: " + actual);
+
     }
 
     @Test
@@ -220,57 +263,60 @@ class CalculatorImplTest {
 
     @Test
     void division_negativeNumsOk() {
-        expected = 1.25;
-        assertEquals(expected, calculator.calculate(-5, -4, '/'), delta);
+        double first = -5;
+        double second = -4;
+        char action = '/';
+        double expected = 1.25;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, delta, "Wrong result with negative numbers. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void division_oneNegitiveNumOk() {
-        expected = -4;
-        assertEquals(expected, calculator.calculate(32, -8, '/'));
-        expected = -0.25;
-        assertEquals(expected, calculator.calculate(-8, 32, '/'), delta);
-    }
-
-    @Test
-    void division_floatingPointNumsOk() {
-        expected = 4.982456140350877;
-        assertEquals(expected, calculator.calculate(28.4, 5.7, '/'), delta);
+        double first = 32;
+        double second = -8;
+        char action = '/';
+        double expected = -4;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, "Wrong result with one negative number. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void division_MaxNumsOk() {
-        expected = 1;
-        assertEquals(expected, calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/'));
-        expected = 2.9482228625220422E-307;
-        assertEquals(expected, calculator.calculate(53, Double.MAX_VALUE,'/'), delta);
-        expected = -2.9482228625220422E-307;
-        assertEquals(expected, calculator.calculate(53, -Double.MAX_VALUE, '/'), delta);
+        double first = 53;
+        double second = Double.MAX_VALUE;
+        char action = '/';
+        double expected = 2.9482228625220422E-307;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, delta, "Wrong result with MaxValue. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void division_minValueOk() {
-        expected = Double.POSITIVE_INFINITY;
-        assertEquals(expected, calculator.calculate(48, Double.MIN_VALUE, '/'));
-        assertEquals(-expected, calculator.calculate(-48, Double.MIN_VALUE, '/'));
-        expected = 0;
-        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, 48, '/'));
-        assertEquals(expected, calculator.calculate(Double.MIN_VALUE, -48, '/'));
-    }
-
-    @Test
-    void raisingToAPower_NegativePowerOk() {
-        expected = 0.015625;
-        assertEquals(expected, calculator.calculate(4, -3, '^'), delta);
-        expected = -0.015625;
-        assertEquals(expected, calculator.calculate(-4, -3, '^'), delta);
+        double first = 48;
+        double second = Double.MIN_VALUE;
+        char action = '/';
+        double expected = Double.POSITIVE_INFINITY;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, "Wrong result with MinValue. Expected: "
+                + expected + ", but was: " + actual);
     }
 
     @Test
     void raisingToPower_PositivePowerOk() {
-        expected = -243;
-        assertEquals(expected, calculator.calculate(-3, 5, '^'));
-        assertEquals(-expected, calculator.calculate(3, 5, '^'));
+        double first = -3;
+        double second = 5;
+        char action = '^';
+        double expected = -243;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, "Wrong result with positive number to positive power."
+                + " Expected: " + expected + ", but was: " + actual);
+        actual = calculator.calculate(-first, second, action);
+        assertEquals(-expected, actual, "Wrong result with negative number to positive power. "
+                + "Expected: " + expected + ", but was: " + actual);
     }
 
     @Test
@@ -280,17 +326,49 @@ class CalculatorImplTest {
     }
 
     @Test
+    void negativeInfinityValuesNotOk() {
+        assertThrows(RuntimeException.class, () ->
+                calculator.calculate(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, '/'));
+    }
+
+    @Test
+    void raisingToPower_negativePowerOk() {
+        double first = 5;
+        double second = -7;
+        char action = '^';
+        double expected = 1.28E-5;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, "Wrong result with positive number to negative power. "
+                + "Expected: " + expected + ", but was: " + actual);
+        expected = -1.28E-5;
+        actual = calculator.calculate(-first, second, action);
+        assertEquals(expected, actual, "Wrong result with negative number to negative power. "
+                + "Expected: " + expected + ", but was: " + actual);
+    }
+
+    @Test
     void raisingToPower_zeroToPowerOk() {
-        expected = 0;
-        assertEquals(expected, calculator.calculate(0, 12,'^'));
+        double first = 0;
+        double second = 12;
+        char action = '^';
+        double expected = 0;
+        double actual = calculator.calculate(first, second,action);
+        assertEquals(expected, actual, "Wrong result with zero to power. "
+                + "Expected:" + expected + ", but was: " + actual);
         expected = Double.POSITIVE_INFINITY;
-        assertEquals(expected, calculator.calculate(0, -12, '^'));
+        actual = calculator.calculate(first, -second, action);
+        assertEquals(expected, actual, "Wrong result with zero to a negative power. "
+                + "Expected: " + expected + ", but was:" + actual);
     }
 
     @Test
     void raisingToPower_zeroPowerOk() {
-        expected = 1;
-        assertEquals(expected, calculator.calculate(80, 0, '^'));
-        assertEquals(expected, calculator.calculate(-80, 0, '^'));
+        double first = 80;
+        double second = 0;
+        char action = '^';
+        double expected = 1;
+        double actual = calculator.calculate(first, second, action);
+        assertEquals(expected, actual, "Wrong result with raising to a zero. "
+                + "Expected:" + expected + ", but was:" + actual);
     }
 }
