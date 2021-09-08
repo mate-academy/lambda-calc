@@ -3,12 +3,19 @@ package core.basesyntax;
 public class CalculatorImpl implements Calculator {
     private static final String DIVIDE_BY_ZERO_MESSAGE = "Divide by zero";
     private static final String INVALID_OPERATION_MESSAGE = "Operation is not valid";
+    private static final String VALUES_TOO_BIG_MESSAGE = "Numbers are too big";
 
     @Override
     public double calculate(double firstNumber, char operation, double secondNumber) {
         if (operation == '+') {
+            if (Math.abs(firstNumber + secondNumber) >= Double.MAX_VALUE) {
+                throw new TooBigValuesException(VALUES_TOO_BIG_MESSAGE);
+            }
             return firstNumber + secondNumber;
         } else if (operation == '-') {
+            if (Math.abs(firstNumber - secondNumber) >= Double.MAX_VALUE) {
+                throw new TooBigValuesException(VALUES_TOO_BIG_MESSAGE);
+            }
             return firstNumber - secondNumber;
         } else if (operation == '/') {
             if (secondNumber == 0) {
@@ -16,28 +23,17 @@ public class CalculatorImpl implements Calculator {
             }
             return firstNumber / secondNumber;
         } else if (operation == '*') {
+            if (Math.abs(firstNumber * secondNumber) >= Double.MAX_VALUE) {
+                throw new TooBigValuesException(VALUES_TOO_BIG_MESSAGE);
+            }
             return firstNumber * secondNumber;
         } else if (operation == '^') {
-            return power(firstNumber, secondNumber);
+            if (Math.abs(Math.pow(firstNumber, secondNumber)) >= Double.MAX_VALUE) {
+                throw new TooBigValuesException(VALUES_TOO_BIG_MESSAGE);
+            }
+            return Math.pow(firstNumber, secondNumber);
         } else {
             throw new InvalidOperationException(INVALID_OPERATION_MESSAGE);
         }
-    }
-
-    private double power(double firstNumber, double secondNumber) {
-        double result = 1;
-        if (secondNumber >= 0) {
-            for (int i = 0; i < (int) secondNumber; i++) {
-                result *= firstNumber;
-            }
-        } else {
-            if (firstNumber == 0) {
-                return 0;
-            }
-            for (int i = 0; i < (-1 * (int) secondNumber); i++) {
-                result /= firstNumber;
-            }
-        }
-        return result;
     }
 }
