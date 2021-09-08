@@ -1,7 +1,5 @@
 package core.basesyntax;
 
-import java.util.NoSuchElementException;
-
 public class Calculator {
 
     public double calculate(double x, double y, String operation) {
@@ -20,7 +18,7 @@ public class Calculator {
             case "^":
                 return Math.pow(x, y);
             default:
-                throw new NoSuchElementException("Your data is incorrect...");
+                throw new InvalidOperationException("Invalid operation");
         }
     }
 }

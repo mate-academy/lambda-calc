@@ -3,7 +3,6 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -70,7 +69,7 @@ class CalculatorTest {
         String add = "+";
         double a = Double.MIN_VALUE;
         double b = 9;
-        double expected = a + b;
+        double expected = 9;
         double actual = calculator.calculate(a, b, add);
         assertEquals(expected, actual);
     }
@@ -80,7 +79,7 @@ class CalculatorTest {
         String add = "+";
         double a = Double.MAX_VALUE;
         double b = 9;
-        double expected = a + b;
+        double expected = 1.7976931348623157E308;
         double actual = calculator.calculate(a, b, add);
         assertEquals(expected, actual);
     }
@@ -140,7 +139,7 @@ class CalculatorTest {
         String subtraction = "-";
         double a = Double.MIN_VALUE;
         double b = 9;
-        double expected = a - b;
+        double expected = -9;
         double actual = calculator.calculate(a, b, subtraction);
         assertEquals(expected, actual);
     }
@@ -150,7 +149,7 @@ class CalculatorTest {
         String subtraction = "-";
         double a = Double.MAX_VALUE;
         double b = 9;
-        double expected = a - b;
+        double expected = 1.7976931348623157E308;
         double actual = calculator.calculate(a, b, subtraction);
         assertEquals(expected, actual);
     }
@@ -210,7 +209,7 @@ class CalculatorTest {
         String multiplication = "*";
         double a = Double.MIN_VALUE;
         double b = 9;
-        double expected = a * b;
+        double expected = 4.4E-323;
         double actual = calculator.calculate(a, b, multiplication);
         assertEquals(expected, actual);
     }
@@ -219,8 +218,8 @@ class CalculatorTest {
     void multiplication_for_Max_value_ok() {
         String multiplication = "*";
         double a = Double.MAX_VALUE;
-        double b = 9;
-        double expected = a * b;
+        double b = 1;
+        double expected = Double.MAX_VALUE;
         double actual = calculator.calculate(a, b, multiplication);
         assertEquals(expected, actual);
     }
@@ -247,8 +246,8 @@ class CalculatorTest {
     void division_for_Min_value_ok() {
         String division = "/";
         double a = Double.MIN_VALUE;
-        double b = 9;
-        double expected = a / b;
+        double b = 2;
+        double expected = 0;
         double actual = calculator.calculate(a, b, division);
         assertEquals(expected, actual);
     }
@@ -358,6 +357,6 @@ class CalculatorTest {
         String error = "error";
         double a = 7;
         double b = 0;
-        assertThrows(NoSuchElementException.class, () -> calculator.calculate(a, b, error));
+        assertThrows(InvalidOperationException.class, () -> calculator.calculate(a, b, error));
     }
 }
