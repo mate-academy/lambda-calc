@@ -4,18 +4,23 @@ import java.util.NoSuchElementException;
 
 public class Calculator {
     public static final String DIVIDE_ON_ZERO_MESSAGE = "We can't divide on 0!";
+    public static final String PLUS = "+";
+    public static final String MINUS = "-";
+    public static final String MULTIPLY = "*";
+    public static final String DIVIDE = "/";
+    public static final String POW = "^";
 
-    public double calculate(double first, double second, Operations operation) {
+    public double calculate(double first, double second, String operation) {
         switch (operation) {
-            case PLUS:
+            case "+":
                 return getAdditionResult(first, second);
-            case MINUS:
+            case "-":
                 return getSubtractionResult(first, second);
-            case MULTIPLY:
+            case "*":
                 return getMultiplicationResult(first, second);
-            case DIVIDE:
+            case "/":
                 return getDivisionResult(first, second);
-            case POW:
+            case "^":
                 return getPowResult(first, second);
             default:
                 throw new NoSuchElementException("Operation " + operation + " doesn't exist!");
