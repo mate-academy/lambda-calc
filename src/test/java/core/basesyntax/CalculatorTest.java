@@ -31,7 +31,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithTwoPositiveOperands_Equals_Ok() {
+    void calculate_additionWithTwoPositiveOperands_Ok() {
         expected = 657.487;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_POSITIVE, OPERATION_ADDITION);
@@ -39,7 +39,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithTwoNegativeOperands_Equals_Ok() {
+    void calculate_additionWithTwoNegativeOperands_Ok() {
         expected = -657.487;
         actual = calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_ADDITION);
@@ -47,7 +47,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithPositiveAndNegativeOperand_Equals_Ok() {
+    void calculate_additionWithPositiveAndNegativeOperand_Ok() {
         expected = 421.789;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_ADDITION);
@@ -59,7 +59,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithZeroOperandInDifferentPlace_Equals_Ok() {
+    void calculate_additionWithZeroOperandInDifferentPlace_Ok() {
         expected = 539.638;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 VALUE_ZERO, OPERATION_ADDITION);
@@ -79,7 +79,7 @@ class CalculatorTest {
     }
 
     @Test
-    void additionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Equals_Ok() {
+    void calculate_additionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
         expected = Double.MAX_VALUE + Double.MIN_VALUE;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MIN_VALUE, OPERATION_ADDITION);
@@ -99,7 +99,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithTwoPositiveOperands_Equals_Ok() {
+    void calculate_subtractionWithTwoPositiveOperands_Ok() {
         expected = 421.789;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_POSITIVE, OPERATION_SUBTRACTION);
@@ -107,7 +107,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithTwoNegativeOperands_Equals_Ok() {
+    void calculate_subtractionWithTwoNegativeOperands_Ok() {
         expected = -421.789;
         actual = calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_SUBTRACTION);
@@ -115,7 +115,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithPositiveAndNegativeOperand_Equals_Ok() {
+    void calculate_subtractionWithPositiveAndNegativeOperand_Ok() {
         expected = 657.487;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_SUBTRACTION);
@@ -127,7 +127,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithZeroOperandInDifferentPlace_Equals_Ok() {
+    void calculate_subtractionWithZeroOperandInDifferentPlace_Ok() {
         expected = 539.638;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 VALUE_ZERO, OPERATION_SUBTRACTION);
@@ -147,7 +147,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Equals_Ok() {
+    void calculate_subtractionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
         expected = Double.MAX_VALUE - Double.MIN_VALUE;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MIN_VALUE, OPERATION_SUBTRACTION);
@@ -156,18 +156,18 @@ class CalculatorTest {
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MAX_VALUE, OPERATION_SUBTRACTION);
         assertEquals(expected, actual, DELTA, "Operation subtraction work not correct!");
-        expected = Double.MIN_VALUE - Double.MIN_VALUE;
+        expected = 0.0;
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MIN_VALUE, OPERATION_SUBTRACTION);
         assertEquals(expected, actual, DELTA, "Operation subtraction work not correct!");
-        expected = Double.MAX_VALUE - Double.MAX_VALUE;
+        expected = 0.0;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MAX_VALUE, OPERATION_SUBTRACTION);
         assertEquals(expected, actual, DELTA, "Operation subtraction work not correct!");
     }
 
     @Test
-    void multiplicationWithTwoPositiveOperands_Equals_Ok() {
+    void calculate_multiplicationWithTwoPositiveOperands_Ok() {
         expected = 63_595.798_66;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_POSITIVE, OPERATION_MULTIPLICATION);
@@ -175,7 +175,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithTwoNegativeOperands_Equals_Ok() {
+    void calculate_multiplicationWithTwoNegativeOperands_Ok() {
         expected = 63_595.798_66;
         actual = calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_MULTIPLICATION);
@@ -183,7 +183,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithPositiveAndNegativeOperand_Equals_Ok() {
+    void calculate_multiplicationWithPositiveAndNegativeOperand_Ok() {
         expected = -63_595.798_66;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_MULTIPLICATION);
@@ -195,7 +195,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithZeroOperandInDifferentPlace_Equals_Ok() {
+    void calculate_multiplicationWithZeroOperandInDifferentPlace_Ok() {
         expected = 0;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 VALUE_ZERO, OPERATION_MULTIPLICATION);
@@ -215,7 +215,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithMinAndMaxDoubleValuesOperandInDifferentPlace_Equals_Ok() {
+    void calculate_multiplicationWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
         expected = Double.MAX_VALUE * Double.MIN_VALUE;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MIN_VALUE, OPERATION_MULTIPLICATION);
@@ -235,7 +235,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithTwoPositiveOperands_Equals_Ok() {
+    void calculate_divisionWithTwoPositiveOperands_Ok() {
         expected = 4.57906;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_POSITIVE, OPERATION_DIVISION);
@@ -243,7 +243,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithTwoNegativeOperands_Equals_Ok() {
+    void calculate_divisionWithTwoNegativeOperands_Ok() {
         expected = 4.57906;
         actual = calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_DIVISION);
@@ -251,7 +251,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithPositiveAndNegativeOperand_Equals_Ok() {
+    void calculate_divisionWithPositiveAndNegativeOperand_Ok() {
         expected = -4.57906;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 SECOND_VALUE_NEGATIVE, OPERATION_DIVISION);
@@ -263,7 +263,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithZeroOperandInDifferentPlace_Equals_Ok() {
+    void calculate_divisionWithZeroOperandInDifferentPlace_Ok() {
         assertThrows(IllegalArgumentException.class, () -> {
             actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                     VALUE_ZERO, OPERATION_DIVISION);
@@ -283,7 +283,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Equals_Ok() {
+    void calculate_divisionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
         expected = Double.MAX_VALUE / Double.MIN_VALUE;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MIN_VALUE, OPERATION_DIVISION);
@@ -292,18 +292,18 @@ class CalculatorTest {
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MAX_VALUE, OPERATION_DIVISION);
         assertEquals(expected, actual, DELTA, "Operation division work not correct!");
-        expected = Double.MIN_VALUE / Double.MIN_VALUE;
+        expected = 1.0;
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MIN_VALUE, OPERATION_DIVISION);
         assertEquals(expected, actual, DELTA, "Operation division work not correct!");
-        expected = Double.MAX_VALUE / Double.MAX_VALUE;
+        expected = 1.0;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MAX_VALUE, OPERATION_DIVISION);
         assertEquals(expected, actual, DELTA, "Operation division work not correct!");
     }
 
     @Test
-    void raisingToPositivePowerWithPositiveAndNegativeOperand_Equals_Ok() {
+    void calculate_raisingToPositivePowerWithPositiveAndNegativeOperand_Ok() {
         expected = Math.pow(FIRST_VALUE_POSITIVE, POWER_COEFFICIENT_POSITIVE);
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 POWER_COEFFICIENT_POSITIVE, OPERATION_RAISING_TO_POWER);
@@ -315,7 +315,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingToNegativePowerWithPositiveAndNegativeOperand_Equals_Ok() {
+    void calculate_raisingToNegativePowerWithPositiveAndNegativeOperand_Ok() {
         expected = Math.pow(FIRST_VALUE_POSITIVE, POWER_COEFFICIENT_NEGATIVE);
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 POWER_COEFFICIENT_NEGATIVE, OPERATION_RAISING_TO_POWER);
@@ -327,7 +327,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingToZeroPowerWithPositiveAndNegativeOperand_Equals_Ok() {
+    void calculate_raisingToZeroPowerWithPositiveAndNegativeOperand_Ok() {
         expected = 1;
         actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                 VALUE_ZERO, OPERATION_RAISING_TO_POWER);
@@ -339,7 +339,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToPositiveAndNegativePower_Equals_Ok() {
+    void calculate_raisingZeroToPositiveAndNegativePower_Ok() {
         expected = 0;
         actual = calculator.lambdaCalculator(VALUE_ZERO,
                 POWER_COEFFICIENT_POSITIVE, OPERATION_RAISING_TO_POWER);
@@ -351,7 +351,7 @@ class CalculatorTest {
     }
 
     @Test
-    void illegalOperator_ThrowException_Ok() {
+    void calculate_illegalOperator_notOk() {
         assertThrows(IllegalArgumentException.class, () -> {
             calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                     SECOND_VALUE_POSITIVE, OPERATION_ILLEGAL);
