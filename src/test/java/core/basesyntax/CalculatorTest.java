@@ -79,20 +79,16 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_additionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
-        expected = Double.MAX_VALUE + Double.MIN_VALUE;
-        actual = calculator.lambdaCalculator(Double.MAX_VALUE,
-                Double.MIN_VALUE, OPERATION_ADDITION);
-        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
-        expected = Double.MIN_VALUE + Double.MAX_VALUE;
-        actual = calculator.lambdaCalculator(Double.MIN_VALUE,
-                Double.MAX_VALUE, OPERATION_ADDITION);
-        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
-        expected = Double.MIN_VALUE + Double.MIN_VALUE;
+    void calculate_additionWithMinDoubleValues_Ok() {
+        expected = 0;
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MIN_VALUE, OPERATION_ADDITION);
         assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
-        expected = Double.MAX_VALUE + Double.MAX_VALUE;
+    }
+
+    @Test
+    void calculate_additionWithMaxDoubleValues_Ok() {
+        expected = Double.POSITIVE_INFINITY;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MAX_VALUE, OPERATION_ADDITION);
         assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
@@ -147,23 +143,23 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_subtractionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
-        expected = Double.MAX_VALUE - Double.MIN_VALUE;
-        actual = calculator.lambdaCalculator(Double.MAX_VALUE,
-                Double.MIN_VALUE, OPERATION_SUBTRACTION);
-        assertEquals(expected, actual, DELTA, "Operation subtraction work not correct!");
-        expected = Double.MIN_VALUE - Double.MAX_VALUE;
-        actual = calculator.lambdaCalculator(Double.MIN_VALUE,
-                Double.MAX_VALUE, OPERATION_SUBTRACTION);
-        assertEquals(expected, actual, DELTA, "Operation subtraction work not correct!");
-        expected = 0.0;
+    void calculate_subtractionWithMinDoubleValues_Ok() {
+        expected = 0;
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MIN_VALUE, OPERATION_SUBTRACTION);
-        assertEquals(expected, actual, DELTA, "Operation subtraction work not correct!");
-        expected = 0.0;
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
+    }
+
+    @Test
+    void calculate_subtractionWithMaxDoubleValues_Ok() {
+        expected = 0;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MAX_VALUE, OPERATION_SUBTRACTION);
-        assertEquals(expected, actual, DELTA, "Operation subtraction work not correct!");
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
+        expected = Double.MAX_VALUE;
+        actual = calculator.lambdaCalculator(Double.MAX_VALUE,
+                Double.MIN_VALUE, OPERATION_SUBTRACTION);
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
     }
 
     @Test
@@ -215,23 +211,23 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_multiplicationWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
-        expected = Double.MAX_VALUE * Double.MIN_VALUE;
-        actual = calculator.lambdaCalculator(Double.MAX_VALUE,
-                Double.MIN_VALUE, OPERATION_MULTIPLICATION);
-        assertEquals(expected, actual, DELTA, "Operation multiplication work not correct!");
-        expected = Double.MIN_VALUE * Double.MAX_VALUE;
-        actual = calculator.lambdaCalculator(Double.MIN_VALUE,
-                Double.MAX_VALUE, OPERATION_MULTIPLICATION);
-        assertEquals(expected, actual, DELTA, "Operation multiplication work not correct!");
-        expected = Double.MIN_VALUE * Double.MIN_VALUE;
+    void calculate_multiplicationWithMinDoubleValues_Ok() {
+        expected = 0;
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MIN_VALUE, OPERATION_MULTIPLICATION);
-        assertEquals(expected, actual, DELTA, "Operation multiplication work not correct!");
-        expected = Double.MAX_VALUE * Double.MAX_VALUE;
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
+    }
+
+    @Test
+    void calculate_multiplicationWithMaxDoubleValues_Ok() {
+        expected = Double.POSITIVE_INFINITY;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MAX_VALUE, OPERATION_MULTIPLICATION);
-        assertEquals(expected, actual, DELTA, "Operation multiplication work not correct!");
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
+        expected = 0;
+        actual = calculator.lambdaCalculator(Double.MAX_VALUE,
+                Double.MIN_VALUE, OPERATION_MULTIPLICATION);
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
     }
 
     @Test
@@ -264,18 +260,18 @@ class CalculatorTest {
 
     @Test
     void calculate_divisionWithZeroOperandInDifferentPlace_Ok() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
                     VALUE_ZERO, OPERATION_DIVISION);
-        });
+        assertEquals(expected, actual, "Operation division work not correct!");
         expected = 0;
         actual = calculator.lambdaCalculator(VALUE_ZERO,
                 SECOND_VALUE_POSITIVE, OPERATION_DIVISION);
-        assertEquals(expected, actual, DELTA, "Operation division work not correct!");
-        assertThrows(IllegalArgumentException.class, () -> {
-            actual = calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
-                    VALUE_ZERO, OPERATION_DIVISION);
-        });
+        assertEquals(expected, actual, "Operation division work not correct!");
+        expected = Double.NEGATIVE_INFINITY;
+        actual = calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
+                VALUE_ZERO, OPERATION_DIVISION);
+        assertEquals(expected, actual, "Operation division work not correct!");
         expected = 0;
         actual = calculator.lambdaCalculator(VALUE_ZERO,
                 SECOND_VALUE_NEGATIVE, OPERATION_DIVISION);
@@ -283,23 +279,23 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_divisionWithMinAndMaxDoubleValuesOperandInDifferentPlace_Ok() {
-        expected = Double.MAX_VALUE / Double.MIN_VALUE;
-        actual = calculator.lambdaCalculator(Double.MAX_VALUE,
-                Double.MIN_VALUE, OPERATION_DIVISION);
-        assertEquals(expected, actual, DELTA, "Operation division work not correct!");
-        expected = Double.MIN_VALUE / Double.MAX_VALUE;
-        actual = calculator.lambdaCalculator(Double.MIN_VALUE,
-                Double.MAX_VALUE, OPERATION_DIVISION);
-        assertEquals(expected, actual, DELTA, "Operation division work not correct!");
-        expected = 1.0;
+    void calculate_divisionWithMinDoubleValues_Ok() {
+        expected = 1;
         actual = calculator.lambdaCalculator(Double.MIN_VALUE,
                 Double.MIN_VALUE, OPERATION_DIVISION);
-        assertEquals(expected, actual, DELTA, "Operation division work not correct!");
-        expected = 1.0;
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
+    }
+
+    @Test
+    void calculate_divisionWithMaxDoubleValues_Ok() {
+        expected = 1;
         actual = calculator.lambdaCalculator(Double.MAX_VALUE,
                 Double.MAX_VALUE, OPERATION_DIVISION);
-        assertEquals(expected, actual, DELTA, "Operation division work not correct!");
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.lambdaCalculator(Double.MAX_VALUE,
+                Double.MIN_VALUE, OPERATION_DIVISION);
+        assertEquals(expected, actual, DELTA, "Operation addition work not correct!");
     }
 
     @Test
