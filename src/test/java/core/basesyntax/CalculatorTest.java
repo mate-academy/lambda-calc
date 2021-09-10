@@ -259,23 +259,25 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_divisionWithZeroOperandInDifferentPlace_Ok() {
-        expected = Double.POSITIVE_INFINITY;
-        actual = calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
-                    VALUE_ZERO, OPERATION_DIVISION);
-        assertEquals(expected, actual, "Operation division work not correct!");
+    void calculate_divisionWithZeroAsFirstValue_Ok() {
         expected = 0;
         actual = calculator.lambdaCalculator(VALUE_ZERO,
                 SECOND_VALUE_POSITIVE, OPERATION_DIVISION);
-        assertEquals(expected, actual, "Operation division work not correct!");
-        expected = Double.NEGATIVE_INFINITY;
-        actual = calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
-                VALUE_ZERO, OPERATION_DIVISION);
         assertEquals(expected, actual, "Operation division work not correct!");
         expected = 0;
         actual = calculator.lambdaCalculator(VALUE_ZERO,
                 SECOND_VALUE_NEGATIVE, OPERATION_DIVISION);
         assertEquals(expected, actual, DELTA, "Operation division work not correct!");
+    }
+
+    @Test
+    void calculate_divisionWithZeroAsSecondValue_notOk() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.lambdaCalculator(FIRST_VALUE_POSITIVE,
+                    VALUE_ZERO, OPERATION_DIVISION);
+            calculator.lambdaCalculator(FIRST_VALUE_NEGATIVE,
+                    VALUE_ZERO, OPERATION_DIVISION);
+        });
     }
 
     @Test

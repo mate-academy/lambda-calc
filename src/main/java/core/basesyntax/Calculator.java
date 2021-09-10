@@ -11,6 +11,9 @@ public class Calculator implements LambdaCalculate {
             case '-':
                 return firstValue - secondValue;
             case '/':
+                if (secondValue == 0) {
+                    throw new IllegalArgumentException("Division on 0 is banned!");
+                }
                 return firstValue / secondValue;
             case '*':
                 return firstValue * secondValue;
