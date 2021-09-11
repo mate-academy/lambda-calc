@@ -217,6 +217,65 @@ class CalculatorTest {
     }
 
     @Test
+    void calculate_Ok_power() {
+        double value1 = 2;
+        double value2 = 2;
+        char operation = '^';
+        double expected = 4;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_powerWithZero() {
+        double value1 = 0;
+        double value2 = 321.222;
+        char operation = '^';
+        double actual = calculator.calculate(value2, value1, operation);
+        double expected = 1;
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value1, value2, operation);
+        expected = 0;
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_powerWithNegativeValues() {
+        double value1 = -2;
+        double value2 = -2;
+        char operation = '^';
+        double expected = 0.25;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_powerWithNegativeValue() {
+        double value1 = 2;
+        double value2 = -2;
+        char operation = '^';
+        double expected = 0.25;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        expected = 4;
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_NotOk_powerMaxValues() {
+        double value1 = Double.MAX_VALUE;
+        double value2 = 1;
+        char operation = '^';
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+    }
+
+    @Test
     void calculate_Ok_division() {
         double value1 = 222.222;
         double value2 = 222.222;
@@ -283,5 +342,11 @@ class CalculatorTest {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
     }
 
-
+    @Test
+    void calculate_NotOk_illegalOperation() {
+        double value1 = 0;
+        double value2 = 0;
+        char wrongOperation = '$';
+        assertThrows(RuntimeException.class, () -> calculator.calculate(value1, value2, wrongOperation));
+    }
 }
