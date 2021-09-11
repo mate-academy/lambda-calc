@@ -1,12 +1,12 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LambdaCalculatorTest {
-    public final static double DELTA = 0.0001d;
     private Calculator calculator;
     private double first;
     private double second;
@@ -212,7 +212,7 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void  calculateMinValue_NotOk() {
+    void calculateMinValue_NotOk() {
         first = 4.9E-322;
         second = 100;
         operator = '/';
@@ -220,7 +220,7 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void  calculateMinValue_Ok() {
+    void calculateMinValue_Ok() {
         first = 4.9E-322;
         second = 10.0;
         operator = '/';
@@ -240,7 +240,7 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void  calculateDivideInfinity_NotOk() {
+    void calculateDivideInfinity_NotOk() {
         first = Double.NEGATIVE_INFINITY;
         second = 100.545;
         operator = '/';
