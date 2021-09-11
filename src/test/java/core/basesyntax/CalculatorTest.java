@@ -20,8 +20,10 @@ class CalculatorTest {
         double value2 = 321.222;
         char operation = '+';
         double expected = 444.333;
-        assertEquals(expected, calculator.calculate(value1, value2, operation), DELTA);
-        assertEquals(expected, calculator.calculate(value2, value1, operation), DELTA);
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -29,8 +31,10 @@ class CalculatorTest {
         double value1 = 123.111;
         double value2 = 321.222;
         char operation = '+';
-        assertEquals(value1, calculator.calculate(value1, 0, operation), DELTA);
-        assertEquals(value2, calculator.calculate(0, value2, operation), DELTA);
+        double actual = calculator.calculate(value1, 0, operation);
+        assertEquals(value1, actual, DELTA);
+        actual = calculator.calculate(0, value2, operation);
+        assertEquals(value2, actual, DELTA);
     }
 
     @Test
@@ -39,8 +43,10 @@ class CalculatorTest {
         double value2 = -321.222;
         char operation = '+';
         double expected = -444.333;
-        assertEquals(expected, calculator.calculate(value1, value2, operation), DELTA);
-        assertEquals(expected, calculator.calculate(value2, value1, operation), DELTA);
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -49,8 +55,10 @@ class CalculatorTest {
         double value2 = 321.222;
         char operation = '+';
         double expected = 198.111;
-        assertEquals(expected, calculator.calculate(value1, value2, operation), DELTA);
-        assertEquals(expected, calculator.calculate(value2, value1, operation), DELTA);
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -67,8 +75,78 @@ class CalculatorTest {
         double value1 = 0.123;
         double value2 = 0.345;
         char operation = '+';
-        assertEquals(value1, calculator.calculate(value1, Double.MIN_VALUE, operation), DELTA);
-        assertEquals(value2, calculator.calculate(Double.MIN_VALUE, value2, operation), DELTA);
+        double actual = calculator.calculate(value1, Double.MIN_VALUE, operation);
+        assertEquals(value1, actual, DELTA);
+        actual = calculator.calculate(Double.MIN_VALUE, value2, operation);
+        assertEquals(value2, actual, DELTA);
+    }
+
+    @Test
+    void calculate_Ok_multiplication() {
+        double value1 = 111.111;
+        double value2 = 2.00;
+        char operation = '*';
+        double expected = 222.222;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_multiplicationWithZero() {
+        double value1 = 123.111;
+        double value2 = 321.222;
+        char operation = '*';
+        double actual = calculator.calculate(value1, 0, operation);
+        assertEquals(0, actual, DELTA);
+        actual = calculator.calculate(0, value2, operation);
+        assertEquals(0, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_multiplicationWithNegativeValues() {
+        double value1 = -111.111;
+        double value2 = -2.000;
+        char operation = '*';
+        double expected = 222.222;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_multiplicationWithNegativeValue() {
+        double value1 = 111.111;
+        double value2 = -2.000;
+        char operation = '*';
+        double expected = -222.222;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_NotOk_multiplicationMaxValues() {
+        double value1 = Double.MAX_VALUE;
+        double value2 = 1;
+        char operation = '*';
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+    }
+
+    @Test
+    public void calculate_Ok_multiplicationMinValues() {
+        double value1 = Double.MIN_VALUE;
+        double value2 = 2;
+        char operation = '*';
+        double expected = value1 * value2;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -77,8 +155,10 @@ class CalculatorTest {
         double value2 = 123.456;
         char operation = '-';
         double expected = 333.333;
-        assertEquals(expected, calculator.calculate(value1, value2, operation), DELTA);
-        assertEquals(-expected, calculator.calculate(value2, value1, operation), DELTA);
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(-expected, actual, DELTA);
     }
 
     @Test
@@ -86,8 +166,10 @@ class CalculatorTest {
         double value1 = 123.111;
         double value2 = 321.222;
         char operation = '-';
-        assertEquals(value1, calculator.calculate(value1, 0, operation), DELTA);
-        assertEquals(-value2, calculator.calculate(0, value2, operation), DELTA);
+        double actual = calculator.calculate(value1, 0, operation);
+        assertEquals(value1, actual, DELTA);
+        actual = calculator.calculate(0, value2, operation);
+        assertEquals(-value2, actual, DELTA);
     }
 
     @Test
@@ -96,8 +178,10 @@ class CalculatorTest {
         double value2 = -333.222;
         char operation = '-';
         double expected = 111.111;
-        assertEquals(expected, calculator.calculate(value1, value2, operation), DELTA);
-        assertEquals(-expected, calculator.calculate(value2, value1, operation), DELTA);
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(-expected, actual, DELTA);
     }
 
     @Test
@@ -106,8 +190,10 @@ class CalculatorTest {
         double value2 = 222.222;
         char operation = '-';
         double expected = -333.333;
-        assertEquals(expected, calculator.calculate(value1, value2, operation), DELTA);
-        assertEquals(-expected, calculator.calculate(value2, value1, operation), DELTA);
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(-expected, actual, DELTA);
     }
 
     @Test
@@ -124,8 +210,77 @@ class CalculatorTest {
         double value1 = 0.123;
         double value2 = 0.345;
         char operation = '-';
-        assertEquals(value1, calculator.calculate(value1, Double.MIN_VALUE, operation), DELTA);
-        assertEquals(-value2, calculator.calculate(Double.MIN_VALUE, value2, operation), DELTA);
+        double actual = calculator.calculate(value1, Double.MIN_VALUE, operation);
+        assertEquals(value1, actual, DELTA);
+        actual = calculator.calculate(Double.MIN_VALUE, value2, operation);
+        assertEquals(-value2, actual, DELTA);
+    }
+
+    @Test
+    void calculate_Ok_division() {
+        double value1 = 222.222;
+        double value2 = 222.222;
+        char operation = '/';
+        double expected = 1;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_divisionWithZero() {
+        double value1 = 0;
+        double value2 = 321.222;
+        char operation = '/';
+        double actual;
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        actual = calculator.calculate(value1, value2, operation);
+        assertEquals(0, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_divisionWithNegativeValues() {
+        double value1 = -222.222;
+        double value2 = -222.222;
+        char operation = '/';
+        double expected = 1;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_Ok_divisionWithNegativeValue() {
+        double value1 = 222.222;
+        double value2 = -222.222;
+        char operation = '/';
+        double expected = -1;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        actual = calculator.calculate(value2, value1, operation);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void calculate_NotOk_divisionMaxValues() {
+        double value1 = Double.MAX_VALUE;
+        double value2 = 1;
+        char operation = '/';
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+    }
+
+    @Test
+    public void calculate_Ok_divisionMinValues() {
+        double value1 = Double.MIN_VALUE;
+        double value2 = 2;
+        char operation = '/';
+        double expected = value1 * value2;
+        double actual = calculator.calculate(value1, value2, operation);
+        assertEquals(expected, actual, DELTA);
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
     }
 
 

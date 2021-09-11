@@ -16,6 +16,19 @@ public class Calculator {
               result = firstValue - secondValue;
               break;
 
+          case '*':
+              result = firstValue * secondValue;
+              break;
+
+          case '/':
+              if(secondValue == 0.0
+                      || secondValue == Double.MIN_VALUE) {
+                  throw new ArithmeticException("Division vy zero");
+              }
+              result = firstValue / secondValue;
+              break;
+
+
           default:
               result = 0;
       }
