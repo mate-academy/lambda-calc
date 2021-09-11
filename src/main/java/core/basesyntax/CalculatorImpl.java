@@ -86,7 +86,11 @@ public class CalculatorImpl implements Calculator {
 
     private boolean checkForOverflow(char action) {
         if (bigDecimalToCheck.compareTo(BigDecimal.valueOf(Double.MAX_VALUE)) > 0
-                   || bigDecimalToCheck.compareTo(BigDecimal.valueOf(Double.MIN_VALUE)) < 0) {
+                   || bigDecimalToCheck.compareTo(BigDecimal.valueOf(-Double.MAX_VALUE)) < 0
+                   || (bigDecimalToCheck.compareTo(BigDecimal.valueOf(0)) > 0
+                   && bigDecimalToCheck.min(BigDecimal.valueOf(Double.MIN_VALUE)).equals(bigDecimalToCheck))
+                   || (bigDecimalToCheck.compareTo(BigDecimal.valueOf(0)) < 0
+                   && bigDecimalToCheck.max(BigDecimal.valueOf(-Double.MIN_VALUE)).equals(bigDecimalToCheck))) {
             throwArithmeticException(action);
         }
         return false;
