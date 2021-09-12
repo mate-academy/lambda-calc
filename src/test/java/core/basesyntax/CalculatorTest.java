@@ -1,9 +1,10 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     private static Calculator calculator;
@@ -66,8 +67,10 @@ class CalculatorTest {
         double value1 = Double.MAX_VALUE;
         double value2 = 1;
         char operation = '+';
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value2, value1, operation));
     }
 
     @Test
@@ -133,8 +136,10 @@ class CalculatorTest {
         double value1 = Double.MAX_VALUE;
         double value2 = 1;
         char operation = '*';
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value2, value1, operation));
     }
 
     @Test
@@ -201,8 +206,10 @@ class CalculatorTest {
         double value1 = Double.MAX_VALUE;
         double value2 = 1;
         char operation = '-';
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value2, value1, operation));
     }
 
     @Test
@@ -271,8 +278,10 @@ class CalculatorTest {
         double value1 = Double.MAX_VALUE;
         double value2 = 1;
         char operation = '^';
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value2, value1, operation));
     }
 
     @Test
@@ -293,7 +302,8 @@ class CalculatorTest {
         double value2 = 321.222;
         char operation = '/';
         double actual;
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value2, value1, operation));
         actual = calculator.calculate(value1, value2, operation);
         assertEquals(0, actual, DELTA);
     }
@@ -327,8 +337,10 @@ class CalculatorTest {
         double value1 = Double.MAX_VALUE;
         double value2 = 1;
         char operation = '/';
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value1, value2, operation));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value1, value2, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value2, value1, operation));
     }
 
     @Test
@@ -339,7 +351,8 @@ class CalculatorTest {
         double expected = value1 * value2;
         double actual = calculator.calculate(value1, value2, operation);
         assertEquals(expected, actual, DELTA);
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(value2, value1, operation));
+        assertThrows(ArithmeticException.class,
+                () -> calculator.calculate(value2, value1, operation));
     }
 
     @Test
@@ -347,6 +360,7 @@ class CalculatorTest {
         double value1 = 0;
         double value2 = 0;
         char wrongOperation = '$';
-        assertThrows(RuntimeException.class, () -> calculator.calculate(value1, value2, wrongOperation));
+        assertThrows(RuntimeException.class,
+                () -> calculator.calculate(value1, value2, wrongOperation));
     }
 }
