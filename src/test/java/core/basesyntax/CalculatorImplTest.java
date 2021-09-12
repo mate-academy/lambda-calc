@@ -1,15 +1,13 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 class CalculatorImplTest {
     private static final double DELTA = 0.0001;
-    private double expected;
-    private double actual;
     private static Calculator positives;
     private static Calculator negatives;
     private static Calculator maxPositiveAndPositive;
@@ -22,6 +20,8 @@ class CalculatorImplTest {
     private static Calculator positiveAndMaxNegative;
     private static Calculator negativeAndPositive;
     private static Calculator negativeAndZero;
+    private double expected;
+    private double actual;
 
     @BeforeAll
     static void beforeAll() {
@@ -102,7 +102,7 @@ class CalculatorImplTest {
     @Test
     void calculate_subtractionWithTwoNegativeOperands_Ok() {
         expected = 0.3456 - 53.343;
-        actual = negatives.calculate( '-');
+        actual = negatives.calculate('-');
         assertEquals(expected, actual, DELTA);
     }
 
@@ -210,7 +210,7 @@ class CalculatorImplTest {
     @Test
     void calculate_divisionWithTwoNegativeOperands_Ok() {
         expected = - 53.343 / (- 0.3456);
-        actual = negatives.calculate( '/');
+        actual = negatives.calculate('/');
         assertEquals(expected, actual, DELTA);
     }
 
