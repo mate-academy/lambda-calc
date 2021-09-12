@@ -1,6 +1,8 @@
 package core.basesyntax;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 public class CalculatorImpl implements Calculator {
     private static final char ADDITION_SYMBOL = '+';
@@ -12,28 +14,14 @@ public class CalculatorImpl implements Calculator {
     private double secondNumber;
     private BigDecimal bigDecimalToCheck;
 
-    public CalculatorImpl() {
-    }
-
     public CalculatorImpl(double firstNumber, double secondNumber) {
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
     }
 
-    public double getFirstNumber() {
-        return firstNumber;
-    }
-
-    public void setFirstNumber(double firstNumber) {
-        this.firstNumber = firstNumber;
-    }
-
-    public double getSecondNumber() {
-        return secondNumber;
-    }
-
-    public void setSecondNumber(double secondNumber) {
-        this.secondNumber = secondNumber;
+    @Override
+    public double calculate(char action) {
+        return calculate(firstNumber, secondNumber, action);
     }
 
     @Override
@@ -50,7 +38,7 @@ public class CalculatorImpl implements Calculator {
             case RISING_TO_A_POWER_SYMBOL :
                 return pow(firstNumber, secondNumber, action);
             default :
-            throw new RuntimeException("Illegal action!");
+            throw new RuntimeException("Illegal operation!");
         }
     }
 
@@ -73,13 +61,13 @@ public class CalculatorImpl implements Calculator {
     }
 
     private double divide(double firstNumber, double secondNumber, char action) {
-        bigDecimalToCheck = BigDecimal.valueOf(firstNumber).divide(BigDecimal.valueOf(secondNumber));
+        bigDecimalToCheck = BigDecimal.valueOf(firstNumber).divide(BigDecimal.valueOf(secondNumber), RoundingMode.CEILING);
         checkForOverflow(action);
         return firstNumber / secondNumber;
     }
 
     private double pow(double firstNumber, double secondNumber, char action) {
-        bigDecimalToCheck = BigDecimal.valueOf(firstNumber).pow((int) Math.round(secondNumber));
+        bigDecimalToCheck = BigDecimal.valueOf(firstNumber).pow((int) Math.round(secondNumber), new MathContext(4,RoundingMode.CEILING));
         checkForOverflow(action);
         return Math.pow(firstNumber, secondNumber);
     }
