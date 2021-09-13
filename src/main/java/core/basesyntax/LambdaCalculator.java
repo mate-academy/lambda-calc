@@ -1,36 +1,28 @@
 package core.basesyntax;
 
 public class LambdaCalculator implements Calculate {
-
     @Override
     public double calculate(double a, double b, char operation) {
-        double result;
         switch (operation) {
             case ('+') :
-                result = a + b;
-                break;
+                return a + b;
             case ('-') :
-                result = a - b;
-                break;
+                return a - b;
             case ('*') :
                 if (a == 0 || b == 0) {
-                    result = 0;
+                    return 0;
                 } else {
-                    result = a * b;
+                    return a * b;
                 }
-                break;
             case ('/') :
                 if (b == 0) {
                     throw new ArithmeticException("Division by zero is an illegal operation");
                 }
-                result = a / b;
-                break;
+                return a / b;
             case ('^') :
-                result = Math.pow(a, b);
-                break;
+                return Math.pow(a, b);
             default:
-                throw new ArithmeticException("Operation" + operation + " is illegal");
+                throw new ArithmeticException("Division by zero is an illegal operation");
         }
-        return result;
     }
 }

@@ -218,7 +218,7 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void calculate_divisionWithZeroAsFirstOperands_Ok() {
+    void calculate_divisionWithZeroAsFirstOperand_Ok() {
         actual = calculator.calculate(0, 78, '/');
         expected = 0;
         assertEquals(expected, actual, DELTA);
@@ -228,7 +228,7 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void calculate_divisionWithZeroAsSecondOperands_NotOk() {
+    void calculate_divisionWithZeroAsSecondOperand_NotOk() {
         assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(4, 0, '/');
         });
