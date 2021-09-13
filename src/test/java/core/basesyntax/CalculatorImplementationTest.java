@@ -7,9 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorImplementationTest {
-    private static CalculatorImplementation calculator;
-    private static double actual;
-    private static double expected;
     private static final double DELTA = 0.00001;
     private static final String DIVISION_OPERATION_MESSAGE = "Oops, operation of"
             + " division doesn't work correctly";
@@ -19,6 +16,9 @@ class CalculatorImplementationTest {
             + " subtraction doesn't work correctly";
     private static final String ADDITION_OPERATION_MESSAGE = "Oops, operation of"
             + " addition doesn't work correctly";
+    private static CalculatorImplementation calculator;
+    private static double actual;
+    private static double expected;
 
     @BeforeAll
     static void beforeAll() {
@@ -27,7 +27,7 @@ class CalculatorImplementationTest {
 
     @Test
     void addition_TwoPositiveOperands_Ok() {
-        actual = calculator.calculate(200.3, 0.7,'+');
+        actual = calculator.calculate(200.3, 0.7, '+');
         expected = 201.0;
         assertEquals(actual, expected, DELTA, ADDITION_OPERATION_MESSAGE);
     }
@@ -48,7 +48,7 @@ class CalculatorImplementationTest {
 
     @Test
     void addition_NegativeAndPositiveOperands_Ok() {
-        actual = calculator.calculate(-30.45, 30.05,'+');
+        actual = calculator.calculate(-30.45, 30.05, '+');
         expected = -0.4;
         assertEquals(actual, expected, DELTA, ADDITION_OPERATION_MESSAGE);
     }
@@ -57,10 +57,10 @@ class CalculatorImplementationTest {
     void addition_WithZero_Ok() {
         actual = calculator.calculate(0.0, 222.22, '+');
         expected = 222.22;
-        assertEquals(actual,expected);
+        assertEquals(actual, expected);
         actual = calculator.calculate(234.34, 0.0, '+');
         expected = 234.34;
-        assertEquals(actual,expected, DELTA, ADDITION_OPERATION_MESSAGE);
+        assertEquals(actual, expected, DELTA, ADDITION_OPERATION_MESSAGE);
     }
 
     @Test
@@ -102,10 +102,10 @@ class CalculatorImplementationTest {
     void subtraction_WithZero_Ok() {
         actual = calculator.calculate(0.0, 444.44, '-');
         expected = -444.44;
-        assertEquals(actual,expected, DELTA, SUBTRACTION_OPERATION_MESSAGE);
+        assertEquals(actual, expected, DELTA, SUBTRACTION_OPERATION_MESSAGE);
         actual = calculator.calculate(555.58, 0.0, '-');
         expected = 555.58;
-        assertEquals(actual,expected, DELTA, SUBTRACTION_OPERATION_MESSAGE);
+        assertEquals(actual, expected, DELTA, SUBTRACTION_OPERATION_MESSAGE);
     }
 
     @Test
@@ -117,7 +117,7 @@ class CalculatorImplementationTest {
 
     @Test
     void multiplication_TwoPositiveOperands_Ok() {
-        actual = calculator.calculate(2.34, 2.210,'*');
+        actual = calculator.calculate(2.34, 2.210, '*');
         expected = 5.1714;
         assertEquals(actual, expected, DELTA, MULTIPLICATION_OPERATION_MESSAGE);
     }
@@ -138,7 +138,7 @@ class CalculatorImplementationTest {
 
     @Test
     void multiplication_NegativeAndPositiveOperands_Ok() {
-        actual = calculator.calculate(-10.45, 10.05,'*');
+        actual = calculator.calculate(-10.45, 10.05, '*');
         expected = -105.0225;
         assertEquals(actual, expected, DELTA, MULTIPLICATION_OPERATION_MESSAGE);
     }
@@ -147,10 +147,10 @@ class CalculatorImplementationTest {
     void multiplication_WithZero_Ok() {
         actual = calculator.calculate(0.0, 12.22, '*');
         expected = 0;
-        assertEquals(actual,expected, DELTA, MULTIPLICATION_OPERATION_MESSAGE);
+        assertEquals(actual, expected, DELTA, MULTIPLICATION_OPERATION_MESSAGE);
         actual = calculator.calculate(15.15, 0.0, '*');
         expected = 0;
-        assertEquals(actual,expected, DELTA, MULTIPLICATION_OPERATION_MESSAGE);
+        assertEquals(actual, expected, DELTA, MULTIPLICATION_OPERATION_MESSAGE);
     }
 
     @Test
@@ -162,7 +162,7 @@ class CalculatorImplementationTest {
 
     @Test
     void division_TwoPositiveOperands_Ok() {
-        actual = calculator.calculate(60.30, 3.15,'/');
+        actual = calculator.calculate(60.30, 3.15, '/');
         expected = 19.1428571;
         assertEquals(actual, expected, DELTA, DIVISION_OPERATION_MESSAGE);
     }
@@ -183,18 +183,22 @@ class CalculatorImplementationTest {
 
     @Test
     void division_NegativeAndPositiveOperands_Ok() {
-        actual = calculator.calculate(-10, 2,'/');
+        actual = calculator.calculate(-10, 2, '/');
         expected = -5;
         assertEquals(actual, expected, DELTA, DIVISION_OPERATION_MESSAGE);
     }
 
     @Test
-    void division_WithZero_NotOk() {
+    void division_WithZero_Ok() {
         actual = calculator.calculate(0.0, 35.35, '/');
         expected = 0;
-        assertEquals(actual,expected, DELTA, DIVISION_OPERATION_MESSAGE);
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(100.55,0,'/'));
-        assertThrows(ArithmeticException.class, () -> calculator.calculate(0,0,'/'));
+        assertEquals(actual, expected, DELTA, DIVISION_OPERATION_MESSAGE);
+    }
+
+    @Test
+    void division_WhenSecondOperandZero_NotOk() {
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(100.55, 0, '/'));
+        assertThrows(ArithmeticException.class, () -> calculator.calculate(0, 0, '/'));
     }
 
     @Test
@@ -206,7 +210,7 @@ class CalculatorImplementationTest {
 
     @Test
     void raising_ToAPowerTwoPositiveOperands_Ok() {
-        actual = calculator.calculate(2, 5,'^');
+        actual = calculator.calculate(2, 5, '^');
         expected = 32;
         assertEquals(actual, expected);
     }
@@ -227,7 +231,7 @@ class CalculatorImplementationTest {
 
     @Test
     void raising_ToAPowerNegativeAndPositiveOperands_Ok() {
-        actual = calculator.calculate(-10, 2,'^');
+        actual = calculator.calculate(-10, 2, '^');
         expected = 100;
         assertEquals(actual, expected);
     }
@@ -236,14 +240,14 @@ class CalculatorImplementationTest {
     void raising_ToAPowerWithZero_Ok() {
         actual = calculator.calculate(0, 2, '^');
         expected = 0;
-        assertEquals(actual,expected);
+        assertEquals(actual, expected);
         actual = calculator.calculate(2, 0, '^');
         expected = 1;
-        assertEquals(actual,expected);
+        assertEquals(actual, expected);
     }
 
     @Test
     void illegalOperation_NotOk() {
-        assertThrows(RuntimeException.class, () -> calculator.calculate(20,4,'#'));
+        assertThrows(RuntimeException.class, () -> calculator.calculate(20, 4, '#'));
     }
 }
