@@ -60,7 +60,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateSumForMaxDoubleValueAndPositiveValue_Ok() {
+    void calculate_SumForMaxDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, 12, '+');
         expected = 1.7976931348623157E308;
         assertEquals(expected, actual, DELTA);
