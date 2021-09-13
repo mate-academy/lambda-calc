@@ -17,7 +17,7 @@ public class Calculator {
             case '^':
                 return Math.pow(firstValue, secondValue);
             default:
-                throw new ArithmeticException("Invalid operation");
+                throw new IllegalArgumentException("Invalid operation");
         }
     }
 }

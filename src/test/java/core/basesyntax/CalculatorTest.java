@@ -544,7 +544,7 @@ class CalculatorTest {
 
     @Test
     void calculate_WithIllegalOperator_NotOk() {
-        assertThrows(ArithmeticException.class, () -> calculator
+        assertThrows(IllegalArgumentException.class, () -> calculator
                 .calculate(2, 0, '%'));
     }
 }
