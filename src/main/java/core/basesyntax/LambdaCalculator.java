@@ -3,23 +3,23 @@ package core.basesyntax;
 public class LambdaCalculator implements Calculator {
 
     @Override
-    public double calculate(double parameter1, double parameter2, char operation) {
+    public double calculate(double firstParameter, double secondParameter, char operation) {
         switch (operation) {
             case '+':
-                return parameter1 + parameter2;
+                return firstParameter + secondParameter;
             case '*':
-                return parameter1 * parameter2;
+                return firstParameter * secondParameter;
             case '/':
-                if (parameter2 == 0) {
+                if (secondParameter == 0) {
                     throw new ArithmeticException("division by zero!");
                 }
-                return parameter1 / parameter2;
+                return firstParameter / secondParameter;
             case '-':
-                return parameter1 - parameter2;
+                return firstParameter - secondParameter;
             case '^':
-                return Math.pow(parameter1, parameter2);
+                return Math.pow(firstParameter, secondParameter);
             default:
-                throw new ArithmeticException("Unexpected operation");
+                throw new IllegalOperationException("Unexpected operation" + operation);
         }
     }
 }
