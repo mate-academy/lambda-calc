@@ -21,21 +21,21 @@ class CalculatorImplTest {
     }
 
     @Test
-    void addition_positiveNumbs_Ok() {
+    void addition_positiveNumbers_Ok() {
         firstDouble = 10;
         secondDouble = 15;
         assertEquals(25, doubleCalculator.calculate(firstDouble, '+', secondDouble));
     }
 
     @Test
-    void addition_negativeNumbs_Ok() {
+    void addition_negativeNumbers_Ok() {
         firstDouble = -10;
         secondDouble = -15;
         assertEquals(-25, doubleCalculator.calculate(firstDouble, '+', secondDouble));
     }
 
     @Test
-    void addition_posAndNegNumbs_Ok() {
+    void addition_posAndNegNumbers_Ok() {
         firstDouble = 10;
         secondDouble = -15;
         assertEquals(-5, doubleCalculator.calculate(firstDouble, '+', secondDouble));
@@ -101,21 +101,21 @@ class CalculatorImplTest {
     }
 
     @Test
-    void subtraction_positiveNumbs_Ok() {
+    void subtraction_positiveNumbers_Ok() {
         firstDouble = 10;
         secondDouble = 15;
         assertEquals(-5, doubleCalculator.calculate(firstDouble, '-', secondDouble));
     }
 
     @Test
-    void subtraction_negativeNumbs_Ok() {
+    void subtraction_negativeNumbers_Ok() {
         firstDouble = -10;
         secondDouble = -15;
         assertEquals(5, doubleCalculator.calculate(firstDouble, '-', secondDouble));
     }
 
     @Test
-    void subtraction_posAndNegNumbs_Ok() {
+    void subtraction_posAndNegNumbers_Ok() {
         firstDouble = 10;
         secondDouble = -15;
         assertEquals(25, doubleCalculator.calculate(firstDouble, '-', secondDouble));
@@ -179,21 +179,21 @@ class CalculatorImplTest {
     }
 
     @Test
-    void multiplication_positiveNumbs_Ok() {
+    void multiplication_positiveNumbers_Ok() {
         firstDouble = 10;
         secondDouble = 15;
         assertEquals(150, doubleCalculator.calculate(firstDouble, '*', secondDouble));
     }
 
     @Test
-    void multiplication_negativeNumbs_Ok() {
+    void multiplication_negativeNumbers_Ok() {
         firstDouble = -10;
         secondDouble = -15;
         assertEquals(150, doubleCalculator.calculate(firstDouble, '*', secondDouble));
     }
 
     @Test
-    void multiplication_posAndNegNumbs_Ok() {
+    void multiplication_posAndNegNumbers_Ok() {
         firstDouble = 10;
         secondDouble = -15;
         assertEquals(-150, doubleCalculator.calculate(firstDouble, '*', secondDouble));
@@ -259,7 +259,7 @@ class CalculatorImplTest {
     }
 
     @Test
-    void division_positiveNumbs_Ok() {
+    void division_positiveNumbers_Ok() {
         firstDouble = 10;
         secondDouble = 15;
         assertEquals(0.6666666666666666, doubleCalculator
@@ -267,7 +267,7 @@ class CalculatorImplTest {
     }
 
     @Test
-    void division_negativeNumbs_Ok() {
+    void division_negativeNumbers_Ok() {
         firstDouble = -10;
         secondDouble = -15;
         assertEquals(0.6666666666666666, doubleCalculator
@@ -275,7 +275,7 @@ class CalculatorImplTest {
     }
 
     @Test
-    void division_posAndNegNumbs_Ok() {
+    void division_posAndNegNumbers_Ok() {
         firstDouble = 10;
         secondDouble = -15;
         assertEquals(-0.6666666666666666, doubleCalculator
