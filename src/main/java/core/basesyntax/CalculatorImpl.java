@@ -9,7 +9,7 @@ public class CalculatorImpl implements Calculator {
     private static final char SUBTRACTION_SYMBOL = '-';
     private static final char MULTIPLICATION_SYMBOL = '*';
     private static final char DIVISION_SYMBOL = '/';
-    private static final char RISING_TO_A_POWER_SYMBOL = '^';
+    private static final char RAISING_TO_A_POWER_SYMBOL = '^';
     private double firstNumber;
     private double secondNumber;
     private BigDecimal bigDecimalToCheck;
@@ -35,7 +35,10 @@ public class CalculatorImpl implements Calculator {
                 return multiply(firstNumber, secondNumber, operation);
             case DIVISION_SYMBOL :
                 return divide(firstNumber, secondNumber, operation);
-            case RISING_TO_A_POWER_SYMBOL :
+            case RAISING_TO_A_POWER_SYMBOL :
+                if (firstNumber < 0 && secondNumber - (int) secondNumber != 0) {
+                    throw new ArithmeticException("Can't raise negative number to double power.");
+                }
                 return pow(firstNumber, secondNumber, operation);
             default :
                 throw new RuntimeException("Illegal operation!");

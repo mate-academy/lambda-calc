@@ -270,16 +270,14 @@ class CalculatorImplTest {
 
     @Test
     void calculate_raisingNegativeToPositivePower_Ok() {
-        expected = NaN;
-        actual = negativeAndPositive.calculate('^');
-        assertEquals(expected, actual, DELTA);
+        assertThrows(ArithmeticException.class, () ->
+                negativeAndPositive.calculate('^'));
     }
 
     @Test
     void calculate_raisingNegativeToNegativePower_Ok() {
-        expected = NaN;
-        actual = negatives.calculate('^');
-        assertEquals(expected, actual, DELTA);
+        assertThrows(ArithmeticException.class, () ->
+                negatives.calculate('^'));
     }
 
     @Test
