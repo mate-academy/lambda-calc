@@ -2,24 +2,24 @@ package core.basesyntax;
 
 public class Calculator {
 
-    public double calculate(double a, double b, String operation) throws IllegalArgumentException {
+    public double calculate(double a, double b, char operation) throws IllegalArgumentException {
         if (!isLegalOperation(operation)) {
             throw new IllegalArgumentException("Operation " + operation
                     + " is not allowed. Please input operation from +, - , *, /, ^ ");
         }
         switch (operation) {
-            case "+":
+            case '+':
                 return a + b;
-            case "-":
+            case '-':
                 return a - b;
-            case "*":
+            case '*':
                 return a * b;
-            case "/":
+            case '/':
                 if (b == Double.NEGATIVE_INFINITY || b == Double.POSITIVE_INFINITY || b == 0) {
                     throw new IllegalArgumentException("IllegalArgumentException is occured");
                 }
                 return a / b;
-            case "^":
+            case '^':
                 if (a == 0 && b <= 0) {
                     throw new IllegalArgumentException("IllegalArgumentException is occured."
                             + " Number b must be > 0. ");
@@ -30,12 +30,9 @@ public class Calculator {
         }
     }
 
-    private boolean isLegalOperation(String str) {
-        if (str == null || str.length() == 0) {
-            return false;
-        }
+    public boolean isLegalOperation(char operation) {
         String allowedOperations = "+-*/^";
-        if (!allowedOperations.contains(str)) {
+        if (!allowedOperations.contains(String.valueOf(operation))) {
             return false;
         }
         return true;
