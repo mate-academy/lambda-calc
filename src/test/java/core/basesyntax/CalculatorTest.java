@@ -39,9 +39,16 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_additionWithPositiveAndNegative_Ok() {
+    void calculate_additionWithFirstPositiveAndSecondNegative_Ok() {
         expected = -15.4675;
         actual = calculator.calculate(20, -35.4675, PLUS);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_additionWithSecondPositiveAndFirstNegative_Ok() {
+        expected = 15.4675;
+        actual = calculator.calculate(-20, 35.4675, PLUS);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -83,7 +90,14 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_subtractionWithPositiveAndNegative_Ok() {
+    void calculate_subtractionWithFirstPositiveAndSecondNegative_Ok() {
+        expected = 10.45789;
+        actual = calculator.calculate(0.45789, -10, MINUS);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_subtractionWithSecondPositiveAndFirstNegative_Ok() {
         expected = -10.45789;
         actual = calculator.calculate(-0.45789, 10, MINUS);
         assertEquals(expected, actual);
@@ -130,9 +144,16 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_divisionWithPositiveAndNegative_Ok() {
+    void calculate_divisionWithFirstPositiveAndSecondNegative_Ok() {
         expected = -4.4444;
         actual = calculator.calculate(200, -45, DIVIDE);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_divisionWitSecondPositiveAndFirstNegative_Ok() {
+        expected = -4.4444;
+        actual = calculator.calculate(-200, 45, DIVIDE);
         assertEquals(expected, actual, DELTA);
     }
 
@@ -181,7 +202,14 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_multiplicationWithPositiveAndNegative_Ok() {
+    void calculate_multiplicationWithFirstPositiveAndSecondNegative_Ok() {
+        expected = -45600;
+        actual = calculator.calculate(456, -100, MULTIPLY);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_multiplicationWithSecondPositiveAndFirstNegative_Ok() {
         expected = -45600;
         actual = calculator.calculate(-456, 100, MULTIPLY);
         assertEquals(expected, actual);
@@ -250,7 +278,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_raisingNefativeToZero_Ok() {
+    void calculate_raisingNegativeToZero_Ok() {
         expected = 1;
         actual = calculator.calculate(-78, 0, RAISING);
         assertEquals(expected, actual);
@@ -258,7 +286,7 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_raisingzeroToPower_Ok() {
+    void calculate_raisingZeroToPower_Ok() {
         expected = 0;
         actual = calculator.calculate(0, 7, RAISING);
         assertEquals(expected, actual);
