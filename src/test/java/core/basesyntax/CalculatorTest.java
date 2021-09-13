@@ -281,8 +281,8 @@ class CalculatorTest {
     @Test
     void raiseToNegativePower() {
         number1 = 7;
-        number2 = -2;
-        expected = 0.02040816326530612;
+        number2 = -1;
+        expected = 0.14285714285714285;
         actual = calculator.calculate(number1, number2, '^');
         assertEquals(expected, actual);
     }
