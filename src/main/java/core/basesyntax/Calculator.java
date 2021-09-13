@@ -1,7 +1,8 @@
 package core.basesyntax;
 
-public class Calculator {
-    private static final double DEFAULT_VALUE = 0;
+public class Calculator implements Calculation{
+
+    @Override
     public double calculate(double value1, double value2, char operation) {
         switch (operation) {
             case '+':
@@ -15,27 +16,30 @@ public class Calculator {
             case '^':
                 return raisingToPower(value1, value2);
             default:
-                return DEFAULT_VALUE;
+                throw new ArithmeticException("No such operation");
         }
     }
 
-    public double addition(double value1, double value2) {
+    private double addition(double value1, double value2) {
         return value1 + value2;
     }
 
-    public double subtraction(double value1, double value2) {
+    private double subtraction(double value1, double value2) {
         return value1 - value2;
     }
 
-    public double division(double value1, double value2) {
-        return value1 / value2;
+    private double division(double value1, double value2) {
+        if (value2 != 0) {
+            return value1 / value2;
+        }
+        throw new ArithmeticException("We cannot divide by 0.");
     }
 
-    public double multiplication(double value1, double value2) {
+    private double multiplication(double value1, double value2) {
         return value1 * value2;
     }
 
-    public double raisingToPower(double value1, double value2) {
+    private double raisingToPower(double value1, double value2) {
         return Math.pow(value1, value2);
     }
 }
