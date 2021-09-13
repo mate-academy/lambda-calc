@@ -1,11 +1,12 @@
 package core.basesyntax;
 
-public class MyCalculator implements Calculator{
+public class MyCalculator implements Calculator {
     public static final char ADDITION = '+';
     public static final char SUBTRACTION = '-';
     public static final char DIVISION = '/';
     public static final char MULTIPLICATION = '*';
     public static final char RISING_TO_POWER = '^';
+
     @Override
     public double calculate(double firstValue, double secondValue, char operation) {
         switch (operation) {
