@@ -12,9 +12,8 @@ public class Calculator {
             case '/' :
                 if (secondOperand == 0) {
                     throw new ArithmeticException("Cannot divide by zero!");
-                } else {
-                    return firstOperand / secondOperand;
                 }
+                return firstOperand / secondOperand;
             case '^' :
                 return Math.pow(firstOperand, secondOperand);
             default:
