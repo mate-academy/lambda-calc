@@ -80,28 +80,28 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void additionTwoMinValue() {
+    void additionTwoMinValue_Ok() {
         expected = 1.0E-323;
         actual = lambdaCalculator.calculation(Double.MIN_VALUE, Double.MIN_VALUE, ADD);
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionTwoMaxValue() {
+    void additionTwoMaxValue_Ok() {
         expected = Double.POSITIVE_INFINITY;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MAX_VALUE, ADD);
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionMaxValueAndMinValue() {
+    void additionMaxValueAndMinValue_Ok() {
         expected = 1.7976931348623157E308;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MIN_VALUE, ADD);
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionTwoZeros() {
+    void additionTwoZeros_Ok() {
         expected = 0;
         actual = lambdaCalculator.calculation(ZERO, ZERO, ADD);
         assertEquals(expected, actual);
@@ -151,28 +151,28 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void subtractionTwoMinValue() {
+    void subtractionTwoMinValue_Ok() {
         expected = 0;
         actual = lambdaCalculator.calculation(Double.MIN_VALUE, Double.MIN_VALUE, SUB);
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionTwoMaxValue() {
+    void subtractionTwoMaxValue_Ok() {
         expected = 0;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MAX_VALUE, SUB);
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionMaxValueAndMinValue() {
+    void subtractionMaxValueAndMinValue_Ok() {
         expected = 1.7976931348623157E308;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MIN_VALUE, SUB);
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionTwoZeros() {
+    void subtractionTwoZeros_Ok() {
         expected = 0;
         actual = lambdaCalculator.calculation(ZERO, ZERO, SUB);
         assertEquals(expected, actual);
@@ -222,35 +222,35 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void divisionTwoMinValue() {
+    void divisionTwoMinValue_Ok() {
         expected = 1;
         actual = lambdaCalculator.calculation(Double.MIN_VALUE, Double.MIN_VALUE, DIV);
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionTwoMaxValue() {
+    void divisionTwoMaxValue_Ok() {
         expected = 1;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MAX_VALUE, DIV);
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionMaxValueAndMinValue() {
+    void divisionMaxValueAndMinValue_Ok() {
         expected = Double.POSITIVE_INFINITY;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MIN_VALUE, DIV);
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionMinValueAndMaxValue() {
+    void divisionMinValueAndMaxValue_Ok() {
         expected = 0;
         actual = lambdaCalculator.calculation(Double.MIN_VALUE, Double.MAX_VALUE, DIV);
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionTwoZeros() {
+    void divisionTwoZeros_Ok() {
         try {
             lambdaCalculator.calculation(ZERO, ZERO, DIV);
         } catch (ArithmeticException e) {
@@ -303,28 +303,28 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void multiplicationTwoMinValue() {
+    void multiplicationTwoMinValue_Ok() {
         expected = 0;
         actual = lambdaCalculator.calculation(Double.MIN_VALUE, Double.MIN_VALUE, MULTI);
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationTwoMaxValue() {
+    void multiplicationTwoMaxValue_Ok() {
         expected = Double.POSITIVE_INFINITY;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MAX_VALUE, MULTI);
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationMaxValueAndMinValue() {
+    void multiplicationMaxValueAndMinValue_Ok() {
         expected = 8.881784197001251E-16;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MIN_VALUE, MULTI);
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationTwoZeros() {
+    void multiplicationTwoZeros_Ok() {
         expected = 0;
         actual = lambdaCalculator.calculation(ZERO, ZERO, MULTI);
         assertEquals(expected, actual);
@@ -374,28 +374,28 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void toPowerTwoMinValue() {
+    void toPowerTwoMinValue_Ok() {
         expected = 1;
         actual = lambdaCalculator.calculation(Double.MIN_VALUE, Double.MIN_VALUE, TO_POWER);
         assertEquals(expected, actual);
     }
 
     @Test
-    void toPowerTwoMaxValue() {
+    void toPowerTwoMaxValue_Ok() {
         expected = Double.POSITIVE_INFINITY;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MAX_VALUE, TO_POWER);
         assertEquals(expected, actual);
     }
 
     @Test
-    void toPowerMaxValueAndMinValue() {
+    void toPowerMaxValueAndMinValue_Ok() {
         expected = 1;
         actual = lambdaCalculator.calculation(Double.MAX_VALUE, Double.MIN_VALUE, TO_POWER);
         assertEquals(expected, actual);
     }
 
     @Test
-    void toPowerTwoZeros() {
+    void toPowerTwoZeros_Ok() {
         expected = 1;
         actual = lambdaCalculator.calculation(ZERO, ZERO, TO_POWER);
         assertEquals(expected, actual);
