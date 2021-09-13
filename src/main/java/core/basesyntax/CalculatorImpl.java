@@ -85,13 +85,9 @@ public class CalculatorImpl implements Calculator {
                 || (bigDecimalToCheck.compareTo(BigDecimal.valueOf(0)) < 0
                 && bigDecimalToCheck.max(BigDecimal.valueOf(-Double.MIN_VALUE))
                                                    .equals(bigDecimalToCheck))) {
-            throwArithmeticException(operation);
+            throw new ArithmeticException(operation + " is illegal with this operands. "
+                    + "Result overflows double value");
         }
         return false;
-    }
-
-    private void throwArithmeticException(char operation) {
-        throw new ArithmeticException(operation + " is illegal with this operands. "
-                + "Result overflows double value");
     }
 }
