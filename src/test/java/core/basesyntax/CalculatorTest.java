@@ -34,8 +34,6 @@ class CalculatorTest {
         char operation = '+';
         double actual = calculator.calculate(value1, 0, operation);
         assertEquals(value1, actual, DELTA);
-        actual = calculator.calculate(0, value2, operation);
-        assertEquals(value2, actual, DELTA);
     }
 
     @Test
