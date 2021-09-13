@@ -53,6 +53,11 @@ class CalculatorTest {
 
     @Test
     public void calculate_additionOfPositiveAndNegativeOperands_Ok() {
+        firstOperand = 11;
+        secondOperand = -48;
+        expected = -37;
+        actual = calculator.calculate(firstOperand, secondOperand, ADDITION);
+        assertEquals(expected, actual);
         firstOperand = -11;
         secondOperand = 48;
         expected = 37;
@@ -148,6 +153,11 @@ class CalculatorTest {
         expected = -59;
         actual = calculator.calculate(firstOperand, secondOperand, SUBTRACTION);
         assertEquals(expected, actual);
+        firstOperand = 11;
+        secondOperand = -48;
+        expected = 59;
+        actual = calculator.calculate(firstOperand, secondOperand, SUBTRACTION);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -238,6 +248,11 @@ class CalculatorTest {
         expected = -528;
         actual = calculator.calculate(firstOperand, secondOperand, MULTIPLICATION);
         assertEquals(expected, actual);
+        firstOperand = 11;
+        secondOperand = -48;
+        expected = -528;
+        actual = calculator.calculate(firstOperand, secondOperand, MULTIPLICATION);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -325,6 +340,11 @@ class CalculatorTest {
     public void calculate_divisionOfPositiveAndNegativeOperands_Ok() {
         firstOperand = -11;
         secondOperand = 48;
+        expected = -0.2292;
+        actual = calculator.calculate(firstOperand, secondOperand, DIVISION);
+        assertEquals(expected, actual, DELTA);
+        firstOperand = 11;
+        secondOperand = -48;
         expected = -0.2292;
         actual = calculator.calculate(firstOperand, secondOperand, DIVISION);
         assertEquals(expected, actual, DELTA);
