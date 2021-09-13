@@ -11,15 +11,15 @@ public class Calculator {
                 return firstOperand * secondOperand;
             case '/' :
                 if (secondOperand == 0) {
-                    throw new IllegalArgumentException("Cannot divide by zero!");
+                    throw new ArithmeticException("Cannot divide by zero!");
                 } else {
                     return firstOperand / secondOperand;
                 }
             case '^' :
                 return Math.pow(firstOperand, secondOperand);
             default:
-                throw new IllegalArgumentException("This character is "
-                        + "not present in our list operation");
+                throw new IllegalArgumentException("This character" + operation
+                        + " is not present in our list operation");
         }
     }
 }
