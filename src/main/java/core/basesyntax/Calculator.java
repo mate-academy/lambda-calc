@@ -20,7 +20,7 @@ public class Calculator {
             case '^':
                 return Math.pow(firstOperand, secondOperand);
             default:
-                throw new ArithmeticException("Operation is not correct!");
+                throw new IllegalArgumentException("Operation is not correct!");
         }
     }
 }
