@@ -10,19 +10,7 @@ public class CalculatorImpl implements Calculator {
     private static final char MULTIPLICATION_SYMBOL = '*';
     private static final char DIVISION_SYMBOL = '/';
     private static final char RAISING_TO_A_POWER_SYMBOL = '^';
-    private double firstNumber;
-    private double secondNumber;
     private BigDecimal bigDecimalToCheck;
-
-    public CalculatorImpl(double firstNumber, double secondNumber) {
-        this.firstNumber = firstNumber;
-        this.secondNumber = secondNumber;
-    }
-
-    @Override
-    public double calculate(char operation) {
-        return calculate(firstNumber, secondNumber, operation);
-    }
 
     @Override
     public double calculate(double firstNumber, double secondNumber, char operation) {
@@ -80,17 +68,33 @@ public class CalculatorImpl implements Calculator {
     }
 
     private boolean checkForOverflow(char operation) {
-        if (bigDecimalToCheck.compareTo(BigDecimal.valueOf(Double.MAX_VALUE)) > 0
-                || bigDecimalToCheck.compareTo(BigDecimal.valueOf(-Double.MAX_VALUE)) < 0
-                || (bigDecimalToCheck.compareTo(BigDecimal.valueOf(0)) > 0
-                && bigDecimalToCheck.min(BigDecimal.valueOf(Double.MIN_VALUE))
-                                                   .equals(bigDecimalToCheck))
-                || (bigDecimalToCheck.compareTo(BigDecimal.valueOf(0)) < 0
-                && bigDecimalToCheck.max(BigDecimal.valueOf(-Double.MIN_VALUE))
-                                                   .equals(bigDecimalToCheck))) {
+        if (isBiggerThanMax(bigDecimalToCheck)
+                || isSmallerThanMinusMax(bigDecimalToCheck)
+                || isBiggerThanZeroButSmallerThanMin(bigDecimalToCheck)
+                || isSmallerThanZeroButBiggerThanMinusMin(bigDecimalToCheck)) {
             throw new ArithmeticException(operation + " is illegal with this operands. "
                     + "Result overflows double value");
         }
         return false;
+    }
+
+    private boolean isBiggerThanMax(BigDecimal bigDecimalToCheck) {
+        return bigDecimalToCheck.compareTo(BigDecimal.valueOf(Double.MAX_VALUE)) > 0;
+    }
+
+    private boolean isSmallerThanMinusMax(BigDecimal bigDecimalToCheck) {
+        return bigDecimalToCheck.compareTo(BigDecimal.valueOf(-Double.MAX_VALUE)) < 0;
+    }
+
+    private boolean isBiggerThanZeroButSmallerThanMin(BigDecimal bigDecimalToCheck) {
+        return bigDecimalToCheck.compareTo(BigDecimal.valueOf(0)) > 0
+                && bigDecimalToCheck.min(BigDecimal.valueOf(Double.MIN_VALUE))
+                .equals(bigDecimalToCheck);
+    }
+
+    private boolean isSmallerThanZeroButBiggerThanMinusMin(BigDecimal bigDecimalToCheck) {
+        return bigDecimalToCheck.compareTo(BigDecimal.valueOf(0)) < 0
+                && bigDecimalToCheck.max(BigDecimal.valueOf(-Double.MIN_VALUE))
+                .equals(bigDecimalToCheck);
     }
 }
