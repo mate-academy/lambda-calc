@@ -18,7 +18,7 @@ class CalculatorTest {
     }
 
     @Test
-    void checkOperation_NotOk() {
+    void calculate_illegalOperation_notOk() {
         double a = 5;
         double b = 0;
         assertThrows(IllegalArgumentException.class, () -> {

@@ -30,7 +30,7 @@ public class Calculator {
         }
     }
 
-    public boolean isLegalOperation(char operation) {
+    private boolean isLegalOperation(char operation) {
         String allowedOperations = "+-*/^";
         if (!allowedOperations.contains(String.valueOf(operation))) {
             return false;
