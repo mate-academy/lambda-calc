@@ -212,12 +212,12 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_divisionWithSecondOperandIsZero_ok() {
+    void calculate_divisionWhenSecondOperandIsZero_ok() {
         assertThrows(ArithmeticException.class, () -> calculator.calculate(80, '/', 0));
     }
 
     @Test
-    void calculate_divisionMaxAndMinOperand_ok() {
+    void calculate_divisionMaxAndMinOperands() {
         double expected = Double.MAX_VALUE / Double.MIN_VALUE;
         double actual = calculator.calculate(Double.MAX_VALUE, '/', Double.MIN_VALUE);
         assertEquals(expected, actual, DELTA);
@@ -277,5 +277,11 @@ class CalculatorTest {
         double expected = Double.POSITIVE_INFINITY;
         double actual = calculator.calculate(Double.MAX_VALUE, '^', Double.MAX_VALUE);
         assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_WithIllegalOperator_NotOk() {
+        assertThrows(IllegalArgumentException.class, () -> calculator
+                .calculate(2,'%',2));
     }
 }
