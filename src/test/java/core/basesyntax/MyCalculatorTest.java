@@ -1,0 +1,272 @@
+package core.basesyntax;
+
+import static java.lang.Double.MAX_VALUE;
+import static java.lang.Double.MIN_VALUE;
+import static java.lang.Double.POSITIVE_INFINITY;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+class MyCalculatorTest {
+    private static Calculator myCalculatorTest;
+    private static final double DELTA = 0.00001;
+    private double actual;
+    private double expected;
+
+    @BeforeAll
+    static void beforeAll() {
+        myCalculatorTest = new MyCalculator();
+    }
+
+    @Test
+    void addition_PositiveNumbers_Ok() {
+        expected = 155.5;
+        actual = myCalculatorTest.calculate(90.5, '+', 65.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void addition_NegativeNumbers_Ok() {
+        expected = -241.1;
+        actual = myCalculatorTest.calculate(-177.6, '+', -63.5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void addition_PositiveAndNegativeNumbers_Ok() {
+        expected = 136.5;
+        actual = myCalculatorTest.calculate(200.0, '+', -63.5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void addition_ZeroFirstNumberPosition_Ok() {
+        expected = -77;
+        actual = myCalculatorTest.calculate(0, '+', -77.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void addition_ZeroSecondNumberPosition_Ok() {
+        expected = 200;
+        actual = myCalculatorTest.calculate(200.0, '+', 0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void addition_MaxValues_Ok() {
+        expected = POSITIVE_INFINITY;
+        actual = myCalculatorTest.calculate(MAX_VALUE, '+', MAX_VALUE);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void addition_MinValues_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(MIN_VALUE, '+', MIN_VALUE);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void subtraction_PositiveNumbers_Ok() {
+        expected = 25.5;
+        actual = myCalculatorTest.calculate(90.5, '-', 65.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_NegativeNumbers_Ok() {
+        expected = -114.1;
+        actual = myCalculatorTest.calculate(-177.6, '-', -63.5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_PositiveAndNegativeNumbers_Ok() {
+        expected = 263.5;
+        actual = myCalculatorTest.calculate(200.0, '-', -63.5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_ZeroFirstNumberPosition_Ok() {
+        expected = 77.0;
+        actual = myCalculatorTest.calculate(0, '-', -77.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_ZeroSecondNumberPosition_Ok() {
+        expected = 200;
+        actual = myCalculatorTest.calculate(200.0, '-', 0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_MaxValues_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(MAX_VALUE, '-', MAX_VALUE);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void subtraction_MinValues_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(MIN_VALUE, '-', MIN_VALUE);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_PositiveNumbers_Ok() {
+        expected = 50.0;
+        actual = myCalculatorTest.calculate(10.0, '*', 5.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_NegativeNumbers_Ok() {
+        expected = 50.0;
+        actual = myCalculatorTest.calculate(-10.0, '*', -5.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_PositiveAndNegativeNumbers_Ok() {
+        expected = -1000.0;
+        actual = myCalculatorTest.calculate(200.0, '*', -5.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_ZeroFirstNumberPosition_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(0, '*', 77.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_ZeroSecondNumberPosition_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(200.0, '*', 0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_MaxValues_Ok() {
+        expected = POSITIVE_INFINITY;
+        actual = myCalculatorTest.calculate(MAX_VALUE, '*', MAX_VALUE);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void multiplication_MinValues_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(MIN_VALUE, '*', MIN_VALUE);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void division_PositiveNumbers_Ok() {
+        expected = 1.3923;
+        actual = myCalculatorTest.calculate(90.5, '/', 65.0);
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void division_NegativeNumbers_Ok() {
+        expected = 4.0;
+        actual = myCalculatorTest.calculate(-20.0, '/', -5.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_PositiveAndNegativeNumbers_Ok() {
+        expected = -4.0;
+        actual = myCalculatorTest.calculate(20.0, '/', -5.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_ZeroFirstNumberPosition_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(0, '/', 77.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_ZeroSecondNumberPosition_NotOk() {
+        assertThrows(OperationTypeException.class, () ->
+                myCalculatorTest.calculate(200.0, '/', 0));
+    }
+
+    @Test
+    void division_MaxValues_Ok() {
+        expected = 1.0;
+        actual = myCalculatorTest.calculate(MAX_VALUE, '/', MAX_VALUE);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void division_MinValues_Ok() {
+        expected = 1.0;
+        actual = myCalculatorTest.calculate(MIN_VALUE, '/', MIN_VALUE);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void raising_PositiveValue_PositivePower_Ok() {
+        expected = 400.0;
+        actual = myCalculatorTest.calculate(20.0, '^', 2.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void raising_NegativeValue_PositivePower_Ok() {
+        expected = 400.0;
+        actual = myCalculatorTest.calculate(-20.0, '^', 2.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void raising_PositiveValue_NegativePower_Ok() {
+        expected = 0.0025;
+        actual = myCalculatorTest.calculate(20.0, '^', -2.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void raising_NegativeValue_NegativePower_Ok() {
+        expected = 0.0025;
+        actual = myCalculatorTest.calculate(-20.0, '^', -2.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void raising_PositiveValue_ZeroPower_Ok() {
+        expected = 1.0;
+        actual = myCalculatorTest.calculate(20.0, '^', 0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void raising_NegativeValue_ZeroPower_Ok() {
+        expected = 1.0;
+        actual = myCalculatorTest.calculate(-20.0, '^', 0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void raising_ZeroValue_PositivePower_Ok() {
+        expected = 0;
+        actual = myCalculatorTest.calculate(0, '^', 2.0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void illegalOperation_NotOk() {
+        assertThrows(OperationTypeException.class, () ->
+                myCalculatorTest.calculate(65.0, '!', 50.0));
+    }
+}
