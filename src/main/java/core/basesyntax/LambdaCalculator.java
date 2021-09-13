@@ -17,7 +17,7 @@ public class LambdaCalculator implements Calculator {
             case '-':
                 return parameter1 - parameters2;
             case '^':
-                return Math.pow(parameter1,parameters2);
+                return Math.pow(parameter1, parameters2);
             default:
                 throw new ArithmeticException("Unexpected operation");
         }
