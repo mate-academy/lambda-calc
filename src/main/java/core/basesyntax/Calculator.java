@@ -33,7 +33,7 @@ public class Calculator {
                 break;
 
             default:
-                throw new RuntimeException("Illegal operation");
+                throw new RuntimeException("Illegal operation: " + operation);
         }
         return result;
     }
