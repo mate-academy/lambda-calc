@@ -1,6 +1,5 @@
 package core.basesyntax;
 
-import static java.lang.Double.NaN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
