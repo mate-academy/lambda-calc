@@ -30,9 +30,8 @@ public class Calculator {
                 }
                 break;
             default:
-                throw new MinMaxValueException("Failed check for min max value");
+                throw new IllegalStateException("Unexpected value: " + operator);
         }
-
         return checkForMinMaxValue(result);
     }
 
