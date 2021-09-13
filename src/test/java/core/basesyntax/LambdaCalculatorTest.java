@@ -13,6 +13,7 @@ class LambdaCalculatorTest {
     private double expected;
     private char operator;
     private double actual;
+    private double delta;
 
     @BeforeEach
     void setUp() {
@@ -24,8 +25,8 @@ class LambdaCalculatorTest {
         first = 15.25d;
         second = 89.45d;
         operator = '+';
-        double expected = first + second;
-        double actual = calculator.calculate(first, second, operator);
+        expected = 104.7d;
+        actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
 
@@ -34,8 +35,8 @@ class LambdaCalculatorTest {
         first = -16815.002345d;
         second = -4505689.3540545d;
         operator = '+';
-        double expected = first + second;
-        double actual = calculator.calculate(first, second, operator);
+        expected = -4522504.3563995d;
+        actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
 
@@ -44,8 +45,8 @@ class LambdaCalculatorTest {
         first = 543543.875435d;
         second = -4505689.3540545d;
         operator = '+';
-        double expected = first + second;
-        double actual = calculator.calculate(first, second, operator);
+        expected = -3962145.479d;
+        actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
 
@@ -54,7 +55,7 @@ class LambdaCalculatorTest {
         first = 0.0d;
         second = -4505689.3540545d;
         operator = '+';
-        expected = first + second;
+        expected = -4505689.354d;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
@@ -64,7 +65,7 @@ class LambdaCalculatorTest {
         first = Double.MAX_VALUE;
         second = -35120.05430;
         operator = '+';
-        expected = first + second;
+        expected = Double.MAX_VALUE;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
@@ -90,7 +91,7 @@ class LambdaCalculatorTest {
         first = Double.MIN_VALUE;
         second = 20.0;
         operator = '+';
-        expected = first + second;
+        expected = 20.0;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
@@ -116,8 +117,8 @@ class LambdaCalculatorTest {
         first = 15.25d;
         second = 89.45d;
         operator = '-';
-        double expected = first - second;
-        double actual = calculator.calculate(first, second, operator);
+        expected = -74.2d;
+        actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
 
@@ -126,9 +127,10 @@ class LambdaCalculatorTest {
         first = -16815.002345d;
         second = -4505689.3540545d;
         operator = '-';
-        double expected = first - second;
-        double actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        expected = 4488874.35d;
+        delta = 0.017095d;
+        actual = calculator.calculate(first, second, operator);
+        assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -136,9 +138,10 @@ class LambdaCalculatorTest {
         first = -543543.875435d;
         second = 4505689.3540545d;
         operator = '-';
-        double expected = first - second;
-        double actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        expected = -5049233.22d;
+        delta = .009489501d;
+        actual = calculator.calculate(first, second, operator);
+        assertEquals(actual, expected, delta);
     }
 
     @Test
@@ -146,7 +149,7 @@ class LambdaCalculatorTest {
         first = 0.0d;
         second = 4505689.3540545d;
         operator = '-';
-        expected = first - second;
+        expected = 4505689.3540545d;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
@@ -164,7 +167,7 @@ class LambdaCalculatorTest {
         first = Double.MAX_VALUE;
         second = 20.0;
         operator = '-';
-        expected = first - second;
+        expected = Double.MAX_VALUE;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
 
@@ -175,7 +178,7 @@ class LambdaCalculatorTest {
         first = -Double.MAX_VALUE;
         second = -10020.0;
         operator = '-';
-        expected = first - second;
+        expected = -Double.MAX_VALUE;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
@@ -224,19 +227,20 @@ class LambdaCalculatorTest {
         first = 4.9E-322;
         second = 10.0;
         operator = '/';
-        expected = first / second;
+        expected = 4.9E-323;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
 
     @Test
     void calculatePositiveDivideNegative_Ok() {
-        first = 4.9E32;
-        second = -4354.346410;
+        first = 4932.5674d;
+        second = -4354.34641d;
         operator = '/';
-        expected = first / second;
+        expected = -1.13d;
+        delta = 0.027916834251135d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual, delta);
     }
 
     @Test
@@ -256,22 +260,22 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void calculatePositiveTwo_Ok() {
-        first = 4.9E32;
+    void calculateMultiplicationPositiveTwo_Ok() {
+        first = 493245.00457;
         second = 4354.346410;
         operator = '*';
-        expected = first * second;
+        expected = 2147759614.899813d;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
 
     }
 
     @Test
-    void calculateNegativeTwo_Ok() {
-        first = -4.9E32;
+    void calculateMultiplicationNegativeTwo_Ok() {
+        first = -493245.00457;
         second = -4354.346410;
         operator = '*';
-        expected = first * second;
+        expected = 2147759614.899813d;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
 
@@ -317,9 +321,9 @@ class LambdaCalculatorTest {
         first = 4.932;
         second = 43.3464;
         operator = '^';
-        expected = Math.pow(first, second);
+        expected = 1.0966173467368478E30d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -327,9 +331,9 @@ class LambdaCalculatorTest {
         first = 4.932;
         second = -3.3464;
         operator = '^';
-        expected = Math.pow(first, second);
+        expected = 0.0047958722437526306d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -337,9 +341,9 @@ class LambdaCalculatorTest {
         first = -4.932;
         second = -30.00;
         operator = '^';
-        expected = Math.pow(first, second);
+        expected = 1.6192278402800162E-21;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -347,9 +351,9 @@ class LambdaCalculatorTest {
         first = -4.932;
         second = 33.0;
         operator = '^';
-        expected = Math.pow(first, second);
+        expected = -7.409028092504483E22d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -357,7 +361,7 @@ class LambdaCalculatorTest {
         first = -4.932;
         second = 0.00;
         operator = '^';
-        expected = Math.pow(first, second);
+        expected = 1;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
@@ -367,7 +371,7 @@ class LambdaCalculatorTest {
         first = 0.00;
         second = 0.00;
         operator = '^';
-        expected = Math.pow(first, second);
+        expected = 1;
         actual = calculator.calculate(first, second, operator);
         assertEquals(actual, expected);
     }
