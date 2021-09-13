@@ -7,8 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    public static final double MAX_VALUE = Double.MAX_VALUE;
-    public static final double MIN_VALUE = Double.MIN_VALUE;
     private static final double DELTA = 1e-15;
     private Calculator calculator;
 
@@ -49,23 +47,23 @@ class CalculatorTest {
 
     @Test
     void additionMinValues_Ok() {
-        double a = MIN_VALUE;
-        double b = MIN_VALUE;
+        double a = Double.MIN_VALUE;
+        double b = Double.MIN_VALUE;
         assertEquals(0, calculator.calculate(a, b, '+'), DELTA);
     }
 
     @Test
     void additionMaxValues_Ok() {
-        double a = MAX_VALUE;
-        double b = MAX_VALUE;
+        double a = Double.MAX_VALUE;
+        double b = Double.MAX_VALUE;
         assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(a, b, '+'), DELTA);
     }
 
     @Test
     void additionMinAndMaxValues_Ok() {
-        double a = MIN_VALUE;
-        double b = MAX_VALUE;
-        assertEquals(MAX_VALUE, calculator.calculate(a, b, '+'), DELTA);
+        double a = Double.MIN_VALUE;
+        double b = Double.MAX_VALUE;
+        assertEquals(Double.MAX_VALUE, calculator.calculate(a, b, '+'), DELTA);
     }
 
     @Test
@@ -98,22 +96,22 @@ class CalculatorTest {
 
     @Test
     void subtractionMinAndMaxDoubleValue_Ok() {
-        double a = MIN_VALUE;
-        double b = MAX_VALUE;
-        assertEquals(-MAX_VALUE, calculator.calculate(a, b, '-'), DELTA);
+        double a = Double.MIN_VALUE;
+        double b = Double.MAX_VALUE;
+        assertEquals(-Double.MAX_VALUE, calculator.calculate(a, b, '-'), DELTA);
     }
 
     @Test
     void subtractionMinValues_Ok() {
-        double a = MIN_VALUE;
-        double b = MIN_VALUE;
+        double a = Double.MIN_VALUE;
+        double b = Double.MIN_VALUE;
         assertEquals(0, calculator.calculate(a, b, '-'), DELTA);
     }
 
     @Test
     void subtractionMaxValues_Ok() {
-        double a = MAX_VALUE;
-        double b = MAX_VALUE;
+        double a = Double.MAX_VALUE;
+        double b = Double.MAX_VALUE;
         assertEquals(0, calculator.calculate(a, b, '-'), DELTA);
     }
 
@@ -154,22 +152,22 @@ class CalculatorTest {
 
     @Test
     void multiplicationMinAndMaxDoubleValues_Ok() {
-        double a = MIN_VALUE;
-        double b = MAX_VALUE;
+        double a = Double.MIN_VALUE;
+        double b = Double.MAX_VALUE;
         assertEquals(0, calculator.calculate(a, b, '*'), DELTA);
     }
 
     @Test
     void multiplicationMinDoubleValues_Ok() {
-        double a = MIN_VALUE;
-        double b = MIN_VALUE;
+        double a = Double.MIN_VALUE;
+        double b = Double.MIN_VALUE;
         assertEquals(0, calculator.calculate(a, b, '*'), DELTA);
     }
 
     @Test
     void multiplicationMaxDoubleValues_Ok() {
-        double a = MAX_VALUE;
-        double b = MAX_VALUE;
+        double a = Double.MAX_VALUE;
+        double b = Double.MAX_VALUE;
         assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(a, b, '*'), DELTA);
     }
 
@@ -203,15 +201,15 @@ class CalculatorTest {
 
     @Test
     void divisionMinByMaxDoubleValues_Ok() {
-        double a = MIN_VALUE;
-        double b = MAX_VALUE;
+        double a = Double.MIN_VALUE;
+        double b = Double.MAX_VALUE;
         assertEquals(0, calculator.calculate(a, b, '/'), DELTA);
     }
 
     @Test
     void divisionMaxByMinDoubleValues_Ok() {
-        double a = MAX_VALUE;
-        double b = MIN_VALUE;
+        double a = Double.MAX_VALUE;
+        double b = Double.MIN_VALUE;
         assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(a, b, '/'), DELTA);
     }
 

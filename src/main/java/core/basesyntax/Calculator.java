@@ -3,10 +3,7 @@ package core.basesyntax;
 public class Calculator {
 
     public double calculate(double a, double b, char operation) throws IllegalArgumentException {
-        if (!isLegalOperation(operation)) {
-            throw new IllegalArgumentException("Operation " + operation
-                    + " is not allowed. Please input operation from +, - , *, /, ^ ");
-        }
+        checkLegalOperation(operation);
         switch (operation) {
             case '+':
                 return a + b;
@@ -15,26 +12,34 @@ public class Calculator {
             case '*':
                 return a * b;
             case '/':
-                if (b == Double.NEGATIVE_INFINITY || b == Double.POSITIVE_INFINITY || b == 0) {
-                    throw new IllegalArgumentException("IllegalArgumentException is occured");
-                }
-                return a / b;
+                return divide(a, b);
             case '^':
-                if (a == 0 && b <= 0) {
-                    throw new IllegalArgumentException("IllegalArgumentException is occured."
-                            + " Number b must be > 0. ");
-                }
-                return Math.pow(a, b);
+                return raiseValueToPower(a, b);
             default:
                 return 0;
         }
     }
 
-    private boolean isLegalOperation(char operation) {
+    private double divide(double a, double b) {
+        if (b == Double.NEGATIVE_INFINITY || b == Double.POSITIVE_INFINITY || b == 0) {
+            throw new IllegalArgumentException("IllegalArgumentException is occured");
+        }
+        return a / b;
+    }
+
+    private double raiseValueToPower(double a, double b) {
+        if (a == 0 && b <= 0) {
+            throw new IllegalArgumentException("IllegalArgumentException is occured."
+                    + " Number b must be > 0. ");
+        }
+        return Math.pow(a, b);
+    }
+
+    private void checkLegalOperation(char operation) throws IllegalArgumentException {
         String allowedOperations = "+-*/^";
         if (!allowedOperations.contains(String.valueOf(operation))) {
-            return false;
+            throw new IllegalArgumentException("Operation " + operation
+                    + " is not allowed. Please input operation from +, - , *, /, ^ ");
         }
-        return true;
     }
 }
