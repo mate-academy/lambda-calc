@@ -1,19 +1,24 @@
 package core.basesyntax;
 
 public class Calculator implements Calculation {
+    private static final char PLUS = '+';
+    private static final char MINUS = '-';
+    private static final char MULTIPLY = '*';
+    private static final char DIVIDE = '/';
+    private static final char RAISING = '^';
 
     @Override
     public double calculate(double value1, double value2, char operation) {
         switch (operation) {
-            case '+':
+            case PLUS:
                 return addition(value1, value2);
-            case '-':
+            case MINUS:
                 return subtraction(value1, value2);
-            case '*':
+            case MULTIPLY:
                 return multiplication(value1, value2);
-            case '/':
+            case DIVIDE:
                 return division(value1, value2);
-            case '^':
+            case RAISING:
                 return raisingToPower(value1, value2);
             default:
                 throw new ArithmeticException("No such operation");
