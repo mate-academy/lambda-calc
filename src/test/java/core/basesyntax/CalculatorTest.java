@@ -266,7 +266,7 @@ class CalculatorTest {
 
     @Test
     void calculate_illegalOperation_notOk() {
-        assertThrows(ArithmeticException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             calculator.calculate(0, 0, '&');
         });
     }

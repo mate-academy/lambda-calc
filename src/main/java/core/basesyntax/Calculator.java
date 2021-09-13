@@ -8,43 +8,43 @@ public class Calculator implements Calculation {
     private static final char RAISING = '^';
 
     @Override
-    public double calculate(double value1, double value2, char operation) {
+    public double calculate(double firstValue, double secondValue, char operation) {
         switch (operation) {
             case PLUS:
-                return addition(value1, value2);
+                return addition(firstValue, secondValue);
             case MINUS:
-                return subtraction(value1, value2);
+                return subtraction(firstValue, secondValue);
             case MULTIPLY:
-                return multiplication(value1, value2);
+                return multiplication(firstValue, secondValue);
             case DIVIDE:
-                return division(value1, value2);
+                return division(firstValue, secondValue);
             case RAISING:
-                return raisingToPower(value1, value2);
+                return raisingToPower(firstValue, secondValue);
             default:
-                throw new ArithmeticException("No such operation");
+                throw new IllegalArgumentException("No such operation");
         }
     }
 
-    private double addition(double value1, double value2) {
-        return value1 + value2;
+    private double addition(double firstValue, double secondValue) {
+        return firstValue + secondValue;
     }
 
-    private double subtraction(double value1, double value2) {
-        return value1 - value2;
+    private double subtraction(double firstValule, double secondValue) {
+        return firstValule - secondValue;
     }
 
-    private double division(double value1, double value2) {
-        if (value2 != 0) {
-            return value1 / value2;
+    private double division(double firstValue, double secondValue) {
+        if (secondValue != 0) {
+            return firstValue / secondValue;
         }
         throw new ArithmeticException("We cannot divide by 0.");
     }
 
-    private double multiplication(double value1, double value2) {
-        return value1 * value2;
+    private double multiplication(double firstValue, double secondValue) {
+        return firstValue * secondValue;
     }
 
-    private double raisingToPower(double value1, double value2) {
-        return Math.pow(value1, value2);
+    private double raisingToPower(double firstValue, double secondValue) {
+        return Math.pow(firstValue, secondValue);
     }
 }
