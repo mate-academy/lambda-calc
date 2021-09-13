@@ -1,8 +1,9 @@
 package core.basesyntax;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private static final double DELTA = 0.0001;
@@ -11,7 +12,6 @@ class CalculatorTest {
     private double expected;
     private double actual;
     private final Calculation calculator = new Calculator();
-
 
     @Test
     void calculate_additionWithTwoPositive_Ok() {
@@ -218,6 +218,40 @@ class CalculatorTest {
         expected = 100;
         actual = calculator.calculate(-10, 2, '^');
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_raisingNegativeToNegative_Ok() {
+        expected = 0;
+        actual = calculator.calculate(-10, -7, '^');
+        assertEquals(expected, actual, DELTA);
+        expected = 0.0039;
+        actual = calculator.calculate(-2, -8, '^');
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_raisingPositiveToZero_Ok() {
+        expected = 1;
+        actual = calculator.calculate(57, 0, '^');
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void calculate_raisingNefativeToZero_Ok() {
+        expected = 1;
+        actual = calculator.calculate(-78, 0, '^');
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void calculate_raisingzeroToPower_Ok() {
+        expected = 0;
+        actual = calculator.calculate(0, 7, '^');
+        assertEquals(expected, actual);
+
     }
 
     @Test

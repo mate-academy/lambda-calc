@@ -1,6 +1,6 @@
 package core.basesyntax;
 
-public class Calculator implements Calculation{
+public class Calculator implements Calculation {
 
     @Override
     public double calculate(double value1, double value2, char operation) {
