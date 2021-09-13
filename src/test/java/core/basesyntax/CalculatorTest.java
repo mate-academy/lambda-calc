@@ -21,14 +21,14 @@ public class CalculatorTest {
     public void calculateAddTwoPositive() {
         expected = 10;
         actual = calculator.calculate(4, 6, '+');
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void calculateAddTwoNegative() {
         expected = -10;
         actual = calculator.calculate(-4, -6, '+');
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class CalculatorTest {
     @Test
     public void calculateAddMaxDoubleValue() {
         expected = Double.POSITIVE_INFINITY;
-        actual = calculator.calculate(Double.MAX_VALUE,Double.MAX_VALUE, '+');
-        assertEquals(expected, actual,DELTA);
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -101,8 +101,8 @@ public class CalculatorTest {
     @Test
     public void calculateSubtractMaxDoubleValue() {
         expected = 0;
-        actual = calculator.calculate(Double.MAX_VALUE,Double.MAX_VALUE, '-');
-        assertEquals(expected, actual,DELTA);
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-');
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -147,8 +147,8 @@ public class CalculatorTest {
     @Test
     public void calculateMultiplicationMaxDoubleValue() {
         expected = Double.POSITIVE_INFINITY;
-        actual = calculator.calculate(Double.MAX_VALUE,Double.MAX_VALUE, '*');
-        assertEquals(expected, actual,DELTA);
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -197,8 +197,8 @@ public class CalculatorTest {
     @Test
     public void calculateDivisionMaxDoubleValue() {
         expected = 1;
-        actual = calculator.calculate(Double.MAX_VALUE,Double.MAX_VALUE, '/');
-        assertEquals(expected, actual,DELTA);
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/');
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
