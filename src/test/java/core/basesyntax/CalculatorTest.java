@@ -45,16 +45,16 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_additionWithMinAndMax_Ok() {
+    void calculate_additionWithMinAndMaxInDifferentPlaces_Ok() {
         expected = max;
         actual = calculator.calculate(max, min, '+');
         assertEquals(expected, actual);
         expected = 0;
         actual = calculator.calculate(min, min, '+');
-        assertEquals(expected, actual,DELTA);
+        assertEquals(expected, actual, DELTA);
         expected = Double.POSITIVE_INFINITY;
         actual = calculator.calculate(max, max, '+');
-        assertEquals(expected, actual,DELTA);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -76,5 +76,154 @@ class CalculatorTest {
         expected = -10.45789;
         actual = calculator.calculate(-0.45789, 10, '-');
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_subtractionWithZeroInDifferentPlaces_Ok() {
+        expected = 0.45789;
+        actual = calculator.calculate(0.45789, 0, '-');
+        assertEquals(expected, actual);
+        expected = -25.7861488;
+        actual = calculator.calculate(0, 25.7861488, '-');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_subtractionWithMinAndMaxInDifferentPlaces_Ok() {
+        expected = 0;
+        actual = calculator.calculate(max, max, '-');
+        assertEquals(expected, actual);
+        expected = 0;
+        actual = calculator.calculate(min, min, '-');
+        assertEquals(expected, actual);
+        expected = max;
+        actual = calculator.calculate(max, min, '-');
+        assertEquals(expected, actual);
+        expected = Double.NEGATIVE_INFINITY;
+        actual = calculator.calculate(-max, max, '-');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_divisionWithTwoPosistive_Ok() {
+        expected = 10;
+        actual = calculator.calculate(100.00001, 10, '/');
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_divisionWithTwoNegatives_Ok() {
+        expected = 1.3539;
+        actual = calculator.calculate(-45,-33.2355, '/');
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_divisionWithPositiveAndNegative_Ok() {
+        expected = -4.4444;
+        actual = calculator.calculate(200, -45, '/');
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_divisionWithZeroInFirstValue_Ok() {
+        expected = 0;
+        actual = calculator.calculate(0, 43, '/');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_divisionWithZeroInSecondValue_notOk() {
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(789, 0, '/');
+        });
+    }
+
+    @Test
+    void calculate_divisionWithMinAndMaxInDifferentPlaces_Ok() {
+        expected = 1;
+        actual = calculator.calculate(max, max, '/');
+        assertEquals(expected, actual);
+        expected = 1;
+        actual = calculator.calculate(min, min, '/');
+        assertEquals(expected, actual);
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.calculate(max, min, '/');
+        assertEquals(expected, actual);
+        expected = 0;
+        actual = calculator.calculate(min, max, '/');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_multiplicationWithTwoPositive_Ok() {
+        expected = 100500;
+        actual = calculator.calculate(10.05, 10000, '*');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_multiplicationWithTwoNegative_Ok() {
+        expected = 100500;
+        actual = calculator.calculate(-1005, -100, '*');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_multiplicationWithPositiveAndNegative_Ok() {
+        expected = -45600;
+        actual = calculator.calculate(-456, 100, '*');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_multiplicationWithZeroInDifferentPlaces_Ok() {
+        expected = 0;
+        actual = calculator.calculate(0, 100, '*');
+        assertEquals(expected, actual);
+        expected = 0;
+        actual = calculator.calculate(45698, 0, '*');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_multiplicationWithMinAndMaxInDifferentPlaces_Ok() {
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.calculate(max, max, '*');
+        assertEquals(expected, actual);
+        expected = 0;
+        actual = calculator.calculate(min, min, '*');
+        assertEquals(expected, actual);
+        expected = 0;
+        actual = calculator.calculate(max, min, '*');
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_raisingPositiveToPositive_Ok() {
+        expected = 10;
+        actual = calculator.calculate(10, 1, '^');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_raisingPositiveToNegative_Ok() {
+        expected = 0;
+        actual = calculator.calculate(10, -45.48, '^');
+        assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    void calculate_raisingNegativeToPositive_Ok() {
+        expected = 100;
+        actual = calculator.calculate(-10, 2, '^');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_illegalOperation_notOk() {
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(0, 0, '&');
+        });
     }
 }
