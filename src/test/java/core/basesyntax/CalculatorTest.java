@@ -18,42 +18,42 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateSumOf2PositiveOperands_Ok() {
+    void calculate_sumOf2PositiveOperands_Ok() {
         actual = calculator.calculate(10, 10, '+');
         expected = 20;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumOf2NegativeOperands_Ok() {
+    void calculate_sumOf2NegativeOperands_Ok() {
         actual = calculator.calculate(-5, -5, '+');
         expected = -10;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumOfPositiveAndNegativeOperands_Ok() {
+    void calculate_sumOfPositiveAndNegativeOperands_Ok() {
         actual = calculator.calculate(-5, 5, '+');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumWithFirstZeroValue_Ok() {
+    void calculate_sumWithFirstZeroValue_Ok() {
         actual = calculator.calculate(0, 7, '+');
         expected = 7;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumWithSecondZeroValue_Ok() {
+    void calculate_sumWithSecondZeroValue_Ok() {
         actual = calculator.calculate(7, 0, '+');
         expected = 7;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumWithBothZeroValues_Ok() {
+    void calculate_sumWithBothZeroValues_Ok() {
         actual = calculator.calculate(0, 0, '+');
         expected = 0;
         assertEquals(expected, actual);
@@ -67,49 +67,49 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateSumForMaxDoubleValueAndNegativeValue_Ok() {
+    void calculate_sumForMaxDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, -12, '+');
         expected = 1.7976931348623157E308;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSumForBothDoubleMaxValues_Ok() {
+    void calculate_sumForBothDoubleMaxValues_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSumForMinDoubleValueAndPositiveValue_Ok() {
+    void calculate_sumForMinDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, 12, '+');
         expected = 12.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSumForMinDoubleValueAndNegativeValue_Ok() {
+    void calculate_sumMinDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, -12, '+');
         expected = -12.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSumForBothDoubleMinValues_Ok() {
+    void calculate_sumForBothDoubleMinValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '+');
         expected = 1.0E-323;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSumForMinAndMaxValues_Ok() {
+    void calculate_sumForMinAndMaxValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, '+');
         expected = 1.7976931348623157E308;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSumForBothDoublePositiveInfinities_Ok() {
+    void calculate_sumForBothDoublePositiveInfinities_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY,
                 '+');
         expected = Double.POSITIVE_INFINITY;
@@ -117,433 +117,433 @@ class CalculatorTest {
     }
 
     @Test
-    void calculateSumForDoublePositiveInfinityAndNegativeInfinity_Ok() {
+    void calculate_sumForDoublePositiveInfinityAndNegativeInfinity_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, '+');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumForDoubleNegativeInfinityAndPositiveInfinityA_Ok() {
+    void calculate_sumForDoubleNegativeInfinityAndPositiveInfinityA_Ok() {
         actual = calculator.calculate(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, '+');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumForBothDoubleNegativeInfinities_Ok() {
+    void calculate_sumForBothDoubleNegativeInfinities_Ok() {
         actual = calculator.calculate(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, '+');
         expected = Double.NEGATIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumWith2PositiveOperands_Ok() {
+    void calculate_sumWith2PositiveOperands_Ok() {
         actual = calculator.calculate(10, 10, '-');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumWith2NegativeOperands_Ok() {
+    void calculate_sumWith2NegativeOperands_Ok() {
         actual = calculator.calculate(-5, -5, '-');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSumWithPositiveAndNegativeOperands_Ok() {
+    void calculate_sumWithPositiveAndNegativeOperands_Ok() {
         actual = calculator.calculate(-5, 5, '-');
         expected = -10;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionWithFirstZeroValue_Ok() {
+    void calculate_subtractionWithFirstZeroValue_Ok() {
         actual = calculator.calculate(0, 7, '-');
         expected = -7;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionWithSecondZeroValue_Ok() {
+    void calculate_subtractionWithSecondZeroValue_Ok() {
         actual = calculator.calculate(7, 0, '-');
         expected = 7;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionWithBothZeroValues_Ok() {
+    void calculate_subtractionWithBothZeroValues_Ok() {
         actual = calculator.calculate(0, 0, '-');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionForMaxDoubleValueAndPositiveValue_Ok() {
+    void calculate_subtractionForMaxDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, 12, '-');
         expected = 1.7976931348623157E308;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionForMaxDoubleValueAndNegativeValue_Ok() {
+    void calculate_subtractionForMaxDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, -12, '-');
         expected = 1.7976931348623157E308;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSubtractionForBothDoubleMaxValues_Ok() {
+    void calculate_subtractionForBothDoubleMaxValues_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-');
         expected = 0.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSubtractionForMinDoubleValueAndPositiveValue_Ok() {
+    void calculate_subtractionForMinDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, 12, '-');
         expected = -12.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSubtractionForMinDoubleValueAndNegativeValue_Ok() {
+    void calculate_subtractionForMinDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, -12, '-');
         expected = 12.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSubtractionForBothDoubleMinValues_Ok() {
+    void calculate_subtractionForBothDoubleMinValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-');
         expected = 0.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSubtractionForMinAndMaxValues_Ok() {
+    void calculate_subtractionForMinAndMaxValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, '-');
         expected = -1.7976931348623157E308;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSubtractionForMaxAndMinValues_Ok() {
+    void calculate_subtractionForMaxAndMinValues_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '-');
         expected = 1.7976931348623157E308;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateSubtractionForBothDoublePositiveInfinities_Ok() {
+    void calculate_subtractionForBothDoublePositiveInfinities_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, '-');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionForDoublePositiveInfinityAndNegativeInfinity_Ok() {
+    void calculate_subtractionForDoublePositiveInfinityAndNegativeInfinity_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, '-');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionForDoubleNegativeInfinityAndPositiveInfinityA_Ok() {
+    void calculate_subtractionForDoubleNegativeInfinityAndPositiveInfinityA_Ok() {
         actual = calculator.calculate(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, '-');
         expected = Double.NEGATIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateSubtractionForBothDoubleNegativeInfinities_Ok() {
+    void calculate_subtractionForBothDoubleNegativeInfinities_Ok() {
         actual = calculator.calculate(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, '-');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWith2PositiveOperands_Ok() {
+    void calculate_multiplicationWith2PositiveOperands_Ok() {
         actual = calculator.calculate(10, 10, '*');
         expected = 100.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWith2NegativeOperands_Ok() {
+    void calculate_multiplicationWith2NegativeOperands_Ok() {
         actual = calculator.calculate(-5, -5, '*');
         expected = 25.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithPositiveAndNegativeOperands_Ok() {
+    void calculate_multiplicationWithPositiveAndNegativeOperands_Ok() {
         actual = calculator.calculate(-5, 5, '*');
         expected = -25;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithFirstZeroValue_Ok() {
+    void calculate_multiplicationWithFirstZeroValue_Ok() {
         actual = calculator.calculate(0, 7, '*');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithSecondZeroValue_Ok() {
+    void calculate_multiplicationWithSecondZeroValue_Ok() {
         actual = calculator.calculate(7, 0, '*');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationWithBothZeroValues_Ok() {
+    void calculate_multiplicationWithBothZeroValues_Ok() {
         actual = calculator.calculate(0, 0, '*');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationForMaxDoubleValueAndPositiveValue_Ok() {
+    void calculate_multiplicationForMaxDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, 12, '*');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateMultiplicationForMaxDoubleValueAndNegativeValue_Ok() {
+    void calculate_multiplicationForMaxDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, -12, '*');
         expected = Double.NEGATIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateMultiplicationForBothDoubleMaxValues_Ok() {
+    void calculate_multiplicationForBothDoubleMaxValues_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateMultiplicationForMinDoubleValueAndPositiveValue_Ok() {
+    void calculate_multiplicationForMinDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, 12, '*');
         expected = 5.9E-323;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateMultiplicationForMinDoubleValueAndNegativeValue_Ok() {
+    void calculate_multiplicationForMinDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, -12, '*');
         expected = -5.9E-323;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateMultiplicationForBothDoubleMinValues_Ok() {
+    void calculate_multiplicationForBothDoubleMinValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '*');
         expected = 0.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateMultiplicationForMinAndMaxValues_Ok() {
+    void calculate_multiplicationForMinAndMaxValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, '*');
         expected = 8.881784197001251E-16;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateMultiplicationForBothDoublePositiveInfinities_Ok() {
+    void calculate_multiplicationForBothDoublePositiveInfinities_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, '*');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationForDoublePositiveInfinityAndNegativeInfinity_Ok() {
+    void calculate_multiplicationForDoublePositiveInfinityAndNegativeInfinity_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, '*');
         expected = Double.NEGATIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateMultiplicationForBothDoubleNegativeInfinities_Ok() {
+    void calculate_multiplicationForBothDoubleNegativeInfinities_Ok() {
         actual = calculator.calculate(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, '*');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWith2PositiveOperands_Ok() {
+    void calculate_divisionWith2PositiveOperands_Ok() {
         actual = calculator.calculate(10, 10, '/');
         expected = 1.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWith2NegativeOperands_Ok() {
+    void calculate_divisionWith2NegativeOperands_Ok() {
         actual = calculator.calculate(-5, -5, '/');
         expected = 1.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWithPositiveAndNegativeOperands_Ok() {
+    void calculate_divisionWithPositiveAndNegativeOperands_Ok() {
         actual = calculator.calculate(-5, 5, '/');
         expected = -1.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionWithFirstZeroValue_Ok() {
+    void calculate_divisionWithFirstZeroValue_Ok() {
         actual = calculator.calculate(0, 7, '/');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionByZero_NotOk() {
+    void calculate_divisionByZero_NotOk() {
         assertThrows(ArithmeticException.class, () ->
                 calculator.calculate(7, 0, '/'));
     }
 
     @Test
-    void calculateDivisionForMaxDoubleValueAndPositiveValue_Ok() {
+    void calculate_divisionForMaxDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, 12, '/');
         expected = 1.4980776123852632E307;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForMaxDoubleValueAndNegativeValue_Ok() {
+    void calculate_divisionForMaxDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, -12, '/');
         expected = -1.4980776123852632E307;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForBothDoubleMaxValues_Ok() {
+    void calculate_divisionForBothDoubleMaxValues_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/');
         expected = 1.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForMinDoubleValueAndPositiveValue_Ok() {
+    void calculate_divisionForMinDoubleValueAndPositiveValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, 12, '/');
         expected = 0.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForMinDoubleValueAndNegativeValue_Ok() {
+    void calculate_divisionForMinDoubleValueAndNegativeValue_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, -12, '/');
         expected = -0.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForBothDoubleMinValues_Ok() {
+    void calculate_divisionForBothDoubleMinValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '/');
         expected = 1.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForMinAndMaxValues_Ok() {
+    void calculate_divisionForMinAndMaxValues_Ok() {
         actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, '/');
         expected = 0.0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForMaxAndMinValues_Ok() {
+    void calculate_divisionForMaxAndMinValues_Ok() {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '/');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void calculateDivisionForBothDoublePositiveInfinities_Ok() {
+    void calculate_divisionForBothDoublePositiveInfinities_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, '/');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionForDoublePositiveInfinityAndNegativeInfinity_Ok() {
+    void calculate_divisionForDoublePositiveInfinityAndNegativeInfinity_Ok() {
         actual = calculator.calculate(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, '/');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateDivisionForBothDoubleNegativeInfinities_Ok() {
+    void calculate_divisionForBothDoubleNegativeInfinities_Ok() {
         actual = calculator.calculate(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, '/');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingPositiveValueToThePositivePower_Ok() {
+    void calculate_raisingPositiveValueToThePositivePower_Ok() {
         actual = calculator.calculate(2, 2, '^');
         expected = 4;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingPositiveValueToTheNegativePower_Ok() {
+    void calculate_raisingPositiveValueToTheNegativePower_Ok() {
         actual = calculator.calculate(2, -2, '^');
         expected = 0.25;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingNegativeValueToThePositivePower_Ok() {
+    void calculate_raisingNegativeValueToThePositivePower_Ok() {
         actual = calculator.calculate(-2, 2, '^');
         expected = 4.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingNegativeValueToTheNegativePower_Ok() {
+    void calculate_raisingNegativeValueToTheNegativePower_Ok() {
         actual = calculator.calculate(-2, -2, '^');
         expected = 0.25;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingPositiveValueToZeroPower_Ok() {
+    void calculate_raisingPositiveValueToZeroPower_Ok() {
         actual = calculator.calculate(2, 0, '^');
         expected = 1.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingNegativeValueToZeroPower_Ok() {
+    void calculate_raisingNegativeValueToZeroPower_Ok() {
         actual = calculator.calculate(-2, 0, '^');
         expected = 1.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingZeroToPower_Ok() {
+    void calculate_raisingZeroToPower_Ok() {
         actual = calculator.calculate(0, 2, '^');
         expected = 0.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateRaisingZeroToZeroPower_Ok() {
+    void calculate_raisingZeroToZeroPower_Ok() {
         actual = calculator.calculate(0, 0, '^');
         expected = 1.0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateWithIllegalOperator_NotOk() {
+    void calculate_WithIllegalOperator_NotOk() {
         assertThrows(ArithmeticException.class, () -> calculator
                 .calculate(2, 0, '%'));
     }
