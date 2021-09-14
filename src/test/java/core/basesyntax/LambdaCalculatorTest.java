@@ -1,9 +1,10 @@
 package core.basesyntax;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LambdaCalculatorTest {
     private static Calculator lambdaCalculator;
@@ -18,8 +19,8 @@ class LambdaCalculatorTest {
     private static final double SECOND_POSITIVE_VALUE = 3;
     private static final double FIRS_NEGATIVE_VALUE = -2;
     private static final double SECOND_NEGATIVE_VALUE = -3;
-    double expected;
-    double actual;
+    private double expected;
+    private double actual;
 
     @BeforeAll
     static void beforeAll() {
