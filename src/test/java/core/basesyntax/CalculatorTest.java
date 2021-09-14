@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 class CalculatorTest {
     private static Calculator calculator;
     private double expected;
+    private double actual;
 
     @BeforeAll
     static void beforeAll() {
@@ -18,20 +19,28 @@ class CalculatorTest {
     @Test
     void calculate_positiveNumberAddition_Ok() {
         expected = 15.0;
-        assertEquals(expected, calculator.calculate(7.6, 7.4, '+'));
+        actual = calculator.calculate(7.6, 7.4, '+');
+        assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_negativeNubmersAddition_Ok() {
+    void calculate_negativeNumbersAddition_Ok() {
         expected = -15;
-        assertEquals(expected, calculator.calculate(-10, -5, '+'));
+        actual = calculator.calculate(-10, -5, '+');
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_positiveAndNegativeAddition_Ok() {
         expected = 15;
         assertEquals(expected, calculator.calculate(25.5, -10.5, '+'));
-        assertEquals(-expected, calculator.calculate(-20, 5, '+'));
+    }
+
+    @Test
+    void calculate_negativeAndPositiveAddition_Ok() {
+        expected = -15;
+        actual = calculator.calculate(-20, 5, '+');
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -47,18 +56,24 @@ class CalculatorTest {
                 calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+'));
         assertEquals(Double.MIN_VALUE * 2,
                 calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '+'));
+        assertEquals(Double.MAX_VALUE,
+                calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '+'));
+        assertEquals(Double.MAX_VALUE,
+                calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, '+'));
     }
 
     @Test
     void calculate_positiveNumberSubtraction_Ok() {
         expected = 20;
-        assertEquals(expected, calculator.calculate(25.5, 5.5, '-'));
+        actual = calculator.calculate(25.5, 5.5, '-');
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_negativeNumbersSubtraction_Ok() {
         expected = -20;
-        assertEquals(expected, calculator.calculate(-25, -5, '-'));
+        actual = calculator.calculate(-25, -5, '-');
+        assertEquals(expected, actual);
 
     }
 
@@ -66,7 +81,13 @@ class CalculatorTest {
     void calculate_positiveAndNegativeSubtraction_Ok() {
         expected = 20;
         assertEquals(expected, calculator.calculate(15, -5, '-'));
-        assertEquals(-expected, calculator.calculate(-5, 15, '-'));
+    }
+
+    @Test
+    void calculate_negativeAndPositiveSubtraction_Ok() {
+        expected = -20;
+        actual = calculator.calculate(-5, 15, '-');
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -84,15 +105,31 @@ class CalculatorTest {
     }
 
     @Test
+    void calculate_maxDoubleMinsMinValue_Ok() {
+        expected = Double.MAX_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '-');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_minDoubleMinusMaxDouble_Ok() {
+        expected = - Double.MAX_VALUE;
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, '-');
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void calculate_positiveNumberMultiplication_Ok() {
         double expected = 5;
-        assertEquals(expected, calculator.calculate(2.5, 2, '*'));
+        actual = calculator.calculate(2.5, 2, '*');
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_negativeNumbersMultiplication_Ok() {
         expected = 5;
-        assertEquals(expected, calculator.calculate(-2.5, -2, '*'));
+        actual = calculator.calculate(-2.5, -2, '*');
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -119,25 +156,33 @@ class CalculatorTest {
     @Test
     void calculate_positiveNumbersDivision_Ok() {
         double expected = 15.5;
-        assertEquals(expected, calculator.calculate(35.65, 2.3, '/'));
+        actual = calculator.calculate(35.65, 2.3, '/');
+        assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_negativeNumbersDivistion_Ok() {
+    void calculate_negativeNumbersDivision_Ok() {
         expected = 15.5;
-        assertEquals(expected, calculator.calculate(-35.65, -2.3, '/'));
+        actual = calculator.calculate(-35.65, -2.3, '/');
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_positiveAndNegativeNumbers_Ok() {
-        expected = 15.5;
-        assertEquals(-expected, calculator.calculate(35.65, -2.3, '/'));
-        assertEquals(-expected, calculator.calculate(-35.65, 2.3, '/'));
+        expected = -15.5;
+        assertEquals(expected, calculator.calculate(35.65, -2.3, '/'));
+        assertEquals(expected, calculator.calculate(-35.65, 2.3, '/'));
     }
 
     @Test
-    void calculate_zeroDivision_Ok() {
-        assertEquals(0, calculator.calculate(0, 2.3, '/'));
+    void calculate_zeroByNumberDivision_Ok() {
+        expected = 0;
+        actual = calculator.calculate(0, 2.3, '/');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_numberByZeroDivision_notOk() {
         assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(25, 0, '/');
         });
@@ -152,12 +197,16 @@ class CalculatorTest {
 
     @Test
     void calculate_positiveNumberToPositivePower_Ok() {
-        assertEquals(27, calculator.calculate(3, 3, '^'));
+        expected = 27;
+        actual = calculator.calculate(3, 3, '^');
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculate_negativeNumbersToPositiveToPower_Ok() {
-        assertEquals(4,calculator.calculate(-2, 2, '^'));
+        expected = 4;
+        actual = calculator.calculate(-2, 2, '^');
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -177,7 +226,15 @@ class CalculatorTest {
     @Test
     void calculate_zeroToPower_Ok() {
         expected = 0;
-        assertEquals(expected, calculator.calculate(0, 5, '^'));
+        actual = calculator.calculate(0, 5, '^');
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_zerotoNegativePower_Ok() {
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.calculate(0, -2, '^');
+        assertEquals(expected, actual);
     }
 
     @Test
