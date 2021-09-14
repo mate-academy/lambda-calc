@@ -543,6 +543,13 @@ class CalculatorTest {
     }
 
     @Test
+    void calculate_raisingZeroToNegativePower_Ok() {
+        actual = calculator.calculate(0, -2, '^');
+        expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void calculate_WithIllegalOperator_NotOk() {
         assertThrows(IllegalArgumentException.class, () -> calculator
                 .calculate(2, 0, '%'));
