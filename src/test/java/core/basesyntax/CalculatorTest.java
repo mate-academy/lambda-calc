@@ -252,7 +252,7 @@ class CalculatorTest {
         expected = 1;
         assertEquals(expected, actual);
         actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, ZERO, EXPONENTIATION);
-        expected = Math.pow(FIRST_NEGATIVE_OPERAND, ZERO);
+        expected = 1;
         assertEquals(expected, actual);
     }
 
