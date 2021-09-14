@@ -21,7 +21,7 @@ public class Calculator {
                 }
                 return firstValue / secondValue;
             case RAISING_TO_POWER_OPERATOR:
-                if (secondValue == Double.MIN_VALUE) {
+                if (firstValue < 0 && secondValue == Double.MIN_VALUE) {
                     throw new IllegalValueException("can`t resolve operation");
                 }
                 return Math.pow(firstValue, secondValue);

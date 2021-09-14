@@ -25,7 +25,7 @@ class CalculatorTest {
     }
 
     @Test
-    void checkOperatorNotOk() {
+    void check_Operator_NotOk() {
         firstValue = 1;
         secondValue = 4;
         assertThrows(IllegalOperatorException.class, () -> {
@@ -34,7 +34,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addTwoPositiveOk() {
+    void add_TwoPositive_Ok() {
         firstValue = 5;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -43,7 +43,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addTwoNegativeOk() {
+    void add_TwoNegative_Ok() {
         firstValue = -5.1;
         secondValue = -1;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -52,7 +52,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstNegativeSecondPositiveOk() {
+    void add_FirstNegativeSecondPositive_Ok() {
         firstValue = -1;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -61,7 +61,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstPositiveSecondBegativeOk() {
+    void add_FirstPositiveSecondBegative_Ok() {
         firstValue = 1;
         secondValue = -4;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -70,7 +70,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addTwoZeroOk() {
+    void add_TwoZero_Ok() {
         firstValue = 0;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -79,7 +79,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstZeroOk() {
+    void add_FirstZero_Ok() {
         firstValue = 0;
         secondValue = 3;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -88,7 +88,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addSecondZeroOk() {
+    void add_SecondZero_Ok() {
         firstValue = -4;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -97,7 +97,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstPositiveSecondMinOk() {
+    void add_FirstPositiveSecondMin_Ok() {
         firstValue = 1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -106,7 +106,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstNegativeSecondMinOk() {
+    void add_FirstNegativeSecondMin_Ok() {
         firstValue = -1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -115,7 +115,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstPositiveSecondMaxOk() {
+    void add_FirstPositiveSecondMax_Ok() {
         firstValue = 1;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -124,7 +124,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstZeroSecondMaxOk() {
+    void add_FirstZeroSecondMax_Ok() {
         firstValue = 0;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -133,7 +133,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addFirstMaxSecondMinOk() {
+    void add_FirstMaxSecondMin_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -142,7 +142,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addTwoMaxOk() {
+    void add_TwoMax_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, ADDITION_OPERATOR);
@@ -151,7 +151,7 @@ class CalculatorTest {
     }
 
     @Test
-    void addTwoMinOk() {
+    void add_TwoMin_Ok() {
         firstValue = Double.MIN_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue,secondValue, ADDITION_OPERATOR);
@@ -160,7 +160,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subTwoPositiveOk() {
+    void sub_TwoPositive_Ok() {
         firstValue = 5;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -169,7 +169,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subTwoNegativeOk() {
+    void sub_TwoNegative_Ok() {
         firstValue = -5;
         secondValue = -1;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -178,7 +178,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstNegativeSecondPositiveOk() {
+    void sub_FirstNegativeSecondPositive_Ok() {
         firstValue = -1;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -187,7 +187,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstPositiveSecondNegativeOk() {
+    void sub_FirstPositiveSecondNegative_Ok() {
         firstValue = 1;
         secondValue = -4;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -196,7 +196,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subTwoZeroOk() {
+    void sub_TwoZero_Ok() {
         firstValue = 0;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -205,7 +205,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstZeroOk() {
+    void sub_FirstZero_Ok() {
         firstValue = 0;
         secondValue = 3;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -214,7 +214,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subSecondZeroOk() {
+    void sub_SecondZero_Ok() {
         firstValue = -4;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -223,7 +223,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstPositiveSecondMinOk() {
+    void sub_FirstPositiveSecondMin_Ok() {
         firstValue = 1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -232,7 +232,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstNegativeSecondMinOk() {
+    void sub_FirstNegativeSecondMin_Ok() {
         firstValue = -1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -241,7 +241,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstPositiveSecondMaxOk() {
+    void sub_FirstPositiveSecondMax_Ok() {
         firstValue = 1;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -250,7 +250,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstZeroSecondMaxOk() {
+    void sub_FirstZeroSecondMax_Ok() {
         firstValue = 0;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -259,7 +259,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subFirstMaxSecondMinOk() {
+    void sub_FirstMaxSecondMin_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -268,7 +268,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subTwoMaxOk() {
+    void sub_TwoMax_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, SUBTRACTION_OPERATOR);
@@ -277,7 +277,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subTwoMinOk() {
+    void sub_TwoMin_Ok() {
         firstValue = Double.MIN_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue,secondValue, SUBTRACTION_OPERATOR);
@@ -286,7 +286,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyTwoPositiveOk() {
+    void multiply_TwoPositive_Ok() {
         firstValue = 5;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -295,7 +295,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyTwoNegativeOk() {
+    void multiply_TwoNegative_Ok() {
         firstValue = -5;
         secondValue = -1;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -304,7 +304,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstNegativeSecondPositiveOk() {
+    void multiply_FirstNegativeSecondPositive_Ok() {
         firstValue = -1;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -313,7 +313,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstPositiveSecondNegativeOk() {
+    void multiply_FirstPositiveSecondNegative_Ok() {
         firstValue = 1;
         secondValue = -4;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -322,7 +322,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyTwoZeroOk() {
+    void multiply_TwoZero_Ok() {
         firstValue = 0;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -331,7 +331,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstZeroOk() {
+    void multiply_FirstZero_Ok() {
         firstValue = 0;
         secondValue = 3;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -340,7 +340,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplySecondZeroOk() {
+    void multiply_SecondZero_Ok() {
         firstValue = -4;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -349,7 +349,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstPositiveSecondMinOk() {
+    void multiply_FirstPositiveSecondMin_Ok() {
         firstValue = 1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -358,7 +358,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstNegativeSecondMinOk() {
+    void multiply_FirstNegativeSecondMin_Ok() {
         firstValue = -1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -367,7 +367,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstPositiveSecondMaxOk() {
+    void multiply_FirstPositiveSecondMax_Ok() {
         firstValue = 1;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -376,7 +376,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstZeroSecondMaxOk() {
+    void multiply_FirstZeroSecondMax_Ok() {
         firstValue = 0;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -385,7 +385,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyFirstMaxSecondMinOk() {
+    void multiply_FirstMaxSecondMin_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -394,7 +394,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyTwoMaxOk() {
+    void multiply_TwoMax_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, MULTIPLICATION_OPERATOR);
@@ -403,7 +403,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplyTwoMinOk() {
+    void multiply_TwoMin_Ok() {
         firstValue = Double.MIN_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue,secondValue, MULTIPLICATION_OPERATOR);
@@ -412,7 +412,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideTwoPositiveOk() {
+    void divide_TwoPositive_Ok() {
         firstValue = 5;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -421,7 +421,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideTwoNegativeOk() {
+    void divide_TwoNegative_Ok() {
         firstValue = -5;
         secondValue = -1;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -430,7 +430,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstNegativeSecondPositiveOk() {
+    void divide_FirstNegativeSecondPositive_Ok() {
         firstValue = -1;
         secondValue = 1;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -439,7 +439,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstPositiveSecondNegativeOk() {
+    void divide_FirstPositiveSecondNegative_Ok() {
         firstValue = 1;
         secondValue = -4;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -448,7 +448,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstPositiveSecondMinOk() {
+    void divide_FirstPositiveSecondMin_Ok() {
         firstValue = 1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -457,7 +457,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstNegativeSecondMinOk() {
+    void divide_FirstNegativeSecondMin_Ok() {
         firstValue = -1;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -466,7 +466,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstPositiveSecondMaxOk() {
+    void divide_FirstPositiveSecondMax_Ok() {
         firstValue = 1;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -475,7 +475,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstZeroSecondMaxOk() {
+    void divide_FirstZeroSecondMax_Ok() {
         firstValue = 0;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -484,7 +484,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstMaxSecondMinOk() {
+    void divide_FirstMaxSecondMin_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -493,7 +493,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideTwoMaxOk() {
+    void divide_TwoMax_Ok() {
         firstValue = Double.MAX_VALUE;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, DIVISION_OPERATOR);
@@ -502,7 +502,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideTwoMinOk() {
+    void divide_TwoMin_Ok() {
         firstValue = Double.MIN_VALUE;
         secondValue = Double.MIN_VALUE;
         actual = calculator.calculate(firstValue,secondValue, DIVISION_OPERATOR);
@@ -511,7 +511,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstPositiveSecondZeroOK() {
+    void divide_FirstPositiveSecondZero_OK() {
         firstValue = 1;
         secondValue = 0;
         assertThrows(ArithmeticException.class, () -> {
@@ -520,7 +520,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstNegativeSecondZeroOK() {
+    void divide_FirstNegativeSecondZero_OK() {
         firstValue = -1;
         secondValue = 0;
         assertThrows(ArithmeticException.class, () -> {
@@ -529,7 +529,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstMaxSecondZeroOK() {
+    void divide_FirstMaxSecondZero_OK() {
         firstValue = Double.MAX_VALUE;
         secondValue = 0;
         assertThrows(ArithmeticException.class, () -> {
@@ -538,7 +538,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divideFirstMinSecondZeroOK() {
+    void divide_FirstMinSecondZero_OK() {
         firstValue = Double.MIN_VALUE;
         secondValue = 0;
         assertThrows(ArithmeticException.class, () -> {
@@ -547,7 +547,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingFirstPositiveSecondPositiveOK() {
+    void raising_FirstPositiveSecondPositive_OK() {
         firstValue = 5.5;
         secondValue = 4;
         actual = calculator.calculate(firstValue,secondValue,RAISING_TO_POWER_OPERATOR);
@@ -556,7 +556,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingFirstNegativeSecondPositiveOk() {
+    void raising_FirstNegativeSecondPositive_Ok() {
         firstValue = -1.1;
         secondValue = 3;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -565,7 +565,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveToNegative() {
+    void raising_PositiveToNegative_Ok() {
         firstValue = 1;
         secondValue = -1.5;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -574,7 +574,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingNegativeToNegative() {
+    void raising_NegativeToNegative_Ok() {
         firstValue = -1;
         secondValue = -5;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -583,7 +583,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveToZeroOK() {
+    void raising_PositiveToZero_OK() {
         firstValue = 1;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -592,7 +592,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingNegativeToZeroOK() {
+    void raising_NegativeToZero_OK() {
         firstValue = -2;
         secondValue = 0;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -601,7 +601,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToPositiveOk() {
+    void raising_ZeroToPositive_Ok() {
         firstValue = 0;
         secondValue = 8;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -610,7 +610,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToNegativeOk() {
+    void raising_ZeroToNegative_Ok() {
         firstValue = 0;
         secondValue = -3;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -619,7 +619,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToMaxOK() {
+    void raising_ZeroToMax_OK() {
         firstValue = 0;
         secondValue = Double.MAX_VALUE;
         actual = calculator.calculate(firstValue, secondValue, RAISING_TO_POWER_OPERATOR);
@@ -628,7 +628,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToMinOk() {
+    void raising_ZeroToMin_Ok() {
         firstValue = -2;
         secondValue = Double.MIN_VALUE;
         assertThrows(IllegalValueException.class, () -> {
