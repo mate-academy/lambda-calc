@@ -3,234 +3,228 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
     private static final double DELTA = 0.000001;
-    private static Calculator calc;
+    private static Calculator calculator = new Calculator();
     private double expected;
     private double actual;
 
-    @Before
-    public void setUp() {
-        calc = new Calculator();
-    }
-
     @Test
-    public void positiveAddition() {
+    public void positiveAddition_Ok() {
         expected = 8;
-        actual = calc.calculator(1, 7, '+');
+        actual = calculator.calculator(1,7,'+');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void negativeAddition() {
+    public void negativeAddition_Ok() {
         expected = -8;
-        actual = calc.calculator(-1, -7, '+');
+        actual = calculator.calculator(-1,-7,'+');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void positiveNegativeAddition() {
+    public void positiveNegativeAddition_Ok() {
         expected = 6;
-        actual = calc.calculator(-1, 7, '+');
+        actual = calculator.calculator(-1,7,'+');
         assertEquals(expected, actual);
         expected = -6;
-        actual = calc.calculator(1, -7, '+');
+        actual = calculator.calculator(1,-7,'+');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void differentPlacesZeroAddition() {
+    public void differentPlacesZeroAddition_Ok() {
         expected = 1;
-        actual = calc.calculator(1, 0, '+');
+        actual = calculator.calculator(1,0,'+');
         assertEquals(expected, actual);
-        actual = calc.calculator(0, 1, '+');
+        actual = calculator.calculator(0,1,'+');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void maxMinValuesAddition() {
+    public void maxMinValuesAddition_Ok() {
         expected = Double.POSITIVE_INFINITY;
-        actual = calc.calculator(Double.MAX_VALUE, Double.MAX_VALUE, '+');
+        actual = calculator.calculator(Double.MAX_VALUE, Double.MAX_VALUE,'+');
         assertEquals(expected, actual, DELTA);
         expected = 0;
-        actual = calc.calculator(Double.MIN_VALUE, Double.MIN_VALUE, '+');
+        actual = calculator.calculator(Double.MIN_VALUE, Double.MIN_VALUE,'+');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    public void positiveSubtraction() {
+    public void positiveSubtraction_Ok() {
         expected = -6;
-        actual = calc.calculator(1, 7, '-');
+        actual = calculator.calculator(1,7,'-');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void negativeSubtraction() {
+    public void negativeSubtraction_Ok() {
         expected = 6;
-        actual = calc.calculator(-1, -7, '-');
+        actual = calculator.calculator(-1,-7,'-');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void positiveNegativeSubtraction() {
+    public void positiveNegativeSubtraction_Ok() {
         expected = 8;
-        actual = calc.calculator(1, -7, '-');
+        actual = calculator.calculator(1,-7,'-');
         assertEquals(expected, actual);
         expected = -8;
-        actual = calc.calculator(-1, 7, '-');
+        actual = calculator.calculator(-1,7,'-');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void differentPlacesZeroSubtraction() {
+    public void differentPlacesZeroSubtraction_Ok() {
         expected = 1;
-        actual = calc.calculator(1, 0, '-');
+        actual = calculator.calculator(1,0,'-');
         assertEquals(expected, actual);
         expected = -1;
-        actual = calc.calculator(0, 1, '-');
+        actual = calculator.calculator(0,1,'-');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void maxMinValuesSubtraction() {
+    public void maxMinValuesSubtraction_Ok() {
         expected = 0;
-        actual = calc.calculator(Double.MAX_VALUE, Double.MAX_VALUE, '-');
+        actual = calculator.calculator(Double.MAX_VALUE, Double.MAX_VALUE,'-');
         assertEquals(expected, actual, DELTA);
         expected = 0;
-        actual = calc.calculator(Double.MIN_VALUE, Double.MIN_VALUE, '-');
+        actual = calculator.calculator(Double.MIN_VALUE, Double.MIN_VALUE,'-');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    public void positiveMultiplication() {
+    public void positiveMultiplication_Ok() {
         expected = 7;
-        actual = calc.calculator(1, 7, '*');
+        actual = calculator.calculator(1,7,'*');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void negativeMultiplication() {
+    public void negativeMultiplication_Ok() {
         expected = 7;
-        actual = calc.calculator(-1, -7, '*');
+        actual = calculator.calculator(-1,-7,'*');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void positiveNegativeMultiplication() {
+    public void positiveNegativeMultiplication_Ok() {
         expected = -7;
-        actual = calc.calculator(-1, 7, '*');
+        actual = calculator.calculator(-1,7,'*');
         assertEquals(expected, actual);
         expected = -7;
-        actual = calc.calculator(1, -7, '*');
+        actual = calculator.calculator(1,-7,'*');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void differentPlacesZeroMultiplication() {
+    public void differentPlacesZeroMultiplication_Ok() {
         expected = 0;
-        actual = calc.calculator(1, 0, '*');
+        actual = calculator.calculator(1,0,'*');
         assertEquals(expected, actual);
         expected = 0;
-        actual = calc.calculator(0, 7, '*');
+        actual = calculator.calculator(0,7,'*');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void maxMinValuesMultiplication() {
+    public void maxMinValuesMultiplication_Ok() {
         expected = Double.POSITIVE_INFINITY;
-        actual = calc.calculator(Double.MAX_VALUE, Double.MAX_VALUE, '*');
+        actual = calculator.calculator(Double.MAX_VALUE, Double.MAX_VALUE,'*');
         assertEquals(expected, actual);
         expected = 0;
-        actual = calc.calculator(Double.MIN_VALUE, Double.MIN_VALUE, '*');
+        actual = calculator.calculator(Double.MIN_VALUE, Double.MIN_VALUE,'*');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void positiveDivision() {
+    public void positiveDivision_Ok() {
         expected = 2;
-        actual = calc.calculator(4,2, '/');
+        actual = calculator.calculator(4,2,'/');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void negativeDivision() {
+    public void negativeDivision_Ok() {
         expected = 2;
-        actual = calc.calculator(-4,-2, '/');
+        actual = calculator.calculator(-4,-2,'/');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void positiveNegativeDivision() {
+    public void positiveNegativeDivision_Ok() {
         expected = -2;
-        actual = calc.calculator(-4, 2, '/');
+        actual = calculator.calculator(-4,2,'/');
         assertEquals(expected, actual);
         expected = -2;
-        actual = calc.calculator(4, -2, '/');
+        actual = calculator.calculator(4,-2,'/');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void firstPlacesZeroDivision() {
+    public void firstPlacesZeroDivision_Ok() {
         expected = 0;
-        actual = calc.calculator(0, 2, '/');
+        actual = calculator.calculator(0,2,'/');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void secondPlacesZeroDivision() {
+    public void secondPlacesZeroDivision_NotOk() {
         assertThrows(ArithmeticException.class,
-                () -> calc.calculator(2, 0, '/'));
+                () -> calculator.calculator(2,0,'/'));
     }
 
     @Test
-    public void maxMinValueDivision() {
+    public void maxMinValueDivision_Ok() {
         expected = 1;
-        actual = calc.calculator(Double.MAX_VALUE, Double.MAX_VALUE, '/');
+        actual = calculator.calculator(Double.MAX_VALUE, Double.MAX_VALUE,'/');
         assertEquals(expected, actual);
         expected = 1;
-        actual = calc.calculator(Double.MIN_VALUE, Double.MIN_VALUE, '/');
+        actual = calculator.calculator(Double.MIN_VALUE, Double.MIN_VALUE,'/');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void raisingPositiveToPositiveOrNegative() {
+    public void raisingPositiveToPositiveOrNegative_Ok() {
         expected = 64;
-        actual = calc.calculator(4, 3, '^');
+        actual = calculator.calculator(4,3,'^');
         assertEquals(expected, actual);
         expected = 0.0625;
-        actual = calc.calculator(4, -2, '^');
+        actual = calculator.calculator(4,-2,'^');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    public void raisingNegativeToPositiveOrNegative() {
+    public void raisingNegativeToPositiveOrNegative_Ok() {
         expected = 16;
-        actual = calc.calculator(-4, 2, '^');
+        actual = calculator.calculator(-4,2,'^');
         assertEquals(expected, actual);
         expected = 0.0625;
-        actual = calc.calculator(-4, -2, '^');
+        actual = calculator.calculator(-4,-2,'^');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    public void raisingValueToZero() {
+    public void raisingValueToZero_Ok() {
         expected = 1;
-        actual = calc.calculator(2, 0, '^');
+        actual = calculator.calculator(2,0,'^');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    public void raisingZeroToPower() {
+    public void raisingZeroToNegativePower_Ok() {
         expected = 0;
-        actual = calc.calculator(0, 2, '^');
+        actual = calculator.calculator(0,2,'^');
         assertEquals(expected, actual);
     }
 
     @Test
-    public void illegalOperation() {
-        assertThrows(IllegalArgumentException.class, () -> calc.calculator(1, 2, '&'));
+    public void illegalOperation_notOk() {
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculator(1,2,'&'));
     }
 }
