@@ -3,7 +3,7 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -17,10 +17,10 @@ class CalculatorTest {
     private static final char MULTIPLICATION = '*';
     private static final char DIVISION = '/';
     private static final char EXPONENTIATION = '^';
-    private SimpleCalculator calculator;
+    private static SimpleCalculator calculator;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void beforeAll() {
         calculator = new Calculator();
     }
 
