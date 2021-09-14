@@ -7,8 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static final double MAX_VALUE = Double.MAX_VALUE;
-    private static final double MIN_VALUE = Double.MIN_VALUE;
     private static final double ZERO = 0;
     private static final double FIRST_POS_OPERAND = 5;
     private static final double SECOND_POS_OPERAND = 10;
@@ -67,8 +65,8 @@ class CalculatorTest {
 
     @Test
     void calculate_addWithMaxAndMin_Ok() {
-        double expected = MAX_VALUE + MIN_VALUE;
-        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, ADDITION);
+        double expected = Double.MAX_VALUE + Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, ADDITION);
         assertEquals(expected, actual, DELTA, "Test failed! Addition of min value and max value"
                 + " should be " + expected + " but was " + actual);
     }
@@ -110,8 +108,8 @@ class CalculatorTest {
 
     @Test
     void calculate_subWithMaxAndMin_Ok() {
-        double expected = MAX_VALUE - MIN_VALUE;
-        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, SUBTRACTION);
+        double expected = Double.MAX_VALUE - Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, SUBTRACTION);
         assertEquals(expected, actual, DELTA, "Test failed! Subtraction of min value and max value"
                 + " should be " + expected + " but was " + actual);
     }
@@ -154,8 +152,8 @@ class CalculatorTest {
 
     @Test
     void calculate_multWithMaxAndMin_Ok() {
-        double expected = MAX_VALUE * MIN_VALUE;
-        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, MULTIPLICATION);
+        double expected = Double.MAX_VALUE * Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, MULTIPLICATION);
         assertEquals(expected, actual, DELTA, "Test failed! Multiplication of min value and "
                 + "max value should be " + expected + " but was " + actual);
     }
@@ -194,15 +192,15 @@ class CalculatorTest {
 
     @Test
     void calculate_divWithZero_notOk() {
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(FIRST_POS_OPERAND, ZERO, DIVISION),
                 "Test failed! Division by zero must throw the Arithmetic exception.");
     }
 
     @Test
     void calculate_divMinAndMax_Ok() {
-        double expected = MAX_VALUE / MIN_VALUE;
-        double actual = calculator.calculate(MAX_VALUE, MIN_VALUE, DIVISION);
+        double expected = Double.MAX_VALUE / Double.MIN_VALUE;
+        double actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, DIVISION);
         assertEquals(expected, actual, DELTA, "Test failed! Division of min value and max value"
                 + " should be " + expected + " but was " + actual);
     }
@@ -250,10 +248,10 @@ class CalculatorTest {
 
     @Test
     void calculate_powZeroPow_notOk() {
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(ZERO, NEG_SQUARE, RAISING_TO_POWER),
                 "Test failed! Rasing zero to negetive power must throw the Arithmetic exception.");
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(ArithmeticException.class,
                 () -> calculator.calculate(ZERO, ZERO, RAISING_TO_POWER),
                 "Test failed! Raising zero to zero power must throw the Arithmetic exception.");
     }

@@ -1,26 +1,26 @@
 package core.basesyntax;
 
 public class Calculator {
-    public double calculate(double operand1, double operand2, char operation) {
+    public double calculate(double firstOperand, double secondOperand, char operation) {
         switch (operation) {
             case '+':
-                return operand1 + operand2;
+                return firstOperand + secondOperand;
             case '-':
-                return operand1 - operand2;
+                return firstOperand - secondOperand;
             case '*':
-                return operand1 * operand2;
+                return firstOperand * secondOperand;
             case '/':
-                if (operand2 == 0) {
-                    throw new IllegalArgumentException();
+                if (secondOperand == 0) {
+                    throw new ArithmeticException();
                 }
-                return operand1 / operand2;
+                return firstOperand / secondOperand;
             case '^':
-                if (operand1 == 0 && operand2 <= 0) {
-                    throw new IllegalArgumentException();
+                if (firstOperand == 0 && secondOperand <= 0) {
+                    throw new ArithmeticException();
                 }
-                return Math.pow(operand1, operand2);
+                return Math.pow(firstOperand, secondOperand);
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Input operation is not valid");
         }
     }
 }
