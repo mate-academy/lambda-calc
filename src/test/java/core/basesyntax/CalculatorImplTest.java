@@ -119,7 +119,7 @@ class CalculatorImplTest {
 
     @Test
     void calculate_subtractionMaxAndMinDoubleOperands_Ok() {
-        expected = 1.7976931348623157E308;
+        expected = Double.MAX_VALUE;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '-');
         assertEquals(expected, actual);
     }
