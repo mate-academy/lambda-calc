@@ -9,7 +9,7 @@ class Calculator {
                 return firstOperand - secondOperand;
             case '/':
                 if (secondOperand == 0) {
-                    throw new IllegalArgumentException("Divisor can't be zero");
+                    throw new ArithmeticException("Division by zero is not possible!");
                 }
                 return firstOperand / secondOperand;
             case '*':
