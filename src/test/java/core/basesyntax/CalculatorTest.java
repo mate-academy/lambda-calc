@@ -29,7 +29,8 @@ class CalculatorTest {
 
     @Test
     void calculate_additionPositiveOperands_Ok() {
-        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, ADDITION);
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND,
+                SECOND_POSITIVE_OPERAND, ADDITION);
         double expected = FIRST_POSITIVE_OPERAND + SECOND_POSITIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of two positive operands should be "
                 + expected + " but was " + actual);
@@ -37,7 +38,8 @@ class CalculatorTest {
 
     @Test
     void calculate_additionNegativeOperands_Ok() {
-        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND,
+                SECOND_NEGATIVE_OPERAND, ADDITION);
         double expected = FIRST_NEGATIVE_OPERAND + SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of two negative operands should be "
                 + expected + " but was " + actual);
@@ -45,7 +47,8 @@ class CalculatorTest {
 
     @Test
     void calculate_additionPositiveAndNegativeOperands_Ok() {
-        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND,
+                SECOND_NEGATIVE_OPERAND, ADDITION);
         double expected = FIRST_POSITIVE_OPERAND + SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of a positive operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
@@ -53,12 +56,14 @@ class CalculatorTest {
 
     @Test
     void calculate_additionOperationWithOneZeroOperand_Ok() {
-        double actual = calculator.calculate(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        double actual = calculator.calculate(ZERO_OPERAND,
+                SECOND_NEGATIVE_OPERAND, ADDITION);
         double expected = ZERO_OPERAND + SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of a zero operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
 
-        actual = calculator.calculate(FIRST_POSITIVE_OPERAND, ZERO_OPERAND, ADDITION);
+        actual = calculator.calculate(FIRST_POSITIVE_OPERAND,
+                ZERO_OPERAND, ADDITION);
         expected = FIRST_POSITIVE_OPERAND + ZERO_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of a positive operand and a zero"
                 + " operand should be " + expected + " but was " + actual);
@@ -122,7 +127,8 @@ class CalculatorTest {
 
     @Test
     void calculate_divisionPositiveOperands_Ok() {
-        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, DIVISION);
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND,
+                SECOND_POSITIVE_OPERAND, DIVISION);
         double expected = FIRST_POSITIVE_OPERAND / SECOND_POSITIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Division of two positive operands should be "
                 + expected + " but was " + actual);
@@ -130,7 +136,8 @@ class CalculatorTest {
 
     @Test
     void calculate_ivisionNegativeOperands_Ok() {
-        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
+        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND,
+                SECOND_NEGATIVE_OPERAND, DIVISION);
         double expected = FIRST_NEGATIVE_OPERAND / SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Division of two negative operands should be "
                 + expected + " but was " + actual);
@@ -138,7 +145,8 @@ class CalculatorTest {
 
     @Test
     void calculate_divisionPositiveAndNegativeOperands_Ok() {
-        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND,
+                SECOND_NEGATIVE_OPERAND, DIVISION);
         double expected = FIRST_POSITIVE_OPERAND / SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Division of a positive operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
@@ -232,7 +240,8 @@ class CalculatorTest {
 
     @Test
     void calculate_raisingToZeroPower_Ok() {
-        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, ZERO_OPERAND, RAISING_TO_POWER);
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND,
+                ZERO_OPERAND, RAISING_TO_POWER);
         double expected = Math.pow(FIRST_POSITIVE_OPERAND, ZERO_OPERAND);
         assertEquals(expected, actual, "Test failed! Raising to zero power"
                 + " should be " + expected + " but was " + actual);
@@ -240,7 +249,8 @@ class CalculatorTest {
 
     @Test
     void calculate_raisingZeroToPower_Ok() {
-        double actual = calculator.calculate(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND, RAISING_TO_POWER);
+        double actual = calculator.calculate(ZERO_OPERAND,
+                SECOND_NEGATIVE_OPERAND, RAISING_TO_POWER);
         double expected = Math.pow(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND);
         assertEquals(expected, actual, "Test failed! Raising zero to negative power "
                 + " should be " + expected + " but was " + actual);
@@ -249,7 +259,8 @@ class CalculatorTest {
     @Test
     void calculate_calculate_illegalOperation_notOk() {
         assertThrows(IllegalArgumentException.class, () ->
-                calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, ILLEGAL_OPERATION),
+                calculator.calculate(FIRST_POSITIVE_OPERAND,
+                        SECOND_POSITIVE_OPERAND, ILLEGAL_OPERATION),
                 "Test failed! Only math operations can be used for math operations.");
     }
 }
