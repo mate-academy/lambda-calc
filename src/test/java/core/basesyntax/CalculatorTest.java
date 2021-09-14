@@ -59,12 +59,18 @@ class CalculatorTest {
         expected = Double.POSITIVE_INFINITY;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, ADDITION_SIGN);
         assertEquals(expected, actual);
+        expected = Double.MAX_VALUE;
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, ADDITION_SIGN);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_additionMinOperands_IsOk() {
         expected = Double.MIN_VALUE;
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, ADDITION_SIGN);
+        assertEquals(expected, actual, DELTA);
+        expected = Double.MAX_VALUE;
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, ADDITION_SIGN);
         assertEquals(expected, actual, DELTA);
     }
 
