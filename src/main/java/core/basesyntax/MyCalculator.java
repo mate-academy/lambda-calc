@@ -11,20 +11,27 @@ public class MyCalculator implements Calculator {
     public double calculate(double firstNumber, char operationType, double secondNumber) {
         switch (operationType) {
             case ADDITION:
-                return firstNumber + secondNumber;
+                return checkResult(firstNumber + secondNumber);
             case SUBTRACTION:
-                return firstNumber - secondNumber;
+                return checkResult(firstNumber - secondNumber);
             case MULTIPLICATION:
-                return firstNumber * secondNumber;
+                return checkResult(firstNumber * secondNumber);
             case DIVISION:
                 if (secondNumber == 0) {
                     throw new OperationTypeException("You can't divide by zero");
                 }
-                return firstNumber / secondNumber;
+                return checkResult(firstNumber / secondNumber);
             case RAISING_TO_A_POWER:
-                return Math.pow(firstNumber, secondNumber);
+                return checkResult(Math.pow(firstNumber, secondNumber));
             default:
                 throw new OperationTypeException("This type of operation is not supported");
         }
+    }
+
+    private double checkResult(double result) {
+        if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
+           throw new OperationTypeException("Too large or small value");
+        }
+        return result;
     }
 }
