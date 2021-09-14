@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import static java.lang.Double.MAX_VALUE;
 import static java.lang.Double.MIN_VALUE;
-import static java.lang.Double.POSITIVE_INFINITY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -12,11 +11,11 @@ import org.junit.jupiter.api.Test;
 class MyCalculatorTest {
     private static Calculator myCalculatorTest;
     private static final double DELTA = 0.00001;
-    private final char ADDITION = '+';
-    private final char SUBTRACTION = '-';
-    private final char MULTIPLICATION = '*';
-    private final char DIVISION = '/';
-    private final char RAISING_TO_A_POWER = '^';
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char MULTIPLICATION = '*';
+    private static final char DIVISION = '/';
+    private static final char RAISING_TO_A_POWER = '^';
     private double actual;
     private double expected;
 

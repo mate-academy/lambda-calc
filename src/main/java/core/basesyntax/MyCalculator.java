@@ -30,7 +30,7 @@ public class MyCalculator implements Calculator {
 
     private double checkResult(double result) {
         if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
-           throw new OperationTypeException("Too large or small value");
+            throw new OperationTypeException("Too large or small value");
         }
         return result;
     }
