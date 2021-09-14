@@ -131,6 +131,13 @@ class CalculatorTest {
     }
 
     @Test
+    void calculate_raisingZeroToNegativePower() {
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.calculate(0, -2, '^');
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void illegalOperation_NotOk() {
         assertThrows(IllegalArgumentException.class, () -> {
             calculator.calculate(2.0, 3.0, '#');
