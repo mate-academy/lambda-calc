@@ -173,7 +173,7 @@ class CalculatorTest {
 
     @Test
     void calculate_divisionSecondZeroOperand_Ok() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             calculator.calculate(10, 0, '/');
         });
     }
