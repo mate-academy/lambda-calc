@@ -21,7 +21,7 @@ class LambdaCalculatorTest {
     }
 
     @Test
-    void calculatePlusTwoPositive_Ok() {
+    void calculatePositivePlusPositive_Ok() {
         first = 15.25d;
         second = 89.45d;
         operator = '+';
@@ -35,9 +35,9 @@ class LambdaCalculatorTest {
         first = -16815.002345d;
         second = -4505689.3540545d;
         operator = '+';
-        expected = -4522504.3563995d;
+        expected = -4522504.356399501d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -45,9 +45,9 @@ class LambdaCalculatorTest {
         first = 543543.875435d;
         second = -4505689.3540545d;
         operator = '+';
-        expected = -3962145.479d;
+        expected = -3962145.4786195d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -56,8 +56,9 @@ class LambdaCalculatorTest {
         second = -4505689.3540545d;
         operator = '+';
         expected = -4505689.354d;
+        delta = 0.0545d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(actual, expected, delta);
     }
 
     @Test
@@ -75,7 +76,8 @@ class LambdaCalculatorTest {
         first = Double.MAX_VALUE;
         second = 20.0;
         operator = '+';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -83,7 +85,8 @@ class LambdaCalculatorTest {
         first = -Double.MAX_VALUE;
         second = -10020.0;
         operator = '+';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -101,7 +104,8 @@ class LambdaCalculatorTest {
         first = 1.7976931348623157E307;
         second = 1.7976931348623157E308;
         operator = '+';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -109,7 +113,8 @@ class LambdaCalculatorTest {
         first = 5434.5464;
         second = 20.0;
         operator = '#';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -149,9 +154,9 @@ class LambdaCalculatorTest {
         first = 0.0d;
         second = 4505689.3540545d;
         operator = '-';
-        expected = 4505689.3540545d;
+        expected = -4505689.3540545d;
         actual = calculator.calculate(first, second, operator);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -159,7 +164,8 @@ class LambdaCalculatorTest {
         first = Double.MAX_VALUE;
         second = -35120.05430;
         operator = '-';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -188,14 +194,16 @@ class LambdaCalculatorTest {
         first = -Double.MAX_VALUE;
         second = 4154654620.0;
         operator = '-';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
     void calculateReachInfinityMinus_NotOk() {
         first = -1.7976931348623157E307;
         second = 1.7976931348623157E308;
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -203,7 +211,8 @@ class LambdaCalculatorTest {
         first = 446545.00574055;
         second = 0.0;
         operator = '/';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -211,7 +220,8 @@ class LambdaCalculatorTest {
         first = 446545.00574055;
         second = -0.0;
         operator = '/';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -219,7 +229,8 @@ class LambdaCalculatorTest {
         first = 4.9E-322;
         second = 100;
         operator = '/';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -248,7 +259,8 @@ class LambdaCalculatorTest {
         first = Double.NEGATIVE_INFINITY;
         second = 100.545;
         operator = '/';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -256,7 +268,8 @@ class LambdaCalculatorTest {
         first = 456643.4645;
         second = Double.NEGATIVE_INFINITY;
         operator = '/';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -286,7 +299,8 @@ class LambdaCalculatorTest {
         first = 1.7976931348623157E307;
         second = 4354.346410;
         operator = '*';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
 
     }
 
@@ -295,7 +309,8 @@ class LambdaCalculatorTest {
         first = -1.7976931348623157E307;
         second = 4354.346410;
         operator = '*';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
 
     }
 
@@ -304,7 +319,8 @@ class LambdaCalculatorTest {
         first = -1.7976931348623157E307;
         second = 100.346410;
         operator = '*';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
 
     }
 
@@ -313,7 +329,8 @@ class LambdaCalculatorTest {
         first = 1.7976931348623157E307;
         second = 100.346410;
         operator = '*';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -377,11 +394,31 @@ class LambdaCalculatorTest {
     }
 
     @Test
+    void calculateZeroPowerPositive_Ok() {
+        first = 0.00;
+        second = 2.45;
+        operator = '^';
+        expected = 0.0;
+        actual = calculator.calculate(first, second, operator);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculateZeroPowerNegative_Ok() {
+        first = 0.00;
+        second = -2.45;
+        operator = '^';
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
+    }
+
+    @Test
     void calculateNegativeToEvenPower_NotOk() {
         first = -12.00;
         second = 0.50;
         operator = '^';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -389,7 +426,8 @@ class LambdaCalculatorTest {
         first = -456546544354312.7987416875324300;
         second = 465465413413541540.5456550;
         operator = '^';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
     @Test
@@ -397,7 +435,8 @@ class LambdaCalculatorTest {
         first = -4.932;
         second = 3464;
         operator = '^';
-        assertThrows(ExpectedException.class, () -> calculator.calculate(first, second, operator));
+        assertThrows(ArgumentsValidationException.class,
+                () -> calculator.calculate(first, second, operator));
     }
 
 }
