@@ -3,11 +3,11 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class LambdaCalculatorTest {
-    private Calculator calculator;
+    private static Calculator calculator;
     private double first;
     private double second;
     private double expected;
@@ -15,8 +15,8 @@ class LambdaCalculatorTest {
     private double actual;
     private double delta;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         calculator = new LambdaCalculator();
     }
 
