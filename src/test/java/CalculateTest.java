@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 class CalculateTest {
     private static final double DELTA = 0.0001;
+    private static Calculate calculator;
     private double actual;
     private double expected;
-    private static Calculate calculator;
 
     @BeforeAll
     static void beforeAll() {

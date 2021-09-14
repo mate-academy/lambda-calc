@@ -1,5 +1,3 @@
-import java.util.NoSuchElementException;
-
 public class Calculate {
     public static final char PLUS = '+';
     public static final char MINUS = '-';
