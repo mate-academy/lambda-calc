@@ -20,7 +20,7 @@ public class Calculate {
             case EXPONENTIATION:
                 return getTheExponentiationResult(firstNumber, secondNumber);
             default:
-                throw new NoSuchElementException("Incorrect operation");
+                throw new IllegalArgumentException("Incorrect operation");
         }
     }
 
