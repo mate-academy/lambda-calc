@@ -249,7 +249,7 @@ class CalculatorTest {
     @Test
     void calculate_calculate_illegalOperation_notOk() {
         assertThrows(IllegalArgumentException.class, () ->
-                calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND,
-                        ILLEGAL_OPERATION));
+                calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, ILLEGAL_OPERATION),
+                "Test failed! Only math operations can be used for math operations.");
     }
 }
