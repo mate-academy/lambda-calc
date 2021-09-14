@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
+    private static final double DELTA = 0.00001;
     private static CalculatorService calculatorService;
     private double actual;
     private double expected;
@@ -177,7 +178,7 @@ class CalculatorTest {
 
     @Test
     void multiplyTwoMinNumbers_Ok() {
-        actual = calculatorService.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-');
+        actual = calculatorService.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '*');
         expected = 0;
         assertEquals(expected, actual);
     }
@@ -213,7 +214,13 @@ class CalculatorTest {
     @Test
     void divideWithZero_NotOk() {
         assertThrows(IllegalArgumentException.class, () -> calculatorService.calculate(50, 0, '/'));
-        assertThrows(IllegalArgumentException.class, () -> calculatorService.calculate(0, 0, '/'));
+    }
+
+    @Test
+    void divideWithTwoZeroValues_Ok() {
+        actual = calculatorService.calculate(0.0d, 0, '/');
+        expected = Double.NaN;
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -248,7 +255,7 @@ class CalculatorTest {
     void raiseNegativeNumberToNegativePower_Ok() {
         actual = calculatorService.calculate(-4, -2, '^');
         expected = 0.0625;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
