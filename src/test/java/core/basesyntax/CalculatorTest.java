@@ -9,18 +9,18 @@ import org.junit.jupiter.api.Test;
 class CalculatorTest {
 
     private static Calculator calculator;
-    private final double firstPositiveOperand = 11.13;
-    private final double secondPositiveOperand = 12.14;
-    private final double firstNegativeOperand = -21.23;
-    private final double secondNegativeOperand = -22.24;
-    private final int zeroOperand = 0;
+    private static final double FIRST_POSITIVE_OPERAND = 11.13;
+    private static final double SECOND_POSITIVE_OPERAND = 12.14;
+    private static final double FIRST_NEGATIVE_OPERAND = -21.23;
+    private static final double SECOND_NEGATIVE_OPERAND = -22.24;
+    private static final double ZERO_OPERAND = 0.0;
 
-    private final char addition = '+';
-    private final char subtraction = '-';
-    private final char division = '/';
-    private final char multiplication = '*';
-    private final char raisingToPower = '^';
-    private final char illegalOperation = '$';
+    private static final char ADDITION = '+';
+    private static final char SUBTRACTION = '-';
+    private static final char DIVISION = '/';
+    private static final char MULTIPLICATION = '*';
+    private static final char RAISING_TO_POWER = '^';
+    private static final char ILLEGAL_OPERATION = '$';
 
     @BeforeAll
     static void beforeAll() {
@@ -28,228 +28,228 @@ class CalculatorTest {
     }
 
     @Test
-    void additionPositiveOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondPositiveOperand, addition);
-        double expected = firstPositiveOperand + secondPositiveOperand;
+    void calculate_additionPositiveOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, ADDITION);
+        double expected = FIRST_POSITIVE_OPERAND + SECOND_POSITIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of two positive operands should be "
                 + expected + " but was " + actual);
     }
 
     @Test
-    void additionNegativeOperands() {
-        double actual = calculator.calculate(firstNegativeOperand, secondNegativeOperand, addition);
-        double expected = firstNegativeOperand + secondNegativeOperand;
+    void calculate_additionNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        double expected = FIRST_NEGATIVE_OPERAND + SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of two negative operands should be "
                 + expected + " but was " + actual);
     }
 
     @Test
-    void additionPositiveAndNegativeOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondNegativeOperand, addition);
-        double expected = firstPositiveOperand + secondNegativeOperand;
+    void calculate_additionPositiveAndNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        double expected = FIRST_POSITIVE_OPERAND + SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of a positive operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
     }
 
     @Test
-    void additionOperationWithOneZeroOperand() {
-        double actual = calculator.calculate(zeroOperand, secondNegativeOperand, addition);
-        double expected = zeroOperand + secondNegativeOperand;
+    void calculate_additionOperationWithOneZeroOperand_Ok() {
+        double actual = calculator.calculate(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        double expected = ZERO_OPERAND + SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of a zero operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
 
-        actual = calculator.calculate(firstPositiveOperand, zeroOperand, addition);
-        expected = firstPositiveOperand + zeroOperand;
+        actual = calculator.calculate(FIRST_POSITIVE_OPERAND, ZERO_OPERAND, ADDITION);
+        expected = FIRST_POSITIVE_OPERAND + ZERO_OPERAND;
         assertEquals(expected, actual, "Test failed! Addition of a positive operand and a zero"
                 + " operand should be " + expected + " but was " + actual);
     }
 
     @Test
-    void additionOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, addition);
+    void calculate_additionOperationWithMinOrMaxOperand_Ok() {
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, ADDITION);
         double expected = Double.MIN_VALUE + Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Addition of min value and max value"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void subtractionPositiveOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondPositiveOperand,
-                subtraction);
-        double expected = firstPositiveOperand - secondPositiveOperand;
+    void calculate_subtractionPositiveOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND,
+                SUBTRACTION);
+        double expected = FIRST_POSITIVE_OPERAND - SECOND_POSITIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Subtraction of two positive operands"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void subtractionNegativeOperands() {
-        double actual = calculator.calculate(firstNegativeOperand, secondNegativeOperand,
-                subtraction);
-        double expected = firstNegativeOperand - secondNegativeOperand;
+    void calculate_subtractionNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND,
+                SUBTRACTION);
+        double expected = FIRST_NEGATIVE_OPERAND - SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Subtraction of two negative operands"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void subtractionPositiveAndNegativeOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondNegativeOperand,
-                subtraction);
-        double expected = firstPositiveOperand - secondNegativeOperand;
+    void calculate_subtractionPositiveAndNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND,
+                SUBTRACTION);
+        double expected = FIRST_POSITIVE_OPERAND - SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Subtraction of a positive operand and a "
                 + "negative operand should be " + expected + " but was " + actual);
     }
 
     @Test
-    void subtractionOperationWithOneZeroOperand() {
-        double actual = calculator.calculate(zeroOperand, secondNegativeOperand, subtraction);
-        double expected = zeroOperand - secondNegativeOperand;
+    void calculate_subtractionOperationWithOneZeroOperand_Ok() {
+        double actual = calculator.calculate(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND, SUBTRACTION);
+        double expected = ZERO_OPERAND - SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Subtraction of a zero operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
 
-        actual = calculator.calculate(firstPositiveOperand, zeroOperand, subtraction);
-        expected = firstPositiveOperand - zeroOperand;
+        actual = calculator.calculate(FIRST_POSITIVE_OPERAND, ZERO_OPERAND, SUBTRACTION);
+        expected = FIRST_POSITIVE_OPERAND - ZERO_OPERAND;
         assertEquals(expected, actual, "Test failed! Subtraction of a positive operand and a zero"
                 + " operand should be " + expected + " but was " + actual);
     }
 
     @Test
-    void subtractionOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, subtraction);
+    void calculate_subtractionOperationWithMinOrMaxOperand_Ok() {
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, SUBTRACTION);
         double expected = Double.MIN_VALUE - Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Subtraction of min value and max value"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void divisionPositiveOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondPositiveOperand, division);
-        double expected = firstPositiveOperand / secondPositiveOperand;
+    void calculate_divisionPositiveOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND, DIVISION);
+        double expected = FIRST_POSITIVE_OPERAND / SECOND_POSITIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Division of two positive operands should be "
                 + expected + " but was " + actual);
     }
 
     @Test
-    void divisionNegativeOperands() {
-        double actual = calculator.calculate(firstNegativeOperand, secondNegativeOperand, division);
-        double expected = firstNegativeOperand / secondNegativeOperand;
+    void calculate_ivisionNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
+        double expected = FIRST_NEGATIVE_OPERAND / SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Division of two negative operands should be "
                 + expected + " but was " + actual);
     }
 
     @Test
-    void divisionPositiveAndNegativeOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondNegativeOperand, division);
-        double expected = firstPositiveOperand / secondNegativeOperand;
+    void calculate_divisionPositiveAndNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
+        double expected = FIRST_POSITIVE_OPERAND / SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Division of a positive operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
     }
 
     @Test
-    void divisionOperationWithOneZeroOperand() {
-        double actual = calculator.calculate(zeroOperand, secondNegativeOperand, division);
-        double expected = zeroOperand / secondNegativeOperand;
+    void calculate_divisionOperationWithOneZeroOperand_Ok() {
+        double actual = calculator.calculate(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
+        double expected = ZERO_OPERAND / SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Division of a zero operand and a negative"
                 + " operand should be " + expected + " but was " + actual);
 
         assertThrows(ArithmeticException.class, () ->
-                        calculator.calculate(firstPositiveOperand, zeroOperand, division),
+                        calculator.calculate(FIRST_POSITIVE_OPERAND, ZERO_OPERAND, DIVISION),
                 "Test failed! Division by zero must throw the Arithmetic exception.");
     }
 
     @Test
-    void divisionOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, division);
+    void calculate_divisionOperationWithMinOrMaxOperand_Ok() {
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, DIVISION);
         double expected = Double.MIN_VALUE / Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Division of min value and max value"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void multiplicationPositiveOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondPositiveOperand,
-                multiplication);
-        double expected = firstPositiveOperand * secondPositiveOperand;
+    void calculate_multiplicationPositiveOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND,
+                MULTIPLICATION);
+        double expected = FIRST_POSITIVE_OPERAND * SECOND_POSITIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Multiplication of two positive operands"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void multiplicationNegativeOperands() {
-        double actual = calculator.calculate(firstNegativeOperand, secondNegativeOperand,
-                multiplication);
-        double expected = firstNegativeOperand * secondNegativeOperand;
+    void calculate_multiplicationNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND,
+                MULTIPLICATION);
+        double expected = FIRST_NEGATIVE_OPERAND * SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Multiplication of two negative operands"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void multiplicationPositiveAndNegativeOperands() {
-        double actual = calculator.calculate(firstPositiveOperand, secondNegativeOperand,
-                multiplication);
-        double expected = firstPositiveOperand * secondNegativeOperand;
+    void calculate_multiplicationPositiveAndNegativeOperands_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_NEGATIVE_OPERAND,
+                MULTIPLICATION);
+        double expected = FIRST_POSITIVE_OPERAND * SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Multiplication of a positive operand and"
                 + " a negative operand should be " + expected + " but was " + actual);
     }
 
     @Test
-    void multiplicationOperationWithOneZeroOperand() {
-        double actual = calculator.calculate(zeroOperand, secondNegativeOperand, multiplication);
-        double expected = zeroOperand * secondNegativeOperand;
+    void calculate_multiplicationOperationWithOneZeroOperand_Ok() {
+        double actual = calculator.calculate(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND, MULTIPLICATION);
+        double expected = ZERO_OPERAND * SECOND_NEGATIVE_OPERAND;
         assertEquals(expected, actual, "Test failed! Multiplication of a zero operand and"
                 + " a negative operand should be " + expected + " but was " + actual);
 
-        actual = calculator.calculate(firstPositiveOperand, zeroOperand, multiplication);
-        expected = firstPositiveOperand * zeroOperand;
+        actual = calculator.calculate(FIRST_POSITIVE_OPERAND, ZERO_OPERAND, MULTIPLICATION);
+        expected = FIRST_POSITIVE_OPERAND * ZERO_OPERAND;
         assertEquals(expected, actual, "Test failed! Multiplication of a positive operand and"
                 + " a zero operand should be " + expected + " but was " + actual);
     }
 
     @Test
-    void multiplicationOperationWithMinOrMaxOperand() {
-        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, multiplication);
+    void calculate_multiplicationOperationWithMinOrMaxOperand_Ok() {
+        double actual = calculator.calculate(Double.MIN_VALUE, Double.MAX_VALUE, MULTIPLICATION);
         double expected = Double.MIN_VALUE * Double.MAX_VALUE;
         assertEquals(expected, actual, "Test failed! Multiplication of min value and max value"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void raisingToPositivePower() {
-        double actual = calculator.calculate(firstPositiveOperand, secondPositiveOperand,
-                raisingToPower);
-        double expected = Math.pow(firstPositiveOperand, secondPositiveOperand);
+    void calculate_raisingToPositivePower_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND,
+                RAISING_TO_POWER);
+        double expected = Math.pow(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND);
         assertEquals(expected, actual, "Test failed! Raising to positive power should be "
                 + expected + " but was " + actual);
     }
 
     @Test
-    void raisingToNegativePower() {
-        double actual = calculator.calculate(firstNegativeOperand, secondNegativeOperand,
-                raisingToPower);
-        double expected = Math.pow(firstNegativeOperand, secondNegativeOperand);
+    void calculate_raisingToNegativePower_Ok() {
+        double actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND,
+                RAISING_TO_POWER);
+        double expected = Math.pow(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND);
         assertEquals(expected, actual, "Test failed! Raising to negative power should be "
                 + expected + " but was " + actual);
     }
 
     @Test
-    void raisingToZeroPower() {
-        double actual = calculator.calculate(firstPositiveOperand, zeroOperand, raisingToPower);
-        double expected = Math.pow(firstPositiveOperand, zeroOperand);
+    void calculate_raisingToZeroPower_Ok() {
+        double actual = calculator.calculate(FIRST_POSITIVE_OPERAND, ZERO_OPERAND, RAISING_TO_POWER);
+        double expected = Math.pow(FIRST_POSITIVE_OPERAND, ZERO_OPERAND);
         assertEquals(expected, actual, "Test failed! Raising to zero power"
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void raisingZeroToPower() {
-        double actual = calculator.calculate(zeroOperand, secondNegativeOperand, raisingToPower);
-        double expected = Math.pow(zeroOperand, secondNegativeOperand);
+    void calculate_raisingZeroToPower_Ok() {
+        double actual = calculator.calculate(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND, RAISING_TO_POWER);
+        double expected = Math.pow(ZERO_OPERAND, SECOND_NEGATIVE_OPERAND);
         assertEquals(expected, actual, "Test failed! Raising zero to negative power "
                 + " should be " + expected + " but was " + actual);
     }
 
     @Test
-    void calculate_illegalOperation_notOk() {
+    void calculate_calculate_illegalOperation_notOk() {
         assertThrows(IllegalArgumentException.class, () ->
-                calculator.calculate(firstPositiveOperand, secondPositiveOperand,
-                        illegalOperation));
+                calculator.calculate(FIRST_POSITIVE_OPERAND, SECOND_POSITIVE_OPERAND,
+                        ILLEGAL_OPERATION));
     }
 }
