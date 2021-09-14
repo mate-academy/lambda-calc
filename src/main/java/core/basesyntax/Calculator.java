@@ -3,8 +3,6 @@ package core.basesyntax;
 public class Calculator {
 
     public double calculate(double a, double b, char operator) {
-        checkForNull(a);
-        checkForNull(b);
         checkOperator(operator);
         double result;
         switch (operator) {
@@ -32,13 +30,8 @@ public class Calculator {
             default:
                 throw new IllegalStateException("Unexpected value: " + operator);
         }
-        return checkForMinMaxValue(result);
-    }
 
-    private void checkForNull(Object a) {
-        if (a == null) {
-            throw new RuntimeException();
-        }
+        return Double.isNaN(result) ? 0 : checkForMinMaxValue(result);
     }
 
     private void checkOperator(char operator) {

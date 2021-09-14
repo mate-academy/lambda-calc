@@ -12,15 +12,15 @@ class CalculatorTest {
     public static final char DIVISION = '/';
     public static final char MULTIPLICATION = '*';
     public static final char POWER = '^';
-    public static final double A_POSITIVE = 12.154;
-    public static final double B_POSITIVE = 7.885;
-    public static final double A_NEGATIVE = -13.215;
-    public static final double B_NEGATIVE = -9;
+    public static final double FIRST_OPERAND = 10;
+    public static final double SECOND_OPERAND = 4;
+    public static final double FIRST_NEGATIVE_OPERAND = -12;
+    public static final double SECOND_NEGATIVE_OPERAND = -9;
     public static final double ZERO = 0;
     public static final double DELTA = 0.001;
     public static final double MAX = Math.pow(2,1023);
     public static final double MIN = Math.pow(2, 1023) * -1;
-    public static final double FRACTIONS_NUMBER = 0.00002;
+    public static final double FRACTIONS_NUMBER = 0.000002;
     private static Calculator calculator;
     private double expected;
     private double actual;
@@ -32,246 +32,275 @@ class CalculatorTest {
 
     @Test
     void chekAdditionWithPositiveOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_POSITIVE, ADDITION);
-        expected = A_POSITIVE + B_POSITIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, ADDITION);
+        expected = 14;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void chekAdditionWithNegativeOperands_OK() {
-        actual = calculator.calculate(A_NEGATIVE, B_NEGATIVE, ADDITION);
-        expected = A_NEGATIVE + B_NEGATIVE;
+        actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        expected = -21;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void chekAdditionWithPositiveAndNegativeOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_NEGATIVE, ADDITION);
-        expected = A_POSITIVE + B_NEGATIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
+        expected = 1;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void chekAdditionWithZeroInDifferentPlaces_OK() {
-        assertEquals(A_POSITIVE, calculator.calculate(ZERO, A_POSITIVE, ADDITION), DELTA);
-        assertEquals(A_POSITIVE, calculator.calculate(A_POSITIVE, ZERO, ADDITION), DELTA);
-        assertEquals(A_NEGATIVE, calculator.calculate(ZERO, A_NEGATIVE, ADDITION), DELTA);
-        assertEquals(A_NEGATIVE, calculator.calculate(A_NEGATIVE, ZERO, ADDITION), DELTA);
+        assertEquals(FIRST_OPERAND, calculator.calculate(ZERO, FIRST_OPERAND, ADDITION), DELTA);
+        assertEquals(FIRST_OPERAND, calculator.calculate(FIRST_OPERAND, ZERO, ADDITION), DELTA);
+        assertEquals(FIRST_NEGATIVE_OPERAND,
+                calculator.calculate(ZERO, FIRST_NEGATIVE_OPERAND, ADDITION), DELTA);
+        assertEquals(FIRST_NEGATIVE_OPERAND,
+                calculator.calculate(FIRST_NEGATIVE_OPERAND, ZERO, ADDITION), DELTA);
         assertEquals(ZERO, calculator.calculate(ZERO, ZERO, ADDITION), DELTA);
     }
 
     @Test
     void checkAdditionForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MAX, A_POSITIVE, ADDITION);
+            calculator.calculate(MAX, FIRST_OPERAND, ADDITION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(A_NEGATIVE, MAX, ADDITION);
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, MAX, ADDITION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MIN, A_NEGATIVE, ADDITION);
+            calculator.calculate(MIN, FIRST_NEGATIVE_OPERAND, ADDITION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(A_NEGATIVE, MIN, ADDITION);
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, MIN, ADDITION);
         });
     }
 
     @Test
     void subtractionWithPositiveOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_POSITIVE, SUBTRACTION);
-        expected = A_POSITIVE - B_POSITIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, SUBTRACTION);
+        expected = 6;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void subtractionWithNegativeOperands_OK() {
-        actual = calculator.calculate(A_NEGATIVE, B_NEGATIVE, SUBTRACTION);
-        expected = A_NEGATIVE - B_NEGATIVE;
+        actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, SUBTRACTION);
+        expected = -3;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void subtractionWithPositiveAndNegativeOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_NEGATIVE, SUBTRACTION);
-        expected = A_POSITIVE - B_NEGATIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, SUBTRACTION);
+        expected = 19;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void subtractionWithZeroInDifferentPlaces_OK() {
-        assertEquals(ZERO - A_POSITIVE, calculator.calculate(ZERO, A_POSITIVE, SUBTRACTION), DELTA);
-        assertEquals(A_POSITIVE - ZERO, calculator.calculate(A_POSITIVE, ZERO, SUBTRACTION), DELTA);
-        assertEquals(ZERO - A_NEGATIVE, calculator.calculate(ZERO, A_NEGATIVE, SUBTRACTION), DELTA);
-        assertEquals(A_NEGATIVE - ZERO, calculator.calculate(A_NEGATIVE, ZERO, SUBTRACTION), DELTA);
+        assertEquals(-10, calculator.calculate(ZERO, FIRST_OPERAND, SUBTRACTION), DELTA);
+        assertEquals(10, calculator.calculate(FIRST_OPERAND, ZERO, SUBTRACTION), DELTA);
+        assertEquals(12, calculator.calculate(ZERO, FIRST_NEGATIVE_OPERAND, SUBTRACTION), DELTA);
+        assertEquals(-12, calculator.calculate(FIRST_NEGATIVE_OPERAND, ZERO, SUBTRACTION), DELTA);
         assertEquals(ZERO, calculator.calculate(ZERO, ZERO, SUBTRACTION), DELTA);
     }
 
     @Test
     void subtractionForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MIN, A_POSITIVE, SUBTRACTION);
+            calculator.calculate(MIN, FIRST_OPERAND, SUBTRACTION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(A_NEGATIVE, MAX, SUBTRACTION);
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, MAX, SUBTRACTION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MAX, A_NEGATIVE, SUBTRACTION);
+            calculator.calculate(MAX, FIRST_NEGATIVE_OPERAND, SUBTRACTION);
         });
     }
 
     @Test
     void multiplicationWithPositiveOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_POSITIVE, MULTIPLICATION);
-        expected = A_POSITIVE * B_POSITIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, MULTIPLICATION);
+        expected = 40;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void multiplicationWithNegativeOperands_OK() {
-        actual = calculator.calculate(A_NEGATIVE, B_NEGATIVE, MULTIPLICATION);
-        expected = A_NEGATIVE * B_NEGATIVE;
+        actual = calculator
+                .calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, MULTIPLICATION);
+        expected = 108;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void multiplicationWithPositiveAndNegativeOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_NEGATIVE, MULTIPLICATION);
-        expected = A_POSITIVE * B_NEGATIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, MULTIPLICATION);
+        expected = -90;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void multiplicationWithZeroInDifferentPlaces_OK() {
-        assertEquals(ZERO, calculator.calculate(ZERO, A_POSITIVE, MULTIPLICATION), DELTA);
-        assertEquals(ZERO, calculator.calculate(A_POSITIVE, ZERO, MULTIPLICATION), DELTA);
-        assertEquals(ZERO, calculator.calculate(ZERO, A_NEGATIVE, MULTIPLICATION), DELTA);
-        assertEquals(ZERO, calculator.calculate(A_NEGATIVE, ZERO, MULTIPLICATION), DELTA);
+        assertEquals(ZERO, calculator.calculate(ZERO, FIRST_OPERAND, MULTIPLICATION), DELTA);
+        assertEquals(ZERO, calculator.calculate(FIRST_OPERAND, ZERO, MULTIPLICATION), DELTA);
+        assertEquals(ZERO,
+                calculator.calculate(ZERO, FIRST_NEGATIVE_OPERAND, MULTIPLICATION), DELTA);
+        assertEquals(ZERO,
+                calculator.calculate(FIRST_NEGATIVE_OPERAND, ZERO, MULTIPLICATION), DELTA);
         assertEquals(ZERO, calculator.calculate(ZERO, ZERO, SUBTRACTION), DELTA);
     }
 
     @Test
     void multiplicationForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MIN, A_POSITIVE, MULTIPLICATION);
+            calculator.calculate(MIN, FIRST_OPERAND, MULTIPLICATION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(A_POSITIVE, MIN, MULTIPLICATION);
+            calculator.calculate(FIRST_OPERAND, MIN, MULTIPLICATION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(A_NEGATIVE, MIN, MULTIPLICATION);
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, MIN, MULTIPLICATION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MIN, A_NEGATIVE, MULTIPLICATION);
+            calculator.calculate(MIN, FIRST_NEGATIVE_OPERAND, MULTIPLICATION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MAX, A_POSITIVE, MULTIPLICATION);
+            calculator.calculate(MAX, FIRST_OPERAND, MULTIPLICATION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(A_POSITIVE, MAX, MULTIPLICATION);
+            calculator.calculate(FIRST_OPERAND, MAX, MULTIPLICATION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(A_NEGATIVE, MAX, MULTIPLICATION);
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, MAX, MULTIPLICATION);
         });
         assertThrows(MinMaxValueException.class,() -> {
-            calculator.calculate(MAX, A_NEGATIVE, MULTIPLICATION);
+            calculator.calculate(MAX, FIRST_NEGATIVE_OPERAND, MULTIPLICATION);
         });
     }
 
     @Test
     void divisionWithPositiveOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_POSITIVE, DIVISION);
-        expected = A_POSITIVE / B_POSITIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, DIVISION);
+        expected = 2.5;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void divisionWithNegativeOperands_OK() {
-        actual = calculator.calculate(A_NEGATIVE, B_NEGATIVE, DIVISION);
-        expected = A_NEGATIVE / B_NEGATIVE;
+        actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
+        expected = 1.3333333333;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void divisionWithPositiveAndNegativeOperands_OK() {
-        actual = calculator.calculate(A_POSITIVE, B_NEGATIVE, DIVISION);
-        expected = A_POSITIVE / B_NEGATIVE;
+        actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
+        expected = -1.111111111;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void divisionWithZeroInDifferentPlaces() {
-        assertThrows(DivisionByZeroException.class,() -> {
-            calculator.calculate(A_POSITIVE, ZERO, DIVISION);
+    void divisionWithZeroInDifferentPlaces_NotOk() {
+        assertThrows(DivisionByZeroException.class, () -> {
+            calculator.calculate(FIRST_OPERAND, ZERO, DIVISION);
         });
-        assertThrows(DivisionByZeroException.class,() -> {
+        assertThrows(DivisionByZeroException.class, () -> {
             calculator.calculate(ZERO, ZERO, DIVISION);
         });
-        assertEquals(ZERO, calculator.calculate(ZERO, A_POSITIVE, DIVISION));
-        assertEquals(ZERO, calculator.calculate(ZERO, A_NEGATIVE, DIVISION), DELTA);
     }
 
     @Test
-    void divisionForMinAndMaxDoubleValues() {
-        assertThrows(MinMaxValueException.class,() -> {
+    void divisionWithZeroInDifferentPlaces_Ok() {
+        assertEquals(ZERO, calculator.calculate(ZERO, FIRST_OPERAND, DIVISION));
+        assertEquals(ZERO, calculator.calculate(ZERO, FIRST_NEGATIVE_OPERAND, DIVISION), DELTA);
+    }
+
+    @Test
+    void divisionForMinAndMaxDoubleValues_NotOk() {
+        assertThrows(MinMaxValueException.class, () -> {
             calculator.calculate(MIN, FRACTIONS_NUMBER, DIVISION);
         });
-        assertThrows(MinMaxValueException.class,() -> {
+        assertThrows(MinMaxValueException.class, () -> {
             calculator.calculate(MAX, FRACTIONS_NUMBER, DIVISION);
         });
-        assertEquals(MIN / MAX, calculator.calculate(MIN, MAX, DIVISION), DELTA);
-        assertEquals(MAX / MIN, calculator.calculate(MAX, MIN, DIVISION), DELTA);
-        assertEquals(1, calculator.calculate(MIN, MIN, DIVISION), DELTA);
-        assertEquals(1, calculator.calculate(MAX, MAX, DIVISION), DELTA);
-        assertEquals(MIN / A_NEGATIVE, calculator.calculate(MIN, A_NEGATIVE, DIVISION), DELTA);
-        assertEquals(MIN / A_POSITIVE, calculator.calculate(MIN, A_POSITIVE, DIVISION), DELTA);
-        assertEquals(A_NEGATIVE / MAX, calculator.calculate(A_NEGATIVE, MAX, DIVISION), DELTA);
-        assertEquals(A_POSITIVE / MAX, calculator.calculate(A_POSITIVE, MAX, DIVISION), DELTA);
-        assertEquals(MAX / A_NEGATIVE, calculator.calculate(MAX, A_NEGATIVE, DIVISION), DELTA);
-        assertEquals(MAX / A_POSITIVE, calculator.calculate(MAX, A_POSITIVE, DIVISION), DELTA);
-        assertEquals(A_NEGATIVE / MIN, calculator.calculate(A_NEGATIVE, MIN, DIVISION), DELTA);
-        assertEquals(A_POSITIVE / MIN, calculator.calculate(A_POSITIVE, MIN, DIVISION), DELTA);
+    }
+
+    @Test
+    void divisionForMinAndMaxDoubleValues_Ok() {
+        assertEquals(-1,
+                calculator.calculate(MIN, MAX, DIVISION), DELTA);
+        assertEquals(-1,
+                calculator.calculate(MAX, MIN, DIVISION), DELTA);
+        assertEquals(1,
+                calculator.calculate(MIN, MIN, DIVISION), DELTA);
+        assertEquals(1,
+                calculator.calculate(MAX, MAX, DIVISION), DELTA);
+        assertEquals(7.490388061926316E306,
+                calculator.calculate(MIN, FIRST_NEGATIVE_OPERAND, DIVISION), DELTA);
+        assertEquals(-8.98846567431158E306,
+                calculator.calculate(MIN, FIRST_OPERAND, DIVISION), DELTA);
+        assertEquals(-1.3350443151043208E-307,
+                calculator.calculate(FIRST_NEGATIVE_OPERAND, MAX, DIVISION), DELTA);
+        assertEquals(1.1125369292536007E-307,
+                calculator.calculate(FIRST_OPERAND, MAX, DIVISION), DELTA);
+        assertEquals(-7.490388061926316E306,
+                calculator.calculate(MAX, FIRST_NEGATIVE_OPERAND, DIVISION), DELTA);
+        assertEquals(8.98846567431158E306,
+                calculator.calculate(MAX, FIRST_OPERAND, DIVISION), DELTA);
+        assertEquals(1.3350443151043208E-307,
+                calculator.calculate(FIRST_NEGATIVE_OPERAND, MIN, DIVISION), DELTA);
+        assertEquals(-1.1125369292536007E-307,
+                calculator.calculate(FIRST_OPERAND, MIN, DIVISION), DELTA);
     }
 
     @Test
     void raisingToPowerWithPositiveOperands_OK() {
-        assertEquals(Math.pow(A_POSITIVE, B_POSITIVE),
-                calculator.calculate(A_POSITIVE, B_POSITIVE, POWER), DELTA);
-        assertEquals(Math.pow(A_POSITIVE, FRACTIONS_NUMBER),
-                calculator.calculate(A_POSITIVE, FRACTIONS_NUMBER, POWER), DELTA);
-        assertEquals(Math.pow(FRACTIONS_NUMBER, B_POSITIVE),
-                calculator.calculate(FRACTIONS_NUMBER, B_POSITIVE, POWER), DELTA);
+        assertEquals(10000.0,
+                calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, POWER), DELTA);
+        assertEquals(1.0000046051807898,
+                calculator.calculate(FIRST_OPERAND, FRACTIONS_NUMBER, POWER), DELTA);
+        assertEquals(1.5999999999999996E-23,
+                calculator.calculate(FRACTIONS_NUMBER, SECOND_OPERAND, POWER), DELTA);
     }
 
     @Test
     void raisingToPowerWithPositiveAndNegativeOperands_OK() {
-        assertEquals(Math.pow(A_POSITIVE, B_NEGATIVE),
-                calculator.calculate(A_POSITIVE, B_NEGATIVE, POWER), DELTA);
-        assertEquals(Math.pow(A_NEGATIVE, B_POSITIVE),
-                calculator.calculate(A_NEGATIVE, B_POSITIVE, POWER), DELTA);
-        assertEquals(Math.pow(A_NEGATIVE, B_NEGATIVE),
-                calculator.calculate(A_NEGATIVE, B_NEGATIVE, POWER), DELTA);
-        assertEquals(Math.pow(A_POSITIVE, FRACTIONS_NUMBER),
-                calculator.calculate(A_POSITIVE, FRACTIONS_NUMBER, POWER), DELTA);
-        assertEquals(Math.pow(A_NEGATIVE, FRACTIONS_NUMBER),
-                calculator.calculate(A_NEGATIVE, FRACTIONS_NUMBER, POWER), DELTA);
-        assertEquals(Math.pow(FRACTIONS_NUMBER, B_NEGATIVE),
-                calculator.calculate(FRACTIONS_NUMBER, B_NEGATIVE, POWER), DELTA);
+        assertEquals(1.0E-9,
+                calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, POWER), DELTA);
+        assertEquals(20736.0,
+                calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_OPERAND, POWER), DELTA);
+        assertEquals(-1.9380669946781485E-10,
+                calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, POWER));
+        assertEquals(1.0000460527622559,
+                calculator.calculate(FIRST_OPERAND, FRACTIONS_NUMBER, POWER), DELTA);
+        assertEquals(0,
+                calculator.calculate(FIRST_NEGATIVE_OPERAND, FRACTIONS_NUMBER, POWER));
+        assertEquals(1.9531250000000008E51,
+                calculator.calculate(FRACTIONS_NUMBER, SECOND_NEGATIVE_OPERAND, POWER), DELTA);
     }
 
     @Test
     void raisingToPowerWithPositiveNegativeAndZeroOperands_OK() {
-        assertEquals(1, calculator.calculate(A_POSITIVE, ZERO, POWER));
-        assertEquals(1, calculator.calculate(A_NEGATIVE, ZERO, POWER));
+        assertEquals(1, calculator.calculate(FIRST_OPERAND, ZERO, POWER));
+        assertEquals(1, calculator.calculate(FIRST_NEGATIVE_OPERAND, ZERO, POWER));
         assertEquals(1, calculator.calculate(ZERO, ZERO, POWER));
-        assertEquals(0, calculator.calculate(ZERO, B_POSITIVE, POWER));
+        assertEquals(0, calculator.calculate(ZERO, SECOND_OPERAND, POWER));
         assertEquals(0, calculator.calculate(ZERO, FRACTIONS_NUMBER, POWER));
+    }
+
+    @Test
+    void ratingToPowerWithZeroAndNegativeOperands_NotOk() {
         assertThrows(MinMaxValueException.class, () -> {
-            calculator.calculate(ZERO, B_NEGATIVE, POWER);
+            calculator.calculate(ZERO, SECOND_NEGATIVE_OPERAND, POWER);
         });
     }
 
     @Test
-    void raisingToPowerForMinAndMaxDoubleValues() {
+    void raisingToPowerForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
             calculator.calculate(MIN, MIN, POWER);
         });
@@ -287,48 +316,18 @@ class CalculatorTest {
     }
 
     @Test
-    void checkForNull_NotOk() {
-        Double checkNull = null;
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(checkNull, A_POSITIVE, ADDITION);
-        });
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(A_NEGATIVE, checkNull, SUBTRACTION);
-        });
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(checkNull, checkNull, DIVISION);
-        });
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(FRACTIONS_NUMBER, checkNull, POWER);
-        });
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(A_POSITIVE, checkNull, POWER);
-        });
-        Character charNull = null;
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(checkNull, checkNull, charNull);
-        });
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(B_POSITIVE, A_POSITIVE, charNull);
-        });
-        assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(checkNull, A_POSITIVE, charNull);
-        });
-    }
-
-    @Test
     void checkForValidOperator_NotOk() {
         assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(A_NEGATIVE, B_POSITIVE, '%');
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_OPERAND, '%');
         });
         assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(A_NEGATIVE, B_POSITIVE, '5');
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_OPERAND, '5');
         });
         assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(A_NEGATIVE, B_POSITIVE, '>');
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_OPERAND, '>');
         });
         assertThrows(RuntimeException.class, () -> {
-            calculator.calculate(A_NEGATIVE, B_POSITIVE, '.');
+            calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_OPERAND, '.');
         });
     }
 }
