@@ -243,9 +243,9 @@ class CalculatorTest {
 
     @Test
     void calculate_illegalOperation_Ok() {
-        char illegalOperaion = 'a';
+        char illegalOperation = 'a';
         assertThrows(IllegalArgumentException.class, () -> {
-            calculator.calculate(100.0, 100.0, illegalOperaion);
+            calculator.calculate(100.0, 100.0, illegalOperation);
         });
     }
 }
