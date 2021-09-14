@@ -51,9 +51,9 @@ class MyCalculatorTest {
 
     @Test
     void calculate_additionMaxMinDoubleValues_Ok() {
-        assertThrows(IllegalArgumentException.class, () ->
-            myCalculator.calculate(maxDouble, minDouble, '+')
-        );
+        assertThrows(IllegalArgumentException.class, () -> {
+            myCalculator.calculate(maxDouble, minDouble, '+');
+        });
     }
 
     @Test
@@ -92,9 +92,9 @@ class MyCalculatorTest {
 
     @Test
     void calculate_subtractionMaxMinDoubleValues_Ok() {
-        assertThrows(IllegalArgumentException.class, () ->
-            myCalculator.calculate(maxDouble, minDouble, '-')
-        );
+        assertThrows(IllegalArgumentException.class, () -> {
+            myCalculator.calculate(maxDouble, minDouble, '-');
+        });
     }
 
     @Test
@@ -127,16 +127,16 @@ class MyCalculatorTest {
 
     @Test
     void calculate_divisionZeroSecondOperand_NotOk() {
-        assertThrows(IllegalArgumentException.class, () ->
-            myCalculator.calculate(firstPositiveOperand, zero, '/')
-        );
+        assertThrows(IllegalArgumentException.class, () -> {
+            myCalculator.calculate(firstPositiveOperand, zero, '/');
+        });
     }
 
     @Test
     void calculate_divisionMaxMinDoubleValues_Ok() {
-        assertThrows(IllegalArgumentException.class, () ->
-            myCalculator.calculate(maxDouble, minDouble, '/')
-        );
+        assertThrows(IllegalArgumentException.class, () -> {
+            myCalculator.calculate(maxDouble, minDouble, '/');
+        });
     }
 
     @Test
@@ -230,15 +230,15 @@ class MyCalculatorTest {
 
     @Test
     void calculate_ZeroToNegativePower_OK() {
-        assertThrows(IllegalArgumentException.class, () ->
-            myCalculator.calculate(zero, firstNegativeOperand, '^')
-        );
+        assertThrows(IllegalArgumentException.class, () -> {
+            myCalculator.calculate(zero, firstNegativeOperand, '^');
+        });
     }
 
     @Test
     void calculate_illegalOperation_notOk() {
-        assertThrows(IllegalArgumentException.class, () ->
-            myCalculator.calculate(firstPositiveOperand, secondPositiveOperand, '#')
-        );
+        assertThrows(IllegalArgumentException.class, () -> {
+            myCalculator.calculate(firstPositiveOperand, secondPositiveOperand, '#');
+        });
     }
 }
