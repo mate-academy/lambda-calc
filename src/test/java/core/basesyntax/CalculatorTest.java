@@ -31,28 +31,28 @@ class CalculatorTest {
     }
 
     @Test
-    void chekAdditionWithPositiveOperands_OK() {
+    void checkCalculateMethodForAdditionWithPositiveOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, ADDITION);
         expected = 14;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void chekAdditionWithNegativeOperands_OK() {
+    void checkCalculateMethodForAdditionWithNegativeOperands_OK() {
         actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
         expected = -21;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void chekAdditionWithPositiveAndNegativeOperands_OK() {
+    void checkCalculateMethodForAdditionWithPositiveAndNegativeOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, ADDITION);
         expected = 1;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void chekAdditionWithZeroInDifferentPlaces_OK() {
+    void checkCalculateMethodForAdditionWithZeroInDifferentPlaces_OK() {
         assertEquals(FIRST_OPERAND, calculator.calculate(ZERO, FIRST_OPERAND, ADDITION), DELTA);
         assertEquals(FIRST_OPERAND, calculator.calculate(FIRST_OPERAND, ZERO, ADDITION), DELTA);
         assertEquals(FIRST_NEGATIVE_OPERAND,
@@ -63,7 +63,7 @@ class CalculatorTest {
     }
 
     @Test
-    void checkAdditionForMinAndMaxDoubleValues_NotOk() {
+    void checkCalculateMethodForAdditionForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
             calculator.calculate(MAX, FIRST_OPERAND, ADDITION);
         });
@@ -79,28 +79,28 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionWithPositiveOperands_OK() {
+    void checkCalculateMethodForSubtractionWithPositiveOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, SUBTRACTION);
         expected = 6;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void subtractionWithNegativeOperands_OK() {
+    void checkCalculateMethodForSubtractionWithNegativeOperands_OK() {
         actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, SUBTRACTION);
         expected = -3;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void subtractionWithPositiveAndNegativeOperands_OK() {
+    void checkCalculateMethodForSubtractionWithPositiveAndNegativeOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, SUBTRACTION);
         expected = 19;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void subtractionWithZeroInDifferentPlaces_OK() {
+    void checkCalculateMethodForSubtractionWithZeroInDifferentPlaces_OK() {
         assertEquals(-10, calculator.calculate(ZERO, FIRST_OPERAND, SUBTRACTION), DELTA);
         assertEquals(10, calculator.calculate(FIRST_OPERAND, ZERO, SUBTRACTION), DELTA);
         assertEquals(12, calculator.calculate(ZERO, FIRST_NEGATIVE_OPERAND, SUBTRACTION), DELTA);
@@ -109,7 +109,7 @@ class CalculatorTest {
     }
 
     @Test
-    void subtractionForMinAndMaxDoubleValues_NotOk() {
+    void checkCalculateMethodForSubtractionForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
             calculator.calculate(MIN, FIRST_OPERAND, SUBTRACTION);
         });
@@ -122,14 +122,14 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithPositiveOperands_OK() {
+    void checkCalculateMethodForMultiplicationWithPositiveOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, MULTIPLICATION);
         expected = 40;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void multiplicationWithNegativeOperands_OK() {
+    void checkCalculateMethodForMultiplicationWithNegativeOperands_OK() {
         actual = calculator
                 .calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, MULTIPLICATION);
         expected = 108;
@@ -137,14 +137,14 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationWithPositiveAndNegativeOperands_OK() {
+    void checkCalculateMethodForMultiplicationWithPositiveAndNegativeOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, MULTIPLICATION);
         expected = -90;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void multiplicationWithZeroInDifferentPlaces_OK() {
+    void checkCalculateMethodForMultiplicationWithZeroInDifferentPlaces_OK() {
         assertEquals(ZERO, calculator.calculate(ZERO, FIRST_OPERAND, MULTIPLICATION), DELTA);
         assertEquals(ZERO, calculator.calculate(FIRST_OPERAND, ZERO, MULTIPLICATION), DELTA);
         assertEquals(ZERO,
@@ -155,7 +155,7 @@ class CalculatorTest {
     }
 
     @Test
-    void multiplicationForMinAndMaxDoubleValues_NotOk() {
+    void checkCalculateMethodForMultiplicationForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
             calculator.calculate(MIN, FIRST_OPERAND, MULTIPLICATION);
         });
@@ -183,28 +183,28 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithPositiveOperands_OK() {
+    void checkCalculateMethodForDivisionWithPositiveOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, DIVISION);
         expected = 2.5;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void divisionWithNegativeOperands_OK() {
+    void checkCalculateMethodForDivisionWithNegativeOperands_OK() {
         actual = calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
         expected = 1.3333333333;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void divisionWithPositiveAndNegativeOperands_OK() {
+    void checkCalculateMethodForDivisionWithPositiveAndNegativeOperands_OK() {
         actual = calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, DIVISION);
         expected = -1.111111111;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void divisionWithZeroInDifferentPlaces_NotOk() {
+    void checkCalculateMethodForDivisionWithZeroInDifferentPlaces_NotOk() {
         assertThrows(DivisionByZeroException.class, () -> {
             calculator.calculate(FIRST_OPERAND, ZERO, DIVISION);
         });
@@ -214,13 +214,13 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionWithZeroInDifferentPlaces_Ok() {
+    void checkCalculateMethodForDivisionWithZeroInDifferentPlaces_Ok() {
         assertEquals(ZERO, calculator.calculate(ZERO, FIRST_OPERAND, DIVISION));
         assertEquals(ZERO, calculator.calculate(ZERO, FIRST_NEGATIVE_OPERAND, DIVISION), DELTA);
     }
 
     @Test
-    void divisionForMinAndMaxDoubleValues_NotOk() {
+    void checkCalculateMethodForDivisionForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class, () -> {
             calculator.calculate(MIN, FRACTIONS_NUMBER, DIVISION);
         });
@@ -230,7 +230,7 @@ class CalculatorTest {
     }
 
     @Test
-    void divisionForMinAndMaxDoubleValues_Ok() {
+    void checkCalculateMethodForDivisionForMinAndMaxDoubleValues_Ok() {
         assertEquals(-1,
                 calculator.calculate(MIN, MAX, DIVISION), DELTA);
         assertEquals(-1,
@@ -258,7 +258,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingToPowerWithPositiveOperands_OK() {
+    void checkCalculateMethodForRaisingToPowerWithPositiveOperands_OK() {
         assertEquals(10000.0,
                 calculator.calculate(FIRST_OPERAND, SECOND_OPERAND, POWER), DELTA);
         assertEquals(1.0000046051807898,
@@ -268,7 +268,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingToPowerWithPositiveAndNegativeOperands_OK() {
+    void checkCalculateMethodForRaisingToPowerWithPositiveAndNegativeOperands_OK() {
         assertEquals(1.0E-9,
                 calculator.calculate(FIRST_OPERAND, SECOND_NEGATIVE_OPERAND, POWER), DELTA);
         assertEquals(20736.0,
@@ -284,7 +284,7 @@ class CalculatorTest {
     }
 
     @Test
-    void raisingToPowerWithPositiveNegativeAndZeroOperands_OK() {
+    void checkCalculateMethodForRaisingToPowerWithPositiveNegativeAndZeroOperands_OK() {
         assertEquals(1, calculator.calculate(FIRST_OPERAND, ZERO, POWER));
         assertEquals(1, calculator.calculate(FIRST_NEGATIVE_OPERAND, ZERO, POWER));
         assertEquals(1, calculator.calculate(ZERO, ZERO, POWER));
@@ -293,14 +293,14 @@ class CalculatorTest {
     }
 
     @Test
-    void ratingToPowerWithZeroAndNegativeOperands_NotOk() {
+    void checkCalculateMethodForRatingToPowerWithZeroAndNegativeOperands_NotOk() {
         assertThrows(MinMaxValueException.class, () -> {
             calculator.calculate(ZERO, SECOND_NEGATIVE_OPERAND, POWER);
         });
     }
 
     @Test
-    void raisingToPowerForMinAndMaxDoubleValues_NotOk() {
+    void checkCalculateMethodForRaisingToPowerForMinAndMaxDoubleValues_NotOk() {
         assertThrows(MinMaxValueException.class,() -> {
             calculator.calculate(MIN, MIN, POWER);
         });
@@ -316,7 +316,7 @@ class CalculatorTest {
     }
 
     @Test
-    void checkForValidOperator_NotOk() {
+    void checkCalculateMethodForValidOperator_NotOk() {
         assertThrows(RuntimeException.class, () -> {
             calculator.calculate(FIRST_NEGATIVE_OPERAND, SECOND_OPERAND, '%');
         });
