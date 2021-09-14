@@ -1,20 +1,26 @@
 package core.basesyntax;
 
 public class Calculator {
+    private static final char ADDITION_OPERATOR = '+';
+    private static final char SUBTRACTION_OPERATOR = '-';
+    private static final char MULTIPLICATION_OPERATOR = '*';
+    private static final char DIVISION_OPERATOR = '/';
+    private static final char RAISING_TO_POWER_OPERATOR = '^';
+
     public double calculate(double firstValue, double secondValue, char operation) {
         switch (operation) {
-            case '+':
+            case ADDITION_OPERATOR:
                 return firstValue + secondValue;
-            case '-':
+            case SUBTRACTION_OPERATOR:
                 return firstValue - secondValue;
-            case '*':
+            case MULTIPLICATION_OPERATOR:
                 return firstValue * secondValue;
-            case '/':
+            case DIVISION_OPERATOR:
                 if (secondValue == 0) {
                     throw new ArithmeticException("can`t divide on 0");
                 }
                 return firstValue / secondValue;
-            case '^':
+            case RAISING_TO_POWER_OPERATOR:
                 if (secondValue == Double.MIN_VALUE) {
                     throw new IllegalValueException("can`t resolve operation");
                 }
