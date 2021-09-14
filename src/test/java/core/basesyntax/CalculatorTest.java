@@ -1,7 +1,6 @@
 package core.basesyntax;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -19,281 +18,288 @@ class CalculatorTest {
     }
 
     @Test
-    void addTwoPositiveNumbers_Ok() {
+    void calculate_addTwoPositiveNumbers_Ok() {
         actual = calculatorService.calculate(10, 5, '+');
         expected = 15;
         assertEquals(expected, actual);
     }
 
     @Test
-    void addTwoNegativeNumbers_Ok() {
+    void calculate_addTwoNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-5, -10, '+');
         expected = -15;
         assertEquals(expected, actual);
     }
 
     @Test
-    void addPositiveAndNegativeNumbers_Ok() {
+    void calculate_addPositiveAndNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-30, 50, '+');
         expected = 20;
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionWithZero_Ok() {
-        double actualFirstZero = calculatorService.calculate(0, 5, '+');
-        double actualSecondZero = calculatorService.calculate(50, 0, '+');
-        double actualBothZero = calculatorService.calculate(0, 0, '+');
-        double expectedFirstZero = 5;
-        double expectedSecondZero = 50;
-        double expectedBothZero = 0;
-        assertEquals(expectedFirstZero, actualFirstZero);
-        assertEquals(expectedSecondZero, actualSecondZero);
-        assertEquals(expectedBothZero, actualBothZero);
-    }
-
-    @Test
-    void addTwoZeroNumbers_NotOk() {
+    void calculate_additionWithZero_Ok() {
+        actual = calculatorService.calculate(0, 5, '+');
+        expected = 5;
+        assertEquals(expected, actual);
         actual = calculatorService.calculate(0, 0, '+');
-        expected = 55;
-        assertNotEquals(expected, actual);
+        expected = 0;
+        assertEquals(expected, actual);
+        actual = calculatorService.calculate(50, 0, '+');
+        expected = 50;
+        assertEquals(expected, actual);
     }
 
     @Test
-    void addTwoMaxNumbers_Ok() {
+    void calculate_addTwoZeroNumbers_Ok() {
+        actual = calculatorService.calculate(0, 0, '+');
+        expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_addTwoMaxNumbers_Ok() {
         actual = calculatorService.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void addTwoMinNumbers_Ok() {
+    void calculate_addTwoMinNumbers_Ok() {
         actual = calculatorService.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '+');
         expected = 1.0E-323;
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractTwoPositiveNumbers_Ok() {
+    void calculate_subtractTwoPositiveNumbers_Ok() {
         actual = calculatorService.calculate(200, 5, '-');
         expected = 195;
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractTwoNegativeNumbers_Ok() {
+    void calculate_subtractTwoNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-50, -10, '-');
         expected = -40;
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractPositiveAndNegativeNumbers_Ok() {
+    void calculate_subtractPositiveAndNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-30, 50, '-');
         expected = -80;
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionWithZero_Ok() {
-        double actualFirstZero = calculatorService.calculate(0, 5, '-');
-        double actualSecondZero = calculatorService.calculate(50, 0, '-');
-        double actualBothZero = calculatorService.calculate(0, 0, '-');
-        double expectedFirstZero = -5;
-        double expectedSecondZero = 50;
-        double expectedBothZero = 0;
-        assertEquals(expectedFirstZero, actualFirstZero);
-        assertEquals(expectedSecondZero, actualSecondZero);
-        assertEquals(expectedBothZero, actualBothZero);
-    }
-
-    @Test
-    void subtractTwoZeroNumbers_NotOk() {
+    void calculate_subtractionWithZero_Ok() {
+        actual = calculatorService.calculate(0, 5, '-');
+        expected = -5;
+        assertEquals(expected, actual);
+        actual = calculatorService.calculate(50, 0, '-');
+        expected = 50;
+        assertEquals(expected, actual);
         actual = calculatorService.calculate(0, 0, '-');
-        expected = 5555;
-        assertNotEquals(expected, actual);
+        expected = 0;
+        assertEquals(expected, actual);
     }
 
     @Test
-    void subtractTwoMaxNumbers_Ok() {
+    void calculate_subtractTwoZeroNumbers_Ok() {
+        actual = calculatorService.calculate(0, 0, '-');
+        expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_subtractTwoMaxNumbers_Ok() {
         actual = calculatorService.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractTwoMinNumbers_Ok() {
+    void calculate_subtractTwoMinNumbers_Ok() {
         actual = calculatorService.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplyTwoPositiveNumbers_Ok() {
+    void calculate_multiplyTwoPositiveNumbers_Ok() {
         actual = calculatorService.calculate(100, 100, '*');
         expected = 10000;
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplyTwoNegativeNumbers_Ok() {
+    void calculate_multiplyTwoNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-8, -20, '*');
         expected = 160;
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplyPositiveAndNegativeNumbers_Ok() {
+    void calculate_multiplyPositiveAndNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-40, 40, '*');
         expected = -1600;
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationWithZero_Ok() {
-        double actualFirstZero = calculatorService.calculate(0, 5, '*');
-        double actualSecondZero = calculatorService.calculate(50, 0, '*');
-        double actualBothZero = calculatorService.calculate(0, 0, '*');
-        double expectedFirstZero = 0;
-        double expectedSecondZero = 0;
-        double expectedBothZero = 0;
-        assertEquals(expectedFirstZero, actualFirstZero);
-        assertEquals(expectedSecondZero, actualSecondZero);
-        assertEquals(expectedBothZero, actualBothZero);
-    }
-
-    @Test
-    void multiplyTwoZeroNumbers_NotOk() {
+    void calculate_multiplicationWithZero_Ok() {
+        actual = calculatorService.calculate(0, 5, '*');
+        expected = 0;
+        assertEquals(expected, actual);
+        actual = calculatorService.calculate(50, 0, '*');
+        expected = 0;
+        assertEquals(expected, actual);
         actual = calculatorService.calculate(0, 0, '*');
-        expected = 10;
-        assertNotEquals(expected, actual);
+        expected = 0;
+        assertEquals(expected, actual);
     }
 
     @Test
-    void multiplyTwoMaxNumbers_Ok() {
+    void calculate_multiplyTwoZeroNumbers_Ok() {
+        actual = calculatorService.calculate(0, 0, '*');
+        expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_multiplyTwoMaxNumbers_Ok() {
         actual = calculatorService.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplyTwoMinNumbers_Ok() {
+    void calculate_multiplyTwoMinNumbers_Ok() {
         actual = calculatorService.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '*');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideTwoPositiveNumbers_Ok() {
+    void calculate_divideTwoPositiveNumbers_Ok() {
         actual = calculatorService.calculate(100, 10, '/');
         expected = 10;
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideTwoNegativeNumbers_Ok() {
+    void calculate_divideTwoNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-8, -2, '/');
         expected = 4;
         assertEquals(expected, actual);
     }
 
     @Test
-    void dividePositiveAndNegativeNumbers_Ok() {
+    void calculate_dividePositiveAndNegativeNumbers_Ok() {
         actual = calculatorService.calculate(-160, 4, '/');
         expected = -40;
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideWithZero_Ok() {
+    void calculate_divideWithZero_Ok() {
         actual = calculatorService.calculate(0, 5, '/');
         expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideWithZero_NotOk() {
+    void calculate_divideWithZero_NotOk() {
         assertThrows(IllegalArgumentException.class, () -> calculatorService.calculate(50, 0, '/'));
     }
 
     @Test
-    void divideWithTwoZeroValues_Ok() {
-        actual = calculatorService.calculate(0.0d, 0, '/');
+    void calculate_divideWithTwoZeroValues_Ok() {
+        actual = calculatorService.calculate(0, 0, '/');
         expected = Double.NaN;
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideTwoMaxNumbers_Ok() {
+    void calculate_divideTwoMaxNumbers_Ok() {
         actual = calculatorService.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/');
         expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
-    void divideTwoMinNumbers_Ok() {
+    void calculate_divideTwoMinNumbers_Ok() {
         actual = calculatorService.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '/');
         expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
-    void raisePositiveNumberToPositivePower_Ok() {
+    void calculate_raisePositiveNumberToPositivePower_Ok() {
         actual = calculatorService.calculate(2, 5, '^');
         expected = 32;
         assertEquals(expected, actual);
     }
 
     @Test
-    void raiseNegativeNumberToPositivePower_Ok() {
+    void calculate_raiseNegativeNumberToPositivePower_Ok() {
         actual = calculatorService.calculate(-5, 2, '^');
         expected = 25;
         assertEquals(expected, actual);
     }
 
     @Test
-    void raiseNegativeNumberToNegativePower_Ok() {
+    void calculate_raiseNegativeNumberToNegativePower_Ok() {
         actual = calculatorService.calculate(-4, -2, '^');
         expected = 0.0625;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void raisingToPowerWithZero_Ok() {
-        double actualFirstZero = calculatorService.calculate(0, 5, '^');
-        double actualSecondZero = calculatorService.calculate(50, 0, '^');
-        double actualBothZero = calculatorService.calculate(0, 0, '^');
-        double expectedFirstZero = 0;
-        double expectedSecondZero = 1;
-        double expectedBothZero = 1;
-        assertEquals(expectedFirstZero, actualFirstZero);
-        assertEquals(expectedSecondZero, actualSecondZero);
-        assertEquals(expectedBothZero, actualBothZero);
+    void calculate_raisingToPowerWithZero_Ok() {
+        actual = calculatorService.calculate(0, 5, '^');
+        expected = 0;
+        assertEquals(expected, actual);
+        actual = calculatorService.calculate(50, 0, '^');
+        expected = 1;
+        assertEquals(expected, actual);
+        actual = calculatorService.calculate(0, 0, '^');
+        expected = 1;
+        assertEquals(expected, actual);
     }
 
     @Test
-    void raisingNegativeToZeroPower_Ok() {
+    void calculate_raisingNegativeToZeroPower_Ok() {
         actual = calculatorService.calculate(-80, 0, '^');
         expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
-    void raiseMaxNumberToMaxPower_Ok() {
+    void calculate_raisingZeroToNegativePower_Ok() {
+        actual = calculatorService.calculate(0, -5, '^');
+        expected = Double.POSITIVE_INFINITY;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void calculate_raiseMaxNumberToMaxPower_Ok() {
         actual = calculatorService.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '^');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual);
     }
 
     @Test
-    void raiseMinNumberToMinPower_Ok() {
+    void calculate_raiseMinNumberToMinPower_Ok() {
         actual = calculatorService.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '^');
         expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
-    void illegalOperationType_NotOk() {
+    void calculate_illegalOperationType_NotOk() {
         assertThrows(IllegalArgumentException.class, () -> calculatorService.calculate(50, 0, '$'));
         assertThrows(IllegalArgumentException.class, () -> calculatorService.calculate(50, 0, '4'));
         assertThrows(IllegalArgumentException.class, () -> calculatorService.calculate(50, 0, 'h'));

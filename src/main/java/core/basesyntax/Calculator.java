@@ -14,7 +14,7 @@ public class Calculator implements CalculatorService {
                 return firstValue * secondValue;
             }
             case '/' : {
-                if (firstValue != 0.0d && secondValue == 0) {
+                if (firstValue != 0 && secondValue == 0) {
                     throw new IllegalArgumentException("Can't divide by zero!");
                 }
                 return firstValue / secondValue;
