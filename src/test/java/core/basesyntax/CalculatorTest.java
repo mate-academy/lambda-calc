@@ -3,308 +3,294 @@ package core.basesyntax;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
-    private static final Calculator calculator = new Calculator();
-    private double expected;
-    private double actual;
-    private double number1;
-    private double number2;
+    private static Calculator calculator;
+
+    @BeforeAll
+    static void beforeAll() {
+        calculator = new Calculator();
+    }
 
     @Test
     void addictionTwoPositive() {
-        number1 = 7;
-        number2 = 14;
-        expected = 21;
-        actual = calculator.calculate(number1, number2, '+');
+        double first = 7;
+        double second = 14;
+        double expected = 21;
+        double actual = calculator.calculate(first, second, '+');
         assertEquals(expected, actual);
     }
 
     @Test
     void addictionTwoNegative() {
-        number1 = -7;
-        number2 = -14;
-        expected = -21;
-        actual = calculator.calculate(number1, number2, '+');
+        double first = -38;
+        double second = -17;
+        double expected = -55;
+        double actual = calculator.calculate(first, second, '+');
         assertEquals(expected, actual);
     }
 
     @Test
     void addictionPositiveAndNegative() {
-        number1 = 7;
-        number2 = -14;
-        expected = -7;
-        actual = calculator.calculate(number1, number2, '+');
+        double first = 40;
+        double second = -20;
+        double expected = 20;
+        double actual = calculator.calculate(first, second, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void addictionZero_1() {
-        number1 = 0;
-        number2 = -14;
-        expected = -14;
-        actual = calculator.calculate(number1, number2, '+');
+    void addictionZero() {
+        double first = 0;
+        double second = 93;
+        double expected = 93;
+        double actual = calculator.calculate(first, second, '+');
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void addictionZero_2() {
-        number1 = -14;
-        number2 = 0;
-        expected = -14;
-        actual = calculator.calculate(number1, number2, '+');
+        first = 36;
+        second = 0;
+        expected = 36;
+        actual = calculator.calculate(first, second, '+');
         assertEquals(expected, actual);
     }
 
     @Test
     void addictionMaxValue() {
-        number1 = Double.MAX_VALUE;
-        number2 = -7;
-        expected = Double.MAX_VALUE;
-        actual = calculator.calculate(number1, number2, '+');
+        double first = Double.MAX_VALUE;
+        double second = -7;
+        double expected = Double.MAX_VALUE;
+        double actual = calculator.calculate(first, second, '+');
         assertEquals(expected, actual);
     }
 
     @Test
     void addictionMinValue() {
-        number1 = Double.MIN_VALUE;
-        number2 = 0;
-        expected = Double.MIN_VALUE;
-        actual = calculator.calculate(number1, number2, '+');
+        double first = Double.MIN_VALUE;
+        double second = 0;
+        double expected = Double.MIN_VALUE;
+        double actual = calculator.calculate(first, second, '+');
         assertEquals(expected, actual);
     }
 
     @Test
     void subtractionTwoPositive() {
-        number1 = 7;
-        number2 = 14;
-        expected = -7;
-        actual = calculator.calculate(number1, number2, '-');
+        double first = 15;
+        double second = 10;
+        double expected = 5;
+        double actual = calculator.calculate(first, second, '-');
         assertEquals(expected, actual);
     }
 
     @Test
     void subtractionTwoNegative() {
-        number1 = -7;
-        number2 = -14;
-        expected = 7;
-        actual = calculator.calculate(number1, number2, '-');
+        double first = -3;
+        double second = -4;
+        double expected = 1;
+        double actual = calculator.calculate(first, second, '-');
         assertEquals(expected, actual);
     }
 
     @Test
     void subtractionPositiveAndNegative() {
-        number1 = 7;
-        number2 = -14;
-        expected = 21;
-        actual = calculator.calculate(number1, number2, '-');
+        double first = 34;
+        double second = -14;
+        double expected = 48;
+        double actual = calculator.calculate(first, second, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionZero_1() {
-        number1 = 0;
-        number2 = -14;
-        expected = 14;
-        actual = calculator.calculate(number1, number2, '-');
+    void subtractionZero() {
+        double first = 0;
+        double second = -17;
+        double expected = 17;
+        double actual = calculator.calculate(first, second, '-');
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void subtractionZero_2() {
-        number1 = -14;
-        number2 = 0;
-        expected = -14;
-        actual = calculator.calculate(number1, number2, '-');
+        first = -11;
+        second = 0;
+        expected = -11;
+        actual = calculator.calculate(first, second, '-');
         assertEquals(expected, actual);
     }
 
     @Test
     void subtractionMaxValue() {
-        number1 = Double.MAX_VALUE;
-        number2 = -7;
-        expected = Double.MAX_VALUE;
-        actual = calculator.calculate(number1, number2, '-');
+        double first = Double.MAX_VALUE;
+        double second = -4;
+        double expected = Double.MAX_VALUE;
+        double actual = calculator.calculate(first, second, '-');
         assertEquals(expected, actual);
     }
 
     @Test
     void subtractionMinValue() {
-        number1 = Double.MIN_VALUE;
-        number2 = 3;
-        expected = -3;
-        actual = calculator.calculate(number1, number2, '-');
+        double first = Double.MIN_VALUE;
+        double second = 3;
+        double expected = -3;
+        double actual = calculator.calculate(first, second, '-');
         assertEquals(expected, actual);
     }
 
     @Test
     void multiplicationTwoPositive() {
-        number1 = 7;
-        number2 = 14;
-        expected = 98;
-        actual = calculator.calculate(number1, number2, '*');
+        double first = 6;
+        double second = 4;
+        double expected = 24;
+        double actual = calculator.calculate(first, second, '*');
         assertEquals(expected, actual);
     }
 
     @Test
     void multiplicationTwoNegative() {
-        number1 = -7;
-        number2 = -14;
-        expected = 98;
-        actual = calculator.calculate(number1, number2, '*');
+        double first = -7;
+        double second = -14;
+        double expected = 98;
+        double actual = calculator.calculate(first, second, '*');
         assertEquals(expected, actual);
     }
 
     @Test
     void multiplicationPositiveAndNegative() {
-        number1 = 7;
-        number2 = -14;
-        expected = -98;
-        actual = calculator.calculate(number1, number2, '*');
+        double first = 7;
+        double second = -21;
+        double expected = -147;
+        double actual = calculator.calculate(first, second, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationZero_1() {
-        number1 = 0;
-        number2 = 14;
-        expected = 0;
-        actual = calculator.calculate(number1, number2, '*');
+    void multiplicationZero() {
+        double first = 0;
+        double second = 346;
+        double expected = 0;
+        double actual = calculator.calculate(first, second, '*');
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void multiplicationZero_2() {
-        number1 = 14;
-        number2 = 0;
+        first = 52;
+        second = 0;
         expected = 0;
-        actual = calculator.calculate(number1, number2, '*');
+        actual = calculator.calculate(first, second, '*');
         assertEquals(expected, actual);
     }
 
     @Test
     void multiplicationMaxValue() {
-        number1 = Double.MAX_VALUE;
-        number2 = 7;
-        expected = Double.POSITIVE_INFINITY;
-        actual = calculator.calculate(number1, number2, '*');
+        double first = Double.MAX_VALUE;
+        double second = 32;
+        double expected = Double.POSITIVE_INFINITY;
+        double actual = calculator.calculate(first, second, '*');
         assertEquals(expected, actual);
     }
 
     @Test
     void multiplicationMinValue() {
-        number1 = Double.MIN_VALUE;
-        number2 = 3;
-        expected = 1.5E-323;
-        actual = calculator.calculate(number1, number2, '*');
+        double first = Double.MIN_VALUE;
+        double second = 3;
+        double expected = 1.5E-323;
+        double actual = calculator.calculate(first, second, '*');
         assertEquals(expected, actual);
     }
 
     @Test
     void divisionTwoPositive() {
-        number1 = 7;
-        number2 = 14;
-        expected = 0.5;
-        actual = calculator.calculate(number1, number2, '/');
+        double first = 6;
+        double second = 2;
+        double expected = 3;
+        double actual = calculator.calculate(first, second, '/');
         assertEquals(expected, actual);
     }
 
     @Test
     void divisionTwoNegative() {
-        number1 = -7;
-        number2 = -14;
-        expected = 0.5;
-        actual = calculator.calculate(number1, number2, '/');
+        double first = -10;
+        double second = -5;
+        double expected = 2;
+        double actual = calculator.calculate(first, second, '/');
         assertEquals(expected, actual);
     }
 
     @Test
     void divisionPositiveAndNegative() {
-        number1 = 7;
-        number2 = -14;
-        expected = -0.5;
-        actual = calculator.calculate(number1, number2, '/');
+        double first = 20;
+        double second = -5;
+        double expected = -4;
+        double actual = calculator.calculate(first, second, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionZero_1() {
-        number1 = 0;
-        number2 = 14;
-        expected = 0;
-        actual = calculator.calculate(number1, number2, '/');
+    void divisionZero() {
+        double first = 0;
+        double second = 300;
+        double expected = 0;
+        double actual = calculator.calculate(first, second, '/');
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void divisionZero_2() {
-        number1 = 14;
-        number2 = 0;
-        assertThrows(IllegalArgumentException.class, () -> {
-            calculator.calculate(number1, number2, '/');
+        double firstL = 35437;
+        double secondL = 0;
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.calculate(firstL, secondL, '/');
         });
     }
 
     @Test
     void divisionMaxValue() {
-        number1 = Double.MAX_VALUE;
-        number2 = 7;
-        expected = 2.5681330498033083E307;
-        actual = calculator.calculate(number1, number2, '/');
+        double first = Double.MAX_VALUE;
+        double second = 7;
+        double expected = 2.5681330498033083E307;
+        double actual = calculator.calculate(first, second, '/');
         assertEquals(expected, actual);
     }
 
     @Test
     void divisionMinValue() {
-        number1 = Double.MIN_VALUE;
-        number2 = 3;
-        expected = 0;
-        actual = calculator.calculate(number1, number2, '/');
+        double first = Double.MIN_VALUE;
+        double second = 3;
+        double expected = 0;
+        double actual = calculator.calculate(first, second, '/');
         assertEquals(expected, actual);
     }
 
     @Test
     void raiseToPower() {
-        number1 = 7;
-        number2 = 3;
-        expected = 343;
-        actual = calculator.calculate(number1, number2, '^');
+        double first = 7;
+        double second = 3;
+        double expected = 343;
+        double actual = calculator.calculate(first, second, '^');
         assertEquals(expected, actual);
-        number1 = -7;
-        number2 = 3;
+        first = -7;
+        second = 3;
         expected = -343;
-        actual = calculator.calculate(number1, number2, '^');
+        actual = calculator.calculate(first, second, '^');
         assertEquals(expected, actual);
     }
 
     @Test
     void raiseToNegativePower() {
-        number1 = 7;
-        number2 = -1;
-        expected = 0.14285714285714285;
-        actual = calculator.calculate(number1, number2, '^');
+        double first = 7;
+        double second = -1;
+        double expected = 0.14285714285714285;
+        double actual = calculator.calculate(first, second, '^');
         assertEquals(expected, actual);
     }
 
     @Test
     void raiseToZeroPower() {
-        number1 = 7;
-        number2 = 0;
-        expected = 1;
-        actual = calculator.calculate(number1, number2, '^');
+        double first = 4363;
+        double second = 0;
+        double expected = 1;
+        double actual = calculator.calculate(first, second, '^');
         assertEquals(expected, actual);
     }
 
     @Test
     void checkOperation() {
-        number1 = 7;
-        number2 = 4;
-        assertThrows(IllegalStateException.class, () -> {
-            calculator.calculate(number1, number2, '!');
+        double first = 7;
+        double second = 4;
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(first, second, '!');
         });
-        assertThrows(IllegalStateException.class, () -> {
-            calculator.calculate(number1, number2, '3');
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(first, second, '3');
         });
     }
 }

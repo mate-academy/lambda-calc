@@ -1,23 +1,23 @@
 package core.basesyntax;
 
 public class Calculator {
-    public double calculate(double number1, double number2, char operation) {
+    public double calculate(double first, double second, char operation) {
         switch (operation) {
             case '+':
-                return number1 + number2;
+                return first + second;
             case '-':
-                return number1 - number2;
+                return first - second;
             case '*':
-                return number1 * number2;
+                return first * second;
             case '^':
-                return Math.pow(number1, number2);
+                return Math.pow(first, second);
             case '/':
-                if (number2 == 0) {
-                    throw new IllegalArgumentException("Can't divide by zero");
+                if (second == 0) {
+                    throw new ArithmeticException("Can't divide by zero");
                 }
-                return number1 / number2;
+                return first / second;
             default:
-                throw new IllegalStateException("Invalid operation");
+                throw new IllegalArgumentException("Invalid operation");
         }
     }
 }
