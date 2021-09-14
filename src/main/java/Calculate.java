@@ -21,7 +21,6 @@ public class Calculate {
                 return getTheExponentiationResult(firstNumber, secondNumber);
             default:
                 throw new NoSuchElementException("Incorrect operation");
-
         }
     }
 
