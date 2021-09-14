@@ -63,9 +63,9 @@ class CalculatorTest {
 
     @Test
     void calculate_additionMinOperands_IsOk() {
-        expected = Double.MIN_VALUE + Double.MIN_VALUE;
+        expected = Double.MIN_VALUE;
         actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, ADDITION_SIGN);
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
