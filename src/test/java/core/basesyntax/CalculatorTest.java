@@ -214,58 +214,42 @@ class CalculatorTest {
     }
 
     @Test
-    void calculate_exponentiationPositiveToPositiveValue_Ok() {
+    void calculate_exponentiationToPositiveValue_Ok() {
         double actual = calculator.calculate(A_POSITIVE, B_POSITIVE, EXPONENTIATION);
         double expected = Math.pow(A_POSITIVE, B_POSITIVE);
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void calculate_exponentiationNegativeToPositiveValue_Ok() {
-        double actual = calculator.calculate(A_NEGATIVE, B_POSITIVE, EXPONENTIATION);
-        double expected = Math.pow(A_NEGATIVE, B_POSITIVE);
+        actual = calculator.calculate(A_NEGATIVE, B_POSITIVE, EXPONENTIATION);
+        expected = Math.pow(A_NEGATIVE, B_POSITIVE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_exponentiationPositiveToNegativeValue_Ok() {
+    void calculate_exponentiationToNegativeValue_Ok() {
         double actual = calculator.calculate(A_POSITIVE, B_NEGATIVE, EXPONENTIATION);
         double expected = Math.pow(A_POSITIVE, B_NEGATIVE);
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void calculate_exponentiationNegativeToNegativeValue_Ok() {
-        double actual = calculator.calculate(A_NEGATIVE, B_NEGATIVE, EXPONENTIATION);
-        double expected = Math.pow(A_NEGATIVE, B_NEGATIVE);
+        actual = calculator.calculate(A_NEGATIVE, B_NEGATIVE, EXPONENTIATION);
+        expected = Math.pow(A_NEGATIVE, B_NEGATIVE);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_exponentiationPositiveValueToZero_Ok() {
+    void calculate_exponentiationValueToZero_Ok() {
         double actual = calculator.calculate(A_POSITIVE, ZERO, EXPONENTIATION);
         double expected = Math.pow(A_POSITIVE, ZERO);
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void calculate_exponentiationNegativeValueToZero_Ok() {
-        double actual = calculator.calculate(A_NEGATIVE, ZERO, EXPONENTIATION);
-        double expected = Math.pow(A_NEGATIVE, ZERO);
+        actual = calculator.calculate(A_NEGATIVE, ZERO, EXPONENTIATION);
+        expected = Math.pow(A_NEGATIVE, ZERO);
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculate_exponentiationZeroToPositiveValue_Ok() {
+    void calculate_exponentiationZero_Ok() {
         double actual = calculator.calculate(ZERO, A_POSITIVE, EXPONENTIATION);
         double expected = Math.pow(ZERO, A_POSITIVE);
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void calculate_exponentiationZeroToNegativeValue_Ok() {
-        double actual = calculator.calculate(ZERO, A_NEGATIVE, EXPONENTIATION);
-        double expected = Math.pow(ZERO, A_NEGATIVE);
+        actual = calculator.calculate(ZERO, A_NEGATIVE, EXPONENTIATION);
+        expected = Math.pow(ZERO, A_NEGATIVE);
         assertEquals(expected, actual);
     }
 
@@ -273,6 +257,12 @@ class CalculatorTest {
     void calculate_illegalOperation_notOk() {
         assertThrows(IllegalOperationException.class, () -> {
             calculator.calculate(A_POSITIVE, B_NEGATIVE, '%');
+        });
+        assertThrows(IllegalOperationException.class, () -> {
+            calculator.calculate(A_POSITIVE, B_NEGATIVE, '#');
+        });
+        assertThrows(IllegalOperationException.class, () -> {
+            calculator.calculate(A_POSITIVE, B_NEGATIVE, '<');
         });
     }
 }
