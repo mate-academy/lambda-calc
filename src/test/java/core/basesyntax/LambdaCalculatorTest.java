@@ -12,8 +12,6 @@ class LambdaCalculatorTest {
     private static final double SECOND_PARAMETER = 0.2;
     private static final double ZERO_PARAMETER = 0;
     private static final double DEGREE_OF_POWER = 3;
-    private static final double MIN_DOUBLE = Double.MIN_VALUE;
-    private static final double MAX_DOUBLE = Double.MAX_VALUE;
     private static Calculator calculator;
     private double expected;
     private double actual;
@@ -63,14 +61,14 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_additionWithMinDoubleValues_ok() {
-        actual = calculator.calculate(MIN_DOUBLE, MIN_DOUBLE, '+');
+        actual = calculator.calculate(Double.MIN_VALUE,Double.MIN_VALUE, '+');
         expected = 0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_additionWithMaxDoubleValues_ok() {
-        actual = calculator.calculate(MAX_DOUBLE, MAX_DOUBLE, '+');
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
     }
@@ -115,14 +113,14 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_subtractionWithMinDoubleValues_ok() {
-        actual = calculator.calculate(MIN_DOUBLE, MIN_DOUBLE, '-');
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '-');
         expected = 0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_subtractionWithMaxDoubleValues_ok() {
-        actual = calculator.calculate(MAX_DOUBLE, MAX_DOUBLE, '-');
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '-');
         expected = 0;
         assertEquals(expected, actual, DELTA);
     }
@@ -167,14 +165,14 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_multiplicationWithMinDoubleValues_ok() {
-        actual = calculator.calculate(MIN_DOUBLE, MIN_DOUBLE, '*');
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '*');
         expected = 0;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_multiplicationWithMaxDoubleValues_ok() {
-        actual = calculator.calculate(MAX_DOUBLE, MAX_DOUBLE, '*');
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '*');
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA);
     }
@@ -218,14 +216,14 @@ class LambdaCalculatorTest {
 
     @Test
     void calculate_divisionWithMinDoubleValues_ok() {
-        actual = calculator.calculate(MIN_DOUBLE, MIN_DOUBLE, '/');
+        actual = calculator.calculate(Double.MIN_VALUE, Double.MIN_VALUE, '/');
         expected = 1;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     void calculate_divisionWithMaxDoubleValues_ok() {
-        actual = calculator.calculate(MAX_DOUBLE, MAX_DOUBLE, '/');
+        actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '/');
         expected = 1;
         assertEquals(expected, actual, DELTA);
     }
