@@ -31,28 +31,28 @@ public class CalculatorTest {
     }
 
     @Test
-    void additionWithTwoPositiveOperands_isOk() {
+    void calculate_additionWithTwoPositiveOperands_isOk() {
         actual = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '+');
         expected = 723.9;
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionWithTwoNegativeOperands_isOk() {
+    void calculate_additionWithTwoNegativeOperands_isOk() {
         expected = -723.9;
         actual = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionWithPositiveAndNegativeOperands_isOk() {
+    void calculate_additionWithPositiveAndNegativeOperands_isOk() {
         expected = 677.1;
         actual = calculator.calculate(NEGATIVE_NUMBER_1, POSITIVE_NUMBER_2, '+');
         assertEquals(expected, actual);
     }
 
     @Test
-    void additionWithZeroInDifferentPlaces_isOk() {
+    void calculate_additionWithZeroInDifferentPlaces_isOk() {
         expected = POSITIVE_NUMBER_2;
         actual = calculator.calculate(ZERO_NUMBER, POSITIVE_NUMBER_2, '+');
         assertEquals(expected, actual);
@@ -62,35 +62,35 @@ public class CalculatorTest {
     }
 
     @Test
-    void additionForMinAndMaxDoubleValues_isOk() {
+    void calculate_additionForMinAndMaxDoubleValues_isOk() {
         expected = Double.MAX_VALUE;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '+');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void subtractionWithTwoPositiveOperands_isOk() {
+    void calculate_subtractionWithTwoPositiveOperands_isOk() {
         actual = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '-');
         expected = -677.1;
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionWithTwoNegativeOperands_isOk() {
+    void calculate_subtractionWithTwoNegativeOperands_isOk() {
         expected = 677.1;
         actual = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionWithPositiveAndNegativeOperands_isOk() {
+    void calculate_subtractionWithPositiveAndNegativeOperands_isOk() {
         expected = -723.9;
         actual = calculator.calculate(NEGATIVE_NUMBER_1, POSITIVE_NUMBER_2, '-');
         assertEquals(expected, actual);
     }
 
     @Test
-    void subtractionWithZeroInDifferentPlaces_isOk() {
+    void calculate_subtractionWithZeroInDifferentPlaces_isOk() {
         expected = NEGATIVE_NUMBER_2;
         actual = calculator.calculate(ZERO_NUMBER, POSITIVE_NUMBER_2, '-');
         assertEquals(expected, actual);
@@ -100,35 +100,35 @@ public class CalculatorTest {
     }
 
     @Test
-    void subtractionForMinAndMaxDoubleValues_isOk() {
+    void calculate_subtractionForMinAndMaxDoubleValues_isOk() {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '-');
         expected = Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void multiplicationWithTwoPositiveOperands_isOk() {
+    void calculate_multiplicationWithTwoPositiveOperands_isOk() {
         actual = calculator.calculate(POSITIVE_NUMBER_1, POSITIVE_NUMBER_2, '*');
         expected = 16391.7;
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationWithTwoNegativeOperands_isOk() {
+    void calculate_multiplicationWithTwoNegativeOperands_isOk() {
         expected = 16391.7;
         actual = calculator.calculate(NEGATIVE_NUMBER_1, NEGATIVE_NUMBER_2, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationWithPositiveAndNegativeOperands_isOk() {
+    void calculate_multiplicationWithPositiveAndNegativeOperands_isOk() {
         expected = -16391.7;
         actual = calculator.calculate(NEGATIVE_NUMBER_1, POSITIVE_NUMBER_2, '*');
         assertEquals(expected, actual);
     }
 
     @Test
-    void multiplicationWithZeroInDifferentPlaces_isOk() {
+    void calculate_multiplicationWithZeroInDifferentPlaces_isOk() {
         expected = ZERO_NUMBER;
         actual = calculator.calculate(ZERO_NUMBER, POSITIVE_NUMBER_2, '*');
         assertEquals(expected, actual);
@@ -137,35 +137,35 @@ public class CalculatorTest {
     }
 
     @Test
-    void multiplicationForMinAndMaxDoubleValues_isOk() {
+    void calculate_multiplicationForMinAndMaxDoubleValues_isOk() {
         expected = ZERO_NUMBER;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '*');
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
-    void divisionWithTwoPositiveOperands_isOk() {
+    void calculate_divisionWithTwoPositiveOperands_isOk() {
         expected = 0.32;
         actual = calculator.calculate(POSITIVE_NUMBER_4, POSITIVE_NUMBER_5, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithTwoNegativeOperands_isOk() {
+    void calculate_divisionWithTwoNegativeOperands_isOk() {
         expected = 0.32;
         actual = calculator.calculate(NEGATIVE_NUMBER_3, NEGATIVE_NUMBER_4, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithPositiveAndNegativeOperands_isOk() {
+    void calculate_divisionWithPositiveAndNegativeOperands_isOk() {
         expected = -0.32;
         actual = calculator.calculate(POSITIVE_NUMBER_4, NEGATIVE_NUMBER_4, '/');
         assertEquals(expected, actual);
     }
 
     @Test
-    void divisionWithZeroInDifferentPlaces() {
+    void calculate_divisionWithZeroInDifferentPlaces() {
         expected = ZERO_NUMBER;
         actual = calculator.calculate(ZERO_NUMBER, POSITIVE_NUMBER_5, '/');
         assertEquals(expected, actual);
@@ -174,7 +174,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void raisingForMinAndMaxDoubleValues() {
+    void calculate_raisingForMinAndMaxDoubleValues() {
         expected = 1;
         actual = calculator.calculate(Double.MAX_VALUE, Double.MIN_VALUE, '^');
         assertEquals(expected, actual, DELTA);
@@ -183,7 +183,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveOrNegativeValueToThePositivePower() {
+    void calculate_raisingPositiveOrNegativeValueToThePositivePower() {
         expected = 61.763235;
         actual = calculator.calculate(POSITIVE_NUMBER_6, POSITIVE_NUMBER_7, '^');
         assertEquals(expected, actual, DELTA);
@@ -193,7 +193,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveOrNegativeValueToTheNegativePower() {
+    void calculate_raisingPositiveOrNegativeValueToTheNegativePower() {
         expected = 0.02327;
         actual = calculator.calculate(POSITIVE_NUMBER_7, NEGATIVE_NUMBER_5, '^');
         assertEquals(expected, actual, DELTA);
@@ -202,7 +202,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void raisingPositiveOrNegativeValueToTheZeroPower() {
+    void calculate_raisingPositiveOrNegativeValueToTheZeroPower() {
         expected = 1;
         actual = calculator.calculate(POSITIVE_NUMBER_7, ZERO_NUMBER, '^');
         assertEquals(expected, actual);
@@ -211,14 +211,17 @@ public class CalculatorTest {
     }
 
     @Test
-    void raisingZeroToPower() {
+    void calculate_raisingZeroToPower() {
         expected = ZERO_NUMBER;
         actual = calculator.calculate(ZERO_NUMBER, POSITIVE_NUMBER_7, '^');
+        assertEquals(expected, actual);
+        expected = Double.POSITIVE_INFINITY;
+        actual = calculator.calculate(ZERO_NUMBER, NEGATIVE_NUMBER_5, '^');
         assertEquals(expected, actual);
     }
 
     @Test
-    void illegalOperations_ExceptionOk() {
+    void calculate_illegalOperations_ExceptionOk() {
         assertThrows(RuntimeException.class,
                 () -> calculator.calculate(ZERO_NUMBER, ZERO_NUMBER, '='));
         assertThrows(RuntimeException.class,
