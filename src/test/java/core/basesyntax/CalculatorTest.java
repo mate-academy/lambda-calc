@@ -21,7 +21,6 @@ class CalculatorTest {
     static void beforeAll() {
         calculator = new Calculator();
     }
-    // ------------Addition------------
 
     @Test
     void calculate_additionWithTwoPositiveValues_Ok() throws ValidationException {
@@ -41,6 +40,13 @@ class CalculatorTest {
     void calculate_additionWithPositiveAndNegativeValues_Ok() throws ValidationException {
         actual = calculator.calculate(13.67, -3.51,'+');
         expected = 10.16;
+        assertEquals(expected, actual, DELTA, ADDITION_MESSAGE);
+    }
+
+    @Test
+    void calculate_additionWithNegativeAndPositiveValues_Ok() throws ValidationException {
+        actual = calculator.calculate(-13.67, 3.51,'+');
+        expected = -10.16;
         assertEquals(expected, actual, DELTA, ADDITION_MESSAGE);
     }
 
@@ -76,7 +82,7 @@ class CalculatorTest {
     @Test
     void calculate_additionForMaxAndMaxValues_Ok() throws ValidationException {
         actual = calculator.calculate(Double.MAX_VALUE, Double.MAX_VALUE, '+');
-        expected = Double.MAX_VALUE + Double.MAX_VALUE;
+        expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA, ADDITION_MESSAGE);
     }
     // ------------Addition------------
@@ -100,6 +106,14 @@ class CalculatorTest {
     void calculate_subtractionWithPositiveAndNegativeValues_Ok() throws ValidationException {
         actual = calculator.calculate(13.67, -3.51,'-');
         expected = 17.18;
+        assertEquals(expected, actual, DELTA, SUBTRACTION_MESSAGE);
+    }
+
+    // for first negative and second positive value
+    @Test
+    void calculate_subtractionWithNegativeAndPositiveValues_Ok() throws ValidationException {
+        actual = calculator.calculate(-13.67, 3.51,'-');
+        expected = -17.18;
         assertEquals(expected, actual, DELTA, SUBTRACTION_MESSAGE);
     }
 
