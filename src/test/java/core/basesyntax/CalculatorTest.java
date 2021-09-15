@@ -109,7 +109,6 @@ class CalculatorTest {
         assertEquals(expected, actual, DELTA, SUBTRACTION_MESSAGE);
     }
 
-    // for first negative and second positive value
     @Test
     void calculate_subtractionWithNegativeAndPositiveValues_Ok() throws ValidationException {
         actual = calculator.calculate(-13.67, 3.51,'-');
