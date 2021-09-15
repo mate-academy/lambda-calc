@@ -85,8 +85,6 @@ class CalculatorTest {
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA, ADDITION_MESSAGE);
     }
-    // ------------Addition------------
-    // ----------Subtraction-----------
 
     @Test
     void calculate_subtractionWithTwoPositiveValues_Ok() throws ValidationException {
@@ -151,8 +149,6 @@ class CalculatorTest {
         expected = Double.MAX_VALUE - Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, SUBTRACTION_MESSAGE);
     }
-    // ----------Subtraction-----------
-    // ------------Division------------
 
     @Test
     void calculate_divisionWithTwoPositiveValues_Ok() throws ValidationException {
@@ -208,8 +204,6 @@ class CalculatorTest {
         expected = Double.MAX_VALUE / Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, DIVISION_MESSAGE);
     }
-    // ------------Division------------
-    // ---------Multiplication---------
 
     @Test
     void calculate_multiplicationWithTwoPositiveValues_Ok() throws ValidationException {
@@ -267,8 +261,6 @@ class CalculatorTest {
         expected = Double.MAX_VALUE * Double.MAX_VALUE;
         assertEquals(expected, actual, DELTA, MULTIPLICATION_MESSAGE);
     }
-    // ---------Multiplication---------
-    // --------Rising to a power-------
 
     @Test
     void calculate_raisingPositiveValueToTheNegativePower_Ok() throws ValidationException {
@@ -325,8 +317,6 @@ class CalculatorTest {
         expected = Double.POSITIVE_INFINITY;
         assertEquals(expected, actual, DELTA, RAISING_TO_A_POWER_MESSAGE);
     }
-    // --------Rising to a power-------
-    // -----------Other tests----------
 
     @Test
     void calculate_calculateIllegalOperation_NotOk() {
