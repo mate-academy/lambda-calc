@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
     private static Calculator calculator;
+    private static final double DELTA_VALUE = 0.00001;
 
     @BeforeAll
     static void beforeAll() {
@@ -191,21 +192,21 @@ public class CalculatorTest {
     void calculate_divPositiveValues_Ok() {
         double actual = calculator.calculate(125, 200, '/');
         double expected = 0.625;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA_VALUE);
     }
 
     @Test
     void calculate_divNegativeValues_Ok() {
         double actual = calculator.calculate(-401, -200, '/');
         double expected = 2.005;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA_VALUE);
     }
 
     @Test
     void calculate_divPositiveAndNegative_Ok() {
         double actual = calculator.calculate(-179, 200, '/');
         double expected = -0.895;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA_VALUE);
     }
 
     @Test
@@ -264,10 +265,10 @@ public class CalculatorTest {
     void calculate_raisingToNegativePower_Ok() {
         double actual = calculator.calculate(5, -4, '^');
         double expected = 0.0016;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA_VALUE);
         actual = calculator.calculate(-5, -5, '^');
         expected = -0.00032;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA_VALUE);
     }
 
     @Test
