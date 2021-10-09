@@ -1,8 +1,36 @@
 package core.basesyntax;
 
-/**
- * Feel free to remove this class and create your own.
- */
-public class Calculator {
+import core.basesyntax.exceptions.OperatorException;
+import core.basesyntax.exceptions.ValueException;
 
+public class Calculator implements Calculating {
+
+    @Override
+    public double calculate(double a, double b, char operation) {
+        double result = 0;
+        switch (operation) {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                if (b == 0.00) {
+                    throw new ValueException("Division by zero");
+                }
+                result = a / b;
+                break;
+            case '^':
+                result = Math.pow(a, b);
+                break;
+            default:
+                throw new OperatorException("Wrong operator");
+        }
+        System.out.println(a + " " + operation + " " + b + " = " + result);
+        return result;
+    }
 }
