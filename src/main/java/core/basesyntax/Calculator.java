@@ -25,12 +25,14 @@ public class Calculator implements Calculating {
                 result = a / b;
                 break;
             case '^':
+                if (a == 0 && b < 0) {
+                    throw new ValueException("Zero cannot powered to negative value");
+                }
                 result = Math.pow(a, b);
                 break;
             default:
                 throw new OperatorException("Wrong operator");
         }
-        System.out.println(a + " " + operation + " " + b + " = " + result);
         return result;
     }
 }
