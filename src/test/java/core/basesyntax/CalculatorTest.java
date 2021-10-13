@@ -12,120 +12,111 @@ class CalculatorTest {
     private static final char DIVISION = '/';
     private static final char POWER = 'p';
     private static final char ILLEGAL_OPERATION = 'f';
-    private static final double DELTA = 0.001;
-    private static final double POSITIVE_FIRST = 2.3;
-    private static final double POSITIVE_SECOND = 3.2;
-    private static final double NEGATIVE_FIRST = -2.3;
-    private static final double NEGATIVE_SECOND = -3.2;
-    private static final double ZERO = 0;
-    private static final double MAX_VALUE = Double.MAX_VALUE;
-    private static final double MIN_VALUE = Double.MIN_VALUE;
-    private static final double NAN = Double.NaN;
 
     private CalculatorInter calculatorInter = new Calculator();
 
     @Test
     void twoPositiveOperandsAddedOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, POSITIVE_SECOND, ADD);
+        double actual = calculatorInter.calculate(2.3, 3.2, ADD);
         double expected = 5.5;
-        assertEquals(expected, actual, DELTA, "two positive numbers not work!");
+        assertEquals(expected, actual, 0.001, "two positive numbers not work!");
     }
 
     @Test
     void twoNegativeOperandsAddedOk() {
-        double actual = calculatorInter.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, ADD);
+        double actual = calculatorInter.calculate(-2.3, -3.2, ADD);
         double expected = -5.5;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void positiveAndNegativeOperandsAddedOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, ADD);
+        double actual = calculatorInter.calculate(2.3, -3.2, ADD);
         double expected = -0.9;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void zeroOperandAddedOk() {
-        double actual = calculatorInter.calculate(ZERO, POSITIVE_FIRST, ADD);
-        double expected = POSITIVE_FIRST;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(0, 2.3, ADD);
+        double expected = 2.3;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void maxMinDoubleValueAddedOk() {
-        double actual = calculatorInter.calculate(MAX_VALUE, POSITIVE_SECOND, ADD);
-        double expected = MAX_VALUE;
-        assertEquals(expected, actual, DELTA);
-        actual = calculatorInter.calculate(MIN_VALUE, POSITIVE_SECOND, ADD);
-        expected = POSITIVE_SECOND;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(Double.MAX_VALUE, 3.2, ADD);
+        double expected = Double.MAX_VALUE;
+        assertEquals(expected, actual, 0.001);
+        actual = calculatorInter.calculate(Double.MIN_VALUE, 3.2, ADD);
+        expected = 3.2;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void twoPositiveOperandsSubtractionOk() {
-        double actual = calculatorInter.calculate(POSITIVE_SECOND, POSITIVE_FIRST, SUBTRACTION);
+        double actual = calculatorInter.calculate(3.2, 2.3, SUBTRACTION);
         double expected = 0.9;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void twoNegativeOperandsSubtractionOk() {
-        double actual = calculatorInter.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, SUBTRACTION);
+        double actual = calculatorInter.calculate(-2.3, -3.2, SUBTRACTION);
         double expected = 0.9;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void positiveAndNegativeOperandsSubtractionOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, SUBTRACTION);
+        double actual = calculatorInter.calculate(2.3, -3.2, SUBTRACTION);
         double expected = 5.5;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void zeroOperandSubtractionOk() {
-        double actual = calculatorInter.calculate(ZERO, POSITIVE_FIRST, SUBTRACTION);
-        double expected = -POSITIVE_FIRST;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(0, 2.3, SUBTRACTION);
+        double expected = -2.3;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void maxMinDoubleValueSubtractionOk() {
-        double actual = calculatorInter.calculate(MAX_VALUE, POSITIVE_SECOND, SUBTRACTION);
-        double expected = MAX_VALUE;
-        assertEquals(expected, actual, DELTA);
-        actual = calculatorInter.calculate(MIN_VALUE, POSITIVE_SECOND, SUBTRACTION);
-        expected = -POSITIVE_SECOND;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(Double.MAX_VALUE, 3.2, SUBTRACTION);
+        double expected = Double.MAX_VALUE;
+        assertEquals(expected, actual, 0.001);
+        actual = calculatorInter.calculate(Double.MIN_VALUE, 3.2, SUBTRACTION);
+        expected = -3.2;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void twoPositiveOperandsMultiplicationOk() {
-        double actual = calculatorInter.calculate(POSITIVE_SECOND, POSITIVE_FIRST, MULTIPLICATION);
+        double actual = calculatorInter.calculate(3.2, 2.3, MULTIPLICATION);
         double expected = 7.36;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void twoNegativeOperandsMultiplicationOk() {
-        double actual = calculatorInter.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, MULTIPLICATION);
+        double actual = calculatorInter.calculate(-2.3, -3.2, MULTIPLICATION);
         double expected = 7.36;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void positiveAndNegativeOperandsMultiplicationOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, MULTIPLICATION);
+        double actual = calculatorInter.calculate(2.3, -3.2, MULTIPLICATION);
         double expected = -7.36;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void zeroOperandMultiplicationOk() {
-        double actual = calculatorInter.calculate(ZERO, POSITIVE_FIRST, MULTIPLICATION);
+        double actual = calculatorInter.calculate(0, 2.3, MULTIPLICATION);
         double expected = 0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
@@ -133,101 +124,101 @@ class CalculatorTest {
         double actual;
         double expected;
         Assertions.assertThrows(RuntimeException.class,
-                () -> calculatorInter.calculate(MAX_VALUE, POSITIVE_SECOND, MULTIPLICATION));
-        actual = calculatorInter.calculate(MIN_VALUE, POSITIVE_SECOND, MULTIPLICATION);
-        expected = MIN_VALUE;
-        assertEquals(expected, actual, DELTA);
+                () -> calculatorInter.calculate(Double.MAX_VALUE, 3.2, MULTIPLICATION));
+        actual = calculatorInter.calculate(Double.MIN_VALUE, 3.2, MULTIPLICATION);
+        expected = Double.MIN_VALUE;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void twoPositiveOperandsDivisionOk() {
-        double actual = calculatorInter.calculate(POSITIVE_SECOND, POSITIVE_FIRST, DIVISION);
+        double actual = calculatorInter.calculate(3.2, 2.3, DIVISION);
         double expected = 1.391;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void twoNegativeOperandsDivisionOk() {
-        double actual = calculatorInter.calculate(NEGATIVE_FIRST, NEGATIVE_SECOND, DIVISION);
+        double actual = calculatorInter.calculate(-2.3, -3.2, DIVISION);
         double expected = 0.718;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void positiveAndNegativeOperandsDivisionOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, NEGATIVE_SECOND, DIVISION);
+        double actual = calculatorInter.calculate(2.3, -3.2, DIVISION);
         double expected = -0.718;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void zeroOperandDivisionOk() {
         Assertions.assertThrows(RuntimeException.class,
-                () -> calculatorInter.calculate(POSITIVE_FIRST, ZERO, DIVISION));
+                () -> calculatorInter.calculate(2.3, 0, DIVISION));
     }
 
     @Test
     void maxMinDoubleValueDivisionOk() {
-        double actual = calculatorInter.calculate(MAX_VALUE, POSITIVE_SECOND, DIVISION);
-        double expected = MAX_VALUE / POSITIVE_SECOND;
-        assertEquals(expected, actual, DELTA);
-        actual = calculatorInter.calculate(MIN_VALUE, POSITIVE_SECOND, DIVISION);
-        expected = MIN_VALUE;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(Double.MAX_VALUE, 3.2, DIVISION);
+        double expected = Double.MAX_VALUE / 3.2;
+        assertEquals(expected, actual, 0.001);
+        actual = calculatorInter.calculate(Double.MIN_VALUE, 3.2, DIVISION);
+        expected = Double.MIN_VALUE;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void positiveValueToPositivePowerOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, POSITIVE_SECOND, POWER);
+        double actual = calculatorInter.calculate(2.3, 3.2, POWER);
         double expected = 14.372;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void negativeValueToPositivePowerOk() {
-        double actual = calculatorInter.calculate(NEGATIVE_FIRST, POSITIVE_SECOND, POWER);
-        double expected = NAN;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(-2.3, 3.2, POWER);
+        double expected = Double.NaN;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void positeveValueToNegativPowerOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, NEGATIVE_FIRST, POWER);
+        double actual = calculatorInter.calculate(2.3, -2.3, POWER);
         double expected = 0.147;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void negativeValueToNegativePowerOk() {
-        double actual = calculatorInter.calculate(NEGATIVE_FIRST, NEGATIVE_FIRST, POWER);
-        double expected = NAN;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(-2.3, -2.3, POWER);
+        double expected = Double.NaN;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void positiveValueToZeroPowerOk() {
-        double actual = calculatorInter.calculate(POSITIVE_FIRST, ZERO, POWER);
+        double actual = calculatorInter.calculate(2.3, 0, POWER);
         double expected = 1.0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void negativeValueToZeroPowerOk() {
-        double actual = calculatorInter.calculate(NEGATIVE_FIRST, ZERO, POWER);
+        double actual = calculatorInter.calculate(-2.3, 0, POWER);
         double expected = 1.0;
-        assertEquals(expected, actual, DELTA);
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void zeroToPowerOk() {
-        double actual = calculatorInter.calculate(ZERO, POSITIVE_FIRST, POWER);
-        double expected = ZERO;
-        assertEquals(expected, actual, DELTA);
+        double actual = calculatorInter.calculate(0, 2.3, POWER);
+        double expected = 0;
+        assertEquals(expected, actual, 0.001);
     }
 
     @Test
     void illegalOperation() {
         Assertions.assertThrows(RuntimeException.class,
-                () -> calculatorInter.calculate(POSITIVE_FIRST, ZERO, ILLEGAL_OPERATION));
+                () -> calculatorInter.calculate(2.3, 0, ILLEGAL_OPERATION));
     }
 }
