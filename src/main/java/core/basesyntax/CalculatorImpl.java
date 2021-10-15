@@ -19,8 +19,8 @@ public class CalculatorImpl implements Calculator {
                     throw new ArithmeticException();
                 } else {
                     result = a / b;
+                    break;
                 }
-                break;
             case '^' :
                 result = Math.pow(a,b);
                 break;

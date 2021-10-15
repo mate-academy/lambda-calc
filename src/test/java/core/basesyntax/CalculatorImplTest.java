@@ -8,10 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorImplTest {
     private static Calculator calculator;
-    private double operand1;
-    private double operand2;
-    private double actual;
-    private char ch;
 
     @BeforeAll
     static void beforeAll() {
@@ -20,195 +16,194 @@ class CalculatorImplTest {
 
     @Test
     void calculate_AdditionTwoPositiveOperands_Ok() {
-        operand1 = 6;
-        operand2 = 7;
-        ch = '+';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 6;
+        double operand2 = 7;
+        char operation = '+';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 + operand2,actual);
     }
 
     @Test
     void calculate_AdditionTwoNegativeOperands_Ok() {
-        operand1 = -6;
-        operand2 = -7;
-        ch = '+';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = -6;
+        double operand2 = -7;
+        char operation = '+';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 + operand2,actual);
     }
 
     @Test
     void calculate_AdditionNegativeAndPositiveOperands_Ok() {
-        operand1 = 6;
-        operand2 = -7;
-        ch = '+';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 6;
+        double operand2 = -7;
+        char operation = '+';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 + operand2,actual);
     }
 
     @Test
     void calculate_AdditionZeroDifferentPlaces_Ok() {
-        operand1 = 6;
-        operand2 = 0;
-        ch = '+';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 6;
+        double operand2 = 0;
+        char operation = '+';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 + operand2,actual);
         operand1 = 0;
         operand2 = -6;
-        ch = '+';
-        actual = calculator.calculate(operand1,operand2,ch);
+        actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 + operand2,actual);
     }
 
     @Test
     void calculate_AdditionMaxAndMinDoubleValues_Ok() {
-        operand1 = Double.MIN_VALUE;
-        operand2 = Double.MAX_VALUE;
-        ch = '+';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = Double.MIN_VALUE;
+        double operand2 = Double.MAX_VALUE;
+        char operation = '+';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 + operand2,actual);
     }
 
     @Test
     void calculate_SubtractionTwoPositiveOperands_Ok() {
-        operand1 = 6;
-        operand2 = 7;
-        ch = '-';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 6;
+        double operand2 = 7;
+        char operation = '-';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 - operand2,actual);
     }
 
     @Test
     void calculate_SubtractionTwoNegativeOperands_Ok() {
-        operand1 = -6;
-        operand2 = -7;
-        ch = '-';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = -6;
+        double operand2 = -7;
+        char operation = '-';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 - operand2,actual);
     }
 
     @Test
     void calculate_SubtractionNegativeAndPositiveOperands_Ok() {
-        operand1 = 6;
-        operand2 = -7;
-        ch = '-';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 6;
+        double operand2 = -7;
+        char operation = '-';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 - operand2,actual);
     }
 
     @Test
     void calculate_SubtractionZeroDifferentPlaces_Ok() {
-        operand1 = 6;
-        operand2 = 0;
-        ch = '-';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 6;
+        double operand2 = 0;
+        char operation = '-';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 - operand2,actual);
         operand1 = 0;
         operand2 = -6;
-        ch = '-';
-        actual = calculator.calculate(operand1,operand2,ch);
+        actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 - operand2,actual);
     }
 
     @Test
     void calculate_SubtractionMaxAndMinDoubleValues_Ok() {
-        operand1 = Double.MIN_VALUE;
-        operand2 = Double.MAX_VALUE;
-        ch = '-';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = Double.MIN_VALUE;
+        double operand2 = Double.MAX_VALUE;
+        char operation = '-';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 - operand2,actual);
     }
 
     @Test
     void calculate_MultiplicationTwoPositiveOperands() {
-        operand1 = 5;
-        operand2 = 6;
-        ch = '*';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 5;
+        double operand2 = 6;
+        char operation = '*';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 * operand2,actual);
     }
 
     @Test
     void calculate_MultiplicationTwoNegativeOperands() {
-        operand1 = -5;
-        operand2 = -6;
-        ch = '*';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = -5;
+        double operand2 = -6;
+        char operation = '*';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 * operand2,actual);
     }
 
     @Test
     void calculate_MultiplicationZeroDifferentPlaces_Ok() {
-        operand1 = 6;
-        operand2 = 0;
-        ch = '*';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 6;
+        double operand2 = 0;
+        char operation = '*';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(0,actual);
     }
 
     @Test
     void calculate_MultiplicationMaxAndMinDoubleValues_Ok() {
-        operand1 = Double.MIN_VALUE;
-        operand2 = Double.MAX_VALUE;
-        ch = '*';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = Double.MIN_VALUE;
+        double operand2 = Double.MAX_VALUE;
+        char operation = '*';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 * operand2,actual);
     }
 
     @Test
     void calculate_DivisionTwoPositiveOperands() {
-        operand1 = 5;
-        operand2 = 6;
-        ch = '/';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 5;
+        double operand2 = 6;
+        char operation = '/';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 / operand2,actual);
     }
 
     @Test
     void calculate_DivisionTwoNegativeOperands() {
-        operand1 = -5;
-        operand2 = -6;
-        ch = '/';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = -5;
+        double operand2 = -6;
+        char operation = '/';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 / operand2,actual);
     }
 
     @Test
-    void calculate_DivisionZeroDifferentPlaces_Ok() {
-        operand1 = 6;
-        operand2 = 3;
-        ch = '/';
-        actual = calculator.calculate(operand1,operand2,ch);
-        assertEquals(operand1 / operand2,actual);
-        operand2 = 0;
+    void calculate_DivisionByZero() {
         assertThrows(ArithmeticException.class, () -> {
-            calculator.calculate(operand1, operand2, ch);
+            calculator.calculate(5, 0, '/');
         });
     }
 
     @Test
+    void calculate_DivisionZeroDifferentPlaces_Ok() {
+        double operand1 = 0;
+        double operand2 = 8;
+        char operation = '/';
+        double actual = calculator.calculate(operand1,operand2,operation);
+    }
+
+    @Test
     void calculate_DivisionMaxAndMinDoubleValues_Ok() {
-        operand1 = Double.MAX_VALUE;
-        operand2 = Double.MIN_VALUE;
-        ch = '/';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = Double.MAX_VALUE;
+        double operand2 = Double.MIN_VALUE;
+        char operation = '/';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(operand1 / operand2,actual);
     }
 
     @Test
     void calculate_Raising_Ok() {
-        operand1 = 4;
-        operand2 = 5;
-        ch = '^';
-        actual = calculator.calculate(operand1,operand2,ch);
+        double operand1 = 4;
+        double operand2 = 5;
+        char operation = '^';
+        double actual = calculator.calculate(operand1,operand2,operation);
         assertEquals(Math.pow(operand1,operand2),actual);
     }
 
     @Test
     void calculate_IllegalOperation_NotOk() {
-        if (ch != '+' && ch != '-' && ch != '*' && ch != '/' && ch != '^') {
-            assertThrows(Exception.class, () -> {
-                calculator.calculate(operand1, operand2, ch);
-            });
-        }
+        char operation = ')';
+        assertThrows(Exception.class, () -> {
+            calculator.calculate(0, 5, operation);
+        });
     }
 }
