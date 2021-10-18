@@ -1,11 +1,8 @@
 package core.basesyntax;
 
-import exceptions.IllegalOperationException;
-
 public class Calculator {
 
-    public double calculate(double a, double b, Character operation)
-            throws IllegalOperationException {
+    public double calculate(double a, double b, Character operation) {
         switch (operation) {
             case ('+') :
                 return a + b;
@@ -21,7 +18,7 @@ public class Calculator {
             case ('^') :
                 return Math.pow(a, b);
             default:
-                throw new IllegalOperationException("Illegal operation!");
+                throw new RuntimeException("Illegal operation!");
         }
     }
 }
