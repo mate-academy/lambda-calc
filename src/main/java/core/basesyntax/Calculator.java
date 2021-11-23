@@ -2,16 +2,16 @@ package core.basesyntax;
 
 public class Calculator implements Calculating {
     @Override
-    public double calculate(double firstNumber, double SecondNumber, char operator) {
+    public double calculate(double firstNumber, double secondNumber, char operator) {
         switch (operator) {
-            case '+': return firstNumber + SecondNumber;
-            case '-': return firstNumber - SecondNumber;
-            case '*': return firstNumber * SecondNumber;
-            case '^': return Math.pow(firstNumber, SecondNumber);
-            case '/': if (SecondNumber == 0) {
+            case '+': return firstNumber + secondNumber;
+            case '-': return firstNumber - secondNumber;
+            case '*': return firstNumber * secondNumber;
+            case '^': return Math.pow(firstNumber, secondNumber);
+            case '/': if (secondNumber == 0) {
                     throw new ArithmeticException("Illegal division by 0");
                 }
-            return firstNumber / SecondNumber;
+            return firstNumber / secondNumber;
             default: throw new IllegalOperatorException("Invalid operator" + operator);
         }
     }
