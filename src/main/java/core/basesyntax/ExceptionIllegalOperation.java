@@ -1,0 +1,12 @@
+package core.basesyntax;
+
+/**
+ * Feel free to remove this class and create your own.
+ */
+public class ExceptionIllegalOperation extends RuntimeException {
+
+    ExceptionIllegalOperation(String message) {
+        super(message);
+    }
+
+}
