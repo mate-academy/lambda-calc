@@ -17,18 +17,11 @@
         </maven.checkstyle.plugin.configLocation>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
+            <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
