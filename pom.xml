@@ -55,11 +55,6 @@
                     <linkXRef>false</linkXRef>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
-            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -77,4 +72,3 @@
         </pluginManagement>
     </build>
 </project>
-
